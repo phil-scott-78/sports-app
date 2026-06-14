@@ -1,0 +1,20 @@
+# Normalize all text to LF in the repository, regardless of each contributor's
+# platform or core.autocrlf setting. The worker deploys to Linux (Cloudflare) and
+# the schema/worker tooling runs under Node — LF everywhere keeps that determinic
+# and avoids spurious whole-file CRLF diffs.
+* text=auto eol=lf
+
+# Binary assets — never apply line-ending or text filters.
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.jar  binary
+*.keystore binary
+*.jks  binary

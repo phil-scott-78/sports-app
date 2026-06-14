@@ -1,0 +1,16 @@
+name = "sports-scores"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# Free tier: Cache API only (no KV/DO writes — they'd blow the free write quota
+# at a 15s refresh; see schema/SCHEMA.md & SPEC.md §11). No compatibility_flags
+# needed because we deliberately avoid node builtins in the worker bundle.
+
+[observability]
+enabled = true
+
+# Optional: serve from a custom domain with Cache Rules so repeat edge hits are
+# served WITHOUT invoking the worker (saves the 100k/day request budget).
+# [[routes]]
+# pattern = "scores.example.com/*"
+# custom_domain = true

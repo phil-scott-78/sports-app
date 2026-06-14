@@ -1,0 +1,15 @@
+{
+  "name": "sports-scores-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

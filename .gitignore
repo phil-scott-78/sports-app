@@ -1,0 +1,39 @@
+# ──────────────────────────────────────────────────────────────────────────
+# Root .gitignore for sports-app.
+#
+# app/ and app/android/ ship their own (standard Flutter) .gitignore files that
+# already cover the Flutter tree: /build/, .dart_tool/, .flutter-plugins-*,
+# /.gradle, gradlew, gradle-wrapper.jar, local.properties, *.iml, .idea/.
+# This file covers the worker, the schema tooling, and repo-root artifacts.
+# ──────────────────────────────────────────────────────────────────────────
+
+# Node dependencies — reinstall with `npm install`. Lockfiles ARE committed.
+node_modules/
+
+# Cloudflare Wrangler local dev / build state (no secrets, but machine-local).
+.wrangler/
+
+# Claude Code per-machine state. The workflows/ directory IS committed
+# (onboard-league.js is a documented project tool — see CLAUDE.md).
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Working artifacts, not deliverables:
+#   .scratch/         — throwaway experiments, probes, generated fixtures, logs
+#   .playwright-mcp/  — Playwright MCP console/page captures
+#   .research-digest.md — raw ESPN reverse-engineering notes (distilled, and
+#                         kept authoritative, in schema/SCHEMA.md + canonical.ts)
+.scratch/
+.playwright-mcp/
+.research-digest.md
+
+# Logs
+*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+*.swp
+*~
