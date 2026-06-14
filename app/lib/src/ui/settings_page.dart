@@ -55,6 +55,7 @@ class SettingsPage extends ConsumerWidget {
           const SectionHeader('About'),
           // The worker URL lives behind this row — tap it 6 times to edit it.
           const _AboutTile(),
+          const SizedBox(height: kFloatingNavInset),
         ],
       ),
     );

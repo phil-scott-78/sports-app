@@ -1,0 +1,87 @@
+name: Release APK
+
+# Push a version tag (e.g. `git tag v0.1.0 && git push origin v0.1.0`) to build a
+# release-signed, universal APK and publish it as a GitHub Release.
+on:
+  push:
+    tags:
+      - "v*"
+
+# Needed for softprops/action-gh-release to create the Release.
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & publish APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # JDK 17 + Flutter 3.44.2 mirror the local toolchain this project builds with
+      # (AGP 9.0.1 / Kotlin 2.3.20 / Gradle 9.1.0). Bump these together with the SDK.
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.44.2"
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      # --- Signing material (from repo secrets) ---
+      # gradle reads android/key.properties + android/app/upload-keystore.jks
+      # (both gitignored). See app/android/app/build.gradle.kts.
+      - name: Decode signing keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE_BASE64" | base64 -d > android/app/upload-keystore.jks
+
+      - name: Write key.properties
+        env:
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          cat > android/key.properties <<EOF
+          storeFile=upload-keystore.jks
+          storePassword=$STORE_PASSWORD
+          keyPassword=$KEY_PASSWORD
+          keyAlias=$KEY_ALIAS
+          EOF
+
+      # versionName comes from the tag (v0.1.0 -> 0.1.0); versionCode from the run number.
+      - name: Build release APK
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          flutter build apk --release \
+            --build-name="$VERSION" \
+            --build-number="${{ github.run_number }}"
+
+      - name: Stage APK for upload
+        run: cp build/app/outputs/flutter-apk/app-release.apk "scores-${GITHUB_REF_NAME}.apk"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/scores-${{ github.ref_name }}.apk
+          generate_release_notes: true
+          fail_on_unmatched_files: true

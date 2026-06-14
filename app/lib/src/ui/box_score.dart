@@ -148,16 +148,14 @@ class PeriodLinesGrid extends StatelessWidget {
           ),
         );
 
-    Widget column(String head, List<String> vals,
-            {double width = 28, bool strong = false, Color? color}) =>
-        SizedBox(
-          width: width,
-          child: Column(children: [
-            headCell(head),
-            for (final v in vals)
-              valueCell(v, strong: strong, color: color),
-          ]),
-        );
+    // The stacked head + away/home cells for one column. No intrinsic width: the
+    // caller pins it (when scrolling) or lets it flex to fill the row.
+    Widget colBody(String head, List<String> vals,
+            {bool strong = false, Color? color}) =>
+        Column(children: [
+          headCell(head),
+          for (final v in vals) valueCell(v, strong: strong, color: color),
+        ]);
 
     final teamCol = SizedBox(
       width: 52,
@@ -185,32 +183,40 @@ class PeriodLinesGrid extends StatelessWidget {
     String home(int i) =>
         i < lines.home.values.length ? lines.home.values[i] : '';
 
-    final periodCols = Row(mainAxisSize: MainAxisSize.min, children: [
+    final periodBodies = [
       for (var i = 0; i < labels.length; i++)
-        column(labels[i], [away(i), home(i)]),
-    ]);
+        colBody(labels[i], [away(i), home(i)]),
+    ];
 
-    final totalCol = column(
-      lines.unit.isEmpty ? 'T' : lines.unit,
-      [lines.away.total ?? '', lines.home.total ?? ''],
+    // Always 'T' (the game total). `unit` is the period noun ("quarter"), which
+    // truncated to "qua…" when misused as this header.
+    final totalCol = SizedBox(
       width: 34,
-      strong: true,
-      color: BinanceColors.of(context).accent,
+      child: colBody(
+        'T',
+        [lines.away.total ?? '', lines.home.total ?? ''],
+        strong: true,
+        color: BinanceColors.of(context).accent,
+      ),
     );
+
+    // ≤6 periods (NBA/NFL quarters, NHL periods): flex the columns so the grid
+    // fills the card width instead of hugging the left with dead space. Beyond
+    // six, pin them to a fixed width and scroll the middle horizontally.
+    final Widget periods = scrolls
+        ? SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              for (final b in periodBodies) SizedBox(width: 28, child: b),
+            ]),
+          )
+        : Row(children: [for (final b in periodBodies) Expanded(child: b)]);
 
     return DetailPanel(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 10),
       child: Row(children: [
         teamCol,
-        if (scrolls)
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: periodCols,
-            ),
-          )
-        else
-          Expanded(child: periodCols),
+        Expanded(child: periods),
         const SizedBox(width: 4),
         totalCol,
       ]),

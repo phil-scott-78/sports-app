@@ -40,6 +40,16 @@ const _tradingUp = Color(0xFF0ECB81);
 const _tradingDown = Color(0xFFF6465D);
 const _info = Color(0xFF3B82F6); // focus ring base
 
+// design-handoff functional accents (near-monochrome system; see Scores App.html).
+// Each is a *functional* signal — never decoration — and lives on [BinanceColors].
+const _live = Color(0xFF36D07A); // in-progress (green) — the single live hue
+const _liveLight = Color(0xFF1F9D57); // darker green so it clears AA on light
+const _victor = Color(0xFFD9B25E); // warm gold — favorite star / winner accent
+const _formWin = Color(0xFF3A9D63); // recent-form win chip
+const _formLoss = Color(0xFFC2503F); // recent-form loss chip
+const _formDraw = Color(0xFF5B6066); // recent-form draw chip
+const _danger = Color(0xFFD8513F); // timeline card / disciplinary event
+
 // ---- type roles -------------------------------------------------------------
 /// BinanceNova substitute — all copy, labels, headlines.
 const String kSans = 'Inter';
@@ -81,11 +91,26 @@ class BinanceColors extends ThemeExtension<BinanceColors> {
   final Color accent;
   final Color cardBorder;
 
+  // design-handoff functional accents (see Scores App.html). Winner *emphasis*
+  // stays team-color (the card/hero wash); these carry the rest of the system.
+  final Color live; // in-progress green
+  final Color victor; // warm gold — favorite star / winner accent
+  final Color formWin; // recent-form W
+  final Color formLoss; // recent-form L
+  final Color formDraw; // recent-form D
+  final Color danger; // timeline card / disciplinary event
+
   const BinanceColors({
     required this.up,
     required this.down,
     required this.accent,
     required this.cardBorder,
+    required this.live,
+    required this.victor,
+    required this.formWin,
+    required this.formLoss,
+    required this.formDraw,
+    required this.danger,
   });
 
   static const _dark = BinanceColors(
@@ -93,12 +118,24 @@ class BinanceColors extends ThemeExtension<BinanceColors> {
     down: _tradingDown,
     accent: _yellow,
     cardBorder: _elevatedDark,
+    live: _live,
+    victor: _victor,
+    formWin: _formWin,
+    formLoss: _formLoss,
+    formDraw: _formDraw,
+    danger: _danger,
   );
   static const _light = BinanceColors(
     up: _tradingUp,
     down: _tradingDown,
     accent: _ink,
     cardBorder: _hairlineLight,
+    live: _liveLight,
+    victor: _victor,
+    formWin: _formWin,
+    formLoss: _formLoss,
+    formDraw: _formDraw,
+    danger: _danger,
   );
 
   /// Reads the registered extension, falling back to sensible defaults so
@@ -108,12 +145,29 @@ class BinanceColors extends ThemeExtension<BinanceColors> {
       (Theme.of(context).brightness == Brightness.dark ? _dark : _light);
 
   @override
-  BinanceColors copyWith({Color? up, Color? down, Color? accent, Color? cardBorder}) =>
+  BinanceColors copyWith({
+    Color? up,
+    Color? down,
+    Color? accent,
+    Color? cardBorder,
+    Color? live,
+    Color? victor,
+    Color? formWin,
+    Color? formLoss,
+    Color? formDraw,
+    Color? danger,
+  }) =>
       BinanceColors(
         up: up ?? this.up,
         down: down ?? this.down,
         accent: accent ?? this.accent,
         cardBorder: cardBorder ?? this.cardBorder,
+        live: live ?? this.live,
+        victor: victor ?? this.victor,
+        formWin: formWin ?? this.formWin,
+        formLoss: formLoss ?? this.formLoss,
+        formDraw: formDraw ?? this.formDraw,
+        danger: danger ?? this.danger,
       );
 
   @override
@@ -124,6 +178,12 @@ class BinanceColors extends ThemeExtension<BinanceColors> {
       down: Color.lerp(down, other.down, t)!,
       accent: Color.lerp(accent, other.accent, t)!,
       cardBorder: Color.lerp(cardBorder, other.cardBorder, t)!,
+      live: Color.lerp(live, other.live, t)!,
+      victor: Color.lerp(victor, other.victor, t)!,
+      formWin: Color.lerp(formWin, other.formWin, t)!,
+      formLoss: Color.lerp(formLoss, other.formLoss, t)!,
+      formDraw: Color.lerp(formDraw, other.formDraw, t)!,
+      danger: Color.lerp(danger, other.danger, t)!,
     );
   }
 }

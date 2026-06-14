@@ -121,6 +121,7 @@ class _LeaguesPageState extends ConsumerState<LeaguesPage> with LifecyclePoll {
                       ));
                     }
                   }
+                  children.add(const SizedBox(height: kFloatingNavInset));
                   return ListView(children: children);
                 },
               ),

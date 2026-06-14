@@ -21,6 +21,11 @@
 // `now` falls inside the season window — then bucket into the five states.
 
 const DAY = 86400000;
+// A single sporting event (a golf tournament, a race weekend, a multi-day
+// tournament) runs at most ~2 weeks; a season *bucket* (a weekly slot, a
+// months-long phase) runs far longer. We only trust a calendar range to mean
+// "a game is on TODAY" when it looks like one bounded event — see gameWindows.
+const EVENT_SPAN_CAP = 14 * DAY;
 const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -36,7 +41,9 @@ function easternDayMs(input) {
   return Date.UTC(g('year'), g('month') - 1, g('day'));
 }
 
-// Collapse a league's calendar into sorted [startDay, endDay] ranges (ET days).
+// Collapse a league's calendar into sorted ranges (ET days), each tagged with
+// whether it came from a NESTED season bucket (a week/phase under `entries`) vs
+// a flat top-level entry (a single event). Shape: { start, end, nested }.
 function rangesFromCalendar(calendarType, calendar) {
   const out = [];
   if (!Array.isArray(calendar) || !calendar.length) return out;
@@ -44,12 +51,15 @@ function rangesFromCalendar(calendarType, calendar) {
   if (isDay) {
     for (const s of calendar) {
       const ms = easternDayMs(s);
-      if (ms != null) out.push([ms, ms]);
+      if (ms != null) out.push({ start: ms, end: ms, nested: false });
     }
   } else {
     for (const entry of calendar) {
-      // NFL nests weeks under `entries`; everyone else is one event per entry.
-      const kids = Array.isArray(entry.entries) && entry.entries.length ? entry.entries : [entry];
+      // NFL/UFL nest weeks and soccer nests competition phases under `entries`;
+      // golf/F1/MMA are one event per (flat) entry. The nested children are
+      // season buckets, NOT individual game days.
+      const nested = Array.isArray(entry.entries) && entry.entries.length > 0;
+      const kids = nested ? entry.entries : [entry];
       for (const k of kids) {
         if (!k || !k.startDate) continue;
         const start = easternDayMs(k.startDate);
@@ -57,11 +67,11 @@ function rangesFromCalendar(calendarType, calendar) {
         // Pull the end back 1s so an end stamped at ET-midnight doesn't bleed
         // into the following day.
         const end = k.endDate ? easternDayMs(new Date(new Date(k.endDate).getTime() - 1000)) : start;
-        out.push([start, Math.max(end ?? start, start)]);
+        out.push({ start, end: Math.max(end ?? start, start), nested });
       }
     }
   }
-  return out.sort((a, b) => a[0] - b[0]);
+  return out.sort((a, b) => a.start - b.start);
 }
 
 /**
@@ -75,20 +85,45 @@ export function classifyLeague(raw, now = new Date()) {
   const events = (raw && raw.events) || [];
   const ranges = rangesFromCalendar(lg.calendarType, lg.calendar);
 
-  const todayEvents = events.filter((e) => easternDayMs(e.date) === today);
-  const liveToday = todayEvents.some((e) => e?.competitions?.[0]?.status?.type?.state === 'in');
-  const hasToday = ranges.some(([s, en]) => today >= s && today <= en) || todayEvents.length > 0;
-
-  let next = null;
-  let prev = null;
-  for (const [s, en] of ranges) {
-    if (s > today) next = next == null ? s : Math.min(next, s);
-    if (en < today) prev = prev == null ? en : Math.max(prev, en);
+  // Actual game days from the returned slate (ET). A reliable *positive* signal:
+  // ESPN may hand back a non-today slate, but it never misdates a game.
+  const eventDays = [];
+  for (const e of events) {
+    const ms = easternDayMs(e.date);
+    if (ms != null) eventDays.push(ms);
   }
 
+  const todayEvents = events.filter((e) => easternDayMs(e.date) === today);
+  const liveToday = todayEvents.some((e) => e?.competitions?.[0]?.status?.type?.state === 'in');
+
+  // "Game today" fires from a calendar range ONLY when that range is a single
+  // bounded event (golf/F1: the event's `date` is its start, so on Sat/Sun only
+  // the [start,end] span reveals it's live). A nested season bucket — a weekly
+  // slot or a months-long competition phase — spanning today does NOT mean a
+  // game is on today: that false positive is what made UEFA (in the gap after
+  // its May 30 final) and UFL (the day after a playoff game) read "Games today".
+  // Those leagues fall through to their real `events` instead.
+  const gameWindows = ranges.filter((r) => !r.nested && (r.end - r.start) <= EVENT_SPAN_CAP);
+  const hasToday =
+    todayEvents.length > 0 || gameWindows.some((r) => today >= r.start && today <= r.end);
+
+  // Nearest game day on either side — from real events AND every calendar range
+  // (season buckets included, so a not-yet-started season still yields its
+  // "Returns <date>" from the first bucket before any event is even listed).
+  let next = null;
+  let prev = null;
+  const consider = (s, en) => {
+    if (s > today) next = next == null ? s : Math.min(next, s);
+    if (en < today) prev = prev == null ? en : Math.max(prev, en);
+  };
+  for (const r of ranges) consider(r.start, r.end);
+  for (const d of eventDays) consider(d, d);
+
   const season = lg.season || {};
-  const sStart = season.startDate ? easternDayMs(season.startDate) : (ranges.length ? ranges[0][0] : null);
-  const sEnd = season.endDate ? easternDayMs(season.endDate) : (ranges.length ? ranges[ranges.length - 1][1] : null);
+  const sStart = season.startDate ? easternDayMs(season.startDate) : (ranges.length ? ranges[0].start : null);
+  const sEnd = season.endDate
+    ? easternDayMs(season.endDate)
+    : (ranges.length ? Math.max(...ranges.map((r) => r.end)) : null);
   const inSeason = (sStart != null && sEnd != null)
     ? (today >= sStart && today <= sEnd)
     : (hasToday || next != null);

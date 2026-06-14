@@ -1,8 +1,46 @@
+import 'dart:ui' show ImageFilter;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models.dart';
 import '../theme.dart';
+
+/// A Flutter Material icon for a sport family (the design's per-sport chips and
+/// timeline nodes). Used by the Scores header chips and the center-spine timeline.
+IconData sportIcon(String sport) {
+  switch (sport) {
+    case 'soccer':
+      return Icons.sports_soccer;
+    case 'baseball':
+      return Icons.sports_baseball;
+    case 'basketball':
+      return Icons.sports_basketball;
+    case 'hockey':
+      return Icons.sports_hockey;
+    case 'football':
+      return Icons.sports_football;
+    case 'golf':
+      return Icons.sports_golf;
+    case 'tennis':
+      return Icons.sports_tennis;
+    case 'mma':
+      return Icons.sports_mma;
+    case 'cricket':
+      return Icons.sports_cricket;
+    case 'racing':
+      return Icons.sports_motorsports;
+    case 'rugby':
+    case 'rugby-league':
+      return Icons.sports_rugby;
+    default:
+      return Icons.sports;
+  }
+}
+
+/// Bottom padding the floating-pill nav ([FloatingNavBar]) needs scrolling lists
+/// to leave so their last row clears the pill (the body extends behind it via
+/// `Scaffold.extendBody`). Pill height + margin + home-indicator headroom.
+const double kFloatingNavInset = 96;
 
 /// Display name for a sport family key ('basketball' → 'Basketball', with a few
 /// special cases). Shared by the Leagues list and the favorites/leagues pickers.
@@ -58,6 +96,80 @@ String espnSized(String url, int px) {
     'format': 'png',
     'location': 'origin',
   }).toString();
+}
+
+// ---- team-color winner wash -------------------------------------------------
+/// Parse an ESPN hex color ("1d428a" or "#1d428a"); null if unparseable.
+Color? teamHexColor(String? hex) {
+  if (hex == null) return null;
+  var h = hex.replaceFirst('#', '').trim();
+  if (h.length == 3) h = h.split('').map((c) => '$c$c').join();
+  if (h.length != 6) return null;
+  final v = int.tryParse(h, radix: 16);
+  return v == null ? null : Color(0xFF000000 | v);
+}
+
+/// Pick a tintable color, preferring the alternate when the primary is too near
+/// the canvas to register (a black primary on dark, a white one on light).
+Color? teamTint(String? primary, String? alt, bool dark) {
+  final p = teamHexColor(primary);
+  final a = teamHexColor(alt);
+  if (p == null) return a;
+  if (a != null) {
+    final l = p.computeLuminance();
+    if (dark && l < 0.04) return a; // near-black vanishes on the dark canvas
+    if (!dark && l > 0.96) return a; // near-white vanishes on the light canvas
+  }
+  return p;
+}
+
+/// A very subtle team-color gradient, reserved for **final** head-to-head
+/// competitions — the "result is in" moment. It washes from the winning team's
+/// side (home tints the top-left, away the bottom-right, matching their crests'
+/// positions); a draw with no single winner tints from both corners. Low alpha
+/// so it reads as a sheen, not a fill. Returns null for field sports, any
+/// non-final game, and when the relevant team(s) expose no usable color.
+///
+/// Shared by the scores [GameCard] wash and the game-detail hero so the two
+/// never drift (winner emphasis stays team-color by design).
+Gradient? winnerWashGradient(BuildContext context, Competition comp) {
+  if (comp.isField || !comp.status.isFinal) return null;
+  final a = comp.home ?? (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+  final b = comp.away ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
+  final dark = Theme.of(context).brightness == Brightness.dark;
+  final alpha = dark ? 0.16 : 0.10;
+
+  final aWins = a?.winner == true;
+  final bWins = b?.winner == true;
+
+  // A clear single winner → wash only from that team's corner.
+  if (aWins != bWins) {
+    final winner = aWins ? a : b;
+    final c = teamTint(winner?.color, winner?.altColor, dark);
+    if (c == null) return null;
+    final tint = c.withValues(alpha: alpha);
+    return LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: aWins ? [tint, Colors.transparent] : [Colors.transparent, tint],
+      stops: aWins ? const [0.0, 0.65] : const [0.35, 1.0],
+    );
+  }
+
+  // A draw (or no winner flagged) → tint from both corners, neutral centre.
+  final ca = teamTint(a?.color, a?.altColor, dark);
+  final cb = teamTint(b?.color, b?.altColor, dark);
+  if (ca == null && cb == null) return null;
+  return LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      (ca ?? cb)!.withValues(alpha: alpha),
+      Colors.transparent,
+      (cb ?? ca)!.withValues(alpha: alpha),
+    ],
+    stops: const [0.0, 0.5, 1.0],
+  );
 }
 
 /// Team crest / athlete headshot with a graceful initials fallback.
@@ -155,9 +267,9 @@ String statusLabel(Status status, DateTime? startTime) {
   return status.shortDetail ?? (status.phase.isEmpty ? '—' : status.phase);
 }
 
-/// Status pill. Live games get a red-tinted pill with a pulsing dot (the one
-/// place trading-down red earns its energy); final reads in strong body, a
-/// scheduled tip-off in muted — text-color semantics over loud fills.
+/// Status pill. Live games get a green-tinted pill with a pulsing dot (the
+/// design's single live hue); final reads in strong body, a scheduled tip-off in
+/// muted — text-color semantics over loud fills.
 class StatusChip extends StatelessWidget {
   final Status status;
 
@@ -170,11 +282,11 @@ class StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final live = BinanceColors.of(context).live;
     final text = statusLabel(status, startTime);
-    // Live: red tint + red pulsing dot carry the signal, label stays high-
-    // contrast body (red-on-red-tint clears AA in neither mode). Final reads in
-    // body; everything else (scheduled/other) sits muted.
-    final Color bg = status.live ? cs.errorContainer : cs.surfaceContainerHighest;
+    // Live: green tint + green pulsing dot carry the signal, label stays high-
+    // contrast body. Final reads in body; everything else sits muted.
+    final Color bg = status.live ? live.withValues(alpha: 0.14) : cs.surfaceContainerHighest;
     final Color fg = (status.live || status.isFinal) ? cs.onSurface : cs.onSurfaceVariant;
     return Container(
       padding: EdgeInsets.fromLTRB(status.live ? 8 : 9, 4, 9, 4),
@@ -183,7 +295,7 @@ class StatusChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (status.live) ...[
-            LiveDot(color: cs.error),
+            LiveDot(color: live),
             const SizedBox(width: 6),
           ],
           Text(
@@ -311,6 +423,89 @@ class DateChip extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Presents [child] as a bottom sheet over a **dimmed + lightly blurred** scrim —
+/// darker and softer than the stock `showModalBottomSheet` barrier (a flat
+/// `black54`, no blur). Built on `showGeneralDialog` so the scrim's dim+blur fades
+/// in independently while the panel slides up; the panel keeps the usual chrome
+/// (rounded top, drag handle, surface fill, bottom safe-area) and dismisses on a
+/// downward fling or a tap on the scrim. [child] supplies just the panel content
+/// (sized to its own height).
+Future<T?> showBlurredBottomSheet<T>({
+  required BuildContext context,
+  required Widget child,
+  double blurSigma = 6,
+  double dimOpacity = 0.66,
+}) {
+  final cs = Theme.of(context).colorScheme;
+  return showGeneralDialog<T>(
+    context: context,
+    barrierDismissible: false, // the scrim's GestureDetector owns dismissal
+    barrierColor: Colors.transparent, // we paint the dim ourselves, under the blur
+    transitionDuration: const Duration(milliseconds: 280),
+    pageBuilder: (context, _, __) => Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Spacer(), // transparent top → the blurred scrim shows through
+        GestureDetector(
+          // Absorb stray taps on the panel (opaque) and fling-down to dismiss;
+          // inner chip/strip gestures still win within their own bounds.
+          behavior: HitTestBehavior.opaque,
+          onVerticalDragEnd: (d) {
+            if ((d.primaryVelocity ?? 0) > 250) Navigator.of(context).maybePop();
+          },
+          child: Material(
+            color: cs.surface,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: SafeArea(
+              top: false,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 10, bottom: 6),
+                    width: 36,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: cs.onSurfaceVariant.withValues(alpha: 0.4),
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                  ),
+                  child,
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+    transitionBuilder: (context, anim, _, page) {
+      final t = Curves.easeOutCubic.transform(anim.value);
+      return Stack(
+        children: [
+          // Dim + blur scrim, fading in; tap anywhere off the panel to dismiss.
+          Positioned.fill(
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => Navigator.of(context).maybePop(),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: blurSigma * t, sigmaY: blurSigma * t),
+                child: ColoredBox(color: Colors.black.withValues(alpha: dimOpacity * t)),
+              ),
+            ),
+          ),
+          // Panel slides up from the bottom edge.
+          Positioned.fill(
+            child: FractionalTranslation(translation: Offset(0, 1 - t), child: page),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 /// Rounded surface container used for every game-detail section.

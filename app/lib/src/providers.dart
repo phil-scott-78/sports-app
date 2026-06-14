@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/material.dart' show ThemeMode;
+import 'package:flutter/material.dart' show ThemeMode, DateUtils;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
@@ -54,50 +54,27 @@ final settingsProvider = NotifierProvider<SettingsNotifier, Settings>(SettingsNo
 final tabIndexProvider = StateProvider<int>((ref) => 0);
 
 // ---- which day's slate the Scores tab shows ---------------------------------
-/// Yesterday / Today / Upcoming, à la Apple Sports.
-enum ScoreDate { yesterday, today, upcoming }
+/// The date the Scores tab is "looking at". `null` = today — ESPN's live default
+/// slate, and the only state that polls. A date-only [DateTime] = that specific
+/// day's slate (one `dates=YYYYMMDD` fetch). This replaces the old
+/// Yesterday/Today/Upcoming modes (and the separate Schedule tab) with a single
+/// "viewing a date" concept; the header date sheet writes it, normalizing today
+/// back to `null` so the view keeps following ESPN's sports-day rollover.
+final viewDateProvider = StateProvider<DateTime?>((ref) => null);
 
-final dateModeProvider = StateProvider<ScoreDate>((ref) => ScoreDate.today);
-
-/// ESPN's current "sports day" (date-only), captured from the most recent Today
-/// feed (its `day` field). Null until that first load → callers fall back to the
+/// ESPN's current "sports day" (date-only), captured from the most recent *today*
+/// feed (its `day` field — only while [viewDateProvider] is null, so a browsed day
+/// never overwrites it). Null until that first load → callers fall back to the
 /// device date. ESPN's default slate doesn't roll at local midnight, so anchoring
-/// Yesterday/Upcoming to this (not `DateTime.now()`) stops the day modes from
-/// overlapping in the post-midnight window.
+/// the date strip to this (not `DateTime.now()`) keeps "today" honest in the
+/// post-midnight window.
 final espnTodayProvider = StateProvider<DateTime?>((ref) => null);
 
-/// How many days ahead of today the Upcoming slate is showing — 1 is tomorrow
-/// (the first chip in the date strip), up to [AppConfig.upcomingDays]. Stored as
-/// a relative offset, *not* an absolute date, on purpose: the strip is always
-/// "today + offset", so the selection stays valid and visibly highlighted across
-/// a midnight rollover (an absolute date would silently fall out of the strip's
-/// live range and keep fetching an unhighlighted day).
-final upcomingOffsetProvider = StateProvider<int>((ref) => 1);
-
-/// The ESPN `dates` query a mode maps to (`null` = today's default scoreboard).
-/// Yesterday is the day before [anchor]; Upcoming is a single chosen future day
-/// ([upcoming], defaulting to anchor+1) — the user picks it from the date strip,
-/// so we fetch just that one day rather than a whole week's worth of games.
-///
-/// [anchor] should be ESPN's reported sports day ([espnTodayProvider]) when known,
-/// falling back to the device date. Today (`null`) defers to ESPN's own current
-/// slate, which it buckets in US-Eastern and does NOT roll at local midnight;
-/// anchoring the offsets to that same day is what keeps Today/Yesterday from
-/// overlapping (and Upcoming from skipping a day) in the post-midnight window.
-String? espnDateParam(ScoreDate mode, DateTime anchor, {DateTime? upcoming}) {
-  String ymd(DateTime d) =>
-      '${d.year.toString().padLeft(4, '0')}'
-      '${d.month.toString().padLeft(2, '0')}'
-      '${d.day.toString().padLeft(2, '0')}';
-  switch (mode) {
-    case ScoreDate.today:
-      return null;
-    case ScoreDate.yesterday:
-      return ymd(anchor.subtract(const Duration(days: 1)));
-    case ScoreDate.upcoming:
-      return ymd(upcoming ?? anchor.add(const Duration(days: 1)));
-  }
-}
+/// YYYYMMDD for an ESPN `dates=` query.
+String _ymd(DateTime d) =>
+    '${d.year.toString().padLeft(4, '0')}'
+    '${d.month.toString().padLeft(2, '0')}'
+    '${d.day.toString().padLeft(2, '0')}';
 
 // ---- followed leagues -------------------------------------------------------
 class FollowedNotifier extends Notifier<List<String>> {
@@ -186,26 +163,31 @@ final favoriteTeamsProvider =
 // ---- api + data -------------------------------------------------------------
 final apiProvider = Provider<Api>((ref) => Api(ref.watch(settingsProvider.select((s) => s.baseUrl))));
 
-/// The home feed: every followed league's scores, fetched in parallel. A failed
-/// league becomes a LeagueFeed.error instead of failing the whole feed.
+/// Which sport family the Scores tab is filtered to ('all' = every followed
+/// sport). Drives the Header-C sport-filter chip row; the feed itself is fetched
+/// whole and filtered client-side so switching chips is instant (no refetch).
+final sportFilterProvider = StateProvider<String>((ref) => 'all');
+
+/// The Scores tab feed: every followed league's slate for the day the tab is
+/// "looking at" ([viewDateProvider]), fetched in parallel. `null` view → ESPN's
+/// default (today) slate; any other day → a single `dates=YYYYMMDD` fetch. A
+/// failed league becomes a LeagueFeed.error instead of failing the whole feed.
+/// Live polling, the sport chips, and the favorites rail all key off this — but
+/// only while the view is today (see ScoresPage).
 final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
   final api = ref.watch(apiProvider);
   final leagues = ref.watch(followedProvider);
-  final mode = ref.watch(dateModeProvider);
-  // Anchor day math to ESPN's reported sports day when known (captured on the last
-  // Today load), else the device date. `read` (not `watch`): the anchor only
-  // updates during Today loads, and switching to Yesterday/Upcoming re-runs this
-  // via the watched mode/offset — so it always reads the latest anchor.
-  final now = DateTime.now();
-  final anchor = ref.read(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
-  // Resolve the picked offset to an absolute day at fetch time, and only subscribe
-  // to it in Upcoming mode so changing the day never triggers a needless refetch
-  // of the Today/Yesterday slate.
-  DateTime? upcomingDay;
-  if (mode == ScoreDate.upcoming) {
-    upcomingDay = anchor.add(Duration(days: ref.watch(upcomingOffsetProvider)));
+  final view = ref.watch(viewDateProvider);
+  // Resolve the viewed day to a `dates` param. `null` (today) — or a pick that
+  // lands back on ESPN's current sports day — defers to ESPN's default slate so we
+  // get the live games. `read` the anchor (don't subscribe): it's captured on a
+  // today-load and must not re-run this fetch for other days.
+  String? date;
+  if (view != null) {
+    final now = DateTime.now();
+    final anchor = ref.read(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    if (!DateUtils.isSameDay(view, anchor)) date = _ymd(view);
   }
-  final date = espnDateParam(mode, anchor, upcoming: upcomingDay);
   return Future.wait(leagues.map((key) async {
     try {
       return LeagueFeed(key, await api.scores(key, date: date));
@@ -225,7 +207,8 @@ final teamsProvider = FutureProvider.family<List<TeamRef>, String>(
 
 /// The Favorites section feed: every favorite's card, fetched in parallel. A
 /// failed team becomes a FavoriteTeamFeed.error rather than failing the section.
-/// Independent of [dateModeProvider] — favorites are "my teams now".
+/// Independent of [viewDateProvider] — favorites are "my teams now" (the Scores
+/// rail shows them only on the today view).
 final favoritesFeedProvider = FutureProvider<List<FavoriteTeamFeed>>((ref) async {
   final api = ref.watch(apiProvider);
   final favs = ref.watch(favoriteTeamsProvider);

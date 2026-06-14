@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../config.dart';
 import '../models.dart';
 import '../providers.dart';
@@ -14,12 +15,13 @@ import 'summary_feed.dart';
 import 'widgets.dart';
 
 /// Soccer team-stat rows (cheap: scoreboard competitor.statistics by ESPN abbr).
-const List<({String key, String label})> _soccerStatRows = [
-  (key: 'PP', label: 'Possession %'),
-  (key: 'SHOT', label: 'Shots'),
-  (key: 'SOG', label: 'Shots on target'),
-  (key: 'CW', label: 'Corners'),
-  (key: 'FC', label: 'Fouls'),
+/// Fouls is [invert]ed — fewer is better, so the lower side reads as the leader.
+const List<({String key, String label, bool invert})> _soccerStatRows = [
+  (key: 'PP', label: 'Possession %', invert: false),
+  (key: 'SHOT', label: 'Shots', invert: false),
+  (key: 'SOG', label: 'Shots on target', invert: false),
+  (key: 'CW', label: 'Corners', invert: false),
+  (key: 'FC', label: 'Fouls', invert: true),
 ];
 
 // Sports whose per-period split is summary-only (scoreboard has no linescores).
@@ -51,11 +53,17 @@ class GameDetailPage extends ConsumerStatefulWidget {
 /// the caller passed when the league isn't configured or the event has no date.
 class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecyclePoll {
   bool _onTop = true; // false while another route is pushed over this one
+  final ScrollController _scroll = ScrollController();
+  bool _showMini = false; // the sticky mini-scoreline appears past this scroll
 
   @override
   void initState() {
     super.initState();
     attachPoll();
+    _scroll.addListener(() {
+      final show = _scroll.hasClients && _scroll.offset > 140;
+      if (show != _showMini) setState(() => _showMini = show);
+    });
     // pollInterval reads context (ModalRoute); pace after the first frame lands.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) repace();
@@ -73,6 +81,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecycleP
 
   @override
   void dispose() {
+    _scroll.dispose();
     detachPoll();
     super.dispose();
   }
@@ -151,9 +160,40 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecycleP
       // silent fallback is intentional — the snapshot already answered the score.
       ev = _pick(ref.watch(leagueDayScoresProvider(key)).valueOrNull);
     }
+    final comp = ev.main;
     return Scaffold(
-      appBar: AppBar(title: Text(widget.leagueName)),
-      body: ListView(padding: const EdgeInsets.all(16), children: _body(context, ev)),
+      appBar: AppBar(
+        titleSpacing: 0,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(widget.leagueName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700, letterSpacing: -0.1)),
+            if (ev.start != null)
+              Text(
+                DateFormat.MMMEd().format(ev.start!.toLocal()),
+                style: TextStyle(
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant),
+              ),
+          ],
+        ),
+      ),
+      body: Stack(
+        children: [
+          ListView(
+            controller: _scroll,
+            padding: const EdgeInsets.all(16),
+            children: _body(context, ev),
+          ),
+          if (comp != null && !comp.isField)
+            _MiniScoreline(comp: comp, startTime: ev.start, show: _showMini),
+        ],
+      ),
     );
   }
 
@@ -243,7 +283,11 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecycleP
     }
 
     // The rich tier: a separate /summary fetch, lazy + best-effort.
-    out.add(_RichDetail(leagueKey: widget.leagueKey, eventId: event.id, sport: sport));
+    final liveClock = comp.status.live
+        ? (comp.status.clock?.isNotEmpty == true ? comp.status.clock! : comp.status.periodLabel)
+        : null;
+    out.add(_RichDetail(
+        leagueKey: widget.leagueKey, eventId: event.id, sport: sport, liveClock: liveClock));
 
     out.add(_MetaCard(event: event, comp: comp));
     return out;
@@ -270,7 +314,12 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecycleP
       case 'rugby':
         break;
       default:
-        if (comp.competitors.any((c) => c.periodScores.length > 1)) {
+        // basketball/football/hockey carry their per-period split in the rich
+        // (summary) tier — _RichDetail renders it as 'Line score'. WNBA's
+        // scoreboard *also* ships linescores, which would render a second,
+        // duplicate 'Line score' here; so defer those sports to the rich grid.
+        if (!_richPeriodSports.contains(widget.sport) &&
+            comp.competitors.any((c) => c.periodScores.length > 1)) {
           add('Line score', LineScoreTable(comp: comp, baseball: false));
         }
     }
@@ -282,7 +331,9 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage> with LifecycleP
 /// (the cheap sections above already answered "what's the score").
 class _RichDetail extends ConsumerWidget {
   final String leagueKey, eventId, sport;
-  const _RichDetail({required this.leagueKey, required this.eventId, required this.sport});
+  final String? liveClock; // non-null on a live game → "NOW" marker in the timeline
+  const _RichDetail(
+      {required this.leagueKey, required this.eventId, required this.sport, this.liveClock});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -311,7 +362,8 @@ class _RichDetail extends ConsumerWidget {
       add('Team stats', SummaryTeamStats(rows: s.teamStats));
     }
     if (_scoringFeedSports.contains(sport) && s.scoringPlays.isNotEmpty) {
-      add(sport == 'soccer' ? 'Timeline' : 'Scoring', ScoringFeed(plays: s.scoringPlays));
+      add(sport == 'soccer' ? 'Timeline' : 'Scoring',
+          ScoringFeed(plays: s.scoringPlays, sport: sport, nowLabel: liveClock));
     }
     if (s.boxGroups.isNotEmpty) {
       add('Box score', BoxScoreTable(groups: s.boxGroups));
@@ -374,19 +426,28 @@ class _Header extends StatelessWidget {
     }
     final a = comp.home ?? (comp.competitors.isNotEmpty ? comp.competitors[0] : null);
     final b = comp.away ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
-    return Column(
-      children: [
-        Center(child: StatusChip(status: comp.status, startTime: event.start)),
-        const SizedBox(height: 16),
-        if (a != null) _bigRow(context, comp, a),
-        const SizedBox(height: 14),
-        if (b != null) _bigRow(context, comp, b),
-        if (comp.decision != null && comp.decision != 'regulation') ...[
-          const SizedBox(height: 12),
-          Text(_decisionText(comp),
-              style: TextStyle(color: cs.onSurfaceVariant, fontWeight: FontWeight.w600)),
+    // Team-color victor wash on a final result (winner emphasis stays team-color);
+    // shared with the scores-list card so the two never drift.
+    return Container(
+      decoration: BoxDecoration(
+        gradient: winnerWashGradient(context, comp),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.fromLTRB(8, 14, 8, 16),
+      child: Column(
+        children: [
+          Center(child: StatusChip(status: comp.status, startTime: event.start)),
+          const SizedBox(height: 16),
+          if (a != null) _bigRow(context, comp, a),
+          const SizedBox(height: 14),
+          if (b != null) _bigRow(context, comp, b),
+          if (comp.decision != null && comp.decision != 'regulation') ...[
+            const SizedBox(height: 12),
+            Text(_decisionText(comp),
+                style: TextStyle(color: cs.onSurfaceVariant, fontWeight: FontWeight.w600)),
+          ],
         ],
-      ],
+      ),
     );
   }
 
@@ -521,7 +582,7 @@ class _FavStar extends ConsumerWidget {
     return IconButton(
       tooltip: isFav ? 'Unfavorite' : 'Favorite',
       icon: Icon(isFav ? Icons.star : Icons.star_border,
-          color: isFav ? BinanceColors.of(context).accent : null),
+          color: isFav ? BinanceColors.of(context).victor : null),
       onPressed: () => ref.read(favoriteTeamsProvider.notifier).toggle(FavoriteTeam(
             league: leagueKey,
             teamId: competitor.id,
@@ -529,6 +590,81 @@ class _FavStar extends ConsumerWidget {
             abbr: competitor.abbreviation,
             logo: competitor.logo,
           )),
+    );
+  }
+}
+
+/// Sticky mini-scoreline that slides in from the top once the hero scrolls out of
+/// view, so the score stays glanceable while reading the timeline/stats below.
+class _MiniScoreline extends StatelessWidget {
+  final Competition comp;
+  final DateTime? startTime;
+  final bool show;
+  const _MiniScoreline({required this.comp, required this.startTime, required this.show});
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final ext = BinanceColors.of(context);
+    final home = comp.home ?? (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+    final away = comp.away ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
+    if (home == null || away == null) return const SizedBox.shrink();
+    final sched = comp.status.isScheduled;
+    final live = comp.status.live;
+
+    String sc(Competitor c) =>
+        sched ? '–' : (c.score?.display.isNotEmpty == true ? c.score!.display : '–');
+    String abbr(Competitor c) => c.abbreviation ?? c.shortName ?? c.displayName;
+    Widget crest(Competitor c) =>
+        Crest(url: c.logo, darkUrl: c.logoDark, fallback: abbr(c), size: 22);
+    Widget name(Competitor c) => Text(abbr(c),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: cs.onSurface));
+
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: IgnorePointer(
+        ignoring: !show,
+        child: AnimatedSlide(
+          duration: const Duration(milliseconds: 220),
+          curve: Curves.easeOut,
+          offset: show ? Offset.zero : const Offset(0, -1),
+          child: AnimatedOpacity(
+            duration: const Duration(milliseconds: 220),
+            opacity: show ? 1 : 0,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(14, 9, 14, 9),
+              decoration: BoxDecoration(
+                color: cs.surface.withValues(alpha: 0.97),
+                border: Border(bottom: BorderSide(color: ext.cardBorder)),
+              ),
+              child: Row(children: [
+                crest(home),
+                const SizedBox(width: 8),
+                name(home),
+                const SizedBox(width: 10),
+                Text(sc(home), style: numStyle(size: 15, weight: FontWeight.w800)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: Text('–', style: TextStyle(color: cs.onSurfaceVariant)),
+                ),
+                Text(sc(away), style: numStyle(size: 15, weight: FontWeight.w800)),
+                const SizedBox(width: 10),
+                name(away),
+                const SizedBox(width: 8),
+                crest(away),
+                if (live) ...[
+                  const Spacer(),
+                  StatusChip(status: comp.status, startTime: startTime),
+                ],
+              ]),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

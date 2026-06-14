@@ -183,14 +183,16 @@ class LeadersStrip extends StatelessWidget {
   }
 }
 
-/// Mirrored two-column team-stat comparison with proportional bars.
+/// Mirrored two-column team-stat comparison with proportional bars. A row may be
+/// [invert]ed (lower is better, e.g. Fouls) so the *smaller* side reads as the
+/// leader — bolded number + the solid bar segment.
 class TeamStatComparison extends StatelessWidget {
   final Competitor away, home;
-  final List<({String key, String label})> rows;
+  final List<({String key, String label, bool invert})> rows;
   const TeamStatComparison({super.key, required this.away, required this.home, required this.rows});
 
   /// Keep only rows where at least one side has a value.
-  static bool has(Competitor a, Competitor b, List<({String key, String label})> rows) =>
+  static bool has(Competitor a, Competitor b, List<({String key, String label, bool invert})> rows) =>
       rows.any((r) => a.stats[r.key] != null || b.stats[r.key] != null);
 
   @override
@@ -209,7 +211,7 @@ class TeamStatComparison extends StatelessWidget {
     );
   }
 
-  Widget _row(BuildContext context, ({String key, String label}) r) {
+  Widget _row(BuildContext context, ({String key, String label, bool invert}) r) {
     final cs = Theme.of(context).colorScheme;
     final aStr = away.stats[r.key] ?? '–';
     final hStr = home.stats[r.key] ?? '–';
@@ -218,27 +220,33 @@ class TeamStatComparison extends StatelessWidget {
     final total = a + h;
     final aFlex = total <= 0 ? 1 : (a / total * 1000).round().clamp(1, 999);
     final hFlex = total <= 0 ? 1 : (1000 - aFlex).clamp(1, 999);
+    // The "leader" is the bigger side, or the smaller when the stat is inverted.
+    final tie = a == h;
+    final awayLeads = tie || (r.invert ? a <= h : a >= h);
+    final homeLeads = tie || (r.invert ? h <= a : h >= a);
     Widget num(String s, bool strong) =>
         Text(s, style: numStyle(size: 13, weight: strong ? FontWeight.w800 : FontWeight.w600));
+    final solid = cs.onSurfaceVariant;
+    final dim = cs.onSurfaceVariant.withValues(alpha: 0.3);
     return Column(children: [
       Row(children: [
-        SizedBox(width: 46, child: Align(alignment: Alignment.centerLeft, child: num(aStr, a >= h))),
+        SizedBox(width: 46, child: Align(alignment: Alignment.centerLeft, child: num(aStr, awayLeads))),
         Expanded(
           child: Text(r.label,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant)),
         ),
-        SizedBox(width: 46, child: Align(alignment: Alignment.centerRight, child: num(hStr, h >= a))),
+        SizedBox(width: 46, child: Align(alignment: Alignment.centerRight, child: num(hStr, homeLeads))),
       ]),
       const SizedBox(height: 4),
       ClipRRect(
         borderRadius: BorderRadius.circular(2),
-        // Neutral comparison — yellow stays scarce; the leading number is already
-        // bolded, the bar just shows the split (away solid, home a dim track).
+        // Neutral comparison — the leader's segment is solid, the trailing side a
+        // dim track (so an inverted stat highlights the lower value correctly).
         child: Row(children: [
-          Expanded(flex: aFlex, child: Container(height: 5, color: cs.onSurfaceVariant)),
+          Expanded(flex: aFlex, child: Container(height: 5, color: awayLeads ? solid : dim)),
           const SizedBox(width: 2),
-          Expanded(flex: hFlex, child: Container(height: 5, color: cs.onSurfaceVariant.withValues(alpha: 0.3))),
+          Expanded(flex: hFlex, child: Container(height: 5, color: homeLeads ? solid : dim)),
         ]),
       ),
     ]);
@@ -282,18 +290,16 @@ class FormStrip extends StatelessWidget {
 
   Widget _pill(BuildContext context, String r) {
     final b = BinanceColors.of(context);
-    final cs = Theme.of(context).colorScheme;
-    final wl = r == 'W' || r == 'L';
-    // W/L are the one honest up/down signal — trading green/red fills carrying
-    // dark ink (AA in both modes); a draw is a quiet neutral chip.
-    final fill = r == 'W' ? b.up : (r == 'L' ? b.down : cs.surfaceContainerHighest);
-    final fg = wl ? const Color(0xFF181A20) : cs.onSurfaceVariant;
+    // The design's muted W/L/D form tones (near-monochrome system) — a quiet
+    // chip per result, white glyph; not the trading green/red.
+    final fill = r == 'W' ? b.formWin : (r == 'L' ? b.formLoss : b.formDraw);
     return Container(
-      width: 18,
-      height: 18,
+      width: 20,
+      height: 20,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: fill, borderRadius: BorderRadius.circular(4)),
-      child: Text(r, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: fg)),
+      decoration: BoxDecoration(color: fill, borderRadius: BorderRadius.circular(5)),
+      child: Text(r,
+          style: const TextStyle(fontSize: 10.5, fontWeight: FontWeight.w800, color: Colors.white)),
     );
   }
 }

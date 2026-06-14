@@ -21,11 +21,6 @@ class AppConfig {
   static const Duration refreshLive = Duration(seconds: 15);
   static const Duration refreshIdle = Duration(seconds: 60);
 
-  /// How many future days the "Upcoming" date strip offers (starting tomorrow).
-  /// A week so weekly leagues (NFL) stay reachable; each picked day is a single
-  /// `dates=YYYYMMDD` fetch, not a week-long range.
-  static const int upcomingDays = 7;
-
   /// Per-request network timeout.
   static const Duration httpTimeout = Duration(seconds: 12);
 }

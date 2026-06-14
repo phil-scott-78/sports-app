@@ -51,13 +51,13 @@ ScoresResponse _feed({required String phase, required DateTime start}) =>
       ],
     });
 
-Future<void> _pump(WidgetTester tester, {required ScoreDate mode, required String phase, required DateTime start}) async {
+Future<void> _pump(WidgetTester tester, {required String phase, required DateTime start}) async {
   SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example', 'followed': <String>['basketball/nba']});
   final prefs = await SharedPreferences.getInstance();
   await tester.pumpWidget(ProviderScope(
     overrides: [
       sharedPrefsProvider.overrideWithValue(prefs),
-      dateModeProvider.overrideWith((ref) => mode),
+      // Scores defaults to the today view — no date set to override.
       feedProvider.overrideWith((ref) async => [LeagueFeed('basketball/nba', _feed(phase: phase, start: start))]),
     ],
     child: MaterialApp(theme: buildTheme(Brightness.dark), home: const ScoresPage()),
@@ -69,13 +69,15 @@ Future<void> _pump(WidgetTester tester, {required ScoreDate mode, required Strin
 Future<void> _teardown(WidgetTester tester) => tester.pumpWidget(const SizedBox());
 
 void main() {
-  testWidgets('renders the Yesterday/Today/Upcoming bar and a winner-wash card', (tester) async {
+  testWidgets('shows the "Today" date title + chevron and a winner-wash card', (tester) async {
     // A final game: the wash is reserved for finals and shades from the winner.
-    await _pump(tester, mode: ScoreDate.today, phase: 'final', start: DateTime.now());
+    await _pump(tester, phase: 'final', start: DateTime.now());
 
-    expect(find.text('Yesterday'), findsOneWidget);
+    // The header reads the viewed day (today by default) and carries the dropdown
+    // chevron; the sport chips no longer live on the bar (they're in the sheet).
     expect(find.text('Today'), findsOneWidget);
-    expect(find.text('Upcoming'), findsOneWidget);
+    expect(find.byIcon(Icons.expand_more), findsOneWidget);
+    expect(find.text('All'), findsNothing, reason: 'sport chips moved into the date sheet');
     expect(find.byType(GameCard), findsOneWidget);
 
     // The card paints the winner-color wash via Ink(decoration:) so the tap
@@ -93,7 +95,7 @@ void main() {
 
   testWidgets('a game starting today shows a clock time, not ESPN\'s dated label', (tester) async {
     final todayAt7 = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 19, 0);
-    await _pump(tester, mode: ScoreDate.today, phase: 'scheduled', start: todayAt7);
+    await _pump(tester, phase: 'scheduled', start: todayAt7);
 
     // DateFormat.jm() formats 19:00 as "7:00 PM" (note: intl/CLDR uses a narrow
     // no-break space before the day-period, so compare against its own output).
@@ -103,15 +105,59 @@ void main() {
     await _teardown(tester);
   });
 
-  testWidgets('Upcoming reveals a date strip; tapping a day re-selects it', (tester) async {
+  testWidgets('the date sheet exposes the sport chips; tapping one narrows the slate', (tester) async {
+    SharedPreferences.setMockInitialValues({
+      'baseUrl': 'https://w.example',
+      'followed': <String>['basketball/nba', 'baseball/mlb'],
+    });
+    final prefs = await SharedPreferences.getInstance();
+    final mlb = ScoresResponse.fromJson({
+      'sport': 'baseball', 'league': 'mlb', 'leagueId': '10', 'leagueName': 'MLB', 'anyLive': false,
+      'events': <dynamic>[],
+    });
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(prefs),
+        feedProvider.overrideWith((ref) async => [
+              LeagueFeed('basketball/nba', _feed(phase: 'final', start: DateTime.now())),
+              LeagueFeed('baseball/mlb', mlb),
+            ]),
+      ],
+      child: MaterialApp(theme: buildTheme(Brightness.dark), home: const ScoresPage()),
+    ));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    // The slate shows the NBA section; no chips on the bar yet.
+    expect(find.text('NBA'), findsOneWidget);
+    expect(find.byType(GameCard), findsOneWidget);
+
+    // Open the date + sport sheet from the title, then tap the Baseball chip.
+    await tester.tap(find.text('Today'));
+    await tester.pumpAndSettle();
+    expect(find.text('All'), findsOneWidget, reason: 'sport chips live in the sheet now');
+    await tester.tap(find.text('Baseball'));
+    await tester.pump();
+
+    // The NBA section (behind the sheet) drops out — Baseball has no games.
+    expect(find.text('NBA'), findsNothing);
+    expect(find.byType(GameCard), findsNothing);
+
+    // The active filter is named in the title so it isn't silently hidden once
+    // the sheet is dismissed.
+    expect(find.text('Today  ·  Baseball'), findsOneWidget);
+
+    await tester.pumpAndSettle();
+    await _teardown(tester);
+  });
+
+  testWidgets('picking a future day in the sheet sets the view date + dated title', (tester) async {
     SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example', 'followed': <String>['basketball/nba']});
     final prefs = await SharedPreferences.getInstance();
     final container = ProviderContainer(overrides: [
       sharedPrefsProvider.overrideWithValue(prefs),
-      dateModeProvider.overrideWith((ref) => ScoreDate.upcoming),
-      // Feed is static here — we're exercising the strip + selection, not a fetch.
+      // The feed ignores the date here; we only assert the view-date wiring.
       feedProvider.overrideWith((ref) async =>
-          [LeagueFeed('basketball/nba', _feed(phase: 'scheduled', start: DateTime.now().add(const Duration(days: 2))))]),
+          [LeagueFeed('basketball/nba', _feed(phase: 'scheduled', start: DateTime.now()))]),
     ]);
     addTearDown(container.dispose);
     await tester.pumpWidget(UncontrolledProviderScope(
@@ -120,42 +166,26 @@ void main() {
     ));
     await tester.pump(const Duration(milliseconds: 50));
 
+    expect(container.read(viewDateProvider), isNull, reason: 'defaults to the today view');
+
+    // Open the sheet and tap the +3 day's chip. The anchor falls back to the
+    // device date (no today-feed `day` captured in this fixture).
+    await tester.tap(find.text('Today'));
+    await tester.pumpAndSettle();
+
     final today = DateUtils.dateOnly(DateTime.now());
-    final tomorrow = today.add(const Duration(days: 1));
     final plus3 = today.add(const Duration(days: 3));
-
-    // The strip shows weekday chips; it defaults to tomorrow (offset 1).
-    expect(find.text(DateFormat.E().format(tomorrow).toUpperCase()), findsOneWidget);
-    expect(container.read(upcomingOffsetProvider), 1, reason: 'Upcoming defaults to tomorrow (+1)');
-
-    // Tap the +3 day's chip → its offset becomes the selected fetch day.
     await tester.tap(find.text('${plus3.day}').first);
-    await tester.pump();
-    expect(container.read(upcomingOffsetProvider), 3, reason: 'tapping the +3 chip selects offset 3');
+    await tester.pumpAndSettle();
 
-    await _teardown(tester);
-  });
+    expect(container.read(viewDateProvider), plus3, reason: 'tapping a future chip stores that date');
+    // The header title reflects the picked day (no longer "Today").
+    expect(find.text(DateFormat('EEE, MMM d').format(plus3)), findsWidgets);
+    // Picking a day is terminal: the sheet dismisses so the slate is visible
+    // (the sport chips that live only in the sheet are gone).
+    expect(find.text('All'), findsNothing, reason: 'picking a day dismisses the date sheet');
 
-  testWidgets('Upcoming empty state reads "No upcoming games"', (tester) async {
-    SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example', 'followed': <String>['basketball/nba']});
-    final prefs = await SharedPreferences.getInstance();
-    await tester.pumpWidget(ProviderScope(
-      overrides: [
-        sharedPrefsProvider.overrideWithValue(prefs),
-        dateModeProvider.overrideWith((ref) => ScoreDate.upcoming),
-        feedProvider.overrideWith((ref) async => [
-              LeagueFeed('basketball/nba', ScoresResponse.fromJson({
-                'sport': 'basketball', 'league': 'nba', 'leagueId': '46', 'leagueName': 'NBA',
-                'anyLive': false, 'events': <dynamic>[],
-              })),
-            ]),
-      ],
-      child: MaterialApp(theme: buildTheme(Brightness.dark), home: const ScoresPage()),
-    ));
-    await tester.pump(const Duration(milliseconds: 50));
-
-    expect(find.text('No upcoming games'), findsOneWidget);
-
+    await tester.pumpAndSettle();
     await _teardown(tester);
   });
 }

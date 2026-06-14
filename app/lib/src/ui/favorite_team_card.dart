@@ -183,8 +183,8 @@ class FavoriteTeamCard extends StatelessWidget {
   /// Result letter + color from the favorite's perspective: W (up), L (down),
   /// D for a draw, – when undecided.
   (String, Color) _result(Competition comp, Competitor? fav, Competitor? opp, ColorScheme cs, BinanceColors ext) {
-    if (fav?.winner == true) return ('W', ext.up);
-    if (opp?.winner == true) return ('L', ext.down);
+    if (fav?.winner == true) return ('W', ext.formWin);
+    if (opp?.winner == true) return ('L', ext.formLoss);
     if (comp.status.isFinal) return ('D', cs.onSurfaceVariant);
     return ('–', cs.onSurfaceVariant);
   }

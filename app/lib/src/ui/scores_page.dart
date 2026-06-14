@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../config.dart';
 import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import 'favorite_team_card.dart';
 import 'game_detail_page.dart';
+import 'search_page.dart';
 import 'widgets.dart';
 
 class ScoresPage extends ConsumerStatefulWidget {
@@ -58,11 +60,12 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
     ref.invalidate(favoritesFeedProvider);
   }
 
-  /// Anchor the date strip / Yesterday-Upcoming math to ESPN's reported sports
-  /// day, captured from a *Today* feed (only Today's slate carries ESPN's current
-  /// `day`; an explicit-date fetch echoes the requested date instead).
+  /// Anchor the date strip's math to ESPN's reported sports day, captured from
+  /// the Scores feed. Only the *today* view (a `date:null` fetch) carries ESPN's
+  /// current `day`; a browsed date echoes the requested day, so we never let it
+  /// overwrite the anchor.
   void _captureEspnToday(List<LeagueFeed>? feeds) {
-    if (feeds == null || ref.read(dateModeProvider) != ScoreDate.today) return;
+    if (feeds == null || ref.read(viewDateProvider) != null) return;
     for (final f in feeds) {
       final d = f.scores?.day;
       if (d == null || d.isEmpty) continue;
@@ -76,14 +79,14 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
     }
   }
 
-  /// Single source of truth for the poll cadence: only the foregrounded, on-tab,
-  /// "Today" slate ticks (live → 15s, else 60s); everything else cancels the
-  /// timer. Gating on [_foreground] here is what stops an in-flight fetch that
-  /// resolves *after* the app is backgrounded from re-arming a rogue timer.
+  /// Single source of truth for the poll cadence: only the foregrounded, on-tab
+  /// Scores slate ticks (live → 15s, else 60s); everything else cancels the
+  /// timer. A browsed past/future day is static, so we poll only the *today*
+  /// view ([viewDateProvider] == null). Gating on [_foreground] here is what
+  /// stops an in-flight fetch that resolves *after* the app is backgrounded from
+  /// re-arming a rogue timer.
   void _repace({bool? live}) {
-    if (!_foreground ||
-        ref.read(tabIndexProvider) != 0 ||
-        ref.read(dateModeProvider) != ScoreDate.today) {
+    if (!_foreground || ref.read(tabIndexProvider) != 0 || ref.read(viewDateProvider) != null) {
       _timer?.cancel();
       return;
     }
@@ -93,12 +96,32 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
     _schedule(isLive ? AppConfig.refreshLive : AppConfig.refreshIdle);
   }
 
+  /// Header title for the viewed day: Today / Yesterday / Tomorrow, else a short
+  /// dated label ("Sat, Jun 21"). [anchor] is ESPN's sports day (the device date
+  /// until the first today-load captures it).
+  String _viewDateTitle(DateTime? view, DateTime anchor) {
+    if (view == null) return 'Today';
+    // Round elapsed hours so a 23h/25h daylight-saving day can't shift the bucket.
+    final diff =
+        (DateUtils.dateOnly(view).difference(DateUtils.dateOnly(anchor)).inHours / 24).round();
+    if (diff == 0) return 'Today';
+    if (diff == -1) return 'Yesterday';
+    if (diff == 1) return 'Tomorrow';
+    return DateFormat('EEE, MMM d').format(view); // "Sat, Jun 21"
+  }
+
+  void _showDateSportSheet(BuildContext context) {
+    showBlurredBottomSheet<void>(context: context, child: const _DateSportSheet());
+  }
+
   @override
   Widget build(BuildContext context) {
     final configured = ref.watch(settingsProvider.select((s) => s.baseUrl)).trim().isNotEmpty;
-    // Watched (not just listened) so the app bar re-sizes when Upcoming reveals
-    // its date strip and hides it again on the other days.
-    final mode = ref.watch(dateModeProvider);
+    final view = ref.watch(viewDateProvider);
+    final now = DateTime.now();
+    final anchor = ref.watch(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    final filter = ref.watch(sportFilterProvider);
+    final cs = Theme.of(context).colorScheme;
 
     // Re-pace polling once a fetch settles: fast when anything is live. Skip the
     // intermediate loading emission (it carries the stale previous value and
@@ -113,9 +136,9 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
       _repace();
     });
 
-    // Switching day re-paces (the feed refetches on its own, since it watches
-    // the mode); only Today keeps a timer running.
-    ref.listen<ScoreDate>(dateModeProvider, (_, __) => _repace());
+    // Switching the viewed date re-fetches (feedProvider watches it); cancel the
+    // poll at once for a static past/future day, re-arm on return to today.
+    ref.listen<DateTime?>(viewDateProvider, (_, __) => _repace());
 
     // Pause polling while the user is on another tab (IndexedStack keeps this
     // page mounted); catch up and resume on return.
@@ -125,16 +148,44 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
     });
 
     return Scaffold(
+      // A compact date title (the day you're "looking at") that opens the date +
+      // sport sheet, with a live-count chip + search alongside.
       appBar: AppBar(
-        title: const Text('Scores'),
+        titleSpacing: 16,
+        title: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: configured ? () => _showDateSportSheet(context) : null,
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            Flexible(
+              // The viewed day, plus the active sport filter as a muted qualifier
+              // so a non-"All" filter is never hidden once the sheet is dismissed.
+              child: Text.rich(
+                TextSpan(children: [
+                  TextSpan(text: _viewDateTitle(view, anchor)),
+                  if (filter != 'all')
+                    TextSpan(
+                      text: '  ·  ${sportLabel(filter)}',
+                      style: TextStyle(color: cs.onSurfaceVariant, fontWeight: FontWeight.w600),
+                    ),
+                ]),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const SizedBox(width: 3),
+            const Icon(Icons.expand_more, size: 22, color: Color(0xFF8A9199)),
+          ]),
+        ),
         actions: [
+          const _LiveCountChip(),
           IconButton(
-            tooltip: 'Refresh',
-            onPressed: _refreshAll,
-            icon: const Icon(Icons.refresh),
+            tooltip: 'Search',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const SearchPage()),
+            ),
+            icon: const Icon(Icons.search),
           ),
+          const SizedBox(width: 4),
         ],
-        bottom: configured ? _DateModeBar(showStrip: mode == ScoreDate.upcoming) : null,
       ),
       body: !configured
           ? const SetupPrompt()
@@ -156,105 +207,242 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with WidgetsBindingObse
   }
 }
 
-const double _kStripHeight = 58;
-
-/// Yesterday / Today / Upcoming switcher pinned under the app bar. A calm
-/// segmented control — the selected day gets a faint pill + bold label rather
-/// than the brand yellow, which stays reserved for winner/value moments. When
-/// [showStrip] is set (Upcoming is active) a compact date strip is revealed
-/// underneath; the bar grows to make room for it.
-class _DateModeBar extends ConsumerWidget implements PreferredSizeWidget {
-  final bool showStrip;
-  const _DateModeBar({required this.showStrip});
-
-  @override
-  Size get preferredSize => Size.fromHeight(showStrip ? 46 + _kStripHeight : 46);
+/// Total live games today, as a green dot + count chip in the header. Hidden
+/// when nothing is live. Reads the same feed the list renders from.
+class _LiveCountChip extends ConsumerWidget {
+  const _LiveCountChip();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mode = ref.watch(dateModeProvider);
-    final cs = Theme.of(context).colorScheme;
-
-    Widget seg(String label, ScoreDate value) {
-      final selected = mode == value;
-      return Expanded(
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: () => ref.read(dateModeProvider.notifier).state = value,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            margin: const EdgeInsets.symmetric(horizontal: 3, vertical: 6),
-            padding: const EdgeInsets.symmetric(vertical: 7),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: selected ? cs.surfaceContainerHighest : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 13.5,
-                fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                color: selected ? cs.onSurface : cs.onSurfaceVariant,
-              ),
-            ),
-          ),
+    final feeds = ref.watch(feedProvider).valueOrNull ?? const <LeagueFeed>[];
+    final live = feeds.fold<int>(
+      0,
+      (n, f) => n + (f.scores?.events.where((e) => e.main?.status.live == true).length ?? 0),
+    );
+    if (live == 0) return const SizedBox.shrink();
+    final c = BinanceColors.of(context).live;
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.only(right: 4),
+        padding: const EdgeInsets.fromLTRB(8, 4, 10, 4),
+        decoration: BoxDecoration(
+          color: c.withValues(alpha: 0.14),
+          borderRadius: BorderRadius.circular(999),
         ),
-      );
-    }
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          LiveDot(color: c),
+          const SizedBox(width: 6),
+          Text('$live',
+              style: TextStyle(color: c, fontSize: 12, fontWeight: FontWeight.w700)),
+        ]),
+      ),
+    );
+  }
+}
+
+/// The header date sheet — one combined panel (Apple-Sports style) opened by the
+/// "Today ⌄" title, holding the day strip over the sport filter. Picking a day
+/// drives [viewDateProvider] (today normalizes back to null); the chips drive
+/// [sportFilterProvider]. Both apply live; the user dismisses to see the slate.
+class _DateSportSheet extends ConsumerStatefulWidget {
+  const _DateSportSheet();
+  @override
+  ConsumerState<_DateSportSheet> createState() => _DateSportSheetState();
+}
+
+class _DateSportSheetState extends ConsumerState<_DateSportSheet> {
+  // Browse window: a week back, two weeks ahead — recent results + the next
+  // fixtures for weekly leagues (NFL), without an unbounded list. Mirrors the
+  // league-detail Schedule strip.
+  static const int _past = 7;
+  static const int _future = 14;
+  static const double _chipExtent = 48 + 8; // DateChip width + separator
+
+  late final ScrollController _strip;
+
+  @override
+  void initState() {
+    super.initState();
+    final view = ref.read(viewDateProvider);
+    final now = DateTime.now();
+    final anchor = ref.read(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    final selected = view ?? anchor;
+    final idx = _past +
+        (DateUtils.dateOnly(selected).difference(DateUtils.dateOnly(anchor)).inHours / 24).round();
+    // Open with the selected day a couple chips in from the left (recent days peeking).
+    _strip = ScrollController(
+      initialScrollOffset: ((idx - 2).clamp(0, _past + _future)) * _chipExtent,
+    );
+  }
+
+  @override
+  void dispose() {
+    _strip.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final view = ref.watch(viewDateProvider);
+    final now = DateTime.now();
+    final anchor = ref.watch(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    final selected = view ?? anchor;
+    final base = DateUtils.dateOnly(anchor);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-          child: Row(children: [
-            seg('Yesterday', ScoreDate.yesterday),
-            seg('Today', ScoreDate.today),
-            seg('Upcoming', ScoreDate.upcoming),
-          ]),
+        const SizedBox(height: 6),
+        const Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: SectionLabel('Date')),
+        SizedBox(
+          height: 64,
+          child: ListView.separated(
+            controller: _strip,
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            itemCount: _past + 1 + _future,
+            separatorBuilder: (_, __) => const SizedBox(width: 8),
+            itemBuilder: (context, i) {
+              final day = base.add(Duration(days: i - _past));
+              final isAnchor = DateUtils.isSameDay(day, anchor);
+              return DateChip(
+                date: day,
+                selected: DateUtils.isSameDay(day, selected),
+                isToday: isAnchor,
+                // Today normalizes to null so the view keeps following ESPN's
+                // sports-day rollover; any other day stores its absolute date.
+                // Picking a day is the sheet's terminal action — apply it and
+                // dismiss so the user lands straight on that day's slate (the
+                // sport chips below stay put; they filter live without closing).
+                onTap: () {
+                  ref.read(viewDateProvider.notifier).state = isAnchor ? null : day;
+                  Navigator.of(context).maybePop();
+                },
+              );
+            },
+          ),
         ),
-        if (showStrip) const _UpcomingDateStrip(),
+        const SizedBox(height: 18),
+        const Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: SectionLabel('Sport')),
+        const _SheetSportChips(),
+        const SizedBox(height: 20),
       ],
     );
   }
 }
 
-/// A compact, swipeable row of upcoming days revealed under the segmented
-/// control when Upcoming is active. Picking a day fetches just that date (rather
-/// than a week-long list) — calm and glanceable, à la Apple Sports. The selected
-/// day wears the same faint pill the segmented control uses; brand yellow stays
-/// reserved for winner/value moments. Days run tomorrow → +[AppConfig.upcomingDays].
-class _UpcomingDateStrip extends ConsumerWidget {
-  const _UpcomingDateStrip();
+/// The sport-filter chip row, folded into the header date sheet: "All" plus one
+/// chip per followed sport family. Chips carry today's per-sport game count and a
+/// green dot when that sport has a live game; the selection ([sportFilterProvider])
+/// filters the slate client-side (no refetch).
+class _SheetSportChips extends ConsumerWidget {
+  const _SheetSportChips();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final offset = ref.watch(upcomingOffsetProvider);
-    final now = DateTime.now();
-    // Anchor the strip to ESPN's sports day (when known) so "tomorrow" is the day
-    // after ESPN's today, not the device's — they diverge in the post-midnight
-    // window, which otherwise shoves the whole strip a day forward.
-    final today = ref.watch(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    final followed = ref.watch(followedProvider);
+    final feeds = ref.watch(feedProvider).valueOrNull ?? const <LeagueFeed>[];
+    final selected = ref.watch(sportFilterProvider);
+
+    // Distinct sports in followed order (derived from the key prefix so the chips
+    // don't pop in only after the feed resolves).
+    final sports = <String>[];
+    for (final key in followed) {
+      final s = key.split('/').first;
+      if (s.isNotEmpty && !sports.contains(s)) sports.add(s);
+    }
+
+    int countFor(String sport) => feeds
+        .where((f) => (f.scores?.sport ?? f.key.split('/').first) == sport)
+        .fold(0, (n, f) => n + (f.scores?.events.length ?? 0));
+    bool liveFor(String sport) => feeds
+        .where((f) => (f.scores?.sport ?? f.key.split('/').first) == sport)
+        .any((f) => f.scores?.events.any((e) => e.main?.status.live == true) ?? false);
+
+    final chips = <Widget>[
+      _SportChip(
+        icon: Icons.apps,
+        label: 'All',
+        selected: selected == 'all',
+        onTap: () => ref.read(sportFilterProvider.notifier).state = 'all',
+      ),
+      for (final s in sports)
+        _SportChip(
+          icon: sportIcon(s),
+          label: sportLabel(s),
+          count: countFor(s),
+          live: liveFor(s),
+          selected: selected == s,
+          onTap: () => ref.read(sportFilterProvider.notifier).state = s,
+        ),
+    ];
+
     return SizedBox(
-      height: _kStripHeight,
+      height: 52,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
-        itemCount: AppConfig.upcomingDays,
-        separatorBuilder: (_, __) => const SizedBox(width: 6),
-        itemBuilder: (context, i) {
-          final dayOffset = i + 1; // 1 = tomorrow
-          return DateChip(
-            date: today.add(Duration(days: dayOffset)),
-            selected: dayOffset == offset,
-            isToday: false, // the Upcoming strip is future-only (starts tomorrow)
-            onTap: () {
-              if (dayOffset == ref.read(upcomingOffsetProvider)) return;
-              ref.read(upcomingOffsetProvider.notifier).state = dayOffset;
-            },
-          );
-        },
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: chips.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 10),
+        itemBuilder: (_, i) => chips[i],
+      ),
+    );
+  }
+}
+
+class _SportChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final int? count;
+  final bool live;
+  final bool selected;
+  final VoidCallback onTap;
+  const _SportChip({
+    required this.icon,
+    required this.label,
+    this.count,
+    this.live = false,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final ext = BinanceColors.of(context);
+    // Selected = light fill / dark text (design .fchip.on); else surface + hairline.
+    final bg = selected ? cs.onSurface : cs.surfaceContainerHigh;
+    final fg = selected ? cs.surface : cs.onSurface;
+    final sub = selected ? cs.surface.withValues(alpha: 0.6) : cs.onSurfaceVariant;
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: Container(
+        height: 34,
+        padding: const EdgeInsets.symmetric(horizontal: 13),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.circular(999),
+          border: selected ? null : Border.all(color: ext.cardBorder),
+        ),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          if (live && !selected) ...[
+            LiveDot(color: ext.live),
+            const SizedBox(width: 7),
+          ] else ...[
+            Icon(icon, size: 17, color: sub),
+            const SizedBox(width: 7),
+          ],
+          Text(label,
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: fg)),
+          if (count != null && count! > 0) ...[
+            const SizedBox(width: 7),
+            Text('$count',
+                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: sub)),
+          ],
+        ]),
       ),
     );
   }
@@ -266,15 +454,62 @@ class _LoadingList extends StatelessWidget {
   Widget build(BuildContext context) => const Center(child: CircularProgressIndicator());
 }
 
+/// The sport family a feed belongs to — its canonical `sport`, falling back to
+/// the key prefix ('soccer/fifa.world' → 'soccer') before the feed resolves.
+String feedSport(LeagueFeed feed) => feed.scores?.sport ?? feed.key.split('/').first;
+
+/// Builds the league sections (section header + status-sorted [GameCard]s) for a
+/// list of feeds, for the Scores slate (any viewed day).
+/// [sportFilter] of 'all' keeps every league; otherwise only that sport family.
+List<Widget> leagueSections(
+  List<LeagueFeed> feeds, {
+  String sportFilter = 'all',
+  required String noGamesLabel,
+}) {
+  final out = <Widget>[];
+  for (final feed in feeds) {
+    if (sportFilter != 'all' && feedSport(feed) != sportFilter) continue;
+    final name =
+        feed.scores?.leagueName.isNotEmpty == true ? feed.scores!.leagueName : feed.key;
+    out.add(_SectionHeader(title: name));
+    if (feed.error != null) {
+      out.add(_InfoTile(icon: Icons.error_outline, text: feed.error!));
+    } else {
+      final events = [...(feed.scores?.events ?? <SportEvent>[])]..sort(_byStatusThenTime);
+      if (events.isEmpty) {
+        out.add(_InfoTile(icon: Icons.event_busy_outlined, text: noGamesLabel));
+      } else {
+        for (final ev in events) {
+          out.add(Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+            child: GameCard(
+              event: ev,
+              sport: feed.scores!.sport,
+              leagueKey: feed.key,
+              leagueName: name,
+            ),
+          ));
+        }
+      }
+    }
+  }
+  return out;
+}
+
 class _FeedList extends ConsumerWidget {
   final List<LeagueFeed> feeds;
   const _FeedList({required this.feeds});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final viewingToday = ref.watch(viewDateProvider) == null;
     final hasFavs = ref.watch(favoriteTeamsProvider).isNotEmpty;
+    // Favorites are a "my teams now" rail — shown only on the today view; a
+    // browsed past/future date is a pure league slate.
+    final showFavs = hasFavs && viewingToday;
+    final filter = ref.watch(sportFilterProvider);
 
-    if (feeds.isEmpty && !hasFavs) {
+    if (feeds.isEmpty && !showFavs) {
       return ListView(children: const [
         SizedBox(height: 100),
         EmptyState(
@@ -285,16 +520,10 @@ class _FeedList extends ConsumerWidget {
       ]);
     }
 
-    final noGames = switch (ref.watch(dateModeProvider)) {
-      ScoreDate.yesterday => 'No games yesterday',
-      ScoreDate.today => 'No games today',
-      ScoreDate.upcoming => 'No upcoming games',
-    };
-
     final children = <Widget>[];
 
-    // Favorites pinned at the top — "my teams now", constant across the date tabs.
-    if (hasFavs) {
+    // Favorites pinned at the top — "my teams now", cross-sport (not filtered).
+    if (showFavs) {
       children.add(const _SectionHeader(title: 'Favorites'));
       final async = ref.watch(favoritesFeedProvider);
       final favData = async.valueOrNull;
@@ -312,33 +541,21 @@ class _FeedList extends ConsumerWidget {
       }
     }
 
-    for (final feed in feeds) {
-      final name = feed.scores?.leagueName.isNotEmpty == true
-          ? feed.scores!.leagueName
-          : feed.key;
-      children.add(_SectionHeader(title: name));
-      if (feed.error != null) {
-        children.add(_InfoTile(icon: Icons.error_outline, text: feed.error!));
-      } else {
-        final events = [...(feed.scores?.events ?? <SportEvent>[])]..sort(_byStatusThenTime);
-        if (events.isEmpty) {
-          children.add(_InfoTile(icon: Icons.event_busy_outlined, text: noGames));
-        } else {
-          for (final ev in events) {
-            children.add(Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
-              child: GameCard(
-                event: ev,
-                sport: feed.scores!.sport,
-                leagueKey: feed.key,
-                leagueName: name,
-              ),
-            ));
-          }
-        }
-      }
+    final sections = leagueSections(feeds,
+        sportFilter: filter, noGamesLabel: viewingToday ? 'No games today' : 'No games');
+    if (sections.isEmpty && filter != 'all') {
+      children.add(const Padding(
+        padding: EdgeInsets.only(top: 24),
+        child: EmptyState(
+          icon: Icons.event_busy_outlined,
+          title: 'No games',
+          subtitle: 'Nothing in this sport right now.',
+        ),
+      ));
+    } else {
+      children.addAll(sections);
     }
-    children.add(const SizedBox(height: 12));
+    children.add(const SizedBox(height: kFloatingNavInset));
     return ListView(physics: const AlwaysScrollableScrollPhysics(), children: children);
   }
 }
@@ -420,7 +637,7 @@ class GameCard extends StatelessWidget {
       // ripple still renders on top of it (a DecoratedBox child would mute the
       // splash). Null gradient → plain surface for non-final/field/color-less.
       child: Ink(
-        decoration: BoxDecoration(gradient: _cardGradient(context, comp)),
+        decoration: BoxDecoration(gradient: winnerWashGradient(context, comp)),
         child: InkWell(
           onTap: () => Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => GameDetailPage(event: event, sport: sport, leagueKey: leagueKey, leagueName: leagueName),
@@ -558,7 +775,7 @@ class GameCard extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              LiveDot(color: cs.error),
+              LiveDot(color: BinanceColors.of(context).live),
               const SizedBox(width: 5),
               Flexible(child: label),
             ],
@@ -647,75 +864,3 @@ class _Badge extends StatelessWidget {
   }
 }
 
-// ---- team-color card wash ---------------------------------------------------
-/// A very subtle team-color gradient, reserved for **final** head-to-head cards
-/// — the "result is in" moment. It washes only from the winning team's side
-/// (home tints the top-left, away the bottom-right, matching their crests'
-/// positions); a draw with no single winner tints from both corners. Low alpha
-/// so it reads as a sheen, not a fill. Returns null for field sports, any
-/// non-final game, and when the relevant team(s) expose no usable color (then
-/// the card stays the plain Binance surface).
-Gradient? _cardGradient(BuildContext context, Competition comp) {
-  if (comp.isField || !comp.status.isFinal) return null;
-  final a = comp.home ?? (comp.competitors.isNotEmpty ? comp.competitors.first : null);
-  final b = comp.away ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
-  final dark = Theme.of(context).brightness == Brightness.dark;
-  final alpha = dark ? 0.16 : 0.10;
-
-  final aWins = a?.winner == true;
-  final bWins = b?.winner == true;
-
-  // A clear single winner → wash only from that team's corner, fading to the
-  // neutral surface across the card.
-  if (aWins != bWins) {
-    final winner = aWins ? a : b;
-    final c = _tintColor(winner?.color, winner?.altColor, dark);
-    if (c == null) return null;
-    final tint = c.withValues(alpha: alpha);
-    return LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: aWins ? [tint, Colors.transparent] : [Colors.transparent, tint],
-      stops: aWins ? const [0.0, 0.65] : const [0.35, 1.0],
-    );
-  }
-
-  // A draw (or no winner flagged) → tint from both corners, neutral centre.
-  final ca = _tintColor(a?.color, a?.altColor, dark);
-  final cb = _tintColor(b?.color, b?.altColor, dark);
-  if (ca == null && cb == null) return null;
-  return LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      (ca ?? cb)!.withValues(alpha: alpha),
-      Colors.transparent,
-      (cb ?? ca)!.withValues(alpha: alpha),
-    ],
-    stops: const [0.0, 0.5, 1.0],
-  );
-}
-
-/// Pick a tintable color, preferring the alternate when the primary is too near
-/// the canvas to register (a black primary on dark, a white one on light).
-Color? _tintColor(String? primary, String? alt, bool dark) {
-  final p = _hexColor(primary);
-  final a = _hexColor(alt);
-  if (p == null) return a;
-  if (a != null) {
-    final l = p.computeLuminance();
-    if (dark && l < 0.04) return a; // near-black vanishes on the dark canvas
-    if (!dark && l > 0.96) return a; // near-white vanishes on the light canvas
-  }
-  return p;
-}
-
-/// Parse an ESPN hex color ("1d428a" or "#1d428a"); null if unparseable.
-Color? _hexColor(String? hex) {
-  if (hex == null) return null;
-  var h = hex.replaceFirst('#', '').trim();
-  if (h.length == 3) h = h.split('').map((c) => '$c$c').join();
-  if (h.length != 6) return null;
-  final v = int.tryParse(h, radix: 16);
-  return v == null ? null : Color(0xFF000000 | v);
-}
