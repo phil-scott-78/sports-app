@@ -7,6 +7,10 @@ import { resolve } from '../../schema/tools/resolve.mjs';
 
 export const https = u => (typeof u === 'string' ? u.replace(/^http:/, 'https:') : undefined);
 const intOrNull = s => { const n = parseInt(s, 10); return Number.isFinite(n) ? n : null; };
+// ESPN sometimes HTML-encodes free text (e.g. cricket "won by an inns &amp; 98 runs").
+const decodeEntities = s => (typeof s === 'string'
+  ? s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'")
+  : s);
 
 // Dark-mode logo variant. ESPN ships a 'dark' (white/light) logo for dark
 // backgrounds: explicit in team.logos[] (rel 'dark') when present, else derived
@@ -48,13 +52,23 @@ export function statusToPhase(t = {}) {
 
 // ---- score (by scoreKind) ---------------------------------------------------
 function buildScore(scoreKind, raw) {
+  // ESPN's scoreboard serializes competitor.score as a STRING ("103"); the
+  // team-schedule endpoint serializes it as an OBJECT ({value, displayValue},
+  // soccer adds $ref/winner). Coerce to the scalar form FIRST so String() below
+  // never yields "[object Object]" and intOrNull still sees the number.
+  if (raw != null && typeof raw === 'object') raw = raw.displayValue ?? raw.value ?? '';
   const display = raw == null ? '' : String(raw);
   const s = { display };
   if (scoreKind === 'numeric') { const v = intOrNull(raw); if (v != null) s.value = v; }
   else if (scoreKind === 'toPar') { s.toPar = display === 'E' ? 0 : intOrNull(display.replace('+', '')) ?? undefined; }
   else if (scoreKind === 'cricket') {
-    const m = display.match(/(\d+)\/(\d+)(?:.*?([\d.]+)\s*\/?\s*\d*\s*ov)?/i);
-    if (m) { s.cricket = { runs: +m[1], wickets: +m[2] }; if (m[3]) s.cricket.overs = +m[3]; }
+    // Composite like "161/5 (18/20 ov, target 156)" or "106 (17/20 ov, target 171)"
+    // (all-out → no "/wkts"). Anchor runs/wkts to the LEADING total only — the old
+    // regex grabbed the "17/20" OVERS fragment as runs/wickets (→ runs:17,wkts:20).
+    // Authoritative per-innings figures live in periodScores[].cricket regardless.
+    const m = display.match(/^\s*(\d+)(?:\/(\d+))?/);
+    if (m) { s.cricket = { runs: +m[1] }; if (m[2] != null) s.cricket.wickets = +m[2]; }
+    const ov = display.match(/([\d.]+)\s*(?:\/\s*\d+)?\s*ov/i); if (ov && s.cricket) s.cricket.overs = +ov[1];
     const t = display.match(/target\s+(\d+)/i); if (t && s.cricket) s.cricket.target = +t[1];
   }
   return s;
@@ -84,9 +98,17 @@ function buildCompetitor(profile, raw) {
       if (a.position?.abbreviation) o.position = a.position.abbreviation;
       return o;
     });
-    c.displayName = raw.roster?.displayName || c.athletes.map(a => a.name).filter(Boolean).join(' / ') || raw.athlete?.displayName || '';
+    c.displayName = raw.roster?.displayName
+      || c.athletes.map(a => a.name).filter(Boolean).join(' / ')
+      || raw.athlete?.displayName
+      // golf TEAM formats (PGA Zurich, LPGA Dow) ship only a `team` object and no
+      // athlete/roster — fall back to the team name so rows aren't blank.
+      || team?.displayName || team?.shortDisplayName || team?.name
+      || '';
     if (c.athletes.length === 2 && raw.roster) c.kind = 'pair'; // tennis/golf doubles
     if (team?.abbreviation) c.abbreviation = team.abbreviation;
+    if (!c.athletes.length && team?.shortDisplayName) c.shortName = team.shortDisplayName;
+    if (!c.athletes.length && team?.color) c.color = team.color;
     const logo = https(team?.logo);
     if (logo) { c.logo = logo; const d = darkLogoOf(team, logo, profile.espnSport); if (d) c.logoDark = d; }
   }
@@ -99,10 +121,22 @@ function buildCompetitor(profile, raw) {
   if (raw.score != null) c.score = buildScore(profile.scoreKind, raw.score);
 
   if (Array.isArray(raw.linescores) && raw.linescores.length) {
+    const ignore = profile.ignorePeriods;                                  // rugby sentinel periods [20,60]
+    // golf: ESPN appends a playoff as a "5th round" (period > regulation) only for
+    // the players involved — drop it so the leaderboard gets no phantom R5 column
+    // and the strokes total isn't inflated by playoff holes.
+    const maxRound = profile.periodUnit === 'hole_rounds' ? (profile.regulationPeriods || 0) : 0;
     c.periodScores = raw.linescores
-      .filter(ls => ls && ls.period != null && (ls.value != null || ls.displayValue != null || ls.runs != null))
-      .map(ls => {
-        const p = { period: ls.period, value: ls.value ?? null, display: ls.displayValue ?? String(ls.value ?? '') };
+      // tennis linescores carry {value, winner} with NO period — synthesize it from
+      // the position so the set scoreline survives (every other sport sends period).
+      .map((ls, i) => ({ ls, period: ls && ls.period != null ? ls.period : i + 1 }))
+      .filter(({ ls, period }) =>
+        ls
+        && (ls.value != null || ls.displayValue != null || ls.runs != null)
+        && !(ignore && ignore.includes(period))
+        && !(maxRound && period > maxRound))
+      .map(({ ls, period }) => {
+        const p = { period, value: ls.value ?? null, display: ls.displayValue ?? String(ls.value ?? '') };
         if (ls.tiebreak != null) p.tiebreak = ls.tiebreak;
         if (ls.winner != null) p.setWinner = ls.winner;                 // tennis: per-set winner
         if (Array.isArray(ls.linescores)) p.holesPlayed = ls.linescores.length; // golf: THRU
@@ -116,9 +150,15 @@ function buildCompetitor(profile, raw) {
         return p;
       });
   }
-  // golf: total strokes = sum of per-round strokes (round value); backs the TOT column
+  // golf: total strokes = sum of per-round strokes (round value), backing the TOT
+  // column. Sum ONLY completed rounds (18 holes played): an in-progress round's
+  // value is strokes-so-far, which makes the running total non-monotonic across the
+  // field (a leader thru 9 would show fewer strokes than a finished trailer). Playoff
+  // rounds are already dropped above. Falls back to all rounds when no per-hole data.
   if (profile.scoreKind === 'toPar' && c.score && Array.isArray(c.periodScores) && c.periodScores.length) {
-    const strokes = c.periodScores.reduce((s, p) => s + (typeof p.value === 'number' ? p.value : 0), 0);
+    const sumOf = pred => c.periodScores.reduce((s, p) => s + (pred(p) && typeof p.value === 'number' ? p.value : 0), 0);
+    const anyHoleData = c.periodScores.some(p => p.holesPlayed != null);
+    const strokes = anyHoleData ? sumOf(p => p.holesPlayed === 18) : sumOf(() => true);
     if (strokes > 0 && c.score.strokes == null) c.score.strokes = strokes;
   }
   if (Array.isArray(raw.records) && raw.records.length)
@@ -205,9 +245,17 @@ function decide(profile, comp) {
   const cs = comp.competitors;
   if (cs.some(c => c.shootoutScore != null)) return 'shootout';
   if (cs.some(c => c.aggregateScore != null)) return 'aggregate';
-  if (profile.scoreKind === 'none') return profile.espnSport === 'mma' ? 'method' : 'regulation';
-  if (comp.periods.isOvertime) return 'overtime';
-  if (profile.layout === 'headToHead' && cs.length === 2 && cs.every(c => c.winner === false)) return 'draw';
+  const isDraw = profile.layout === 'headToHead' && cs.length === 2 && cs.every(c => c.winner === false);
+  if (profile.scoreKind === 'none') {
+    // a 2-sided no-score contest where neither side won is a draw / no-contest —
+    // surface it BEFORE 'method' so an MMA draw/NC isn't reported as a finish.
+    if (isDraw) return 'draw';
+    return profile.espnSport === 'mma' ? 'method' : 'regulation';
+  }
+  // "overtime" only means extra play for timed/inning units — but NOT baseball: its
+  // "Final/10" status already conveys extra innings, so "After overtime" is wrong.
+  if (comp.periods.isOvertime && profile.periodUnit !== 'inning') return 'overtime';
+  if (isDraw) return 'draw';
   return 'regulation';
 }
 
@@ -217,7 +265,7 @@ const DECORATORS = {
     const m = comp.meta || (comp.meta = {});
     if (rc.class?.generalClassCard) m.cricketClass = rc.class.generalClassCard;
     const summary = rc.status?.summary || rc.status?.type?.summary;
-    if (summary) m.cricketSummary = summary;
+    if (summary) m.cricketSummary = decodeEntities(summary); // ESPN HTML-encodes "&amp;" etc.
   },
   mma(comp, rc) {
     const r = rc.status?.result;
@@ -226,6 +274,26 @@ const DECORATORS = {
       target: r.target?.name, finishRound: comp.status.period || undefined,
       finishTime: comp.status.detail || undefined,
     }, ['kind', 'detail', 'target', 'finishRound', 'finishTime']);
+    else if (comp.status.phase === 'final') {
+      // The site scoreboard carries NO status.result; the method of victory lives in
+      // details[].type, e.g. "Unofficial Winner Kotko" / "...Submission" / "...Decision",
+      // with the finish round in status.period and the time in status.displayClock.
+      const det = (rc.details || [])
+        .map(d => (typeof d.type === 'string' ? d.type : d.type?.text) || d.text || '')
+        .find(t => /unofficial winner/i.test(t)) || '';
+      const mm = det.match(/unofficial winner\s+(.+)$/i);
+      if (mm) {
+        let kind = mm[1].trim();
+        if (/^kotko$/i.test(kind)) kind = 'KO/TKO'; // ESPN mangles "KO/TKO" → "Kotko"
+        const decision = /decision/i.test(kind);    // a decision goes the distance — no round/time
+        const clock = rc.status?.displayClock;
+        comp.method = pick({
+          kind,
+          finishRound: decision ? undefined : (comp.status.period || undefined),
+          finishTime: decision || !clock || clock === '-' || clock === '0:00' ? undefined : clock,
+        }, ['kind', 'finishRound', 'finishTime']);
+      }
+    }
     if (rc.cardSegment?.description) (comp.meta ||= {}).cardSegment = rc.cardSegment.description;
     if (rc.status?.featured) (comp.meta ||= {}).featured = true;
   },
@@ -243,8 +311,13 @@ function buildCompetition(profile, rc, rawEvent) {
   if (profile.layout === 'field') competitors.sort((a, b) => (a.order ?? 1e9) - (b.order ?? 1e9));
 
   const regCount = profile.regulationPeriods ?? 0;
+  const stPeriod = typeof st.period === 'number' ? st.period : 0;
+  // golf: ESPN bumps status.period to a 5th "round" during a playoff; clamp it to
+  // regulation (the playoff linescore period is already dropped above) so the round
+  // count + OT logic stay correct.
+  const clampedStPeriod = (profile.periodUnit === 'hole_rounds' && regCount && stPeriod > regCount) ? regCount : stPeriod;
   const played = Math.max(
-    typeof st.period === 'number' ? st.period : 0,
+    clampedStPeriod,
     ...competitors.map(c => (c.periodScores?.length ? Math.max(...c.periodScores.map(p => p.period)) : 0)),
   );
   const comp = {
@@ -252,7 +325,7 @@ function buildCompetition(profile, rc, rawEvent) {
     layout: profile.layout, scoreKind: profile.scoreKind, competitorKind: profile.competitorKind,
     status: {
       phase: ph.phase, live: ph.live, ended: ph.ended,
-      period: typeof st.period === 'number' ? st.period : 0,
+      period: clampedStPeriod,
       periodLabel: type.shortDetail || type.detail || type.description || '',
       espnName: type.name || '', detail: type.detail || '',
     },
@@ -276,7 +349,11 @@ function buildCompetition(profile, rc, rawEvent) {
 
   const notesHead = (rc.notes || []).map(n => n.headline).filter(Boolean);
   if (notesHead.length) (comp.meta ||= {}).round = notesHead[0];
-  if (rc.status?.hadPlayoff) (comp.meta ||= {}).hadPlayoff = true;
+  // golf playoff: flag it (the playoff linescore round was dropped, so detect it from
+  // the RAW competitors' period > regulation) so the UI can badge "Playoff".
+  const golfPlayoff = profile.periodUnit === 'hole_rounds' && regCount
+    && (rc.competitors || []).some(x => Array.isArray(x.linescores) && x.linescores.some(ls => (ls?.period ?? 0) > regCount));
+  if (rc.status?.hadPlayoff || golfPlayoff) (comp.meta ||= {}).hadPlayoff = true;
   if (rc.series?.summary) (comp.meta ||= {}).seriesSummary = rc.series.summary;
 
   const situation = buildSituation(rc);
@@ -315,6 +392,21 @@ export function buildEvent(profile, e) {
   };
 }
 
+// Soonest kickoff (epoch ms) among events still in the 'scheduled' phase, or
+// undefined when none. The worker uses this to shorten the idle cache as a game
+// approaches so the idle→live flip isn't hidden behind the 5m idle TTL (see
+// ttl.js). Live/final events are skipped — only games yet to start matter here.
+export function nextScheduledStart(events) {
+  let min;
+  for (const ev of events) {
+    if (!ev.start || !ev.competitions.some(c => c.status.phase === 'scheduled')) continue;
+    const ms = Date.parse(ev.start);
+    if (Number.isNaN(ms)) continue;
+    if (min === undefined || ms < min) min = ms;
+  }
+  return min;
+}
+
 // ---- top level --------------------------------------------------------------
 export function normalizeScoreboard(reg, key, sb) {
   const profile = resolve(reg, key);
@@ -338,6 +430,7 @@ export function normalizeScoreboard(reg, key, sb) {
     day: sb.day?.date || undefined,
     updated: new Date().toISOString(),
     anyLive: events.some(ev => ev.competitions.some(c => c.status.live)),
+    nextStartMs: nextScheduledStart(events), // undefined when nothing scheduled
     events,
   };
 }

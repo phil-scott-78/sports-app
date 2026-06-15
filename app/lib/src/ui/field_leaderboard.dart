@@ -237,22 +237,44 @@ class FieldLeaderboard extends StatelessWidget {
       ],
     );
 
+    final table = Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        posColumn,
+        playerColumn,
+        const SizedBox(width: 4),
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: scrollBlock,
+          ),
+        ),
+      ],
+    );
+
     return DetailPanel(
       padding: const EdgeInsets.fromLTRB(12, 8, 8, 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          posColumn,
-          playerColumn,
-          const SizedBox(width: 4),
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: scrollBlock,
-            ),
-          ),
-        ],
-      ),
+      child: comp.meta?.hadPlayoff == true
+          ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: cs.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text('PLAYOFF',
+                      style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.3,
+                          color: cs.onSurfaceVariant)),
+                ),
+              ),
+              table,
+            ])
+          : table,
     );
   }
 }

@@ -92,9 +92,23 @@ class LineScoreTable extends StatelessWidget {
       ]),
     );
 
+    // Column header per period: numeric in regulation, then OT/2OT/3OT for extras
+    // (grid mode only — baseball extra innings stay numbered). Hockey shootout: the
+    // trailing extra of a "Final/SO" game reads "SO".
+    final regCount = comp.periods.regulation;
+    final soGame = comp.periods.unit == 'period' &&
+        RegExp(r'\bSO\b', caseSensitive: false)
+            .hasMatch('${comp.status.shortDetail ?? ''} ${comp.status.detail}');
+    String colLabel(int i) {
+      if (baseball || regCount <= 0 || i <= regCount) return '$i';
+      if (soGame && i == cols) return 'SO';
+      final extra = i - regCount;
+      return extra == 1 ? 'OT' : '${extra}OT';
+    }
+
     final periodCols = Row(mainAxisSize: MainAxisSize.min, children: [
       for (var i = 1; i <= cols; i++)
-        column('$i', [for (final c in rows) _periodVal(c, i)]),
+        column(colLabel(i), [for (final c in rows) _periodVal(c, i)]),
     ]);
 
     final accent = BinanceColors.of(context).accent;
@@ -134,25 +148,37 @@ class InningsStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    final lines = <Widget>[];
+
+    // ESPN zero-fills each team's linescores with the OTHER team's innings as a
+    // {runs:0, wickets:0, isBatting:false} placeholder — drop those phantoms. Then
+    // show the real innings in chronological match order (period 1,2,3,4 → A1, B1,
+    // A2, B2 / follow-on order), each tagged with its batting team.
+    final innings = <(Competitor, PeriodScore)>[];
     for (final c in comp.competitors) {
-      final innings = c.periodScores.where((p) => p.cricket != null).toList();
-      if (innings.isEmpty) {
-        // fall back to the composite score string when per-innings is absent
-        if (c.score?.display.isNotEmpty == true) {
-          lines.add(_line(context, c.label, c.score!.display, null, c.isWinner));
-        }
-        continue;
+      for (final p in c.periodScores) {
+        final ck = p.cricket;
+        if (ck == null) continue;
+        final phantom = ck.isBatting != true && (ck.runs ?? 0) == 0 && (ck.wickets ?? 0) == 0;
+        if (!phantom) innings.add((c, p));
       }
-      for (final p in innings) {
+    }
+    innings.sort((a, b) => a.$2.period.compareTo(b.$2.period));
+
+    final lines = <Widget>[];
+    if (innings.isEmpty) {
+      // No per-innings linescores → fall back to the runs line (composite with
+      // ESPN's "(overs, target)" parenthetical peeled off — see cricketScoreParts).
+      for (final c in comp.competitors) {
+        final parts = cricketScoreParts(c);
+        if (parts.runs.isNotEmpty) {
+          lines.add(_line(context, c.label, parts.runs, null, c.isWinner));
+        }
+      }
+    } else {
+      for (final (c, p) in innings) {
         final ck = p.cricket!;
         final overs = ck.overs == null ? '' : ' (${_overs(ck.overs!)} ov)';
-        final reason = ck.allOut == true
-            ? 'all out'
-            : ck.declared == true
-                ? 'dec'
-                : ck.reason;
-        lines.add(_line(context, c.label, '${ck.rw}$overs', reason, c.isWinner,
+        lines.add(_line(context, c.label, '${ck.rw}$overs', _reasonLabel(ck.reason), c.isWinner,
             batting: ck.isBatting == true));
       }
     }
@@ -165,6 +191,19 @@ class InningsStack extends StatelessWidget {
         ],
       ]),
     );
+  }
+
+  /// Map ESPN's innings `reason` to a fan-readable tag: only "declared"→"dec" and
+  /// "all out" earn a label; the routine "complete"/"target reached" are dropped.
+  static String? _reasonLabel(String? reason) {
+    switch (reason) {
+      case 'declared':
+        return 'dec';
+      case 'all out':
+        return 'all out';
+      default:
+        return null;
+    }
   }
 
   static String _overs(num o) => o == o.roundToDouble() ? o.toInt().toString() : o.toString();

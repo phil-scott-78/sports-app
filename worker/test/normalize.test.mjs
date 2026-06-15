@@ -4,7 +4,7 @@
 
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { fetchScoreboard } from '../src/espn.js';
-import { normalizeScoreboard, statusToPhase } from '../src/normalize.js';
+import { normalizeScoreboard, statusToPhase, nextScheduledStart } from '../src/normalize.js';
 
 const PHASES = new Set(['scheduled', 'live', 'final', 'postponed', 'suspended', 'canceled', 'abandoned', 'delayed', 'unknown']);
 
@@ -79,6 +79,18 @@ ok(statusToPhase({ name: 'STATUS_FINAL', state: 'post', completed: true }).phase
 ok(statusToPhase({ name: 'STATUS_FINAL_PEN', state: 'post', completed: true }).phase === 'final', 'unit: STATUS_FINAL_PEN→final');
 ok(statusToPhase({ name: 'STATUS_POSTPONED', state: 'post', completed: false }).phase === 'postponed', 'unit: postponed not final');
 ok(statusToPhase({ name: 'STATUS_IN_PROGRESS', state: 'in' }).live === true, 'unit: in_progress→live');
+
+// nextScheduledStart: soonest 'scheduled' kickoff; live/final events ignored.
+{
+  const ev = (start, phase) => ({ start, competitions: [{ status: { phase } }] });
+  const t1 = '2026-06-14T18:00:00Z', t2 = '2026-06-14T15:00:00Z', t3 = '2026-06-14T20:00:00Z';
+  ok(nextScheduledStart([]) === undefined, 'unit: no events → undefined');
+  ok(nextScheduledStart([ev(t1, 'live'), ev(t2, 'final')]) === undefined, 'unit: nothing scheduled → undefined');
+  ok(nextScheduledStart([ev(t1, 'scheduled'), ev(t3, 'scheduled')]) === Date.parse(t1), 'unit: picks soonest scheduled');
+  // a live/final game earlier than the scheduled one must not win
+  ok(nextScheduledStart([ev(t2, 'live'), ev(t1, 'scheduled')]) === Date.parse(t1), 'unit: ignores earlier non-scheduled');
+  ok(nextScheduledStart([{ start: 'not-a-date', competitions: [{ status: { phase: 'scheduled' } }] }]) === undefined, 'unit: unparsable date skipped');
+}
 
 for (const { key, date } of CASES) {
   try {

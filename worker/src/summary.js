@@ -134,14 +134,18 @@ function buildPeriodLines(raw, profile) {
   const n = Math.max(aLs.length, hLs.length);
   if (n === 0) return undefined;
   const reg = profile.regulationPeriods || 0;
-  const extras = reg ? Math.max(0, n - reg) : 0;
+  // Did the game actually reach a shootout? Hockey only, and ONLY when the header
+  // status says so ("Final/SO") — NEVER inferred from "2 extra periods": a playoff
+  // 2OT also has 2 extras and must read [..,OT,2OT], not [..,1OT,SO].
+  const st = raw.header?.competitions?.[0]?.status?.type || {};
+  const wentToShootout = profile.periodUnit === 'period'
+    && /\bSO\b|shootout/i.test(`${st.shortDetail || ''} ${st.detail || ''} ${st.description || ''}`);
   const labels = [];
   for (let i = 0; i < n; i++) {
     if (!reg || i < reg) { labels.push(`${i + 1}`); continue; }
     const ex = i - reg; // 0-based index among the extra periods
-    // hockey: a trailing extra is the shootout; otherwise OT (2OT, 3OT…). Others: OT.
-    if (profile.periodUnit === 'period' && extras >= 2 && ex === extras - 1) labels.push('SO');
-    else labels.push(extras === 1 ? 'OT' : `${ex + 1}OT`);
+    if (wentToShootout && i === n - 1) { labels.push('SO'); continue; } // trailing extra is the shootout
+    labels.push(ex === 0 ? 'OT' : `${ex + 1}OT`);                       // OT, 2OT, 3OT… (first extra is just "OT")
   }
   const vals = ls => ls.map(x => str(x.displayValue ?? x.value ?? ''));
   return {
@@ -177,7 +181,8 @@ export function normalizeSummary(reg, key, raw) {
   const profile = resolve(reg, key);
   const { side, abbr } = sideMaps(raw);
   const header = raw.header || {};
-  const status = header.competitions?.[0]?.status?.type || {};
+  const comp0 = header.competitions?.[0] || {};
+  const status = comp0.status?.type || {};
   const lineups = buildLineups(raw, side);
   const periodLines = buildPeriodLines(raw, profile);
   const out = {
@@ -189,5 +194,12 @@ export function normalizeSummary(reg, key, raw) {
     lineups,
   };
   if (periodLines) out.periodLines = periodLines;
+  // Pre-game kickoff time → lets the worker shorten the idle cache as the game
+  // approaches, so the rich detail flips to live promptly (see ttl.js). Mirrors
+  // normalizeScoreboard.nextStartMs; only meaningful while still scheduled.
+  if (status.state === 'pre' && comp0.date) {
+    const ms = Date.parse(comp0.date);
+    if (!Number.isNaN(ms)) out.nextStartMs = ms;
+  }
   return out;
 }

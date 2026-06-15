@@ -138,7 +138,7 @@ class ScoringFeed extends StatelessWidget {
     // the spine side (home left / away right) already tells the teams apart. A
     // disciplinary card is the one tag that earns colour (red). Without this,
     // baseball — where *every* play is a score — painted both teams gold.
-    final tagColor = kind == _Kind.card ? BinanceColors.of(context).danger : cs.onSurfaceVariant;
+    final tagColor = kind == _Kind.card ? _cardColor(context, p) : cs.onSurfaceVariant;
     final align = isHome ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final ta = isHome ? TextAlign.right : TextAlign.left;
     final hasScore = p.away != null && p.home != null;
@@ -171,9 +171,10 @@ class ScoringFeed extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final ext = BinanceColors.of(context);
     final kind = _kind(p);
+    final Color cardColor = _cardColor(context, p);
     final Color ring = switch (kind) {
       _Kind.score => ext.victor,
-      _Kind.card => ext.danger,
+      _Kind.card => cardColor,
       _ => cs.outline,
     };
     final IconData icon = switch (kind) {
@@ -183,7 +184,7 @@ class ScoringFeed extends StatelessWidget {
     };
     final Color iconColor = switch (kind) {
       _Kind.score => ext.victor,
-      _Kind.card => ext.danger,
+      _Kind.card => cardColor,
       _ => cs.onSurfaceVariant,
     };
     return Column(
@@ -221,6 +222,14 @@ class ScoringFeed extends StatelessWidget {
     if (t.contains('sub')) return _Kind.sub;
     // The scoring feed is scoring plays — default to a score node (the gold ring).
     return _Kind.score;
+  }
+
+  /// A disciplinary card's colour: RED for a red card / second-yellow sending-off
+  /// (type or text mentions "red"), else AMBER for a yellow caution. Tested "red"
+  /// first so a "Yellow Red Card" reads as red, not amber.
+  Color _cardColor(BuildContext context, SummaryPlay p) {
+    final t = '${p.type ?? ''} ${p.text}'.toLowerCase();
+    return t.contains('red') ? BinanceColors.of(context).danger : const Color(0xFFE4B53B);
   }
 
   // ---- single-rail fallback (no sides) -----------------------------------

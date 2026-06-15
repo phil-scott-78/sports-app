@@ -11,9 +11,9 @@ no KV/DO writes, no build step, ~zero cost.
 |---|---|---|
 | `GET /v1/health` | `{ ok, leagues, updated }` | 60s |
 | `GET /v1/catalog?priority=v1&sport=soccer` | sports → leagues (the app's picker) | 1h |
-| `GET /v1/overview?priority=v1&sport=soccer` | `{ updated, leagues: [{ key, state, detail, live }] }` — per-league season pulse | 5m |
-| `GET /v1/scores/{sport}/{league}?date=YYYYMMDD` | canonical `ScoresResponse` | **15s live / 5m idle** |
-| `GET /v1/summary/{sport}/{league}/{eventId}` | rich `GameSummary` (box score, scoring feed, lineups) | **20s live / 5m idle** |
+| `GET /v1/overview?priority=v1&sport=soccer` | `{ updated, leagues: [{ key, state, detail, live }] }` — per-league season pulse | 5m (**1m** when any league is live/today) |
+| `GET /v1/scores/{sport}/{league}?date=YYYYMMDD` | canonical `ScoresResponse` | **15s live / 5m idle / 30s near kickoff** |
+| `GET /v1/summary/{sport}/{league}/{eventId}` | rich `GameSummary` (box score, scoring feed, lineups) | **20s live / 5m idle / 30s near kickoff** |
 | `GET /v1/standings/{sport}/{league}?season=YYYY` | `{ groups: [{ name, rows }] }` | 1h |
 
 `overview` fans out one cheap scoreboard fetch per league and classifies each into
@@ -43,6 +43,7 @@ src/
   standings.js  ESPN standings → { groups, rows }
   catalog.js    registry → catalog
   overview.js   raw scoreboard → season-pulse state (pure; calendar + season window)
+  ttl.js        cache-lifetime policy (pure; kickoff-aware idle TTL)
 imports:
   ../../schema/league-profiles.json   (bundled into the worker)
   ../../schema/tools/resolve.mjs      (shared inheritance resolver — same one the CLI tools use)
@@ -54,8 +55,14 @@ imports:
   share that single fetch → ~4 upstream calls/min/league regardless of traffic.
 - **No KV/DO writes** (their free write quota dies at a 15s refresh). Cache API
   has no write cap.
-- **TTL follows the data:** `15s` when any game is live, `5m` when idle — the
-  worker reads `anyLive` from its own normalized payload to decide.
+- **TTL follows the data** (policy lives in `ttl.js`): `15s` when any game is
+  live, `5m` when idle — the worker reads `anyLive` from its own normalized
+  payload. The catch: before kickoff a game reads `scheduled`, so a naive idle
+  TTL would cache "not started" for the full 5m and hide the idle→live flip (the
+  live TTL can't help — it only engages once we've already seen a live game). So
+  when a `scheduled` game is within one idle window of kickoff (or just started
+  and ESPN still says `pre`), the idle TTL drops to `30s`. The payloads surface
+  `nextStartMs` (soonest scheduled kickoff) to drive this.
 - Response headers expose `x-cache: HIT|STALE|MISS|REVALIDATE` for debugging.
 
 The normalizer is **profile-driven**: adding a league is a `league-profiles.json`

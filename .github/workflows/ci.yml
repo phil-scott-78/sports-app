@@ -1,0 +1,57 @@
+name: CI
+
+# Continuous checks for the Flutter app: run on every push and PR so a broken
+# analyze/test is caught at the offending change, not deferred to release time
+# (the Release APK workflow only fires on version tags). Keeps the
+# "flutter analyze must stay clean" invariant (CLAUDE.md) enforced.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  app:
+    name: Analyze & test (Flutter app)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Mirror the release toolchain (see release.yml) so CI and the shipped
+      # build agree. Bump together with the SDK.
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.44.2"
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --coverage
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: app/coverage/lcov.info
+          if-no-files-found: ignore

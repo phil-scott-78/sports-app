@@ -104,9 +104,15 @@ class FavoriteTeamCard extends StatelessWidget {
         Text(letter, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: color)),
         if (comp.scoreKind != 'none') ...[
           const SizedBox(width: 8),
-          Text(
-            '${fav?.score?.display ?? '–'}–${opp?.score?.display ?? '–'}',
-            style: numStyle(size: 15, weight: FontWeight.w700, color: cs.onSurface),
+          // Flexible + ellipsis: a cricket runs line ("521 – 155 & 268") can be
+          // long, so it truncates instead of overflowing this compact row.
+          Flexible(
+            child: Text(
+              _scorePair(comp, fav, opp),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: numStyle(size: 15, weight: FontWeight.w700, color: cs.onSurface),
+            ),
           ),
         ],
       ];
@@ -161,6 +167,23 @@ class FavoriteTeamCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(14, 0, 14, 12),
       child: Text(text, style: TextStyle(fontSize: 13, color: cs.onSurfaceVariant)),
     );
+  }
+
+  /// "fav–opp" score for the Last row. Cricket gets each side's runs line (the
+  /// composite's "(overs, target)" parenthetical peeled off — see [cricketScoreParts])
+  /// joined by a spaced dash so the slashes don't collide with the separator.
+  String _scorePair(Competition comp, Competitor? fav, Competitor? opp) {
+    String s(Competitor? c) {
+      if (c == null) return '–';
+      if (comp.scoreKind == 'cricket') {
+        final runs = cricketScoreParts(c).runs;
+        return runs.isEmpty ? '–' : runs;
+      }
+      return c.score?.display.isNotEmpty == true ? c.score!.display : '–';
+    }
+
+    final sep = comp.scoreKind == 'cricket' ? ' – ' : '–';
+    return '${s(fav)}$sep${s(opp)}';
   }
 
   /// The favorite's competitor within a competition (by id; abbr fallback).

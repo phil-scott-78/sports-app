@@ -34,11 +34,20 @@ class HomeShell extends ConsumerWidget {
 class FloatingNavBar extends StatelessWidget {
   final int index;
   final ValueChanged<int> onChange;
-  const FloatingNavBar({super.key, required this.index, required this.onChange});
+  const FloatingNavBar(
+      {super.key, required this.index, required this.onChange});
 
   static const _items = [
-    (icon: Icons.sports_score_outlined, active: Icons.sports_score, label: 'Scores'),
-    (icon: Icons.emoji_events_outlined, active: Icons.emoji_events, label: 'Leagues'),
+    (
+      icon: Icons.sports_score_outlined,
+      active: Icons.sports_score,
+      label: 'Scores'
+    ),
+    (
+      icon: Icons.emoji_events_outlined,
+      active: Icons.emoji_events,
+      label: 'Leagues'
+    ),
     (icon: Icons.settings_outlined, active: Icons.settings, label: 'Settings'),
   ];
 
@@ -58,7 +67,8 @@ class FloatingNavBar extends StatelessWidget {
           stops: const [0.0, 0.7],
         ),
       ),
-      padding: EdgeInsets.only(left: 14, right: 14, top: 20, bottom: bottom + 12),
+      padding:
+          EdgeInsets.only(left: 14, right: 14, top: 20, bottom: bottom + 12),
       child: Container(
         padding: const EdgeInsets.all(7),
         decoration: BoxDecoration(
@@ -107,39 +117,54 @@ class _NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 240),
-        curve: Curves.easeOutCubic,
-        height: 46,
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        decoration: BoxDecoration(
-          color: selected ? cs.onSurface : Colors.transparent,
-          borderRadius: BorderRadius.circular(999),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 23, color: selected ? cs.surface : cs.onSurfaceVariant),
-            if (selected) ...[
-              const SizedBox(width: 8),
-              Flexible(
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 13.5,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -0.1,
-                    color: cs.surface,
+    // The visual label only renders when selected, so expose it (and the button/
+    // selected roles) to screen readers explicitly — otherwise the two inactive
+    // tabs are unlabeled icons and the nav is unusable with TalkBack/VoiceOver.
+    // ExcludeSemantics drops the visual subtree's nodes so the label, when
+    // visible, isn't announced twice. (It sits below the GestureDetector so the
+    // tap action is preserved.)
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: label,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: ExcludeSemantics(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 240),
+            curve: Curves.easeOutCubic,
+            height: 46,
+            margin: const EdgeInsets.symmetric(horizontal: 2),
+            decoration: BoxDecoration(
+              color: selected ? cs.onSurface : Colors.transparent,
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon,
+                    size: 23,
+                    color: selected ? cs.surface : cs.onSurfaceVariant),
+                if (selected) ...[
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: -0.1,
+                        color: cs.surface,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ],
-          ],
+                ],
+              ],
+            ),
+          ),
         ),
       ),
     );

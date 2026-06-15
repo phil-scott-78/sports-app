@@ -111,19 +111,29 @@ class _PickLeaguePage extends ConsumerWidget {
                     onTap: () => _pick(context, key, name),
                   );
 
+              // Only leagues whose ESPN /teams returns a roster can be favorited;
+              // individual sports (golf/tennis/MMA/NASCAR) have none, so omit them
+              // rather than dead-ending on "No teams found" (F1 keeps its constructors).
               if (followed.isNotEmpty) {
-                children.add(const SectionHeader('Followed'));
-                for (final key in followed) {
-                  final lg = byKey[key];
-                  children.add(leagueTile(key, lg?.name ?? key, region: lg?.region));
+                final tiles = [
+                  for (final key in followed)
+                    if (byKey[key]?.hasTeams ?? true)
+                      leagueTile(key, byKey[key]?.name ?? key, region: byKey[key]?.region),
+                ];
+                if (tiles.isNotEmpty) {
+                  children.add(const SectionHeader('Followed'));
+                  children.addAll(tiles);
                 }
               }
 
               for (final s in sports) {
+                final tiles = [
+                  for (final lg in s.leagues)
+                    if (lg.hasTeams) leagueTile(lg.key, lg.name, region: lg.region),
+                ];
+                if (tiles.isEmpty) continue;
                 children.add(SectionHeader(sportLabel(s.sport)));
-                for (final lg in s.leagues) {
-                  children.add(leagueTile(lg.key, lg.name, region: lg.region));
-                }
+                children.addAll(tiles);
               }
               return ListView(children: children);
             },

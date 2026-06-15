@@ -36,14 +36,23 @@ class Api {
     try {
       r = await http.get(_uri(path, q)).timeout(AppConfig.httpTimeout);
     } catch (e) {
-      throw ApiException(0, 'Network error — check the worker URL and your connection.');
+      throw ApiException(
+          0, 'Network error — check the worker URL and your connection.');
     }
     if (r.statusCode != 200) throw ApiException(r.statusCode, r.body);
-    return jsonDecode(r.body);
+    // Decode inside the boundary: a 200 with a non-JSON body (a CDN/edge HTML
+    // error page, an empty/truncated payload) would otherwise throw a raw
+    // FormatException straight into the UI instead of a friendly message.
+    try {
+      return jsonDecode(r.body);
+    } catch (_) {
+      throw ApiException(0, 'Unexpected response from the server.');
+    }
   }
 
   Future<ScoresResponse> scores(String league, {String? date}) async {
-    final j = await _get('/v1/scores/$league', {if (date != null) 'date': date});
+    final j =
+        await _get('/v1/scores/$league', {if (date != null) 'date': date});
     return ScoresResponse.fromJson(Map<String, dynamic>.from(j as Map));
   }
 
@@ -53,7 +62,8 @@ class Api {
   }
 
   Future<Standings> standings(String league, {int? season}) async {
-    final j = await _get('/v1/standings/$league', {if (season != null) 'season': '$season'});
+    final j = await _get(
+        '/v1/standings/$league', {if (season != null) 'season': '$season'});
     return Standings.fromJson(Map<String, dynamic>.from(j as Map));
   }
 
@@ -83,7 +93,8 @@ class Api {
     final j = Map<String, dynamic>.from(await _get('/v1/overview') as Map);
     final out = <String, LeagueStateInfo>{};
     for (final e in (j['leagues'] as List? ?? const [])) {
-      final info = LeagueStateInfo.fromJson(Map<String, dynamic>.from(e as Map));
+      final info =
+          LeagueStateInfo.fromJson(Map<String, dynamic>.from(e as Map));
       out[info.key] = info;
     }
     return out;

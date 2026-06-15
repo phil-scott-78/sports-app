@@ -4,7 +4,7 @@
 // normalized through the EXACT same path as the scoreboard — no fork.
 
 import { resolve } from '../../schema/tools/resolve.mjs';
-import { buildEvent, https, darkLogoOf } from './normalize.js';
+import { normalizeScoreboard, buildEvent, https, darkLogoOf } from './normalize.js';
 
 // ---- teams list (the favorites picker) --------------------------------------
 // ESPN: { sports:[{ leagues:[{ teams:[{ team:{...} }] }] }] }
@@ -83,4 +83,51 @@ export function normalizeTeamCard(reg, key, teamId, schedule) {
     next,
     anyLive: live != null,
   };
+}
+
+// ---- scoreboard fallback (national teams / tournaments) ----------------------
+// ESPN's team-schedule endpoint returns events:[] for national teams and many
+// tournament squads (their fixtures live under other ESPN league ids), and a club's
+// in-progress game can also lag behind the live scoreboard. So when the schedule
+// gave us NO live game, backfill the card from the league scoreboard — the exact
+// same canonical slate the Scores feed renders — picking the competition that
+// involves this team. Pure: takes the raw scoreboard, returns a patched card.
+export function applyScoreboardFallback(reg, key, teamId, card, sb) {
+  const norm = normalizeScoreboard(reg, key, sb);
+  const id = String(teamId);
+  const compFor = ev => ev.competitions.find(c => c.competitors.some(x => x.id === id));
+  const mine = norm.events.filter(ev => compFor(ev));
+  if (!mine.length) return card;
+
+  let { live, last, next } = card;
+  for (const ev of mine) {
+    const c = compFor(ev);
+    const ms = Date.parse(ev.start) || 0;
+    const ph = c.status.phase;
+    if (ph === 'live') {
+      if (!live || (Date.parse(live.start) || 0) > ms) live = ev;            // earliest-started live
+    } else if (c.status.ended || ph === 'final') {
+      if (!last || (Date.parse(last.start) || 0) < ms) last = ev;            // most-recent ended
+    } else if (ph === 'scheduled') {
+      if (!next || (Date.parse(next.start) || 0) > ms) next = ev;            // earliest upcoming
+    }
+  }
+
+  // Fill team identity from the scoreboard competitor when the (empty) schedule
+  // gave us none — otherwise the card header renders blank.
+  let team = card.team;
+  if (!team.displayName || !team.logo) {
+    const ev = live || last || next;
+    const me = ev && compFor(ev)?.competitors.find(x => x.id === id);
+    if (me) team = {
+      ...team,
+      displayName: team.displayName || me.displayName,
+      abbreviation: team.abbreviation || me.abbreviation,
+      logo: team.logo || me.logo,
+      logoDark: team.logoDark || me.logoDark,
+      color: team.color || me.color,
+    };
+  }
+
+  return { ...card, team, live, last, next, anyLive: live != null };
 }

@@ -16,10 +16,11 @@ import { fetchScoreboard, fetchStandings, fetchSummary, fetchTeams, fetchTeamSch
 import { normalizeScoreboard } from './normalize.js';
 import { normalizeSummary } from './summary.js';
 import { normalizeStandings } from './standings.js';
-import { normalizeTeams, normalizeTeamCard } from './team.js';
+import { normalizeTeams, normalizeTeamCard, applyScoreboardFallback } from './team.js';
 import { buildCatalog } from './catalog.js';
 import { classifyLeague } from './overview.js';
-import { leagueKeys } from '../../schema/tools/resolve.mjs';
+import { TTL, idleTtl } from './ttl.js';
+import { leagueKeys, resolve } from '../../schema/tools/resolve.mjs';
 
 // Max leagues the /overview fan-out will fetch in one invocation — kept under
 // Cloudflare's 50-subrequest-per-invocation cap (with headroom). See the route.
@@ -88,8 +89,11 @@ export default {
           }));
           // A coarse season pulse changes slowly and the fan-out is heavy, so it
           // deliberately does NOT follow the scores endpoint's 15s-when-live
-          // rule — a flat 5m keeps the shared refresh cheap (one pass per TTL).
-          return json({ updated: now.toISOString(), leagues }, { ttl: 300 });
+          // rule — a flat 5m keeps the shared refresh cheap. But when a league is
+          // live or has a game TODAY (the today→live flip we'd otherwise hide for
+          // 5m), tighten to 1m so the pulse dot catches kickoff promptly.
+          const active = leagues.some((l) => l.state === 'live' || l.state === 'today');
+          return json({ updated: now.toISOString(), leagues }, { ttl: active ? TTL.overviewActive : TTL.overview });
         });
       }
 
@@ -102,17 +106,23 @@ export default {
           if (route === 'scores') {
             const sb = await fetchScoreboard(key, url.searchParams.get('date') || undefined);
             const data = normalizeScoreboard(registry, key, sb);
-            return json(data, { ttl: data.anyLive ? 15 : 300 }); // live = 15s, idle = 5m
+            // live = 15s; else 5m, but 30s near a scheduled kickoff (see ttl.js).
+            return json(data, { ttl: data.anyLive ? TTL.scoresLive : idleTtl(data.nextStartMs, Date.now()) });
           }
           if (route === 'summary') {
             if (!eventId) return json({ error: 'missing event id', hint: '/v1/summary/{sport}/{league}/{eventId}' }, { status: 400, ttl: 300 });
             const raw = await fetchSummary(key, eventId);
             const data = normalizeSummary(registry, key, raw);
-            return json(data, { ttl: data.live ? 20 : 300 }); // box scores tick slower than the score
+            // box scores tick slower than the score; near kickoff, poll the flip in.
+            return json(data, { ttl: data.live ? TTL.summaryLive : idleTtl(data.nextStartMs, Date.now()) });
           }
           const season = url.searchParams.get('season') || new Date().getFullYear();
           const raw = await fetchStandings(key, season);
-          return json({ league: key, season: Number(season), groups: normalizeStandings(raw) }, { ttl: 3600 });
+          // Per-family preferred columns (from the registry) so the app shows W/L/PCT/GB
+          // for NBA — not ESPN's meaningless internal "points" — while keeping PTS for
+          // soccer/NHL. Absent → the app falls back to its generic heuristic.
+          const columns = resolve(registry, key).standingsColumns || null;
+          return json({ league: key, season: Number(season), columns, groups: normalizeStandings(raw) }, { ttl: 3600 });
         });
       }
 
@@ -138,7 +148,15 @@ export default {
           return json({ error: 'missing team id', hint: '/v1/team/{sport}/{league}/{teamId}' }, { status: 400, ttl: 300 });
         return cached(req, ctx, async () => {
           const schedule = await fetchTeamSchedule(key, eventId);
-          const data = normalizeTeamCard(registry, key, eventId, schedule);
+          let data = normalizeTeamCard(registry, key, eventId, schedule);
+          // The team-schedule endpoint is empty for national teams/tournament squads
+          // (and can lag a club's live game) — when it gave us no live game, backfill
+          // from the league scoreboard so a favorited team's live game always shows.
+          if (!data.live) {
+            try {
+              data = applyScoreboardFallback(registry, key, eventId, data, await fetchScoreboard(key));
+            } catch { /* scoreboard optional — keep the schedule-only card */ }
+          }
           return json(data, { ttl: data.anyLive ? 15 : 300 }); // live = 15s, idle = 5m (mirrors scores)
         });
       }

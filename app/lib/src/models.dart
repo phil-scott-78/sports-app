@@ -3,15 +3,17 @@
 // the worker's output (worker/src/normalize.js).
 
 // ---- parse helpers ----------------------------------------------------------
-int? _int(dynamic v) =>
-    v is int ? v : (v is num ? v.toInt() : (v is String ? int.tryParse(v) : null));
+int? _int(dynamic v) => v is int
+    ? v
+    : (v is num ? v.toInt() : (v is String ? int.tryParse(v) : null));
 num? _num(dynamic v) => v is num ? v : (v is String ? num.tryParse(v) : null);
 String _str(dynamic v) => v == null ? '' : v.toString();
 String? _strOrNull(dynamic v) => v?.toString();
 bool _bool(dynamic v) => v == true;
 List<dynamic> _list(dynamic v) => v is List ? v : const [];
-Map<String, dynamic> _map(dynamic v) =>
-    v is Map ? v.map((k, val) => MapEntry(k.toString(), val)) : <String, dynamic>{};
+Map<String, dynamic> _map(dynamic v) => v is Map
+    ? v.map((k, val) => MapEntry(k.toString(), val))
+    : <String, dynamic>{};
 
 // ---- scores response --------------------------------------------------------
 class ScoresResponse {
@@ -25,6 +27,12 @@ class ScoresResponse {
   final String? day;
   final DateTime? updated;
   final bool anyLive;
+
+  /// Soonest scheduled kickoff in this slate (epoch ms), or null when nothing is
+  /// scheduled. The worker surfaces this (worker/src/normalize.js) so the client
+  /// can tighten its idle poll near kickoff — otherwise the idle→live flip is
+  /// hidden for a full idle window at the most-watched moment. See [kickoffSoonMs].
+  final int? nextStartMs;
   final List<SportEvent> events;
 
   ScoresResponse({
@@ -36,6 +44,7 @@ class ScoresResponse {
     this.day,
     required this.updated,
     required this.anyLive,
+    this.nextStartMs,
     required this.events,
   });
 
@@ -48,6 +57,7 @@ class ScoresResponse {
         day: _strOrNull(j['day']),
         updated: DateTime.tryParse(_str(j['updated']))?.toLocal(),
         anyLive: _bool(j['anyLive']),
+        nextStartMs: _int(j['nextStartMs']),
         events: _list(j['events'])
             .map((e) => SportEvent.fromJson(_map(e)))
             .toList(growable: false),
@@ -89,8 +99,38 @@ class SportEvent {
     required this.competitions,
   });
 
-  /// The primary competition (most sports have exactly one; F1 has several).
-  Competition? get main => competitions.isEmpty ? null : competitions.first;
+  /// The competition to foreground. Most events have exactly one; a racing weekend
+  /// has several (ESPN orders them FP1/FP2/FP3/Qual/Race) — surface the live session,
+  /// else the Race, else the first, so the card never headlines practice. Tennis also
+  /// nests many competitions but is expanded one-card-per-match upstream, so `.first`
+  /// stays correct there.
+  Competition? get main {
+    if (competitions.isEmpty) return null;
+    if (competitions.length > 1) {
+      for (final c in competitions) {
+        if (c.status.live) return c;
+      }
+      for (final c in competitions) {
+        if ((c.label ?? '').toLowerCase() == 'race') return c;
+      }
+    }
+    return competitions.first;
+  }
+
+  /// A shallow copy carrying a single competition — used to explode a tennis
+  /// tournament (one ESPN event nesting many matches) into one card per match.
+  SportEvent withCompetition(Competition c) => SportEvent(
+        id: id,
+        name: name,
+        shortName: shortName,
+        start: start,
+        neutralSite: neutralSite,
+        venue: venue,
+        broadcasts: broadcasts,
+        notes: notes,
+        links: links,
+        competitions: [c],
+      );
 
   factory SportEvent.fromJson(Map<String, dynamic> j) => SportEvent(
         id: _str(j['id']),
@@ -99,8 +139,7 @@ class SportEvent {
         start: DateTime.tryParse(_str(j['start']))?.toLocal(),
         neutralSite: _bool(j['neutralSite']),
         venue: j['venue'] == null ? null : Venue.fromJson(_map(j['venue'])),
-        broadcasts:
-            _list(j['broadcasts']).map(_str).toList(growable: false),
+        broadcasts: _list(j['broadcasts']).map(_str).toList(growable: false),
         notes: _list(j['notes']).map(_str).toList(growable: false),
         links: EventLinks.fromJson(_map(j['links'])),
         competitions: _list(j['competitions'])
@@ -181,8 +220,12 @@ class Competition {
             .map((c) => Competitor.fromJson(_map(c)))
             .toList(growable: false),
         method: j['method'] == null ? null : Method.fromJson(_map(j['method'])),
-        meta: j['meta'] == null ? null : CompetitionMeta.fromJson(_map(j['meta'])),
-        situation: j['situation'] == null ? null : Situation.fromJson(_map(j['situation'])),
+        meta: j['meta'] == null
+            ? null
+            : CompetitionMeta.fromJson(_map(j['meta'])),
+        situation: j['situation'] == null
+            ? null
+            : Situation.fromJson(_map(j['situation'])),
       );
 }
 
@@ -299,7 +342,13 @@ class Periods {
 
 class Competitor {
   final String kind, id, displayName;
-  final String? shortName, abbreviation, logo, logoDark, color, altColor, homeAway;
+  final String? shortName,
+      abbreviation,
+      logo,
+      logoDark,
+      color,
+      altColor,
+      homeAway;
   final int? order, startOrder, rank, seed;
   final bool? winner;
   final Score? score;
@@ -350,10 +399,8 @@ class Competitor {
   });
 
   bool get isWinner => winner == true;
-  String get label =>
-      abbreviation ?? shortName ?? displayName;
-  String? get recordSummary =>
-      records.isEmpty ? null : records.first.summary;
+  String get label => abbreviation ?? shortName ?? displayName;
+  String? get recordSummary => records.isEmpty ? null : records.first.summary;
 
   factory Competitor.fromJson(Map<String, dynamic> j) => Competitor(
         kind: _str(j['kind']),
@@ -394,7 +441,8 @@ class Competitor {
         hits: _int(j['hits']),
         errors: _int(j['errors']),
         form: _strOrNull(j['form']),
-        vehicle: j['vehicle'] == null ? null : Vehicle.fromJson(_map(j['vehicle'])),
+        vehicle:
+            j['vehicle'] == null ? null : Vehicle.fromJson(_map(j['vehicle'])),
       );
 
   /// Baseball R/H/E availability.
@@ -403,7 +451,8 @@ class Competitor {
 
 class Vehicle {
   final String? number, manufacturer, team, owner, sponsor;
-  Vehicle({this.number, this.manufacturer, this.team, this.owner, this.sponsor});
+  Vehicle(
+      {this.number, this.manufacturer, this.team, this.owner, this.sponsor});
   factory Vehicle.fromJson(Map<String, dynamic> j) => Vehicle(
         number: _strOrNull(j['number']),
         manufacturer: _strOrNull(j['manufacturer']),
@@ -467,7 +516,9 @@ class PeriodScore {
         display: _str(j['display']),
         tiebreak: _num(j['tiebreak']),
         setWinner: j['setWinner'] is bool ? j['setWinner'] as bool : null,
-        cricket: j['cricket'] == null ? null : CricketScore.fromJson(_map(j['cricket'])),
+        cricket: j['cricket'] == null
+            ? null
+            : CricketScore.fromJson(_map(j['cricket'])),
         holesPlayed: _int(j['holesPlayed']),
       );
 }
@@ -496,6 +547,7 @@ class CricketScore {
         allOut: j['allOut'] is bool ? j['allOut'] as bool : null,
         reason: _strOrNull(j['reason']),
       );
+
   /// '161/5' — runs/wickets, the way a fan reads a cricket innings.
   String get rw => '${runs ?? 0}/${wickets ?? 0}';
 }
@@ -554,7 +606,12 @@ class Method {
 }
 
 class CompetitionMeta {
-  final String? round, seriesSummary, cardSegment, flag, cricketClass, cricketSummary;
+  final String? round,
+      seriesSummary,
+      cardSegment,
+      flag,
+      cricketClass,
+      cricketSummary;
   final bool? featured, hadPlayoff;
   CompetitionMeta({
     this.round,
@@ -594,6 +651,11 @@ class CatalogSport {
 class CatalogLeague {
   final String key, league, name;
   final String? abbr, region, priority, leagueId;
+
+  /// Whether ESPN's /teams returns a roster (drives the favorites picker). False
+  /// for individual sports (golf/tennis/MMA/NASCAR); true for team sports + F1.
+  /// Defaults true so an older worker (no flag) hides nothing.
+  final bool hasTeams;
   CatalogLeague({
     required this.key,
     required this.league,
@@ -602,6 +664,7 @@ class CatalogLeague {
     this.region,
     this.priority,
     this.leagueId,
+    this.hasTeams = true,
   });
   factory CatalogLeague.fromJson(Map<String, dynamic> j) => CatalogLeague(
         key: _str(j['key']),
@@ -611,6 +674,7 @@ class CatalogLeague {
         region: _strOrNull(j['region']),
         priority: _strOrNull(j['priority']),
         leagueId: _strOrNull(j['leagueId']),
+        hasTeams: j['hasTeams'] != false,
       );
 }
 
@@ -622,7 +686,11 @@ class CatalogLeague {
 class LeagueStateInfo {
   final String key, state, detail;
   final bool live;
-  LeagueStateInfo({required this.key, required this.state, required this.detail, required this.live});
+  LeagueStateInfo(
+      {required this.key,
+      required this.state,
+      required this.detail,
+      required this.live});
   factory LeagueStateInfo.fromJson(Map<String, dynamic> j) => LeagueStateInfo(
         key: _str(j['key']),
         state: _str(j['state']),
@@ -635,15 +703,33 @@ class LeagueStateInfo {
 class Standings {
   final String league;
   final int? season;
+
+  /// Per-family preferred columns (ordered ESPN stat key + display label), from the
+  /// worker/registry. Empty → render with the generic heuristic.
+  final List<StandingColumn> columns;
   final List<StandingsGroup> groups;
-  Standings({required this.league, this.season, required this.groups});
+  Standings(
+      {required this.league,
+      this.season,
+      this.columns = const [],
+      required this.groups});
   factory Standings.fromJson(Map<String, dynamic> j) => Standings(
         league: _str(j['league']),
         season: _int(j['season']),
+        columns: _list(j['columns'])
+            .map((c) => StandingColumn.fromJson(_map(c)))
+            .toList(growable: false),
         groups: _list(j['groups'])
             .map((g) => StandingsGroup.fromJson(_map(g)))
             .toList(growable: false),
       );
+}
+
+class StandingColumn {
+  final String key, label;
+  StandingColumn({required this.key, required this.label});
+  factory StandingColumn.fromJson(Map<String, dynamic> j) =>
+      StandingColumn(key: _str(j['key']), label: _str(j['label']));
 }
 
 class StandingsGroup {
@@ -666,15 +752,19 @@ class StandingsRow {
   factory StandingsRow.fromJson(Map<String, dynamic> j) => StandingsRow(
         team: StandingsTeam.fromJson(_map(j['team'])),
         rank: _int(j['rank']),
-        stats: _map(j['stats'])
-            .map((k, v) => MapEntry(k, _str(v))),
+        stats: _map(j['stats']).map((k, v) => MapEntry(k, _str(v))),
       );
 }
 
 class StandingsTeam {
   final String id, name;
   final String? abbr, logo, logoDark;
-  StandingsTeam({required this.id, required this.name, this.abbr, this.logo, this.logoDark});
+  StandingsTeam(
+      {required this.id,
+      required this.name,
+      this.abbr,
+      this.logo,
+      this.logoDark});
   factory StandingsTeam.fromJson(Map<String, dynamic> j) => StandingsTeam(
         id: _str(j['id']),
         name: _str(j['name']),
@@ -761,7 +851,8 @@ class TeamCard {
   SportEvent? get primary => live ?? last ?? next;
 
   factory TeamCard.fromJson(Map<String, dynamic> j) {
-    SportEvent? ev(dynamic v) => v == null ? null : SportEvent.fromJson(_map(v));
+    SportEvent? ev(dynamic v) =>
+        v == null ? null : SportEvent.fromJson(_map(v));
     return TeamCard(
       league: _str(j['league']),
       sport: _str(j['sport']),
@@ -847,7 +938,9 @@ class GameSummary {
         scoringPlays: _list(j['scoringPlays'])
             .map((p) => SummaryPlay.fromJson(_map(p)))
             .toList(growable: false),
-        periodLines: j['periodLines'] == null ? null : PeriodLines.fromJson(_map(j['periodLines'])),
+        periodLines: j['periodLines'] == null
+            ? null
+            : PeriodLines.fromJson(_map(j['periodLines'])),
         lineups: _list(j['lineups'])
             .map((l) => Lineup.fromJson(_map(l)))
             .toList(growable: false),
@@ -865,8 +958,10 @@ class TeamStatRow {
   final String label;
   final String? away, home;
   TeamStatRow({required this.label, this.away, this.home});
-  factory TeamStatRow.fromJson(Map<String, dynamic> j) =>
-      TeamStatRow(label: _str(j['label']), away: _strOrNull(j['away']), home: _strOrNull(j['home']));
+  factory TeamStatRow.fromJson(Map<String, dynamic> j) => TeamStatRow(
+      label: _str(j['label']),
+      away: _strOrNull(j['away']),
+      home: _strOrNull(j['home']));
 }
 
 class BoxGroup {
@@ -877,7 +972,9 @@ class BoxGroup {
   factory BoxGroup.fromJson(Map<String, dynamic> j) => BoxGroup(
         title: _str(j['title']),
         columns: _list(j['columns']).map(_str).toList(growable: false),
-        teams: _list(j['teams']).map((t) => BoxTeam.fromJson(_map(t))).toList(growable: false),
+        teams: _list(j['teams'])
+            .map((t) => BoxTeam.fromJson(_map(t)))
+            .toList(growable: false),
       );
 }
 
@@ -888,7 +985,9 @@ class BoxTeam {
   factory BoxTeam.fromJson(Map<String, dynamic> j) => BoxTeam(
         side: _strOrNull(j['side']),
         abbr: _strOrNull(j['abbr']),
-        rows: _list(j['rows']).map((r) => BoxRow.fromJson(_map(r))).toList(growable: false),
+        rows: _list(j['rows'])
+            .map((r) => BoxRow.fromJson(_map(r)))
+            .toList(growable: false),
       );
 }
 
@@ -937,7 +1036,11 @@ class PeriodLines {
   final String unit;
   final List<String> labels;
   final SidePeriods away, home;
-  PeriodLines({required this.unit, required this.labels, required this.away, required this.home});
+  PeriodLines(
+      {required this.unit,
+      required this.labels,
+      required this.away,
+      required this.home});
   factory PeriodLines.fromJson(Map<String, dynamic> j) => PeriodLines(
         unit: _str(j['unit']),
         labels: _list(j['labels']).map(_str).toList(growable: false),
@@ -960,7 +1063,12 @@ class SidePeriods {
 class Lineup {
   final String? side, abbr, formation;
   final List<LineupPlayer> starters, bench;
-  Lineup({this.side, this.abbr, this.formation, required this.starters, required this.bench});
+  Lineup(
+      {this.side,
+      this.abbr,
+      this.formation,
+      required this.starters,
+      required this.bench});
   factory Lineup.fromJson(Map<String, dynamic> j) => Lineup(
         side: _strOrNull(j['side']),
         abbr: _strOrNull(j['abbr']),

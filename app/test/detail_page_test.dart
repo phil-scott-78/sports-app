@@ -170,7 +170,11 @@ void main() {
     ));
     await tester.pump(const Duration(milliseconds: 50));
 
-    expect(find.byType(PeriodLinesGrid), findsOneWidget, reason: 'NFL quarter grid (summary tier)');
+    // The per-quarter grid now renders from the CHEAP scoreboard linescores
+    // (LineScoreTable) so it survives a /summary failure; the rich summary grid
+    // (PeriodLinesGrid) stands down to avoid a duplicate "Line score" section.
+    expect(find.byType(LineScoreTable), findsOneWidget, reason: 'NFL quarter grid (cheap tier)');
+    expect(find.byType(PeriodLinesGrid), findsNothing, reason: 'rich grid suppressed when cheap rendered');
     expect(find.byType(SummaryTeamStats), findsOneWidget);
     expect(find.byType(ScoringFeed), findsOneWidget);
     expect(find.byType(BoxScoreTable), findsOneWidget);

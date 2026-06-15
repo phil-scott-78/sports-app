@@ -19,12 +19,81 @@ class LiveSituationStrip extends StatelessWidget {
 
   /// True when there's something worth showing for a live game.
   static bool has(Competition comp) =>
-      comp.status.live && (comp.situation?.hasBaseball ?? false);
+      comp.status.live &&
+      ((comp.situation?.hasBaseball ?? false) || (comp.situation?.hasGridiron ?? false));
 
   @override
   Widget build(BuildContext context) {
     final s = comp.situation;
     if (s == null) return const SizedBox.shrink();
+    if (s.hasBaseball) return _baseball(context, s);
+    if (s.hasGridiron) return _gridiron(context, s);
+    return const SizedBox.shrink();
+  }
+
+  static String _ordinalDown(int d) =>
+      d == 1 ? '1st' : d == 2 ? '2nd' : d == 3 ? '3rd' : '${d}th';
+
+  /// Gridiron live strip: down & distance, possession, red-zone, last play.
+  Widget _gridiron(BuildContext context, Situation s) {
+    final cs = Theme.of(context).colorScheme;
+    final ext = BinanceColors.of(context);
+    // Resolve the possession team-id to its abbreviation against the competitors.
+    String? posAbbr;
+    if (s.possession != null) {
+      for (final c in comp.competitors) {
+        if (c.id == s.possession) {
+          posAbbr = c.abbreviation ?? c.shortName ?? c.displayName;
+          break;
+        }
+      }
+    }
+    final dd = s.downDistanceText ??
+        (s.down != null && s.distance != null ? '${_ordinalDown(s.down!)} & ${s.distance}' : null);
+    return DetailPanel(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          if (dd != null)
+            Expanded(
+              child: Text(dd,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: numStyle(size: 20, weight: FontWeight.w800)),
+            )
+          else
+            const Spacer(),
+          if (posAbbr != null) ...[
+            Icon(Icons.sports_football, size: 15, color: cs.onSurfaceVariant),
+            const SizedBox(width: 4),
+            Text(posAbbr,
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+          ],
+          if (s.isRedZone == true) ...[
+            const SizedBox(width: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: ext.live.withValues(alpha: 0.16),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text('RED ZONE',
+                  style: TextStyle(
+                      fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.3, color: ext.live)),
+            ),
+          ],
+        ]),
+        if (s.lastPlay != null) ...[
+          const SizedBox(height: 8),
+          Text(s.lastPlay!,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant)),
+        ],
+      ]),
+    );
+  }
+
+  Widget _baseball(BuildContext context, Situation s) {
     final cs = Theme.of(context).colorScheme;
 
     final count = (s.balls != null && s.strikes != null) ? '${s.balls}-${s.strikes}' : null;

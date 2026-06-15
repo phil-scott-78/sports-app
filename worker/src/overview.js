@@ -94,7 +94,6 @@ export function classifyLeague(raw, now = new Date()) {
   }
 
   const todayEvents = events.filter((e) => easternDayMs(e.date) === today);
-  const liveToday = todayEvents.some((e) => e?.competitions?.[0]?.status?.type?.state === 'in');
 
   // "Game today" fires from a calendar range ONLY when that range is a single
   // bounded event (golf/F1: the event's `date` is its start, so on Sat/Sun only
@@ -106,6 +105,15 @@ export function classifyLeague(raw, now = new Date()) {
   const gameWindows = ranges.filter((r) => !r.nested && (r.end - r.start) <= EVENT_SPAN_CAP);
   const hasToday =
     todayEvents.length > 0 || gameWindows.some((r) => today >= r.start && today <= r.end);
+
+  // A live golf final round / F1 race day is ONE multi-day event dated to its START
+  // day, so it never lands in todayEvents — the league would read a static "Games
+  // today" instead of "Live now". Detect it via the event window: any in-progress
+  // event whose MULTI-day window (r.end > r.start, so a single-day day-calendar slot
+  // with a stale overrunning game can't false-positive) spans today.
+  const liveToday = todayEvents.some((e) => e?.competitions?.[0]?.status?.type?.state === 'in')
+    || (events.some((e) => e?.competitions?.[0]?.status?.type?.state === 'in')
+        && gameWindows.some((r) => r.end > r.start && today >= r.start && today <= r.end));
 
   // Nearest game day on either side — from real events AND every calendar range
   // (season buckets included, so a not-yet-started season still yields its

@@ -1,5 +1,22 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
+import '../config.dart';
+
+/// True when [startMs] (an epoch-ms kickoff) sits within [AppConfig.kickoffWindow]
+/// of now on either side — a scheduled game about to start, or just started while
+/// ESPN still reports 'pre'. Polling screens use this to tighten the idle cadence
+/// near kickoff so the idle→live flip isn't hidden behind the 60s idle poll
+/// (mirrors the worker's idleTtl). Null → false.
+bool kickoffSoonMs(int? startMs) {
+  if (startMs == null) return false;
+  final dt = startMs - DateTime.now().millisecondsSinceEpoch;
+  final w = AppConfig.kickoffWindow.inMilliseconds;
+  return dt <= w && dt >= -w;
+}
+
+/// [kickoffSoonMs] for a [DateTime] kickoff (a single event's start time).
+bool kickoffSoon(DateTime? start) =>
+    start == null ? false : kickoffSoonMs(start.millisecondsSinceEpoch);
 
 /// Lifecycle-aware repeating poll for a [State]. Mix it in, then:
 ///   - call [attachPoll] in `initState` and [detachPoll] in `dispose`
@@ -26,7 +43,9 @@ mixin LifecyclePoll<T extends StatefulWidget> on State<T> {
   }
 
   void detachPoll() {
-    if (_pollObserver != null) WidgetsBinding.instance.removeObserver(_pollObserver!);
+    if (_pollObserver != null) {
+      WidgetsBinding.instance.removeObserver(_pollObserver!);
+    }
     _pollObserver = null;
     _pollTimer?.cancel();
     _pollTimer = null;

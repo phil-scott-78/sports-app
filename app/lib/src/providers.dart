@@ -8,7 +8,8 @@ import 'models.dart';
 
 /// Overridden in main() with the loaded instance.
 final sharedPrefsProvider = Provider<SharedPreferences>(
-  (ref) => throw UnimplementedError('sharedPrefsProvider must be overridden in main()'),
+  (ref) => throw UnimplementedError(
+      'sharedPrefsProvider must be overridden in main()'),
 );
 
 // ---- settings ---------------------------------------------------------------
@@ -47,7 +48,8 @@ class SettingsNotifier extends Notifier<Settings> {
   }
 }
 
-final settingsProvider = NotifierProvider<SettingsNotifier, Settings>(SettingsNotifier.new);
+final settingsProvider =
+    NotifierProvider<SettingsNotifier, Settings>(SettingsNotifier.new);
 
 /// Active bottom-nav tab (0=Scores). Lets the Scores tab pause its poll timer
 /// while the user is on Leagues/Settings (IndexedStack keeps it mounted).
@@ -71,8 +73,7 @@ final viewDateProvider = StateProvider<DateTime?>((ref) => null);
 final espnTodayProvider = StateProvider<DateTime?>((ref) => null);
 
 /// YYYYMMDD for an ESPN `dates=` query.
-String _ymd(DateTime d) =>
-    '${d.year.toString().padLeft(4, '0')}'
+String _ymd(DateTime d) => '${d.year.toString().padLeft(4, '0')}'
     '${d.month.toString().padLeft(2, '0')}'
     '${d.day.toString().padLeft(2, '0')}';
 
@@ -84,7 +85,8 @@ class FollowedNotifier extends Notifier<List<String>> {
     return p.getStringList('followed') ?? List.of(AppConfig.defaultFollowed);
   }
 
-  void _save() => ref.read(sharedPrefsProvider).setStringList('followed', state);
+  void _save() =>
+      ref.read(sharedPrefsProvider).setStringList('followed', state);
 
   bool isFollowed(String key) => state.contains(key);
 
@@ -112,7 +114,8 @@ class FollowedNotifier extends Notifier<List<String>> {
   }
 }
 
-final followedProvider = NotifierProvider<FollowedNotifier, List<String>>(FollowedNotifier.new);
+final followedProvider =
+    NotifierProvider<FollowedNotifier, List<String>>(FollowedNotifier.new);
 
 // ---- favorite teams ---------------------------------------------------------
 /// User's favorite teams, persisted as one JSON entry per shared_preferences
@@ -149,7 +152,9 @@ class FavoriteTeamsNotifier extends Notifier<List<FavoriteTeam>> {
   }
 
   void remove(String league, String teamId) {
-    state = state.where((f) => !(f.league == league && f.teamId == teamId)).toList();
+    state = state
+        .where((f) => !(f.league == league && f.teamId == teamId))
+        .toList();
     _save();
   }
 
@@ -158,10 +163,12 @@ class FavoriteTeamsNotifier extends Notifier<List<FavoriteTeam>> {
 }
 
 final favoriteTeamsProvider =
-    NotifierProvider<FavoriteTeamsNotifier, List<FavoriteTeam>>(FavoriteTeamsNotifier.new);
+    NotifierProvider<FavoriteTeamsNotifier, List<FavoriteTeam>>(
+        FavoriteTeamsNotifier.new);
 
 // ---- api + data -------------------------------------------------------------
-final apiProvider = Provider<Api>((ref) => Api(ref.watch(settingsProvider.select((s) => s.baseUrl))));
+final apiProvider = Provider<Api>(
+    (ref) => Api(ref.watch(settingsProvider.select((s) => s.baseUrl))));
 
 /// Which sport family the Scores tab is filtered to ('all' = every followed
 /// sport). Drives the Header-C sport-filter chip row; the feed itself is fetched
@@ -185,7 +192,8 @@ final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
   String? date;
   if (view != null) {
     final now = DateTime.now();
-    final anchor = ref.read(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
+    final anchor =
+        ref.read(espnTodayProvider) ?? DateTime(now.year, now.month, now.day);
     if (!DateUtils.isSameDay(view, anchor)) date = _ymd(view);
   }
   return Future.wait(leagues.map((key) async {
@@ -197,11 +205,13 @@ final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
   }));
 });
 
-final catalogProvider = FutureProvider<List<CatalogSport>>((ref) => ref.watch(apiProvider).catalog());
+final catalogProvider = FutureProvider<List<CatalogSport>>(
+    (ref) => ref.watch(apiProvider).catalog());
 
 /// Every team in a league, for the favorites picker. Keyed by league key;
-/// server-cached ~1 day, so the picker is cheap.
-final teamsProvider = FutureProvider.family<List<TeamRef>, String>(
+/// server-cached ~1 day, so the picker is cheap. autoDispose: only needed while
+/// the picker is open — drop the per-league cache once it closes.
+final teamsProvider = FutureProvider.autoDispose.family<List<TeamRef>, String>(
   (ref, league) => ref.watch(apiProvider).teams(league),
 );
 
@@ -209,7 +219,8 @@ final teamsProvider = FutureProvider.family<List<TeamRef>, String>(
 /// failed team becomes a FavoriteTeamFeed.error rather than failing the section.
 /// Independent of [viewDateProvider] — favorites are "my teams now" (the Scores
 /// rail shows them only on the today view).
-final favoritesFeedProvider = FutureProvider<List<FavoriteTeamFeed>>((ref) async {
+final favoritesFeedProvider =
+    FutureProvider<List<FavoriteTeamFeed>>((ref) async {
   final api = ref.watch(apiProvider);
   final favs = ref.watch(favoriteTeamsProvider);
   return Future.wait(favs.map((f) async {
@@ -223,25 +234,33 @@ final favoritesFeedProvider = FutureProvider<List<FavoriteTeamFeed>>((ref) async
 
 /// Per-league season-pulse states for the Leagues list (worker-computed, keyed
 /// by league key). Cached server-side; the app just fetches it when Leagues opens.
-final overviewProvider =
-    FutureProvider<Map<String, LeagueStateInfo>>((ref) => ref.watch(apiProvider).overview());
+final overviewProvider = FutureProvider<Map<String, LeagueStateInfo>>(
+    (ref) => ref.watch(apiProvider).overview());
 
 /// One league's scores for a specific day (`date` = YYYYMMDD, or null = ESPN's
 /// default slate). Powers the league-detail Schedule tab's date strip.
 typedef LeagueDayKey = ({String league, String? date});
 
-final leagueDayScoresProvider = FutureProvider.family<ScoresResponse, LeagueDayKey>(
+/// autoDispose: the schedule strip and game-detail page that read this are
+/// transient (a pushed route / a per-day key that changes as you browse) and
+/// poll-refresh while mounted, so dropping the cache when nothing listens is the
+/// right lifecycle and frees the retained ScoresResponse per day/event opened.
+final leagueDayScoresProvider =
+    FutureProvider.autoDispose.family<ScoresResponse, LeagueDayKey>(
   (ref, k) => ref.watch(apiProvider).scores(k.league, date: k.date),
 );
 
-final standingsProvider = FutureProvider.family<Standings, String>(
+final standingsProvider = FutureProvider.autoDispose.family<Standings, String>(
   (ref, league) => ref.watch(apiProvider).standings(league),
 );
 
 /// Rich game-detail summary (box score, scoring feed, lineups), fetched lazily
-/// only when a game detail is opened. Keyed by (league, eventId).
+/// only when a game detail is opened. Keyed by (league, eventId). autoDispose:
+/// without it every game ever opened in a session leaks its ~10KB GameSummary —
+/// the detail page re-fetches on mount, so dropping it on pop is lossless.
 typedef SummaryKey = ({String league, String eventId});
 
-final summaryProvider = FutureProvider.family<GameSummary, SummaryKey>(
+final summaryProvider =
+    FutureProvider.autoDispose.family<GameSummary, SummaryKey>(
   (ref, k) => ref.watch(apiProvider).summary(k.league, k.eventId),
 );

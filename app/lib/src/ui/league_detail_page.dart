@@ -34,7 +34,8 @@ class LeagueDetailPage extends ConsumerWidget {
               tooltip: followed ? 'Unfollow' : 'Follow',
               icon: Icon(followed ? Icons.star : Icons.star_border,
                   color: followed ? BinanceColors.of(context).accent : null),
-              onPressed: () => ref.read(followedProvider.notifier).toggle(league),
+              onPressed: () =>
+                  ref.read(followedProvider.notifier).toggle(league),
             ),
           ],
           bottom: TabBar(
@@ -124,8 +125,7 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
     super.dispose();
   }
 
-  String _ymd(DateTime d) =>
-      '${d.year.toString().padLeft(4, '0')}'
+  String _ymd(DateTime d) => '${d.year.toString().padLeft(4, '0')}'
       '${d.month.toString().padLeft(2, '0')}'
       '${d.day.toString().padLeft(2, '0')}';
 
@@ -139,7 +139,13 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
     if (ref.read(settingsProvider).baseUrl.trim().isEmpty) return null;
     final resp = ref.read(leagueDayScoresProvider(_key)).valueOrNull;
     if (resp?.anyLive == true) return AppConfig.refreshLive; // 15s
-    if (DateUtils.isSameDay(_selected, _today)) return AppConfig.refreshIdle; // 60s
+    if (DateUtils.isSameDay(_selected, _today)) {
+      // Near a kickoff today → 30s so a tip-off isn't hidden for a full 60s idle
+      // window; otherwise the 60s idle cadence.
+      return kickoffSoonMs(resp?.nextStartMs)
+          ? AppConfig.refreshNearKickoff
+          : AppConfig.refreshIdle;
+    }
     return null; // a past/future day with nothing live never changes
   }
 
@@ -148,14 +154,17 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
 
   @override
   void onForeground() {
-    if (DateUtils.isSameDay(_selected, _today)) onPoll(); // catch up the live day
+    if (DateUtils.isSameDay(_selected, _today)) {
+      onPoll(); // catch up the live day
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context); // AutomaticKeepAlive
     // Re-pace once a fetch settles: anyLive may have flipped (tip-off / final).
-    ref.listen<AsyncValue<ScoresResponse>>(leagueDayScoresProvider(_key), (_, next) {
+    ref.listen<AsyncValue<ScoresResponse>>(leagueDayScoresProvider(_key),
+        (_, next) {
       if (!next.isLoading) repace();
     });
     return Column(
@@ -195,7 +204,9 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
           loading: () => const Center(child: CircularProgressIndicator()),
           error: (e, _) => ListView(children: [
             const SizedBox(height: 80),
-            ErrorView(message: '$e', onRetry: () => ref.invalidate(leagueDayScoresProvider(key))),
+            ErrorView(
+                message: '$e',
+                onRetry: () => ref.invalidate(leagueDayScoresProvider(key))),
           ]),
           data: (resp) {
             final events = [...resp.events]..sort(_byStart);
@@ -223,7 +234,9 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
                       event: ev,
                       sport: resp.sport,
                       leagueKey: widget.league,
-                      leagueName: resp.leagueName.isNotEmpty ? resp.leagueName : widget.name,
+                      leagueName: resp.leagueName.isNotEmpty
+                          ? resp.leagueName
+                          : widget.name,
                     ),
                   );
                 },

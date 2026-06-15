@@ -16,6 +16,13 @@ class ScoresApp extends ConsumerWidget {
       theme: buildTheme(Brightness.light),
       darkTheme: buildTheme(Brightness.dark),
       themeMode: mode,
+      // Honour system text scaling, but cap it: the dense, fixed-geometry score
+      // grids (line scores, box scores, leaderboards) misalign/clip past ~1.3×.
+      // This keeps large-font users legible without overflowing the core surface.
+      builder: (context, child) => MediaQuery.withClampedTextScaling(
+        maxScaleFactor: 1.3,
+        child: child!,
+      ),
       home: const HomeShell(),
     );
   }

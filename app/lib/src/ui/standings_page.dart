@@ -37,20 +37,29 @@ class StandingsView extends ConsumerWidget {
             final children = <Widget>[];
             for (final g in standings.groups) {
               if (g.name.isNotEmpty) children.add(SectionHeader(g.name));
-              children.add(ListCard(child: _GroupTable(group: g, columns: _columnsFor(g))));
+              children.add(ListCard(child: _GroupTable(group: g, columns: _columnsFor(g, standings.columns))));
             }
             return ListView(children: children);
           },
         );
   }
 
-  List<MapEntry<String, String>> _columnsFor(StandingsGroup g) {
+  List<MapEntry<String, String>> _columnsFor(StandingsGroup g, List<StandingColumn> preferred) {
     final present = <String>{};
     for (final r in g.rows) {
       present.addAll(r.stats.keys);
     }
-    final cols = _preferred.entries.where((e) => present.contains(e.key)).take(5).toList();
-    return cols;
+    // Worker-provided per-family columns win — so NBA shows W/L/PCT/GB, not ESPN's
+    // meaningless internal "points" — keeping soccer/NHL's real PTS. Fall back to
+    // the generic priority heuristic when the worker sent none (older worker / golf).
+    if (preferred.isNotEmpty) {
+      final cols = preferred
+          .where((c) => present.contains(c.key))
+          .map((c) => MapEntry(c.key, c.label))
+          .toList();
+      if (cols.isNotEmpty) return cols;
+    }
+    return _preferred.entries.where((e) => present.contains(e.key)).take(5).toList();
   }
 }
 

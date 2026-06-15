@@ -51,7 +51,9 @@ String sportLabel(String sport) {
     case 'rugby-league':
       return 'Rugby League';
     default:
-      return sport.isEmpty ? sport : sport[0].toUpperCase() + sport.substring(1);
+      return sport.isEmpty
+          ? sport
+          : sport[0].toUpperCase() + sport.substring(1);
   }
 }
 
@@ -65,12 +67,17 @@ String scheduledLabel(DateTime start) {
   // Whole calendar days between the two local midnights. Round (not truncate)
   // the elapsed hours so a 23h/25h daylight-saving day can't drop a day —
   // `Duration.inDays` would turn a spring-forward "tomorrow" (23h) into "today".
-  final diff =
-      (DateUtils.dateOnly(s).difference(DateUtils.dateOnly(DateTime.now())).inHours / 24).round();
+  final diff = (DateUtils.dateOnly(s)
+              .difference(DateUtils.dateOnly(DateTime.now()))
+              .inHours /
+          24)
+      .round();
   if (diff == 0) return time;
   if (diff == 1) return 'Tomorrow $time';
   if (diff == -1) return 'Yesterday $time';
-  if (diff > 1 && diff < 7) return '${DateFormat.E().format(s)} $time'; // "Sat 7:00 PM"
+  if (diff > 1 && diff < 7) {
+    return '${DateFormat.E().format(s)} $time'; // "Sat 7:00 PM"
+  }
   return '${DateFormat.MMMd().format(s)} $time'; // "Jun 20 7:00 PM"
 }
 
@@ -83,7 +90,9 @@ String scheduledLabel(DateTime start) {
 /// Non-espncdn / non-crest URLs pass through untouched.
 String espnSized(String url, int px) {
   final u = Uri.tryParse(url);
-  if (u == null || !u.host.endsWith('espncdn.com') || !u.path.startsWith('/i/')) {
+  if (u == null ||
+      !u.host.endsWith('espncdn.com') ||
+      !u.path.startsWith('/i/')) {
     return url;
   }
   final w = px > 500 ? 500 : px;
@@ -125,7 +134,7 @@ Color? teamTint(String? primary, String? alt, bool dark) {
 
 /// A very subtle team-color gradient, reserved for **final** head-to-head
 /// competitions — the "result is in" moment. It washes from the winning team's
-/// side (home tints the top-left, away the bottom-right, matching their crests'
+/// side (away tints the top-left, home the bottom-right, matching their crests'
 /// positions); a draw with no single winner tints from both corners. Low alpha
 /// so it reads as a sheen, not a fill. Returns null for field sports, any
 /// non-final game, and when the relevant team(s) expose no usable color.
@@ -134,8 +143,12 @@ Color? teamTint(String? primary, String? alt, bool dark) {
 /// never drift (winner emphasis stays team-color by design).
 Gradient? winnerWashGradient(BuildContext context, Competition comp) {
   if (comp.isField || !comp.status.isFinal) return null;
-  final a = comp.home ?? (comp.competitors.isNotEmpty ? comp.competitors.first : null);
-  final b = comp.away ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
+  // a = away (top-left), b = home (bottom-right) — matches the away-first card/hero
+  // layout so the wash tints from the winning team's actual on-screen corner.
+  final a = comp.away ??
+      (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+  final b =
+      comp.home ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
   final dark = Theme.of(context).brightness == Brightness.dark;
   final alpha = dark ? 0.16 : 0.10;
 
@@ -186,13 +199,20 @@ class Crest extends StatelessWidget {
   final String? darkUrl;
   final String fallback;
   final double size;
-  const Crest({super.key, required this.url, this.darkUrl, required this.fallback, this.size = 28});
+  const Crest(
+      {super.key,
+      required this.url,
+      this.darkUrl,
+      required this.fallback,
+      this.size = 28});
 
   @override
   Widget build(BuildContext context) {
     final initials = fallback.isEmpty
         ? '?'
-        : fallback.substring(0, fallback.length < 3 ? fallback.length : 3).toUpperCase();
+        : fallback
+            .substring(0, fallback.length < 3 ? fallback.length : 3)
+            .toUpperCase();
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final dpr = MediaQuery.maybeDevicePixelRatioOf(context) ?? 2.0;
     final px = (size * (dpr > 3 ? 3 : dpr)).ceil();
@@ -216,13 +236,19 @@ class Crest extends StatelessWidget {
     final Widget child;
     if (isDark && hasDark) {
       // dark variant first; on 404 fall back to the light logo, then initials.
-      child = net(espnSized(darkUrl!, px), onError: hasLight ? () => net(espnSized(url!, px)) : box);
+      child = net(espnSized(darkUrl!, px),
+          onError: hasLight ? () => net(espnSized(url!, px)) : box);
     } else if (hasLight) {
       child = net(espnSized(url!, px));
     } else {
-      return box();
+      return ExcludeSemantics(child: box());
     }
-    return ClipRRect(borderRadius: BorderRadius.circular(6), child: child);
+    // The crest is decorative — team identity is carried by the adjacent name
+    // text everywhere a Crest renders, so keep the logo out of the a11y tree
+    // rather than announcing an unlabeled image.
+    return ExcludeSemantics(
+      child: ClipRRect(borderRadius: BorderRadius.circular(6), child: child),
+    );
   }
 
   Widget _box(BuildContext context, String text) {
@@ -257,7 +283,8 @@ String statusLabel(Status status, DateTime? startTime) {
     return status.periodLabel.isNotEmpty ? status.periodLabel : 'LIVE';
   }
   if (status.isFinal) {
-    return status.shortDetail ?? (status.periodLabel.isNotEmpty ? status.periodLabel : 'Final');
+    return status.shortDetail ??
+        (status.periodLabel.isNotEmpty ? status.periodLabel : 'Final');
   }
   if (status.isScheduled) {
     return startTime != null
@@ -265,6 +292,35 @@ String statusLabel(Status status, DateTime? startTime) {
         : (status.periodLabel.isNotEmpty ? status.periodLabel : 'Scheduled');
   }
   return status.shortDetail ?? (status.phase.isEmpty ? '—' : status.phase);
+}
+
+/// Cricket's headline score, split for a slot built for "103". ESPN ships a
+/// composite that is far too long to drop in raw — a chase carries its overs +
+/// target ("161/5 (18/20 ov, target 156)"), a first-class innings stacks two
+/// totals ("469 & 246/6d"), sometimes both ("263 & 44/1 (15 ov, target 453)").
+/// We keep the runs/wickets line (both innings when present) and peel ESPN's
+/// trailing parenthetical — "(overs[, target])", "(f/o)" — off it, surfacing just
+/// the overs as a compact tempo tag. The full per-innings story (overs, target,
+/// declared/all-out) lives in the Innings panel on the detail screen.
+///
+/// `runs` is '' only when there's no score yet (pre-innings) — callers dash it.
+typedef CricketScoreParts = ({String runs, String? overs});
+
+final RegExp _cricketOvers =
+    RegExp(r'([\d.]+)\s*(?:/\s*\d+)?\s*ov', caseSensitive: false);
+
+CricketScoreParts cricketScoreParts(Competitor c) {
+  final raw = c.score?.display.trim() ?? '';
+  if (raw.isEmpty) return (runs: '', overs: null);
+  // Runs line = everything before ESPN's first parenthetical group; the
+  // parenthetical only ever carries overs/target/follow-on context.
+  final paren = raw.indexOf('(');
+  final runs = (paren < 0 ? raw : raw.substring(0, paren)).trim();
+  // Overs from ESPN's "(… ov)" tag: "18/20 ov" → 18, "99.3 ov" → 99.3. It always
+  // sits in the parenthetical and reflects the *current* innings, so a two-innings
+  // line surfaces just the live-innings overs (and a settled total carries none).
+  final m = _cricketOvers.firstMatch(raw);
+  return (runs: runs.isEmpty ? raw : runs, overs: m == null ? null : '${m.group(1)} ov');
 }
 
 /// Status pill. Live games get a green-tinted pill with a pulsing dot (the
@@ -286,11 +342,14 @@ class StatusChip extends StatelessWidget {
     final text = statusLabel(status, startTime);
     // Live: green tint + green pulsing dot carry the signal, label stays high-
     // contrast body. Final reads in body; everything else sits muted.
-    final Color bg = status.live ? live.withValues(alpha: 0.14) : cs.surfaceContainerHighest;
-    final Color fg = (status.live || status.isFinal) ? cs.onSurface : cs.onSurfaceVariant;
+    final Color bg =
+        status.live ? live.withValues(alpha: 0.14) : cs.surfaceContainerHighest;
+    final Color fg =
+        (status.live || status.isFinal) ? cs.onSurface : cs.onSurfaceVariant;
     return Container(
       padding: EdgeInsets.fromLTRB(status.live ? 8 : 9, 4, 9, 4),
-      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
+      decoration:
+          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -325,7 +384,19 @@ class _LiveDotState extends State<LiveDot> with SingleTickerProviderStateMixin {
   late final AnimationController _c = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 950),
-  )..repeat(reverse: true);
+  );
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Honour reduce-motion: hold a steady dot instead of pulsing 60fps forever.
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _c.stop();
+      _c.value = 1.0;
+    } else if (!_c.isAnimating) {
+      _c.repeat(reverse: true);
+    }
+  }
 
   @override
   void dispose() {
@@ -335,26 +406,30 @@ class _LiveDotState extends State<LiveDot> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _c,
-      builder: (context, _) {
-        final t = 0.45 + 0.55 * _c.value; // 0.45 → 1.0
-        return Container(
-          width: 7,
-          height: 7,
-          decoration: BoxDecoration(
-            color: widget.color.withValues(alpha: t),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: widget.color.withValues(alpha: 0.55 * t),
-                blurRadius: 5 * t,
-                spreadRadius: 0.5,
-              ),
-            ],
-          ),
-        );
-      },
+    // RepaintBoundary isolates this 60fps repaint into its own layer so it can't
+    // dirty neighbouring widgets in the same card/chip.
+    return RepaintBoundary(
+      child: AnimatedBuilder(
+        animation: _c,
+        builder: (context, _) {
+          final t = 0.45 + 0.55 * _c.value; // 0.45 → 1.0
+          return Container(
+            width: 7,
+            height: 7,
+            decoration: BoxDecoration(
+              color: widget.color.withValues(alpha: t),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: widget.color.withValues(alpha: 0.55 * t),
+                  blurRadius: 5 * t,
+                  spreadRadius: 0.5,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -399,10 +474,13 @@ class DateChip extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                isToday ? 'TODAY' : DateFormat.E().format(date).toUpperCase(), // "SAT"
+                isToday
+                    ? 'TODAY'
+                    : DateFormat.E().format(date).toUpperCase(), // "SAT"
                 style: TextStyle(
                   fontSize: 11,
-                  height: 1.0, // pin leading so the chip's height is deterministic
+                  height:
+                      1.0, // pin leading so the chip's height is deterministic
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.3,
                   color: fg,
@@ -413,7 +491,8 @@ class DateChip extends StatelessWidget {
                 '${date.day}',
                 style: numStyle(
                   size: 16,
-                  weight: (selected || isToday) ? FontWeight.w800 : FontWeight.w600,
+                  weight:
+                      (selected || isToday) ? FontWeight.w800 : FontWeight.w600,
                   color: fg,
                 ).copyWith(height: 1.0),
               ),
@@ -442,7 +521,8 @@ Future<T?> showBlurredBottomSheet<T>({
   return showGeneralDialog<T>(
     context: context,
     barrierDismissible: false, // the scrim's GestureDetector owns dismissal
-    barrierColor: Colors.transparent, // we paint the dim ourselves, under the blur
+    barrierColor:
+        Colors.transparent, // we paint the dim ourselves, under the blur
     transitionDuration: const Duration(milliseconds: 280),
     pageBuilder: (context, _, __) => Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -453,7 +533,9 @@ Future<T?> showBlurredBottomSheet<T>({
           // inner chip/strip gestures still win within their own bounds.
           behavior: HitTestBehavior.opaque,
           onVerticalDragEnd: (d) {
-            if ((d.primaryVelocity ?? 0) > 250) Navigator.of(context).maybePop();
+            if ((d.primaryVelocity ?? 0) > 250) {
+              Navigator.of(context).maybePop();
+            }
           },
           child: Material(
             color: cs.surface,
@@ -493,14 +575,17 @@ Future<T?> showBlurredBottomSheet<T>({
               behavior: HitTestBehavior.opaque,
               onTap: () => Navigator.of(context).maybePop(),
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: blurSigma * t, sigmaY: blurSigma * t),
-                child: ColoredBox(color: Colors.black.withValues(alpha: dimOpacity * t)),
+                filter: ImageFilter.blur(
+                    sigmaX: blurSigma * t, sigmaY: blurSigma * t),
+                child: ColoredBox(
+                    color: Colors.black.withValues(alpha: dimOpacity * t)),
               ),
             ),
           ),
           // Panel slides up from the bottom edge.
           Positioned.fill(
-            child: FractionalTranslation(translation: Offset(0, 1 - t), child: page),
+            child: FractionalTranslation(
+                translation: Offset(0, 1 - t), child: page),
           ),
         ],
       );
@@ -523,7 +608,8 @@ class DetailPanel extends StatelessWidget {
         color: cs.surfaceContainerLow,
         borderRadius: BorderRadius.circular(12),
         // Hairline borders read as a surface step, not an ink line — Binance.
-        border: Border.all(color: BinanceColors.of(context).cardBorder, width: 1),
+        border:
+            Border.all(color: BinanceColors.of(context).cardBorder, width: 1),
       ),
       child: child,
     );
@@ -544,7 +630,10 @@ class SectionHeader extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 18, 16, 8),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(fontWeight: FontWeight.w700),
         ),
       );
 }
@@ -577,7 +666,8 @@ class ListCard extends StatelessWidget {
         color: cs.surfaceContainerLow,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: BinanceColors.of(context).cardBorder, width: 1),
+          side:
+              BorderSide(color: BinanceColors.of(context).cardBorder, width: 1),
         ),
         clipBehavior: Clip.antiAlias,
         child: onTap == null ? child : InkWell(onTap: onTap, child: child),
@@ -615,7 +705,12 @@ class EmptyState extends StatelessWidget {
   final String title;
   final String? subtitle;
   final Widget? action;
-  const EmptyState({super.key, required this.icon, required this.title, this.subtitle, this.action});
+  const EmptyState(
+      {super.key,
+      required this.icon,
+      required this.title,
+      this.subtitle,
+      this.action});
 
   @override
   Widget build(BuildContext context) {
@@ -628,10 +723,14 @@ class EmptyState extends StatelessWidget {
           children: [
             Icon(icon, size: 48, color: cs.onSurfaceVariant),
             const SizedBox(height: 16),
-            Text(title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.titleMedium),
+            Text(title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.titleMedium),
             if (subtitle != null) ...[
               const SizedBox(height: 8),
-              Text(subtitle!, textAlign: TextAlign.center, style: TextStyle(color: cs.onSurfaceVariant)),
+              Text(subtitle!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: cs.onSurfaceVariant)),
             ],
             if (action != null) ...[const SizedBox(height: 20), action!],
           ],
@@ -648,7 +747,8 @@ class SetupPrompt extends StatelessWidget {
   Widget build(BuildContext context) => const EmptyState(
         icon: Icons.cloud_off_outlined,
         title: 'Connect your scores worker',
-        subtitle: 'Open the Settings tab and paste your Cloudflare worker URL, e.g.\nhttps://sports-scores.you.workers.dev',
+        subtitle:
+            'Open the Settings tab and paste your Cloudflare worker URL, e.g.\nhttps://sports-scores.you.workers.dev',
       );
 }
 
