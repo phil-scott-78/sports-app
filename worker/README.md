@@ -49,7 +49,7 @@ imports:
   ../../schema/tools/resolve.mjs      (shared inheritance resolver — same one the CLI tools use)
 ```
 
-**Why it survives the free tier** (see `../SPEC.md` §11, `../schema/SCHEMA.md` §6):
+**Why it survives the free tier** (see `../schema/SCHEMA.md` §6):
 - **Cache API + stale-while-revalidate.** A stale response is served instantly
   while one background refresh (`ctx.waitUntil`) hits ESPN. All users of a league
   share that single fetch → ~4 upstream calls/min/league regardless of traffic.
@@ -73,12 +73,24 @@ handling all flow from the resolved profile.
 
 ```bash
 npm install            # pulls wrangler
-npm test               # live smoke test of the normalizer across 8 families (no wrangler needed)
+npm test               # mock synth (offline) + live smoke test of the normalizer (no wrangler needed)
 npm run dev            # wrangler dev — local worker at http://localhost:8787
 npm run deploy         # wrangler deploy — to <name>.workers.dev (free)
+npm run mock           # OFFLINE mock backend (same routes, replays captured ESPN) — see mock/README.md
+npm run capture        # (re)capture the fixtures the mock replays (needs network)
 ```
 
-`npm test` runs `test/normalize.test.mjs`, which fetches real ESPN scoreboards
+### Offline mock (test every UI state without live data)
+
+`npm run mock` serves the **same routes + canonical contract** at
+`http://localhost:8787`, but offline — it replays captured ESPN fixtures through
+the real normalizers and synthesizes a current **final + live + scheduled** slate
+for *every* sport, so you can walk every UI permutation without depending on the
+real-world calendar. Point the app at it (Settings → worker URL;
+`10.0.2.2:8787` on the Android emulator). Full details + how to refresh the
+fixtures: **`mock/README.md`**.
+
+`npm test` runs `test/mock.test.mjs` (offline) then `test/normalize.test.mjs`, which fetches real ESPN scoreboards
 and asserts canonical invariants (valid phase, 2-vs-N competitors by layout,
 numeric scores parsed, period-driven overtime, F1 multi-competition, tennis
 groupings). It needs only Node — the normalizer is pure, so no build/deploy to

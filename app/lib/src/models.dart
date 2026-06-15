@@ -83,6 +83,8 @@ class SportEvent {
   final Venue? venue;
   final List<String> broadcasts;
   final List<String> notes;
+  final String? weekLabel; // 'Week 5' / 'Round 15' (gridiron/rugby, regular season)
+  final Weather? weather; // outdoor venues only
   final EventLinks links;
   final List<Competition> competitions;
 
@@ -95,6 +97,8 @@ class SportEvent {
     required this.venue,
     required this.broadcasts,
     required this.notes,
+    this.weekLabel,
+    this.weather,
     required this.links,
     required this.competitions,
   });
@@ -128,6 +132,8 @@ class SportEvent {
         venue: venue,
         broadcasts: broadcasts,
         notes: notes,
+        weekLabel: weekLabel,
+        weather: weather,
         links: links,
         competitions: [c],
       );
@@ -141,6 +147,9 @@ class SportEvent {
         venue: j['venue'] == null ? null : Venue.fromJson(_map(j['venue'])),
         broadcasts: _list(j['broadcasts']).map(_str).toList(growable: false),
         notes: _list(j['notes']).map(_str).toList(growable: false),
+        weekLabel: _strOrNull(j['weekLabel']),
+        weather:
+            j['weather'] == null ? null : Weather.fromJson(_map(j['weather'])),
         links: EventLinks.fromJson(_map(j['links'])),
         competitions: _list(j['competitions'])
             .map((c) => Competition.fromJson(_map(c)))
@@ -163,6 +172,23 @@ class Venue {
       [if (city != null) city, if (country != null) country].join(', ');
 }
 
+/// Outdoor-game weather (emitted only for non-indoor venues).
+class Weather {
+  final num? temperature;
+  final String? condition;
+  Weather({this.temperature, this.condition});
+  factory Weather.fromJson(Map<String, dynamic> j) => Weather(
+        temperature: _num(j['temperature']),
+        condition: _strOrNull(j['condition']),
+      );
+
+  /// '77° · Cloudy' — temp and/or sky, whichever is present.
+  String get summary => [
+        if (temperature != null) '${temperature!.round()}°',
+        if (condition != null && condition!.isNotEmpty) condition,
+      ].join(' · ');
+}
+
 class EventLinks {
   final String? web, box;
   EventLinks({this.web, this.box});
@@ -180,6 +206,7 @@ class Competition {
   final Method? method;
   final CompetitionMeta? meta;
   final Situation? situation; // live "what's happening now" strip
+  final List<ScoringEvent> events; // cheap goal/card timeline (soccer/rugby)
 
   Competition({
     required this.id,
@@ -193,6 +220,7 @@ class Competition {
     required this.method,
     required this.meta,
     this.situation,
+    this.events = const [],
     this.label,
   });
 
@@ -226,7 +254,66 @@ class Competition {
         situation: j['situation'] == null
             ? null
             : Situation.fromJson(_map(j['situation'])),
+        events: _list(j['events'])
+            .map((e) => ScoringEvent.fromJson(_map(e)))
+            .toList(growable: false),
       );
+
+  /// Red cards by side, derived from the cheap [events] timeline — drives the
+  /// card's "man down" glyph. Empty map when none.
+  Map<String, int> get redCardsBySide {
+    final out = <String, int>{};
+    for (final e in events) {
+      if (e.type == 'red-card' && e.team != null) {
+        out[e.team!] = (out[e.team!] ?? 0) + 1;
+      }
+    }
+    return out;
+  }
+}
+
+/// One normalized timeline event (goal / card / try) from the cheap scoreboard
+/// `competition.details[]`. Mirrors canonical ScoringEvent.
+class ScoringEvent {
+  final String type; // goal | own-goal | penalty-goal | yellow-card | red-card | score | …
+  final String? team; // 'home' | 'away'
+  final String? clock; // "45'+2'"
+  final int? period;
+  final String? athlete; // scorer / booked player short name
+  final String? detail; // ESPN type text ('Goal', 'Yellow Card')
+  final num? scoreValue;
+  final bool ownGoal, penalty, redCard;
+  ScoringEvent({
+    required this.type,
+    this.team,
+    this.clock,
+    this.period,
+    this.athlete,
+    this.detail,
+    this.scoreValue,
+    this.ownGoal = false,
+    this.penalty = false,
+    this.redCard = false,
+  });
+  factory ScoringEvent.fromJson(Map<String, dynamic> j) {
+    final flags = _map(j['flags']);
+    return ScoringEvent(
+      type: _str(j['type']),
+      team: _strOrNull(j['team']),
+      clock: _strOrNull(j['clock']),
+      period: _int(j['period']),
+      athlete: _strOrNull(j['athlete']),
+      detail: _strOrNull(j['detail']),
+      scoreValue: _num(j['scoreValue']),
+      ownGoal: _bool(flags['ownGoal']),
+      penalty: _bool(flags['penalty']),
+      redCard: _bool(flags['redCard']),
+    );
+  }
+
+  bool get isGoal =>
+      type == 'goal' || type == 'own-goal' || type == 'penalty-goal';
+  bool get isCard => type == 'yellow-card' || type == 'red-card';
 }
 
 /// Live game situation — sport-agnostic union, only present keys are set.
@@ -235,6 +322,7 @@ class Situation {
   final int? balls, strikes, outs;
   final bool? onFirst, onSecond, onThird;
   final String? pitcher, batter, outsText;
+  final String? pitcherLine, batterLine; // live matchup lines ('0.2 IP, 0 ER' / '1-3')
   // gridiron
   final int? down, distance, homeTimeouts, awayTimeouts;
   final String? downDistanceText, possession;
@@ -250,6 +338,8 @@ class Situation {
     this.onThird,
     this.pitcher,
     this.batter,
+    this.pitcherLine,
+    this.batterLine,
     this.outsText,
     this.down,
     this.distance,
@@ -269,6 +359,8 @@ class Situation {
         onThird: j['onThird'] is bool ? j['onThird'] as bool : null,
         pitcher: _strOrNull(j['pitcher']),
         batter: _strOrNull(j['batter']),
+        pitcherLine: _strOrNull(j['pitcherLine']),
+        batterLine: _strOrNull(j['batterLine']),
         outsText: _strOrNull(j['outsText']),
         down: _int(j['down']),
         distance: _int(j['distance']),
@@ -358,7 +450,7 @@ class Competitor {
   final num? shootoutScore;
   final String? aggregateScore;
   final bool? advance;
-  // cheap-tier context already in the scoreboard (see DISPLAY-SPEC.md)
+  // cheap-tier context already in the scoreboard
   final Map<String, String> stats; // team stat line, keyed by ESPN abbr
   final List<Leader> leaders;
   final List<Probable> probables;
@@ -476,9 +568,20 @@ class Leader {
 
 class Probable {
   final String role, athlete;
-  Probable({required this.role, required this.athlete});
-  factory Probable.fromJson(Map<String, dynamic> j) =>
-      Probable(role: _str(j['role']), athlete: _str(j['athlete']));
+  final String? record; // MLB '(5-4, 3.30)'
+  final bool confirmed; // NHL goalie locked (vs projected)
+  Probable({
+    required this.role,
+    required this.athlete,
+    this.record,
+    this.confirmed = false,
+  });
+  factory Probable.fromJson(Map<String, dynamic> j) => Probable(
+        role: _str(j['role']),
+        athlete: _str(j['athlete']),
+        record: _strOrNull(j['record']),
+        confirmed: _bool(j['confirmed']),
+      );
 }
 
 class Score {
@@ -613,6 +716,7 @@ class CompetitionMeta {
       cricketClass,
       cricketSummary;
   final bool? featured, hadPlayoff;
+  final SeriesInfo? series; // structured playoff series → pip row
   CompetitionMeta({
     this.round,
     this.seriesSummary,
@@ -622,6 +726,7 @@ class CompetitionMeta {
     this.cricketSummary,
     this.featured,
     this.hadPlayoff,
+    this.series,
   });
   factory CompetitionMeta.fromJson(Map<String, dynamic> j) => CompetitionMeta(
         round: _strOrNull(j['round']),
@@ -632,7 +737,52 @@ class CompetitionMeta {
         cricketSummary: _strOrNull(j['cricketSummary']),
         featured: j['featured'] is bool ? j['featured'] as bool : null,
         hadPlayoff: j['hadPlayoff'] is bool ? j['hadPlayoff'] as bool : null,
+        series:
+            j['series'] == null ? null : SeriesInfo.fromJson(_map(j['series'])),
       );
+}
+
+/// Structured best-of-N playoff series (NBA/NHL/MLB-playoff). `wins(id)` reads a
+/// competitor's win count by id; `gamesToWin` is the clinch number (best-of-N).
+class SeriesInfo {
+  final String? type;
+  final int? total;
+  final bool completed;
+  final List<({String id, int wins})> competitors;
+  SeriesInfo({
+    this.type,
+    this.total,
+    this.completed = false,
+    required this.competitors,
+  });
+  factory SeriesInfo.fromJson(Map<String, dynamic> j) => SeriesInfo(
+        type: _strOrNull(j['type']),
+        total: _int(j['total']),
+        completed: _bool(j['completed']),
+        competitors: _list(j['competitors'])
+            .map((c) {
+              final m = _map(c);
+              return (id: _str(m['id']), wins: _int(m['wins']) ?? 0);
+            })
+            .toList(growable: false),
+      );
+
+  int wins(String id) {
+    for (final c in competitors) {
+      if (c.id == id) return c.wins;
+    }
+    return 0;
+  }
+
+  /// Games needed to clinch — ceil(total/2) for a best-of-N, else the max wins seen.
+  int get gamesToWin {
+    if (total != null && total! > 0) return (total! ~/ 2) + 1;
+    final maxWins =
+        competitors.fold<int>(0, (m, c) => c.wins > m ? c.wins : m);
+    return maxWins == 0 ? 1 : maxWins;
+  }
+
+  bool get isPlayoff => type == 'playoff' && competitors.length >= 2;
 }
 
 // ---- catalog ----------------------------------------------------------------

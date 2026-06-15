@@ -56,9 +56,26 @@ function checkResponse(key, r) {
       }
       // OT detection is period-driven, not string-driven
       if (c.periods.isOvertime) ok(c.periods.played > c.periods.regulation, `${key} ${ev.id}: isOvertime ⇒ played>regulation`);
+
+      // structured playoff series (when present): well-formed competitors with win counts
+      if (c.meta?.series) {
+        const s = c.meta.series;
+        ok(Array.isArray(s.competitors) && s.competitors.length >= 2
+          && s.competitors.every(x => x.id && Number.isFinite(x.wins)), `${key} ${ev.id}: series competitors well-formed`);
+      }
+      // cheap scoring timeline (when present): valid event types, team is home/away/absent
+      if (Array.isArray(c.events)) {
+        ok(c.events.every(e => SCORING_EVENT_TYPES.has(e.type)), `${key} ${ev.id}: scoring events typed`);
+        ok(c.events.every(e => e.team == null || e.team === 'home' || e.team === 'away'), `${key} ${ev.id}: scoring event side valid`);
+      }
     }
   }
 }
+
+const SCORING_EVENT_TYPES = new Set([
+  'goal', 'own-goal', 'penalty-goal', 'penalty-missed', 'yellow-card', 'red-card', 'substitution',
+  'touchdown', 'field-goal', 'extra-point', 'two-point', 'safety', 'hockey-goal', 'shootout-goal', 'score', 'other',
+]);
 
 function sampleLine(r) {
   const ev = r.events.find(e => e.competitions[0]?.status.live) || r.events.find(e => e.competitions.length) || r.events[0];

@@ -1,0 +1,410 @@
+{
+  "capturedAt": "2026-06-15T14:01:08.528Z",
+  "leagues": {
+    "soccer/eng.1": {
+      "events": 10,
+      "final": 10,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 20,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "soccer/ger.1": {
+      "events": 9,
+      "final": 9,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 18,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "soccer/esp.1": {
+      "events": 14,
+      "final": 20,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 20,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "soccer/ita.1": {
+      "events": 4,
+      "final": 0,
+      "live": 0,
+      "scheduled": 10,
+      "teams": 20,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "soccer/usa.1": {
+      "events": 14,
+      "final": 30,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 30,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "soccer/fra.1": {
+      "events": 4,
+      "final": 0,
+      "live": 0,
+      "scheduled": 9,
+      "teams": 18,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "soccer/uefa.champions": {
+      "events": 1,
+      "final": 1,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 36,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "soccer/uefa.europa": {
+      "events": 1,
+      "final": 1,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 36,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "soccer/fifa.world": {
+      "events": 6,
+      "final": 2,
+      "live": 0,
+      "scheduled": 4,
+      "teams": 48,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "football/college-football": {
+      "events": 4,
+      "final": 0,
+      "live": 0,
+      "scheduled": 99,
+      "teams": 755,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "soccer/fifa.wwc": {
+      "events": 2,
+      "final": 2,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 32,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "football/nfl": {
+      "events": 4,
+      "final": 0,
+      "live": 0,
+      "scheduled": 16,
+      "teams": 32,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "football/ufl": {
+      "events": 1,
+      "final": 1,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 8,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "football/cfl": {
+      "events": 1,
+      "final": 1,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 9,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "basketball/nba": {
+      "events": 6,
+      "final": 6,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 30,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "basketball/wnba": {
+      "events": 17,
+      "final": 14,
+      "live": 0,
+      "scheduled": 3,
+      "teams": 15,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "basketball/mens-college-basketball": {
+      "events": 14,
+      "final": 15,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 362,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "baseball/mlb": {
+      "events": 14,
+      "final": 14,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 30,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "basketball/womens-college-basketball": {
+      "events": 14,
+      "final": 17,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 361,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "basketball/nbl": {
+      "events": 2,
+      "final": 0,
+      "live": 0,
+      "scheduled": 2,
+      "teams": 10,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "baseball/college-baseball": {
+      "events": 16,
+      "final": 19,
+      "live": 0,
+      "scheduled": 2,
+      "teams": 437,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "baseball/college-softball": {
+      "events": 12,
+      "final": 12,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 446,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "hockey/nhl": {
+      "events": 6,
+      "final": 6,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 32,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "hockey/mens-college-hockey": {
+      "events": 14,
+      "final": 15,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 116,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "hockey/womens-college-hockey": {
+      "events": 14,
+      "final": 17,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 47,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "tennis/atp": {
+      "events": 4,
+      "final": 4,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "tennis/wta": {
+      "events": 8,
+      "final": 8,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "golf/pga": {
+      "events": 7,
+      "final": 7,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "golf/lpga": {
+      "events": 6,
+      "final": 5,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "golf/eur": {
+      "events": 7,
+      "final": 6,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "golf/champions-tour": {
+      "events": 6,
+      "final": 6,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "racing/f1": {
+      "events": 4,
+      "final": 4,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 11,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "racing/nascar-premier": {
+      "events": 4,
+      "final": 4,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "racing/irl": {
+      "events": 5,
+      "final": 4,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "mma/ufc": {
+      "events": 3,
+      "final": 3,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "mma/pfl": {
+      "events": 4,
+      "final": 3,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "mma/bellator": {
+      "events": 4,
+      "final": 4,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 0
+    },
+    "cricket/8048": {
+      "events": 7,
+      "final": 7,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "cricket/8634": {
+      "events": 7,
+      "final": 6,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "cricket/8052": {
+      "events": 5,
+      "final": 3,
+      "live": 2,
+      "scheduled": 0,
+      "teams": 0,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "rugby/180659": {
+      "events": 10,
+      "final": 10,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 6,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "rugby/164205": {
+      "events": 2,
+      "final": 0,
+      "live": 0,
+      "scheduled": 2,
+      "teams": 20,
+      "hasStandings": true,
+      "summaries": 1
+    },
+    "rugby/242041": {
+      "events": 11,
+      "final": 10,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 12,
+      "hasStandings": true,
+      "summaries": 3
+    },
+    "rugby/270559": {
+      "events": 14,
+      "final": 17,
+      "live": 0,
+      "scheduled": 0,
+      "teams": 14,
+      "hasStandings": true,
+      "summaries": 2
+    },
+    "rugby-league/3": {
+      "events": 9,
+      "final": 8,
+      "live": 0,
+      "scheduled": 1,
+      "teams": 19,
+      "hasStandings": true,
+      "summaries": 3
+    }
+  }
+}

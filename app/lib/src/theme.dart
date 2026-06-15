@@ -11,8 +11,7 @@ import 'package:flutter/material.dart';
 /// green/red stay strictly up/down semantics. Type runs Inter for copy and IBM
 /// Plex Sans for every number (tabular).
 ///
-/// See ../../DESIGN-binance.md for the full design language (and
-/// DESIGN-binance-source.md for the original Binance analysis it derives from).
+/// See ../../DESIGN-binance.md for the full design language.
 
 // ---- raw brand tokens -------------------------------------------------------
 const _yellow = Color(0xFFFCD535); // primary — the single brand voltage

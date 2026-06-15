@@ -75,14 +75,20 @@ class _ScheduleTab extends ConsumerStatefulWidget {
 
 class _ScheduleTabState extends ConsumerState<_ScheduleTab>
     with AutomaticKeepAliveClientMixin, LifecyclePoll {
-  // Window: a week back, two weeks ahead — enough to see recent results and the
-  // next fixtures for weekly leagues without an unbounded list.
-  static const int _past = 7;
-  static const int _future = 14;
+  // Window: a week and a half back, three weeks ahead — recent results + the next
+  // fixtures, dimming empty days. The strip's ANCHOR jumps a whole offseason to
+  // the opener when needed (see _computeFocus), so this window stays modest.
+  static const int _past = 10;
+  static const int _future = 21;
   static const double _chipExtent = 48 + 6; // chip width + separator
 
   late final DateTime _today;
+
+  /// The strip's centre. Normally today; in a deep offseason it jumps to the next
+  /// game day (e.g. the NFL opener) so the strip lands where the games are.
+  late DateTime _anchor;
   late DateTime _selected;
+  bool _userPicked = false; // a manual chip tap freezes the auto-focus
   late final ScrollController _strip;
   TabController? _tab;
   bool _onTop = true; // false while a game detail is pushed over this screen
@@ -95,8 +101,9 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
     super.initState();
     final n = DateTime.now();
     _today = DateTime(n.year, n.month, n.day);
+    _anchor = _today;
     _selected = _today;
-    // Open with today a couple of chips in from the left (recent days peeking).
+    // Open with the anchor a couple of chips in from the left (recent days peeking).
     _strip = ScrollController(initialScrollOffset: (_past - 1) * _chipExtent);
     attachPoll();
   }
@@ -130,6 +137,103 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
       '${d.day.toString().padLeft(2, '0')}';
 
   LeagueDayKey get _key => (league: widget.league, date: _ymd(_selected));
+
+  // Day at [offset] from the anchor, via the constructor (not Duration) so a DST
+  // boundary can't drift the midnight across a date line.
+  DateTime _dayAt(int offset) =>
+      DateTime(_anchor.year, _anchor.month, _anchor.day + offset);
+
+  DateTime _parseYmd(String s) => DateTime(int.parse(s.substring(0, 4)),
+      int.parse(s.substring(4, 6)), int.parse(s.substring(6, 8)));
+
+  // The range fetch key for the window centred on [anchor].
+  LeagueRangeKey _rangeKey(DateTime anchor) => (
+        league: widget.league,
+        start: _ymd(DateTime(anchor.year, anchor.month, anchor.day - _past)),
+        end: _ymd(DateTime(anchor.year, anchor.month, anchor.day + _future)),
+      );
+
+  // The today-centred window — the fixed-key signal the focus decision reads, so
+  // it converges to one value and never loops as the anchor moves.
+  LeagueRangeKey get _nearKey => _rangeKey(_today);
+
+  /// The day the strip should focus on: today when it has games; else the nearest
+  /// upcoming game day within the window; else (deep offseason) the next opener
+  /// from ESPN's default slate — which hands back next season's games (NFL in June
+  /// → September). Null while the inputs are still loading or nothing's upcoming.
+  DateTime? _computeFocus() {
+    final near = ref.watch(leagueScheduleDaysProvider(_nearKey)).valueOrNull;
+    if (near == null) return null; // wait for the near window
+    final todayKey = _ymd(_today);
+    if (near.contains(todayKey)) return _today; // games today → stay put
+    // YYYYMMDD sorts lexicographically → nearest upcoming game day in the window.
+    String? best;
+    for (final d in near) {
+      if (d.compareTo(todayKey) > 0 &&
+          (best == null || d.compareTo(best) < 0)) {
+        best = d;
+      }
+    }
+    if (best != null) return _parseYmd(best);
+    // The whole window is empty → consult the default (date-less) slate, which in
+    // an offseason returns the next opener. Watched ONLY here, so an in-season
+    // league never pays for it.
+    final slate = ref
+        .watch(leagueDayScoresProvider((league: widget.league, date: null)))
+        .valueOrNull;
+    if (slate == null) return null;
+    DateTime? far;
+    for (final e in slate.events) {
+      final s = e.start;
+      if (s == null) continue;
+      final day = DateTime(s.year, s.month, s.day);
+      if (!day.isBefore(_today) && (far == null || day.isBefore(far))) {
+        far = day;
+      }
+    }
+    return far;
+  }
+
+  /// Apply the auto-focus unless the user has manually picked a day. The strip
+  /// stays today-anchored when the focus day is within the window (it just selects
+  /// + scrolls to it); only a deep-offseason focus beyond the window re-anchors the
+  /// whole strip there. Deferred past the frame so the setState is legal;
+  /// idempotent, so once it settles it stops firing.
+  void _maybeAutoFocus() {
+    if (_userPicked) return;
+    final focus = _computeFocus();
+    if (focus == null) return;
+    final off = (DateUtils.dateOnly(focus)
+                .difference(DateUtils.dateOnly(_today))
+                .inHours /
+            24)
+        .round();
+    final newAnchor = (off >= -_past && off <= _future) ? _today : focus;
+    if (DateUtils.isSameDay(newAnchor, _anchor) &&
+        DateUtils.isSameDay(focus, _selected)) {
+      return;
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _userPicked) return;
+      setState(() {
+        _anchor = newAnchor;
+        _selected = focus;
+      });
+      _scrollToSelected();
+      repace(); // the selected day changed → re-pace the poll
+    });
+  }
+
+  void _scrollToSelected() {
+    if (!_strip.hasClients) return;
+    final days = (DateUtils.dateOnly(_selected)
+                .difference(DateUtils.dateOnly(_anchor))
+                .inHours /
+            24)
+        .round();
+    final raw = ((_past + days - 2).clamp(0, _past + _future)) * _chipExtent;
+    _strip.jumpTo(raw.clamp(0.0, _strip.position.maxScrollExtent));
+  }
 
   // ---- polling --------------------------------------------------------------
   @override
@@ -167,6 +271,13 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
         (_, next) {
       if (!next.isLoading) repace();
     });
+    // Land the strip where the games are (today, the next game day, or — in a
+    // deep offseason — the opener months out), unless the user has picked a day.
+    _maybeAutoFocus();
+    // Empty-day dimming for the visible (anchored) window. Null while loading →
+    // nothing dims.
+    final daySet =
+        ref.watch(leagueScheduleDaysProvider(_rangeKey(_anchor))).valueOrNull;
     return Column(
       children: [
         SizedBox(
@@ -178,14 +289,19 @@ class _ScheduleTabState extends ConsumerState<_ScheduleTab>
             itemCount: _past + 1 + _future,
             separatorBuilder: (_, __) => const SizedBox(width: 6),
             itemBuilder: (context, i) {
-              final day = _today.add(Duration(days: i - _past));
+              final day = _dayAt(i - _past);
               return DateChip(
                 date: day,
                 selected: DateUtils.isSameDay(day, _selected),
                 isToday: DateUtils.isSameDay(day, _today),
+                dimmed: daySet != null && !daySet.contains(_ymd(day)),
                 onTap: () {
                   if (!DateUtils.isSameDay(day, _selected)) {
-                    setState(() => _selected = day);
+                    setState(() {
+                      _selected = day;
+                      _userPicked =
+                          true; // freeze auto-focus on an explicit pick
+                    });
                     repace(); // new day → new cadence (today/live vs static)
                   }
                 },

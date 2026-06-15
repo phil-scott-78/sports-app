@@ -16,7 +16,8 @@ class ScoringFeed extends StatelessWidget {
   final List<SummaryPlay> plays;
   final String? sport;
   final String? nowLabel;
-  const ScoringFeed({super.key, required this.plays, this.sport, this.nowLabel});
+  const ScoringFeed(
+      {super.key, required this.plays, this.sport, this.nowLabel});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +41,10 @@ class ScoringFeed extends StatelessWidget {
     for (final p in plays) {
       if (p.period != lastPeriod) {
         lastPeriod = p.period;
-        final label = (p.periodLabel != null && p.periodLabel!.isNotEmpty)
-            ? p.periodLabel!
-            : 'Period ${p.period ?? ''}'.trim();
-        if (label.isNotEmpty) rows.add(_periodChip(context, label, top: first ? 2 : 10));
+        final label = _periodText(p);
+        if (label.isNotEmpty) {
+          rows.add(_periodChip(context, label, top: first ? 2 : 18));
+        }
       }
       rows.add(_event(context, p));
       first = false;
@@ -66,7 +67,8 @@ class ScoringFeed extends StatelessWidget {
     );
   }
 
-  Widget _periodChip(BuildContext context, String label, {required double top}) {
+  Widget _periodChip(BuildContext context, String label,
+      {required double top}) {
     final cs = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.only(top: top, bottom: 6),
@@ -108,18 +110,31 @@ class ScoringFeed extends StatelessWidget {
             const SizedBox(width: 6),
             Text('LIVE · $nowLabel',
                 style: TextStyle(
-                    fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 0.4, color: live)),
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.4,
+                    color: live)),
           ]),
         ),
       ),
     );
   }
 
+  /// The period-divider label for a play: ESPN's own label ("1st Half") when it
+  /// carries one, else a generic "Period N", else empty (skip the chip — some
+  /// rich feeds, e.g. soccer key-events, omit period info entirely).
+  static String _periodText(SummaryPlay p) =>
+      (p.periodLabel?.isNotEmpty ?? false)
+          ? p.periodLabel!
+          : (p.period != null ? 'Period ${p.period}' : '');
+
   Widget _event(BuildContext context, SummaryPlay p) {
     final isHome = p.side == 'home';
     final content = _sideContent(context, p, isHome);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      // Roomy vertical rhythm so a run of same-minute events (soccer subs, a flurry
+      // of cards) reads as a calm list instead of a cramped stack.
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -138,7 +153,8 @@ class ScoringFeed extends StatelessWidget {
     // the spine side (home left / away right) already tells the teams apart. A
     // disciplinary card is the one tag that earns colour (red). Without this,
     // baseball — where *every* play is a score — painted both teams gold.
-    final tagColor = kind == _Kind.card ? _cardColor(context, p) : cs.onSurfaceVariant;
+    final tagColor =
+        kind == _Kind.card ? _cardColor(context, p) : cs.onSurfaceVariant;
     final align = isHome ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final ta = isHome ? TextAlign.right : TextAlign.left;
     final hasScore = p.away != null && p.home != null;
@@ -150,17 +166,22 @@ class ScoringFeed extends StatelessWidget {
           if ((p.teamAbbr ?? '').isNotEmpty)
             Text(p.teamAbbr!,
                 style: TextStyle(
-                    fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 0.3, color: tagColor)),
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.3,
+                    color: tagColor)),
           const SizedBox(height: 2),
           Text(p.text,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               textAlign: ta,
-              style: TextStyle(fontSize: 12.5, height: 1.35, color: cs.onSurface)),
+              style:
+                  TextStyle(fontSize: 12.5, height: 1.35, color: cs.onSurface)),
           if (hasScore) ...[
             const SizedBox(height: 2),
             Text('${p.away}–${p.home}',
-                style: numStyle(size: 11, weight: FontWeight.w800, color: cs.onSurface)),
+                style: numStyle(
+                    size: 11, weight: FontWeight.w800, color: cs.onSurface)),
           ],
         ],
       ),
@@ -196,7 +217,10 @@ class ScoringFeed extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 3),
             child: Text(p.clock!,
                 maxLines: 1,
-                style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.w700, color: cs.onSurfaceVariant)),
+                style: TextStyle(
+                    fontSize: 9.5,
+                    fontWeight: FontWeight.w700,
+                    color: cs.onSurfaceVariant)),
           ),
         const SizedBox(height: 2),
         Container(
@@ -208,7 +232,8 @@ class ScoringFeed extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: ring, width: 2),
           ),
-          child: Icon(icon, size: kind == _Kind.card ? 11 : 15, color: iconColor),
+          child:
+              Icon(icon, size: kind == _Kind.card ? 11 : 15, color: iconColor),
         ),
       ],
     );
@@ -216,7 +241,10 @@ class ScoringFeed extends StatelessWidget {
 
   _Kind _kind(SummaryPlay p) {
     final t = (p.type ?? '').toLowerCase();
-    if (t.contains('card') || t.contains('yellow') || t.contains('red') || t.contains('penalty card')) {
+    if (t.contains('card') ||
+        t.contains('yellow') ||
+        t.contains('red') ||
+        t.contains('penalty card')) {
       return _Kind.card;
     }
     if (t.contains('sub')) return _Kind.sub;
@@ -229,61 +257,77 @@ class ScoringFeed extends StatelessWidget {
   /// first so a "Yellow Red Card" reads as red, not amber.
   Color _cardColor(BuildContext context, SummaryPlay p) {
     final t = '${p.type ?? ''} ${p.text}'.toLowerCase();
-    return t.contains('red') ? BinanceColors.of(context).danger : const Color(0xFFE4B53B);
+    return t.contains('red')
+        ? BinanceColors.of(context).danger
+        : const Color(0xFFE4B53B);
   }
 
   // ---- single-rail fallback (no sides) -----------------------------------
   Widget _singleRail(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final children = <Widget>[];
-    if (nowLabel != null && nowLabel!.isNotEmpty) children.add(_nowMarker(context));
+    if (nowLabel != null && nowLabel!.isNotEmpty) {
+      children.add(_nowMarker(context));
+    }
     int? lastPeriod;
     var firstGroup = nowLabel == null || nowLabel!.isEmpty;
     for (final p in plays) {
       if (p.period != lastPeriod) {
         lastPeriod = p.period;
-        final label = (p.periodLabel != null && p.periodLabel!.isNotEmpty)
-            ? p.periodLabel!
-            : 'Period ${p.period ?? ''}'.trim();
-        children.add(Padding(
-          padding: EdgeInsets.only(top: firstGroup ? 0 : 12, bottom: 4),
-          child: Text(label,
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant)),
-        ));
-        firstGroup = false;
+        final label = _periodText(p);
+        if (label.isNotEmpty) {
+          children.add(Padding(
+            padding: EdgeInsets.only(top: firstGroup ? 0 : 16, bottom: 4),
+            child: Text(label,
+                style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: cs.onSurfaceVariant)),
+          ));
+          firstGroup = false;
+        }
       }
       children.add(_railRow(context, p));
     }
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: children);
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start, children: children);
   }
 
   Widget _railRow(BuildContext context, SummaryPlay p) {
     final cs = Theme.of(context).colorScheme;
     final hasScore = p.away != null && p.home != null;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 7),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: 40,
             child: Text(p.clock ?? '',
-                maxLines: 1, overflow: TextOverflow.ellipsis, style: numStyle(size: 12, color: cs.onSurfaceVariant)),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: numStyle(size: 12, color: cs.onSurfaceVariant)),
           ),
           SizedBox(
             width: 34,
             child: Text(p.teamAbbr ?? '',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: cs.onSurface)),
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    color: cs.onSurface)),
           ),
           Expanded(
             child: Text(p.text,
-                maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 13, color: cs.onSurface)),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 13, color: cs.onSurface)),
           ),
           if (hasScore) ...[
             const SizedBox(width: 8),
-            Text('${p.away}-${p.home}', style: numStyle(size: 13, weight: FontWeight.w800)),
+            Text('${p.away}-${p.home}',
+                style: numStyle(size: 13, weight: FontWeight.w800)),
           ],
         ],
       ),
@@ -328,7 +372,8 @@ class LineupsView extends StatelessWidget {
 
   Widget _lineupPanel(BuildContext context, Lineup lineup) {
     final cs = Theme.of(context).colorScheme;
-    final hasFormation = lineup.formation != null && lineup.formation!.isNotEmpty;
+    final hasFormation =
+        lineup.formation != null && lineup.formation!.isNotEmpty;
     return DetailPanel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,7 +382,8 @@ class LineupsView extends StatelessWidget {
             children: [
               Text(
                 lineup.abbr ?? '',
-                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
               ),
               if (hasFormation) ...[
                 const SizedBox(width: 8),

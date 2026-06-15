@@ -231,10 +231,37 @@ class BoxScoreTable extends StatelessWidget {
   final List<BoxGroup> groups;
   const BoxScoreTable({super.key, required this.groups});
 
-  static const double _kNameWidth = 132;
-  static const double _kStatWidth = 44;
   static const double _kHeadHeight = 24;
   static const double _kRowHeight = 30;
+
+  // Expand the first group AND any pitching group — for baseball the pitching
+  // lines are the story, so they shouldn't start collapsed behind the batting box.
+  bool _expand(BoxGroup g, int i) =>
+      i == 0 || g.title.toLowerCase().contains('pitch');
+
+  // Content-sized column widths (tabular figures → ~8px/char), with a sensible
+  // floor + cap, computed across BOTH teams so the away/home rows stay aligned.
+  double _colWidth(BoxGroup g, int c) {
+    var maxLen = c < g.columns.length ? g.columns[c].length : 0;
+    for (final t in g.teams) {
+      for (final r in t.rows) {
+        final s = c < r.stats.length ? r.stats[c] : '';
+        if (s.length > maxLen) maxLen = s.length;
+      }
+    }
+    return (maxLen * 8.0 + 16).clamp(38.0, 120.0);
+  }
+
+  double _nameWidth(BoxGroup g) {
+    var maxLen = 8;
+    for (final t in g.teams) {
+      for (final r in t.rows) {
+        final l = r.name.length + ((r.pos?.isNotEmpty ?? false) ? r.pos!.length + 1 : 0);
+        if (l > maxLen) maxLen = l;
+      }
+    }
+    return (maxLen * 7.3 + 20).clamp(100.0, 168.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -249,7 +276,7 @@ class BoxScoreTable extends StatelessWidget {
             if (i > 0) const SizedBox(height: 8),
             DetailPanel(
               padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-              child: _group(context, groups[i], i == 0, cs),
+              child: _group(context, groups[i], _expand(groups[i], i), cs),
             ),
           ],
         ],
@@ -259,6 +286,8 @@ class BoxScoreTable extends StatelessWidget {
 
   Widget _group(BuildContext context, BoxGroup group, bool expanded,
       ColorScheme cs) {
+    final nameWidth = _nameWidth(group);
+    final statWidths = [for (var c = 0; c < group.columns.length; c++) _colWidth(group, c)];
     return ExpansionTile(
       initiallyExpanded: expanded,
       tilePadding: const EdgeInsets.symmetric(horizontal: 10),
@@ -271,13 +300,13 @@ class BoxScoreTable extends StatelessWidget {
       ),
       children: [
         for (var t = 0; t < group.teams.length; t++)
-          _team(context, group, group.teams[t], t > 0, cs),
+          _team(context, group, group.teams[t], t > 0, cs, nameWidth, statWidths),
       ],
     );
   }
 
-  Widget _team(BuildContext context, BoxGroup group, BoxTeam team,
-      bool gap, ColorScheme cs) {
+  Widget _team(BuildContext context, BoxGroup group, BoxTeam team, bool gap,
+      ColorScheme cs, double nameWidth, List<double> statWidths) {
     final sub = _subHeader(team);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -297,11 +326,11 @@ class BoxScoreTable extends StatelessWidget {
           ),
         ],
         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          _nameColumn(context, team, cs),
+          _nameColumn(context, team, cs, nameWidth),
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: _statColumns(context, group, team, cs),
+              child: _statColumns(context, group, team, cs, statWidths),
             ),
           ),
         ]),
@@ -315,9 +344,10 @@ class BoxScoreTable extends StatelessWidget {
     return '${team.abbr ?? ''}$suffix';
   }
 
-  Widget _nameColumn(BuildContext context, BoxTeam team, ColorScheme cs) {
+  Widget _nameColumn(
+      BuildContext context, BoxTeam team, ColorScheme cs, double nameWidth) {
     return SizedBox(
-      width: _kNameWidth,
+      width: nameWidth,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const SizedBox(height: _kHeadHeight),
         for (final row in team.rows)
@@ -357,10 +387,10 @@ class BoxScoreTable extends StatelessWidget {
   }
 
   Widget _statColumns(BuildContext context, BoxGroup group, BoxTeam team,
-      ColorScheme cs) {
+      ColorScheme cs, List<double> statWidths) {
     Widget statColumn(int col) {
       return SizedBox(
-        width: _kStatWidth,
+        width: col < statWidths.length ? statWidths[col] : 44,
         child: Column(children: [
           SizedBox(
             height: _kHeadHeight,

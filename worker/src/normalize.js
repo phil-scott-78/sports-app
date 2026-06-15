@@ -169,7 +169,7 @@ function buildCompetitor(profile, raw) {
   if (raw.amateur != null) c.amateur = raw.amateur;
   if (raw.vehicle) c.vehicle = pick(raw.vehicle, ['number', 'manufacturer', 'team', 'owner', 'sponsor']);
 
-  // ---- cheap-tier context the scoreboard already carries (see DISPLAY-SPEC.md) ----
+  // ---- cheap-tier context the scoreboard already carries ----
   // These cost ZERO extra network — the scoreboard response holds them, the app just
   // wasn't surfacing them. Each is optional and only emitted when present.
   if (raw.hits != null) { const n = intOrNull(raw.hits); if (n != null) c.hits = n; }       // baseball R/H/E
@@ -178,9 +178,13 @@ function buildCompetitor(profile, raw) {
   if (Array.isArray(raw.statistics) && raw.statistics.length) {                             // team stat line, keyed
     const stats = {};
     for (const s of raw.statistics) {
-      const k = s.abbreviation || s.name;
       const v = s.displayValue ?? s.value;
-      if (k != null && v != null && stats[k] == null) stats[k] = v;
+      if (v == null) continue;
+      // Key by BOTH abbreviation (what soccer/MLB widgets read: 'PP','SOG','H') AND the
+      // unique `name` — rugby-league reuses abbreviations ('T' = tries AND tackles), so an
+      // abbr-only map silently dropped the second stat. `name` is unique → no collision.
+      if (s.abbreviation != null && stats[s.abbreviation] == null) stats[s.abbreviation] = v;
+      if (s.name != null && stats[s.name] == null) stats[s.name] = v;
     }
     if (Object.keys(stats).length) c.stats = stats;
   }
@@ -203,7 +207,9 @@ function buildCompetitor(profile, raw) {
       return pick({
         role: pr.shortDisplayName || pr.displayName || pr.name || '',
         athlete: ath ? (ath.shortName || ath.displayName || ath.fullName) : (typeof pr === 'string' ? pr : undefined),
-      }, ['role', 'athlete']);
+        record: typeof pr.record === 'string' && pr.record.trim() ? pr.record : undefined, // MLB '(5-4, 3.30)'
+        confirmed: pr.status?.type === 'confirmed' ? true : undefined,                     // NHL goalie locked
+      }, ['role', 'athlete', 'record', 'confirmed']);
     }).filter(p => p.athlete);
     if (probables.length) c.probables = probables;
   }
@@ -227,6 +233,9 @@ function buildSituation(rc) {
   for (const k of ['onFirst', 'onSecond', 'onThird', 'isRedZone']) if (sit[k] != null) s[k] = !!sit[k];
   const p = sit.pitcher?.athlete; if (p) s.pitcher = p.shortName || p.displayName || p.fullName;
   const b = sit.batter?.athlete; if (b) s.batter = b.shortName || b.displayName || b.fullName;
+  // the live matchup line — the read a fan opens a live MLB game for (CHEAP, same object)
+  if (sit.pitcher?.summary) s.pitcherLine = sit.pitcher.summary; // '0.2 IP, 0 ER, K, BB'
+  if (sit.batter?.summary) s.batterLine = sit.batter.summary;    // the batter's day '1-3, RBI'
   if (sit.downDistanceText) s.downDistanceText = sit.downDistanceText;
   if (sit.possession != null) s.possession = String(sit.possession); // team id of the side in possession
   const lp = sit.lastPlay;
@@ -302,6 +311,51 @@ const DECORATORS = {
   },
 };
 
+// ---- scoring timeline (cheap, from competition.details[]) --------------------
+// Soccer/rugby carry their goal/card/sub feed inline on the scoreboard (details[]),
+// not only in the rich summary. Map it onto the canonical ScoringEvent shape.
+const SCORING_TIMELINE_SPORTS = new Set(['soccer', 'rugby', 'rugby-league']);
+
+function scoringEventType(d, isSoccer) {
+  if (d.ownGoal) return 'own-goal';
+  if (d.penaltyKick) return d.scoringPlay ? 'penalty-goal' : 'penalty-missed';
+  if (d.redCard) return 'red-card';
+  if (d.yellowCard) return 'yellow-card';
+  if (d.scoringPlay) return isSoccer ? 'goal' : 'score';
+  return 'other'; // subs/kickoff/VAR/period markers → dropped: keep the timeline to scores + cards
+}
+
+function buildScoringEvents(profile, rc, competitors) {
+  const details = rc.details;
+  if (!Array.isArray(details) || !details.length) return undefined;
+  const sideOf = id => competitors.find(c => c.id === String(id))?.homeAway;
+  const isSoccer = profile.espnSport === 'soccer';
+  const out = [];
+  for (const d of details) {
+    if (!d || typeof d !== 'object') continue;
+    const type = scoringEventType(d, isSoccer);
+    if (type === 'other') continue; // drop kickoff/period/VAR noise — keep notable events only
+    const ath = (d.athletesInvolved || [])[0];
+    const e = pick({
+      type,
+      team: sideOf(d.team?.id),
+      clock: d.clock?.displayValue,
+      period: typeof d.period === 'number' ? d.period : undefined,
+      athlete: ath ? (ath.shortName || ath.displayName || ath.fullName) : undefined,
+      detail: d.type?.text,
+      scoreValue: typeof d.scoreValue === 'number' ? d.scoreValue : undefined,
+    }, ['type', 'team', 'clock', 'period', 'athlete', 'detail', 'scoreValue']);
+    const flags = pick({
+      ownGoal: d.ownGoal ? true : undefined,
+      penalty: d.penaltyKick ? true : undefined,
+      redCard: d.redCard ? true : undefined,
+    }, ['ownGoal', 'penalty', 'redCard']);
+    if (Object.keys(flags).length) e.flags = flags;
+    out.push(e);
+  }
+  return out.length ? out : undefined;
+}
+
 // ---- competition ------------------------------------------------------------
 function buildCompetition(profile, rc, rawEvent) {
   const st = rc.status || rawEvent.status || {};
@@ -339,9 +393,13 @@ function buildCompetition(profile, rc, rawEvent) {
     decision: null,
     competitors,
   };
-  // racing: a weekend event has several competitions (FP1/Qual/Race) — label them
+  // racing: a weekend event has several competitions (FP1/Qual/Race) — label them.
+  // mma: a card is a stack of identical 2-name rows; the weight class (type.abbreviation,
+  // e.g. 'Lightweight') is the only thing that tells the bouts apart — reuse comp.label.
   if (profile.espnSport === 'racing' && (rc.type?.abbreviation || rc.type?.text)) {
     comp.label = rc.type.abbreviation || rc.type.text;
+  } else if (profile.espnSport === 'mma' && rc.type?.abbreviation) {
+    comp.label = rc.type.abbreviation;
   }
   if (type.shortDetail) comp.status.shortDetail = type.shortDetail;
   if (type.altDetail) comp.status.altDetail = type.altDetail;
@@ -349,12 +407,38 @@ function buildCompetition(profile, rc, rawEvent) {
 
   const notesHead = (rc.notes || []).map(n => n.headline).filter(Boolean);
   if (notesHead.length) (comp.meta ||= {}).round = notesHead[0];
+  // tennis puts the bracket round in competition.round.displayName ('Quarterfinal'),
+  // NOT in notes[].headline (its notes use .text) — so meta.round was empty for every
+  // match. In a knockout draw the round IS the situation; fall back to it.
+  else if (rc.round?.displayName) (comp.meta ||= {}).round = rc.round.displayName;
   // golf playoff: flag it (the playoff linescore round was dropped, so detect it from
   // the RAW competitors' period > regulation) so the UI can badge "Playoff".
   const golfPlayoff = profile.periodUnit === 'hole_rounds' && regCount
     && (rc.competitors || []).some(x => Array.isArray(x.linescores) && x.linescores.some(ls => (ls?.period ?? 0) > regCount));
   if (rc.status?.hadPlayoff || golfPlayoff) (comp.meta ||= {}).hadPlayoff = true;
   if (rc.series?.summary) (comp.meta ||= {}).seriesSummary = rc.series.summary;
+  // STRUCTURED playoff series (NBA/NHL/MLB-playoff): keep the per-team win counts +
+  // best-of-N, not just the prose, so the UI can render a glanceable pip row. Gate on a
+  // real series (playoff type or a multi-game total) so a one-off game never gets pips.
+  const sr = rc.series;
+  if (sr && Array.isArray(sr.competitors) && sr.competitors.length
+      && (sr.type === 'playoff' || (typeof sr.totalCompetitions === 'number' && sr.totalCompetitions > 1))) {
+    (comp.meta ||= {}).series = pick({
+      type: sr.type,
+      total: typeof sr.totalCompetitions === 'number' ? sr.totalCompetitions : undefined,
+      completed: typeof sr.completed === 'boolean' ? sr.completed : undefined,
+      competitors: sr.competitors.map(s => ({ id: String(s.id ?? ''), wins: Number(s.wins) || 0 })),
+    }, ['type', 'total', 'completed', 'competitors']);
+  }
+
+  // cheap goal/card timeline — for sports where competition.details[] IS the event feed
+  // (soccer, rugby, rugby-league). Populates the canonical Competition.events that was
+  // declared but never filled, so the detail page gets a timeline + the card a man-down
+  // glyph with ZERO extra /summary fetch.
+  if (SCORING_TIMELINE_SPORTS.has(profile.espnSport)) {
+    const evs = buildScoringEvents(profile, rc, competitors);
+    if (evs) comp.events = evs;
+  }
 
   const situation = buildSituation(rc);
   if (situation) comp.situation = situation;
@@ -370,6 +454,34 @@ function buildVenue(v) {
   if (!v) return undefined;
   return pick({ name: v.fullName, city: v.address?.city, country: v.address?.country, indoor: v.indoor }, ['name', 'city', 'country', 'indoor']);
 }
+
+// A schedule caption ('Week 5' / 'Round 15') from event.week.number — REGULAR SEASON
+// ONLY (a "Week 5" on a playoff game is wrong: post-season week numbers restart).
+// Gridiron says "Week", rugby says "Round".
+function weekLabelOf(profile, e) {
+  const wk = e.week?.number;
+  if (typeof wk !== 'number') return undefined;
+  const sp = profile.espnSport;
+  if (sp !== 'football' && sp !== 'rugby' && sp !== 'rugby-league') return undefined;
+  const slug = (e.season?.slug || '').toLowerCase();
+  const isReg = e.season?.type === 2 || /reg/.test(slug);            // NRL uses type 1 + 'reg' slug
+  const isPost = e.season?.type === 3 || /post|playoff|bowl|final/.test(slug);
+  if (!isReg || isPost) return undefined;
+  return `${sp === 'football' ? 'Week' : 'Round'} ${wk}`;
+}
+
+// Outdoor weather only (skip domes/arenas) — the cheap pre-game context that moves
+// the read for baseball (HR ball, rain) without being noise for indoor sports.
+function buildWeather(e, venue) {
+  const w = e.weather;
+  if (!w || venue?.indoor === true) return undefined;
+  const out = pick({
+    temperature: typeof w.temperature === 'number' ? w.temperature : undefined,
+    condition: w.conditionId || undefined,
+  }, ['temperature', 'condition']);
+  return Object.keys(out).length ? out : undefined;
+}
+
 export function buildEvent(profile, e) {
   // most sports: events[].competitions[]. Tennis nests matches under
   // events[].groupings[].competitions[] (singles/doubles draws) — flatten them.
@@ -381,12 +493,19 @@ export function buildEvent(profile, e) {
   const web = https(e.links?.find(l => l.rel?.includes('summary') || l.rel?.includes('desktop'))?.href);
   const box = https(e.links?.find(l => l.rel?.includes('boxscore'))?.href);
   if (web) links.web = web; if (box) links.box = box;
+  // racing has no venue/competition.venue — the location lives in event.circuit.
+  const venue = buildVenue(c0?.venue || e.venue
+    || (e.circuit && { fullName: e.circuit.fullName, address: e.circuit.address }));
+  const weekLabel = weekLabelOf(profile, e);
+  const weather = buildWeather(e, venue);
   return {
     id: String(e.id), name: e.name || '', shortName: e.shortName || '',
     start: e.date, neutralSite: !!c0?.neutralSite,
-    venue: buildVenue(c0?.venue || e.venue),
+    venue,
     broadcasts: [...new Set((c0?.broadcasts || []).flatMap(b => b.names || []))],
     notes: (c0?.notes || []).map(n => n.headline).filter(Boolean),
+    ...(weekLabel ? { weekLabel } : {}),
+    ...(weather ? { weather } : {}),
     links,
     competitions: rawComps.map(c => buildCompetition(profile, c, e)),
   };

@@ -254,6 +254,26 @@ final standingsProvider = FutureProvider.autoDispose.family<Standings, String>(
   (ref, league) => ref.watch(apiProvider).standings(league),
 );
 
+/// The set of YYYYMMDD days (local-bucketed) that have ≥1 game for a league
+/// across a date range — one `dates=START-END` fetch (ESPN accepts the range,
+/// the worker forwards it). Powers the league-schedule strip's empty-day dimming
+/// and its auto-jump to the next day with games. autoDispose: only alive while a
+/// schedule strip is open.
+typedef LeagueRangeKey = ({String league, String start, String end});
+
+final leagueScheduleDaysProvider = FutureProvider.autoDispose
+    .family<Set<String>, LeagueRangeKey>((ref, k) async {
+  final resp = await ref
+      .watch(apiProvider)
+      .scores(k.league, date: '${k.start}-${k.end}');
+  final out = <String>{};
+  for (final e in resp.events) {
+    final s = e.start;
+    if (s != null) out.add(_ymd(s)); // e.start is already local
+  }
+  return out;
+});
+
 /// Rich game-detail summary (box score, scoring feed, lineups), fetched lazily
 /// only when a game detail is opened. Keyed by (league, eventId). autoDispose:
 /// without it every game ever opened in a session leaks its ~10KB GameSummary —

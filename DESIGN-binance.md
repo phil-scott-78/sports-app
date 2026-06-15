@@ -448,7 +448,8 @@ source system's pill CTA does not exist here.
 This system is **derived from** a Binance trading-platform UI analysis — that's
 where the near-black canvas, the flat-block + hairline elevation model, the
 IBM-Plex-for-numbers split, and the original yellow accent came from. The full
-source analysis is preserved verbatim in **`DESIGN-binance-source.md`**.
+source analysis has since been distilled into this document; the standalone
+source dump was removed once the design stabilized.
 
 The app has since evolved away from the source's *yellow-centric brand model*.
 What survives is the **structure** (greyscale, flatness, hairlines, tabular

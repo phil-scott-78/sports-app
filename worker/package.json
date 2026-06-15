@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "node test/ttl.test.mjs && node test/units.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs"
+    "mock": "node scripts/mock-server.mjs",
+    "capture": "node scripts/capture-fixtures.mjs",
+    "test": "node test/mock.test.mjs && node test/ttl.test.mjs && node test/units.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs"
   },
   "devDependencies": {
     "wrangler": "^4.0.0"

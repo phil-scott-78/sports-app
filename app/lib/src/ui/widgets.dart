@@ -320,7 +320,10 @@ CricketScoreParts cricketScoreParts(Competitor c) {
   // sits in the parenthetical and reflects the *current* innings, so a two-innings
   // line surfaces just the live-innings overs (and a settled total carries none).
   final m = _cricketOvers.firstMatch(raw);
-  return (runs: runs.isEmpty ? raw : runs, overs: m == null ? null : '${m.group(1)} ov');
+  return (
+    runs: runs.isEmpty ? raw : runs,
+    overs: m == null ? null : '${m.group(1)} ov'
+  );
 }
 
 /// Status pill. Live games get a green-tinted pill with a pulsing dot (the
@@ -443,12 +446,17 @@ class DateChip extends StatelessWidget {
   final DateTime date;
   final bool selected;
   final bool isToday;
+
+  /// This day has no games (known from a range fetch) — faded back so populated
+  /// days stand out. Still tappable. Never dims the selected day or today.
+  final bool dimmed;
   final VoidCallback onTap;
   const DateChip({
     super.key,
     required this.date,
     required this.selected,
     this.isToday = false,
+    this.dimmed = false,
     required this.onTap,
   });
 
@@ -456,47 +464,52 @@ class DateChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final fg = (selected || isToday) ? cs.onSurface : cs.onSurfaceVariant;
+    final faded = dimmed && !selected && !isToday;
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        width: 48,
-        margin: const EdgeInsets.symmetric(vertical: 5),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: selected ? cs.surfaceContainerHighest : Colors.transparent,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                isToday
-                    ? 'TODAY'
-                    : DateFormat.E().format(date).toUpperCase(), // "SAT"
-                style: TextStyle(
-                  fontSize: 11,
-                  height:
-                      1.0, // pin leading so the chip's height is deterministic
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.3,
-                  color: fg,
+      child: Opacity(
+        opacity: faded ? 0.35 : 1,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          width: 48,
+          margin: const EdgeInsets.symmetric(vertical: 5),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: selected ? cs.surfaceContainerHighest : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  isToday
+                      ? 'TODAY'
+                      : DateFormat.E().format(date).toUpperCase(), // "SAT"
+                  style: TextStyle(
+                    fontSize: 11,
+                    height:
+                        1.0, // pin leading so the chip's height is deterministic
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.3,
+                    color: fg,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                '${date.day}',
-                style: numStyle(
-                  size: 16,
-                  weight:
-                      (selected || isToday) ? FontWeight.w800 : FontWeight.w600,
-                  color: fg,
-                ).copyWith(height: 1.0),
-              ),
-            ],
+                const SizedBox(height: 2),
+                Text(
+                  '${date.day}',
+                  style: numStyle(
+                    size: 16,
+                    weight: (selected || isToday)
+                        ? FontWeight.w800
+                        : FontWeight.w600,
+                    color: fg,
+                  ).copyWith(height: 1.0),
+                ),
+              ],
+            ),
           ),
         ),
       ),

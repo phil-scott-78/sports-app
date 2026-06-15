@@ -64,15 +64,19 @@ class LineScoreTable extends StatelessWidget {
           ),
         );
 
-    Widget column(String head, List<String> vals,
+    // A column body (header over value cells) with NO intrinsic width — the caller
+    // either flexes it to fill the row or pins it to a fixed width when scrolling.
+    Widget colBody(String head, List<String> vals,
+            {bool strong = false, Color? color}) =>
+        Column(children: [
+          cell(head, head: true),
+          for (final v in vals) cell(v, strong: strong, color: color),
+        ]);
+    Widget fixedCol(String head, List<String> vals,
             {double width = 21, bool strong = false, Color? color}) =>
         SizedBox(
-          width: width,
-          child: Column(children: [
-            cell(head, head: true),
-            for (final v in vals) cell(v, strong: strong, color: color),
-          ]),
-        );
+            width: width,
+            child: colBody(head, vals, strong: strong, color: color));
 
     final teamCol = SizedBox(
       width: 52,
@@ -106,32 +110,45 @@ class LineScoreTable extends StatelessWidget {
       return extra == 1 ? 'OT' : '${extra}OT';
     }
 
-    final periodCols = Row(mainAxisSize: MainAxisSize.min, children: [
-      for (var i = 1; i <= cols; i++)
-        column(colLabel(i), [for (final c in rows) _periodVal(c, i)]),
-    ]);
+    // Period region: fill the available width when the columns fit (so a 9-inning
+    // / 4-quarter grid spreads across the card instead of hugging the left), else
+    // pin each to a minimum and scroll. Baseball's floor is "12 innings fit" — past
+    // that, extra innings scroll; grid sports (NBA/WNBA/CBB/hockey) fill to ~8.
+    final periodRegion = LayoutBuilder(builder: (ctx, cons) {
+      final avail = cons.maxWidth;
+      final minW = baseball ? (avail / 12.0) : 28.0;
+      final fits = cols * minW <= avail + 0.5;
+      final bodies = [
+        for (var i = 1; i <= cols; i++)
+          colBody(colLabel(i), [for (final c in rows) _periodVal(c, i)]),
+      ];
+      if (fits) {
+        return Row(children: [for (final b in bodies) Expanded(child: b)]);
+      }
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          for (final b in bodies) SizedBox(width: minW, child: b),
+        ]),
+      );
+    });
 
     final accent = BinanceColors.of(context).accent;
     final summary = baseball
         ? Row(children: [
-            column('R', [for (final c in rows) c.score?.display ?? ''],
+            fixedCol('R', [for (final c in rows) c.score?.display ?? ''],
                 width: 24, strong: true, color: accent),
-            column('H', [for (final c in rows) c.hits?.toString() ?? '']),
-            column('E', [for (final c in rows) c.errors?.toString() ?? '']),
+            fixedCol('H', [for (final c in rows) c.hits?.toString() ?? '']),
+            fixedCol('E', [for (final c in rows) c.errors?.toString() ?? '']),
           ])
-        : column('T', [for (final c in rows) c.score?.display ?? ''],
+        : fixedCol('T', [for (final c in rows) c.score?.display ?? ''],
             width: 30, strong: true, color: accent);
 
     return DetailPanel(
       padding: const EdgeInsets.fromLTRB(12, 8, 12, 10),
       child: Row(children: [
         teamCol,
-        Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: periodCols,
-          ),
-        ),
+        Expanded(child: periodRegion),
         const SizedBox(width: 4),
         summary,
       ]),

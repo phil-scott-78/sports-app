@@ -11,6 +11,8 @@ import 'field_leaderboard.dart';
 import 'finish_grid.dart';
 import 'poll.dart';
 import 'score_tables.dart';
+import 'scoring_timeline.dart';
+import 'series_pips.dart';
 import 'summary_feed.dart';
 import 'widgets.dart';
 
@@ -26,14 +28,19 @@ const List<({String key, String label, bool invert})> _soccerStatRows = [
 
 // Sports whose per-period split is summary-only (scoreboard has no linescores).
 const _richPeriodSports = {'basketball', 'football', 'hockey'};
-// Sports where a scoring/timeline feed reads well (NOT basketball — too many).
+// Sports whose RICH (/summary) scoring feed _RichDetail renders. Rugby is absent
+// on purpose (cheap goal/card timeline only). Soccer is absent here too — it owns
+// its timeline via _SoccerTimeline, which shows the cheap goal/card feed instantly
+// and upgrades to the rich feed (the only tier with substitutions) once it loads.
 const _scoringFeedSports = {
   'baseball',
   'football',
   'hockey',
-  'soccer',
-  'rugby'
 };
+// Sports whose cheap goal/card timeline (competition.events) we render on detail.
+// Soccer is handled separately (_SoccerTimeline) — it upgrades to the rich feed
+// for substitutions, which the cheap scoreboard tier doesn't carry.
+const _cheapTimelineSports = {'rugby', 'rugby-league'};
 
 class GameDetailPage extends ConsumerStatefulWidget {
   final SportEvent event;
@@ -335,12 +342,32 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
       ]);
     }
 
-    // The rich tier: a separate /summary fetch, lazy + best-effort.
     final liveClock = comp.status.live
         ? (comp.status.clock?.isNotEmpty == true
             ? comp.status.clock!
             : comp.status.periodLabel)
         : null;
+
+    // Soccer: the cheap scoreboard goal/card timeline, upgraded to the rich
+    // /summary feed (which adds substitutions) once it loads. Self-labels so an
+    // eventless match shows no orphan header.
+    if (sport == 'soccer') {
+      out.add(_SoccerTimeline(
+          comp: comp,
+          leagueKey: widget.leagueKey,
+          eventId: event.id,
+          liveClock: liveClock));
+    } else if (_cheapTimelineSports.contains(sport) &&
+        ScoringTimeline.has(comp)) {
+      // Rugby: cheap goal/card timeline only (competition.events, no /summary).
+      out.addAll([
+        const SectionLabel('Scoring'),
+        ScoringTimeline(comp: comp, sport: sport, nowLabel: liveClock),
+        const SizedBox(height: 16),
+      ]);
+    }
+
+    // The rich tier: a separate /summary fetch, lazy + best-effort.
     out.add(_RichDetail(
         leagueKey: widget.leagueKey,
         eventId: event.id,
@@ -393,6 +420,50 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         }
     }
     return false;
+  }
+}
+
+/// Soccer timeline: the cheap scoreboard goal/card feed, upgraded to the rich
+/// /summary feed — the only tier that carries substitutions — once it loads. It
+/// shows instantly (cheap tier) and survives a /summary failure (falls back to
+/// it). Self-labels: renders nothing when neither tier has anything to show.
+class _SoccerTimeline extends ConsumerWidget {
+  final Competition comp;
+  final String leagueKey, eventId;
+  final String? liveClock;
+  const _SoccerTimeline({
+    required this.comp,
+    required this.leagueKey,
+    required this.eventId,
+    this.liveClock,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final configured =
+        ref.watch(settingsProvider.select((s) => s.baseUrl)).trim().isNotEmpty;
+    // valueOrNull keeps the cheap fallback showing through the rich tier's
+    // load/error; once /summary lands with plays we swap in its richer feed.
+    final rich = configured
+        ? ref
+            .watch(summaryProvider((league: leagueKey, eventId: eventId)))
+            .valueOrNull
+        : null;
+    final Widget? body = (rich != null && rich.scoringPlays.isNotEmpty)
+        ? ScoringFeed(
+            plays: rich.scoringPlays, sport: 'soccer', nowLabel: liveClock)
+        : (ScoringTimeline.has(comp)
+            ? ScoringTimeline(comp: comp, sport: 'soccer', nowLabel: liveClock)
+            : null);
+    if (body == null) return const SizedBox.shrink();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SectionLabel('Timeline'),
+        body,
+        const SizedBox(height: 16),
+      ],
+    );
   }
 }
 
@@ -527,10 +598,38 @@ class _Header extends StatelessWidget {
         children: [
           Center(
               child: StatusChip(status: comp.status, startTime: event.start)),
+          // Series round headline (e.g. "Stanley Cup Final - Game 6") — the round
+          // is otherwise buried in the meta card; for a playoff series it's the
+          // game's whole identity, so it leads the hero.
+          if (SeriesPips.has(comp) &&
+              (comp.meta?.round?.isNotEmpty ?? false)) ...[
+            const SizedBox(height: 10),
+            Text(comp.meta!.round!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.2)),
+          ],
           const SizedBox(height: 16),
           if (a != null) _bigRow(context, comp, a),
           const SizedBox(height: 14),
           if (b != null) _bigRow(context, comp, b),
+          // Playoff series state (NBA/NHL/MLB-playoff) — who's about to advance,
+          // with the prose tally beneath ("CAR wins series 4-2").
+          if (SeriesPips.has(comp)) ...[
+            const SizedBox(height: 16),
+            SeriesPips(comp: comp),
+            if (comp.meta?.seriesSummary?.isNotEmpty ?? false) ...[
+              const SizedBox(height: 8),
+              Text(comp.meta!.seriesSummary!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      color: cs.onSurfaceVariant)),
+            ],
+          ],
           if (comp.decision != null && comp.decision != 'regulation') ...[
             const SizedBox(height: 12),
             Text(_decisionText(comp),
@@ -586,10 +685,7 @@ class _Header extends StatelessWidget {
           Flexible(child: _cricketBigScore(context, comp, c, dim))
         else
           Text(
-            // Scheduled games seed score "0" in ESPN — show a dash pre-game.
-            (comp.status.isScheduled || c.score?.display.isNotEmpty != true)
-                ? '–'
-                : c.score!.display,
+            _bigScore(comp, c),
             style: numStyle(
               size: 36,
               weight: FontWeight.w800,
@@ -604,6 +700,19 @@ class _Header extends StatelessWidget {
         ],
       ],
     );
+  }
+
+  /// The big hero score for a numeric sport. Tennis & co. carry no aggregate
+  /// score, so once a set is decided we show the sets-won tally (matching the
+  /// scores card) instead of a bare '–'.
+  String _bigScore(Competition comp, Competitor c) {
+    if (comp.status.isScheduled) return '–';
+    final s = c.score?.display ?? '';
+    if (s.isNotEmpty) return s;
+    if (c.periodScores.any((p) => p.setWinner != null)) {
+      return '${c.periodScores.where((p) => p.setWinner == true).length}';
+    }
+    return '–';
   }
 
   /// Cricket's hero score: runs line (both innings when present) over a muted
@@ -712,6 +821,23 @@ class _MetaCard extends StatelessWidget {
       ));
     }
 
+    // A playoff-series round headline (e.g. "Stanley Cup Final - Game 6") leads
+    // the hero — don't repeat it down here, as either the round row or a note.
+    final promotedRound =
+        (comp != null && SeriesPips.has(comp!)) ? comp!.meta?.round : null;
+
+    // Round (tennis 'Quarterfinal' etc.) — only when it isn't already a note or
+    // the hero's promoted series round.
+    final round = comp?.meta?.round;
+    if (round != null &&
+        round.isNotEmpty &&
+        round != promotedRound &&
+        !event.notes.contains(round)) {
+      add(Icons.emoji_events_outlined, round);
+    }
+    if (event.weekLabel != null && event.weekLabel!.isNotEmpty) {
+      add(Icons.event_outlined, event.weekLabel!);
+    }
     if (event.venue != null) {
       add(
           Icons.stadium_outlined,
@@ -722,7 +848,11 @@ class _MetaCard extends StatelessWidget {
     if (event.broadcasts.isNotEmpty) {
       add(Icons.tv_outlined, event.broadcasts.join(', '));
     }
+    if (event.weather != null && event.weather!.summary.isNotEmpty) {
+      add(Icons.cloud_outlined, event.weather!.summary);
+    }
     for (final n in event.notes) {
+      if (n == promotedRound) continue;
       add(Icons.info_outline, n);
     }
     if (comp?.meta?.cricketSummary != null) {
@@ -794,8 +924,15 @@ class _MiniScoreline extends StatelessWidget {
         final runs = cricketScoreParts(c).runs;
         return runs.isEmpty ? '–' : runs;
       }
-      return c.score?.display.isNotEmpty == true ? c.score!.display : '–';
+      if (c.score?.display.isNotEmpty == true) return c.score!.display;
+      // Tennis & co. carry no aggregate score — show the sets-won tally (matching
+      // the hero _bigScore) instead of a bare '–' once a set is decided.
+      if (c.periodScores.any((p) => p.setWinner != null)) {
+        return '${c.periodScores.where((p) => p.setWinner == true).length}';
+      }
+      return '–';
     }
+
     String abbr(Competitor c) => c.abbreviation ?? c.shortName ?? c.displayName;
     Widget crest(Competitor c) =>
         Crest(url: c.logo, darkUrl: c.logoDark, fallback: abbr(c), size: 22);

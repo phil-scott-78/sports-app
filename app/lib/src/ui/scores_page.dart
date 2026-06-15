@@ -8,8 +8,10 @@ import '../providers.dart';
 import '../theme.dart';
 import 'favorite_team_card.dart';
 import 'game_detail_page.dart';
+import 'league_detail_page.dart';
 import 'poll.dart';
 import 'search_page.dart';
+import 'series_pips.dart';
 import 'widgets.dart';
 
 class ScoresPage extends ConsumerStatefulWidget {
@@ -293,11 +295,13 @@ class _DateSportSheet extends ConsumerStatefulWidget {
 }
 
 class _DateSportSheetState extends ConsumerState<_DateSportSheet> {
-  // Browse window: a week back, two weeks ahead — recent results + the next
-  // fixtures for weekly leagues (NFL), without an unbounded list. Mirrors the
-  // league-detail Schedule strip.
-  static const int _past = 7;
-  static const int _future = 14;
+  // Browse window: a week and a half back, three weeks ahead — enough to scroll
+  // to recent results and the next fixtures for weekly leagues without an
+  // unbounded list. (The per-league Schedule strip goes further, dimming empty
+  // days + jumping to the next games; this cross-league sheet stays a plain
+  // scroll — per-day game presence across all leagues isn't cheap to know here.)
+  static const int _past = 10;
+  static const int _future = 21;
   static const double _chipExtent = 48 + 8; // DateChip width + separator
 
   late final ScrollController _strip;
@@ -594,7 +598,8 @@ List<Widget> leagueSections(
     final name = feed.scores?.leagueName.isNotEmpty == true
         ? feed.scores!.leagueName
         : feed.key;
-    out.add(_SectionHeader(title: name));
+    // The header taps through to the full league page (schedule + standings).
+    out.add(_SectionHeader(title: name, leagueKey: feed.key));
     if (feed.error != null) {
       out.add(_InfoTile(icon: Icons.error_outline, text: feed.error!));
     } else {
@@ -740,18 +745,39 @@ int _byStatusThenTime(SportEvent a, SportEvent b) {
 
 class _SectionHeader extends StatelessWidget {
   final String title;
-  const _SectionHeader({required this.title});
+
+  /// When set, the header taps through to that league's full page (a chevron
+  /// signals it). Null for non-league headers like "Favorites".
+  final String? leagueKey;
+  const _SectionHeader({required this.title, this.leagueKey});
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(16, 18, 16, 8),
-        child: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall
-              ?.copyWith(fontWeight: FontWeight.w700),
-        ),
-      );
+  Widget build(BuildContext context) {
+    final style = Theme.of(context)
+        .textTheme
+        .titleSmall
+        ?.copyWith(fontWeight: FontWeight.w700);
+    const padding = EdgeInsets.fromLTRB(16, 18, 16, 8);
+    if (leagueKey == null) {
+      return Padding(padding: padding, child: Text(title, style: style));
+    }
+    final cs = Theme.of(context).colorScheme;
+    return InkWell(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => LeagueDetailPage(league: leagueKey!, name: title),
+      )),
+      child: Padding(
+        padding: padding,
+        child: Row(children: [
+          Flexible(
+            child: Text(title,
+                maxLines: 1, overflow: TextOverflow.ellipsis, style: style),
+          ),
+          const SizedBox(width: 3),
+          Icon(Icons.chevron_right, size: 18, color: cs.onSurfaceVariant),
+        ]),
+      ),
+    );
+  }
 }
 
 class _InfoTile extends StatelessWidget {
@@ -829,8 +855,17 @@ class GameCard extends StatelessWidget {
             excludeSemantics: true,
             child: Padding(
               padding: const EdgeInsets.all(14),
-              child:
-                  comp.isField ? _field(context, comp) : _match(context, comp),
+              child: comp.isField
+                  ? _field(context, comp)
+                  : (SeriesPips.has(comp)
+                      // Playoff games carry a compact series-pip strip under the
+                      // scoreline — "who's about to advance" at a glance.
+                      ? Column(mainAxisSize: MainAxisSize.min, children: [
+                          _match(context, comp),
+                          const SizedBox(height: 10),
+                          SeriesPips(comp: comp, dense: true),
+                        ])
+                      : _match(context, comp)),
             ),
           ),
         ),
@@ -906,6 +941,20 @@ class GameCard extends StatelessWidget {
     final dim = comp.status.isFinal && c.winner == false;
     final name = c.shortName?.isNotEmpty == true ? c.shortName! : c.displayName;
     final align = alignEnd ? TextAlign.right : TextAlign.left;
+    // Man down: red cards for this side, from the cheap goal/card timeline.
+    final reds =
+        c.homeAway == null ? 0 : (comp.redCardsBySide[c.homeAway!] ?? 0);
+    final nameText = Text(
+      name,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      textAlign: align,
+      style: TextStyle(
+        fontSize: 13,
+        fontWeight: c.isWinner ? FontWeight.w700 : FontWeight.w600,
+        color: dim ? cs.onSurfaceVariant : cs.onSurface,
+      ),
+    );
     return Column(
       crossAxisAlignment:
           alignEnd ? CrossAxisAlignment.end : CrossAxisAlignment.start,
@@ -916,17 +965,23 @@ class GameCard extends StatelessWidget {
             fallback: c.abbreviation ?? c.displayName,
             size: 36),
         const SizedBox(height: 6),
-        Text(
-          name,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          textAlign: align,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: c.isWinner ? FontWeight.w700 : FontWeight.w600,
-            color: dim ? cs.onSurfaceVariant : cs.onSurface,
-          ),
-        ),
+        if (reds > 0)
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: alignEnd
+                ? [
+                    Flexible(child: nameText),
+                    const SizedBox(width: 4),
+                    _redCardGlyph(context, reds)
+                  ]
+                : [
+                    _redCardGlyph(context, reds),
+                    const SizedBox(width: 4),
+                    Flexible(child: nameText)
+                  ],
+          )
+        else
+          nameText,
         if (c.recordSummary != null && comp.status.isScheduled)
           Padding(
             padding: const EdgeInsets.only(top: 2),
@@ -940,6 +995,26 @@ class GameCard extends StatelessWidget {
           ),
       ],
     );
+  }
+
+  /// A small red-card mark (with ×N when more than one) — the "man down" read on
+  /// a soccer/rugby card, derived from the cheap goal/card timeline.
+  Widget _redCardGlyph(BuildContext context, int count) {
+    final danger = BinanceColors.of(context).danger;
+    final rect = Container(
+      width: 8,
+      height: 11,
+      decoration:
+          BoxDecoration(color: danger, borderRadius: BorderRadius.circular(2)),
+    );
+    if (count <= 1) return rect;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      rect,
+      const SizedBox(width: 2),
+      Text('×$count',
+          style: TextStyle(
+              fontSize: 10, fontWeight: FontWeight.w700, color: danger)),
+    ]);
   }
 
   /// The centre column: big left score · status/time · big right score. The

@@ -2,7 +2,7 @@
 // asserts canonical GameSummary invariants. Run: node test/summary.test.mjs
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { fetchSummary } from '../src/espn.js';
-import { normalizeSummary } from '../src/summary.js';
+import { normalizeSummary, cleanSubText } from '../src/summary.js';
 
 // stable historical events (persist on ESPN) across the team-sport families
 const CASES = [
@@ -10,12 +10,20 @@ const CASES = [
   { key: 'basketball/nba', id: '401859966', quarters: 4 },
   { key: 'football/nfl', id: '401772988', want: ['Passing', 'Rushing'] },
   { key: 'hockey/nhl', id: '401874173', goals: true },
-  { key: 'soccer/fifa.world', id: '760420', lineups: 2 },
+  { key: 'soccer/fifa.world', id: '760420', lineups: 2, subs: true },
 ];
 
 let pass = 0, fail = 0;
 const fails = [];
 const ok = (c, m) => { if (c) pass++; else { fail++; fails.push(m); } };
+
+// Deterministic (no network): the substitution lead-in stripper. The live case
+// above only proves SOME sub is clean; these pin the edge cases — notably a club
+// name with internal periods, which a naive "cut at first '.'" would mangle.
+ok(cleanSubText('Substitution, Qatar. Ahmed Fathy replaces Ayoub Al Oui.') === 'Ahmed Fathy replaces Ayoub Al Oui.', 'sub: simple club');
+ok(cleanSubText('Substitution, A.F.C. Bournemouth. Solanke replaces Ouattara.') === 'Solanke replaces Ouattara.', 'sub: dotted club name kept intact');
+ok(cleanSubText('Substitution, Switzerland. Fabian Rieder replaces Michel Aebischer.') === 'Fabian Rieder replaces Michel Aebischer.', 'sub: full names');
+ok(cleanSubText('Substitution, Real Madrid.') === 'Real Madrid.', 'sub: no "replaces" → drops only the keyword');
 
 for (const t of CASES) {
   try {
@@ -35,6 +43,10 @@ for (const t of CASES) {
     if (t.want) for (const w of t.want) ok(s.boxGroups.some(g => g.title === w), `${t.key}: has ${w} box group`);
     if (t.quarters) ok(s.periodLines?.labels.length === t.quarters, `${t.key}: ${t.quarters} period splits`);
     if (t.goals) ok(s.scoringPlays.some(p => /goal/i.test(p.text)), `${t.key}: goals in feed`);
+    // soccer subs ride the rich feed (the cheap scoreboard has none) with the
+    // verbose "Substitution, <Team>. " lead-in stripped → "X replaces Y."
+    if (t.subs) ok(s.scoringPlays.some(p => /substitution/i.test(p.type || '') && /replaces/i.test(p.text) && !/^substitution/i.test(p.text)),
+      `${t.key}: cleaned subs in scoring feed`);
     if (t.lineups) ok(s.lineups.length === t.lineups, `${t.key}: ${t.lineups} lineups`);
     console.log(`${t.key} — ${s.boxGroups.length} box groups, ${s.teamStats.length} team stats, ${s.scoringPlays.length} plays, ${s.lineups.length} lineups`);
   } catch (e) {

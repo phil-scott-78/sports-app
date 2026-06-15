@@ -114,6 +114,9 @@ export interface SportEvent {
   venue?: Venue;
   broadcasts: string[];   // flattened network names
   notes: string[];        // 'NBA Finals - Game 7', bowl name, aggregate line
+  weekLabel?: string;     // CHEAP: 'Week 5' (gridiron) / 'Round 15' (rugby) from
+                          // event.week.number — regular season only, see normalize.js
+  weather?: Weather;      // CHEAP: event.weather for OUTDOOR venues only
   links: { web?: string; box?: string };
   competitions: Competition[];
 }
@@ -123,6 +126,13 @@ export interface Venue {
   city?: string;
   country?: string;
   indoor?: boolean;
+}
+
+/** Outdoor-game weather (scoreboard event.weather). Emitted only when the venue
+ *  is not indoor — the one bit of pre-game context that moves the read (baseball). */
+export interface Weather {
+  temperature?: number;   // Fahrenheit, as ESPN reports
+  condition?: string;     // conditionId, e.g. 'Cloudy' | 'Sunny'
 }
 
 // ---------------------------------------------------------------------------
@@ -161,6 +171,8 @@ export interface Situation {
   onThird?: boolean;
   pitcher?: string;   // short name
   batter?: string;    // short name
+  pitcherLine?: string; // CHEAP: situation.pitcher.summary — '0.2 IP, 0 ER, K, BB'
+  batterLine?: string;  // CHEAP: situation.batter.summary — the batter's day '1-3, RBI'
   outsText?: string;  // '2 Outs' (lives on competition, not situation, upstream)
   // gridiron
   down?: number;
@@ -255,7 +267,7 @@ export interface Competitor {
   stats?: Record<string, string | number>; // team stat line, keyed by ESPN abbr
                             // (CHEAP: from scoreboard competitor.statistics[])
 
-  // ---- cheap-tier context already in the scoreboard (see DISPLAY-SPEC.md) ----
+  // ---- cheap-tier context already in the scoreboard ----
   hits?: number;            // baseball: the H in R/H/E
   errors?: number;          // baseball: the E in R/H/E
   form?: string;            // soccer/rugby recent form ('WLWWW', newest last)
@@ -275,6 +287,8 @@ export interface Leader {
 export interface Probable {
   role: string;      // 'Starter' (SP) | 'Probable Starting Goalie' etc.
   athlete: string;   // short athlete name
+  record?: string;   // CHEAP MLB: probables[].record — '(5-4, 3.30)' (W-L, ERA)
+  confirmed?: boolean;// CHEAP NHL: probables[].status.type==='confirmed' (goalie locked vs projected)
 }
 
 export interface Athlete {
@@ -379,7 +393,8 @@ export interface Method {
 
 export interface CompetitionMeta {
   round?: string;          // tournament round label / cricket '2nd Match, Group 2'
-  seriesSummary?: string;  // playoff series '2-1'
+  seriesSummary?: string;  // playoff series '2-1' (legacy prose; prefer `series`)
+  series?: SeriesInfo;     // STRUCTURED playoff series state (NBA/NHL/MLB-playoff) — drives the pip row
   cardSegment?: string;    // MMA 'Main Card' | 'Prelims' (core API)
   featured?: boolean;      // MMA main event
   flag?: string;           // racing F1-ONLY: GREEN|YELLOW|RED|CHECKER
@@ -387,6 +402,16 @@ export interface CompetitionMeta {
   cricketSummary?: string; // 'RCB won by 5 wkts (12b rem)'
   hadPlayoff?: boolean;    // golf: the reliable OT signal (status.hadPlayoff)
   golf?: GolfMeta;
+}
+
+/** Structured best-of-N playoff series (scoreboard competition.series). ESPN ships
+ *  this on NBA/NHL/MLB postseason games; we used to keep only the prose summary.
+ *  competitors[].id matches Competitor.id so the UI can color each side's pips. */
+export interface SeriesInfo {
+  type?: string;           // 'playoff'
+  total?: number;          // totalCompetitions — best-of-N (e.g. 7)
+  completed?: boolean;     // series decided
+  competitors: { id: string; wins: number }[];
 }
 
 export interface GolfMeta {

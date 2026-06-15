@@ -31,6 +31,16 @@ function sideMaps(raw) {
 const aShort = a => a?.shortName || a?.displayName || a?.fullName || '';
 const aPos = a => a?.position?.abbreviation || a?.position?.name;
 
+// Stat keys that aren't a glanceable head-to-head comparison: bare "meta" counts
+// (largestLead/leadChanges/leadPercentage read as stray numbers), redundant
+// duplicates of a stat we already keep, and game-management timeouts. Dropped so
+// the comparison stays a clean box-score read.
+const TEAM_STAT_DENY = new Set([
+  'largestLead', 'leadChanges', 'leadPercentage',
+  'totalTurnovers', 'teamTurnovers', 'totalTechnicalFouls',
+  'fullTimeoutsRemaining', 'shortTimeoutsRemaining', 'timeoutsRemaining', 'timeoutsUsed',
+]);
+
 // ---- team stat comparison ---------------------------------------------------
 function buildTeamStats(raw) {
   const teams = raw.boxscore?.teams || [];
@@ -43,6 +53,7 @@ function buildTeamStats(raw) {
     const m = {};
     for (const s of (t.statistics || [])) {
       if (s.displayValue == null) continue; // MLB nests (no top-level displayValue) — skip
+      if (TEAM_STAT_DENY.has(s.name)) continue; // drop noise / timeouts
       m[s.name] = { label: s.label || s.shortDisplayName || s.displayName || s.name, value: String(s.displayValue) };
     }
     return m;
@@ -94,6 +105,17 @@ function buildBoxGroups(raw, side) {
 // ---- scoring feed -----------------------------------------------------------
 const SOCCER_KEEP = /goal|card|penalt|substitution/i;
 
+// ESPN ships substitutions as "Substitution, <Team>. X replaces Y." — strip the
+// redundant team lead-in (the timeline already tags the team + draws a swap glyph)
+// so the row reads "X replaces Y." Anchored on the period-free "replaces" tail
+// rather than the first '.', so a dotted club name ("A.F.C. Bournemouth") isn't
+// truncated; falls back to dropping just the "Substitution," keyword.
+export function cleanSubText(text) {
+  const t = typeof text === 'string' ? text : '';
+  const tail = t.match(/([^.]*\breplaces\b[^.]*\.?)\s*$/i);
+  return (tail ? tail[1] : t.replace(/^substitution[,.]?\s*/i, '')).trim() || t;
+}
+
 function mapPlay(p, side, abbr) {
   const tid = String(p.team?.id ?? '');
   return pick({
@@ -119,6 +141,10 @@ function buildScoringPlays(raw, side, abbr) {
     src = raw.keyEvents.filter(p => p.scoringPlay === true || SOCCER_KEEP.test(p.type?.text || '')); // soccer
   }
   const out = src.map(p => mapPlay(p, side, abbr)).filter(p => p.text);
+  // Tidy soccer substitution text; leaves every other play's text untouched.
+  for (const p of out) {
+    if (/substitution/i.test(p.type || '')) p.text = cleanSubText(p.text);
+  }
   return out.length > 120 ? out.slice(0, 120) : out;
 }
 
