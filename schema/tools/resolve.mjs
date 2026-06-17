@@ -29,10 +29,14 @@ export function resolve(reg, key, seen = new Set()) {
   return merged;
 }
 
-/** All concrete league keys, optionally filtered. Skips dynamic `_*` buckets. */
+/** All concrete league keys, optionally filtered. Skips dynamic `_*` buckets.
+ *  `priority` accepts a single tier ('v1') OR an array of tiers (['v1','v2']) —
+ *  the tiered Leagues overview pages by priority sets (see worker overview route).
+ *  Order is registry insertion order, so page slices are deterministic. */
 export function leagueKeys(reg, { priority, sport, includeBuckets = false } = {}) {
+  const prios = priority == null ? null : (Array.isArray(priority) ? priority : [priority]);
   return Object.keys(reg.leagues)
     .filter(k => includeBuckets || !k.split('/')[1]?.startsWith('_'))
-    .filter(k => !priority || reg.leagues[k].priority === priority)
+    .filter(k => !prios || prios.includes(reg.leagues[k].priority))
     .filter(k => !sport || k.startsWith(sport + '/'));
 }

@@ -12,13 +12,15 @@
 // esbuild (wrangler) bundles .json natively — no import attribute, which older
 // esbuild can't parse. (The Node test harness DOES need `with { type: 'json' }`.)
 import registry from '../../schema/league-profiles.json';
-import { fetchScoreboard, fetchStandings, fetchSummary, fetchTeams, fetchTeamSchedule } from './espn.js';
+import { fetchScoreboard, fetchStandings, fetchSummary, fetchTeams, fetchTeamSchedule, fetchRankings } from './espn.js';
 import { normalizeScoreboard } from './normalize.js';
 import { normalizeSummary } from './summary.js';
 import { normalizeStandings } from './standings.js';
+import { normalizeRankings } from './rankings.js';
 import { normalizeTeams, normalizeTeamCard, applyScoreboardFallback } from './team.js';
 import { buildCatalog } from './catalog.js';
 import { classifyLeague } from './overview.js';
+import { publicClient } from './client.js';
 import { TTL, idleTtl } from './ttl.js';
 import { leagueKeys, resolve } from '../../schema/tools/resolve.mjs';
 
@@ -51,11 +53,33 @@ export default {
     const url = new URL(req.url);
     const [v, route, sport, league, eventId] = url.pathname.split('/').filter(Boolean);
 
+    // Lightweight client-version telemetry: the app sends its baked build id
+    // (`<versionCode> <versionName>`, see app/lib/src/version.dart). NOT used for
+    // routing or as a cache-key dimension — it's only visible in `wrangler tail`
+    // / observability so we can see the real-world version spread before deciding
+    // to raise the gate in league-profiles.json or mint a new contract version.
+    const clientVer = req.headers.get('x-scores-client');
+    if (clientVer) console.log('client', clientVer, route || '/');
+
     try {
+      // Path-major versioning: `/v1` is a contract NAME, not a build number — it
+      // absorbs additive change (new fields/enums/sports/routes) forever; the
+      // tolerant client parser makes that free. A new major (`/v2`) is minted
+      // ONLY for a breaking reshape and would be added as another allowed key
+      // here, coexisting in this one router (cache keys off the full URL, so
+      // versions never collide). See schema/SCHEMA.md §11.
       if (v !== 'v1') return json({ error: 'use /v1/*' }, { status: 404, ttl: 300 });
 
       if (route === 'health')
-        return json({ ok: true, leagues: Object.keys(registry.leagues).length, updated: new Date().toISOString() }, { ttl: 60 });
+        return json({
+          ok: true,
+          leagues: Object.keys(registry.leagues).length,
+          updated: new Date().toISOString(),
+          // Advisory client-version gate (min/recommended/latest + download URL),
+          // authored in the registry, echoed here. null when the registry omits
+          // it → the app shows no update banner (fail-open). See publicClient.
+          client: publicClient(registry.client),
+        }, { ttl: 60 });
 
       if (route === 'catalog')
         return json(buildCatalog(registry, {
@@ -69,16 +93,30 @@ export default {
       // every TTL — not N fetches per client.
       if (route === 'overview') {
         return cached(req, ctx, async () => {
-          const all = leagueKeys(registry, {
-            priority: url.searchParams.get('priority') || undefined,
-            sport: url.searchParams.get('sport') || undefined,
-          });
+          const sp = url.searchParams;
           // The fan-out spends one subrequest per league and Cloudflare caps an
-          // invocation at 50. Stay safely under it: leagues past the cap are
-          // simply omitted (the client renders them with no pulse, same as an
-          // 'unknown'). To cover a registry larger than this, the client should
-          // page the call by ?priority / ?sport (each is its own invocation).
-          const keys = all.slice(0, OVERVIEW_FETCH_CAP);
+          // invocation at ~50, so a request resolves at most OVERVIEW_FETCH_CAP
+          // leagues. The tiered Leagues view selects WHICH leagues three ways,
+          // keeping stable (shared-cache) URLs:
+          //   ?priority=v1[,v2]          — a priority set (the curated tiers)
+          //   &page=N                    — slice N of that set (cover >cap leagues)
+          //   ?keys=a/b,c/d              — an explicit set (pinned/followed leagues)
+          // `keys` overrides priority/sport. Unknown keys are skipped; the slice is
+          // capped. (No params → the whole registry, page 0 — back-compat.)
+          let keys;
+          const keysParam = sp.get('keys');
+          if (keysParam) {
+            keys = [...new Set(keysParam.split(',').map(s => s.trim()))]
+              .filter(k => registry.leagues[k]).slice(0, OVERVIEW_FETCH_CAP);
+          } else {
+            const priority = sp.get('priority');
+            const all = leagueKeys(registry, {
+              priority: priority ? priority.split(',').map(s => s.trim()) : undefined,
+              sport: sp.get('sport') || undefined,
+            });
+            const page = Math.max(0, parseInt(sp.get('page') || '0', 10) || 0);
+            keys = all.slice(page * OVERVIEW_FETCH_CAP, (page + 1) * OVERVIEW_FETCH_CAP);
+          }
           const now = new Date();
           const leagues = await Promise.all(keys.map(async (key) => {
             try {
@@ -123,6 +161,19 @@ export default {
           // soccer/NHL. Absent → the app falls back to its generic heuristic.
           const columns = resolve(registry, key).standingsColumns || null;
           return json({ league: key, season: Number(season), columns, groups: normalizeStandings(raw) }, { ttl: 3600 });
+        });
+      }
+
+      // College polls (AP/Coaches/CFP) — the standalone Top-25 for a college
+      // league-detail page. Updates ~weekly, so a flat 1h TTL is ample; lazy
+      // (only when a college league page is open), never in the overview fan-out.
+      if (route === 'rankings') {
+        const key = `${sport}/${league}`;
+        if (!registry.leagues[key])
+          return json({ error: `unknown league "${key}"`, hint: 'GET /v1/catalog' }, { status: 404, ttl: 300 });
+        return cached(req, ctx, async () => {
+          const raw = await fetchRankings(key);
+          return json({ league: key, ...normalizeRankings(raw) }, { ttl: 3600 });
         });
       }
 

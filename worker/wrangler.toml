@@ -9,8 +9,13 @@ compatibility_date = "2026-06-01"
 [observability]
 enabled = true
 
-# Optional: serve from a custom domain with Cache Rules so repeat edge hits are
-# served WITHOUT invoking the worker (saves the 100k/day request budget).
-# [[routes]]
-# pattern = "scores.example.com/*"
-# custom_domain = true
+# Custom domain — the app's baked default origin (app/lib/src/config.dart
+# `defaultBaseUrl` = https://api.scores.philco.dev). A sideloaded APK can't be
+# force-migrated, so this hostname is effectively permanent once a build ships.
+# `philco.dev` is an active Cloudflare zone on this account, so deploying this
+# route creates the custom domain + its proxied DNS record automatically. A
+# custom domain also lets you add Cache Rules so repeat edge hits skip the worker
+# entirely (saves the 100k/day request budget).
+[[routes]]
+pattern = "api.scores.philco.dev"
+custom_domain = true

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'config.dart';
 import 'models.dart';
+import 'version.dart';
 
 /// Overridden in main() with the loaded instance.
 final sharedPrefsProvider = Provider<SharedPreferences>(
@@ -232,10 +233,50 @@ final favoritesFeedProvider =
   }));
 });
 
-/// Per-league season-pulse states for the Leagues list (worker-computed, keyed
-/// by league key). Cached server-side; the app just fetches it when Leagues opens.
-final overviewProvider = FutureProvider<Map<String, LeagueStateInfo>>(
-    (ref) => ref.watch(apiProvider).overview());
+// ---- Leagues-tab season pulse (tiered) --------------------------------------
+// The registry has ~245 leagues but a Worker request fans out ≤48 scoreboard
+// fetches (Cloudflare's subrequest cap), so the pulse is fetched in curated,
+// stable (shared-cache) buckets instead of one impossible all-leagues call.
+
+/// Leagues pinned to the top of the Default & Active tiers: the leagues you
+/// follow PLUS the leagues of any team you've favorited. Derived — no fetch.
+final pinnedLeaguesProvider = Provider<List<String>>((ref) {
+  final out = <String>[];
+  final seen = <String>{};
+  for (final k in [
+    ...ref.watch(followedProvider),
+    ...ref.watch(favoriteTeamsProvider).map((f) => f.league),
+  ]) {
+    if (seen.add(k)) out.add(k);
+  }
+  return out;
+});
+
+/// Default tier pulse: the popular (priority `v1`) leagues — one cheap fetch.
+final popularOverviewProvider = FutureProvider<Map<String, LeagueStateInfo>>(
+    (ref) => ref.watch(apiProvider).overview(priority: 'v1'));
+
+/// Active tier pulse: the curated `v1`+`v2` set, paged under the 48-cap and
+/// merged. Two cache-coalesced fetches; the UI filters to non-offseason states.
+final activeOverviewProvider =
+    FutureProvider<Map<String, LeagueStateInfo>>((ref) async {
+  final api = ref.watch(apiProvider);
+  final pages = await Future.wait([
+    api.overview(priority: 'v1,v2', page: 0),
+    api.overview(priority: 'v1,v2', page: 1),
+  ]);
+  return {for (final m in pages) ...m};
+});
+
+/// Pulse for the pinned leagues themselves (so a pinned league outside the
+/// fetched tier — e.g. a followed lower-division side — still gets a dot). One
+/// small keyed fetch; refetches when the pinned set changes. Empty → no fetch.
+final pinnedOverviewProvider =
+    FutureProvider<Map<String, LeagueStateInfo>>((ref) {
+  final pinned = ref.watch(pinnedLeaguesProvider);
+  if (pinned.isEmpty) return Future.value(const {});
+  return ref.watch(apiProvider).overview(keys: pinned.take(48).toList());
+});
 
 /// One league's scores for a specific day (`date` = YYYYMMDD, or null = ESPN's
 /// default slate). Powers the league-detail Schedule tab's date strip.
@@ -252,6 +293,13 @@ final leagueDayScoresProvider =
 
 final standingsProvider = FutureProvider.autoDispose.family<Standings, String>(
   (ref, league) => ref.watch(apiProvider).standings(league),
+);
+
+/// College Top-25 polls for a league-detail page (AP/Coaches/CFP). autoDispose:
+/// only alive while a college league page is open. Empty polls → no section.
+final rankingsProvider =
+    FutureProvider.autoDispose.family<RankingsResponse, String>(
+  (ref, league) => ref.watch(apiProvider).rankings(league),
 );
 
 /// The set of YYYYMMDD days (local-bucketed) that have ≥1 game for a league
@@ -284,3 +332,77 @@ final summaryProvider =
     FutureProvider.autoDispose.family<GameSummary, SummaryKey>(
   (ref, k) => ref.watch(apiProvider).summary(k.league, k.eventId),
 );
+
+// ---- update gate (client-version advisory) ----------------------------------
+/// Worker health + the advisory client-version gate. The update banner is the
+/// only listener; it fetches once on launch. A failure or a gate-less worker
+/// surfaces as "no banner" — a health hiccup never blocks the app.
+final healthProvider =
+    FutureProvider<HealthInfo>((ref) => ref.watch(apiProvider).health());
+
+/// Which update nudge (if any) this build warrants.
+enum UpdateTier {
+  /// Current build, a dev build, or a gate-less/unreachable worker → show nothing.
+  none,
+
+  /// At/above minimum but below recommended → a dismissible "update available".
+  soft,
+
+  /// Below minimum → a persistent "no longer supported" bar.
+  hard,
+}
+
+/// Pure tier computation, separated from the provider so it's testable without
+/// the compile-time [kClientVersionCode] (which is 0 under `flutter test`).
+/// Fail-open at every step: a dev build (code <= 0), no gate served (old/forked/
+/// mock worker), or a missing field → [UpdateTier.none]. Numeric only — never
+/// the semver name.
+UpdateTier computeUpdateTier(int clientVersionCode, ClientGate? gate) {
+  if (clientVersionCode <= 0) return UpdateTier.none; // local/dev build
+  if (gate == null) return UpdateTier.none; // fail-open: no gate served
+  final min = gate.minVersionCode;
+  if (min != null && clientVersionCode < min) return UpdateTier.hard;
+  final rec = gate.recommendedVersionCode;
+  if (rec != null && clientVersionCode < rec) return UpdateTier.soft;
+  return UpdateTier.none;
+}
+
+/// Derives the [UpdateTier] from the served gate vs the baked [kClientVersionCode].
+final updateTierProvider = Provider<UpdateTier>((ref) => computeUpdateTier(
+    kClientVersionCode, ref.watch(healthProvider).valueOrNull?.client));
+
+/// The highest `recommendedVersionCode` the user has dismissed the SOFT banner
+/// for — so a soft nudge shows once per release, not every launch. The hard
+/// (below-minimum) banner ignores this and always shows. Persisted.
+class DismissedUpdateNotifier extends Notifier<int> {
+  static const _key = 'dismissedRecommendedVersionCode';
+
+  @override
+  int build() => ref.read(sharedPrefsProvider).getInt(_key) ?? 0;
+
+  void dismiss(int recommendedVersionCode) {
+    if (recommendedVersionCode <= state) return;
+    state = recommendedVersionCode;
+    ref.read(sharedPrefsProvider).setInt(_key, recommendedVersionCode);
+  }
+}
+
+final dismissedUpdateProvider =
+    NotifierProvider<DismissedUpdateNotifier, int>(DismissedUpdateNotifier.new);
+
+/// Whether the [UpdateBanner] will actually render — the full visibility decision
+/// in one place so the app chrome can reserve space for it (and zero the status-bar
+/// inset) ONLY when it shows, leaving the common (no-banner) layout untouched.
+/// False unless a gate is served AND this build is below it AND (for the soft
+/// tier) the user hasn't already dismissed this release.
+final bannerVisibleProvider = Provider<bool>((ref) {
+  final tier = ref.watch(updateTierProvider);
+  if (tier == UpdateTier.none) return false;
+  final gate = ref.watch(healthProvider).valueOrNull?.client;
+  if (gate == null) return false; // fail-open
+  if (tier == UpdateTier.soft) {
+    final rec = gate.recommendedVersionCode ?? 0;
+    if (rec > 0 && ref.watch(dismissedUpdateProvider) >= rec) return false;
+  }
+  return true;
+});

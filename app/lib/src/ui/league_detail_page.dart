@@ -6,9 +6,19 @@ import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import 'poll.dart';
+import 'rankings_page.dart';
 import 'scores_page.dart' show GameCard;
 import 'standings_page.dart';
 import 'widgets.dart';
+
+/// Leagues that publish a weekly AP/Coaches poll — the only ones that get a
+/// Rankings tab. VERIFIED against live ESPN /rankings (other college sports
+/// return no polls), so the tab count is static (no async churn, no wasted fetch).
+const _rankedLeagues = {
+  'football/college-football',
+  'basketball/mens-college-basketball',
+  'basketball/womens-college-basketball',
+};
 
 /// One league, two tabs: a date-scrollable **Schedule** (recent ← today →
 /// upcoming) and the **Standings** table. Reached by tapping a row in the
@@ -24,8 +34,9 @@ class LeagueDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final cs = Theme.of(context).colorScheme;
     final followed = ref.watch(followedProvider).contains(league);
+    final ranked = _rankedLeagues.contains(league);
     return DefaultTabController(
-      length: 2,
+      length: ranked ? 3 : 2,
       child: Scaffold(
         appBar: AppBar(
           title: Text(name),
@@ -44,13 +55,18 @@ class LeagueDetailPage extends ConsumerWidget {
             // Neutral underline — the selected tab is structural chrome, not a
             // value moment, so it stays grey; brand yellow is reserved.
             indicatorColor: cs.onSurface,
-            tabs: const [Tab(text: 'Schedule'), Tab(text: 'Standings')],
+            tabs: [
+              const Tab(text: 'Schedule'),
+              const Tab(text: 'Standings'),
+              if (ranked) const Tab(text: 'Rankings'),
+            ],
           ),
         ),
         body: TabBarView(
           children: [
             _ScheduleTab(league: league, name: name),
             StandingsView(league: league),
+            if (ranked) RankingsView(league: league),
           ],
         ),
       ),

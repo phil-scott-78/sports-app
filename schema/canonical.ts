@@ -91,6 +91,18 @@ export interface ScoresResponse {
   updated: string;        // ISO-8601 UTC, stamped by the worker
   anyLive: boolean;       // true if ≥1 event is `live` — client uses this to
                           // decide 15s vs 60s poll cadence
+  // CHEAP: ESPN's season skeleton, lifted from the SAME scoreboard payload
+  // (leagues[0].calendar) — no extra fetch. Present only for "day"-type calendars;
+  // omitted for "list" (gridiron/golf/F1/MMA, where the calendar is week/event
+  // buckets, not days). QUIRK (VERIFIED 2026-06): density is NOT uniform —
+  // NBA(229)/NHL(226)/soccer-eng.1(114) ship a DENSE one-entry-per-game-day list,
+  // but MLB ships a SPARSE 48-entry season-boundary calendar (spring-training
+  // start / All-Star break / season end — NOT game days). So treat this as a
+  // hint, NEVER as an exhaustive game-day set: a consumer must cross-check actual
+  // events before dimming a day "empty" (the app's Schedule strip keeps deriving
+  // precise in-window days from a range scoreboard fetch for exactly this reason).
+  calendarDays?: string[];          // sorted 'YYYYMMDD' (ET) — see density QUIRK above
+  seasonWindow?: { startDate?: string; endDate?: string }; // leagues[0].season window (reliable)
   events: SportEvent[];   // EMPTY [] off-season is normal, not an error
 }
 
@@ -438,9 +450,56 @@ export interface GameSummary {
   live: boolean;
   teamStats: TeamStatRow[];   // mirrored this-game comparison (NOT season records)
   boxGroups: BoxGroup[];      // per-player tables (batting/pitching/skaters/passing…)
-  scoringPlays: SummaryPlay[];// scoring feed / soccer key-event timeline
+  scoringPlays: SummaryPlay[];// CONDENSED scoring feed / soccer key-event timeline (default view)
   periodLines?: PeriodLines;  // per-period splits (NBA/NFL quarters, NHL periods)
   lineups: Lineup[];          // soccer/rugby starting XI + bench
+  // ---- enrichments that ride this SAME /summary payload (zero extra fetch) ----
+  // Each emitted only when present; all source from raw keys we used to discard.
+  plays?: SummaryPlay[];      // FULL chronological play-by-play (NBA/NHL/MLB). The
+                              // detail page shows scoringPlays by default and
+                              // expands into this. Capped (≤800). Same shape.
+  seasonSeries?: SeasonSeries;// head-to-head this season ('Series tied 1-1')
+  recentForm?: SideForm[];    // per-side last-5 form string (MLB/NBA/NFL/NHL),
+                              // newest LAST — mirrors the cheap scoreboard `form`
+  injuries?: TeamInjuries[];  // per-side "key absences" (structured; comments dropped)
+  winProbability?: WinProbability; // single CURRENT/FINAL win% (NBA/NFL/MLB only;
+                              // absent NHL/soccer). ESPN analytic, not a betting line;
+                              // never the full curve. Render passively on detail.
+}
+
+/** Season head-to-head series (raw.seasonseries, best non-preseason entry). */
+export interface SeasonSeries {
+  summary: string;   // 'Series tied 1-1' | 'MIA leads 2-1'
+  score?: string;    // '1-1'
+  title?: string;    // 'Regular Season Series'
+}
+
+/** One side's last-5 form (raw.lastFiveGames). `form` newest LAST, e.g. 'WLWWL'. */
+export interface SideForm {
+  side?: 'home' | 'away';
+  abbr?: string;
+  form: string;      // chars ∈ W|L|T|D
+}
+
+/** One side's injury list (raw.injuries) — structured only; long/short comments dropped. */
+export interface TeamInjuries {
+  side?: 'home' | 'away';
+  abbr?: string;
+  items: InjuryItem[];
+}
+export interface InjuryItem {
+  name: string;        // short athlete name
+  pos?: string;        // position abbreviation
+  status: string;      // 'Out' | 'Doubtful' | 'Questionable' | 'Day-To-Day' | …
+  detail?: string;     // body part / nature ('Knee')
+  returnDate?: string; // ISO, when ESPN provides an expected return
+}
+
+/** Current/final win probability (raw.winprobability last entry). Percentages 0-100. */
+export interface WinProbability {
+  home: number;
+  away: number;
+  tie?: number;        // soccer/draw-capable only (usually absent)
 }
 
 /** One mirrored stat row: 'Possession 61% — 39%'. */
@@ -549,4 +608,72 @@ export interface TeamCardResponse {
   last: SportEvent | null;  // most-recent ENDED game (final/called), else null
   next: SportEvent | null;  // earliest upcoming SCHEDULED game, else null
   anyLive: boolean;         // live != null — client uses for 15s vs 60s cadence
+}
+
+// =============================================================================
+// Rankings — college polls (AP / Coaches / CFP). The standalone weekly Top-25 for
+// a college league-detail page — DISTINCT from the per-team curatedRank we already
+// surface inline on the scoreboard. Its own endpoint (GET /v1/rankings/{sport}/
+// {league}), lazy + long TTL (weekly data); never in the overview fan-out.
+// =============================================================================
+
+export interface RankingsResponse {
+  league: string;       // 'football/college-football'
+  polls: Poll[];        // AP first, then Coaches/CFP; [] when none (offseason/pro)
+}
+export interface Poll {
+  name: string;         // 'AP Top 25'
+  shortName: string;    // 'AP Poll'
+  occurrence?: string;  // 'Week 5' | 'Final Rankings'
+  ranks: RankEntry[];   // ≤25
+}
+export interface RankEntry {
+  current?: number;     // this week's rank
+  previous?: number;    // last week's rank
+  trend?: string;       // ESPN pre-rendered delta: '+8' | '-2' | '-'
+  record?: string;      // '16-0'
+  team: RankTeam;
+}
+export interface RankTeam {
+  id: string;
+  name: string;
+  abbr?: string;
+  logo?: string;
+  logoDark?: string;
+  color?: string;
+}
+
+// =============================================================================
+// Health + the advisory client-version gate (GET /v1/health).
+// -----------------------------------------------------------------------------
+// VERSIONING CONTRACT: this whole file is versioned as a DISCIPLINE, not a wire
+// protocol. The client parses tolerantly (unknown keys ignored, missing fields
+// defaulted, discriminators stored as pass-through strings), so the worker may
+// ADD to any payload above and every already-installed app keeps working — `/v1`
+// is a contract NAME that absorbs additive change forever. A NEW major (`/v2`) is
+// minted ONLY for a breaking reshape: (1) changing an existing field's type,
+// (2) changing the count/order of positionally-zipped parallel arrays
+// (BoxGroup.columns↔BoxRow.stats, PeriodLines.labels↔SidePeriods.values),
+// (3) renaming a map key indexed by abbr (Competitor.stats, StandingsRow.stats).
+// Rule of thumb: never reshape an existing field in place — add a new one.
+// See schema/SCHEMA.md §11 for the full policy + release ritual.
+// =============================================================================
+
+export interface HealthResponse {
+  ok: boolean;
+  leagues: number;        // count of registry leagues (liveness sanity check)
+  updated: string;        // ISO timestamp
+  client: ClientGate | null; // null when the registry omits it → app shows no
+                             // banner (FAIL-OPEN: old worker / fork / offline mock)
+}
+
+/** Advisory app-update gate, authored in league-profiles.json `client` and echoed
+ *  here (internal `_`-prefixed keys stripped on the wire — see worker/src/client.js).
+ *  Comparison is by versionCode (the CI run_number baked into the APK), NEVER the
+ *  semver name. ABSENT block / null fields MUST read as "no requirement". */
+export interface ClientGate {
+  minVersionCode?: number;         // below → persistent "no longer supported" bar
+  recommendedVersionCode?: number; // [min, rec) → dismissible "update available"
+  latestVersionName?: string;      // '0.3.1' — banner copy only
+  downloadUrl?: string;            // GitHub Releases (sideloaded APK: signal + link)
 }

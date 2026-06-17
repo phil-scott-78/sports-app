@@ -7,8 +7,13 @@ class AppConfig {
   /// Default worker URL — used on a fresh install so the app works out of the
   /// box. A previously-saved URL always wins; change it via the hidden editor on
   /// the Settings → About row (tap it 6 times).
-  static const String defaultBaseUrl =
-      'https://sports-scores.philco.workers.dev';
+  ///
+  /// A STABLE custom domain, deliberately NOT the `*.workers.dev` name: a
+  /// sideloaded APK can't be force-migrated, so this hostname is effectively
+  /// permanent once a build ships. Point this domain at the worker (Cloudflare
+  /// custom-domain route in worker/wrangler.toml) before the first release tag;
+  /// moving DNS later is free, re-issuing orphaned APKs is not.
+  static const String defaultBaseUrl = 'https://api.scores.philco.dev';
 
   /// Leagues followed on first run (until the user customizes in Leagues tab).
   static const List<String> defaultFollowed = [

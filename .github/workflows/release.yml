@@ -1,7 +1,9 @@
-name: Release APK
+name: Release
 
-# Push a version tag (e.g. `git tag v0.1.0 && git push origin v0.1.0`) to build a
-# release-signed, universal APK and publish it as a GitHub Release.
+# Push a version tag (e.g. `git tag v0.1.0 && git push origin v0.1.0`) to ship a
+# full release: build + publish the signed APK (job `build`), THEN deploy the
+# worker (job `deploy-worker`, gated on `build` so the update gate never
+# advertises a release that isn't live yet). See schema/SCHEMA.md §11.
 on:
   push:
     tags:
@@ -69,12 +71,17 @@ jobs:
           EOF
 
       # versionName comes from the tag (v0.1.0 -> 0.1.0); versionCode from the run number.
+      # The --dart-define pair bakes the SAME identity into the bundle (version.dart)
+      # so the app reports the exact versionCode it ships with — that's what the
+      # /v1/health update gate compares against. No package_info_plus needed.
       - name: Build release APK
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           flutter build apk --release \
             --build-name="$VERSION" \
-            --build-number="${{ github.run_number }}"
+            --build-number="${{ github.run_number }}" \
+            --dart-define=CLIENT_VERSION_CODE=${{ github.run_number }} \
+            --dart-define=CLIENT_VERSION_NAME="$VERSION"
 
       - name: Stage APK for upload
         run: cp build/app/outputs/flutter-apk/app-release.apk "scores-${GITHUB_REF_NAME}.apk"
@@ -85,3 +92,53 @@ jobs:
           files: app/scores-${{ github.ref_name }}.apk
           generate_release_notes: true
           fail_on_unmatched_files: true
+
+  # Deploy the Cloudflare Worker. `needs: build` enforces the release ritual: the
+  # worker ships only AFTER the APK Release is published, so the update gate it
+  # serves never deep-links to a /releases/latest that doesn't contain the build
+  # yet. Fast (Node only — no Flutter/JDK). See schema/SCHEMA.md §11.
+  deploy-worker:
+    name: Deploy worker
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install worker deps
+        working-directory: worker
+        run: npm install
+
+      # Deterministic gate only — the offline suites (no network). The live-ESPN
+      # smoke suites in `npm test` are intentionally skipped here (they'd make a
+      # release flaky on ESPN's calendar/availability, not on our code).
+      - name: Offline tests
+        working-directory: worker
+        run: node test/units.test.mjs && node test/mock.test.mjs && node test/ttl.test.mjs
+
+      # Stamp THIS release into the update gate the worker bundles from the
+      # registry. recommendedVersionCode = the run_number that is ALSO the APK's
+      # versionCode (--dart-define in `build`), so the just-shipped build never
+      # nags itself while older installs get the soft "update available". Ephemeral
+      # — patches only the checked-out copy esbuild bundles; never committed. Runs
+      # AFTER the tests (which assert the committed gate ships inert 0/0).
+      # minVersionCode is left as committed (retiring a build is a deliberate edit).
+      - name: Stamp release into the update gate
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          jq --argjson rc ${{ github.run_number }} --arg ver "$VERSION" \
+            '.client.recommendedVersionCode = $rc | .client.latestVersionName = $ver' \
+            schema/league-profiles.json > schema/league-profiles.json.tmp
+          mv schema/league-profiles.json.tmp schema/league-profiles.json
+
+      - name: Deploy
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy

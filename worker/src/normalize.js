@@ -4,6 +4,7 @@
 // new league is data (league-profiles.json), not code here.
 
 import { resolve } from '../../schema/tools/resolve.mjs';
+import { buildCalendar } from './calendar.js';
 
 export const https = u => (typeof u === 'string' ? u.replace(/^http:/, 'https:') : undefined);
 const intOrNull = s => { const n = parseInt(s, 10); return Number.isFinite(n) ? n : null; };
@@ -531,6 +532,11 @@ export function normalizeScoreboard(reg, key, sb) {
   const profile = resolve(reg, key);
   const lg = (sb.leagues || [{}])[0];
   const events = (sb.events || []).map(e => buildEvent(profile, e));
+  // Authoritative season skeleton — free, it rides this same scoreboard payload.
+  // calendarDays (day-type leagues) lets the league-detail Schedule strip dim
+  // empty days + auto-focus WITHOUT a separate range fetch; seasonWindow drives
+  // the offseason-opener jump. See calendar.js.
+  const cal = buildCalendar(lg);
   return {
     sport: profile.espnSport,
     league: lg.slug || key.split('/')[1],
@@ -550,6 +556,8 @@ export function normalizeScoreboard(reg, key, sb) {
     updated: new Date().toISOString(),
     anyLive: events.some(ev => ev.competitions.some(c => c.status.live)),
     nextStartMs: nextScheduledStart(events), // undefined when nothing scheduled
+    ...(cal.calendarDays ? { calendarDays: cal.calendarDays } : {}),
+    ...(cal.seasonWindow ? { seasonWindow: cal.seasonWindow } : {}),
     events,
   };
 }

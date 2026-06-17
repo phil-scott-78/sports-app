@@ -7,6 +7,7 @@ const SUMMARY = 'https://site.api.espn.com/apis/site/v2/sports/{p}/summary?event
 const STANDINGS = 'https://site.api.espn.com/apis/v2/sports/{p}/standings';
 const TEAMS = 'https://site.api.espn.com/apis/site/v2/sports/{p}/teams';
 const TEAM_SCHEDULE = 'https://site.api.espn.com/apis/site/v2/sports/{p}/teams/{id}/schedule';
+const RANKINGS = 'https://site.api.espn.com/apis/site/v2/sports/{p}/rankings';
 
 const HEADERS = { 'user-agent': 'sports-scores-worker (+cloudflare)' };
 
@@ -64,4 +65,9 @@ export function fetchTeams(key) {
  * season — exactly what "previous/next game" needs. */
 export function fetchTeamSchedule(key, teamId) {
   return get(TEAM_SCHEDULE.replace('{p}', key).replace('{id}', String(teamId)));
+}
+
+/** College polls (AP / Coaches / CFP). Defaults to the current week's rankings. */
+export function fetchRankings(key) {
+  return get(RANKINGS.replace('{p}', key));
 }

@@ -31,9 +31,16 @@ IconData sportIcon(String sport) {
       return Icons.sports_motorsports;
     case 'rugby':
     case 'rugby-league':
+    case 'australian-football': // oval-ball field sport — closest Material glyph
       return Icons.sports_rugby;
+    case 'volleyball':
+      return Icons.sports_volleyball;
+    case 'water-polo':
+      return Icons.pool;
+    case 'field-hockey':
+      return Icons.sports_hockey;
     default:
-      return Icons.sports;
+      return Icons.sports; // incl. lacrosse (no Material glyph)
   }
 }
 
@@ -50,6 +57,12 @@ String sportLabel(String sport) {
       return 'MMA';
     case 'rugby-league':
       return 'Rugby League';
+    case 'australian-football':
+      return 'Australian Football';
+    case 'water-polo':
+      return 'Water Polo';
+    case 'field-hockey':
+      return 'Field Hockey';
     default:
       return sport.isEmpty
           ? sport

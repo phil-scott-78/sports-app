@@ -33,6 +33,17 @@ class ScoresResponse {
   /// can tighten its idle poll near kickoff — otherwise the idle→live flip is
   /// hidden for a full idle window at the most-watched moment. See [kickoffSoonMs].
   final int? nextStartMs;
+
+  /// Authoritative game days ('YYYYMMDD', ET) lifted from the SAME scoreboard
+  /// payload (worker leagues[0].calendar) — present only for "day"-type leagues
+  /// (NBA/NHL/MLB/soccer), empty for gridiron/golf/F1. When non-empty the
+  /// league-detail Schedule strip dims/auto-focuses from this instead of a
+  /// separate range fetch. See [SeasonWindow].
+  final List<String> calendarDays;
+
+  /// The league's season window (start/end), from leagues[0].season — anchors the
+  /// offseason "Returns …" focus when no game days are in view.
+  final SeasonWindow? seasonWindow;
   final List<SportEvent> events;
 
   ScoresResponse({
@@ -45,6 +56,8 @@ class ScoresResponse {
     required this.updated,
     required this.anyLive,
     this.nextStartMs,
+    this.calendarDays = const [],
+    this.seasonWindow,
     required this.events,
   });
 
@@ -58,9 +71,24 @@ class ScoresResponse {
         updated: DateTime.tryParse(_str(j['updated']))?.toLocal(),
         anyLive: _bool(j['anyLive']),
         nextStartMs: _int(j['nextStartMs']),
+        calendarDays:
+            _list(j['calendarDays']).map(_str).toList(growable: false),
+        seasonWindow: j['seasonWindow'] == null
+            ? null
+            : SeasonWindow.fromJson(_map(j['seasonWindow'])),
         events: _list(j['events'])
             .map((e) => SportEvent.fromJson(_map(e)))
             .toList(growable: false),
+      );
+}
+
+/// A league's season window (leagues[0].season). Both ends optional/tolerant.
+class SeasonWindow {
+  final DateTime? start, end;
+  SeasonWindow({this.start, this.end});
+  factory SeasonWindow.fromJson(Map<String, dynamic> j) => SeasonWindow(
+        start: DateTime.tryParse(_str(j['startDate']))?.toLocal(),
+        end: DateTime.tryParse(_str(j['endDate']))?.toLocal(),
       );
 }
 
@@ -1064,9 +1092,15 @@ class GameSummary {
   final bool live;
   final List<TeamStatRow> teamStats;
   final List<BoxGroup> boxGroups;
-  final List<SummaryPlay> scoringPlays;
+  final List<SummaryPlay> scoringPlays; // condensed scoring feed (default view)
   final PeriodLines? periodLines;
   final List<Lineup> lineups;
+  // ---- enrichments that ride the same /summary payload (zero extra fetch) ----
+  final List<SummaryPlay> plays; // FULL play-by-play (expand-to-view); [] when absent
+  final SeasonSeries? seasonSeries;
+  final List<SideForm> recentForm;
+  final List<TeamInjuries> injuries;
+  final WinProbability? winProbability;
   GameSummary({
     required this.eventId,
     required this.live,
@@ -1075,6 +1109,11 @@ class GameSummary {
     required this.scoringPlays,
     required this.periodLines,
     required this.lineups,
+    this.plays = const [],
+    this.seasonSeries,
+    this.recentForm = const [],
+    this.injuries = const [],
+    this.winProbability,
   });
   factory GameSummary.fromJson(Map<String, dynamic> j) => GameSummary(
         eventId: _str(j['eventId']),
@@ -1094,6 +1133,21 @@ class GameSummary {
         lineups: _list(j['lineups'])
             .map((l) => Lineup.fromJson(_map(l)))
             .toList(growable: false),
+        plays: _list(j['plays'])
+            .map((p) => SummaryPlay.fromJson(_map(p)))
+            .toList(growable: false),
+        seasonSeries: j['seasonSeries'] == null
+            ? null
+            : SeasonSeries.fromJson(_map(j['seasonSeries'])),
+        recentForm: _list(j['recentForm'])
+            .map((f) => SideForm.fromJson(_map(f)))
+            .toList(growable: false),
+        injuries: _list(j['injuries'])
+            .map((t) => TeamInjuries.fromJson(_map(t)))
+            .toList(growable: false),
+        winProbability: j['winProbability'] == null
+            ? null
+            : WinProbability.fromJson(_map(j['winProbability'])),
       );
 
   bool get isEmpty =>
@@ -1101,7 +1155,102 @@ class GameSummary {
       boxGroups.isEmpty &&
       scoringPlays.isEmpty &&
       lineups.isEmpty &&
-      periodLines == null;
+      periodLines == null &&
+      // enrichments count too: a summary with only win-prob/series/injuries/PBP
+      // must still render the rich section (else those would be silently dropped).
+      plays.isEmpty &&
+      seasonSeries == null &&
+      recentForm.isEmpty &&
+      injuries.isEmpty &&
+      winProbability == null;
+
+  /// Side form by 'home'/'away', for quick lookup in the detail header.
+  SideForm? formFor(String side) {
+    for (final f in recentForm) {
+      if (f.side == side) return f;
+    }
+    return null;
+  }
+
+  TeamInjuries? injuriesFor(String side) {
+    for (final t in injuries) {
+      if (t.side == side) return t;
+    }
+    return null;
+  }
+}
+
+/// Season head-to-head series ('Series tied 1-1').
+class SeasonSeries {
+  final String summary;
+  final String? score, title;
+  SeasonSeries({required this.summary, this.score, this.title});
+  factory SeasonSeries.fromJson(Map<String, dynamic> j) => SeasonSeries(
+        summary: _str(j['summary']),
+        score: _strOrNull(j['score']),
+        title: _strOrNull(j['title']),
+      );
+}
+
+/// One side's last-5 form ('WLWWL', newest last).
+class SideForm {
+  final String? side, abbr;
+  final String form;
+  SideForm({this.side, this.abbr, required this.form});
+  factory SideForm.fromJson(Map<String, dynamic> j) => SideForm(
+        side: _strOrNull(j['side']),
+        abbr: _strOrNull(j['abbr']),
+        form: _str(j['form']),
+      );
+}
+
+/// One side's "key absences" list (structured; news comments dropped upstream).
+class TeamInjuries {
+  final String? side, abbr;
+  final List<InjuryItem> items;
+  TeamInjuries({this.side, this.abbr, required this.items});
+  factory TeamInjuries.fromJson(Map<String, dynamic> j) => TeamInjuries(
+        side: _strOrNull(j['side']),
+        abbr: _strOrNull(j['abbr']),
+        items: _list(j['items'])
+            .map((i) => InjuryItem.fromJson(_map(i)))
+            .toList(growable: false),
+      );
+}
+
+class InjuryItem {
+  final String name, status;
+  final String? pos, detail, returnDate;
+  InjuryItem({
+    required this.name,
+    required this.status,
+    this.pos,
+    this.detail,
+    this.returnDate,
+  });
+  factory InjuryItem.fromJson(Map<String, dynamic> j) => InjuryItem(
+        name: _str(j['name']),
+        status: _str(j['status']),
+        pos: _strOrNull(j['pos']),
+        detail: _strOrNull(j['detail']),
+        returnDate: _strOrNull(j['returnDate']),
+      );
+
+  /// 'Out · Knee' — status and body part, whichever present.
+  String get line =>
+      [status, if (detail != null && detail!.isNotEmpty) detail].join(' · ');
+}
+
+/// Current/final win probability (percentages 0-100). ESPN analytic, not a bet.
+class WinProbability {
+  final int home, away;
+  final int? tie;
+  WinProbability({required this.home, required this.away, this.tie});
+  factory WinProbability.fromJson(Map<String, dynamic> j) => WinProbability(
+        home: _int(j['home']) ?? 0,
+        away: _int(j['away']) ?? 0,
+        tie: _int(j['tie']),
+      );
 }
 
 class TeamStatRow {
@@ -1240,5 +1389,141 @@ class LineupPlayer {
         name: _str(j['name']),
         pos: _strOrNull(j['pos']),
         jersey: _strOrNull(j['jersey']),
+      );
+}
+
+// ---- rankings (college polls) -----------------------------------------------
+/// College Top-25 polls (/v1/rankings). AP first, then Coaches/CFP. Empty `polls`
+/// for pro leagues / offseason. Distinct from the inline per-team poll rank.
+class RankingsResponse {
+  final String league;
+  final List<Poll> polls;
+  RankingsResponse({required this.league, required this.polls});
+  factory RankingsResponse.fromJson(Map<String, dynamic> j) => RankingsResponse(
+        league: _str(j['league']),
+        polls: _list(j['polls'])
+            .map((p) => Poll.fromJson(_map(p)))
+            .toList(growable: false),
+      );
+}
+
+class Poll {
+  final String name, shortName;
+  final String? occurrence;
+  final List<RankEntry> ranks;
+  Poll({
+    required this.name,
+    required this.shortName,
+    this.occurrence,
+    required this.ranks,
+  });
+  factory Poll.fromJson(Map<String, dynamic> j) => Poll(
+        name: _str(j['name']),
+        shortName: _str(j['shortName']),
+        occurrence: _strOrNull(j['occurrence']),
+        ranks: _list(j['ranks'])
+            .map((r) => RankEntry.fromJson(_map(r)))
+            .toList(growable: false),
+      );
+}
+
+class RankEntry {
+  final int? current, previous;
+  final String? trend, record;
+  final RankTeam team;
+  RankEntry({
+    this.current,
+    this.previous,
+    this.trend,
+    this.record,
+    required this.team,
+  });
+  factory RankEntry.fromJson(Map<String, dynamic> j) => RankEntry(
+        current: _int(j['current']),
+        previous: _int(j['previous']),
+        trend: _strOrNull(j['trend']),
+        record: _strOrNull(j['record']),
+        team: RankTeam.fromJson(_map(j['team'])),
+      );
+
+  /// 'up' / 'down' / 'flat' from the pre-rendered trend, for the arrow glyph.
+  String get trendDir {
+    final t = trend ?? '';
+    if (t.startsWith('+')) return 'up';
+    if (t.startsWith('-') && t.length > 1) return 'down';
+    return 'flat';
+  }
+}
+
+class RankTeam {
+  final String id, name;
+  final String? abbr, logo, logoDark, color;
+  RankTeam({
+    required this.id,
+    required this.name,
+    this.abbr,
+    this.logo,
+    this.logoDark,
+    this.color,
+  });
+  factory RankTeam.fromJson(Map<String, dynamic> j) => RankTeam(
+        id: _str(j['id']),
+        name: _str(j['name']),
+        abbr: _strOrNull(j['abbr']),
+        logo: _strOrNull(j['logo']),
+        logoDark: _strOrNull(j['logoDark']),
+        color: _strOrNull(j['color']),
+      );
+}
+
+// ---- health + client-version gate ------------------------------------------
+/// The advisory update gate the worker echoes onto `/v1/health` from the registry
+/// (`schema/league-profiles.json` → `client`). Comparison is by [versionCode]
+/// (monotonic — the CI run number), NEVER the semver name.
+///
+/// Every field is nullable on purpose: an ABSENT `client` block (an old worker, a
+/// fork, or the offline mock) parses to all-null, and the gate logic treats null
+/// as "no requirement" → no banner (fail-open). It must never read as version 0.
+class ClientGate {
+  /// Below this, the build is unsupported → a persistent banner.
+  final int? minVersionCode;
+
+  /// Below this (but at/above [minVersionCode]), a dismissible nudge.
+  final int? recommendedVersionCode;
+
+  /// Human-facing latest version (e.g. '0.3.1'), for the banner copy.
+  final String? latestVersionName;
+
+  /// Where to get the new build — a sideloaded APK can't self-update, so this is
+  /// the GitHub Releases page.
+  final String? downloadUrl;
+
+  const ClientGate({
+    this.minVersionCode,
+    this.recommendedVersionCode,
+    this.latestVersionName,
+    this.downloadUrl,
+  });
+
+  factory ClientGate.fromJson(Map<String, dynamic> j) => ClientGate(
+        minVersionCode: _int(j['minVersionCode']),
+        recommendedVersionCode: _int(j['recommendedVersionCode']),
+        latestVersionName: _strOrNull(j['latestVersionName']),
+        downloadUrl: _strOrNull(j['downloadUrl']),
+      );
+}
+
+/// `/v1/health` payload. [client] is null when the worker omits the gate.
+class HealthInfo {
+  final bool ok;
+  final int leagues;
+  final ClientGate? client;
+
+  const HealthInfo({required this.ok, required this.leagues, this.client});
+
+  factory HealthInfo.fromJson(Map<String, dynamic> j) => HealthInfo(
+        ok: _bool(j['ok']),
+        leagues: _int(j['leagues']) ?? 0,
+        client: j['client'] is Map ? ClientGate.fromJson(_map(j['client'])) : null,
       );
 }

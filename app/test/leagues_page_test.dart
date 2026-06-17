@@ -14,7 +14,7 @@ List<CatalogSport> _catalog() => [
       CatalogSport.fromJson({
         'sport': 'basketball',
         'leagues': [
-          {'key': 'basketball/nba', 'league': 'nba', 'name': 'NBA', 'region': 'USA'}
+          {'key': 'basketball/nba', 'league': 'nba', 'name': 'NBA', 'region': 'USA', 'priority': 'v1'}
         ],
       })
     ];
@@ -75,7 +75,10 @@ Future<void> _pump(WidgetTester tester, LeagueStateInfo state) async {
     overrides: [
       sharedPrefsProvider.overrideWithValue(prefs),
       catalogProvider.overrideWith((ref) async => _catalog()),
-      overviewProvider.overrideWith((ref) async => {'basketball/nba': state}),
+      // Default tier reads the popular (v1) pulse; pinned is empty here.
+      popularOverviewProvider.overrideWith((ref) async => {'basketball/nba': state}),
+      pinnedOverviewProvider
+          .overrideWith((ref) async => const <String, LeagueStateInfo>{}),
       leagueDayScoresProvider.overrideWith((ref, key) async => _resp()),
       standingsProvider.overrideWith((ref, league) async => _standings()),
     ],
@@ -146,6 +149,84 @@ void main() {
     expect(find.byType(LiveDot), findsOneWidget);
 
     // Unmount so the LiveDot's repeating ticker is disposed (no pending-frame nag).
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('tiers filter the catalog: Default=v1, All=everything, Active=in-season', (tester) async {
+    final catalog = [
+      CatalogSport.fromJson({'sport': 'basketball', 'leagues': [
+        {'key': 'basketball/nba', 'league': 'nba', 'name': 'NBA', 'region': 'USA', 'priority': 'v1'},
+      ]}),
+      CatalogSport.fromJson({'sport': 'soccer', 'leagues': [
+        {'key': 'soccer/eng.2', 'league': 'eng.2', 'name': 'Championship', 'region': 'England', 'priority': 'v2'},
+        {'key': 'soccer/cyp.1', 'league': 'cyp.1', 'name': 'Cypriot First Division', 'region': 'Cyprus', 'priority': 'v3'},
+      ]}),
+    ];
+    // NBA is on today; the Championship (v2) is offseason → not "active".
+    final active = <String, LeagueStateInfo>{
+      'basketball/nba': LeagueStateInfo(key: 'basketball/nba', state: 'today', detail: 'Games today', live: false),
+      'soccer/eng.2': LeagueStateInfo(key: 'soccer/eng.2', state: 'offseason', detail: 'Returns Aug 9', live: false),
+    };
+    SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example', 'followed': <String>[]});
+    final prefs = await SharedPreferences.getInstance();
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(prefs),
+        catalogProvider.overrideWith((ref) async => catalog),
+        popularOverviewProvider.overrideWith((ref) async => {'basketball/nba': active['basketball/nba']!}),
+        activeOverviewProvider.overrideWith((ref) async => active),
+        pinnedOverviewProvider.overrideWith((ref) async => const <String, LeagueStateInfo>{}),
+      ],
+      child: MaterialApp(theme: buildTheme(Brightness.dark), home: const LeaguesPage()),
+    ));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    // Default (lands): only v1.
+    expect(find.text('NBA'), findsOneWidget);
+    expect(find.text('Championship'), findsNothing);
+    expect(find.text('Cypriot First Division'), findsNothing);
+
+    // All: everything.
+    await tester.tap(find.text('All'));
+    await tester.pumpAndSettle();
+    expect(find.text('NBA'), findsOneWidget);
+    expect(find.text('Championship'), findsOneWidget);
+    expect(find.text('Cypriot First Division'), findsOneWidget);
+
+    // Active: v1+v2 that are in-season → NBA only (Championship is offseason; v3 out of scope).
+    await tester.tap(find.text('Active'));
+    await tester.pumpAndSettle(); // resolves the Active tier's (late-watched) pulse
+    expect(find.text('NBA'), findsOneWidget);
+    expect(find.text('Championship'), findsNothing);
+    expect(find.text('Cypriot First Division'), findsNothing);
+
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('a followed league pins to the top even when its tier would hide it', (tester) async {
+    final catalog = [
+      CatalogSport.fromJson({'sport': 'soccer', 'leagues': [
+        {'key': 'soccer/cyp.1', 'league': 'cyp.1', 'name': 'Cypriot First Division', 'region': 'Cyprus', 'priority': 'v3'},
+      ]}),
+    ];
+    SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example', 'followed': ['soccer/cyp.1']});
+    final prefs = await SharedPreferences.getInstance();
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(prefs),
+        catalogProvider.overrideWith((ref) async => catalog),
+        popularOverviewProvider.overrideWith((ref) async => const <String, LeagueStateInfo>{}),
+        pinnedOverviewProvider.overrideWith((ref) async =>
+            {'soccer/cyp.1': LeagueStateInfo(key: 'soccer/cyp.1', state: 'today', detail: 'Games today', live: false)}),
+      ],
+      child: MaterialApp(theme: buildTheme(Brightness.dark), home: const LeaguesPage()),
+    ));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    // A v3 league is hidden in Default — but following it pins it to the top.
+    expect(find.text('Pinned'), findsOneWidget);
+    expect(find.text('Cypriot First Division'), findsOneWidget);
+
     await tester.pumpWidget(const SizedBox());
   });
 }

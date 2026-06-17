@@ -20,6 +20,11 @@
 // many days to the *next* game, how many since the *previous* one, and whether
 // `now` falls inside the season window — then bucket into the five states.
 
+// Calendar parsing lives in calendar.js (the single home for it — normalize.js's
+// scores passthrough imports the same helpers). See that module for the
+// "day" vs "list" calendar shapes.
+import { easternDayMs, rangesFromCalendar } from './calendar.js';
+
 const DAY = 86400000;
 // A single sporting event (a golf tournament, a race weekend, a multi-day
 // tournament) runs at most ~2 weeks; a season *bucket* (a weekly slot, a
@@ -28,51 +33,6 @@ const DAY = 86400000;
 const EVENT_SPAN_CAP = 14 * DAY;
 const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MO = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-// US-Eastern calendar day as a UTC-midnight stamp, matching ESPN's bucketing
-// (and the app's "today"). Intl resolves EST/EDT automatically. Null if unparsable.
-function easternDayMs(input) {
-  const d = input instanceof Date ? input : new Date(input);
-  if (Number.isNaN(d.getTime())) return null;
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit',
-  }).formatToParts(d);
-  const g = (t) => Number(parts.find((p) => p.type === t).value);
-  return Date.UTC(g('year'), g('month') - 1, g('day'));
-}
-
-// Collapse a league's calendar into sorted ranges (ET days), each tagged with
-// whether it came from a NESTED season bucket (a week/phase under `entries`) vs
-// a flat top-level entry (a single event). Shape: { start, end, nested }.
-function rangesFromCalendar(calendarType, calendar) {
-  const out = [];
-  if (!Array.isArray(calendar) || !calendar.length) return out;
-  const isDay = calendarType === 'day' || typeof calendar[0] === 'string';
-  if (isDay) {
-    for (const s of calendar) {
-      const ms = easternDayMs(s);
-      if (ms != null) out.push({ start: ms, end: ms, nested: false });
-    }
-  } else {
-    for (const entry of calendar) {
-      // NFL/UFL nest weeks and soccer nests competition phases under `entries`;
-      // golf/F1/MMA are one event per (flat) entry. The nested children are
-      // season buckets, NOT individual game days.
-      const nested = Array.isArray(entry.entries) && entry.entries.length > 0;
-      const kids = nested ? entry.entries : [entry];
-      for (const k of kids) {
-        if (!k || !k.startDate) continue;
-        const start = easternDayMs(k.startDate);
-        if (start == null) continue;
-        // Pull the end back 1s so an end stamped at ET-midnight doesn't bleed
-        // into the following day.
-        const end = k.endDate ? easternDayMs(new Date(new Date(k.endDate).getTime() - 1000)) : start;
-        out.push({ start, end: Math.max(end ?? start, start), nested });
-      }
-    }
-  }
-  return out.sort((a, b) => a.start - b.start);
-}
 
 /**
  * Classify one league's raw ESPN scoreboard into a season-pulse state.

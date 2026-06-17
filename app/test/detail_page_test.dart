@@ -11,6 +11,7 @@ import 'package:scores/src/ui/score_tables.dart';
 import 'package:scores/src/ui/detail_panels.dart';
 import 'package:scores/src/ui/box_score.dart';
 import 'package:scores/src/ui/summary_feed.dart';
+import 'package:scores/src/ui/summary_extras.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Loads the canonical MLB response normalized from real ESPN data
@@ -179,5 +180,68 @@ void main() {
     expect(find.byType(ScoringFeed), findsOneWidget);
     expect(find.byType(BoxScoreTable), findsOneWidget);
     expect(find.text('Box score'), findsOneWidget);
+  });
+
+  testWidgets('detail surfaces /summary enrichments: win prob, key absences, season series, expandable PBP',
+      (tester) async {
+    final ev = _liveEventResp(88).events.first; // a live NBA game
+    final summary = GameSummary.fromJson({
+      'eventId': '1', 'live': true,
+      'teamStats': [], 'boxGroups': [], 'scoringPlays': [], 'lineups': [],
+      'winProbability': {'home': 73, 'away': 27},
+      'seasonSeries': {'summary': 'Series tied 1-1'},
+      'injuries': [
+        {'side': 'home', 'abbr': 'HOM', 'items': [
+          {'name': 'J. Doe', 'pos': 'PG', 'status': 'Out', 'detail': 'Knee'}
+        ]}
+      ],
+      'plays': [
+        {'text': 'Jump ball', 'period': 1},
+        {'text': 'Towns makes layup', 'period': 1},
+      ],
+    });
+
+    tester.view.physicalSize = const Size(400, 4000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(() async => tester.pumpWidget(const SizedBox()));
+
+    SharedPreferences.setMockInitialValues({'baseUrl': 'https://w.example'});
+    final prefs = await SharedPreferences.getInstance();
+    const key = (league: 'basketball/nba', eventId: '1');
+
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(prefs),
+        // serve the live event for the detail's (league, null) poll key
+        leagueDayScoresProvider
+            .overrideWith((ref, k) async => _liveEventResp(88)),
+        summaryProvider(key).overrideWith((ref) => summary),
+      ],
+      child: MaterialApp(
+        home: GameDetailPage(
+            event: ev,
+            sport: 'basketball',
+            leagueKey: 'basketball/nba',
+            leagueName: 'NBA'),
+      ),
+    ));
+    await tester.pump(const Duration(milliseconds: 50));
+
+    expect(find.text('Win probability'), findsOneWidget);
+    expect(find.byType(WinProbBar), findsOneWidget);
+    expect(find.text('Key absences'), findsOneWidget);
+    expect(find.text('J. Doe (PG)'), findsOneWidget);
+    expect(find.text('Season series'), findsOneWidget);
+    expect(find.text('Series tied 1-1'), findsOneWidget);
+    // Basketball shows nothing until expanded → the toggle reveals the full PBP.
+    expect(find.text('Show play-by-play'), findsOneWidget);
+    expect(find.text('Towns makes layup'), findsNothing);
+    await tester.tap(find.text('Show play-by-play'));
+    await tester.pump();
+    expect(find.text('Towns makes layup'), findsWidgets);
+
+    await tester.pumpWidget(const SizedBox()); // dispose the poll timer
   });
 }

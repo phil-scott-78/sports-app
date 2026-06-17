@@ -13,6 +13,7 @@ import 'poll.dart';
 import 'score_tables.dart';
 import 'scoring_timeline.dart';
 import 'series_pips.dart';
+import 'summary_extras.dart';
 import 'summary_feed.dart';
 import 'widgets.dart';
 
@@ -372,6 +373,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         leagueKey: widget.leagueKey,
         eventId: event.id,
         sport: sport,
+        comp: comp,
         liveClock: liveClock,
         suppressPeriodLines: cheapPeriodGrid));
 
@@ -472,6 +474,7 @@ class _SoccerTimeline extends ConsumerWidget {
 /// (the cheap sections above already answered "what's the score").
 class _RichDetail extends ConsumerWidget {
   final String leagueKey, eventId, sport;
+  final Competition comp; // for side abbrs/colors/status on the enrichments
   final String?
       liveClock; // non-null on a live game → "NOW" marker in the timeline
   final bool
@@ -480,6 +483,7 @@ class _RichDetail extends ConsumerWidget {
       {required this.leagueKey,
       required this.eventId,
       required this.sport,
+      required this.comp,
       this.liveClock,
       this.suppressPeriodLines = false});
 
@@ -505,6 +509,32 @@ class _RichDetail extends ConsumerWidget {
     void add(String label, Widget w) =>
         out.addAll([SectionLabel(label), w, const SizedBox(height: 16)]);
 
+    final away =
+        comp.away ?? (comp.competitors.isNotEmpty ? comp.competitors[0] : null);
+    final home =
+        comp.home ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
+
+    // Win probability — an ESPN analytic (not a betting line). Only meaningful
+    // LIVE: pre-game has no arc and a final is already decided. Leads the section.
+    if (comp.status.live && s.winProbability != null && away != null && home != null) {
+      add(
+          'Win probability',
+          WinProbBar(
+            wp: s.winProbability!,
+            awayAbbr: away.label,
+            homeAbbr: home.label,
+            awayColor: away.color,
+            homeColor: home.color,
+          ));
+    }
+    // Key absences — pre-game/in-progress context (not a decided final).
+    if (!comp.status.isFinal && KeyAbsences.has(s.injuries)) {
+      add('Key absences', KeyAbsences(injuries: s.injuries));
+    }
+    if (s.seasonSeries != null) {
+      add('Season series', SeasonSeriesLine(series: s.seasonSeries!));
+    }
+
     if (!suppressPeriodLines &&
         _richPeriodSports.contains(sport) &&
         s.periodLines != null) {
@@ -513,11 +543,28 @@ class _RichDetail extends ConsumerWidget {
     if (sport != 'soccer' && s.teamStats.isNotEmpty) {
       add('Team stats', SummaryTeamStats(rows: s.teamStats));
     }
+    // Scoring feed → expand into full play-by-play when the FULL plays[] is
+    // present. Baseball/football/hockey show the condensed scoring feed by
+    // default; basketball (every score is a basket) shows nothing until expanded.
     if (_scoringFeedSports.contains(sport) && s.scoringPlays.isNotEmpty) {
       add(
-          sport == 'soccer' ? 'Timeline' : 'Scoring',
-          ScoringFeed(
-              plays: s.scoringPlays, sport: sport, nowLabel: liveClock));
+          'Scoring',
+          s.plays.length > s.scoringPlays.length
+              ? ExpandablePlayByPlay(
+                  scoring: s.scoringPlays,
+                  all: s.plays,
+                  sport: sport,
+                  nowLabel: liveClock)
+              : ScoringFeed(
+                  plays: s.scoringPlays, sport: sport, nowLabel: liveClock));
+    } else if (sport == 'basketball' && s.plays.isNotEmpty) {
+      add(
+          'Play-by-play',
+          ExpandablePlayByPlay(
+              scoring: const [],
+              all: s.plays,
+              sport: sport,
+              nowLabel: liveClock));
     }
     if (s.boxGroups.isNotEmpty) {
       add('Box score', BoxScoreTable(groups: s.boxGroups));

@@ -143,6 +143,11 @@ the profile; `played`/`isOvertime` are reconciled with live data.
 | Cricket | innings × **2 (limited) or 4 (Test)** | super over → extra periods | read `class.generalClassCard` per match |
 | Rugby (union) | half × 2 × 40 | knockout: 2×10 ET + kicks | period>2 |
 | Rugby league (NRL) | half × 2 × 40 | golden point 2×5 | period>2; detail 'Final' not 'FT' |
+| Australian football (AFL) | quarter × 4 × 20 | rare finals ET | period>4. score=TOTAL points; linescores **non-cumulative** (sum quarters). clock counts **up** (can read >20:00 from time-on) |
+| Lacrosse (PLL/NLL/NCAA) | quarter × 4 × 15 | sudden-death OT p5 | period>4; detail 'Final/OT'. linescores **per-period** (sum = total) |
+| Volleyball (NCAA/FIVB) | **set × 5 × —** | none (best-of-5) | n/a — `set` not an OT unit; periodScores = per-set points, match score = sets won |
+| Water polo (NCAA) | quarter × 4 × 8 | none/ET | period>4 |
+| Field hockey (NCAA W) | quarter × 4 × — | OT + penalty strokes | thin feed: no linescores; OT/SO via `status.type.detail` |
 
 ---
 
@@ -307,3 +312,152 @@ against the live API. Outstanding before relying on them:
 
 These are *data* gaps, not *design* gaps — the contract already models all of
 them; the registry just needs the confirmed values filled in.
+
+---
+
+## 10. 2026-06 additions (data we now surface)
+
+New canonical fields — all **additive** (older clients ignore them), all sourced
+from payloads we already fetch unless noted. See `canonical.ts` for the authoritative
+shapes + inline QUIRKs.
+
+- **`ScoresResponse.calendarDays` / `seasonWindow`** — ESPN's season skeleton from
+  `leagues[0].calendar`, **free** (same scoreboard payload; `worker/src/calendar.js`
+  is the single home, shared with `overview.js`). QUIRK (verified): density is NOT
+  uniform — NBA/NHL/soccer ship a dense one-per-game-day list, but **MLB ships a
+  sparse season-boundary calendar** (48 entries: ST start / All-Star break / season
+  end). Treat as a hint, never an exhaustive game-day set; the Schedule strip still
+  derives precise in-window days from a range fetch.
+- **`GameSummary` enrichments** (ride the one `/summary` fetch — zero extra cost):
+  `seasonSeries` (H2H), `recentForm` (last-5, newest last), `injuries` (structured;
+  comments dropped), `winProbability` (single current/final %, **NBA/NFL/MLB only** —
+  NHL/soccer omit it; an ESPN analytic, not a betting line), and `plays` (the FULL
+  play-by-play; the detail page shows the condensed `scoringPlays` and expands into
+  this).
+- **`RankingsResponse`** — new `GET /v1/rankings/{sport}/{league}` (college AP/Coaches/
+  CFP). Lazy, 1h TTL, never in the overview fan-out. Distinct from the per-team
+  `curatedRank` already on the scoreboard.
+
+Registry expansion (ids fetched live 2026-06-15): **5 new families** (australian-
+football, lacrosse, volleyball [set-based], water-polo, field-hockey) + **~198 league
+entries** (soccer +112, rugby +22, cricket +14, mma +11, basketball +10, baseball +9,
+golf +5, lacrosse +4, hockey/racing/volleyball/water-polo/AFL/field-hockey). Ephemeral
+slugs (qualifiers, friendlies, youth, bilateral cricket tours) stay on the
+`soccer/_other` / `cricket/_tours` catch-alls. NOTE the overview fan-out cap
+(`OVERVIEW_FETCH_CAP=48`) means only the first 48 leagues get a season-pulse in the
+unfiltered `/v1/overview`; page by `?sport`/`?priority` to pulse the rest.
+
+---
+
+## 11. Versioning, backward-compatibility & app updates
+
+The contract is versioned as a **discipline, not a protocol**. The Flutter client
+parses tolerantly (`models.dart`: unknown keys ignored, missing fields defaulted,
+every discriminator stored as a pass-through string), so an **already-installed
+APK keeps working when the worker adds to a payload** — no coordinated rollout.
+`/v1` is therefore a contract *name*, not a build number; it absorbs change
+additively, indefinitely.
+
+### The one rule that keeps old apps alive
+The worker normalizers may **add** to a payload freely, but must **never reshape an
+existing field in place** — new meaning goes in a **new** field.
+
+**Additive (ship anytime on `/v1`, no version bump, no coordination):**
+- a new optional field (top-level or nested) on any payload;
+- a new enum / discriminator value on a pass-through string (`layout`, `scoreKind`,
+  `competitorKind`, `phase`, `decision`, overview `state`, …) — old apps fail the
+  `== known` check and fall through to a default render (the "unknown passes
+  through, never crash" contract);
+- a new league in `league-profiles.json` (pure data → `resolve.mjs` → catalog);
+- a new route under `/v1` (old apps never call it);
+- dropping an *optional* field (old apps guard with null/`const []`/`''`).
+
+**Breaking (requires minting `/v2`) — the three verified traps the tolerant
+parser does NOT catch:**
+1. **Type change** of an existing field (e.g. a string score → number/object):
+   `_int`/`_num` return null, `_str` returns `''` — the value silently *vanishes*.
+2. **Count/order change of positionally-zipped parallel arrays** a renderer indexes
+   without bounds-checking — `BoxGroup.columns`↔`BoxRow.stats`,
+   `PeriodLines.labels`↔`SidePeriods.values`. These `RangeError` / mis-align at
+   *render* time, invisible to both the parser and the update gate.
+3. **Renaming a map key** the app indexes by (ESPN stat abbreviations in
+   `Competitor.stats` / `StandingsRow.stats`) — old apps silently show nothing.
+
+Litmus: *"would a v0.1.0 APK I can't update throw, mis-align, or silently blank a
+value? → breaking, mint `/v2`; else add a field."*
+
+**The machine guard for this human rule:** `app/test/detail_page_test.dart` and
+`team_card_test.dart` re-parse **and re-render** the committed `test/fixtures/`
+(canonical worker output). A careless reshape of a positionally-zipped grid trips
+them in CI. Keep those fixtures; treat a change that forces editing them as a
+breaking-change signal.
+
+### Minting `/v2` (deferred — only when a breaking change forces it)
+`/v1` and `/v2` do **not** coexist today: `worker/src/index.js` hard-rejects any
+prefix that isn't `'v1'`. When forced: change that gate to a small dispatch
+(`{v1:1, v2:2}[v]`); add a pure `shapeForMajor(major, canonicalObj)` that projects
+the single canonical object down to the v1 wire shape at the final `json()` step
+(never fork `resolve.mjs`/the normalizers); flip `Api.apiPrefix` (`app/lib/src/api.dart`)
+to `/v2` (one line — every method passes a version-less path). The Cache API keys
+off the full URL, so the two majors never collide and one `wrangler deploy` ships
+both. **Bias hard toward ten additive fields over one `/v2`.**
+
+### Client version signal (telemetry only)
+The app sends `X-Scores-Client: <versionCode> <versionName>` on every request
+(`api.dart` `_get`), sourced from compile-time consts (`app/lib/src/version.dart`)
+baked by `--dart-define` in `release.yml` — the `CLIENT_VERSION_CODE` is the same
+`github.run_number` that becomes the APK's `versionCode`, so reported == installed.
+The worker only `console.log`s it (visible in `wrangler tail` / observability); it
+is **never** a routing input or a cache-key dimension. A local `flutter run`
+reports `0 dev`.
+
+### Update warning (sideloaded APK — signal + link, never force)
+There is no Play Store auto-update, so the worker can only advise. The
+`/v1/health` response carries an advisory **`client` gate** echoed from the
+registry's top-level `client` block (`league-profiles.json`):
+
+```json
+"client": {
+  "minVersionCode": 0, "recommendedVersionCode": 0,
+  "latestVersionName": "0.1.0",
+  "downloadUrl": "https://github.com/phil-scott-78/sports-app/releases/latest"
+}
+```
+
+The app (`updateTierProvider` → `UpdateBanner`) compares its baked `versionCode`:
+at/above recommended → nothing; `[min, recommended)` → a dismissible "update
+available" nudge (once per release); below `min` → a persistent "no longer
+supported" bar. Tapping opens GitHub Releases. **Fail-open is load-bearing:** an
+absent `client` block (old worker, a fork, or the offline `npm run mock` server)
+parses to a null gate → no banner. `0/0` ships the gate fully inert. Internal
+`_`-prefixed keys (e.g. `_doc`) are stripped on the wire (`worker/src/client.js`).
+
+### Release ritual (automated by `.github/workflows/release.yml`)
+Tag and push `vX.Y.Z` (`git tag v0.3.1 && git push origin v0.3.1`). The workflow runs
+two jobs in order:
+1. **`build`** — builds + publishes the signed APK to GitHub Releases (`versionName`
+   = the tag, `versionCode` = `github.run_number`; the SAME run number is baked into
+   the app via `--dart-define`, so what the app reports == what's installed).
+2. **`deploy-worker`** (`needs: build` — runs only after the Release is live) — runs
+   the offline worker tests, then **injects `recommendedVersionCode = run_number` and
+   `latestVersionName = tag`** into the bundled registry and `wrangler deploy`s. The
+   injection is ephemeral (CI's checkout only) — it is **not** committed.
+
+One tag ships both halves in the right order, no manual gate edit. Because the
+advertised `recommendedVersionCode` equals the APK's `versionCode`, the just-shipped
+build never nags itself and every older install gets the soft "update available".
+**`minVersionCode` is never auto-bumped** — retiring an old build (the persistent
+banner) is a deliberate commit to `league-profiles.json`. The committed
+`recommendedVersionCode` is only the baseline a manual `wrangler deploy` would use.
+
+Required repo secrets: `CLOUDFLARE_API_TOKEN` (the "Edit Cloudflare Workers" token
+template, scoped to the `philco.dev` zone) + `CLOUDFLARE_ACCOUNT_ID`, alongside the
+APK signing secrets (`ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`,
+`ANDROID_KEY_PASSWORD`, `ANDROID_KEY_ALIAS`).
+
+### Origin (effectively irreversible once an APK ships)
+The app's baked default origin is a **stable custom domain**
+(`api.scores.philco.dev`, `config.dart`), deliberately not the `*.workers.dev`
+name — a sideloaded APK can't be force-migrated, so renaming the origin would
+orphan every install. Point the domain at the worker (uncomment the
+`custom_domain` route in `worker/wrangler.toml`) before the first release tag.

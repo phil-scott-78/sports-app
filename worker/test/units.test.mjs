@@ -4,7 +4,11 @@
 
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { normalizeScoreboard } from '../src/normalize.js';
+import { normalizeSummary } from '../src/summary.js';
+import { normalizeRankings } from '../src/rankings.js';
 import { normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
+import { publicClient } from '../src/client.js';
+import { leagueKeys } from '../../schema/tools/resolve.mjs';
 
 let pass = 0, fail = 0;
 const fails = [];
@@ -153,6 +157,121 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   ok(patched.live != null, 'C3: fallback surfaces the live game');
   ok(patched.anyLive === true, 'C3: anyLive set so TTL/poll speed up');
   ok(patched.team.displayName === 'Germany', `C3: team identity filled (got ${patched.team.displayName})`);
+}
+
+// ---- calendar passthrough: day-type → calendarDays; list-type → none --------
+{
+  const dayCal = {
+    leagues: [{
+      id: '46', slug: 'nba', name: 'NBA', calendarType: 'day',
+      // two distinct ET days + a duplicate → deduped & sorted
+      calendar: ['2026-06-14T04:00Z', '2026-06-16T04:00Z', '2026-06-14T04:00Z'],
+      season: { startDate: '2025-10-01T04:00Z', endDate: '2026-06-30T04:00Z' },
+    }],
+    events: [],
+  };
+  const r = normalizeScoreboard(registry, 'basketball/nba', dayCal);
+  ok(Array.isArray(r.calendarDays) && r.calendarDays.length === 2, `calendar: day-type yields unique sorted days (got ${JSON.stringify(r.calendarDays)})`);
+  ok(r.calendarDays?.[0] === '20260614', `calendar: ET-bucketed YYYYMMDD (got ${r.calendarDays?.[0]})`);
+  ok(r.seasonWindow?.startDate === '2025-10-01T04:00Z', 'calendar: seasonWindow passed through');
+
+  const listCal = {
+    leagues: [{
+      id: '28', slug: 'nfl', name: 'NFL', calendarType: 'list',
+      calendar: [{ label: 'Regular Season', startDate: '2026-09-01T04:00Z', endDate: '2027-01-01T04:00Z', entries: [{ label: 'Week 1', startDate: '2026-09-01T04:00Z', endDate: '2026-09-08T04:00Z' }] }],
+      season: {},
+    }],
+    events: [],
+  };
+  const r2 = normalizeScoreboard(registry, 'football/nfl', listCal);
+  ok(r2.calendarDays === undefined, `calendar: list-type omits calendarDays (got ${JSON.stringify(r2.calendarDays)})`);
+}
+
+// ---- rankings: poll list, name = location+name, https + dark logo -----------
+{
+  const raw = {
+    rankings: [
+      {
+        name: 'AP Top 25', shortName: 'AP Poll', occurrence: { displayValue: 'Week 5' },
+        ranks: [{ current: 1, previous: 2, trend: '+1', recordSummary: '5-0', team: { id: '99', location: 'Ohio State', name: 'Buckeyes', abbreviation: 'OSU', color: 'bb0000', logos: [{ href: 'http://a.espncdn.com/i/teamlogos/ncaa/500/99.png' }] } }],
+        others: [], droppedOut: [],
+      },
+      { name: 'Empty', shortName: 'E', ranks: [] }, // dropped (no ranks)
+    ],
+  };
+  const r = normalizeRankings(raw);
+  ok(r.polls.length === 1, `rankings: empty polls dropped (got ${r.polls.length})`);
+  const e = r.polls[0].ranks[0];
+  ok(e.current === 1 && e.trend === '+1' && e.record === '5-0', 'rankings: fields mapped');
+  ok(e.team.name === 'Ohio State Buckeyes', `rankings: name = location+name (got ${e.team.name})`);
+  ok(e.team.logo === 'https://a.espncdn.com/i/teamlogos/ncaa/500/99.png', 'rankings: logo https-forced');
+  ok(e.team.logoDark === 'https://a.espncdn.com/i/teamlogos/ncaa/500-dark/99.png', `rankings: dark logo derived (got ${e.team.logoDark})`);
+}
+
+// ---- summary enrichments: winProb / seasonSeries / form / injuries / PBP -----
+{
+  const raw = {
+    header: { id: '7', competitions: [{ status: { type: { state: 'in' } }, competitors: [
+      { id: 'H', homeAway: 'home', team: { id: 'H', abbreviation: 'HOM' } },
+      { id: 'A', homeAway: 'away', team: { id: 'A', abbreviation: 'AWY' } },
+    ] }] },
+    boxscore: { teams: [], players: [] },
+    // last entry wins (current/final), 0..1 → %
+    winprobability: [{ homeWinPercentage: 0.5, tiePercentage: 0, playId: '1' }, { homeWinPercentage: 0.73, tiePercentage: 0, playId: '2' }],
+    // prefer the non-preseason entry
+    seasonseries: [{ type: 'preseason', summary: 'Preseason tied 1-1', seriesScore: '1-1' }, { type: 'regular', summary: 'HOM leads 2-1', seriesScore: '2-1', title: 'Regular Season Series' }],
+    lastFiveGames: [
+      { team: { id: 'H', abbreviation: 'HOM' }, events: [{ gameDate: '2026-06-10T00:00Z', gameResult: 'W' }, { gameDate: '2026-06-12T00:00Z', gameResult: 'L' }] },
+      { team: { id: 'A', abbreviation: 'AWY' }, events: [{ gameDate: '2026-06-11T00:00Z', gameResult: 'L' }] },
+    ],
+    injuries: [{ team: { id: 'H', abbreviation: 'HOM' }, injuries: [
+      { status: 'Out', athlete: { shortName: 'J. Doe', position: { abbreviation: 'PG' } }, details: { detail: 'Knee', returnDate: '2026-07-01' } },
+      { status: '', athlete: {} }, // dropped: no name/status
+    ] }],
+    plays: [{ id: '1', text: 'Tip', period: { number: 1 }, scoringPlay: false }, { id: '2', text: 'Bucket', period: { number: 1 }, scoringPlay: true }],
+  };
+  const s = normalizeSummary(registry, 'basketball/nba', raw);
+  ok(s.winProbability?.home === 73 && s.winProbability?.away === 27, `summary: winProb from last entry (got ${JSON.stringify(s.winProbability)})`);
+  ok(s.seasonSeries?.summary === 'HOM leads 2-1', `summary: seasonSeries prefers non-preseason (got ${s.seasonSeries?.summary})`);
+  const hForm = (s.recentForm || []).find(f => f.side === 'home');
+  ok(hForm?.form === 'WL', `summary: recentForm newest-last (got ${hForm?.form})`);
+  const hInj = (s.injuries || []).find(t => t.side === 'home');
+  ok(hInj?.items.length === 1 && hInj.items[0].detail === 'Knee', `summary: injuries stripped, blank dropped (got ${JSON.stringify(hInj?.items)})`);
+  ok(s.plays?.length === 2, `summary: full play-by-play present (got ${s.plays?.length})`);
+}
+
+// ---- leagueKeys: priority as string OR array (tiered overview paging) --------
+{
+  const v1 = leagueKeys(registry, { priority: 'v1' });
+  const v2 = leagueKeys(registry, { priority: 'v2' });
+  const both = leagueKeys(registry, { priority: ['v1', 'v2'] });
+  ok(v1.length > 0 && v1.every(k => registry.leagues[k].priority === 'v1'), `leagueKeys: priority string filters v1 (got ${v1.length})`);
+  ok(both.length === v1.length + v2.length, `leagueKeys: priority array = v1∪v2 (got ${both.length}, want ${v1.length + v2.length})`);
+  ok(both.every(k => ['v1', 'v2'].includes(registry.leagues[k].priority)), 'leagueKeys: array members are v1/v2 only');
+  // deterministic order → page slices are stable across calls
+  ok(both.join() === leagueKeys(registry, { priority: ['v1', 'v2'] }).join(), 'leagueKeys: order is deterministic (stable paging)');
+  // the curated set spans more than one 48-league page (drives the Active tier's 2 fetches)
+  ok(both.length > 48, `leagueKeys: v1+v2 spans >1 page (got ${both.length})`);
+  // dynamic `_*` buckets never appear (they have no addressable scoreboard)
+  ok(!both.some(k => k.split('/')[1].startsWith('_')), 'leagueKeys: `_` buckets excluded');
+}
+
+// ---- client gate: /v1/health echo strips internals + fails open -------------
+{
+  // The registry's gate is projected to the wire shape, minus `_`-prefixed keys.
+  const wire = publicClient(registry.client);
+  ok(wire !== null, 'client: registry has a gate block');
+  ok(!('_doc' in wire), 'client: internal _doc stripped from the wire shape');
+  ok(typeof wire.minVersionCode === 'number', `client: minVersionCode is numeric (got ${typeof wire.minVersionCode})`);
+  ok(typeof wire.recommendedVersionCode === 'number', 'client: recommendedVersionCode is numeric');
+  ok(typeof wire.downloadUrl === 'string' && wire.downloadUrl.startsWith('https://'), `client: downloadUrl present (got ${wire.downloadUrl})`);
+  // Default ships inert (0/0) so no user is nagged until the author raises it.
+  ok(wire.minVersionCode === 0 && wire.recommendedVersionCode === 0, `client: gate ships inert 0/0 (got ${wire.minVersionCode}/${wire.recommendedVersionCode})`);
+  // FAIL-OPEN: an absent gate (old worker / fork / offline mock) → null, never a
+  // zero-version that would block every client.
+  ok(publicClient(undefined) === null, 'client: missing gate → null (fail-open)');
+  ok(publicClient(null) === null, 'client: null gate → null (fail-open)');
+  ok(publicClient('nope') === null, 'client: non-object gate → null (fail-open)');
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

@@ -202,6 +202,94 @@ function buildLineups(raw, side) {
   }).filter(l => (l.starters?.length || l.bench?.length));
 }
 
+// ---- season series (head-to-head this season) -------------------------------
+// raw.seasonseries[] = [{type:'regular'|'preseason'|'total', summary:'Series tied
+// 1-1', seriesScore:'1-1', title, ...}]. A calm one-line "how they've met"; prefer
+// a real (non-preseason) series. Already in the /summary payload — free.
+function buildSeasonSeries(raw) {
+  const ss = raw.seasonseries;
+  if (!Array.isArray(ss) || !ss.length) return undefined;
+  const pref = ss.find(s => s.type && !/pre/i.test(s.type)) || ss[ss.length - 1];
+  const summary = pref?.summary || pref?.description;
+  if (!summary) return undefined;
+  return pick({ summary: String(summary), score: pref.seriesScore != null ? String(pref.seriesScore) : undefined, title: pref.title }, ['summary', 'score', 'title']);
+}
+
+// ---- recent form (last-5) ---------------------------------------------------
+// raw.lastFiveGames[] = [{team, events:[{gameResult:'W'|'L'|'T', gameDate, ...}]}].
+// Distilled to a per-side form string (newest LAST, matching the cheap-scoreboard
+// soccer/rugby `form`), so the detail page can show recent form for MLB/NBA/NFL/NHL
+// too. Free — already in the /summary payload.
+function buildRecentForm(raw, side) {
+  const lf = raw.lastFiveGames;
+  if (!Array.isArray(lf) || !lf.length) return undefined;
+  const out = lf.map(t => {
+    const tid = String(t.team?.id ?? '');
+    const evs = (t.events || []).slice()
+      .sort((a, b) => (Date.parse(a.gameDate || a.date || 0) || 0) - (Date.parse(b.gameDate || b.date || 0) || 0));
+    const form = evs.map(e => String(e.gameResult || '').toUpperCase()).filter(r => /^[WLTD]$/.test(r)).join('');
+    return pick({ side: side[tid] || t.team?.homeAway, abbr: t.team?.abbreviation, form }, ['side', 'abbr', 'form']);
+  }).filter(x => x.form);
+  return out.length ? out : undefined;
+}
+
+// ---- injuries (pre-game "key absences") -------------------------------------
+// raw.injuries[] = [{team, injuries:[{status, athlete, type, details:{detail,
+// returnDate,...}}]}]. We keep ONLY the glanceable structured fields (name /
+// position / status / body-part / return) and DROP the long/short comment blurbs
+// (those are the news bloat the product excludes). Free — already in /summary.
+function buildInjuries(raw, side) {
+  const inj = raw.injuries;
+  if (!Array.isArray(inj) || !inj.length) return undefined;
+  const out = inj.map(block => {
+    const tid = String(block.team?.id ?? '');
+    const items = (block.injuries || []).map(it => {
+      const a = it.athlete;
+      return pick({
+        name: aShort(a),
+        pos: aPos(a),
+        status: it.status,                                              // 'Out' | 'Questionable' | 'Day-To-Day' …
+        detail: it.details?.detail || it.type?.description || it.details?.type, // body part / nature
+        returnDate: it.details?.returnDate,                             // ISO, optional
+      }, ['name', 'pos', 'status', 'detail', 'returnDate']);
+    }).filter(x => x.name && x.status);
+    return pick({ side: side[tid] || block.team?.homeAway, abbr: block.team?.abbreviation, items }, ['side', 'abbr', 'items']);
+  }).filter(b => Array.isArray(b.items) && b.items.length);
+  return out.length ? out : undefined;
+}
+
+// ---- win probability (the single current/final number) ----------------------
+// raw.winprobability[] = a per-play arc of {homeWinPercentage(0..1), tiePercentage,
+// playId}. We keep ONLY the LAST value (current live / final) — never the 500-point
+// curve (that's a chart, off-thesis). Present for NBA/NFL/MLB; ABSENT for NHL/soccer
+// (empty array → omitted). It is an ESPN analytic, not a betting line. Free.
+function buildWinProbability(raw) {
+  const wp = raw.winprobability;
+  if (!Array.isArray(wp) || !wp.length) return undefined;
+  const last = wp[wp.length - 1];
+  const h = typeof last.homeWinPercentage === 'number' ? last.homeWinPercentage : null;
+  if (h == null) return undefined;
+  const tie = Math.round((typeof last.tiePercentage === 'number' ? last.tiePercentage : 0) * 100);
+  const home = Math.round(h * 100);
+  const away = Math.max(0, 100 - home - tie);
+  return pick({ home, away, tie: tie || undefined }, ['home', 'away', 'tie']);
+}
+
+// ---- full play-by-play (the expandable layer) -------------------------------
+// raw.plays[] is the FULL chronological feed (NBA/NHL/MLB). The detail page shows
+// the condensed scoring feed (scoringPlays) by default and expands into THIS. Same
+// shape as scoringPlays (mapPlay). Capped so the rich payload stays bounded; a
+// regulation game is well under the cap, so it only trims pathological multi-OT.
+function buildPlays(raw, side, abbr) {
+  const plays = raw.plays;
+  if (!Array.isArray(plays) || !plays.length) return undefined;
+  const mapped = plays.map(p => mapPlay(p, side, abbr)).filter(p => p.text);
+  // Only worth shipping when there's more than the scoring feed already carries.
+  if (mapped.length <= 1) return undefined;
+  const CAP = 800;
+  return mapped.length > CAP ? mapped.slice(mapped.length - CAP) : mapped;
+}
+
 // ---- top level --------------------------------------------------------------
 export function normalizeSummary(reg, key, raw) {
   const profile = resolve(reg, key);
@@ -220,6 +308,18 @@ export function normalizeSummary(reg, key, raw) {
     lineups,
   };
   if (periodLines) out.periodLines = periodLines;
+  // Enrichments that ride this SAME /summary payload (zero extra fetch) — each
+  // emitted only when present. See the builders above.
+  const seasonSeries = buildSeasonSeries(raw);
+  if (seasonSeries) out.seasonSeries = seasonSeries;
+  const recentForm = buildRecentForm(raw, side);
+  if (recentForm) out.recentForm = recentForm;
+  const injuries = buildInjuries(raw, side);
+  if (injuries) out.injuries = injuries;
+  const winProbability = buildWinProbability(raw);
+  if (winProbability) out.winProbability = winProbability;
+  const plays = buildPlays(raw, side, abbr);
+  if (plays) out.plays = plays;
   // Pre-game kickoff time → lets the worker shorten the idle cache as the game
   // approaches, so the rich detail flips to live promptly (see ttl.js). Mirrors
   // normalizeScoreboard.nextStartMs; only meaningful while still scheduled.
