@@ -589,7 +589,10 @@ final _displayFeedsProvider = Provider<List<DisplayFeed>>((ref) {
 List<Widget> leagueSections(
   List<DisplayFeed> feeds, {
   String sportFilter = 'all',
-  required String noGamesLabel,
+
+  /// Empty-slate line for a league with no games. Null → the sport's own
+  /// quiet-day voice ([quietDayLine]); pass a plain label for browsed days.
+  String? noGamesLabel,
 }) {
   final out = <Widget>[];
   for (final df in feeds) {
@@ -605,7 +608,9 @@ List<Widget> leagueSections(
     } else {
       final events = df.events;
       if (events.isEmpty) {
-        out.add(_InfoTile(icon: Icons.event_busy_outlined, text: noGamesLabel));
+        out.add(_InfoTile(
+            icon: Icons.event_busy_outlined,
+            text: noGamesLabel ?? quietDayLine(feedSport(feed))));
       } else {
         // A tennis tournament can nest 100s of matches — cap the (live→scheduled→
         // final sorted) slate so the calm feed isn't flooded, noting the remainder.
@@ -695,13 +700,14 @@ class _FeedList extends ConsumerWidget {
 
     final sections = leagueSections(displayFeeds,
         sportFilter: filter,
-        noGamesLabel: viewingToday ? 'No games today' : 'No games');
+        // Today speaks in each sport's own voice; a browsed day stays plain.
+        noGamesLabel: viewingToday ? null : 'No games');
     if (sections.isEmpty && filter != 'all') {
-      children.add(const Padding(
-        padding: EdgeInsets.only(top: 24),
+      children.add(Padding(
+        padding: const EdgeInsets.only(top: 24),
         child: EmptyState(
           icon: Icons.event_busy_outlined,
-          title: 'No games',
+          title: quietDayLine(filter),
           subtitle: 'Nothing in this sport right now.',
         ),
       ));

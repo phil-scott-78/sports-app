@@ -13,19 +13,10 @@ import 'poll.dart';
 import 'score_tables.dart';
 import 'scoring_timeline.dart';
 import 'series_pips.dart';
+import 'stat_specs.dart';
 import 'summary_extras.dart';
 import 'summary_feed.dart';
 import 'widgets.dart';
-
-/// Soccer team-stat rows (cheap: scoreboard competitor.statistics by ESPN abbr).
-/// Fouls is [invert]ed — fewer is better, so the lower side reads as the leader.
-const List<({String key, String label, bool invert})> _soccerStatRows = [
-  (key: 'PP', label: 'Possession %', invert: false),
-  (key: 'SHOT', label: 'Shots', invert: false),
-  (key: 'SOG', label: 'Shots on target', invert: false),
-  (key: 'CW', label: 'Corners', invert: false),
-  (key: 'FC', label: 'Fouls', invert: true),
-];
 
 // Sports whose per-period split is summary-only (scoreboard has no linescores).
 const _richPeriodSports = {'basketball', 'football', 'hockey'};
@@ -280,6 +271,9 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     }
 
     // Head-to-head team sports: cheap sections, then the rich /summary section.
+    // The order tells the sport's story by phase — a scheduled game leads with
+    // the matchup (starters, form), a live one with what's happening right now,
+    // a final with how it ended — instead of one fixed dump for everything.
     final out = <Widget>[
       _Header(event: event, comp: comp, leagueKey: widget.leagueKey),
       const SizedBox(height: 16),
@@ -303,69 +297,98 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     final home =
         comp.home ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
 
-    final cheapPeriodGrid = _addScoreGrid(out, comp);
-
-    if (comp.status.isScheduled &&
-        away != null &&
-        home != null &&
-        ProbablesRow.has(away, home)) {
-      out.addAll([
-        const SectionLabel('Probable starters'),
-        ProbablesRow(away: away, home: home),
-        const SizedBox(height: 16),
-      ]);
-    }
-
-    if (away != null && home != null && LeadersStrip.has(away, home)) {
-      out.addAll([
-        const SectionLabel('Leaders'),
-        LeadersStrip(away: away, home: home),
-        const SizedBox(height: 16),
-      ]);
-    }
-
-    if (sport == 'soccer' &&
-        away != null &&
-        home != null &&
-        TeamStatComparison.has(away, home, _soccerStatRows)) {
-      out.addAll([
-        const SectionLabel('Team stats'),
-        TeamStatComparison(away: away, home: home, rows: _soccerStatRows),
-        const SizedBox(height: 16),
-      ]);
-    }
-
-    if (away != null && home != null && FormStrip.has(away, home)) {
-      out.addAll([
-        const SectionLabel('Recent form'),
-        FormStrip(away: away, home: home),
-        const SizedBox(height: 16),
-      ]);
-    }
-
     final liveClock = comp.status.live
         ? (comp.status.clock?.isNotEmpty == true
             ? comp.status.clock!
             : comp.status.periodLabel)
         : null;
 
-    // Soccer: the cheap scoreboard goal/card timeline, upgraded to the rich
-    // /summary feed (which adds substitutions) once it loads. Self-labels so an
-    // eventless match shows no orphan header.
-    if (sport == 'soccer') {
-      out.add(_SoccerTimeline(
-          comp: comp,
-          leagueKey: widget.leagueKey,
-          eventId: event.id,
-          liveClock: liveClock));
-    } else if (_cheapTimelineSports.contains(sport) &&
-        ScoringTimeline.has(comp)) {
-      // Rugby: cheap goal/card timeline only (competition.events, no /summary).
+    void addProbables() {
+      if (away != null && home != null && ProbablesRow.has(away, home)) {
+        out.addAll([
+          const SectionLabel('Probable starters'),
+          ProbablesRow(away: away, home: home),
+          const SizedBox(height: 16),
+        ]);
+      }
+    }
+
+    void addLeaders() {
+      if (away != null && home != null && LeadersStrip.has(away, home)) {
+        out.addAll([
+          const SectionLabel('Leaders'),
+          LeadersStrip(away: away, home: home),
+          const SizedBox(height: 16),
+        ]);
+      }
+    }
+
+    void addForm() {
+      if (away != null && home != null && FormStrip.has(away, home)) {
+        out.addAll([
+          const SectionLabel('Recent form'),
+          FormStrip(away: away, home: home),
+          const SizedBox(height: 16),
+        ]);
+      }
+    }
+
+    // The sport's curated cheap-tier stat panel (possession gauges, shooting
+    // splits, goaltending…). Returns true when it rendered AND fully overlaps
+    // the rich team stats, so _RichDetail can stand its duplicate down.
+    bool addStatsPanel() {
+      final panel = cheapStatPanels[sport];
+      if (panel == null ||
+          away == null ||
+          home == null ||
+          !TeamStatComparison.has(away, home, panel.rows)) {
+        return false;
+      }
       out.addAll([
-        const SectionLabel('Scoring'),
-        ScoringTimeline(comp: comp, sport: sport, nowLabel: liveClock),
+        SectionLabel(panel.title),
+        TeamStatComparison(away: away, home: home, rows: panel.rows),
         const SizedBox(height: 16),
       ]);
+      return panel.overlapsRich;
+    }
+
+    void addTimeline() {
+      // Soccer: the cheap scoreboard goal/card timeline, upgraded to the rich
+      // /summary feed (which adds substitutions) once it loads. Self-labels so
+      // an eventless match shows no orphan header.
+      if (sport == 'soccer') {
+        out.add(_SoccerTimeline(
+            comp: comp,
+            leagueKey: widget.leagueKey,
+            eventId: event.id,
+            liveClock: liveClock));
+      } else if (_cheapTimelineSports.contains(sport) &&
+          ScoringTimeline.has(comp)) {
+        // Rugby: cheap goal/card timeline only (competition.events, no /summary).
+        out.addAll([
+          const SectionLabel('Scoring'),
+          ScoringTimeline(comp: comp, sport: sport, nowLabel: liveClock),
+          const SizedBox(height: 16),
+        ]);
+      }
+    }
+
+    var cheapPeriodGrid = false;
+    var cheapStatsOverlap = false;
+    if (comp.status.isScheduled) {
+      // Pre-game: the matchup story — who starts, how they've been playing.
+      addProbables();
+      cheapStatsOverlap = addStatsPanel(); // rare pre-game, but never orphaned
+      addForm();
+      addLeaders();
+    } else {
+      // Live/final: the score story first — period splits, then how it
+      // happened, then the numbers behind it.
+      cheapPeriodGrid = _addScoreGrid(out, comp);
+      addTimeline();
+      cheapStatsOverlap = addStatsPanel();
+      addLeaders();
+      addForm();
     }
 
     // The rich tier: a separate /summary fetch, lazy + best-effort.
@@ -375,11 +398,20 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         sport: sport,
         comp: comp,
         liveClock: liveClock,
-        suppressPeriodLines: cheapPeriodGrid));
+        suppressPeriodLines: cheapPeriodGrid,
+        suppressTeamStats: cheapStatsOverlap));
 
     out.add(_MetaCard(event: event, comp: comp));
     return out;
   }
+
+  /// The line-score section title in the sport's own voice — "Line score" is a
+  /// baseball word; a quarter/period sport reads as its scoring split.
+  static String gridTitle(String sport) => switch (sport) {
+        'basketball' || 'football' => 'Scoring by quarter',
+        'hockey' => 'Scoring by period',
+        _ => 'Line score',
+      };
 
   /// Renders the cheap-tier line score for [comp]. Returns true when it rendered a
   /// per-period grid (so _RichDetail can stand its duplicate summary grid down).
@@ -417,7 +449,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         // fails, and signal _RichDetail to drop its duplicate. OT/SO column labels
         // are handled inside LineScoreTable from comp.periods/status.
         if (comp.competitors.any((c) => c.periodScores.length > 1)) {
-          add('Line score', LineScoreTable(comp: comp, baseball: false));
+          add(gridTitle(widget.sport), LineScoreTable(comp: comp, baseball: false));
           return true;
         }
     }
@@ -479,13 +511,16 @@ class _RichDetail extends ConsumerWidget {
       liveClock; // non-null on a live game → "NOW" marker in the timeline
   final bool
       suppressPeriodLines; // the cheap grid already rendered the period split
+  final bool
+      suppressTeamStats; // the cheap sport panel already covers the team stats
   const _RichDetail(
       {required this.leagueKey,
       required this.eventId,
       required this.sport,
       required this.comp,
       this.liveClock,
-      this.suppressPeriodLines = false});
+      this.suppressPeriodLines = false,
+      this.suppressTeamStats = false});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -505,72 +540,105 @@ class _RichDetail extends ConsumerWidget {
   }
 
   Widget _sections(BuildContext context, GameSummary s) {
-    final out = <Widget>[];
-    void add(String label, Widget w) =>
-        out.addAll([SectionLabel(label), w, const SizedBox(height: 16)]);
-
     final away =
         comp.away ?? (comp.competitors.isNotEmpty ? comp.competitors[0] : null);
     final home =
         comp.home ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
 
+    // Build each section once, then order them by phase below — a live game
+    // leads with the pulse (win probability, scoring), a final with the
+    // numbers, a scheduled game with the matchup context.
+    final sections = <String, (String, Widget)>{};
+
     // Win probability — an ESPN analytic (not a betting line). Only meaningful
-    // LIVE: pre-game has no arc and a final is already decided. Leads the section.
-    if (comp.status.live && s.winProbability != null && away != null && home != null) {
-      add(
-          'Win probability',
-          WinProbBar(
-            wp: s.winProbability!,
-            awayAbbr: away.label,
-            homeAbbr: home.label,
-            awayColor: away.color,
-            homeColor: home.color,
-          ));
+    // LIVE: pre-game has no arc and a final is already decided.
+    if (comp.status.live &&
+        s.winProbability != null &&
+        away != null &&
+        home != null) {
+      sections['winProb'] = (
+        'Win probability',
+        WinProbBar(
+          wp: s.winProbability!,
+          awayAbbr: away.label,
+          homeAbbr: home.label,
+          awayColor: away.color,
+          homeColor: home.color,
+        )
+      );
     }
     // Key absences — pre-game/in-progress context (not a decided final).
     if (!comp.status.isFinal && KeyAbsences.has(s.injuries)) {
-      add('Key absences', KeyAbsences(injuries: s.injuries));
+      sections['absences'] =
+          ('Key absences', KeyAbsences(injuries: s.injuries));
     }
     if (s.seasonSeries != null) {
-      add('Season series', SeasonSeriesLine(series: s.seasonSeries!));
+      sections['series'] =
+          ('Season series', SeasonSeriesLine(series: s.seasonSeries!));
     }
-
     if (!suppressPeriodLines &&
         _richPeriodSports.contains(sport) &&
         s.periodLines != null) {
-      add('Line score', PeriodLinesGrid(lines: s.periodLines!));
+      sections['periodLines'] = (
+        _GameDetailPageState.gridTitle(sport),
+        PeriodLinesGrid(lines: s.periodLines!)
+      );
     }
-    if (sport != 'soccer' && s.teamStats.isNotEmpty) {
-      add('Team stats', SummaryTeamStats(rows: s.teamStats));
+    if (!suppressTeamStats && s.teamStats.isNotEmpty) {
+      sections['teamStats'] =
+          ('Team stats', SummaryTeamStats(rows: s.teamStats, sport: sport));
     }
     // Scoring feed → expand into full play-by-play when the FULL plays[] is
     // present. Baseball/football/hockey show the condensed scoring feed by
     // default; basketball (every score is a basket) shows nothing until expanded.
     if (_scoringFeedSports.contains(sport) && s.scoringPlays.isNotEmpty) {
-      add(
-          'Scoring',
-          s.plays.length > s.scoringPlays.length
-              ? ExpandablePlayByPlay(
-                  scoring: s.scoringPlays,
-                  all: s.plays,
-                  sport: sport,
-                  nowLabel: liveClock)
-              : ScoringFeed(
-                  plays: s.scoringPlays, sport: sport, nowLabel: liveClock));
+      sections['scoring'] = (
+        'Scoring',
+        s.plays.length > s.scoringPlays.length
+            ? ExpandablePlayByPlay(
+                scoring: s.scoringPlays,
+                all: s.plays,
+                sport: sport,
+                nowLabel: liveClock)
+            : ScoringFeed(
+                plays: s.scoringPlays, sport: sport, nowLabel: liveClock)
+      );
     } else if (sport == 'basketball' && s.plays.isNotEmpty) {
-      add(
-          'Play-by-play',
-          ExpandablePlayByPlay(
-              scoring: const [],
-              all: s.plays,
-              sport: sport,
-              nowLabel: liveClock));
+      sections['scoring'] = (
+        'Play-by-play',
+        ExpandablePlayByPlay(
+            scoring: const [], all: s.plays, sport: sport, nowLabel: liveClock)
+      );
     }
     if (s.boxGroups.isNotEmpty) {
-      add('Box score', BoxScoreTable(groups: s.boxGroups));
+      sections['box'] = ('Box score', BoxScoreTable(groups: s.boxGroups));
     }
     if (s.lineups.isNotEmpty) {
-      add('Lineups', LineupsView(lineups: s.lineups));
+      sections['lineups'] = ('Lineups', LineupsView(lineups: s.lineups));
+    }
+
+    // The fan's reading order per phase.
+    final order = comp.status.live
+        ? const [
+            'winProb', 'scoring', 'periodLines', 'teamStats', 'box', 'lineups',
+            'absences', 'series',
+          ]
+        : comp.status.isScheduled
+            ? const [
+                'absences', 'series', 'lineups', 'teamStats',
+                // present pre-game only in edge cases, but never dropped:
+                'winProb', 'scoring', 'periodLines', 'box',
+              ]
+            : const [
+                'periodLines', 'teamStats', 'scoring', 'box', 'lineups',
+                'series', 'winProb', 'absences',
+              ];
+
+    final out = <Widget>[];
+    for (final key in order) {
+      final sec = sections[key];
+      if (sec == null) continue;
+      out.addAll([SectionLabel(sec.$1), sec.$2, const SizedBox(height: 16)]);
     }
     if (out.isEmpty) return const SizedBox.shrink();
     return Column(
@@ -906,9 +974,16 @@ class _MetaCard extends StatelessWidget {
       add(Icons.sports_cricket_outlined, comp!.meta!.cricketSummary!);
     }
     if (rows.isEmpty) return const SizedBox.shrink();
-    return DetailPanel(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, children: rows));
+    // Self-labelled so an empty card leaves no orphan header behind.
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SectionLabel('Details'),
+          DetailPanel(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: rows)),
+        ]);
   }
 }
 

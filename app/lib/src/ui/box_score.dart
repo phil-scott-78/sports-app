@@ -1,104 +1,74 @@
 import 'package:flutter/material.dart';
 import '../models.dart';
 import '../theme.dart';
+import 'stat_specs.dart';
 import 'widgets.dart';
 
-/// Leading numeric in a stat string (e.g. "12-24 (50%)" -> 12), or null.
-double? _statNum(String? s) {
-  if (s == null) return null;
-  final m = RegExp(r'-?\d+(\.\d+)?').firstMatch(s);
-  return m == null ? null : double.tryParse(m.group(0)!);
+/// The rich /summary team-stat comparison, organized instead of dumped: the
+/// sport's lead stats (see [richPriorityKeywords]) surface first in fan order,
+/// the long tail waits behind a quiet "All team stats" expander, and every row
+/// is drawn by its kind — conversion ratios ("4-16 on 3rd down") and percents
+/// as gauges, possession clocks ("33:11") as a share of real time, counts as a
+/// split bar. Values arrive pre-split as [TeamStatRow.away] / [TeamStatRow.home].
+class SummaryTeamStats extends StatefulWidget {
+  final List<TeamStatRow> rows;
+  final String? sport;
+  const SummaryTeamStats({super.key, required this.rows, this.sport});
+
+  @override
+  State<SummaryTeamStats> createState() => _SummaryTeamStatsState();
 }
 
-/// Mirrored two-column team-stat comparison with proportional bars.
-///
-/// Like [TeamStatComparison] in detail_panels.dart, but values arrive
-/// pre-split as [TeamStatRow.away] / [TeamStatRow.home].
-class SummaryTeamStats extends StatelessWidget {
-  final List<TeamStatRow> rows;
-  const SummaryTeamStats({super.key, required this.rows});
+class _SummaryTeamStatsState extends State<SummaryTeamStats> {
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
     final present =
-        rows.where((r) => r.away != null || r.home != null).toList();
+        widget.rows.where((r) => r.away != null || r.home != null).toList();
     if (present.isEmpty) return const SizedBox.shrink();
+
+    var (:lead, :rest) = curateRichRows(present, widget.sport);
+    // A tail too short to be worth a fold just shows — the expander is for the
+    // 20-row firehose, not two stragglers.
+    if (rest.length < 3) {
+      lead = [...lead, ...rest];
+      rest = const [];
+    }
+    final shown = _expanded ? [...lead, ...rest] : lead;
+
     return DetailPanel(
       child: Column(
         children: [
-          for (var i = 0; i < present.length; i++) ...[
+          for (var i = 0; i < shown.length; i++) ...[
             if (i > 0) const SizedBox(height: 10),
-            _row(context, present[i]),
+            StatCompareRow(
+              spec: classifyRichRow(shown[i]),
+              away: shown[i].away,
+              home: shown[i].home,
+            ),
           ],
+          if (rest.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: TextButton.icon(
+                onPressed: () => setState(() => _expanded = !_expanded),
+                icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more,
+                    size: 18),
+                label: Text(
+                    _expanded
+                        ? 'Key stats only'
+                        : 'All team stats (${lead.length + rest.length})',
+                    style: const TextStyle(
+                        fontSize: 12.5, fontWeight: FontWeight.w600)),
+                style:
+                    TextButton.styleFrom(foregroundColor: cs.onSurfaceVariant),
+              ),
+            ),
         ],
       ),
     );
-  }
-
-  Widget _row(BuildContext context, TeamStatRow r) {
-    final cs = Theme.of(context).colorScheme;
-    final aStr = r.away ?? '–';
-    final hStr = r.home ?? '–';
-    final aNum = _statNum(r.away);
-    final hNum = _statNum(r.home);
-    final a = aNum ?? 0;
-    final h = hNum ?? 0;
-    final total = a + h;
-    // Both non-numeric -> split 50/50.
-    final int aFlex;
-    final int hFlex;
-    if (aNum == null && hNum == null) {
-      aFlex = 500;
-      hFlex = 500;
-    } else if (total <= 0) {
-      aFlex = 1;
-      hFlex = 1;
-    } else {
-      aFlex = (a / total * 1000).round().clamp(1, 999);
-      hFlex = (1000 - aFlex).clamp(1, 999);
-    }
-    Widget num(String s, bool strong) => Text(
-          s,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: numStyle(size: 13, weight: strong ? FontWeight.w800 : FontWeight.w600),
-        );
-    return Column(children: [
-      Row(children: [
-        SizedBox(
-          width: 46,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: num(aStr, a >= h),
-          ),
-        ),
-        Expanded(
-          child: Text(
-            r.label,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant),
-          ),
-        ),
-        SizedBox(
-          width: 46,
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: num(hStr, h >= a),
-          ),
-        ),
-      ]),
-      const SizedBox(height: 4),
-      ClipRRect(
-        borderRadius: BorderRadius.circular(2),
-        // Neutral comparison — yellow stays scarce; the leading number is already
-        // bolded, the bar just shows the split (away solid, home a dim track).
-        child: Row(children: [
-          Expanded(flex: aFlex, child: Container(height: 5, color: cs.onSurfaceVariant)),
-          const SizedBox(width: 2),
-          Expanded(flex: hFlex, child: Container(height: 5, color: cs.onSurfaceVariant.withValues(alpha: 0.3))),
-        ]),
-      ),
-    ]);
   }
 }
 

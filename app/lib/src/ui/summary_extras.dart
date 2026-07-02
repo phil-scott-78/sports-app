@@ -45,7 +45,9 @@ class WinProbBar extends StatelessWidget {
     // Flex weights; guard the degenerate 0/0 so the Row still lays out.
     final aFlex = (aw == 0 && hm == 0) ? 1 : aw;
     final hFlex = (aw == 0 && hm == 0) ? 1 : hm;
-    Widget end(String abbr, int pct, Color col, bool right) => Row(
+    // The favoured side reads stronger; the trailing side steps back — the
+    // glance answers "who's winning this" before the numbers do.
+    Widget end(String abbr, int pct, Color col, bool right, bool leads) => Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (!right) ...[
@@ -55,8 +57,8 @@ class WinProbBar extends StatelessWidget {
             Text(right ? '$pct%  $abbr' : '$abbr  $pct%',
                 style: TextStyle(
                     fontSize: 12.5,
-                    fontWeight: FontWeight.w700,
-                    color: cs.onSurface)),
+                    fontWeight: leads ? FontWeight.w800 : FontWeight.w600,
+                    color: leads ? cs.onSurface : cs.onSurfaceVariant)),
             if (right) ...[const SizedBox(width: 6), _dot(col)],
           ],
         );
@@ -67,21 +69,29 @@ class WinProbBar extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              end(awayAbbr, aw, aCol, false),
-              end(homeAbbr, hm, hCol, true),
+              end(awayAbbr, aw, aCol, false, aw >= hm),
+              end(homeAbbr, hm, hCol, true, hm >= aw),
             ],
           ),
           const SizedBox(height: 8),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: SizedBox(
-              height: 8,
-              child: Row(children: [
-                Expanded(flex: aFlex, child: ColoredBox(color: aCol)),
-                Expanded(flex: hFlex, child: ColoredBox(color: hCol)),
-              ]),
+          Stack(children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: SizedBox(
+                height: 8,
+                child: Row(children: [
+                  Expanded(flex: aFlex, child: ColoredBox(color: aCol)),
+                  Expanded(flex: hFlex, child: ColoredBox(color: hCol)),
+                ]),
+              ),
             ),
-          ),
+            // Hairline tick at 50% — the coin-flip mark the arc is read against.
+            Positioned.fill(
+              child: Center(
+                child: Container(width: 2, color: cs.surface),
+              ),
+            ),
+          ]),
         ],
       ),
     );

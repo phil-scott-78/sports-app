@@ -52,7 +52,20 @@ lib/
         # game-detail rendering (rich tier):
         detail_panels.dart box_score.dart score_tables.dart
         field_leaderboard.dart finish_grid.dart summary_feed.dart
+        stat_specs.dart       # the stat language: kinds, per-sport panels, one row renderer
 ```
+
+- **Stat language (`ui/stat_specs.dart`):** every team-stat row declares a
+  *kind* and is drawn accordingly — percents (all three ESPN dialects: `52.4`,
+  `.909`, `0.440`) as centre-out gauges against 0–100, conversion ratios
+  (`4-16` on 3rd down) as made-of-attempts gauges, possession clocks (`33:11`)
+  and counting stats as share-of-total splits. Per-sport cheap panels
+  (`cheapStatPanels`: soccer match stats, basketball shooting, hockey
+  goaltending, rugby possession/territory) render straight off the scoreboard;
+  the rich `/summary` team stats are curated per sport (lead stats first, the
+  firehose behind an "All team stats" expander). The game-detail section order
+  is phase-aware: scheduled leads with the matchup, live with the pulse, final
+  with the numbers.
 
 - **State:** Riverpod (no codegen). The home feed is a `FutureProvider` over
   followed leagues; the Scores page drives adaptive refresh + lifecycle pausing.

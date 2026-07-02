@@ -70,6 +70,39 @@ String sportLabel(String sport) {
   }
 }
 
+/// A quiet-day line in the sport's own voice — what an empty slate says on the
+/// *today* view instead of a flat "No games today". Calm, not snark: the app's
+/// personality is a knowing nod, one line, then out of the way.
+String quietDayLine(String sport) {
+  switch (sport) {
+    case 'baseball':
+      return 'Off day at the ballpark';
+    case 'basketball':
+      return 'Dark night at the arena';
+    case 'hockey':
+      return 'The ice is quiet tonight';
+    case 'football':
+      return 'No football today';
+    case 'soccer':
+      return 'Quiet day on the pitch';
+    case 'golf':
+      return 'No tee times today';
+    case 'tennis':
+      return 'The courts are quiet';
+    case 'racing':
+      return 'Engines are cold today';
+    case 'mma':
+      return 'No fights tonight';
+    case 'cricket':
+      return 'No play today';
+    case 'rugby':
+    case 'rugby-league':
+      return 'No rugby today';
+    default:
+      return 'No games today';
+  }
+}
+
 /// Compact kickoff label for a scheduled game, derived from the event's own
 /// start time. Today → just the clock ("7:00 PM"); other days get a day prefix
 /// so the Upcoming slate reads clearly. This replaces ESPN's `shortDetail`,

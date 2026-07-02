@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import '../models.dart';
 import '../theme.dart';
+import 'stat_specs.dart';
 import 'widgets.dart';
 
 const double _kDiamondTurn = 0.7853981633974483; // 45° in radians
-
-double? _statNum(String? s) {
-  if (s == null) return null;
-  final m = RegExp(r'-?\d+(\.\d+)?').firstMatch(s);
-  return m == null ? null : double.tryParse(m.group(0)!);
-}
 
 /// Live "what's happening right now" strip. Baseball: count + outs + base
 /// diamond + pitcher/batter + last play. The #1 reason a fan opens a live game.
@@ -101,8 +96,65 @@ class LiveSituationStrip extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant)),
         ],
+        if (s.awayTimeouts != null && s.homeTimeouts != null) ...[
+          const SizedBox(height: 8),
+          _timeouts(context, s.awayTimeouts!, s.homeTimeouts!),
+        ],
       ]),
     );
+  }
+
+  /// Remaining timeouts as three pips per side (away left, home right) — the
+  /// clock-management read every gridiron fan tracks late in a half.
+  Widget _timeouts(BuildContext context, int awayLeft, int homeLeft) {
+    final cs = Theme.of(context).colorScheme;
+    String abbrOf(String side) {
+      for (final c in comp.competitors) {
+        if (c.homeAway == side) {
+          return c.abbreviation ?? c.shortName ?? c.displayName;
+        }
+      }
+      return side == 'home' ? 'HOME' : 'AWAY';
+    }
+
+    Widget pips(int left, {required bool mirror}) {
+      final dots = [
+        for (var i = 0; i < 3; i++)
+          Container(
+            width: 10,
+            height: 3,
+            margin: const EdgeInsets.symmetric(horizontal: 1.5),
+            decoration: BoxDecoration(
+              color: i < left
+                  ? cs.onSurfaceVariant
+                  : cs.onSurfaceVariant.withValues(alpha: 0.25),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+      ];
+      return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: mirror ? dots.reversed.toList() : dots);
+    }
+
+    final label = TextStyle(
+        fontSize: 10.5, fontWeight: FontWeight.w700, color: cs.onSurfaceVariant);
+    return Row(children: [
+      Text(abbrOf('away'), style: label),
+      const SizedBox(width: 6),
+      pips(awayLeft, mirror: false),
+      const Spacer(),
+      Text('TIMEOUTS',
+          style: TextStyle(
+              fontSize: 9.5,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.5,
+              color: cs.onSurfaceVariant.withValues(alpha: 0.7))),
+      const Spacer(),
+      pips(homeLeft, mirror: true),
+      const SizedBox(width: 6),
+      Text(abbrOf('home'), style: label),
+    ]);
   }
 
   Widget _baseball(BuildContext context, Situation s) {
@@ -400,18 +452,18 @@ class LeadersStrip extends StatelessWidget {
   }
 }
 
-/// Mirrored two-column team-stat comparison with proportional bars. A row may be
-/// [invert]ed (lower is better, e.g. Fouls) so the *smaller* side reads as the
-/// leader — bolded number + the solid bar segment.
+/// Mirrored two-column team-stat comparison, kind-aware: percentages render as
+/// centre-out gauges against 0–100, counts as one share-split bar, and a row may
+/// be [StatSpec.invert]ed (lower is better, e.g. Fouls) so the *smaller* side
+/// reads as the leader — bolded number + the solid bar segment.
 class TeamStatComparison extends StatelessWidget {
   final Competitor away, home;
-  final List<({String key, String label, bool invert})> rows;
+  final List<StatSpec> rows;
   const TeamStatComparison(
       {super.key, required this.away, required this.home, required this.rows});
 
   /// Keep only rows where at least one side has a value.
-  static bool has(Competitor a, Competitor b,
-          List<({String key, String label, bool invert})> rows) =>
+  static bool has(Competitor a, Competitor b, List<StatSpec> rows) =>
       rows.any((r) => a.stats[r.key] != null || b.stats[r.key] != null);
 
   @override
@@ -425,64 +477,15 @@ class TeamStatComparison extends StatelessWidget {
         children: [
           for (var i = 0; i < present.length; i++) ...[
             if (i > 0) const SizedBox(height: 10),
-            _row(context, present[i]),
+            StatCompareRow(
+              spec: present[i],
+              away: away.stats[present[i].key],
+              home: home.stats[present[i].key],
+            ),
           ],
         ],
       ),
     );
-  }
-
-  Widget _row(
-      BuildContext context, ({String key, String label, bool invert}) r) {
-    final cs = Theme.of(context).colorScheme;
-    final aStr = away.stats[r.key] ?? '–';
-    final hStr = home.stats[r.key] ?? '–';
-    final a = _statNum(aStr) ?? 0;
-    final h = _statNum(hStr) ?? 0;
-    final total = a + h;
-    final aFlex = total <= 0 ? 1 : (a / total * 1000).round().clamp(1, 999);
-    final hFlex = total <= 0 ? 1 : (1000 - aFlex).clamp(1, 999);
-    // The "leader" is the bigger side, or the smaller when the stat is inverted.
-    final tie = a == h;
-    final awayLeads = tie || (r.invert ? a <= h : a >= h);
-    final homeLeads = tie || (r.invert ? h <= a : h >= a);
-    Widget num(String s, bool strong) => Text(s,
-        style: numStyle(
-            size: 13, weight: strong ? FontWeight.w800 : FontWeight.w600));
-    final solid = cs.onSurfaceVariant;
-    final dim = cs.onSurfaceVariant.withValues(alpha: 0.3);
-    return Column(children: [
-      Row(children: [
-        SizedBox(
-            width: 46,
-            child: Align(
-                alignment: Alignment.centerLeft, child: num(aStr, awayLeads))),
-        Expanded(
-          child: Text(r.label,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant)),
-        ),
-        SizedBox(
-            width: 46,
-            child: Align(
-                alignment: Alignment.centerRight, child: num(hStr, homeLeads))),
-      ]),
-      const SizedBox(height: 4),
-      ClipRRect(
-        borderRadius: BorderRadius.circular(2),
-        // Neutral comparison — the leader's segment is solid, the trailing side a
-        // dim track (so an inverted stat highlights the lower value correctly).
-        child: Row(children: [
-          Expanded(
-              flex: aFlex,
-              child: Container(height: 5, color: awayLeads ? solid : dim)),
-          const SizedBox(width: 2),
-          Expanded(
-              flex: hFlex,
-              child: Container(height: 5, color: homeLeads ? solid : dim)),
-        ]),
-      ),
-    ]);
   }
 }
 
