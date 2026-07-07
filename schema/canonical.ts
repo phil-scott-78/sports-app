@@ -168,6 +168,14 @@ export interface Competition {
   method?: Method;           // MMA only: how the bout ended
   meta?: CompetitionMeta;    // round/cut/flag/series/cricket-class etc.
   situation?: Situation;     // live "what's happening now" strip (CHEAP); render only when live
+
+  // ---- cheap-tier context already on the scoreboard (VERIFIED 2026-07) ----
+  attendance?: number;       // competitions[].attendance; omitted when 0/absent
+  headline?: string;         // competitions[].headlines[0] one-line recap/preview
+                             // (shortLinkText ?? description) — a single calm line,
+                             // NOT a news feed; emitted only when ESPN sends one
+  conferenceGame?: boolean;  // college: conferenceCompetition === true
+  wasSuspended?: boolean;    // MLB: game was suspended and later resumed
 }
 
 /** Live game situation — a sport-agnostic union; only present keys are set.
@@ -194,6 +202,11 @@ export interface Situation {
   isRedZone?: boolean;
   homeTimeouts?: number;
   awayTimeouts?: number;
+  // hockey (CHEAP: scoreboard competition.situation)
+  powerPlay?: boolean;   // VERIFIED: NHL scoreboard situation.powerPlay
+  emptyNet?: boolean;    // VERIFIED: NHL scoreboard situation.emptyNet
+  strength?: string;     // 'power-play'|'short-handed'|'even-strength'|'empty-net' — from situation.lastPlay.strength (ids 701/702/703/903)
+  strengthTeam?: string; // competitor id of the side on the man advantage (situation.lastPlay.team.id)
   // any sport
   lastPlay?: string;  // human-readable last play text
 }
@@ -282,6 +295,7 @@ export interface Competitor {
   // ---- cheap-tier context already in the scoreboard ----
   hits?: number;            // baseball: the H in R/H/E
   errors?: number;          // baseball: the E in R/H/E
+  serving?: boolean;        // tennis/volleyball: this competitor is serving (CHEAP: scoreboard competitor.possession)
   form?: string;            // soccer/rugby recent form ('WLWWW', newest last)
   leaders?: Leader[];       // game/team statistical leaders
   probables?: Probable[];   // probable starting pitcher / goalie (pre-game)
@@ -390,7 +404,9 @@ export interface ScoringEvent {
 // ---------------------------------------------------------------------------
 
 export interface Method {
-  // QUIRK: NOT in the site scoreboard — sourced from core API status $ref.
+  // QUIRK: NOT structured in the site scoreboard — the cheap tier scrapes it from
+  // details[].type.text ('Unofficial Winner …'); the rich tier upgrades it from
+  // the core status resource via GameSummary.bouts (structured result + judges).
   kind: 'KO/TKO' | 'Submission' | 'Decision' | 'Draw' | 'No Contest' | string;
   detail?: string;       // 'Punches', 'Rear-Naked Choke', 'Unanimous'
   target?: string;       // 'head' | 'body' | 'leg'
@@ -426,12 +442,19 @@ export interface SeriesInfo {
   competitors: { id: string; wins: number }[];
 }
 
+/** Golf tournament meta. VERIFIED 2026-07: NOT on the site scoreboard — sourced
+ *  from the core API tournament resource (event → tournament.$ref →
+ *  `.../tournaments/{id}/seasons/{yyyy}`: {major, scoringSystem.name,
+ *  numberOfRounds, currentRound, cutRound, cutScore, cutCount}). The worker's
+ *  scores route fetches it for golf leagues only (2 extra subrequests per event,
+ *  cached with the response) and omits meta.golf when the fetch fails — treat as
+ *  best-effort enrichment, never required. */
 export interface GolfMeta {
-  numberOfRounds: number;  // 4 (72-hole) or 3 (Champions Tour, 54-hole)
+  numberOfRounds: number;  // 4 (72-hole) or 3 (Champions/LIV, 54-hole)
   currentRound?: number;
   cutRound?: number;       // 0 = no cut (signature/Champions)
   cutScore?: number;       // to-par cut line
-  cutCount?: number;
+  cutCount?: number;       // players who made the cut
   major?: boolean;
   scoringSystem?: string;  // 'Medal' (stroke) | 'Teamstroke' (team event)
 }
@@ -449,15 +472,27 @@ export interface GameSummary {
   eventId: string;
   live: boolean;
   teamStats: TeamStatRow[];   // mirrored this-game comparison (NOT season records)
-  boxGroups: BoxGroup[];      // per-player tables (batting/pitching/skaters/passing…)
+  boxGroups: BoxGroup[];      // per-player tables (batting/pitching/skaters/passing…).
+                              // QUIRK: soccer's per-player lines live on the lineup
+                              // entries (rosters[].roster[].stats), NOT boxscore.players
+                              // (empty) — the worker distills them into 'Players'
+                              // (G,A,SH,ST,YC,RC,FC,FA) + 'Goalkeepers' (SHF,SV,GA)
+                              // groups, appeared players only. VERIFIED 2026-07 live.
   scoringPlays: SummaryPlay[];// CONDENSED scoring feed / soccer key-event timeline (default view)
   periodLines?: PeriodLines;  // per-period splits (NBA/NFL quarters, NHL periods)
   lineups: Lineup[];          // soccer/rugby starting XI + bench
   // ---- enrichments that ride this SAME /summary payload (zero extra fetch) ----
   // Each emitted only when present; all source from raw keys we used to discard.
-  plays?: SummaryPlay[];      // FULL chronological play-by-play (NBA/NHL/MLB). The
-                              // detail page shows scoringPlays by default and
-                              // expands into this. Capped (≤800). Same shape.
+  plays?: SummaryPlay[];      // FULL chronological play-by-play (NBA/NHL/MLB; gridiron
+                              // flattened from drives). QUIRK: soccer/rugby ship no
+                              // plays[] — their full feed is summary commentary[]
+                              // (timestamped fouls/shots/corners/VAR narrative;
+                              // keyEvents is only goals/cards/subs, EMPTY timeline in
+                              // a 0-0 game). commentary play.team carries display name
+                              // only (no id), so sides attribute by name. The core
+                              // /plays resource is touch-by-touch noise (700+ by
+                              // halftime) — deliberately not used. VERIFIED 2026-07
+                              // live (fifa.world). Capped (≤800). Same shape.
   seasonSeries?: SeasonSeries;// head-to-head this season ('Series tied 1-1')
   recentForm?: SideForm[];    // per-side last-5 form string (MLB/NBA/NFL/NHL),
                               // newest LAST — mirrors the cheap scoreboard `form`
@@ -465,6 +500,112 @@ export interface GameSummary {
   winProbability?: WinProbability; // single CURRENT/FINAL win% (NBA/NFL/MLB only;
                               // absent NHL/soccer). ESPN analytic, not a betting line;
                               // never the full curve. Render passively on detail.
+  attendance?: number;        // gameInfo.attendance (VERIFIED 2026-07: NFL/soccer/cricket)
+  officials?: Official[];     // gameInfo.officials — referee/umpires, capped
+  drives?: DriveSummary[];    // gridiron ONLY (raw.drives.previous): compact per-drive
+                              // rows. The full drive play-by-play is FLATTENED into
+                              // `plays` (chronological) so gridiron gets feed parity
+                              // with NBA/NHL/MLB — see worker/src/summary.js.
+  cricketInnings?: CricketInningsCard[]; // cricket ONLY (raw.matchcards): the real
+                              // scorecard — per-innings batting + bowling figures.
+                              // VERIFIED 2026-07 riding the SAME site /summary we
+                              // already fetch (fixture trimming had hidden it).
+  bouts?: BoutResult[];       // MMA ONLY. QUIRK: the site /summary 404s for MMA
+                              // (it proxies a broken core call), so the worker
+                              // builds this from core per-bout status resources:
+                              // structured method of victory + judge scorecards.
+  timeline?: MatchEvent[];    // SOCCER ONLY (raw.keyEvents): the curated event feed
+                              // (goals/cards/subs/VAR) for the Timeline tab, scorer
+                              // & assist split out of participants[]. When present,
+                              // `plays` (commentary) is NOT shipped. See MatchEvent.
+}
+
+/** One soccer match event (worker `timeline`, from ESPN keyEvents[]). VERIFIED
+ *  2026-07 (fifa.world): keyEvent participants[] are [scorer, assist] for goals
+ *  and [playerIn, playerOut] for subs; team is {id} only (side via id maps); and
+ *  awayScore/homeScore are UNDEFINED — so the running score is NOT carried, the UI
+ *  tallies it from each scoring event's `side` (ESPN credits an Own Goal to the
+ *  BENEFITING team). Kickoff/Halftime/Start-2nd-Half/injury-delay rows are dropped
+ *  as noise; the UI derives half dividers from `period`. */
+export interface MatchEvent {
+  t?: number;            // minutes incl. stoppage ("45'+7'"→52), ordering only
+  period?: number;       // 1 | 2 | 3 | 4 (extra time) | 5 (shootout)
+  kind: string;          // 'goal' | 'own-goal' | 'penalty-goal' | 'penalty-missed'
+                         //  | 'yellow-card' | 'red-card' | 'substitution' | 'var'
+  clock?: string;        // "45'+7'"
+  side?: 'home' | 'away';
+  teamAbbr?: string;
+  athlete?: string;      // scorer / booked player / player coming ON
+  assist?: string;       // goal assist, or (for subs) the player going OFF
+  text?: string;         // ESPN prose, subtitle fallback
+  scoring?: boolean;     // true for goals (own/penalty included)
+}
+
+/** A match official (summary gameInfo.officials). */
+export interface Official {
+  name: string;        // fullName
+  role?: string;       // position.name: 'Referee' | 'Home Plate Umpire' | …
+}
+
+/** One gridiron drive (raw.drives.previous[]). Compact glance row; the plays
+ *  themselves live flattened in GameSummary.plays. */
+export interface DriveSummary {
+  side?: 'home' | 'away';
+  teamAbbr?: string;
+  description?: string;  // '8 plays, 51 yards, 3:02'
+  result?: string;       // displayResult: 'Touchdown' | 'Punt' | 'Field Goal' …
+  isScore?: boolean;
+  yards?: number;
+  playCount?: number;    // offensivePlays
+}
+
+/** One innings of a cricket scorecard (raw.matchcards, typeID-tagged cards merged
+ *  by inningsNumber: the batting side's card + the opposing bowling card).
+ *  VERIFIED 2026-07: all figures arrive as STRINGS ('137', '9.0', '4.77') — kept
+ *  as strings, aligned with BoxRow.stats. Partnerships cards are dropped (depth). */
+export interface CricketInningsCard {
+  innings: number;         // inningsNumber (1-based; Tests go to 4)
+  battingTeam: string;     // teamName on the Batting card
+  total?: string;          // '241 (4 wkts; 43 ovs)' — runs + wickets/overs suffix
+  extras?: string;         // '(b 5, lb 2, w 11)'
+  batting: CricketBatRow[];
+  bowlingTeam?: string;    // teamName on the matching Bowling card
+  bowling: CricketBowlRow[];
+}
+export interface CricketBatRow {
+  name: string;            // 'DA Warner'
+  dismissal?: string;      // 'caught' | 'lbw' | 'not out' | 'run out' …
+  runs?: string;
+  balls?: string;
+  fours?: string;
+  sixes?: string;
+}
+export interface CricketBowlRow {
+  name: string;            // 'JJ Bumrah'
+  overs?: string;          // '9.0'
+  maidens?: string;
+  runs?: string;           // conceded
+  wickets?: string;
+  economy?: string;        // '4.77'
+}
+
+/** One bout's structured result (MMA summary). `id` matches Competition.id so the
+ *  detail page can find its bout. Sourced from the core status resource
+ *  (VERIFIED 2026-07: result {name:'decision---unanimous', displayName, short}). */
+export interface BoutResult {
+  id: string;              // bout competition id
+  result?: string;         // 'Decision - Unanimous' | 'KO/TKO' …
+  shortResult?: string;    // 'U Dec' | 'KO'
+  round?: number;          // finish round (decision → final round)
+  clock?: string;          // '5:00' — QUIRK: for a decision this is round length
+  judges?: BoutJudge[];    // decision bouts only: per-competitor judge totals
+}
+/** Judge scorecards for one competitor: totals[] is per-judge (aligned across the
+ *  bout's competitors by index — zip both sides to read '29-28, 29-28, 30-27'). */
+export interface BoutJudge {
+  competitorId: string;
+  total?: number;          // summed card (e.g. 81)
+  totals: number[];        // one entry per judge (e.g. [27,27,27])
 }
 
 /** Season head-to-head series (raw.seasonseries, best non-preseason entry). */
@@ -537,6 +678,13 @@ export interface SummaryPlay {
   away?: number;         // running score after the play
   home?: number;
   type?: string;         // 'Goal' | 'Field Goal' | 'play-result'…
+  scoring?: boolean;     // true when this row is an actual score — set per play on
+                         // BOTH the condensed scoringPlays[] and the full plays[]
+                         // feed (from ESPN's scoringPlay), so the app's unified
+                         // action feed lifts scores (running score + team wash) out
+                         // of the run of play. Soccer's key-event scoring feed also
+                         // carries cards/subs (scoring:false). Absent ⇒ treat as
+                         // scoring (every scoringPlays row is a score).
 }
 
 /** Per-period scoreboard split sourced from the summary header. */
@@ -603,6 +751,8 @@ export interface TeamCardResponse {
     logoDark?: string;
     color?: string;
     record?: string;      // VERIFIED a STRING ('46-36'); from schedule.team.recordSummary
+    standingSummary?: string; // VERIFIED a STRING ('2nd in AL East'); from
+                          // schedule.team.standingSummary. Absent for national teams.
   };
   live: SportEvent | null;  // a currently-live game, else null
   last: SportEvent | null;  // most-recent ENDED game (final/called), else null
@@ -611,28 +761,144 @@ export interface TeamCardResponse {
 }
 
 // =============================================================================
-// Rankings — college polls (AP / Coaches / CFP). The standalone weekly Top-25 for
-// a college league-detail page — DISTINCT from the per-team curatedRank we already
-// surface inline on the scoreboard. Its own endpoint (GET /v1/rankings/{sport}/
-// {league}), lazy + long TTL (weekly data); never in the overview fan-out.
+// Team detail — the RICH tier for a team (the scoreboard-vs-summary split, but
+// for a team): the lean TeamCardResponse above is what the home feed polls; this
+// is the one-off page a team opens. GET /v1/teamdetail/{sport}/{league}/{teamId}.
+// Lazy + a 30m TTL (4 coalesced subrequests). Gated to competitorKind==='team'
+// leagues by the app (a golfer / an F1 constructor has no page). VERIFIED 2026-07
+// against live NFL/NBA/MLB/NHL/EPL/college. Everything except identity is
+// best-effort — an unavailable roster/stats/standing degrades to [] / omitted.
+// =============================================================================
+
+export interface TeamDetailResponse {
+  league: string;          // 'basketball/nba'
+  sport: string;           // 'basketball'
+  leagueName: string;
+  team: {                  // same identity block as TeamCardResponse.team
+    id: string;
+    displayName: string;
+    abbreviation?: string;
+    logo?: string;
+    logoDark?: string;
+    color?: string;
+    record?: string;
+    standingSummary?: string;
+  };
+  schedule: SportEvent[];  // FULL season (played + upcoming), start-ascending, via
+                           // the SAME buildEvent() as the scoreboard — the client
+                           // slices "last N / next N". [] when the schedule is empty.
+  roster: RosterGroup[];   // [] when absent. QUIRK (VERIFIED 2026-07): ESPN returns
+                           // EITHER a flat athletes[] (NBA/MLB/NHL → one 'Roster'
+                           // group) OR grouped athletes[{position, items[]}] (NFL by
+                           // offense/defense/specialTeam, soccer by position). The
+                           // worker discriminates STRUCTURALLY (items[] present),
+                           // never by sport name.
+  stats: TeamStatGroup[];  // season stats. [] when absent — VERIFIED EPL ships an
+                           // empty results:{} in the offseason. When the family
+                           // curates registry.teamStatKeys, collapses to ONE ordered
+                           // 'Season' group; else the natural categories, capped.
+  standing?: TeamStanding; // this team's standings GROUP only; omitted when the team
+                           // isn't found (national team / athlete-shaped racing table).
+}
+
+export interface RosterGroup {
+  name: string;            // 'Roster' (flat) | 'Offense' | 'Defense' | 'Goalkeepers'…
+  athletes: RosterAthlete[];
+}
+export interface RosterAthlete {
+  id: string;
+  name: string;
+  jersey?: string;
+  position?: string;       // abbreviation ('QB', 'G')
+  headshot?: string;       // forced HTTPS
+}
+
+export interface TeamStatGroup {
+  name: string;            // 'Season' (curated) | ESPN category displayName ('Offensive')
+  stats: TeamStatItem[];
+}
+export interface TeamStatItem {
+  name: string;            // ESPN stat key ('avgPoints')
+  label: string;           // short display label ('PPG')
+  abbr?: string;           // ESPN abbreviation
+  value: string;           // VERIFIED kept as a STRING (aligns with StandingsRow.stats)
+  rank?: number;           // league rank when ESPN provides one (absent on the site endpoint)
+}
+
+/** This team's row within its standings group — the exact StandingsRow[] the
+ *  standings page renders, filtered to the one group containing the team, with
+ *  the same per-family `columns` /v1/standings carries (so the team page shows
+ *  W/L/PCT labels, not raw stat keys). */
+export interface TeamStanding {
+  groupName: string;
+  columns: StandingColumn[] | null;
+  rows: StandingsRow[];
+}
+
+// =============================================================================
+// Standings — GET /v1/standings/{sport}/{league}[?season=YYYY]. Declared here
+// retroactively (the shape has shipped in worker/src/standings.js + the client
+// mirror); closing the contract gap so a future reshape is caught by the /v2
+// rule. ESPN nests entries under children[] (conferences/divisions/groups); the
+// worker flattens to groups[].rows[]. Stat keys vary by sport (a name→string map).
+// =============================================================================
+
+export interface StandingsResponse {
+  league: string;               // 'basketball/nba'
+  season?: number;              // resolved season year (raw.season.year), when known
+  columns: StandingColumn[] | null; // per-family preferred columns (registry
+                                // standingsColumns) so the app shows W/L/PCT/GB not
+                                // ESPN's internal 'points'; null → client heuristic
+  groups: StandingsGroup[];     // one per conference/division/group
+}
+export interface StandingColumn {
+  key: string;                  // ESPN stat key ('winPercent')
+  label: string;                // display header ('PCT')
+}
+export interface StandingsGroup {
+  name: string;                 // 'Eastern Conference' | 'AL East' | ''
+  rows: StandingsRow[];
+}
+export interface StandingsRow {
+  // QUIRK: racing driver-championship rows are ATHLETE-shaped upstream (no team),
+  // but the worker normalizes the athlete into this same `team` slot (name, no
+  // logo) so the client renders ONE table shape.
+  team: { id: string; name: string; abbr?: string; logo?: string; logoDark?: string };
+  rank?: number;                // stats.rank when present
+  stats: Record<string, string>; // ESPN stat name → displayValue
+}
+
+// =============================================================================
+// Rankings — the standalone list for a league-detail page, DISTINCT from the
+// per-team curatedRank we already surface inline on the scoreboard. Three feeds
+// share one shape (registry `rankingsFeed` flag says which a league has):
+//   'polls'     — college AP/Coaches/CFP Top-25 (team-based)
+//   'tour'      — ATP/WTA world rankings (athlete-based, points). VERIFIED
+//                 2026-07 on the SAME site rankings endpoint as the polls.
+//   'divisions' — UFC divisional + P4P rankings (athlete-based, records)
+// Endpoint: GET /v1/rankings/{sport}/{league}; lazy + long TTL; never in the
+// overview fan-out. Entries carry EITHER `team` OR `athlete`, never both.
 // =============================================================================
 
 export interface RankingsResponse {
-  league: string;       // 'football/college-football'
-  polls: Poll[];        // AP first, then Coaches/CFP; [] when none (offseason/pro)
+  league: string;       // 'football/college-football' | 'tennis/atp' | 'mma/ufc'
+  polls: Poll[];        // [] when none (offseason / league without a feed)
 }
 export interface Poll {
-  name: string;         // 'AP Top 25'
-  shortName: string;    // 'AP Poll'
+  name: string;         // 'AP Top 25' | 'ATP' | "Men's Pound for Pound Rankings"
+  shortName: string;    // 'AP Poll' | 'ATP'
   occurrence?: string;  // 'Week 5' | 'Final Rankings'
-  ranks: RankEntry[];   // ≤25
+  ranks: RankEntry[];   // ≤25 (tennis' 150-deep list is capped by the worker)
 }
 export interface RankEntry {
   current?: number;     // this week's rank
   previous?: number;    // last week's rank
   trend?: string;       // ESPN pre-rendered delta: '+8' | '-2' | '-'
-  record?: string;      // '16-0'
-  team: RankTeam;
+  record?: string;      // college/MMA '16-0' | '21-4-0' (recordSummary)
+  points?: number;      // tennis ranking points (13450)
+  champion?: boolean;   // MMA: hasAccolade (division champ / belt holder)
+  team?: RankTeam;      // team-based polls (college)
+  athlete?: RankAthlete;// athlete-based rankings (tennis/MMA)
 }
 export interface RankTeam {
   id: string;
@@ -641,6 +907,55 @@ export interface RankTeam {
   logo?: string;
   logoDark?: string;
   color?: string;
+}
+export interface RankAthlete {
+  id: string;
+  name: string;         // 'Jannik Sinner'
+  country?: string;     // flag alt / citizenship when present
+  headshot?: string;
+}
+
+// =============================================================================
+// Golf player scorecard — hole-by-hole detail for one leaderboard row.
+// GET /v1/scorecard/{sport}/{league}/{eventId}/{playerId}[?season=YYYY]
+// Source (VERIFIED 2026-07, live): site.web.api.espn.com
+// `.../golf/{tour}/leaderboard/{eventId}/playersummary?season=&player=` — per
+// round: per-hole strokes + par + named scoreType (BIRDIE/PAR/BOGEY…), front/back
+// splits, and — for a round not yet started — teeTime/startTee/groupNumber.
+// Fetched lazily on a leaderboard-row tap; never polled by the home feed.
+// =============================================================================
+
+export interface GolfScorecardResponse {
+  league: string;          // 'golf/pga'
+  eventId: string;
+  player: {
+    id: string;
+    name: string;          // 'Chris Gotterup'
+    headshot?: string;
+    country?: string;      // birthPlace country is NOT this; from flag when present
+  };
+  rounds: ScorecardRound[];// one per round ESPN has (future rounds: teeTime only)
+  stats?: { name: string; label: string; value: string }[]; // tournament stat line
+                           // (scoreToPar, driving distance …) — small, curated
+}
+export interface ScorecardRound {
+  round: number;           // 1-based round number (raw `period`)
+  strokes?: number;        // round total strokes (66); absent before the round
+  toPar?: string;          // round score to par ('-5'); raw displayValue
+  outScore?: number;       // front-nine strokes
+  inScore?: number;        // back-nine strokes
+  teeTime?: string;        // ISO — present pre-round (the pre-start glance)
+  startTee?: number;       // 1 or 10 (split tees)
+  groupNumber?: number;
+  currentPosition?: number;// live position as of this round
+  holes: ScorecardHole[];  // 18 when played/in progress; [] pre-round
+}
+export interface ScorecardHole {
+  hole: number;            // 1..18 (raw `period`)
+  par?: number;
+  strokes?: number;        // raw value
+  scoreType?: string;      // 'EAGLE' | 'BIRDIE' | 'PAR' | 'BOGEY' | 'DOUBLE_BOGEY' …
+                           // (scoreType.name; displayValue is the +/- delta)
 }
 
 // =============================================================================

@@ -1,8 +1,11 @@
-// rankings.js — ESPN college polls (AP / Coaches / CFP) → a compact Top-25 list.
-// Pure (no I/O). Distinct from the per-team curatedRank we already surface inline
-// on the scoreboard: this is the standalone "who's #1 this week" list for the
-// college league-detail page. The payload is unusually clean — ESPN pre-renders
-// the trend delta ('+8' / '-') and record — so the normalizer stays trivial.
+// rankings.js — ESPN rankings → a compact list. Pure (no I/O). One site endpoint
+// serves three feeds (VERIFIED 2026-07): college polls (AP/Coaches/CFP,
+// team-based), ATP/WTA world rankings (athlete-based, points, 150 deep — capped
+// here), and UFC divisional/P4P lists (athlete-based, recordSummary +
+// hasAccolade champion flag). Distinct from the per-team curatedRank we already
+// surface inline on the scoreboard. The payload is unusually clean — ESPN
+// pre-renders the trend delta ('+8' / '-') — so the normalizer stays trivial.
+// Entries carry EITHER `team` OR `athlete`, never both (see canonical.ts).
 
 const https = u => (typeof u === 'string' ? u.replace(/^http:/, 'https:') : undefined);
 const pick = (o, keys) => Object.fromEntries(keys.filter(k => o[k] != null && o[k] !== '').map(k => [k, o[k]]));
@@ -37,18 +40,39 @@ function teamOf(t = {}) {
   }, ['id', 'name', 'abbr', 'logo', 'logoDark', 'color']);
 }
 
+function athleteOf(a = {}) {
+  return pick({
+    id: String(a.id ?? ''),
+    name: a.displayName || a.shortname || a.fullName || '',
+    country: a.flag?.alt || a.citizenship,
+    headshot: https(a.headshot?.href || a.headshot),
+  }, ['id', 'name', 'country', 'headshot']);
+}
+
 export function normalizeRankings(raw) {
+  // occurrence is a SHORT caption ('Week 5' / 'Final Rankings'); UFC's
+  // headline/shortHeadline are prose sentences — never ship those.
+  const occOf = p => {
+    const o = p.occurrence?.displayValue || p.shortHeadline || '';
+    return o.length <= 40 ? o : '';
+  };
   const polls = (raw?.rankings || []).map(p => ({
     name: p.name || p.shortName || '',
     shortName: p.shortName || p.name || '',
-    occurrence: p.occurrence?.displayValue || p.shortHeadline || p.headline || '',
-    ranks: (p.ranks || []).slice(0, 25).map(r => pick({
-      current: typeof r.current === 'number' ? r.current : undefined,
-      previous: typeof r.previous === 'number' ? r.previous : undefined,
-      trend: r.trend,                 // ESPN pre-renders '+8' / '-2' / '-'
-      record: r.recordSummary,        // '16-0'
-      team: teamOf(r.team),
-    }, ['current', 'previous', 'trend', 'record', 'team'])),
+    occurrence: occOf(p),
+    ranks: (p.ranks || []).slice(0, 25).map(r => {
+      const e = pick({
+        current: typeof r.current === 'number' ? r.current : undefined,
+        previous: typeof r.previous === 'number' ? r.previous : undefined,
+        trend: r.trend,                 // ESPN pre-renders '+8' / '-2' / '-'
+        record: r.recordSummary,        // '16-0' / MMA '21-4-0'
+        points: typeof r.points === 'number' ? r.points : undefined, // tennis
+        champion: r.hasAccolade === true ? true : undefined,         // MMA belt
+      }, ['current', 'previous', 'trend', 'record', 'points', 'champion']);
+      if (r.team) e.team = teamOf(r.team);
+      else if (r.athlete) e.athlete = athleteOf(r.athlete);
+      return e;
+    }).filter(e => e.team?.name || e.athlete?.name),
   })).filter(p => p.ranks.length);
   return { polls };
 }

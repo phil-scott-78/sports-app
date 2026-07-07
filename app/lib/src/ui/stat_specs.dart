@@ -6,6 +6,9 @@
 // One renderer ([StatCompareRow]) speaks all four — both the cheap-scoreboard
 // panels and the rich /summary team stats delegate here so the two tiers can
 // never drift apart.
+//
+// Ported from the v1 client verbatim except [StatCompareRow], which is redrawn
+// in the v2 "broadcast dark" tokens (T.*, Barlow-condensed tabular numbers).
 
 import 'package:flutter/material.dart';
 import '../models.dart';
@@ -55,8 +58,9 @@ class CheapStatPanel {
 }
 
 /// Per-sport cheap panels, verified against live scoreboard payloads. Keys are
-/// ESPN stat abbreviations except rugby, whose abbreviations collide (P is both
-/// passes and possession) — there we key by ESPN's unambiguous `name`.
+/// the sport family (the `sport/league` prefix). ESPN stat abbreviations except
+/// rugby, whose abbreviations collide (P is both passes and possession) — there
+/// we key by ESPN's unambiguous `name`.
 const Map<String, CheapStatPanel> cheapStatPanels = {
   'soccer': CheapStatPanel('Match stats', [
     StatSpec('PP', 'Possession', kind: StatKind.percent),
@@ -293,6 +297,14 @@ const Map<String, List<String>> richPriorityKeywords = {
 
 // ---- the one comparison-row renderer -----------------------------------------
 
+TextStyle _numStyle(bool strong, Color color) => TextStyle(
+      fontFamily: 'BarlowCondensed',
+      fontFeatures: const [FontFeature.tabularFigures()],
+      fontSize: 14,
+      fontWeight: strong ? FontWeight.w700 : FontWeight.w600,
+      color: color,
+    );
+
 /// One mirrored away-vs-home stat row: value · centred label · value over a
 /// kind-aware bar. Counts and clocks split one bar by share; percentages and
 /// conversion ratios render as mirrored gauges filling from the centre out, so
@@ -301,12 +313,21 @@ const Map<String, List<String>> richPriorityKeywords = {
 class StatCompareRow extends StatelessWidget {
   final StatSpec spec;
   final String? away, home;
+
+  /// Team colors for the mirrored bars (§8/§10) — the bars carry the identity so
+  /// the comparison reads without color-coding the numbers. Default to a neutral
+  /// gray when a caller has no team color (keeps the row legible either way).
+  final Color awayColor, homeColor;
   const StatCompareRow(
-      {super.key, required this.spec, required this.away, required this.home});
+      {super.key,
+      required this.spec,
+      required this.away,
+      required this.home,
+      this.awayColor = T.textDim,
+      this.homeColor = T.textDim});
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final aText = displayValue(spec, away);
     final hText = displayValue(spec, home);
     final a = compareValue(spec.kind, away);
@@ -319,8 +340,7 @@ class StatCompareRow extends StatelessWidget {
     Widget num(String s, bool strong) => Text(s,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: numStyle(
-            size: 13, weight: strong ? FontWeight.w800 : FontWeight.w600));
+        style: _numStyle(strong, strong ? T.text : T.textDim));
 
     return Column(children: [
       Row(children: [
@@ -334,7 +354,7 @@ class StatCompareRow extends StatelessWidget {
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant)),
+              style: const TextStyle(fontSize: 12, color: T.textDim)),
         ),
         SizedBox(
             width: 52,
@@ -343,15 +363,15 @@ class StatCompareRow extends StatelessWidget {
                 child: num(hText, homeLeads))),
       ]),
       const SizedBox(height: 4),
-      _bar(context, a, h, awayLeads, homeLeads),
+      _bar(a, h, awayLeads, homeLeads),
     ]);
   }
 
-  Widget _bar(BuildContext context, double? a, double? h, bool awayLeads,
-      bool homeLeads) {
-    final cs = Theme.of(context).colorScheme;
-    final solid = cs.onSurfaceVariant;
-    final dim = cs.onSurfaceVariant.withValues(alpha: 0.3);
+  Widget _bar(double? a, double? h, bool awayLeads, bool homeLeads) {
+    // The leader's team color reads full; the trailer's is the same hue, softened
+    // — team-color mirrored bars per §8/§10 (never gray, never color-coded text).
+    Color fill(Color c, bool leads) =>
+        leads ? c : c.withValues(alpha: 0.4);
 
     final aFrac = gaugeFraction(spec.kind, away);
     final hFrac = gaugeFraction(spec.kind, home);
@@ -359,28 +379,28 @@ class StatCompareRow extends StatelessWidget {
       // Mirrored gauges: each side fills from the centre toward its own edge,
       // scaled to its absolute value — 50/50 possession reads symmetric, a .909
       // save night fills nine tenths of its half.
-      Widget half(double? frac, bool leads, bool alignRight) => Expanded(
+      Widget half(double? frac, Color color, bool leads, bool alignRight) =>
+          Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(2),
               child: Stack(children: [
-                Container(height: 5, color: cs.surfaceContainerHighest),
+                Container(height: 5, color: T.track),
                 Align(
                   alignment: alignRight
                       ? Alignment.centerRight
                       : Alignment.centerLeft,
                   child: FractionallySizedBox(
                     widthFactor: (frac ?? 0).clamp(0.0, 1.0),
-                    child:
-                        Container(height: 5, color: leads ? solid : dim),
+                    child: Container(height: 5, color: fill(color, leads)),
                   ),
                 ),
               ]),
             ),
           );
       return Row(children: [
-        half(aFrac, awayLeads, true),
+        half(aFrac, awayColor, awayLeads, true),
         const SizedBox(width: 2),
-        half(hFrac, homeLeads, false),
+        half(hFrac, homeColor, homeLeads, false),
       ]);
     }
 
@@ -394,11 +414,13 @@ class StatCompareRow extends StatelessWidget {
       child: Row(children: [
         Expanded(
             flex: aFlex,
-            child: Container(height: 5, color: awayLeads ? solid : dim)),
+            child:
+                Container(height: 5, color: fill(awayColor, awayLeads))),
         const SizedBox(width: 2),
         Expanded(
             flex: hFlex,
-            child: Container(height: 5, color: homeLeads ? solid : dim)),
+            child:
+                Container(height: 5, color: fill(homeColor, homeLeads))),
       ]),
     );
   }

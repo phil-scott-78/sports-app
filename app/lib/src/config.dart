@@ -1,21 +1,14 @@
 /// App-wide constants. The worker base URL is set by the user in Settings
-/// (persisted), so this only holds defaults.
+/// (persisted), so this only holds defaults. Mirrors v1's config so both apps
+/// speak to the same worker with the same cadences.
 class AppConfig {
-  /// Seed for the Material 3 color scheme (a calm sport green).
-  static const int seedColor = 0xFF12B886;
-
   /// Default worker URL — used on a fresh install so the app works out of the
-  /// box. A previously-saved URL always wins; change it via the hidden editor on
-  /// the Settings → About row (tap it 6 times).
-  ///
-  /// A STABLE custom domain, deliberately NOT the `*.workers.dev` name: a
-  /// sideloaded APK can't be force-migrated, so this hostname is effectively
-  /// permanent once a build ships. Point this domain at the worker (Cloudflare
-  /// custom-domain route in worker/wrangler.toml) before the first release tag;
-  /// moving DNS later is free, re-issuing orphaned APKs is not.
-  static const String defaultBaseUrl = 'https://api.scores.philco.dev';
+  /// box. A previously-saved URL always wins. Overridable per-run for dev
+  /// against the offline mock: `flutter run --dart-define=WORKER_URL=http://localhost:8787`.
+  static const String defaultBaseUrl = String.fromEnvironment('WORKER_URL',
+      defaultValue: 'https://api.scores.philco.dev');
 
-  /// Leagues followed on first run (until the user customizes in Leagues tab).
+  /// Leagues followed on first run (until the user customizes in Following).
   static const List<String> defaultFollowed = [
     'soccer/fifa.world',
     'baseball/mlb',
@@ -31,8 +24,7 @@ class AppConfig {
   /// within [kickoffWindow] of kickoff (either side — approaching, or just
   /// started while ESPN still says 'pre'), poll at [refreshNearKickoff] instead
   /// of the 60s idle cadence so the idle→live flip isn't hidden for a whole idle
-  /// window at the most-watched moment. Mirrors the worker's TTL.soon / idleTtl
-  /// (worker/src/ttl.js). See [kickoffSoonMs] in ui/poll.dart.
+  /// window at the most-watched moment. Mirrors the worker's TTL.soon / idleTtl.
   static const Duration refreshNearKickoff = Duration(seconds: 30);
   static const Duration kickoffWindow = Duration(minutes: 5);
 

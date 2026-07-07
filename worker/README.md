@@ -12,9 +12,11 @@ no KV/DO writes, no build step, ~zero cost.
 | `GET /v1/health` | `{ ok, leagues, updated }` | 60s |
 | `GET /v1/catalog?priority=v1&sport=soccer` | sports → leagues (the app's picker) | 1h |
 | `GET /v1/overview?priority=v1&sport=soccer` | `{ updated, leagues: [{ key, state, detail, live }] }` — per-league season pulse | 5m (**1m** when any league is live/today) |
-| `GET /v1/scores/{sport}/{league}?date=YYYYMMDD` | canonical `ScoresResponse` | **15s live / 5m idle / 30s near kickoff** |
-| `GET /v1/summary/{sport}/{league}/{eventId}` | rich `GameSummary` (box score, scoring feed, lineups) | **20s live / 5m idle / 30s near kickoff** |
-| `GET /v1/standings/{sport}/{league}?season=YYYY` | `{ groups: [{ name, rows }] }` | 1h |
+| `GET /v1/scores/{sport}/{league}?date=YYYYMMDD` (or `YYYYMMDD-YYYYMMDD` range) | canonical `ScoresResponse` — golf events also carry `meta.golf` (cut line/major/rounds, enriched from the core tournament resource) | **15s live / 5m idle / 30s near kickoff** |
+| `GET /v1/summary/{sport}/{league}/{eventId}` | rich `GameSummary` (box score, scoring feed, lineups, gridiron `drives`+full plays, soccer full feed from `commentary[]` + player box groups from roster stats, cricket `cricketInnings` scorecard, `attendance`/`officials`; MMA gets `bouts` — structured method + judge scorecards, built from core resources since ESPN's site summary 404s for MMA) | **20s live / 5m idle / 30s near kickoff** |
+| `GET /v1/scorecard/{sport}/{league}/{eventId}/{playerId}?season=YYYY` | golf hole-by-hole `GolfScorecardResponse` (per-hole strokes/par/scoreType, tee times) | 60s |
+| `GET /v1/rankings/{sport}/{league}` | `{ polls }` — college AP/Coaches/CFP, ATP/WTA world rankings, UFC divisions (see registry `rankingsFeed`) | 1h |
+| `GET /v1/standings/{sport}/{league}?season=YYYY` | `{ groups: [{ name, rows }] }` — includes racing championships (F1 drivers/constructors, NASCAR points). **No `season` → ESPN's current season** (passing `getFullYear()` is wrong mid-year for cross-year leagues) | 1h |
 
 `overview` fans out one cheap scoreboard fetch per league and classifies each into
 `state ∈ live|today|upcoming|recent|offseason|unknown` (see `overview.js`) — the
@@ -38,9 +40,13 @@ curl .../v1/standings/soccer/eng.1?season=2025
 ```
 src/
   index.js      router + CORS + Cache-API stale-while-revalidate  (the only Worker-runtime code)
-  espn.js       upstream fetchers (the ONLY place that talks to ESPN — swap providers here)
+  espn.js       upstream fetchers (the ONLY place that talks to ESPN — swap providers here;
+                site API + core API [golf meta, MMA bouts] + the one web-API golf scorecard)
   normalize.js  raw ESPN → canonical (pure; driven by the resolved league profile)
-  standings.js  ESPN standings → { groups, rows }
+  summary.js    raw /summary → GameSummary (pure; incl. drives, cricket matchcards, MMA core bouts)
+  scorecard.js  golf playersummary → GolfScorecardResponse (pure)
+  standings.js  ESPN standings → { groups, rows } (team- AND athlete-shaped entries)
+  rankings.js   polls / tour rankings / UFC divisions → { polls }
   catalog.js    registry → catalog
   overview.js   raw scoreboard → season-pulse state (pure; calendar + season window)
   ttl.js        cache-lifetime policy (pure; kickoff-aware idle TTL)

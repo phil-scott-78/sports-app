@@ -1,6 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Needed to reach the scores worker (release builds; debug adds it automatically). -->
-    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="Scores"
         android:name="${applicationName}"

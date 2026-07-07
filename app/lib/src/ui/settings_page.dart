@@ -1,118 +1,142 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../config.dart';
 import '../providers.dart';
+import '../theme.dart';
+import '../version.dart';
 import 'widgets.dart';
-import 'favorite_teams_page.dart';
-import 'manage_leagues_page.dart';
 
-class SettingsPage extends ConsumerWidget {
+/// Minimal settings: the worker base URL (the only knob v2 needs) + about.
+class SettingsPage extends ConsumerStatefulWidget {
   const SettingsPage({super.key});
+  @override
+  ConsumerState<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends ConsumerState<SettingsPage> {
+  late final TextEditingController _url;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(settingsProvider);
-    final notifier = ref.read(settingsProvider.notifier);
+  void initState() {
+    super.initState();
+    _url = TextEditingController(text: ref.read(settingsProvider).baseUrl);
+  }
 
+  @override
+  void dispose() {
+    _url.dispose();
+    super.dispose();
+  }
+
+  void _save() {
+    ref.read(settingsProvider.notifier).setBaseUrl(_url.text);
+    ref.invalidate(feedProvider);
+    ref.invalidate(favoritesFeedProvider);
+    FocusScope.of(context).unfocus();
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+      content: Text('Worker URL saved'),
+      behavior: SnackBarBehavior.floating,
+    ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: subpageBar(context, 'Settings'),
       body: ListView(
+        padding: const EdgeInsets.fromLTRB(
+            T.pageMargin, T.pageMargin, T.pageMargin, 28),
         children: [
-          const SectionHeader('Appearance'),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: SegmentedButton<ThemeMode>(
-              segments: const [
-                ButtonSegment(value: ThemeMode.system, label: Text('System')),
-                ButtonSegment(value: ThemeMode.light, label: Text('Light')),
-                ButtonSegment(value: ThemeMode.dark, label: Text('Dark')),
-              ],
-              selected: {settings.themeMode},
-              onSelectionChanged: (s) => notifier.setThemeMode(s.first),
-            ),
+          V2Card(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const CardLabel('Worker URL'),
+              const SizedBox(height: 6),
+              Text(
+                'The Cloudflare worker this app reads scores from. '
+                'Point it at your own deployment, or the offline mock '
+                '(http://10.0.2.2:8787 on the Android emulator).',
+                style: T.caption.copyWith(height: 1.5),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: _url,
+                style: const TextStyle(fontSize: 14, color: T.text),
+                keyboardType: TextInputType.url,
+                cursorColor: T.gold,
+                onSubmitted: (_) => _save(),
+                decoration: InputDecoration(
+                  hintText: AppConfig.defaultBaseUrl,
+                  hintStyle:
+                      const TextStyle(fontSize: 14, color: T.textFaint),
+                  filled: true,
+                  fillColor: T.track,
+                  isDense: true,
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 14, vertical: 12),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              Row(children: [
+                _Button(label: 'Save', primary: true, onTap: _save),
+                const SizedBox(width: 10),
+                _Button(
+                  label: 'Reset default',
+                  onTap: () {
+                    _url.text = AppConfig.defaultBaseUrl;
+                    _save();
+                  },
+                ),
+              ]),
+            ]),
           ),
-          const Divider(height: 1),
-          const SectionHeader('Content'),
-          ListTile(
-            leading: const Icon(Icons.emoji_events_outlined),
-            title: const Text('Manage leagues'),
-            subtitle: Text('${ref.watch(followedProvider).length} followed'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const ManageLeaguesPage())),
+          const SizedBox(height: 12),
+          const V2Card(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              CardLabel('About'),
+              SizedBox(height: 8),
+              Text(
+                'Scores v2 · $kClientVersionName'
+                '${kClientVersionCode > 0 ? ' ($kClientVersionCode)' : ''}',
+                style: TextStyle(fontSize: 13, color: T.textDim),
+              ),
+              SizedBox(height: 4),
+              Text(
+                'Check a score in under two seconds, then get on with your day.',
+                style: TextStyle(fontSize: 12, color: T.textFaint),
+              ),
+            ]),
           ),
-          Builder(builder: (context) {
-            final n = ref.watch(favoriteTeamsProvider).length;
-            return ListTile(
-              leading: const Icon(Icons.star_outline),
-              title: const Text('Favorite teams'),
-              subtitle: Text('$n favorite${n == 1 ? '' : 's'}'),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const FavoriteTeamsPage())),
-            );
-          }),
-          const Divider(height: 1),
-          const SectionHeader('About'),
-          // The worker URL lives behind this row — tap it 6 times to edit it.
-          const _AboutTile(),
-          const SizedBox(height: kFloatingNavInset),
         ],
       ),
     );
   }
 }
 
-/// The About row — and the hidden worker-URL editor. The URL ships with a working
-/// default ([AppConfig.defaultBaseUrl]), so it's tucked away here: tap the row 6
-/// times to pop the edit dialog.
-class _AboutTile extends ConsumerStatefulWidget {
-  const _AboutTile();
+class _Button extends StatelessWidget {
+  final String label;
+  final bool primary;
+  final VoidCallback onTap;
+  const _Button({required this.label, this.primary = false, required this.onTap});
+
   @override
-  ConsumerState<_AboutTile> createState() => _AboutTileState();
-}
-
-class _AboutTileState extends ConsumerState<_AboutTile> {
-  static const _tapsToReveal = 6;
-  int _taps = 0;
-
-  void _onTap() {
-    _taps++;
-    if (_taps >= _tapsToReveal) {
-      _taps = 0;
-      _editUrl();
-    }
-  }
-
-  Future<void> _editUrl() async {
-    final controller = TextEditingController(text: ref.read(settingsProvider).baseUrl);
-    final result = await showDialog<String>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: const Text('Worker URL'),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          keyboardType: TextInputType.url,
-          decoration: const InputDecoration(
-            hintText: 'https://sports-scores.you.workers.dev',
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: primary ? T.invertedBg : null,
+            border: primary ? null : Border.all(color: T.border, width: 1.5),
+            borderRadius: BorderRadius.circular(100),
           ),
-          onSubmitted: (v) => Navigator.of(ctx).pop(v),
+          child: Text(label,
+              style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: primary ? T.invertedText : T.textDim)),
         ),
-        actions: [
-          TextButton(onPressed: () => Navigator.of(ctx).pop(), child: const Text('Cancel')),
-          FilledButton(onPressed: () => Navigator.of(ctx).pop(controller.text), child: const Text('Save')),
-        ],
-      ),
-    );
-    controller.dispose();
-    if (result != null) ref.read(settingsProvider.notifier).setBaseUrl(result);
-  }
-
-  @override
-  Widget build(BuildContext context) => ListTile(
-        leading: const Icon(Icons.info_outline),
-        title: const Text('Scores'),
-        subtitle: const Text('A fast, calm, glanceable scores app.\nData via a self-hosted Cloudflare worker.'),
-        onTap: _onTap,
       );
 }

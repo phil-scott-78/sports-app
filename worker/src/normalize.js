@@ -107,6 +107,9 @@ function buildCompetitor(profile, raw) {
       || team?.displayName || team?.shortDisplayName || team?.name
       || '';
     if (c.athletes.length === 2 && raw.roster) c.kind = 'pair'; // tennis/golf doubles
+    // golf scoreboard athletes carry NO id — the competitor id IS the athlete id
+    // (VERIFIED 2026-07; it's the id the scorecard endpoint takes). Backfill.
+    if (c.athletes.length === 1 && !c.athletes[0].id && c.id) c.athletes[0].id = c.id;
     if (team?.abbreviation) c.abbreviation = team.abbreviation;
     if (!c.athletes.length && team?.shortDisplayName) c.shortName = team.shortDisplayName;
     if (!c.athletes.length && team?.color) c.color = team.color;
@@ -115,6 +118,9 @@ function buildCompetitor(profile, raw) {
   }
 
   if (raw.homeAway) c.homeAway = raw.homeAway;
+  // tennis/volleyball: the scoreboard flags the serving competitor with a bare
+  // `possession` boolean (VERIFIED: tennis atp/wta scoreboard competitors[].possession).
+  if (raw.possession === true) c.serving = true;
   if (raw.order != null) c.order = raw.order;
   if (raw.startOrder != null) c.startOrder = raw.startOrder;
   const cr = raw.curatedRank?.current; if (cr != null) c.rank = cr === 99 ? null : cr;
@@ -231,7 +237,7 @@ function buildSituation(rc) {
     const n = typeof v === 'number' ? v : (typeof v === 'string' && /^\d+$/.test(v) ? +v : null);
     if (n != null) s[k] = n;
   }
-  for (const k of ['onFirst', 'onSecond', 'onThird', 'isRedZone']) if (sit[k] != null) s[k] = !!sit[k];
+  for (const k of ['onFirst', 'onSecond', 'onThird', 'isRedZone', 'powerPlay', 'emptyNet']) if (sit[k] != null) s[k] = !!sit[k];
   const p = sit.pitcher?.athlete; if (p) s.pitcher = p.shortName || p.displayName || p.fullName;
   const b = sit.batter?.athlete; if (b) s.batter = b.shortName || b.displayName || b.fullName;
   // the live matchup line — the read a fan opens a live MLB game for (CHEAP, same object)
@@ -242,6 +248,13 @@ function buildSituation(rc) {
   const lp = sit.lastPlay;
   const lpText = lp && (lp.type?.alternativeText || lp.text || lp.type?.text);
   if (lpText) s.lastPlay = lpText;
+  // Hockey strength: the scoreboard's lastPlay carries the on-ice strength +
+  // the team it's attributed to. 'power-play'|'short-handed'|'even-strength'|
+  // 'empty-net' (VERIFIED: NHL strength ids 701/702/703/903).
+  const strength = lp?.strength?.abbreviation || lp?.strength?.type;
+  if (strength) s.strength = String(strength).toLowerCase();
+  const strengthTeam = lp?.team?.id ?? lp?.team;
+  if (strengthTeam != null && (s.strength || s.powerPlay)) s.strengthTeam = String(strengthTeam);
   if (rc.outsText) s.outsText = rc.outsText;
   return Object.keys(s).length ? s : undefined;
 }
@@ -441,6 +454,14 @@ function buildCompetition(profile, rc, rawEvent) {
     if (evs) comp.events = evs;
   }
 
+  // ---- cheap-tier passthroughs the scoreboard already carries (2026-07) ----
+  if (typeof rc.attendance === 'number' && rc.attendance > 0) comp.attendance = rc.attendance;
+  if (rc.conferenceCompetition === true) comp.conferenceGame = true;
+  if (rc.wasSuspended === true) comp.wasSuspended = true;
+  const hl = Array.isArray(rc.headlines) ? rc.headlines[0] : undefined;
+  const hlText = hl && (hl.shortLinkText || hl.description);
+  if (hlText) comp.headline = decodeEntities(String(hlText));
+
   const situation = buildSituation(rc);
   if (situation) comp.situation = situation;
 
@@ -527,11 +548,37 @@ export function nextScheduledStart(events) {
   return min;
 }
 
+// ---- golf tournament meta (meta.golf) ----------------------------------------
+// From the CORE tournament resource (event → tournament.$ref →
+// tournaments/{id}/seasons/{yyyy}) — VERIFIED 2026-07; NOT on the site
+// scoreboard. Fetched by the route (this module stays pure) and passed in via
+// `extras.golfTournaments` keyed by event id. Best-effort: absent → no meta.golf.
+export function golfMetaFromTournament(t) {
+  if (!t || typeof t !== 'object' || typeof t.numberOfRounds !== 'number') return undefined;
+  const m = { numberOfRounds: t.numberOfRounds };
+  if (typeof t.currentRound === 'number') m.currentRound = t.currentRound;
+  if (typeof t.cutRound === 'number') m.cutRound = t.cutRound;
+  if (typeof t.cutScore === 'number') m.cutScore = t.cutScore;
+  if (typeof t.cutCount === 'number') m.cutCount = t.cutCount;
+  if (typeof t.major === 'boolean') m.major = t.major;
+  const ss = t.scoringSystem?.name;
+  if (ss) m.scoringSystem = String(ss);
+  return m;
+}
+
 // ---- top level --------------------------------------------------------------
-export function normalizeScoreboard(reg, key, sb) {
+export function normalizeScoreboard(reg, key, sb, extras = {}) {
   const profile = resolve(reg, key);
   const lg = (sb.leagues || [{}])[0];
   const events = (sb.events || []).map(e => buildEvent(profile, e));
+  // golf: attach tournament meta (cut line / major / rounds) when the route
+  // fetched it. Only to-par competitions — TGL lives under golf but is H2H.
+  const tournaments = extras.golfTournaments || {};
+  for (const ev of events) {
+    const m = golfMetaFromTournament(tournaments[ev.id]);
+    if (!m) continue;
+    for (const c of ev.competitions) if (c.scoreKind === 'toPar') (c.meta ||= {}).golf = m;
+  }
   // Authoritative season skeleton — free, it rides this same scoreboard payload.
   // calendarDays (day-type leagues) lets the league-detail Schedule strip dim
   // empty days + auto-focus WITHOUT a separate range fetch; seasonWindow drives

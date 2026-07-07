@@ -1,830 +1,1239 @@
-import 'dart:ui' show ImageFilter;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models.dart';
 import '../theme.dart';
+import '../util.dart';
 
-/// A Flutter Material icon for a sport family (the design's per-sport chips and
-/// timeline nodes). Used by the Scores header chips and the center-spine timeline.
-IconData sportIcon(String sport) {
-  switch (sport) {
-    case 'soccer':
-      return Icons.sports_soccer;
-    case 'baseball':
-      return Icons.sports_baseball;
-    case 'basketball':
-      return Icons.sports_basketball;
-    case 'hockey':
-      return Icons.sports_hockey;
-    case 'football':
-      return Icons.sports_football;
-    case 'golf':
-      return Icons.sports_golf;
-    case 'tennis':
-      return Icons.sports_tennis;
-    case 'mma':
-      return Icons.sports_mma;
-    case 'cricket':
-      return Icons.sports_cricket;
-    case 'racing':
-      return Icons.sports_motorsports;
-    case 'rugby':
-    case 'rugby-league':
-    case 'australian-football': // oval-ball field sport — closest Material glyph
-      return Icons.sports_rugby;
-    case 'volleyball':
-      return Icons.sports_volleyball;
-    case 'water-polo':
-      return Icons.pool;
-    case 'field-hockey':
-      return Icons.sports_hockey;
-    default:
-      return Icons.sports; // incl. lacrosse (no Material glyph)
-  }
-}
+// ═══════════════════════════ containers ═══════════════════════════
 
-/// Bottom padding the floating-pill nav ([FloatingNavBar]) needs scrolling lists
-/// to leave so their last row clears the pill (the body extends behind it via
-/// `Scaffold.extendBody`). Pill height + margin + home-indicator headroom.
-const double kFloatingNavInset = 96;
-
-/// Display name for a sport family key ('basketball' → 'Basketball', with a few
-/// special cases). Shared by the Leagues list and the favorites/leagues pickers.
-String sportLabel(String sport) {
-  switch (sport) {
-    case 'mma':
-      return 'MMA';
-    case 'rugby-league':
-      return 'Rugby League';
-    case 'australian-football':
-      return 'Australian Football';
-    case 'water-polo':
-      return 'Water Polo';
-    case 'field-hockey':
-      return 'Field Hockey';
-    default:
-      return sport.isEmpty
-          ? sport
-          : sport[0].toUpperCase() + sport.substring(1);
-  }
-}
-
-/// A quiet-day line in the sport's own voice — what an empty slate says on the
-/// *today* view instead of a flat "No games today". Calm, not snark: the app's
-/// personality is a knowing nod, one line, then out of the way.
-String quietDayLine(String sport) {
-  switch (sport) {
-    case 'baseball':
-      return 'Off day at the ballpark';
-    case 'basketball':
-      return 'Dark night at the arena';
-    case 'hockey':
-      return 'The ice is quiet tonight';
-    case 'football':
-      return 'No football today';
-    case 'soccer':
-      return 'Quiet day on the pitch';
-    case 'golf':
-      return 'No tee times today';
-    case 'tennis':
-      return 'The courts are quiet';
-    case 'racing':
-      return 'Engines are cold today';
-    case 'mma':
-      return 'No fights tonight';
-    case 'cricket':
-      return 'No play today';
-    case 'rugby':
-    case 'rugby-league':
-      return 'No rugby today';
-    default:
-      return 'No games today';
-  }
-}
-
-/// Compact kickoff label for a scheduled game, derived from the event's own
-/// start time. Today → just the clock ("7:00 PM"); other days get a day prefix
-/// so the Upcoming slate reads clearly. This replaces ESPN's `shortDetail`,
-/// which stamps a date even on games starting *today* (the bug we're fixing).
-String scheduledLabel(DateTime start) {
-  final s = start.toLocal();
-  final time = DateFormat.jm().format(s); // "7:00 PM"
-  // Whole calendar days between the two local midnights. Round (not truncate)
-  // the elapsed hours so a 23h/25h daylight-saving day can't drop a day —
-  // `Duration.inDays` would turn a spring-forward "tomorrow" (23h) into "today".
-  final diff = (DateUtils.dateOnly(s)
-              .difference(DateUtils.dateOnly(DateTime.now()))
-              .inHours /
-          24)
-      .round();
-  if (diff == 0) return time;
-  if (diff == 1) return 'Tomorrow $time';
-  if (diff == -1) return 'Yesterday $time';
-  if (diff > 1 && diff < 7) {
-    return '${DateFormat.E().format(s)} $time'; // "Sat 7:00 PM"
-  }
-  return '${DateFormat.MMMd().format(s)} $time'; // "Jun 20 7:00 PM"
-}
-
-/// Routes an ESPN crest through the "combiner" image resizer so the *server*
-/// does a high-quality downscale to the exact pixels we display, returning a
-/// right-sized PNG (alpha preserved). The raw crests are 500×500; downscaling
-/// those on-device with bilinear filtering aliases badly on the thin white
-/// strokes of the dark-mode variants — and ships ~10× the bytes. We clamp to
-/// the 500px source so the combiner never upscales (which balloons the file).
-/// Non-espncdn / non-crest URLs pass through untouched.
-String espnSized(String url, int px) {
-  final u = Uri.tryParse(url);
-  if (u == null ||
-      !u.host.endsWith('espncdn.com') ||
-      !u.path.startsWith('/i/')) {
-    return url;
-  }
-  final w = px > 500 ? 500 : px;
-  return Uri.https('a.espncdn.com', '/combiner/i', {
-    'img': u.path,
-    'w': '$w',
-    'h': '$w',
-    'scale': 'crop',
-    'cquality': '90',
-    'format': 'png',
-    'location': 'origin',
-  }).toString();
-}
-
-// ---- team-color winner wash -------------------------------------------------
-/// Parse an ESPN hex color ("1d428a" or "#1d428a"); null if unparseable.
-Color? teamHexColor(String? hex) {
-  if (hex == null) return null;
-  var h = hex.replaceFirst('#', '').trim();
-  if (h.length == 3) h = h.split('').map((c) => '$c$c').join();
-  if (h.length != 6) return null;
-  final v = int.tryParse(h, radix: 16);
-  return v == null ? null : Color(0xFF000000 | v);
-}
-
-/// Pick a tintable color, preferring the alternate when the primary is too near
-/// the canvas to register (a black primary on dark, a white one on light).
-Color? teamTint(String? primary, String? alt, bool dark) {
-  final p = teamHexColor(primary);
-  final a = teamHexColor(alt);
-  if (p == null) return a;
-  if (a != null) {
-    final l = p.computeLuminance();
-    if (dark && l < 0.04) return a; // near-black vanishes on the dark canvas
-    if (!dark && l > 0.96) return a; // near-white vanishes on the light canvas
-  }
-  return p;
-}
-
-/// A very subtle team-color gradient, reserved for **final** head-to-head
-/// competitions — the "result is in" moment. It washes from the winning team's
-/// side (away tints the top-left, home the bottom-right, matching their crests'
-/// positions); a draw with no single winner tints from both corners. Low alpha
-/// so it reads as a sheen, not a fill. Returns null for field sports, any
-/// non-final game, and when the relevant team(s) expose no usable color.
-///
-/// Shared by the scores [GameCard] wash and the game-detail hero so the two
-/// never drift (winner emphasis stays team-color by design).
-Gradient? winnerWashGradient(BuildContext context, Competition comp) {
-  if (comp.isField || !comp.status.isFinal) return null;
-  // a = away (top-left), b = home (bottom-right) — matches the away-first card/hero
-  // layout so the wash tints from the winning team's actual on-screen corner.
-  final a = comp.away ??
-      (comp.competitors.isNotEmpty ? comp.competitors.first : null);
-  final b =
-      comp.home ?? (comp.competitors.length > 1 ? comp.competitors[1] : null);
-  final dark = Theme.of(context).brightness == Brightness.dark;
-  final alpha = dark ? 0.16 : 0.10;
-
-  final aWins = a?.winner == true;
-  final bWins = b?.winner == true;
-
-  // A clear single winner → wash only from that team's corner.
-  if (aWins != bWins) {
-    final winner = aWins ? a : b;
-    final c = teamTint(winner?.color, winner?.altColor, dark);
-    if (c == null) return null;
-    final tint = c.withValues(alpha: alpha);
-    return LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: aWins ? [tint, Colors.transparent] : [Colors.transparent, tint],
-      stops: aWins ? const [0.0, 0.65] : const [0.35, 1.0],
-    );
-  }
-
-  // A draw (or no winner flagged) → tint from both corners, neutral centre.
-  final ca = teamTint(a?.color, a?.altColor, dark);
-  final cb = teamTint(b?.color, b?.altColor, dark);
-  if (ca == null && cb == null) return null;
-  return LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      (ca ?? cb)!.withValues(alpha: alpha),
-      Colors.transparent,
-      (cb ?? ca)!.withValues(alpha: alpha),
-    ],
-    stops: const [0.0, 0.5, 1.0],
-  );
-}
-
-/// Team crest / athlete headshot with a graceful initials fallback.
-///
-/// - Disk + memory cached (cached_network_image) so logos survive scrolls and
-///   cold starts and aren't re-downloaded.
-/// - Served pre-sized via [espnSized] (ESPN's server-side resizer) so the crest
-///   arrives at display resolution instead of a 500×500 PNG downscaled on-device
-///   — eliminating the dark-mode aliasing and cutting bandwidth ~10×.
-/// - In dark mode prefers [darkUrl] (ESPN's white "dark" logo variant) and
-///   falls back to [url] if that 404s (e.g. soccer has no dark variant).
-class Crest extends StatelessWidget {
-  final String? url;
-  final String? darkUrl;
-  final String fallback;
-  final double size;
-  const Crest(
-      {super.key,
-      required this.url,
-      this.darkUrl,
-      required this.fallback,
-      this.size = 28});
-
-  @override
-  Widget build(BuildContext context) {
-    final initials = fallback.isEmpty
-        ? '?'
-        : fallback
-            .substring(0, fallback.length < 3 ? fallback.length : 3)
-            .toUpperCase();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final dpr = MediaQuery.maybeDevicePixelRatioOf(context) ?? 2.0;
-    final px = (size * (dpr > 3 ? 3 : dpr)).ceil();
-    final hasLight = url != null && url!.isNotEmpty;
-    final hasDark = darkUrl != null && darkUrl!.isNotEmpty;
-
-    Widget box() => _box(context, initials);
-    Widget net(String u, {Widget Function()? onError}) => CachedNetworkImage(
-          imageUrl: u,
-          width: size,
-          height: size,
-          fit: BoxFit.contain,
-          memCacheWidth: px,
-          memCacheHeight: px,
-          filterQuality: FilterQuality.medium,
-          fadeInDuration: const Duration(milliseconds: 120),
-          placeholder: (_, __) => box(),
-          errorWidget: (_, __, ___) => (onError ?? box)(),
-        );
-
-    final Widget child;
-    if (isDark && hasDark) {
-      // dark variant first; on 404 fall back to the light logo, then initials.
-      child = net(espnSized(darkUrl!, px),
-          onError: hasLight ? () => net(espnSized(url!, px)) : box);
-    } else if (hasLight) {
-      child = net(espnSized(url!, px));
-    } else {
-      return ExcludeSemantics(child: box());
-    }
-    // The crest is decorative — team identity is carried by the adjacent name
-    // text everywhere a Crest renders, so keep the logo out of the a11y tree
-    // rather than announcing an unlabeled image.
-    return ExcludeSemantics(
-      child: ClipRRect(borderRadius: BorderRadius.circular(6), child: child),
-    );
-  }
-
-  Widget _box(BuildContext context, String text) {
-    final cs = Theme.of(context).colorScheme;
-    return Container(
-      width: size,
-      height: size,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: cs.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: size * 0.34,
-          fontWeight: FontWeight.w700,
-          color: cs.onSurfaceVariant,
-        ),
-      ),
-    );
-  }
-}
-
-/// The one-line status text for a competition — "3rd 8:39" live, "Final",
-/// or a clean kickoff time for a scheduled game. Shared by [StatusChip] and the
-/// scores-list card so the two never drift. When [startTime] is present a
-/// scheduled game is formatted from it (today → just the clock) instead of
-/// ESPN's date-stamped label.
-String statusLabel(Status status, DateTime? startTime) {
-  if (status.live) {
-    return status.periodLabel.isNotEmpty ? status.periodLabel : 'LIVE';
-  }
-  if (status.isFinal) {
-    return status.shortDetail ??
-        (status.periodLabel.isNotEmpty ? status.periodLabel : 'Final');
-  }
-  if (status.isScheduled) {
-    return startTime != null
-        ? scheduledLabel(startTime)
-        : (status.periodLabel.isNotEmpty ? status.periodLabel : 'Scheduled');
-  }
-  return status.shortDetail ?? (status.phase.isEmpty ? '—' : status.phase);
-}
-
-/// Cricket's headline score, split for a slot built for "103". ESPN ships a
-/// composite that is far too long to drop in raw — a chase carries its overs +
-/// target ("161/5 (18/20 ov, target 156)"), a first-class innings stacks two
-/// totals ("469 & 246/6d"), sometimes both ("263 & 44/1 (15 ov, target 453)").
-/// We keep the runs/wickets line (both innings when present) and peel ESPN's
-/// trailing parenthetical — "(overs[, target])", "(f/o)" — off it, surfacing just
-/// the overs as a compact tempo tag. The full per-innings story (overs, target,
-/// declared/all-out) lives in the Innings panel on the detail screen.
-///
-/// `runs` is '' only when there's no score yet (pre-innings) — callers dash it.
-typedef CricketScoreParts = ({String runs, String? overs});
-
-final RegExp _cricketOvers =
-    RegExp(r'([\d.]+)\s*(?:/\s*\d+)?\s*ov', caseSensitive: false);
-
-CricketScoreParts cricketScoreParts(Competitor c) {
-  final raw = c.score?.display.trim() ?? '';
-  if (raw.isEmpty) return (runs: '', overs: null);
-  // Runs line = everything before ESPN's first parenthetical group; the
-  // parenthetical only ever carries overs/target/follow-on context.
-  final paren = raw.indexOf('(');
-  final runs = (paren < 0 ? raw : raw.substring(0, paren)).trim();
-  // Overs from ESPN's "(… ov)" tag: "18/20 ov" → 18, "99.3 ov" → 99.3. It always
-  // sits in the parenthetical and reflects the *current* innings, so a two-innings
-  // line surfaces just the live-innings overs (and a settled total carries none).
-  final m = _cricketOvers.firstMatch(raw);
-  return (
-    runs: runs.isEmpty ? raw : runs,
-    overs: m == null ? null : '${m.group(1)} ov'
-  );
-}
-
-/// Status pill. Live games get a green-tinted pill with a pulsing dot (the
-/// design's single live hue); final reads in strong body, a scheduled tip-off in
-/// muted — text-color semantics over loud fills.
-class StatusChip extends StatelessWidget {
-  final Status status;
-
-  /// When the game is scheduled, the kickoff is formatted from this instead of
-  /// ESPN's date-stamped label (so today's games show just a time). Optional —
-  /// falls back to the ESPN label when absent.
-  final DateTime? startTime;
-  const StatusChip({super.key, required this.status, this.startTime});
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final live = BinanceColors.of(context).live;
-    final text = statusLabel(status, startTime);
-    // Live: green tint + green pulsing dot carry the signal, label stays high-
-    // contrast body. Final reads in body; everything else sits muted.
-    final Color bg =
-        status.live ? live.withValues(alpha: 0.14) : cs.surfaceContainerHighest;
-    final Color fg =
-        (status.live || status.isFinal) ? cs.onSurface : cs.onSurfaceVariant;
-    return Container(
-      padding: EdgeInsets.fromLTRB(status.live ? 8 : 9, 4, 9, 4),
-      decoration:
-          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (status.live) ...[
-            LiveDot(color: live),
-            const SizedBox(width: 6),
-          ],
-          Text(
-            text,
-            style: TextStyle(
-              color: fg,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              letterSpacing: status.live ? 0.3 : 0,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// A softly pulsing live indicator dot with a faint glow.
-class LiveDot extends StatefulWidget {
-  final Color color;
-  const LiveDot({super.key, required this.color});
-  @override
-  State<LiveDot> createState() => _LiveDotState();
-}
-
-class _LiveDotState extends State<LiveDot> with SingleTickerProviderStateMixin {
-  late final AnimationController _c = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 950),
-  );
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // Honour reduce-motion: hold a steady dot instead of pulsing 60fps forever.
-    if (MediaQuery.disableAnimationsOf(context)) {
-      _c.stop();
-      _c.value = 1.0;
-    } else if (!_c.isAnimating) {
-      _c.repeat(reverse: true);
-    }
-  }
-
-  @override
-  void dispose() {
-    _c.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // RepaintBoundary isolates this 60fps repaint into its own layer so it can't
-    // dirty neighbouring widgets in the same card/chip.
-    return RepaintBoundary(
-      child: AnimatedBuilder(
-        animation: _c,
-        builder: (context, _) {
-          final t = 0.45 + 0.55 * _c.value; // 0.45 → 1.0
-          return Container(
-            width: 7,
-            height: 7,
-            decoration: BoxDecoration(
-              color: widget.color.withValues(alpha: t),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: widget.color.withValues(alpha: 0.55 * t),
-                  blurRadius: 5 * t,
-                  spreadRadius: 0.5,
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-/// One day in a horizontal date strip: weekday over day-number, a faint pill
-/// when selected. Shared by the Scores "Upcoming" strip and the league-detail
-/// Schedule strip. [isToday] keeps today legible (full-contrast) even when it
-/// isn't the selected day. A `FittedBox(scaleDown)` guards against vertical
-/// overflow at large accessibility text scales (the strip lane is fixed-height).
-class DateChip extends StatelessWidget {
-  final DateTime date;
-  final bool selected;
-  final bool isToday;
-
-  /// This day has no games (known from a range fetch) — faded back so populated
-  /// days stand out. Still tappable. Never dims the selected day or today.
-  final bool dimmed;
-  final VoidCallback onTap;
-  const DateChip({
-    super.key,
-    required this.date,
-    required this.selected,
-    this.isToday = false,
-    this.dimmed = false,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    final fg = (selected || isToday) ? cs.onSurface : cs.onSurfaceVariant;
-    final faded = dimmed && !selected && !isToday;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: Opacity(
-        opacity: faded ? 0.35 : 1,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          width: 48,
-          margin: const EdgeInsets.symmetric(vertical: 5),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: selected ? cs.surfaceContainerHighest : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  isToday
-                      ? 'TODAY'
-                      : DateFormat.E().format(date).toUpperCase(), // "SAT"
-                  style: TextStyle(
-                    fontSize: 11,
-                    height:
-                        1.0, // pin leading so the chip's height is deterministic
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.3,
-                    color: fg,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  '${date.day}',
-                  style: numStyle(
-                    size: 16,
-                    weight: (selected || isToday)
-                        ? FontWeight.w800
-                        : FontWeight.w600,
-                    color: fg,
-                  ).copyWith(height: 1.0),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Presents [child] as a bottom sheet over a **dimmed + lightly blurred** scrim —
-/// darker and softer than the stock `showModalBottomSheet` barrier (a flat
-/// `black54`, no blur). Built on `showGeneralDialog` so the scrim's dim+blur fades
-/// in independently while the panel slides up; the panel keeps the usual chrome
-/// (rounded top, drag handle, surface fill, bottom safe-area) and dismisses on a
-/// downward fling or a tap on the scrim. [child] supplies just the panel content
-/// (sized to its own height).
-Future<T?> showBlurredBottomSheet<T>({
-  required BuildContext context,
-  required Widget child,
-  double blurSigma = 6,
-  double dimOpacity = 0.66,
-}) {
-  final cs = Theme.of(context).colorScheme;
-  return showGeneralDialog<T>(
-    context: context,
-    barrierDismissible: false, // the scrim's GestureDetector owns dismissal
-    barrierColor:
-        Colors.transparent, // we paint the dim ourselves, under the blur
-    transitionDuration: const Duration(milliseconds: 280),
-    pageBuilder: (context, _, __) => Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Spacer(), // transparent top → the blurred scrim shows through
-        GestureDetector(
-          // Absorb stray taps on the panel (opaque) and fling-down to dismiss;
-          // inner chip/strip gestures still win within their own bounds.
-          behavior: HitTestBehavior.opaque,
-          onVerticalDragEnd: (d) {
-            if ((d.primaryVelocity ?? 0) > 250) {
-              Navigator.of(context).maybePop();
-            }
-          },
-          child: Material(
-            color: cs.surface,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: SafeArea(
-              top: false,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 10, bottom: 6),
-                    width: 36,
-                    height: 4,
-                    decoration: BoxDecoration(
-                      color: cs.onSurfaceVariant.withValues(alpha: 0.4),
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                  ),
-                  child,
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-    transitionBuilder: (context, anim, _, page) {
-      final t = Curves.easeOutCubic.transform(anim.value);
-      return Stack(
-        children: [
-          // Dim + blur scrim, fading in; tap anywhere off the panel to dismiss.
-          Positioned.fill(
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => Navigator.of(context).maybePop(),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(
-                    sigmaX: blurSigma * t, sigmaY: blurSigma * t),
-                child: ColoredBox(
-                    color: Colors.black.withValues(alpha: dimOpacity * t)),
-              ),
-            ),
-          ),
-          // Panel slides up from the bottom edge.
-          Positioned.fill(
-            child: FractionalTranslation(
-                translation: Offset(0, 1 - t), child: page),
-          ),
-        ],
-      );
-    },
-  );
-}
-
-/// Rounded surface container used for every game-detail section.
-class DetailPanel extends StatelessWidget {
+/// The standard dark card (bg #1A1E25, radius 20, padding 18).
+class V2Card extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
-  const DetailPanel({super.key, required this.child, this.padding});
+  final double radius;
+  final bool bordered;
+  const V2Card({
+    super.key,
+    required this.child,
+    this.padding,
+    this.radius = T.cardRadius,
+    this.bordered = false,
+  });
+
   @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return Container(
-      width: double.infinity,
-      padding: padding ?? const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: cs.surfaceContainerLow,
-        borderRadius: BorderRadius.circular(12),
-        // Hairline borders read as a surface step, not an ink line — Binance.
-        border:
-            Border.all(color: BinanceColors.of(context).cardBorder, width: 1),
-      ),
-      child: child,
-    );
-  }
+  Widget build(BuildContext context) => Container(
+        width: double.infinity,
+        padding: padding ?? T.cardPad,
+        decoration: BoxDecoration(
+          color: T.surface,
+          borderRadius: BorderRadius.circular(radius),
+          border: bordered ? Border.all(color: T.divider) : null,
+        ),
+        child: child,
+      );
 }
 
-/// The one canonical group/section title for scrolling lists (Scores feed,
-/// Leagues, the pickers, Settings groups). Small, bold, neutral `onSurface` —
-/// NOT tracked or uppercase, NOT muted, NOT a display size. This is the single
-/// source for the header `scores_page` once kept private as `_SectionHeader`;
-/// reuse it everywhere instead of re-implementing a `Padding`+`Text` (which
-/// drifts — five screens had crept to `(16,16,16,4)`). See DESIGN §Spacing.
-class SectionHeader extends StatelessWidget {
-  final String title;
-  const SectionHeader(this.title, {super.key});
+/// The inverted light card — LAST PLAY / LAST BALL / RACE CALL. The one loud
+/// moment on an otherwise dark screen.
+class InvertedCard extends StatelessWidget {
+  final String label;
+  final String text;
+  const InvertedCard({super.key, required this.label, required this.text});
+
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(16, 18, 16, 8),
-        child: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall
-              ?.copyWith(fontWeight: FontWeight.w700),
+  Widget build(BuildContext context) => Container(
+        width: double.infinity,
+        padding: T.cardPad,
+        decoration: BoxDecoration(
+          color: T.invertedBg,
+          borderRadius: BorderRadius.circular(T.cardRadius),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(label.toUpperCase(),
+                style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.88,
+                    color: T.invertedLabel)),
+            const SizedBox(height: 8),
+            Text(text, style: T.invertedProse),
+          ],
         ),
       );
 }
 
-/// The flat-card surface recipe (the gold-standard `GameCard` / `DetailPanel`
-/// look) wrapping a single list row, so list screens read like the Scores feed
-/// instead of bare `ListTile`s on the scaffold floor: `surfaceContainerLow`
-/// fill, 1px hairline, radius 12, no shadow. Cards inset 12 from the edge with
-/// an 8px gap (the card gutter — see DESIGN §Spacing).
-///
-/// If the child is a `ListTile`, give the `ListTile` its own `onTap` and leave
-/// [onTap] null (avoids a double ripple); pass [onTap] only for a non-
-/// interactive child (e.g. a bare `Row`).
-class ListCard extends StatelessWidget {
-  final Widget child;
-  final VoidCallback? onTap;
-  final EdgeInsetsGeometry margin;
-  const ListCard({
+/// Small-caps label at the top of a card ('WIN PROBABILITY').
+class CardLabel extends StatelessWidget {
+  final String text;
+  const CardLabel(this.text, {super.key});
+  @override
+  Widget build(BuildContext context) =>
+      Text(text.toUpperCase(), style: T.cardLabel);
+}
+
+/// Dashed-border hint card ('Long-press any team to add it here').
+class HintCard extends StatelessWidget {
+  final String text;
+  const HintCard(this.text, {super.key});
+  @override
+  Widget build(BuildContext context) => DashedBox(
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(14),
+          child: Text(text,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 13, color: T.textFaint)),
+        ),
+      );
+}
+
+// ═══════════════════════════ atoms ═══════════════════════════
+
+/// The 6px live dot.
+class LiveDot extends StatelessWidget {
+  final double size;
+  const LiveDot({super.key, this.size = 6});
+  @override
+  Widget build(BuildContext context) => Container(
+      width: size,
+      height: size,
+      decoration: const BoxDecoration(color: T.live, shape: BoxShape.circle));
+}
+
+/// Status pill — dark rounded pill, optional live dot ('BOT 7 · 2 OUT').
+class StatusPill extends StatelessWidget {
+  final String text;
+  final bool live;
+  const StatusPill(this.text, {super.key, this.live = false});
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        decoration: BoxDecoration(
+            color: T.surface, borderRadius: BorderRadius.circular(100)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          if (live) ...[const LiveDot(), const SizedBox(width: 7)],
+          Text(text.toUpperCase(), style: T.pillText),
+        ]),
+      );
+}
+
+/// Rounded team-color identity bar. The design's signature glyph.
+class ColorBar extends StatelessWidget {
+  final Color color;
+  final double width, height, radius;
+  const ColorBar(this.color,
+      {super.key, this.width = 5, this.height = 16, this.radius = 2});
+  @override
+  Widget build(BuildContext context) => Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(radius)),
+      );
+}
+
+/// Small solid tag badge ('PP 1:24', '10 MEN').
+class TagBadge extends StatelessWidget {
+  final String text;
+  final Color bg, fg;
+  const TagBadge(this.text,
+      {super.key, this.bg = T.gold, this.fg = T.invertedText});
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration:
+            BoxDecoration(color: bg, borderRadius: BorderRadius.circular(4)),
+        child: Text(text.toUpperCase(),
+            style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+                color: fg)),
+      );
+}
+
+/// Possession triangle (points toward the score, i.e. right-to-left row flow).
+class PossessionArrow extends StatelessWidget {
+  final Color color;
+  final double size;
+  const PossessionArrow({super.key, this.color = T.textDim, this.size = 10});
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+      size: Size(size * 0.8, size), painter: _TrianglePainter(color));
+}
+
+class _TrianglePainter extends CustomPainter {
+  final Color color;
+  _TrianglePainter(this.color);
+  @override
+  void paint(Canvas canvas, Size size) {
+    final p = Path()
+      ..moveTo(size.width, size.height / 2)
+      ..lineTo(0, 0)
+      ..lineTo(0, size.height)
+      ..close();
+    canvas.drawPath(p, Paint()..color = color);
+  }
+
+  @override
+  bool shouldRepaint(_TrianglePainter old) => old.color != color;
+}
+
+/// Tiny red-card glyph (a vertical red rectangle).
+class RedCardGlyph extends StatelessWidget {
+  final double height;
+  const RedCardGlyph({super.key, this.height = 10});
+  @override
+  Widget build(BuildContext context) => Container(
+        width: height * 0.7,
+        height: height,
+        decoration: BoxDecoration(
+            color: T.live, borderRadius: BorderRadius.circular(1.5)),
+      );
+}
+
+// ═══════════════════════════ chip nav ═══════════════════════════
+
+/// Horizontal pill chips — selected chip is inverted (light on dark).
+class ChipNav extends StatelessWidget {
+  final List<String> items;
+  final int selected;
+  final ValueChanged<int> onTap;
+  final EdgeInsetsGeometry padding;
+  const ChipNav({
     super.key,
-    required this.child,
-    this.onTap,
-    this.margin = const EdgeInsets.fromLTRB(12, 0, 12, 8),
+    required this.items,
+    required this.selected,
+    required this.onTap,
+    this.padding = const EdgeInsets.symmetric(horizontal: T.pageMargin),
   });
+
+  @override
+  Widget build(BuildContext context) => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: padding,
+        child: Row(
+          children: [
+            for (var i = 0; i < items.length; i++) ...[
+              if (i > 0) const SizedBox(width: 8),
+              _Chip(
+                  label: items[i],
+                  selected: i == selected,
+                  onTap: () => onTap(i)),
+            ]
+          ],
+        ),
+      );
+}
+
+class _Chip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+  const _Chip({required this.label, required this.selected, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            color: selected ? T.invertedBg : null,
+            border: selected ? null : Border.all(color: T.border, width: 1.5),
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: Text(label,
+              style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                  color: selected ? T.invertedText : T.textDim)),
+        ),
+      );
+}
+
+// ═══════════════════════════ score block ═══════════════════════════
+
+/// One row of the giant score block: color bar, shouting team name, score.
+/// The trailing side dims when [dim] (the side that's behind / lost).
+class ScoreBlockRow extends StatelessWidget {
+  final Competitor competitor;
+  final bool dim;
+  final bool possession;
+  final bool showScore;
+  final Widget? badge;
+  const ScoreBlockRow(this.competitor,
+      {super.key,
+      this.dim = false,
+      this.possession = false,
+      this.showScore = true,
+      this.badge});
+
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return Padding(
-      padding: margin,
-      child: Material(
-        color: cs.surfaceContainerLow,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side:
-              BorderSide(color: BinanceColors.of(context).cardBorder, width: 1),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: onTap == null ? child : InkWell(onTap: onTap, child: child),
+    final color = dim ? T.textDim : T.text;
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: T.border, width: 2))),
+      child: Row(
+        children: [
+          ColorBar(teamColor(competitor), width: 12, height: 44, radius: 3),
+          const SizedBox(width: 12),
+          // Name + badges take all the slack so the score pins to the right
+          // edge — both rows' scores line up regardless of name width. (A bare
+          // Spacer here split the slack with the name and left scores ragged.)
+          Expanded(
+            child: Row(children: [
+              Flexible(
+                // Long names (SOUTH AFRICA) scale down rather than truncate.
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(blockName(competitor),
+                      maxLines: 1, style: T.blockName.copyWith(color: color)),
+                ),
+              ),
+              if (badge != null) ...[const SizedBox(width: 10), badge!],
+              if (possession) ...[
+                const SizedBox(width: 10),
+                PossessionArrow(color: color, size: 12),
+              ],
+            ]),
+          ),
+          if (showScore) ...[const SizedBox(width: 12), _score(color)],
+        ],
       ),
+    );
+  }
+
+  Widget _score(Color color) {
+    final display = competitor.score?.display ?? '';
+    final so = competitor.shootoutScore;
+    // Long cricket-style scores ('168/6') shrink a step so the row holds.
+    final style = T.blockScore
+        .copyWith(color: color, fontSize: display.length > 3 ? 44 : 52);
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      children: [
+        Text(display, style: style),
+        if (so != null)
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Text('(${so.toStringAsFixed(0)})',
+                style: T.statLineStrong.copyWith(color: T.textDim)),
+          ),
+      ],
     );
   }
 }
 
-/// Small muted, tracked label — the *column-header* / in-panel sub-label voice,
-/// deliberately distinct from [SectionHeader]. Use it for column heads inside a
-/// `DetailPanel` (box score, leaderboards), NOT for top-level list groups.
-class SectionLabel extends StatelessWidget {
-  final String text;
-  const SectionLabel(this.text, {super.key});
+/// The condensed one-line scorebug ('MIL 4  CHC 5 · Bot 7').
+class Scorebug extends StatelessWidget {
+  final Competition comp;
+  const Scorebug(this.comp, {super.key});
+
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 8, top: 4),
-        // Keep the literal text (widget tests match on it); the tracked,
-        // muted treatment carries the column-header voice.
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.5,
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
+  Widget build(BuildContext context) {
+    final away = comp.away ?? (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+    final home = comp.home ??
+        (comp.competitors.length > 1 ? comp.competitors[1] : null);
+    Widget side(Competitor? c) {
+      if (c == null) return const SizedBox.shrink();
+      final leading = _leadingSide(comp);
+      final dim = leading != null && leading != c;
+      final score = comp.status.isScheduled ? '' : c.score?.display ?? '';
+      return Row(mainAxisSize: MainAxisSize.min, children: [
+        ColorBar(teamColor(c), width: 8, height: 22),
+        const SizedBox(width: 7),
+        Text('${c.label} $score'.trim(),
+            style: T.bugScore.copyWith(color: dim ? T.textDim : T.text)),
+      ]);
+    }
+
+    return Row(children: [
+      side(away),
+      const SizedBox(width: 12),
+      side(home),
+      const Spacer(),
+      Text(comp.status.shortDetail ?? comp.status.detail, style: T.caption),
+      if (comp.status.live) ...[
+        const SizedBox(width: 8),
+        const LiveDot(size: 7),
+      ],
+    ]);
+  }
+}
+
+/// The side currently ahead (for dimming the trailing side), or null when tied
+/// or scores aren't numeric. Finals dim by `winner` instead.
+Competitor? _leadingSide(Competition comp) {
+  final cs = comp.competitors;
+  if (cs.length != 2) return null;
+  if (comp.status.isFinal) {
+    for (final c in cs) {
+      if (c.isWinner) return c;
+    }
+    return null;
+  }
+  final a = cs[0].score?.value, b = cs[1].score?.value;
+  if (a == null || b == null || a == b) return null;
+  return a > b ? cs[0] : cs[1];
+}
+
+Competitor? leadingSide(Competition comp) => _leadingSide(comp);
+
+// ═══════════════════════════ bars & pips ═══════════════════════════
+
+/// Two-color proportional bar (win probability, possession).
+class SplitBar extends StatelessWidget {
+  final double leftFraction;
+  final Color left, right;
+  final double height;
+  const SplitBar({
+    super.key,
+    required this.leftFraction,
+    required this.left,
+    required this.right,
+    this.height = 12,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final f = leftFraction.clamp(0.02, 0.98);
+    return SizedBox(
+      height: height,
+      child: Row(children: [
+        Expanded(
+          flex: (f * 1000).round(),
+          child: Container(
+              decoration: BoxDecoration(
+                  color: left,
+                  borderRadius: BorderRadius.circular(height / 2))),
+        ),
+        const SizedBox(width: 2),
+        Expanded(
+          flex: ((1 - f) * 1000).round(),
+          child: Container(
+              decoration: BoxDecoration(
+                  color: right,
+                  borderRadius: BorderRadius.circular(height / 2))),
+        ),
+      ]),
+    );
+  }
+}
+
+/// Playoff-series pips: one dot per game in team colors, hollow for unplayed.
+class SeriesPips extends StatelessWidget {
+  final SeriesInfo series;
+  final Competition comp;
+  final double size;
+  const SeriesPips({super.key, required this.series, required this.comp, this.size = 8});
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = comp.competitors;
+    if (cs.length < 2) return const SizedBox.shrink();
+    final a = cs[0], b = cs[1];
+    final aWins = series.wins(a.id), bWins = series.wins(b.id);
+    final played = aWins + bWins;
+    final total = series.total ?? played;
+    // Alternate colors in win order isn't knowable; show a's wins then b's,
+    // then hollow dots for the games left in a possible full series.
+    final dots = <Widget>[
+      for (var i = 0; i < aWins; i++) _dot(teamColor(a)),
+      for (var i = 0; i < bWins; i++) _dot(teamColor(b)),
+      for (var i = played; i < total; i++) _hollow(),
+    ];
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      for (var i = 0; i < dots.length; i++) ...[
+        if (i > 0) const SizedBox(width: 3),
+        dots[i],
+      ]
+    ]);
+  }
+
+  Widget _dot(Color c) => Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(color: c, shape: BoxShape.circle));
+
+  Widget _hollow() => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: T.outline, width: 1.5)),
+      );
+}
+
+/// N filled dots out of [total] ('OUTS' dots, timeouts).
+class DotRow extends StatelessWidget {
+  final int filled, total;
+  final Color color;
+  final double size;
+  const DotRow({
+    super.key,
+    required this.filled,
+    required this.total,
+    this.color = T.text,
+    this.size = 10,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (var i = 0; i < total; i++) ...[
+            if (i > 0) const SizedBox(width: 5),
+            Container(
+              width: size,
+              height: size,
+              decoration: BoxDecoration(
+                  color: i < filled ? color : T.border,
+                  shape: BoxShape.circle),
+            ),
+          ]
+        ],
+      );
+}
+
+// ═══════════════════════════ baseball diamond ═══════════════════════════
+
+/// The bases diamond, in the design's 128×112 geometry: outlined diamond path,
+/// gold squares for occupied bases, dark squares for empty, home plate small.
+class BaseballDiamond extends StatelessWidget {
+  final bool onFirst, onSecond, onThird;
+  final double width;
+  const BaseballDiamond({
+    super.key,
+    required this.onFirst,
+    required this.onSecond,
+    required this.onThird,
+    this.width = 110,
+  });
+
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+        size: Size(width, width * 112 / 128),
+        painter: _DiamondPainter(onFirst, onSecond, onThird),
+      );
+}
+
+class _DiamondPainter extends CustomPainter {
+  final bool on1, on2, on3;
+  _DiamondPainter(this.on1, this.on2, this.on3);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final sx = size.width / 128, sy = size.height / 112;
+    Offset pt(double x, double y) => Offset(x * sx, y * sy);
+    final home = pt(64, 98), first = pt(112, 54), second = pt(64, 12), third = pt(16, 54);
+
+    final line = Paint()
+      ..color = T.diamondLine
+      ..strokeWidth = 3 * sx
+      ..style = PaintingStyle.stroke;
+    final path = Path()
+      ..moveTo(home.dx, home.dy)
+      ..lineTo(first.dx, first.dy)
+      ..lineTo(second.dx, second.dy)
+      ..lineTo(third.dx, third.dy)
+      ..close();
+    canvas.drawPath(path, line);
+
+    void base(Offset c, bool occupied, double side) {
+      canvas.save();
+      canvas.translate(c.dx, c.dy);
+      canvas.rotate(0.785398); // 45°
+      final r = RRect.fromRectAndRadius(
+          Rect.fromCenter(center: Offset.zero, width: side, height: side),
+          Radius.circular(3 * sx));
+      if (occupied) {
+        canvas.drawRRect(r, Paint()..color = T.gold);
+      } else {
+        canvas.drawRRect(r, Paint()..color = T.track);
+        canvas.drawRRect(
+            r,
+            Paint()
+              ..color = T.outline
+              ..strokeWidth = 2.5 * sx
+              ..style = PaintingStyle.stroke);
+      }
+      canvas.restore();
+    }
+
+    base(first, on1, 18 * sx);
+    base(second, on2, 18 * sx);
+    base(third, on3, 18 * sx);
+    base(home, false, 16 * sx); // home plate, never "occupied"
+  }
+
+  @override
+  bool shouldRepaint(_DiamondPainter old) =>
+      old.on1 != on1 || old.on2 != on2 || old.on3 != on3;
+}
+
+/// The tiny 3-base diamond used inline in rows/scorebugs (26×22 geometry).
+class MiniDiamond extends StatelessWidget {
+  final bool onFirst, onSecond, onThird;
+  final double width;
+  const MiniDiamond({
+    super.key,
+    required this.onFirst,
+    required this.onSecond,
+    required this.onThird,
+    this.width = 24,
+  });
+
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+        size: Size(width, width * 22 / 26),
+        painter: _MiniDiamondPainter(onFirst, onSecond, onThird),
+      );
+}
+
+class _MiniDiamondPainter extends CustomPainter {
+  final bool on1, on2, on3;
+  _MiniDiamondPainter(this.on1, this.on2, this.on3);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final sx = size.width / 26, sy = size.height / 22;
+    void base(double cx, double cy, bool occupied) {
+      canvas.save();
+      canvas.translate(cx * sx, cy * sy);
+      canvas.rotate(0.785398);
+      final r = RRect.fromRectAndRadius(
+          Rect.fromCenter(
+              center: Offset.zero, width: 7 * sx, height: 7 * sx),
+          Radius.circular(1.5 * sx));
+      if (occupied) {
+        canvas.drawRRect(r, Paint()..color = T.gold);
+      } else {
+        canvas.drawRRect(
+            r,
+            Paint()
+              ..color = T.outline
+              ..strokeWidth = 1.5 * sx
+              ..style = PaintingStyle.stroke);
+      }
+      canvas.restore();
+    }
+
+    base(21.5, 10.5, on1); // first
+    base(13, 4.5, on2); // second
+    base(4.5, 10.5, on3); // third
+  }
+
+  @override
+  bool shouldRepaint(_MiniDiamondPainter old) =>
+      old.on1 != on1 || old.on2 != on2 || old.on3 != on3;
+}
+
+// ═══════════════════════════ list rows ═══════════════════════════
+
+/// A key–value stat row inside a card ('Hoerner 2B    4 2 0' style):
+/// name (+detail) left, condensed stat line right.
+class StatListRow extends StatelessWidget {
+  final String name;
+  final String? detail;
+  final String stat;
+  final bool emphasized;
+  final bool topDivider;
+  const StatListRow({
+    super.key,
+    required this.name,
+    this.detail,
+    required this.stat,
+    this.emphasized = false,
+    this.topDivider = true,
+  });
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: topDivider
+            ? const BoxDecoration(
+                border: Border(top: BorderSide(color: T.divider)))
+            : null,
+        child: Row(children: [
+          Expanded(
+            child: Text.rich(
+              TextSpan(
+                text: name,
+                style: T.listText.copyWith(
+                    fontWeight:
+                        emphasized ? FontWeight.w600 : FontWeight.w400),
+                children: [
+                  if (detail != null && detail!.isNotEmpty)
+                    TextSpan(
+                        text: '  $detail',
+                        style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: T.textFaint)),
+                ],
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(stat,
+              style: T.statLine
+                  .copyWith(color: emphasized ? T.text : T.textDim)),
+        ]),
+      );
+}
+
+// ═══════════════════════════ sub-page chrome ═══════════════════════════
+
+/// Sub-page app bar: back chevron + condensed shouted title.
+PreferredSizeWidget subpageBar(BuildContext context, String title) => AppBar(
+      backgroundColor: T.bg,
+      surfaceTintColor: Colors.transparent,
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back_ios_new_rounded,
+            size: 18, color: T.textDim),
+        onPressed: () => Navigator.of(context).maybePop(),
+      ),
+      title: Text(title.toUpperCase(),
+          style: T.pageTitle.copyWith(fontSize: 22)),
+      centerTitle: false,
+    );
+
+/// The dark rounded search input used by Explore and the team picker.
+class V2SearchField extends StatelessWidget {
+  final String hint;
+  final ValueChanged<String> onChanged;
+  const V2SearchField({super.key, required this.hint, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) => TextField(
+        onChanged: onChanged,
+        style: const TextStyle(fontSize: 14, color: T.text),
+        cursorColor: T.gold,
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: const TextStyle(fontSize: 14, color: T.textFaint),
+          prefixIcon:
+              const Icon(Icons.search_rounded, size: 18, color: T.textFaint),
+          filled: true,
+          fillColor: T.surface,
+          isDense: true,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
           ),
         ),
       );
 }
 
-/// Centered empty/placeholder state.
-class EmptyState extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String? subtitle;
-  final Widget? action;
-  const EmptyState(
-      {super.key,
-      required this.icon,
-      required this.title,
-      this.subtitle,
-      this.action});
+// ═══════════════════════════ crest circle ═══════════════════════════
+
+/// A team identity circle: color ring + abbreviation. No network images —
+/// the color bar system is the app's identity language.
+class CrestCircle extends StatelessWidget {
+  final String abbr;
+  final Color color;
+  final double size;
+  const CrestCircle({super.key, required this.abbr, required this.color, this.size = 44});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: T.track,
+          border: Border.all(color: color, width: 2),
+        ),
+        alignment: Alignment.center,
+        child: Text(abbr.toUpperCase(),
+            style: TextStyle(
+                fontFamily: 'BarlowCondensed',
+                fontWeight: FontWeight.w700,
+                fontSize: size * 0.32,
+                color: T.text)),
+      );
+}
+
+/// The team-page identity square (§10): a 44px r12 SOLID team-color fill with a
+/// Barlow abbr — badge-scale identity, sanctioned like the TD/FG chip.
+class SquareCrest extends StatelessWidget {
+  final String abbr;
+  final Color color;
+  final double size;
+  const SquareCrest(
+      {super.key, required this.abbr, required this.color, this.size = 44});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+            color: color, borderRadius: BorderRadius.circular(12)),
+        alignment: Alignment.center,
+        child: Text(abbr.toUpperCase(),
+            style: TextStyle(
+                fontFamily: 'BarlowCondensed',
+                fontWeight: FontWeight.w700,
+                fontSize: size * 0.34,
+                color: onColor(color))),
+      );
+}
+
+/// Team-tinted avatar (§6): a circle with a dark team-tinted fill + Barlow
+/// initials, for top-performer / leaders rows. [ring] adds the 2px team ring the
+/// follow sheet's 44px avatar uses.
+class TintedAvatar extends StatelessWidget {
+  final String text;
+  final Color color;
+  final double size;
+  final bool ring;
+  const TintedAvatar(this.text, this.color,
+      {super.key, this.size = 38, this.ring = false});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color.alphaBlend(color.withValues(alpha: 0.18), T.surface),
+          border: ring ? Border.all(color: color, width: 2) : null,
+        ),
+        alignment: Alignment.center,
+        child: Text(text.toUpperCase(),
+            style: TextStyle(
+                fontFamily: 'BarlowCondensed',
+                fontWeight: FontWeight.w700,
+                fontSize: size * 0.34,
+                color: paleOf(color))),
+      );
+}
+
+// ═══════════════════════════ §6 pills, chips, toggles ═══════════════════════
+
+/// Tinted signal pill (§6): LEAD / BREAK / SET POINT / SAFETY CAR. r999, 1×7 pad,
+/// 10/700 +0.05em; bg = [tint] at ~22% composited on `surface`; white or a
+/// pale-tint text (softer read).
+class SignalPill extends StatelessWidget {
+  final String text;
+  final Color tint;
+  final bool pale;
+  const SignalPill(this.text, {super.key, this.tint = T.gold, this.pale = false});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 1),
+        decoration: BoxDecoration(
+          color: Color.alphaBlend(tint.withValues(alpha: 0.22), T.surface),
+          borderRadius: BorderRadius.circular(999),
+        ),
+        child: Text(text.toUpperCase(),
+            style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+                color: pale ? paleOf(tint) : Colors.white)),
+      );
+}
+
+/// Score-type chip (§8/§9): TD / FG / TRY — team-color fill + 1px border, Barlow
+/// 12/700, ~34×24 r6. The one loud row's badge in scoring-episode feeds.
+class ScoreTypeChip extends StatelessWidget {
+  final String text;
+  final Color color;
+  const ScoreTypeChip(this.text, {super.key, this.color = T.gold});
+
+  @override
+  Widget build(BuildContext context) => Container(
+        constraints: const BoxConstraints(minWidth: 34),
+        height: 24,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: color,
+          border: Border.all(color: T.border),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 6),
+          child: Text(text.toUpperCase(),
+              style: TextStyle(
+                  fontFamily: 'BarlowCondensed',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                  color: onColor(color))),
+        ),
+      );
+}
+
+/// The quietest live marker (§6): a `track` pill, `textDim` 9/700 — the pitcher
+/// currently in, an active player in a dense table.
+class NowPill extends StatelessWidget {
+  const NowPill({super.key});
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+        decoration: BoxDecoration(
+            color: T.track, borderRadius: BorderRadius.circular(999)),
+        child: const Text('NOW',
+            style: TextStyle(
+                fontSize: 9,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.3,
+                color: T.textDim)),
+      );
+}
+
+/// Semantic rank chip (§6/§10): a tinted pill colored by GOODNESS, not value —
+/// good third green, middle neutral, bottom third red. The chip judges; the
+/// number reports. Pass the 1-based [rank] and group [total].
+class SemanticRankChip extends StatelessWidget {
+  final String label;
+  final int rank, total;
+  const SemanticRankChip(
+      {super.key, required this.label, required this.rank, required this.total});
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 48, color: cs.onSurfaceVariant),
-            const SizedBox(height: 16),
-            Text(title,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium),
-            if (subtitle != null) ...[
-              const SizedBox(height: 8),
-              Text(subtitle!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: cs.onSurfaceVariant)),
-            ],
-            if (action != null) ...[const SizedBox(height: 20), action!],
-          ],
-        ),
-      ),
+    final third = total <= 1 ? 0.0 : (rank - 1) / (total - 1);
+    Color bg, fg;
+    if (third <= 0.34) {
+      bg = const Color(0xFF1C3A2A);
+      fg = const Color(0xFF8FD6AE);
+    } else if (third >= 0.67) {
+      bg = const Color(0xFF3D2024);
+      fg = const Color(0xFFE8A0A6);
+    } else {
+      bg = T.border;
+      fg = T.textDim;
+    }
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+      decoration:
+          BoxDecoration(color: bg, borderRadius: BorderRadius.circular(999)),
+      child: Text(label.toUpperCase(),
+          style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.3,
+              color: fg)),
     );
   }
 }
 
-/// Shown across tabs until the worker URL is configured.
-class SetupPrompt extends StatelessWidget {
-  const SetupPrompt({super.key});
+/// Segmented toggle (§6): container `surface` r12 p4; active segment `border`
+/// fill r9 12.5/600; inactive `textDim`. The §9 feed filter and §10 scope switch.
+class SegmentedControl extends StatelessWidget {
+  final List<String> items;
+  final int selected;
+  final ValueChanged<int> onTap;
+  const SegmentedControl(
+      {super.key,
+      required this.items,
+      required this.selected,
+      required this.onTap});
+
   @override
-  Widget build(BuildContext context) => const EmptyState(
-        icon: Icons.cloud_off_outlined,
-        title: 'Connect your scores worker',
-        subtitle:
-            'Open the Settings tab and paste your Cloudflare worker URL, e.g.\nhttps://sports-scores.you.workers.dev',
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+            color: T.surface, borderRadius: BorderRadius.circular(12)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          for (var i = 0; i < items.length; i++)
+            GestureDetector(
+              onTap: () => onTap(i),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 150),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                decoration: BoxDecoration(
+                    color: i == selected ? T.border : null,
+                    borderRadius: BorderRadius.circular(9)),
+                child: Text(items[i],
+                    style: TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w600,
+                        color: i == selected ? T.text : T.textDim)),
+              ),
+            ),
+        ]),
       );
 }
 
-class ErrorView extends StatelessWidget {
-  final String message;
-  final VoidCallback? onRetry;
-  const ErrorView({super.key, required this.message, this.onRetry});
+// ═══════════════════════════ §7 signature moves ═════════════════════════════
+
+/// The §7.2 "you are here" wash — a 90° team-color gradient fading to
+/// transparent. Highlighted rows bleed it edge-to-edge (negative margin at the
+/// call site, padding restored). Dense feeds pass alpha ~.11; gold = favorite.
+Gradient teamWash(Color color, {double alpha = 0.075}) => LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [color.withValues(alpha: alpha), Colors.transparent],
+    );
+
+/// The running score after a scoring event (§7.5): Barlow 18/700 tabular; the
+/// latest/current is white, older ones dim.
+class RunningScore extends StatelessWidget {
+  final String text;
+  final bool bright;
+  const RunningScore(this.text, {super.key, this.bright = false});
   @override
-  Widget build(BuildContext context) => EmptyState(
-        icon: Icons.error_outline,
-        title: 'Couldn\'t load',
-        subtitle: message,
-        // The one functional action on the error state → the signature yellow
-        // FilledButton (not .tonal grey). DESIGN §Components: scarce accent =
-        // the single primary action on a screen.
-        action: onRetry == null
-            ? null
-            : FilledButton(onPressed: onRetry, child: const Text('Retry')),
+  Widget build(BuildContext context) => Text(text,
+      style: TextStyle(
+          fontFamily: 'BarlowCondensed',
+          fontWeight: FontWeight.w700,
+          fontSize: 18,
+          fontFeatures: const [FontFeature.tabularFigures()],
+          color: bright ? T.text : T.textDim));
+}
+
+/// The rule-label divider (§7.4): a period break / cut line — a dashed rule with
+/// a centered letterspaced label. [alarm] = the loud playoff cut line (2px
+/// `live`); default = the dim in-feed break (1.5px `border`). An optional
+/// [swatch] paints an 8px status square before the label (flag phases).
+class RuleLabelDivider extends StatelessWidget {
+  final String label;
+  final bool alarm;
+  final Color? swatch;
+  const RuleLabelDivider(this.label,
+      {super.key, this.alarm = false, this.swatch});
+
+  @override
+  Widget build(BuildContext context) {
+    final lineColor = alarm ? T.live : T.border;
+    final w = alarm ? 2.0 : 1.5;
+    Widget line() => Expanded(
+        child: CustomPaint(
+            size: Size(double.infinity, w),
+            painter: _DashedLinePainter(color: lineColor, strokeWidth: w)));
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(children: [
+        line(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            if (swatch != null) ...[
+              Container(width: 8, height: 8, color: swatch),
+              const SizedBox(width: 6),
+            ],
+            Text(label.toUpperCase(),
+                style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.0,
+                    color: alarm ? T.live : T.textFaint)),
+          ]),
+        ),
+        line(),
+      ]),
+    );
+  }
+}
+
+// ═══════════════════════════ dashed primitives (§7.3) ═══════════════════════
+
+/// A dashed-border box — wraps any child in the §7.3 "pending / not yet" outline
+/// (hint cards, drop slots).
+class DashedBox extends StatelessWidget {
+  final Widget child;
+  final Color color;
+  final double radius, strokeWidth;
+  const DashedBox({
+    super.key,
+    required this.child,
+    this.color = T.border,
+    this.radius = T.rowCardRadius,
+    this.strokeWidth = 1.5,
+  });
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+        painter: _DashedRectPainter(
+            color: color, radius: radius, strokeWidth: strokeWidth),
+        child: child,
       );
+}
+
+/// A dashed ring (§7.3): an empty pip / balls-remaining dot / the in-progress
+/// golf hole (pass `gold`). Optionally holds a centered [child] (the hole number).
+class DashedRing extends StatelessWidget {
+  final double size, strokeWidth;
+  final Color color;
+  final Widget? child;
+  const DashedRing({
+    super.key,
+    this.size = 8,
+    this.strokeWidth = 1.5,
+    this.color = T.outline,
+    this.child,
+  });
+  @override
+  Widget build(BuildContext context) => CustomPaint(
+        painter:
+            _DashedCirclePainter(color: color, strokeWidth: strokeWidth),
+        child: SizedBox.square(
+            dimension: size, child: Center(child: child)),
+      );
+}
+
+class _DashedRectPainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth, radius;
+  _DashedRectPainter({
+    required this.color,
+    this.strokeWidth = 1.5,
+    this.radius = 16,
+  });
+  @override
+  void paint(Canvas canvas, Size size) {
+    const dash = 5.0, gap = 4.0;
+    final path = Path()
+      ..addRRect(RRect.fromRectAndRadius(
+          Offset.zero & size, Radius.circular(radius)));
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+    for (final m in path.computeMetrics()) {
+      var d = 0.0;
+      while (d < m.length) {
+        canvas.drawPath(
+            m.extractPath(d, (d + dash).clamp(0, m.length)), paint);
+        d += dash + gap;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DashedRectPainter old) =>
+      old.color != color ||
+      old.strokeWidth != strokeWidth ||
+      old.radius != radius;
+}
+
+class _DashedCirclePainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth;
+  _DashedCirclePainter({required this.color, this.strokeWidth = 1.5});
+  @override
+  void paint(Canvas canvas, Size size) {
+    const dash = 3.0, gap = 3.0;
+    final path = Path()..addOval(Offset.zero & size);
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+    for (final m in path.computeMetrics()) {
+      var d = 0.0;
+      while (d < m.length) {
+        canvas.drawPath(
+            m.extractPath(d, (d + dash).clamp(0, m.length)), paint);
+        d += dash + gap;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DashedCirclePainter old) =>
+      old.color != color || old.strokeWidth != strokeWidth;
+}
+
+class _DashedLinePainter extends CustomPainter {
+  final Color color;
+  final double strokeWidth;
+  _DashedLinePainter({required this.color, this.strokeWidth = 1.5});
+  @override
+  void paint(Canvas canvas, Size size) {
+    const dash = 5.0, gap = 4.0;
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+    final y = size.height / 2;
+    var x = 0.0;
+    while (x < size.width) {
+      canvas.drawLine(
+          Offset(x, y), Offset((x + dash).clamp(0, size.width), y), paint);
+      x += dash + gap;
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DashedLinePainter old) =>
+      old.color != color || old.strokeWidth != strokeWidth;
+}
+
+// ═══════════════════════════ §10 comparison kit ═════════════════════════════
+
+/// A §10 season-stat tile: `track` r14, Barlow 24 value, 11 dim label, optional
+/// semantic rank chip top-right.
+class StatTile extends StatelessWidget {
+  final String value, label;
+  final Widget? rankChip;
+  const StatTile(
+      {super.key, required this.value, required this.label, this.rankChip});
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.fromLTRB(12, 12, 12, 14),
+        decoration: BoxDecoration(
+            color: T.track, borderRadius: BorderRadius.circular(14)),
+        child:
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            Expanded(child: Text(value, style: T.statCallout)),
+            if (rankChip != null) rankChip!,
+          ]),
+          const SizedBox(height: 6),
+          Text(label.toUpperCase(), style: T.cardLabelFaint),
+        ]),
+      );
+}
+
+/// A §10 head-to-head gap bar: a 5px `track` rail with two team-color segments
+/// growing inward from opposite edges, each scaled to its value / the pair max.
+class GapBar extends StatelessWidget {
+  final double leftValue, rightValue;
+  final Color left, right;
+  const GapBar({
+    super.key,
+    required this.leftValue,
+    required this.rightValue,
+    required this.left,
+    required this.right,
+  });
+  @override
+  Widget build(BuildContext context) {
+    final m = leftValue.abs() > rightValue.abs()
+        ? leftValue.abs()
+        : rightValue.abs();
+    Widget half(double v, Color c, bool alignRight) => Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(3),
+            child: Stack(children: [
+              Container(height: 5, color: T.track),
+              Align(
+                alignment:
+                    alignRight ? Alignment.centerRight : Alignment.centerLeft,
+                child: FractionallySizedBox(
+                  widthFactor: (m <= 0 ? 0.0 : v.abs() / m).clamp(0.0, 1.0),
+                  child: Container(height: 5, color: c),
+                ),
+              ),
+            ]),
+          ),
+        );
+    return Row(children: [
+      half(leftValue, left, true),
+      const SizedBox(width: 3),
+      half(rightValue, right, false),
+    ]);
+  }
 }

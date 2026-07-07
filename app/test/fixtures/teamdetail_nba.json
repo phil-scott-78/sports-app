@@ -1,0 +1,1394 @@
+{
+  "league": "basketball/nba",
+  "sport": "basketball",
+  "leagueName": "NBA",
+  "team": {
+    "id": "1",
+    "displayName": "Atlanta Hawks",
+    "abbreviation": "ATL",
+    "record": "46-36",
+    "standingSummary": "1st in Southeast Division",
+    "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+    "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+    "color": "c8102e"
+  },
+  "schedule": [
+    {
+      "id": "401869189",
+      "name": "Atlanta Hawks at New York Knicks",
+      "shortName": "ATL @ NY",
+      "start": "2026-04-18T22:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "Madison Square Garden",
+        "city": "New York"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 1"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869189/hawks-knicks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869189"
+      },
+      "competitions": [
+        {
+          "id": "401869189",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": true,
+              "score": {
+                "display": "113",
+                "value": 113
+              }
+            },
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": false,
+              "score": {
+                "display": "102",
+                "value": 102
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "26",
+                  "athlete": "C. McCollum"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "11",
+                  "athlete": "D. Daniels"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "9",
+                  "athlete": "D. Daniels"
+                }
+              ]
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 1"
+          },
+          "attendance": 19812
+        }
+      ]
+    },
+    {
+      "id": "401869387",
+      "name": "Atlanta Hawks at New York Knicks",
+      "shortName": "ATL @ NY",
+      "start": "2026-04-21T00:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "Madison Square Garden",
+        "city": "New York"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 2"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869387/hawks-knicks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869387"
+      },
+      "competitions": [
+        {
+          "id": "401869387",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": false,
+              "score": {
+                "display": "106",
+                "value": 106
+              }
+            },
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": true,
+              "score": {
+                "display": "107",
+                "value": 107
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "32",
+                  "athlete": "C. McCollum"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "6",
+                  "athlete": "C. McCollum"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "8",
+                  "athlete": "J. Johnson"
+                }
+              ]
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 2"
+          },
+          "attendance": 19812
+        }
+      ]
+    },
+    {
+      "id": "401869389",
+      "name": "New York Knicks at Atlanta Hawks",
+      "shortName": "NY @ ATL",
+      "start": "2026-04-23T23:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "State Farm Arena",
+        "city": "Atlanta"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 3"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869389/knicks-hawks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869389"
+      },
+      "competitions": [
+        {
+          "id": "401869389",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": true,
+              "score": {
+                "display": "109",
+                "value": 109
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "24",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "8",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "13",
+                  "athlete": "D. Daniels"
+                }
+              ]
+            },
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": false,
+              "score": {
+                "display": "108",
+                "value": 108
+              }
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 3"
+          },
+          "attendance": 18452
+        }
+      ]
+    },
+    {
+      "id": "401869391",
+      "name": "New York Knicks at Atlanta Hawks",
+      "shortName": "NY @ ATL",
+      "start": "2026-04-25T22:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "State Farm Arena",
+        "city": "Atlanta"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 4"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869391/knicks-hawks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869391"
+      },
+      "competitions": [
+        {
+          "id": "401869391",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": false,
+              "score": {
+                "display": "98",
+                "value": 98
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "17",
+                  "athlete": "C. McCollum"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "6",
+                  "athlete": "D. Daniels"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "9",
+                  "athlete": "D. Daniels"
+                }
+              ]
+            },
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": true,
+              "score": {
+                "display": "114",
+                "value": 114
+              }
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 4"
+          },
+          "attendance": 18763
+        }
+      ]
+    },
+    {
+      "id": "401869392",
+      "name": "Atlanta Hawks at New York Knicks",
+      "shortName": "ATL @ NY",
+      "start": "2026-04-29T00:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "Madison Square Garden",
+        "city": "New York"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 5"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869392/hawks-knicks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869392"
+      },
+      "competitions": [
+        {
+          "id": "401869392",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": true,
+              "score": {
+                "display": "126",
+                "value": 126
+              }
+            },
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": false,
+              "score": {
+                "display": "97",
+                "value": 97
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "18",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "6",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "10",
+                  "athlete": "J. Johnson"
+                }
+              ]
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 5"
+          },
+          "attendance": 19812
+        }
+      ]
+    },
+    {
+      "id": "401869393",
+      "name": "New York Knicks at Atlanta Hawks",
+      "shortName": "NY @ ATL",
+      "start": "2026-04-30T23:00Z",
+      "neutralSite": false,
+      "venue": {
+        "name": "State Farm Arena",
+        "city": "Atlanta"
+      },
+      "broadcasts": [],
+      "notes": [
+        "East 1st Round - Game 6"
+      ],
+      "links": {
+        "web": "https://www.espn.com/nba/game/_/gameId/401869393/knicks-hawks",
+        "box": "https://www.espn.com/nba/boxscore/_/gameId/401869393"
+      },
+      "competitions": [
+        {
+          "id": "401869393",
+          "layout": "headToHead",
+          "scoreKind": "numeric",
+          "competitorKind": "team",
+          "status": {
+            "phase": "final",
+            "live": false,
+            "ended": true,
+            "period": 4,
+            "periodLabel": "Final",
+            "espnName": "STATUS_FINAL",
+            "detail": "Final",
+            "shortDetail": "Final"
+          },
+          "periods": {
+            "unit": "quarter",
+            "regulation": 4,
+            "played": 4,
+            "isOvertime": false,
+            "lengthMin": 12
+          },
+          "decision": "regulation",
+          "competitors": [
+            {
+              "kind": "team",
+              "id": "1",
+              "displayName": "Atlanta Hawks",
+              "shortName": "Hawks",
+              "abbreviation": "ATL",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+              "homeAway": "home",
+              "order": 0,
+              "winner": false,
+              "score": {
+                "display": "89",
+                "value": 89
+              },
+              "leaders": [
+                {
+                  "name": "points",
+                  "label": "Pts",
+                  "display": "21",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "assists",
+                  "label": "Ast",
+                  "display": "6",
+                  "athlete": "J. Johnson"
+                },
+                {
+                  "name": "rebounds",
+                  "label": "Reb",
+                  "display": "8",
+                  "athlete": "J. Johnson"
+                }
+              ]
+            },
+            {
+              "kind": "team",
+              "id": "18",
+              "displayName": "New York Knicks",
+              "shortName": "Knicks",
+              "abbreviation": "NY",
+              "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+              "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+              "homeAway": "away",
+              "order": 1,
+              "winner": true,
+              "score": {
+                "display": "140",
+                "value": 140
+              }
+            }
+          ],
+          "meta": {
+            "round": "East 1st Round - Game 6"
+          },
+          "attendance": 17685
+        }
+      ]
+    }
+  ],
+  "roster": [
+    {
+      "name": "Roster",
+      "athletes": [
+        {
+          "id": "4278039",
+          "name": "Nickeil Alexander-Walker",
+          "jersey": "7",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4278039.png"
+        },
+        {
+          "id": "4065673",
+          "name": "Tony Bradley",
+          "jersey": "13",
+          "position": "C",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4065673.png"
+        },
+        {
+          "id": "4433188",
+          "name": "Devin Carter",
+          "jersey": "22",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433188.png"
+        },
+        {
+          "id": "4869342",
+          "name": "Dyson Daniels",
+          "jersey": "5",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4869342.png"
+        },
+        {
+          "id": "4431941",
+          "name": "RayJ Dennis",
+          "jersey": "00",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431941.png"
+        },
+        {
+          "id": "5106262",
+          "name": "Zuby Ejiofor",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5106262.png"
+        },
+        {
+          "id": "5149077",
+          "name": "Kingston Flemings",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5149077.png"
+        },
+        {
+          "id": "4585618",
+          "name": "Keshon Gilbert",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4585618.png"
+        },
+        {
+          "id": "4712863",
+          "name": "Mouhamed Gueye",
+          "jersey": "18",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4712863.png"
+        },
+        {
+          "id": "2990984",
+          "name": "Buddy Hield",
+          "jersey": "8",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2990984.png"
+        },
+        {
+          "id": "4433623",
+          "name": "Caleb Houstan",
+          "jersey": "33",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433623.png"
+        },
+        {
+          "id": "4701230",
+          "name": "Jalen Johnson",
+          "jersey": "1",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4701230.png"
+        },
+        {
+          "id": "4280151",
+          "name": "Corey Kispert",
+          "jersey": "24",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4280151.png"
+        },
+        {
+          "id": "4431778",
+          "name": "Christian Koloko",
+          "jersey": "35",
+          "position": "C",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431778.png"
+        },
+        {
+          "id": "4433247",
+          "name": "Jonathan Kuminga",
+          "jersey": "0",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4433247.png"
+        },
+        {
+          "id": "3146557",
+          "name": "Jock Landale",
+          "jersey": "31",
+          "position": "C",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3146557.png"
+        },
+        {
+          "id": "2490149",
+          "name": "CJ McCollum",
+          "jersey": "3",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/2490149.png"
+        },
+        {
+          "id": "4873201",
+          "name": "Asa Newell",
+          "jersey": "14",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4873201.png"
+        },
+        {
+          "id": "4431680",
+          "name": "Onyeka Okongwu",
+          "jersey": "17",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4431680.png"
+        },
+        {
+          "id": "5211175",
+          "name": "Zaccharie Risacher",
+          "jersey": "10",
+          "position": "F",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5211175.png"
+        },
+        {
+          "id": "5105571",
+          "name": "Henri Veesaar",
+          "position": "C",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/5105571.png"
+        },
+        {
+          "id": "3137259",
+          "name": "Gabe Vincent",
+          "jersey": "4",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/3137259.png"
+        },
+        {
+          "id": "4279118",
+          "name": "Keaton Wallace",
+          "jersey": "2",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4279118.png"
+        },
+        {
+          "id": "4397183",
+          "name": "Aaron Wiggins",
+          "jersey": "21",
+          "position": "G",
+          "headshot": "https://a.espncdn.com/i/headshots/nba/players/full/4397183.png"
+        }
+      ]
+    }
+  ],
+  "stats": [
+    {
+      "name": "Season",
+      "stats": [
+        {
+          "name": "avgPoints",
+          "label": "PPG",
+          "value": "100.3",
+          "abbr": "PTS"
+        },
+        {
+          "name": "avgRebounds",
+          "label": "RPG",
+          "value": "36.8",
+          "abbr": "REB"
+        },
+        {
+          "name": "avgAssists",
+          "label": "APG",
+          "value": "22.2",
+          "abbr": "AST"
+        },
+        {
+          "name": "fieldGoalPct",
+          "label": "FG%",
+          "value": "43.6",
+          "abbr": "FG%"
+        },
+        {
+          "name": "threePointPct",
+          "label": "3P%",
+          "value": "31.2",
+          "abbr": "3P%"
+        },
+        {
+          "name": "freeThrowPct",
+          "label": "FT%",
+          "value": "72.2",
+          "abbr": "FT%"
+        },
+        {
+          "name": "avgSteals",
+          "label": "SPG",
+          "value": "7.3",
+          "abbr": "STL"
+        },
+        {
+          "name": "avgBlocks",
+          "label": "BPG",
+          "value": "4.8",
+          "abbr": "BLK"
+        }
+      ]
+    }
+  ],
+  "standing": {
+    "groupName": "Eastern Conference",
+    "columns": [
+      {
+        "key": "wins",
+        "label": "W"
+      },
+      {
+        "key": "losses",
+        "label": "L"
+      },
+      {
+        "key": "winPercent",
+        "label": "PCT"
+      },
+      {
+        "key": "gamesBehind",
+        "label": "GB"
+      }
+    ],
+    "rows": [
+      {
+        "team": {
+          "id": "8",
+          "name": "Detroit Pistons",
+          "abbr": "DET",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/det.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "109.6",
+          "avgPointsFor": "117.8",
+          "clincher": "z",
+          "differential": "+8.2",
+          "divisionWinPercent": "0.750",
+          "gamesBehind": "-",
+          "leagueWinPercent": "0.750",
+          "losses": "22",
+          "playoffSeed": "1",
+          "pointDifferential": "+669",
+          "points": "19.0",
+          "pointsAgainst": "8988",
+          "pointsFor": "9657",
+          "streak": "W3",
+          "winPercent": ".732",
+          "wins": "60",
+          "gamesAhead": "43",
+          "overall": "60-22",
+          "Home": "31-9",
+          "Road": "28-13",
+          "vs. Div.": "12-4",
+          "vs. Conf.": "39-13",
+          "Last Ten Games": "8-2"
+        }
+      },
+      {
+        "team": {
+          "id": "1",
+          "name": "Atlanta Hawks",
+          "abbr": "ATL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/atl.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "116.0",
+          "avgPointsFor": "118.5",
+          "clincher": "y",
+          "differential": "+2.5",
+          "divisionWinPercent": "0.563",
+          "gamesBehind": "14",
+          "leagueWinPercent": "0.519",
+          "losses": "36",
+          "playoffSeed": "6",
+          "pointDifferential": "+198",
+          "points": "5.0",
+          "pointsAgainst": "9516",
+          "pointsFor": "9714",
+          "streak": "L1",
+          "winPercent": ".561",
+          "wins": "46",
+          "gamesAhead": "29",
+          "overall": "46-36",
+          "Home": "24-17",
+          "Road": "22-19",
+          "vs. Div.": "9-7",
+          "vs. Conf.": "27-25",
+          "Last Ten Games": "6-4"
+        }
+      },
+      {
+        "team": {
+          "id": "2",
+          "name": "Boston Celtics",
+          "abbr": "BOS",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/bos.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "107.2",
+          "avgPointsFor": "114.9",
+          "clincher": "y",
+          "differential": "+7.7",
+          "divisionWinPercent": "0.625",
+          "gamesBehind": "4",
+          "leagueWinPercent": "0.692",
+          "losses": "26",
+          "playoffSeed": "2",
+          "pointDifferential": "+631",
+          "points": "15.0",
+          "pointsAgainst": "8787",
+          "pointsFor": "9418",
+          "streak": "W2",
+          "winPercent": ".683",
+          "wins": "56",
+          "gamesAhead": "39",
+          "overall": "56-26",
+          "Home": "30-11",
+          "Road": "26-15",
+          "vs. Div.": "10-6",
+          "vs. Conf.": "36-16",
+          "Last Ten Games": "8-2"
+        }
+      },
+      {
+        "team": {
+          "id": "20",
+          "name": "Philadelphia 76ers",
+          "abbr": "PHI",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/phi.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "116.1",
+          "avgPointsFor": "115.9",
+          "clincher": "xp",
+          "differential": "-0.2",
+          "divisionWinPercent": "0.563",
+          "gamesBehind": "15",
+          "leagueWinPercent": "0.519",
+          "losses": "37",
+          "playoffSeed": "7",
+          "pointDifferential": "-15",
+          "points": "4.0",
+          "pointsAgainst": "9517",
+          "pointsFor": "9502",
+          "streak": "W2",
+          "winPercent": ".549",
+          "wins": "45",
+          "gamesAhead": "28",
+          "overall": "45-37",
+          "Home": "23-18",
+          "Road": "22-19",
+          "vs. Div.": "9-7",
+          "vs. Conf.": "27-25",
+          "Last Ten Games": "6-4"
+        }
+      },
+      {
+        "team": {
+          "id": "19",
+          "name": "Orlando Magic",
+          "abbr": "ORL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/orl.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "115.1",
+          "avgPointsFor": "115.7",
+          "clincher": "xp",
+          "differential": "+0.6",
+          "divisionWinPercent": "0.529",
+          "gamesBehind": "15",
+          "leagueWinPercent": "0.500",
+          "losses": "37",
+          "playoffSeed": "8",
+          "pointDifferential": "+52",
+          "points": "4.0",
+          "pointsAgainst": "9439",
+          "pointsFor": "9491",
+          "streak": "L1",
+          "winPercent": ".549",
+          "wins": "45",
+          "gamesAhead": "28",
+          "overall": "45-37",
+          "Home": "25-15",
+          "Road": "19-20",
+          "vs. Div.": "9-8",
+          "vs. Conf.": "26-26",
+          "Last Ten Games": "7-3"
+        }
+      },
+      {
+        "team": {
+          "id": "28",
+          "name": "Toronto Raptors",
+          "abbr": "TOR",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/tor.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "111.8",
+          "avgPointsFor": "114.6",
+          "clincher": "x",
+          "differential": "+2.8",
+          "divisionWinPercent": "0.294",
+          "gamesBehind": "14",
+          "leagueWinPercent": "0.635",
+          "losses": "36",
+          "playoffSeed": "5",
+          "pointDifferential": "+232",
+          "points": "5.0",
+          "pointsAgainst": "9168",
+          "pointsFor": "9400",
+          "streak": "W1",
+          "winPercent": ".561",
+          "wins": "46",
+          "gamesAhead": "29",
+          "overall": "46-36",
+          "Home": "24-17",
+          "Road": "22-19",
+          "vs. Div.": "5-12",
+          "vs. Conf.": "33-19",
+          "Last Ten Games": "6-4"
+        }
+      },
+      {
+        "team": {
+          "id": "5",
+          "name": "Cleveland Cavaliers",
+          "abbr": "CLE",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/cle.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "115.4",
+          "avgPointsFor": "119.5",
+          "clincher": "x",
+          "differential": "+4.1",
+          "divisionWinPercent": "0.688",
+          "gamesBehind": "8",
+          "leagueWinPercent": "0.635",
+          "losses": "30",
+          "playoffSeed": "4",
+          "pointDifferential": "+336",
+          "points": "11.0",
+          "pointsAgainst": "9464",
+          "pointsFor": "9800",
+          "streak": "W1",
+          "winPercent": ".634",
+          "wins": "52",
+          "gamesAhead": "35",
+          "overall": "52-30",
+          "Home": "27-14",
+          "Road": "25-16",
+          "vs. Div.": "11-5",
+          "vs. Conf.": "33-19",
+          "Last Ten Games": "7-3"
+        }
+      },
+      {
+        "team": {
+          "id": "18",
+          "name": "New York Knicks",
+          "abbr": "NY",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/ny.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "110.1",
+          "avgPointsFor": "116.5",
+          "clincher": "x",
+          "differential": "+6.4",
+          "divisionWinPercent": "0.824",
+          "gamesBehind": "7",
+          "leagueWinPercent": "0.673",
+          "losses": "29",
+          "playoffSeed": "3",
+          "pointDifferential": "+519",
+          "points": "12.0",
+          "pointsAgainst": "9030",
+          "pointsFor": "9549",
+          "streak": "L1",
+          "winPercent": ".646",
+          "wins": "53",
+          "gamesAhead": "36",
+          "overall": "53-29",
+          "Home": "30-10",
+          "Road": "22-19",
+          "vs. Div.": "14-3",
+          "vs. Conf.": "35-17",
+          "Last Ten Games": "6-4"
+        }
+      },
+      {
+        "team": {
+          "id": "14",
+          "name": "Miami Heat",
+          "abbr": "MIA",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/mia.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "118.5",
+          "avgPointsFor": "120.9",
+          "clincher": "pb",
+          "differential": "+2.4",
+          "divisionWinPercent": "0.588",
+          "gamesBehind": "17",
+          "leagueWinPercent": "0.519",
+          "losses": "39",
+          "playoffSeed": "10",
+          "pointDifferential": "+191",
+          "points": "2.0",
+          "pointsAgainst": "9720",
+          "pointsFor": "9911",
+          "streak": "W2",
+          "winPercent": ".524",
+          "wins": "43",
+          "gamesAhead": "26",
+          "overall": "43-39",
+          "Home": "26-15",
+          "Road": "17-24",
+          "vs. Div.": "10-7",
+          "vs. Conf.": "27-25",
+          "Last Ten Games": "5-5"
+        }
+      },
+      {
+        "team": {
+          "id": "30",
+          "name": "Charlotte Hornets",
+          "abbr": "CHA",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/cha.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "111.2",
+          "avgPointsFor": "116.0",
+          "clincher": "pb",
+          "differential": "+4.8",
+          "divisionWinPercent": "0.688",
+          "gamesBehind": "16",
+          "leagueWinPercent": "0.500",
+          "losses": "38",
+          "playoffSeed": "9",
+          "pointDifferential": "+396",
+          "points": "3.0",
+          "pointsAgainst": "9117",
+          "pointsFor": "9513",
+          "streak": "W1",
+          "winPercent": ".537",
+          "wins": "44",
+          "gamesAhead": "27",
+          "overall": "44-38",
+          "Home": "21-20",
+          "Road": "23-18",
+          "vs. Div.": "11-5",
+          "vs. Conf.": "26-26",
+          "Last Ten Games": "6-4"
+        }
+      },
+      {
+        "team": {
+          "id": "27",
+          "name": "Washington Wizards",
+          "abbr": "WSH",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/wsh.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "124.9",
+          "avgPointsFor": "112.9",
+          "clincher": "e",
+          "differential": "-12.0",
+          "divisionWinPercent": "0.125",
+          "gamesBehind": "43",
+          "leagueWinPercent": "0.212",
+          "losses": "65",
+          "playoffSeed": "15",
+          "pointDifferential": "-982",
+          "points": "-24.0",
+          "pointsAgainst": "10240",
+          "pointsFor": "9258",
+          "streak": "L10",
+          "winPercent": ".207",
+          "wins": "17",
+          "gamesAhead": "-",
+          "overall": "17-65",
+          "Home": "11-30",
+          "Road": "6-35",
+          "vs. Div.": "2-14",
+          "vs. Conf.": "11-41",
+          "Last Ten Games": "0-10"
+        }
+      },
+      {
+        "team": {
+          "id": "11",
+          "name": "Indiana Pacers",
+          "abbr": "IND",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/ind.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "120.4",
+          "avgPointsFor": "112.4",
+          "clincher": "e",
+          "differential": "-8.0",
+          "divisionWinPercent": "0.250",
+          "gamesBehind": "41",
+          "leagueWinPercent": "0.288",
+          "losses": "63",
+          "playoffSeed": "14",
+          "pointDifferential": "-655",
+          "points": "-22.0",
+          "pointsAgainst": "9874",
+          "pointsFor": "9219",
+          "streak": "L2",
+          "winPercent": ".232",
+          "wins": "19",
+          "gamesAhead": "2",
+          "overall": "19-63",
+          "Home": "11-30",
+          "Road": "8-33",
+          "vs. Div.": "4-12",
+          "vs. Conf.": "15-37",
+          "Last Ten Games": "3-7"
+        }
+      },
+      {
+        "team": {
+          "id": "17",
+          "name": "Brooklyn Nets",
+          "abbr": "BKN",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/bkn.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "115.9",
+          "avgPointsFor": "105.9",
+          "clincher": "e",
+          "differential": "-10.0",
+          "divisionWinPercent": "0.188",
+          "gamesBehind": "40",
+          "leagueWinPercent": "0.275",
+          "losses": "62",
+          "playoffSeed": "13",
+          "pointDifferential": "-819",
+          "points": "-21.0",
+          "pointsAgainst": "9505",
+          "pointsFor": "8686",
+          "streak": "L3",
+          "winPercent": ".244",
+          "wins": "20",
+          "gamesAhead": "3",
+          "overall": "20-62",
+          "Home": "12-29",
+          "Road": "8-33",
+          "vs. Div.": "3-13",
+          "vs. Conf.": "14-37",
+          "Last Ten Games": "3-7"
+        }
+      },
+      {
+        "team": {
+          "id": "4",
+          "name": "Chicago Bulls",
+          "abbr": "CHI",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/chi.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "121.5",
+          "avgPointsFor": "116.3",
+          "clincher": "e",
+          "differential": "-5.2",
+          "divisionWinPercent": "0.250",
+          "gamesBehind": "29",
+          "leagueWinPercent": "0.373",
+          "losses": "51",
+          "playoffSeed": "12",
+          "pointDifferential": "-427",
+          "points": "-10.0",
+          "pointsAgainst": "9964",
+          "pointsFor": "9537",
+          "streak": "L2",
+          "winPercent": ".378",
+          "wins": "31",
+          "gamesAhead": "14",
+          "overall": "31-51",
+          "Home": "18-23",
+          "Road": "13-28",
+          "vs. Div.": "4-12",
+          "vs. Conf.": "19-32",
+          "Last Ten Games": "2-8"
+        }
+      },
+      {
+        "team": {
+          "id": "15",
+          "name": "Milwaukee Bucks",
+          "abbr": "MIL",
+          "logo": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/scoreboard/mil.png"
+        },
+        "stats": {
+          "avgPointsAgainst": "116.8",
+          "avgPointsFor": "110.6",
+          "clincher": "e",
+          "differential": "-6.2",
+          "divisionWinPercent": "0.563",
+          "gamesBehind": "28",
+          "leagueWinPercent": "0.404",
+          "losses": "50",
+          "playoffSeed": "11",
+          "pointDifferential": "-509",
+          "points": "-9.0",
+          "pointsAgainst": "9581",
+          "pointsFor": "9072",
+          "streak": "L1",
+          "winPercent": ".390",
+          "wins": "32",
+          "gamesAhead": "15",
+          "overall": "32-50",
+          "Home": "19-22",
+          "Road": "13-28",
+          "vs. Div.": "9-7",
+          "vs. Conf.": "21-31",
+          "Last Ten Games": "3-7"
+        }
+      }
+    ]
+  }
+}

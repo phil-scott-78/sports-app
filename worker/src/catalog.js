@@ -24,6 +24,15 @@ export function buildCatalog(reg, { priority, sport } = {}) {
       region: p.region,
       priority: p.priority,
       hasTeams,
+      // The team's competitor kind ('team' | 'athlete' | 'pair'). Gates the team
+      // page: only 'team' leagues have a /teamdetail worth opening (an F1
+      // constructor row or a golfer must NOT navigate). hasTeams is the wrong
+      // gate — it's true for F1 constructors.
+      competitorKind: prof.competitorKind,
+      // Which /v1/rankings feed this league has, if any ('polls' college |
+      // 'tour' ATP/WTA | 'divisions' UFC) — the app shows a rankings panel
+      // only when set. Data-driven from the registry's rankingsFeed flag.
+      ...(prof.rankingsFeed ? { rankings: prof.rankingsFeed } : {}),
     });
   }
   return Object.entries(bySport).map(([sport, leagues]) => ({ sport, leagues }));

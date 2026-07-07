@@ -3,100 +3,128 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
+import 'standings_table.dart';
+import 'team_page.dart';
 import 'widgets.dart';
 
-/// The standings table for a league, with no Scaffold of its own so it embeds as
-/// a tab inside [LeagueDetailPage] (and could stand alone under any AppBar).
-class StandingsView extends ConsumerWidget {
-  final String league;
-  const StandingsView({super.key, required this.league});
-
-  // stat columns to show, in priority order (only those present are shown)
-  static const _preferred = <String, String>{
-    'gamesPlayed': 'GP',
-    'wins': 'W',
-    'losses': 'L',
-    'ties': 'D',
-    'otLosses': 'OTL',
-    'points': 'PTS',
-    'winPercent': 'PCT',
-    'gamesBehind': 'GB',
-    'pointDifferential': 'DIFF',
-    'streak': 'STRK',
-  };
-
+/// Standings: a chip per followed league, group tables in dark cards, the
+/// favorite team's row highlighted gold with a star.
+class StandingsPage extends ConsumerStatefulWidget {
+  const StandingsPage({super.key});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(standingsProvider(league)).when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (e, _) => ErrorView(message: '$e', onRetry: () => ref.invalidate(standingsProvider(league))),
-          data: (standings) {
-            if (standings.groups.isEmpty) {
-              return const EmptyState(icon: Icons.table_chart_outlined, title: 'No standings');
-            }
-            final children = <Widget>[];
-            for (final g in standings.groups) {
-              if (g.name.isNotEmpty) children.add(SectionHeader(g.name));
-              children.add(ListCard(child: _GroupTable(group: g, columns: _columnsFor(g, standings.columns))));
-            }
-            return ListView(children: children);
-          },
-        );
-  }
-
-  List<MapEntry<String, String>> _columnsFor(StandingsGroup g, List<StandingColumn> preferred) {
-    final present = <String>{};
-    for (final r in g.rows) {
-      present.addAll(r.stats.keys);
-    }
-    // Worker-provided per-family columns win — so NBA shows W/L/PCT/GB, not ESPN's
-    // meaningless internal "points" — keeping soccer/NHL's real PTS. Fall back to
-    // the generic priority heuristic when the worker sent none (older worker / golf).
-    if (preferred.isNotEmpty) {
-      final cols = preferred
-          .where((c) => present.contains(c.key))
-          .map((c) => MapEntry(c.key, c.label))
-          .toList();
-      if (cols.isNotEmpty) return cols;
-    }
-    return _preferred.entries.where((e) => present.contains(e.key)).take(5).toList();
-  }
+  ConsumerState<StandingsPage> createState() => _StandingsPageState();
 }
 
-class _GroupTable extends StatelessWidget {
-  final StandingsGroup group;
-  final List<MapEntry<String, String>> columns;
-  const _GroupTable({required this.group, required this.columns});
+class _StandingsPageState extends ConsumerState<StandingsPage> {
+  String? _selected;
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: DataTable(
-        headingRowHeight: 36,
-        dataRowMinHeight: 40,
-        dataRowMaxHeight: 48,
-        columns: [
-          const DataColumn(label: Text('#')),
-          const DataColumn(label: Text('Team')),
-          for (final c in columns) DataColumn(label: Text(c.value)),
-        ],
-        rows: [
-          for (var i = 0; i < group.rows.length; i++)
-            DataRow(cells: [
-              DataCell(Text('${group.rows[i].rank ?? i + 1}',
-                  style: numStyle(size: 13, color: cs.onSurfaceVariant))),
-              DataCell(Row(children: [
-                Crest(url: group.rows[i].team.logo, darkUrl: group.rows[i].team.logoDark, fallback: group.rows[i].team.abbr ?? group.rows[i].team.name, size: 20),
-                const SizedBox(width: 8),
-                Text(group.rows[i].team.abbr ?? group.rows[i].team.name),
-              ])),
-              for (final c in columns)
-                DataCell(Text(group.rows[i].stats[c.key] ?? '', style: numStyle(size: 13))),
-            ]),
-        ],
-      ),
+    final leagues = ref.watch(followedProvider);
+    final catalog = ref.watch(catalogProvider).valueOrNull;
+    if (leagues.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(T.pageMargin),
+          child: HintCard('Follow a league to see its standings.'),
+        ),
+      );
+    }
+    final selected =
+        leagues.contains(_selected) ? _selected! : leagues.first;
+    final standings = ref.watch(standingsProvider(selected));
+
+    return ListView(
+      padding: const EdgeInsets.only(bottom: 28),
+      children: [
+        const Padding(
+          padding: EdgeInsets.fromLTRB(T.pageMargin, 14, T.pageMargin, 0),
+          child: Text('STANDINGS', style: T.pageTitle),
+        ),
+        const SizedBox(height: 14),
+        ChipNav(
+          items: [for (final k in leagues) _chipLabel(k, catalog)],
+          selected: leagues.indexOf(selected),
+          onTap: (i) => setState(() => _selected = leagues[i]),
+        ),
+        const SizedBox(height: 14),
+        ...switch (standings) {
+          AsyncData(:final value) => _groups(value, selected),
+          AsyncError() => [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
+                child: HintCard('No standings for this league.'),
+              ),
+            ],
+          _ => [
+              const Padding(
+                padding: EdgeInsets.only(top: 80),
+                child:
+                    Center(child: CircularProgressIndicator(color: T.gold)),
+              ),
+            ],
+        },
+      ],
     );
+  }
+
+  String _chipLabel(String key, List<CatalogSport>? catalog) {
+    if (catalog != null) {
+      for (final s in catalog) {
+        for (final l in s.leagues) {
+          if (l.key == key) return l.abbr ?? l.name;
+        }
+      }
+    }
+    return key.split('/').last.toUpperCase();
+  }
+
+  List<Widget> _groups(Standings standings, String league) {
+    if (standings.groups.isEmpty) {
+      return const [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
+          child: HintCard('No standings right now.'),
+        ),
+      ];
+    }
+    final favs = ref.watch(favoriteTeamsProvider);
+    final favIds = {
+      for (final f in favs)
+        if (f.league == league) f.teamId,
+    };
+    // Rows tap through to a team page — but only where the competitor is a real
+    // team (an athlete-shaped racing championship table stays inert).
+    final catalog = ref.watch(catalogProvider).valueOrNull;
+    final hasTeamPage = _hasTeamPage(catalog, league);
+    return [
+      for (final g in standings.groups)
+        Padding(
+          padding:
+              const EdgeInsets.fromLTRB(T.pageMargin, 0, T.pageMargin, 12),
+          child: StandingsGroupCard(
+            name: g.name,
+            rows: g.rows,
+            columns: standings.columns,
+            highlightIds: favIds,
+            onRowTap: hasTeamPage
+                ? (row) => openTeamPage(context, league,
+                    teamId: row.team.id, name: row.team.name)
+                : null,
+          ),
+        ),
+    ];
+  }
+
+  /// Defaults true when the catalog hasn't loaded (matches CatalogLeague's
+  /// old-worker default); false only when a league explicitly isn't team-based.
+  bool _hasTeamPage(List<CatalogSport>? catalog, String league) {
+    if (catalog == null) return true;
+    for (final s in catalog) {
+      for (final l in s.leagues) {
+        if (l.key == league) return l.hasTeamPage;
+      }
+    }
+    return true;
   }
 }

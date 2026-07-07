@@ -32,20 +32,20 @@ export function normalizeTeams(reg, key, raw) {
     .sort((a, b) => a.displayName.localeCompare(b.displayName));
 }
 
-// ---- team card (live / last / next) -----------------------------------------
-// ESPN team schedule: { team:{ id, displayName, abbreviation, color, logo,
-// recordSummary, ... }, events:[ <scoreboard-shaped events> ] }.
-export function normalizeTeamCard(reg, key, teamId, schedule) {
-  const profile = resolve(reg, key);
-
-  // identity — schedule.team carries logo as a STRING and recordSummary as a STRING
-  const t = schedule?.team || {};
+// ---- shared team identity block ---------------------------------------------
+// The card/detail identity, built once from the (schedule.team) block so the
+// favorite card and the team-detail page can never fork. `t` is the raw ESPN
+// team object; VERIFIED (schedule.team): logo is a STRING (not a logos[] array),
+// recordSummary + standingSummary are STRINGS ('46-36', '2nd in AL East').
+export function teamIdentityOf(profile, t, teamId) {
+  t = t || {};
   const light = https(t.logo || t.logos?.[0]?.href);
   const team = {
     id: String(t.id ?? teamId),
     displayName: t.displayName || t.name || '',
     abbreviation: t.abbreviation || undefined,
     record: t.recordSummary || undefined,
+    standingSummary: t.standingSummary || undefined, // absent for national teams
   };
   if (light) {
     team.logo = light;
@@ -53,6 +53,16 @@ export function normalizeTeamCard(reg, key, teamId, schedule) {
     if (d) team.logoDark = d;
   }
   if (t.color) team.color = t.color;
+  return team;
+}
+
+// ---- team card (live / last / next) -----------------------------------------
+// ESPN team schedule: { team:{ id, displayName, abbreviation, color, logo,
+// recordSummary, standingSummary, ... }, events:[ <scoreboard-shaped events> ] }.
+export function normalizeTeamCard(reg, key, teamId, schedule) {
+  const profile = resolve(reg, key);
+
+  const team = teamIdentityOf(profile, schedule?.team, teamId);
 
   // every scheduled event normalized through the shared builder
   const events = (schedule?.events || []).map(e => buildEvent(profile, e));

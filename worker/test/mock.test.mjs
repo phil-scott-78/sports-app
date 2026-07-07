@@ -8,9 +8,16 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
-import { synthScoreboard, synthSummary, synthTeamScoreboard, synthTeams } from '../mock/synth.mjs';
+import {
+  synthScoreboard, synthSummary, synthTeamScoreboard, synthTeams,
+  synthRankings, synthGolfExtras, synthGolfScorecard, synthMmaCore,
+  synthTeamDetailParts,
+} from '../mock/synth.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
-import { normalizeSummary } from '../src/summary.js';
+import { normalizeSummary, normalizeMmaSummary } from '../src/summary.js';
+import { normalizeGolfScorecard } from '../src/scorecard.js';
+import { normalizeRankings } from '../src/rankings.js';
+import { normalizeTeamDetail } from '../src/teamdetail.js';
 
 let pass = 0, fail = 0; const fails = [];
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; fails.push(msg); } };
@@ -128,6 +135,91 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
       ok((ph.final || 0) > 0 && (ph.scheduled || 0) > 0, `${fx.key}: today slate has final + scheduled`);
     }
   }
+}
+
+// ---- 10. golf mock: meta.golf extras + walkable scorecards -------------------
+{
+  const golfFixture = { key: 'golf/pga', league: { id: '1106', slug: 'pga', name: 'PGA Tour' }, events: [{
+    id: 'G1', date: '2026-06-10T14:00Z', name: 'Mock Open', shortName: 'Open',
+    competitions: [{ id: 'G1', status: { type: { name: 'STATUS_FINAL', state: 'post', completed: true } }, competitors: [
+      { id: '111', order: 1, athlete: { displayName: 'A. Leader' }, score: '-12' },
+      { id: '222', order: 2, athlete: { displayName: 'B. Chaser' }, score: '-9' },
+    ] }],
+  }], teams: null, standings: null, summaries: {} };
+  const sb1 = synthScoreboard(registry, 'golf/pga', golfFixture, { now: NOW });
+  const extras = synthGolfExtras(registry, 'golf/pga', golfFixture, sb1);
+  ok(extras?.golfTournaments && Object.keys(extras.golfTournaments).length === sb1.events.length,
+    'golf mock: extras fabricated for every synthesized event');
+  const norm = normalizeScoreboard(registry, 'golf/pga', sb1, extras);
+  ok(norm.events.every(e => e.competitions.every(c => c.meta?.golf?.numberOfRounds > 0)),
+    'golf mock: every event gets meta.golf through the real normalizer');
+  // deterministic: same now → same meta (no flicker on poll)
+  const extras2 = synthGolfExtras(registry, 'golf/pga', golfFixture, synthScoreboard(registry, 'golf/pga', golfFixture, { now: NOW }));
+  ok(JSON.stringify(extras) === JSON.stringify(extras2), 'golf mock: extras deterministic');
+
+  // fabricated scorecard: every leaderboard row opens a walkable card
+  const raw1 = synthGolfScorecard(registry, 'golf/pga', golfFixture, 'G1', '111', { now: NOW });
+  const sc = normalizeGolfScorecard('golf/pga', 'G1', '111', raw1);
+  ok(sc.player.name === 'A. Leader', `golf mock: scorecard resolves the pool athlete name (got ${sc.player.name})`);
+  ok(sc.rounds.length === 4 && sc.rounds[0].holes.length === 18, 'golf mock: 4 rounds, 18 holes on completed rounds');
+  ok(sc.rounds[3].holes.length === 0 && sc.rounds[3].teeTime, 'golf mock: final round pre-start → teeTime only');
+  ok(sc.rounds[0].holes.every(h => h.par >= 3 && h.par <= 5 && h.scoreType), 'golf mock: holes carry par + scoreType');
+  const raw2 = synthGolfScorecard(registry, 'golf/pga', golfFixture, 'G1', '111', { now: NOW });
+  ok(JSON.stringify(raw1) === JSON.stringify(raw2), 'golf mock: scorecard deterministic');
+  // captured passthrough wins over fabrication
+  const withCaptured = { ...golfFixture, scorecards: { 'G1/111': { profile: { id: '111', displayName: 'Captured Guy' }, rounds: [] } } };
+  ok(normalizeGolfScorecard('golf/pga', 'G1', '111', synthGolfScorecard(registry, 'golf/pga', withCaptured, 'G1', '111', { now: NOW })).player.name === 'Captured Guy',
+    'golf mock: captured scorecard passthrough');
+}
+
+// ---- 11. MMA mock: core shapes through the real normalizeMmaSummary ----------
+{
+  const bout = (id, a, b) => ({ id, status: { type: { name: 'STATUS_FINAL', state: 'post', completed: true } }, competitors: [
+    { id: a, order: 1, winner: true, athlete: { displayName: 'Fighter ' + a } },
+    { id: b, order: 2, winner: false, athlete: { displayName: 'Fighter ' + b } },
+  ] });
+  const mmaFixture = { key: 'mma/ufc', league: { id: '3321', slug: 'ufc', name: 'UFC' }, events: [{
+    id: 'M1', date: '2026-06-10T22:00Z', name: 'Mock Card', shortName: 'UFC',
+    competitions: [bout('b1', 'f1', 'f2'), bout('b2', 'f3', 'f4'), bout('b3', 'f5', 'f6'), bout('b4', 'f7', 'f8')],
+  }], teams: null, standings: null, summaries: {} };
+  const sb1 = synthScoreboard(registry, 'mma/ufc', mmaFixture, { now: NOW });
+  const evId = String(sb1.events[0].id);
+  const { coreEvent, statuses, linescores } = synthMmaCore(registry, 'mma/ufc', mmaFixture, evId, { now: NOW });
+  const s = normalizeMmaSummary(coreEvent, statuses, linescores);
+  ok(s.eventId === evId, 'mma mock: summary keyed to the requested event');
+  ok(s.bouts.length > 0, `mma mock: finished bouts carry results (got ${s.bouts.length})`);
+  ok(s.bouts.every(b => b.result || b.round != null), 'mma mock: every shipped bout has result data');
+  const dec = s.bouts.find(b => /decision/i.test(b.result || ''));
+  if (dec) {
+    ok(Array.isArray(dec.judges) && dec.judges.length === 2 && dec.judges[0].totals.length === 3,
+      `mma mock: decision bouts get 2×3 judge totals (${JSON.stringify(dec.judges)})`);
+  }
+  const again = normalizeMmaSummary(...(({ coreEvent: ce, statuses: st, linescores: ls }) => [ce, st, ls])(synthMmaCore(registry, 'mma/ufc', mmaFixture, evId, { now: NOW })));
+  ok(JSON.stringify(s) === JSON.stringify(again), 'mma mock: deterministic per event id');
+}
+
+// ---- 12. rankings mock: captured passthrough / empty default -----------------
+{
+  ok(normalizeRankings(synthRankings({})).polls.length === 0, 'rankings mock: no capture → empty polls');
+  const fx = { rankings: { rankings: [{ name: 'ATP', shortName: 'ATP', ranks: [{ current: 1, points: 9999, athlete: { id: '1', displayName: 'Mock Star' } }] }] } };
+  const r = normalizeRankings(synthRankings(fx));
+  ok(r.polls[0]?.ranks[0]?.athlete?.name === 'Mock Star', 'rankings mock: captured payload flows through the real normalizer');
+}
+
+// ---- 13. team detail mock: schedule + fabricated roster/stats, deterministic --
+{
+  const parts = synthTeamDetailParts(registry, 'baseball/mlb', mlbFixture, '9', { now: NOW });
+  const d = normalizeTeamDetail(registry, 'baseball/mlb', '9', parts);
+  ok(d.team.id === '9', 'teamdetail mock: team identity');
+  ok(typeof d.team.standingSummary === 'string' && d.team.standingSummary.length > 0, `teamdetail mock: standingSummary present (${d.team.standingSummary})`);
+  ok(d.schedule.length >= 4, `teamdetail mock: multi-game schedule (${d.schedule.length})`);
+  const phases = new Set(d.schedule.map((e) => e.competitions[0].status.phase));
+  ok(phases.has('final') && phases.has('scheduled'), `teamdetail mock: has past finals + future scheduled (${[...phases]})`);
+  ok(d.roster.length > 0 && d.roster[0].athletes.length > 0, 'teamdetail mock: fabricated roster non-empty');
+  ok(d.stats.length > 0 && d.stats[0].stats.length > 0, 'teamdetail mock: fabricated stats non-empty');
+  // deterministic per (team, now) so polling never flickers
+  const again = normalizeTeamDetail(registry, 'baseball/mlb', '9', synthTeamDetailParts(registry, 'baseball/mlb', mlbFixture, '9', { now: NOW }));
+  ok(JSON.stringify(d) === JSON.stringify(again), 'teamdetail mock: deterministic per (team, now)');
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

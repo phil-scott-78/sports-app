@@ -1,6 +1,10 @@
 // Standings normalizer. ESPN nests entries under children[] (conferences/groups/
 // divisions); we flatten to { groups: [{ name, rows: [{ rank, team, stats }] }] }.
 // Stat keys vary by sport (handled generically: name → displayValue map).
+// Racing (VERIFIED 2026-07): the same path serves championship tables — F1 =
+// Driver Standings (ATHLETE-shaped entries) + Constructor Standings, NASCAR =
+// one flat athlete-shaped group. Athlete entries normalize into the same `team`
+// slot (name, no logo) so the client renders one table shape.
 
 const https = u => (typeof u === 'string' ? u.replace(/^http:/, 'https:') : undefined);
 
@@ -32,13 +36,14 @@ export function normalizeStandings(raw) {
             const k = s.name || s.type;
             if (k) stats[k] = s.displayValue ?? s.value;
           }
+          const who = en.team || en.athlete; // racing: driver championships are athlete-shaped
           return {
             team: {
-              id: String(en.team?.id ?? ''),
-              name: en.team?.displayName || en.team?.name || '',
-              abbr: en.team?.abbreviation,
-              logo: https(en.team?.logos?.[0]?.href),
-              logoDark: darkLogoOf(en.team),
+              id: String(who?.id ?? ''),
+              name: who?.displayName || who?.name || who?.shortDisplayName || '',
+              abbr: who?.abbreviation,
+              logo: https(who?.logos?.[0]?.href),
+              logoDark: darkLogoOf(who),
             },
             rank: stats.rank != null ? Number(stats.rank) : undefined,
             stats,

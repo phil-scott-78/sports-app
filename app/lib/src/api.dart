@@ -88,10 +88,23 @@ class Api {
     return Standings.fromJson(Map<String, dynamic>.from(j as Map));
   }
 
-  /// College Top-25 polls (AP/Coaches/CFP). Empty `polls` for pro/offseason.
+  /// Rankings feed: college Top-25 polls (AP/Coaches/CFP), ATP/WTA world
+  /// rankings, or UFC divisions — whatever the league's catalog `rankings` flag
+  /// says it has. Empty `polls` when none (offseason / plain pro league).
   Future<RankingsResponse> rankings(String league) async {
     final j = await _get('/rankings/$league');
     return RankingsResponse.fromJson(Map<String, dynamic>.from(j as Map));
+  }
+
+  /// Golf hole-by-hole scorecard for one leaderboard row. [season] should be the
+  /// scores payload's season year (golf seasons are calendar-aligned, so the
+  /// worker's current-year fallback is safe when omitted).
+  Future<GolfScorecard> scorecard(
+      String league, String eventId, String playerId,
+      {int? season}) async {
+    final j = await _get('/scorecard/$league/$eventId/$playerId',
+        {if (season != null) 'season': '$season'});
+    return GolfScorecard.fromJson(Map<String, dynamic>.from(j as Map));
   }
 
   Future<List<CatalogSport>> catalog() async {
@@ -113,6 +126,13 @@ class Api {
   Future<TeamCard> teamCard(String league, String teamId) async {
     final j = await _get('/team/$league/$teamId');
     return TeamCard.fromJson(Map<String, dynamic>.from(j as Map));
+  }
+
+  /// One team's rich detail page: full-season schedule + roster + season stats +
+  /// standings group. Lazy (fetched when the team page opens).
+  Future<TeamDetail> teamDetail(String league, String teamId) async {
+    final j = await _get('/teamdetail/$league/$teamId');
+    return TeamDetail.fromJson(Map<String, dynamic>.from(j as Map));
   }
 
   /// Per-league season-pulse states, keyed by league key, for the Leagues list.

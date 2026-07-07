@@ -21,12 +21,19 @@ import { fileURLToPath } from 'node:url';
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { leagueKeys, resolve } from '../../schema/tools/resolve.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
-import { normalizeSummary } from '../src/summary.js';
+import { normalizeSummary, normalizeMmaSummary } from '../src/summary.js';
 import { normalizeStandings } from '../src/standings.js';
+import { normalizeRankings } from '../src/rankings.js';
+import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeTeams, normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
+import { normalizeTeamDetail } from '../src/teamdetail.js';
 import { buildCatalog } from '../src/catalog.js';
 import { classifyLeague } from '../src/overview.js';
-import { synthScoreboard, synthSummary, synthTeams, synthStandings, synthTeamScoreboard } from '../mock/synth.mjs';
+import {
+  synthScoreboard, synthSummary, synthTeams, synthStandings, synthTeamScoreboard,
+  synthRankings, synthGolfExtras, synthGolfScorecard, synthMmaCore,
+  synthTeamDetailParts, synthStandingSummary,
+} from '../mock/synth.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FIX_DIR = join(HERE, '..', 'mock', 'fixtures');
@@ -68,7 +75,7 @@ function handle(req, res) {
   if (req.method !== 'GET') return send(res, { error: 'GET only' }, 405);
 
   const url = new URL(req.url, 'http://localhost');
-  const [v, route, sport, league, eventId] = url.pathname.split('/').filter(Boolean);
+  const [v, route, sport, league, eventId, subId] = url.pathname.split('/').filter(Boolean);
   const q = url.searchParams;
   const now = Date.now();
 
@@ -82,7 +89,24 @@ function handle(req, res) {
       return send(res, buildCatalog(registry, { priority: q.get('priority') || undefined, sport: q.get('sport') || undefined }));
 
     if (route === 'overview') {
-      const keys = leagueKeys(registry, { priority: q.get('priority') || undefined, sport: q.get('sport') || undefined });
+      // Mirror the worker's selection semantics (worker/src/index.js): comma
+      // priority sets, page slices of 48, and an explicit ?keys= override —
+      // else clients paging the curated tiers get [] from the mock only.
+      const CAP = 48;
+      let keys;
+      const keysParam = q.get('keys');
+      if (keysParam) {
+        keys = [...new Set(keysParam.split(',').map((s) => s.trim()))]
+          .filter((k) => registry.leagues[k]).slice(0, CAP);
+      } else {
+        const priority = q.get('priority');
+        const all = leagueKeys(registry, {
+          priority: priority ? priority.split(',').map((s) => s.trim()) : undefined,
+          sport: q.get('sport') || undefined,
+        });
+        const page = Math.max(0, parseInt(q.get('page') || '0', 10) || 0);
+        keys = all.slice(page * CAP, (page + 1) * CAP);
+      }
       const leagues = keys.map((key) => {
         const fx = fixtures.get(key);
         if (!fx) return { key, state: 'offseason', detail: 'No fixture', live: false };
@@ -99,21 +123,43 @@ function handle(req, res) {
 
     if (route === 'scores') {
       if (!known) return send(res, { error: `unknown league "${key}"`, hint: 'GET /v1/catalog' }, 404);
-      const sb = synthScoreboard(registry, key, fxFor(key), { now, date: q.get('date') || null });
-      return send(res, normalizeScoreboard(registry, key, sb));
+      const fx = fxFor(key);
+      const sb = synthScoreboard(registry, key, fx, { now, date: q.get('date') || null });
+      // golf: meta.golf extras (captured core tournament or a fabricated one) —
+      // mirrors the worker's golfExtras() enrichment.
+      return send(res, normalizeScoreboard(registry, key, sb, synthGolfExtras(registry, key, fx, sb)));
     }
 
     if (route === 'summary') {
       if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
       if (!eventId) return send(res, { error: 'missing event id' }, 400);
+      // MMA mirrors the worker: rich tier is built from (fabricated) core shapes
+      // through the SAME normalizeMmaSummary.
+      if (resolve(registry, key).espnSport === 'mma') {
+        const { coreEvent, statuses, linescores } = synthMmaCore(registry, key, fxFor(key), eventId, { now });
+        return send(res, normalizeMmaSummary(coreEvent, statuses, linescores));
+      }
       return send(res, normalizeSummary(registry, key, synthSummary(fxFor(key), eventId)));
+    }
+
+    if (route === 'scorecard') {
+      if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
+      if (!eventId || !subId) return send(res, { error: 'missing ids', hint: '/v1/scorecard/{sport}/{league}/{eventId}/{playerId}' }, 400);
+      const raw = synthGolfScorecard(registry, key, fxFor(key), eventId, subId, { now });
+      return send(res, normalizeGolfScorecard(key, eventId, subId, raw));
+    }
+
+    if (route === 'rankings') {
+      if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
+      return send(res, { league: key, ...normalizeRankings(synthRankings(fxFor(key))) });
     }
 
     if (route === 'standings') {
       if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
-      const season = q.get('season') || new Date(now).getFullYear();
+      // Mirror the worker: no season default upstream; echo the requested one.
+      const season = q.get('season');
       const columns = resolve(registry, key).standingsColumns || null;
-      return send(res, { league: key, season: Number(season), columns, groups: normalizeStandings(synthStandings(fxFor(key))) });
+      return send(res, { league: key, season: season ? Number(season) : new Date(now).getFullYear(), columns, groups: normalizeStandings(synthStandings(fxFor(key))) });
     }
 
     if (route === 'teams') {
@@ -125,12 +171,20 @@ function handle(req, res) {
       if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
       if (!eventId) return send(res, { error: 'missing team id' }, 400);
       const fx = fxFor(key);
-      // seed identity from the teams list, then fill live/last/next from the synth
-      // slate via the SAME fallback the worker uses for national teams.
-      const seed = { team: findRawTeam(fx, eventId) || { id: eventId } };
+      // seed identity from the teams list (+ a deterministic standingSummary so the
+      // enriched hero card's season line is walkable offline), then fill
+      // live/last/next from the synth slate via the SAME fallback the worker uses.
+      const seed = { team: { ...(findRawTeam(fx, eventId) || { id: eventId }), standingSummary: synthStandingSummary(registry, key, fx, eventId) } };
       let card = normalizeTeamCard(registry, key, eventId, seed);
       card = applyScoreboardFallback(registry, key, eventId, card, synthTeamScoreboard(registry, key, fx, eventId, { now }));
       return send(res, card);
+    }
+
+    if (route === 'teamdetail') {
+      if (!known) return send(res, { error: `unknown league "${key}"` }, 404);
+      if (!eventId) return send(res, { error: 'missing team id' }, 400);
+      const parts = synthTeamDetailParts(registry, key, fxFor(key), eventId, { now });
+      return send(res, normalizeTeamDetail(registry, key, eventId, parts));
     }
 
     return send(res, { error: 'not found' }, 404);
@@ -147,6 +201,6 @@ if (!fixtures.size) {
 http.createServer(handle).listen(PORT, '0.0.0.0', () => {
   const withEvents = [...fixtures.values()].filter((f) => f.events?.length).length;
   console.log(`Mock worker → http://localhost:${PORT}   (Android emulator: http://10.0.2.2:${PORT})`);
-  console.log(`  ${fixtures.size} league fixtures loaded (${withEvents} with events). Routes: /v1/{health,catalog,overview,scores,summary,standings,teams,team}`);
+  console.log(`  ${fixtures.size} league fixtures loaded (${withEvents} with events). Routes: /v1/{health,catalog,overview,scores,summary,scorecard,rankings,standings,teams,team,teamdetail}`);
   console.log('  Point the Flutter app: Settings → tap About 6× → set worker URL.\n');
 });

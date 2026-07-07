@@ -155,39 +155,63 @@ the profile; `played`/`isOvertime` are reconciled with live data.
 
 - **numeric** — `score.value = parseInt(competitors[].score)`. `decision` from
   period/status (regulation/overtime/draw).
-- **soccer decorations** — penalty shootout: `shootoutScore` (number, **from
-  `summary`, not scoreboard**); winner set from it, `decision:'shootout'`,
-  display `"1-1 (4-3 pens)"`. Two-leg: `aggregateScore` (**STRING** `"8.0"`) +
-  `advance`, `decision:'aggregate'`.
-- **toPar** (golf) — `score.toPar` from `'-10'|'E'|'+3'`; `score.strokes` only
-  via core API. Non-finishers (`STATUS_CUT` overloaded: MC/WD/DQ) sorted last by
-  `order`; disambiguate via status description.
+- **soccer decorations** — penalty shootout: `shootoutScore` (number). Source
+  RECONCILED 2026-07: the normalizer reads a scoreboard `competitor.shootoutScore`
+  when present AND the summary carries `gameInfo.*ShootoutScore`; neither could be
+  re-verified live in July (no shootout in window) — treat scoreboard as primary,
+  gameInfo as the documented fallback (§9 re-check). Winner set from it,
+  `decision:'shootout'`, display `"1-1 (4-3 pens)"`. Two-leg: `aggregateScore`
+  (**STRING** `"8.0"`) + `advance`, `decision:'aggregate'`.
+- **toPar** (golf) — `score.toPar` from `'-10'|'E'|'+3'`; `score.strokes` is
+  DERIVED (sum of completed-round linescore values — see normalize.js), no core
+  fetch. Non-finishers: VERIFIED 2026-07 **no MC/WD/DQ label survives on any live
+  endpoint** (cut players are removed from later-round scoreboards; competitor
+  `status` absent) — render the cut LINE from `meta.golf` instead.
 - **cricket** — `score.display` is the composite string; real numbers in
   `periodScores[].cricket {runs,wickets,overs,target,reason}`. Winner from
-  `meta.cricketSummary`, not run totals.
+  `meta.cricketSummary`, not run totals. The full scorecard (batting/bowling
+  figures) is the summary tier's `cricketInnings` (from `matchcards`).
 - **none / racing** — no score. `order`=finish, `startOrder`=grid. DNF = **no
-  `order` + sparse stats** (keys absent, not zero).
-- **none / MMA** — `winner` + `method` (KO/TKO·Submission·Decision). Method
-  **from core API**, not scoreboard. `decision:'method'` (or `'draw'`).
+  `order` + sparse stats** (keys absent, not zero). Championship tables come from
+  the ordinary standings path (athlete-shaped entries — see §6).
+- **none / MMA** — `winner` + `method` (KO/TKO·Submission·Decision). Cheap tier
+  scrapes method from scoreboard `details[]` ("Unofficial Winner …", 'Kotko'
+  un-mangled); rich tier upgrades it structurally via `GameSummary.bouts` (core
+  per-bout `status.result` + judge scorecards). `decision:'method'` (or `'draw'`).
 
 ---
 
 ## 6. Where the data lives (don't assume scoreboard has it)
 
-| Need | Scoreboard | Summary | Core API |
+| Need | Scoreboard | Summary | Core / Web API |
 |---|---|---|---|
 | scores, status, line scores | ✅ | header (US only) | ✅ |
-| soccer penalty shootout | ❌ | ✅ `gameInfo.*ShootoutScore` | ✅ |
-| soccer goal/card events | partial `details[]` | `rosters[].plays[]` | ✅ full feed |
+| soccer penalty shootout | `competitor.shootoutScore` (unverified live) | `gameInfo.*ShootoutScore` | ✅ |
+| soccer goal/card events | partial `details[]` | `keyEvents[]` | ✅ full feed |
 | box scores / plays | ❌ | ✅ (US sports) | ✅ |
-| MMA method of victory | ❌ | ✅ | ✅ `status.result` |
+| NFL/CFB drive-by-drive | ❌ | ✅ `drives.previous[]` (VERIFIED 2026-07) | — |
+| attendance / officials | `competitions[].attendance` | ✅ `gameInfo` (VERIFIED 2026-07) | — |
+| cricket full scorecard | ❌ | ✅ `matchcards[]` (VERIFIED 2026-07 on the SAME site summary) | — |
+| tennis match stats | ❌ | ❌ **summary is DEAD for tennis — 400 on every id permutation (2026-07)** | ❌ (also 400/404) |
+| MMA method of victory | `details[]` text scrape | ❌ **site summary 404s for ALL MMA events (2026-07)** | ✅ `status.result` per bout |
+| MMA judge scorecards | ❌ | ❌ | ✅ competitor `linescores` per bout |
 | MMA round length | `{periods}` only | — | ✅ `format.clock` |
 | golf playoff flag | — | — | ✅ `status.hadPlayoff` |
-| golf numeric strokes | ❌ (to-par only) | — | ✅ |
-| standings | ❌ (stub) | — | ✅ **`apis/v2/.../standings?season=`** |
+| golf cut/major/rounds (`meta.golf`) | ❌ (no `tournament` object) | — | ✅ event → `tournament.$ref` → `tournaments/{id}/seasons/{yyyy}` (VERIFIED 2026-07) |
+| golf hole-by-hole + tee times | per-hole values only (no par/scoreType) | — | ✅ web `leaderboard/{event}/playersummary` (VERIFIED 2026-07) |
+| tennis/UFC rankings | ❌ | — | ✅ **site** `.../rankings` (same endpoint as college polls; athlete-shaped) |
+| standings (incl. racing) | ❌ (stub) | — | ✅ **`apis/v2/.../standings`** — F1/NASCAR entries are ATHLETE-shaped |
 
 > **Trap:** `apis/site/v2/.../standings` returns only a `{fullViewLink}` stub.
 > Real standings live at `apis/v2/...` (note: not `site`). Easy to mistake for empty.
+>
+> **Trap (2026-07):** omit `?season=` and ESPN returns the CURRENT season — which
+> is what you want. Passing `getFullYear()` is WRONG mid-year for cross-year
+> leagues (in July 2026 the NHL current season is `2027`). The worker now only
+> forwards an explicit client `?season=`.
+>
+> **Trap:** core `$ref` URLs sometimes point at `sports.core.api.espn.pvt` —
+> rewrite `.pvt` → `.com` before following (worker/src/espn.js does).
 
 ---
 
@@ -308,7 +332,19 @@ against the live API. Outstanding before relying on them:
   NHL playoff multi-OT period numbering; live in-progress detail strings for
   tennis/racing/MMA (none were live at capture); cricket Test 4-innings & super
   over; hockey `plays[]` type-id taxonomy (do NOT assert 506-509).
-- **Known-unsupported:** boxing (no ESPN sport — source elsewhere).
+- **2026-07 re-checks pending:** soccer shootout source (scoreboard
+  `competitor.shootoutScore` vs summary `gameInfo.*ShootoutScore` — no shootout
+  occurred in the probe window; verify at the next WC/cup knockout decided on
+  pens); LIV 54-hole/Teamstroke live shape (scoreboard verified, event was
+  pre-start); MMA judge-linescores official names (officials are `$ref`s — we
+  ship totals only); NCAAW `/rankings` availability (docs matrix says absent,
+  route will just return empty polls).
+- **Team surfaces — RESOLVED** (probed live 2026-07-06, see §10b): `/teams/{id}/
+  roster` (two shapes), `/teams/{id}/statistics` (current-season default; EPL
+  empty in offseason), `schedule.team.standingSummary`. Dead end confirmed:
+  `common/v3 .../statistics` 404s.
+- **Known-unsupported:** boxing (no ESPN sport — source elsewhere); tennis match
+  stats (every summary/statistics endpoint 400s — VERIFIED 2026-07, see §6).
 
 These are *data* gaps, not *design* gaps — the contract already models all of
 them; the registry just needs the confirmed values filled in.
@@ -346,6 +382,95 @@ slugs (qualifiers, friendlies, youth, bilateral cricket tours) stay on the
 `soccer/_other` / `cricket/_tours` catch-alls. NOTE the overview fan-out cap
 (`OVERVIEW_FETCH_CAP=48`) means only the first 48 leagues get a season-pulse in the
 unfiltered `/v1/overview`; page by `?sport`/`?priority` to pulse the rest.
+
+---
+
+## 10a. 2026-07 additions (the docs-audit round)
+
+All **additive**; every claim below was probed against live ESPN 2026-07-05
+before implementation (John Deere Classic live, Wimbledon live, World Cup live).
+
+**Cheap tier (scoreboard fields we downloaded and dropped):**
+- `Competition.attendance` / `headline` / `conferenceGame` / `wasSuspended` —
+  straight passthroughs, emitted only when present.
+- `meta.golf` (**GolfMeta implemented at last** — it had been declared in
+  canonical.ts with no producer): the scores route enriches golf events from the
+  CORE tournament resource (2 extra fetches per golf event, best-effort;
+  `{major, scoringSystem, numberOfRounds, currentRound, cutRound, cutScore,
+  cutCount}` verified live). Drives the leaderboard cut line + major badge.
+
+**Rich tier (`GameSummary`):**
+- `attendance` + `officials[]` — summary `gameInfo` (venue was already surfaced).
+- `drives[]` + gridiron `plays` — NFL/CFB finally get play-feed parity: the
+  summary's `drives.previous[]` was always there; we flatten its nested plays
+  into the standard `plays` feed and ship compact per-drive rows alongside.
+- `cricketInnings[]` — the real cricket scorecard (batting + bowling figures per
+  innings) from `matchcards[]`, which rides the SAME site summary we always
+  fetched (our fixture trimming had hidden it). Partnerships cards dropped.
+- `bouts[]` — MMA structured results. The site summary 404s for MMA, so the
+  worker builds the rich tier from the core event's per-bout `status` (result
+  displayName/short) + per-competitor `linescores` (judge totals, decisions only).
+
+**New endpoint:**
+- `GET /v1/scorecard/{sport}/{league}/{eventId}/{playerId}[?season=]` — golf
+  hole-by-hole (web `playersummary`): per-hole strokes/par/scoreType, front/back
+  splits, live position, and pre-round tee time/group. Lazy (row tap), 60s TTL.
+
+**Rankings generalized:** `rankingsFeed` registry flag ('polls' | 'tour' |
+'divisions') → the SAME `/v1/rankings` route now serves ATP/WTA world rankings
+(points) and UFC divisional/P4P lists (records, champion flag) — the site
+rankings endpoint handles all three; entries carry `team` OR `athlete`.
+
+**Standings:** racing works through the ordinary path (F1 Drivers/Constructors,
+NASCAR flat; athlete-shaped entries now normalized). Season default REMOVED —
+ESPN's own current-season default is correct where `getFullYear()` was wrong
+(NHL in July). `?date=YYYYMMDD-YYYYMMDD` range fetches verified working on the
+scoreboard and pass through `/v1/scores` unchanged.
+
+**Probed and rejected (do not re-attempt without a fresh probe):** tennis match
+stats (all endpoints 400), golf MC/WD/DQ labels (no source), site MMA summary
+(404 for every event), core racing `rankings` (empty), dedicated golf
+leaderboard endpoints (404). Gambling/odds excluded by product decision.
+
+---
+
+## 10b. Team-surface additions (date nav + team pages)
+
+All **additive**; endpoints probed against live ESPN 2026-07-06 before build.
+
+**Long-TTL past days (F1):** `?date=` on `/v1/scores` already passed through and
+cached per-URL; a fully-past dated slate is now cached **6h** (`TTL.pastDay`) not
+5m, since it's immutable. `pastDatedTtl()` (in `ttl.js`) takes the range END,
+compares against **ET-today** (`Intl.DateTimeFormat('en-CA', America/New_York)`),
+and is guarded by `anyLive===false` (a suspended game keeps the tight cadence).
+Not infinite: SWR + late stat corrections argue for a bound.
+
+**`TeamCardResponse.team.standingSummary`** — `schedule.team.standingSummary`
+(VERIFIED 2026-07: `'2nd in AL East'`, a STRING). Was already on the payload
+`/v1/team` fetches → the enriched-card season line costs **zero** subrequests.
+Absent for national teams.
+
+**New `GET /v1/teamdetail/{sport}/{league}/{teamId}`** (`TeamDetailResponse`) —
+the rich team page. 4 subrequests (schedule required + roster/stats/standings
+best-effort), coalesced behind a 30m TTL. Probed live 2026-07-06:
+- **roster** — `site/v2 .../teams/{id}/roster` works for NFL/NBA/MLB/NHL/EPL/
+  college. **Two shapes, discriminated STRUCTURALLY** (never by sport name):
+  entries with `items[]` = position-group buckets (NFL offense/defense/
+  specialTeam, soccer by position); a flat `athletes[]` = one `'Roster'` group.
+- **stats** — `site/v2 .../teams/{id}/statistics` → `results.stats.categories[]`,
+  and **defaults to the current season** (no `getFullYear()` trap — unlike
+  standings). **EPL returns an empty `results:{}`** in the offseason → stats must
+  be omittable (`[]`). Curated per family via registry `teamStatKeys` (mirrors
+  `standingsColumns`) → one ordered `'Season'` group; else natural categories,
+  capped ~8. `common/v3 .../statistics` **404s — dead, do not use.**
+- **standing** — the team's own group plucked from the shared `normalizeStandings`
+  output; omitted when the team id isn't found (national team / athlete-shaped
+  racing table). Team pages are gated to `competitorKind==='team'` (added to the
+  catalog — `hasTeams` is the wrong gate, it's true for F1 constructors).
+
+**`StandingsResponse` gap closed:** the standings shape shipped in
+`worker/src/standings.js` + `models.dart` but was undeclared in `canonical.ts`;
+now declared retroactively (racing's athlete-shaped rows noted as a QUIRK).
 
 ---
 

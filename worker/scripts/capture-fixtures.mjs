@@ -18,7 +18,7 @@
 //   - up to N raw /summary payloads for the richest events (box score / feed).
 // ESPN is undocumented + unofficial — we stay gentle (small concurrency, sleeps).
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
@@ -26,6 +26,8 @@ import { leagueKeys, resolve } from '../../schema/tools/resolve.mjs';
 import { statusToPhase } from '../src/normalize.js';
 import {
   fetchScoreboard, fetchSummary, fetchStandings, fetchTeams,
+  fetchTeamRoster, fetchTeamStatistics,
+  fetchRankings, fetchCoreEvent, fetchCoreRef, fetchGolfPlayerSummary,
 } from '../src/espn.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -98,16 +100,60 @@ function trimTeams(raw) {
   return { sports: [{ leagues: [{ teams: slim }] }] };
 }
 
+// Trim a /roster payload to only what normalizeTeamDetail's buildRoster reads —
+// preserving the flat-vs-grouped shape (items[] = position groups). VERIFIED
+// 2026-07: full rosters carry heavy bios/contracts/injuries the team page ignores.
+function trimRoster(raw) {
+  const athletes = raw?.athletes;
+  if (!Array.isArray(athletes)) return null;
+  const slimA = (a) => {
+    const o = pick(a || {}, ['id', 'displayName', 'fullName', 'shortName', 'jersey']);
+    if (a?.position?.abbreviation) o.position = { abbreviation: a.position.abbreviation };
+    if (a?.headshot?.href) o.headshot = { href: a.headshot.href };
+    return o;
+  };
+  const slim = athletes.map((e) => Array.isArray(e.items)
+    ? { position: e.position, items: e.items.map(slimA) }
+    : slimA(e));
+  return { athletes: slim };
+}
+
+// Trim a /statistics payload to results.stats.categories with just the fields the
+// team page reads (name/label/value + optional rank).
+function trimStats(raw) {
+  const cats = raw?.results?.stats?.categories;
+  if (!Array.isArray(cats)) return null;
+  return {
+    results: {
+      stats: {
+        categories: cats.map((c) => ({
+          name: c.name,
+          displayName: c.displayName,
+          stats: (c.stats || []).map((s) => pick(s, ['name', 'displayName', 'shortDisplayName', 'abbreviation', 'value', 'displayValue', 'rank'])),
+        })),
+      },
+    },
+  };
+}
+
 // Trim standings to what normalizeStandings reads, capping rows per group (a 360-team
 // college table is ~6 MB raw; the app only ever shows a handful of screens of it).
 function trimStandings(raw, maxRows = 60) {
   if (!raw || typeof raw !== 'object') return raw;
   const trimEntry = (en) => {
-    const team = pick(en.team || {}, ['id', 'displayName', 'name', 'abbreviation']);
-    if (Array.isArray(en.team?.logos)) team.logos = en.team.logos.slice(0, 2).map((l) => pick(l, ['href', 'rel']));
+    // racing driver championships are ATHLETE-shaped (no en.team) — keep whichever
+    // identity the entry carries, in its original slot (normalizeStandings reads both).
+    const out = {};
+    if (en.team) {
+      out.team = pick(en.team, ['id', 'displayName', 'name', 'abbreviation']);
+      if (Array.isArray(en.team.logos)) out.team.logos = en.team.logos.slice(0, 2).map((l) => pick(l, ['href', 'rel']));
+    } else if (en.athlete) {
+      out.athlete = pick(en.athlete, ['id', 'displayName', 'name', 'shortDisplayName', 'abbreviation']);
+    }
     // ESPN repeats the full stat set per split (overall/Home/Road/vs Top 25/…) — the
     // app only reads the overall split (~13 keys), so keep the first 16.
-    return { team, stats: (en.stats || []).slice(0, 16).map((s) => pick(s, ['name', 'type', 'displayValue', 'value'])) };
+    out.stats = (en.stats || []).slice(0, 16).map((s) => pick(s, ['name', 'type', 'displayValue', 'value']));
+    return out;
   };
   const walk = (n) => {
     const out = pick(n, ['name', 'abbreviation', 'displayName']);
@@ -120,7 +166,10 @@ function trimStandings(raw, maxRows = 60) {
 
 // Drop the heaviest summary payloads the normalizer never reads: full play-by-play
 // (only scoringPlay rows survive — exactly what buildScoringPlays keeps), plus
-// win-probability/news/video/odds blocks. Keeps boxscore + scoring feed + lineups.
+// news/video/odds blocks. Keeps boxscore + scoring feed + lineups + the 2026-07
+// additions (gameInfo, drives [plays slimmed], cricket matchcards) and the summary
+// enrichments the app renders (seasonseries / lastFiveGames / injuries /
+// winprobability [last point only]).
 function trimSummary(raw) {
   if (!raw || typeof raw !== 'object') return raw;
   const header = raw.header && {
@@ -134,13 +183,74 @@ function trimSummary(raw) {
       }),
     })),
   };
+  const slimPlay = (p) => {
+    const o = pick(p, ['text', 'shortText', 'awayScore', 'homeScore', 'scoringPlay']);
+    if (p.period?.number != null) o.period = { number: p.period.number, displayValue: p.period.displayValue };
+    if (p.clock?.displayValue) o.clock = { displayValue: p.clock.displayValue };
+    if (p.type) o.type = pick(p.type, ['text']);
+    // keep displayName: soccer commentary plays carry NO id/abbreviation — the
+    // normalizer attributes sides by team display name (summary.js sideMaps).
+    if (p.team) o.team = pick(p.team, ['id', 'abbreviation', 'displayName']);
+    if (p.scoringType?.displayName) o.scoringType = { displayName: p.scoringType.displayName };
+    return o;
+  };
   const out = {};
   if (header) out.header = header;
   if (raw.boxscore) out.boxscore = raw.boxscore;
   if (Array.isArray(raw.plays)) out.plays = raw.plays.filter((p) => p.scoringPlay === true);
   if (Array.isArray(raw.scoringPlays)) out.scoringPlays = raw.scoringPlays;
   if (Array.isArray(raw.keyEvents)) out.keyEvents = raw.keyEvents;
+  // soccer/rugby narrative feed → GameSummary.plays (summary.js buildCommentaryPlays)
+  if (Array.isArray(raw.commentary)) {
+    out.commentary = raw.commentary.map((c) => {
+      const o = pick(c, ['sequence', 'text']);
+      if (c.time?.displayValue) o.time = { displayValue: c.time.displayValue };
+      if (c.play) o.play = slimPlay(c.play);
+      return o;
+    });
+  }
   if (Array.isArray(raw.rosters)) out.rosters = raw.rosters;
+  // gridiron drives: keep the row fields buildDrives reads + slimmed nested plays
+  // (they become the flattened `plays` feed — see summary.js buildPlays).
+  if (Array.isArray(raw.drives?.previous)) {
+    out.drives = {
+      previous: raw.drives.previous.map((d) => ({
+        ...pick(d, ['id', 'description', 'yards', 'isScore', 'offensivePlays', 'result', 'shortDisplayResult', 'displayResult']),
+        team: pick(d.team || {}, ['id', 'abbreviation']),
+        plays: (d.plays || []).map(slimPlay),
+      })),
+    };
+  }
+  if (Array.isArray(raw.matchcards)) out.matchcards = raw.matchcards; // cricket scorecard (compact)
+  if (raw.gameInfo) {
+    out.gameInfo = pick(raw.gameInfo, ['attendance']);
+    if (Array.isArray(raw.gameInfo.officials)) {
+      out.gameInfo.officials = raw.gameInfo.officials.map((o) => ({
+        ...pick(o, ['fullName', 'displayName']),
+        position: pick(o.position || {}, ['name', 'displayName']),
+      }));
+    }
+  }
+  if (Array.isArray(raw.seasonseries)) out.seasonseries = raw.seasonseries.map((s) => pick(s, ['type', 'summary', 'seriesScore', 'title', 'description']));
+  if (Array.isArray(raw.lastFiveGames)) {
+    out.lastFiveGames = raw.lastFiveGames.map((t) => ({
+      team: pick(t.team || {}, ['id', 'abbreviation', 'homeAway']),
+      events: (t.events || []).slice(0, 5).map((e) => pick(e, ['gameResult', 'gameDate'])),
+    }));
+  }
+  if (Array.isArray(raw.injuries)) {
+    out.injuries = raw.injuries.map((b) => ({
+      team: pick(b.team || {}, ['id', 'abbreviation', 'homeAway']),
+      injuries: (b.injuries || []).slice(0, 6).map((it) => ({
+        status: it.status,
+        athlete: pick(it.athlete || {}, ['shortName', 'displayName', 'position']),
+        details: pick(it.details || {}, ['detail', 'type', 'returnDate']),
+      })),
+    }));
+  }
+  if (Array.isArray(raw.winprobability) && raw.winprobability.length) {
+    out.winprobability = [raw.winprobability[raw.winprobability.length - 1]]; // last point only
+  }
   return out;
 }
 
@@ -220,6 +330,22 @@ async function captureLeague(key, opts) {
   try { out.standings = trimStandings(await firstNonEmptyStandings(key, [yr, yr - 1, yr - 2])); } catch { /* offseason/none */ }
   await sleep(80);
 
+  // rosters + season stats for a couple of teams (F2 team page). Best-effort, and
+  // only for team-competitor leagues — individual sports (golf/tennis/MMA) have no
+  // roster worth a page. The mock fabricates when a fixture lacks these.
+  if (out.teams && profile.competitorKind === 'team') {
+    out.rosters = {}; out.teamStats = {};
+    const ids = (out.teams.sports?.[0]?.leagues?.[0]?.teams || []).slice(0, 2).map((t) => String(t.team?.id)).filter(Boolean);
+    for (const id of ids) {
+      try { const r = trimRoster(await fetchTeamRoster(key, id)); if (r) out.rosters[id] = r; } catch { /* roster optional */ }
+      await sleep(80);
+      try { const s = trimStats(await fetchTeamStatistics(key, id)); if (s) out.teamStats[id] = s; } catch { /* stats optional */ }
+      await sleep(80);
+    }
+    out.stats.rosters = Object.keys(out.rosters).length;
+    out.stats.teamStats = Object.keys(out.teamStats).length;
+  }
+
   // default slate first — carries the live/scheduled games + the calendar
   let def = null;
   try { def = await fetchScoreboard(key); out.league = leagueSkeleton(def); out.day = def.day || null; addEvents(def); } catch { /* try dates below */ }
@@ -268,6 +394,41 @@ async function captureLeague(key, opts) {
     out.stats.summaries = Object.keys(out.summaries).length;
   }
 
+  // golf: core tournament meta (cut/major/rounds → meta.golf) for the pooled
+  // events, + a few real hole-by-hole scorecards for the first event's leaders.
+  if (profile.espnSport === 'golf' && profile.layout === 'field') {
+    out.tournaments = {};
+    for (const ev of out.events.slice(0, 3)) {
+      try {
+        const core = await fetchCoreEvent(key, ev.id);
+        const ref = core?.tournament?.$ref;
+        if (ref) out.tournaments[String(ev.id)] = await fetchCoreRef(ref);
+      } catch { /* meta optional */ }
+      await sleep(100);
+    }
+    out.scorecards = {};
+    const first = out.events.find((e) => (e.competitions?.[0]?.competitors || []).length);
+    if (first) {
+      const season = out.league?.season?.year || new Date(now).getUTCFullYear();
+      const leaders = (first.competitions[0].competitors || []).slice(0, 3);
+      for (const c of leaders) {
+        const pid = String(c.id ?? c.athlete?.id ?? '');
+        if (!pid) continue;
+        try { out.scorecards[`${first.id}/${pid}`] = await fetchGolfPlayerSummary(key, first.id, season, pid); } catch { /* scorecard optional */ }
+        await sleep(100);
+      }
+    }
+    out.stats.tournaments = Object.keys(out.tournaments).length;
+    out.stats.scorecards = Object.keys(out.scorecards).length;
+  }
+
+  // rankings feed (polls / tours / divisions) — season-stable, captured verbatim.
+  if (profile.rankingsFeed) {
+    try { out.rankings = await fetchRankings(key); } catch { /* rankings optional */ }
+    await sleep(80);
+    out.stats.rankings = (out.rankings?.rankings || []).length;
+  }
+
   mkdirSync(FIX_DIR, { recursive: true });
   writeFileSync(fileFor(key), JSON.stringify(out));
   return out.stats;
@@ -296,7 +457,12 @@ const keys = (args.leagues && args.leagues.length)
 console.log(`Capturing ${keys.length} league(s) → ${FIX_DIR}`);
 console.log(`  summaries=${args.summaries} maxEvents=${args.maxEvents} maxSummaries=${args.maxSummaries} concurrency=${args.concurrency}\n`);
 
+// Seed from the existing manifest so a scoped run (--league/--sport/--priority)
+// refreshes only its leagues' entries instead of clobbering everyone else's.
 const manifest = { capturedAt: new Date().toISOString(), leagues: {} };
+try {
+  manifest.leagues = JSON.parse(readFileSync(join(FIX_DIR, '_manifest.json'), 'utf8')).leagues || {};
+} catch { /* first capture: no manifest yet */ }
 await runPool(keys, args.concurrency, async (key) => {
   try {
     const s = await captureLeague(key, args);
@@ -310,5 +476,5 @@ await runPool(keys, args.concurrency, async (key) => {
 });
 
 writeFileSync(join(FIX_DIR, '_manifest.json'), JSON.stringify(manifest, null, 2));
-const ok = Object.values(manifest.leagues).filter((s) => s.events > 0).length;
+const ok = keys.filter((k) => manifest.leagues[k]?.events > 0).length;
 console.log(`\nDone. ${ok}/${keys.length} leagues have events. Manifest → mock/fixtures/_manifest.json`);

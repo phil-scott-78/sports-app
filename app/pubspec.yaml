@@ -13,10 +13,6 @@ dependencies:
   http: ^1.2.2
   shared_preferences: ^2.3.3
   intl: ^0.19.0
-  cached_network_image: ^3.4.1
-  # Opens the GitHub Releases page from the update banner (a sideloaded APK can't
-  # self-update, so the worker can only signal + deep-link). See ui/update_banner.dart.
-  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_lints: ^4.0.0
@@ -27,11 +23,23 @@ flutter:
   uses-material-design: true
 
   fonts:
-    # BinanceNova substitute — all copy, labels, headlines.
-    - family: Inter
+    # Scoreboard voice — team names, scores, clocks, stat numbers.
+    - family: BarlowCondensed
       fonts:
-        - asset: assets/fonts/Inter-Variable.ttf
-    # BinancePlex substitute — every number (scores, stats, clocks).
-    - family: IBMPlexSans
+        - asset: assets/fonts/BarlowCondensed-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/BarlowCondensed-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/BarlowCondensed-Bold.ttf
+          weight: 700
+    # Copy voice — labels, body text, buttons.
+    - family: Archivo
       fonts:
-        - asset: assets/fonts/IBMPlexSans-Variable.ttf
+        - asset: assets/fonts/Archivo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Archivo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Archivo-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Archivo-Bold.ttf
+          weight: 700

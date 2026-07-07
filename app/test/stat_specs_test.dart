@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scores/src/models.dart';
-import 'package:scores/src/ui/detail_panels.dart';
-import 'package:scores/src/ui/box_score.dart';
 import 'package:scores/src/ui/stat_specs.dart';
-import 'package:scores/src/ui/widgets.dart';
-
-Competitor _team(String abbr, Map<String, String> stats) =>
-    Competitor.fromJson({
-      'kind': 'team',
-      'id': abbr,
-      'displayName': abbr,
-      'abbreviation': abbr,
-      'stats': stats,
-    });
 
 void main() {
   group('stat parsing', () {
@@ -86,57 +74,52 @@ void main() {
       expect(lead.map((r) => r.label), isNot(contains('Passing 1st downs')));
       expect(rest.map((r) => r.label), contains('Total Drives'));
     });
+
+    test('no keywords → first N rows lead in ESPN order', () {
+      final rows = [
+        for (var i = 0; i < 12; i++) row('Stat $i', '$i', '$i'),
+      ];
+      final (:lead, :rest) = curateRichRows(rows, 'tennis', fallbackCap: 8);
+      expect(lead.length, 8);
+      expect(lead.first.label, 'Stat 0');
+      expect(rest.length, 4);
+    });
   });
 
-  group('widgets', () {
-    testWidgets('cheap basketball panel renders percent gauges + counts',
-        (tester) async {
-      final away = _team('AWY',
-          {'FG%': '38.4', '3P%': '32.4', 'FT%': '63.2', 'REB': '47', 'AST': '18'});
-      final home = _team('HOM',
-          {'FG%': '35.6', '3P%': '32.4', 'FT%': '71.4', 'REB': '48', 'AST': '14'});
-      final panel = cheapStatPanels['basketball']!;
-      expect(TeamStatComparison.has(away, home, panel.rows), isTrue);
+  group('StatCompareRow rendering', () {
+    Future<void> pump(WidgetTester tester, List<Widget> rows) =>
+        tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+            body: Column(mainAxisAlignment: MainAxisAlignment.center, children: rows),
+          ),
+        ));
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-            body: TeamStatComparison(
-                away: away, home: home, rows: panel.rows)),
-      ));
+    testWidgets('cheap basketball panel restores percent sign + shows counts',
+        (tester) async {
+      final away = {'FG%': '38.4', 'REB': '47'};
+      final home = {'FG%': '35.6', 'REB': '48'};
+      final panel = cheapStatPanels['basketball']!;
+      await pump(tester, [
+        for (final spec in panel.rows)
+          if (away[spec.key] != null || home[spec.key] != null)
+            StatCompareRow(
+                spec: spec, away: away[spec.key], home: home[spec.key]),
+      ]);
       expect(find.text('Field goals'), findsOneWidget);
       expect(find.text('38.4%'), findsOneWidget); // sign restored
       expect(find.text('Rebounds'), findsOneWidget);
       expect(find.text('47'), findsOneWidget);
     });
 
-    testWidgets('rich team stats curate + expand', (tester) async {
-      final rows = [
-        for (final l in [
-          'Total Yards', 'Passing', 'Rushing', '3rd down efficiency',
-          'Turnovers', 'Possession', 'Red Zone (Made-Att)', 'Penalties',
-          'Total Drives', 'Yards per Play', 'Comp/Att', 'Sacks-Yards Lost',
-        ])
-          TeamStatRow(label: l, away: '1', home: '2'),
-      ];
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-            body: SingleChildScrollView(
-                child: SummaryTeamStats(rows: rows, sport: 'football'))),
-      ));
-      expect(find.text('Total Yards'), findsOneWidget);
-      expect(find.text('Total Drives'), findsNothing); // folded away
-      await tester.tap(find.text('All team stats (12)'));
-      await tester.pump();
-      expect(find.text('Total Drives'), findsOneWidget);
-      await tester.tap(find.text('Key stats only'));
-      await tester.pump();
-      expect(find.text('Total Drives'), findsNothing);
+    testWidgets('classified rich ratio row displays raw made-of-attempts',
+        (tester) async {
+      final r = TeamStatRow(label: '3rd down efficiency', away: '4-16', home: '6-15');
+      await pump(tester, [
+        StatCompareRow(spec: classifyRichRow(r), away: r.away, home: r.home),
+      ]);
+      expect(find.text('4-16'), findsOneWidget);
+      expect(find.text('6-15'), findsOneWidget);
+      expect(find.text('3rd down efficiency'), findsOneWidget);
     });
-  });
-
-  test('quiet-day copy speaks each sport\'s language', () {
-    expect(quietDayLine('baseball'), 'Off day at the ballpark');
-    expect(quietDayLine('soccer'), 'Quiet day on the pitch');
-    expect(quietDayLine('unknown-sport'), 'No games today');
   });
 }

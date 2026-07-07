@@ -134,6 +134,7 @@
       "clockDirection": "down", "hasLineScores": true,
       "ranking": "none",
       "standingsColumns": [{ "key": "wins", "label": "W" }, { "key": "losses", "label": "L" }, { "key": "ties", "label": "T" }, { "key": "winPercent", "label": "PCT" }, { "key": "pointDifferential", "label": "DIFF" }],
+      "teamStatKeys": ["totalPointsPerGame", "passingYardsPerGame", "rushingYardsPerGame", "thirdDownConvPct", "redzoneScoringPct", "turnOverDifferential", "totalTakeaways", "totalGiveaways"],
       "periodMap": { "1": "1st", "2": "2nd", "3": "3rd", "4": "4th", "5": "OT", "6": "2OT", "7": "3OT" },
       "overtimeDetect": "period>4 OR linescores.length>4 OR altDetail contains 'OT'. QUIRK: STATUS_FINAL_OVERTIME does NOT exist — OT games are STATUS_FINAL(id3) with detail 'Final/OT' and altDetail 'OT'. Detail suffix is unreliable (7OT showed plain 'Final').",
       "situation": "live: situation{down,distance,yardLine,possession,isRedZone} (identical field names across leagues)",
@@ -147,6 +148,7 @@
       "clockDirection": "down", "hasLineScores": true,
       "ranking": "none",
       "standingsColumns": [{ "key": "wins", "label": "W" }, { "key": "losses", "label": "L" }, { "key": "winPercent", "label": "PCT" }, { "key": "gamesBehind", "label": "GB" }],
+      "teamStatKeys": ["avgPoints", "avgRebounds", "avgAssists", "fieldGoalPct", "threePointPct", "freeThrowPct", "avgSteals", "avgBlocks"],
       "overtime": "uniform 5-min (format.overtime.clock=300s), unlimited until a winner; each OT appends one linescores element. Detect via period>regulation.",
       "overtimeDetect": "status.period > regulationPeriods OR shortDetail contains 'OT' (altDetail '2OT' also present)",
       "edgeCases": ["overtime"],
@@ -160,6 +162,7 @@
       "clockDirection": "none", "hasLineScores": true,
       "ranking": "none",
       "standingsColumns": [{ "key": "wins", "label": "W" }, { "key": "losses", "label": "L" }, { "key": "winPercent", "label": "PCT" }, { "key": "gamesBehind", "label": "GB" }],
+      "teamStatKeys": ["avg", "OPS", "runs", "homeRuns", "stolenBases", "ERA", "WHIP", "saves"],
       "extraScoreFields": "competitor.hits and competitor.errors complete the R/H/E line; period = inning number",
       "liveLabel": "inning half is in status.detail ('Top 5th'/'Bottom 7th'/'Mid 3rd'/'End 6th') + situation.isTopInning, NOT in status.period",
       "overtimeDetect": "max(linescores.period) > regulationPeriods  → extra innings (detail 'Final/11')",
@@ -174,6 +177,7 @@
       "clockDirection": "down", "hasLineScores": true,
       "ranking": "none",
       "standingsColumns": [{ "key": "gamesPlayed", "label": "GP" }, { "key": "wins", "label": "W" }, { "key": "losses", "label": "L" }, { "key": "otLosses", "label": "OTL" }, { "key": "points", "label": "PTS" }],
+      "teamStatKeys": ["goals", "assists", "points", "powerPlayGoals", "shootingPct", "savePct", "avgGoalsAgainst", "penaltyMinutes"],
       "periodMap": { "1": "1st", "2": "2nd", "3": "3rd", "4": "OT" },
       "shootout": "NHL reg season ONLY: period 5, detail 'Final/SO', altDetail 'SO'; the SO decider (+1) is folded into competitor.score. College has NO shootout period.",
       "overtimeDetect": "period>3. QUIRK: period 5 = SHOOTOUT for NHL reg season, but = 2OT for NHL playoffs / NCAA tournament — disambiguate by league + seasonType.",
@@ -192,6 +196,8 @@
       "tiebreak": "periodScores[].tiebreak is present on BOTH competitors = each side's TB points. Reconstruct '7-6(3)' from the loser's value. Can exceed 10 (11-9 super-TBs); never key off ==10.",
       "edgeCases": ["retirement(STATUS_RETIRED id38, partial final set)", "walkover(zero linescores)", "default", "super-tiebreak(deciding set)", "doubles(competitorKind=pair)"],
       "standings": "none — tour RANKINGS list, not a table; within a tournament advancement is a single-elim bracket",
+      "rankingsFeed": "tour",
+      "rankingsNote": "VERIFIED 2026-07: site apis/site/v2 .../rankings works for atp(150 ranks, points+trend, inline athletes) and wta — same endpoint as college polls, athlete-shaped ranks. /summary is DEAD for tennis (400 for every event/competition id permutation incl. web + core hosts) — match stats have NO source; do not re-add a tennis summary branch without a new probe.",
       "verifiedIds": true
     },
 
@@ -202,12 +208,14 @@
       "clockDirection": "none", "hasLineScores": true,
       "ranking": "leaderboard",
       "homeAway": "none",
-      "progress": "competitor.status.thru (holes done) + status.period (round). Score is to-par string ('-10'/'E'/'+3'); numeric strokes only via core API.",
-      "playoffDetect": "competition.status.hadPlayoff === true (the reliable signal) AND/OR competitor.status.playoff AND/OR a linescore period>numberOfRounds. QUIRK: tournament.playoffType is HALLUCINATED — does not exist.",
-      "nonFinishers": "STATUS_CUT(id3) is OVERLOADED — Missed Cut / Withdrawn(WD) / Disqualified(DQ) all share it; disambiguate via status.description/shortDetail. Sorted to bottom by order.",
+      "progress": "competitor.status.thru (holes done) + status.period (round). Score is to-par string ('-10'/'E'/'+3'); strokes total is derived by summing completed-round linescore values (normalize.js).",
+      "playoffDetect": "competition.status.hadPlayoff === true (the reliable signal) AND/OR competitor.status.playoff AND/OR a linescore period>numberOfRounds. QUIRK: SITE tournament.playoffType is HALLUCINATED; the CORE event carries playoffType {id:-1,'None'} but hadPlayoff stays the signal.",
+      "nonFinishers": "VERIFIED 2026-07: NO per-player MC/WD/DQ label survives on any live endpoint — competitor.status is absent on the site scoreboard (cut players are simply REMOVED from later-round payloads: 144 competitors during R1-2, 72 after the cut) and the leaderboard endpoints 404. Render the cut LINE from meta.golf instead; do not hunt for status labels.",
+      "meta": "meta.golf {numberOfRounds,currentRound,cutRound,cutScore,cutCount,major,scoringSystem} — VERIFIED 2026-07 from CORE event -> tournament.$ref -> tournaments/{id}/seasons/{yyyy}. NOT on the site scoreboard. The worker's scores route enriches golf events with 2 extra fetches each (best-effort; omitted on failure). Rewrite $ref '.pvt' hosts to '.com'.",
+      "scorecard": "hole-by-hole per player: site.web.api.espn.com/apis/site/v2/sports/golf/{tour}/leaderboard/{eventId}/playersummary?season={yyyy}&player={id} (VERIFIED 2026-07: per-hole value+par+scoreType.name, inScore/outScore, teeTime/startTee/groupNumber pre-round, profile+stats). Served as /v1/scorecard/{sport}/{league}/{eventId}/{playerId}. Golf seasons are calendar-aligned so a getFullYear() season fallback is safe HERE (unlike standings).",
       "scoringSystem": "'Medal' (stroke play) vs 'Teamstroke' (two-player team events, e.g. Dow Championship)",
       "edgeCases": ["playoff-hole", "missed-cut", "WD/DQ", "suspended", "shortened-rounds", "amateur(earnings=0)", "team-event(Teamstroke)"],
-      "notes": ["cut presence varies BY EVENT not league — read tournament.cutRound (0 = no cut)", "ignore trailing sentinel linescore periods (e.g. 402) with only {period}"]
+      "notes": ["cut presence varies BY EVENT not league — read cutRound off the core tournament resource (0 = no cut)", "ignore trailing sentinel linescore periods (e.g. 402) with only {period}", "scoreboard per-hole linescores exist but carry only value+scoreType.displayValue (no par, no named scoreType) — the playersummary is the scorecard source"]
     },
 
     "racing": {
@@ -221,6 +229,8 @@
       "dnf": "DNF/unclassified = competitor has NO `order` (and a SPARSE statistics set — keys like lapsCompleted/place are ABSENT, not zero). Never test lapsCompleted==0; key off absence of order. Vehicle object still present.",
       "multiCompetition": "F1 event = MANY competitions (FP1/FP2/FP3 share type.id=1, differ by abbreviation; Qualifying; Race; Sprint weekends add 2 more). NASCAR/IndyCar = ONE competition (id==eventId). Filter F1 to type.abbreviation=='Race' for the race.",
       "liveFlag": "competition.status.flag (GREEN/YELLOW/RED/CHECKER) is F1-ONLY; absent for NASCAR/IndyCar.",
+      "standings": "VERIFIED 2026-07: the SAME site apis/v2 standings path every team sport uses works for racing — F1 children[]=Driver Standings(athlete-shaped entries)+Constructor Standings(team-shaped); NASCAR one flat 'Standings' child (athlete-shaped). Entries carry rank+championshipPts+per-race columns; the core rankings endpoint is EMPTY (count 0) — don't chase it.",
+      "standingsColumns": [{ "key": "championshipPts", "label": "PTS" }],
       "edgeCases": ["DNF(no-order)", "DNS", "shortened-race(reduced laps, still Final)", "red-flag(F1 flag field)"],
       "verifiedIds": true
     },
@@ -312,14 +322,14 @@
     "soccer/_other":         { "extends": "soccer.domestic", "espnLeagueId": null, "name": "Other domestic top divisions (ned.1, sco.1, por.1, etc.)", "priority": "v3", "verifiedIds": false, "_note": "all share soccer.domestic; read id from JSON. Cups (eng.fa, copa_del_rey) extend soccer.knockout" },
 
     "football/nfl":              { "extends": "football", "espnLeagueId": "28", "name": "NFL", "abbr": "NFL", "region": "USA", "priority": "v1", "verifiedIds": true, "overtime": "one 10-min(reg)/15-min(playoff) modified sudden-death (period 5); reg season can TIE", "standings": "AFC(8)/NFC(7) conferences, 8 divisions", "_note": "id 28 verified (uid s:20~l:28)" },
-    "football/college-football": { "extends": "football", "espnLeagueId": "23", "name": "NCAA Football (FBS)", "abbr": "NCAAF", "region": "USA", "priority": "v1", "verifiedIds": true, "ranking": "curatedRank", "overtime": "untimed alternating-possession from 25; 2pt-only from 3OT; never ties; period 5,6,7...", "queryParams": "?groups=80(FBS)&limit=200&seasontype=2&week=N", "_note": "leagues[].groups is an OBJECT {id,name,shortName,isConference} when ?groups= passed; /rankings endpoint for AP/Coaches/CFP" },
+    "football/college-football": { "extends": "football", "espnLeagueId": "23", "name": "NCAA Football (FBS)", "abbr": "NCAAF", "region": "USA", "priority": "v1", "verifiedIds": true, "ranking": "curatedRank", "rankingsFeed": "polls", "overtime": "untimed alternating-possession from 25; 2pt-only from 3OT; never ties; period 5,6,7...", "queryParams": "?groups=80(FBS)&limit=200&seasontype=2&week=N", "_note": "leagues[].groups is an OBJECT {id,name,shortName,isConference} when ?groups= passed; /rankings endpoint for AP/Coaches/CFP" },
     "football/ufl":              { "extends": "football", "espnLeagueId": "37", "name": "United Football League", "abbr": "UFL", "region": "USA", "priority": "v2", "verifiedIds": true, "overtime": "alternating single 2pt conversion, best-of-3 rounds then sudden death" },
     "football/cfl":              { "extends": "football", "espnLeagueId": "33", "name": "Canadian Football League", "abbr": "CFL", "region": "Canada", "priority": "v2", "verifiedIds": true, "overtime": "alternating possession from 35; reg season caps at 2 → can tie", "_note": "3-DOWN football, 110-yd field: situation.down maxes at 3, same field names. WARNING: ?dates= unreliable for CFL (returns stale 2023 calendar); live capture needs core.api path" },
 
     "basketball/nba":                       { "extends": "basketball", "espnLeagueId": "46", "name": "NBA", "abbr": "NBA", "region": "USA", "priority": "v1", "verifiedIds": true, "periodUnit": "quarter", "regulationPeriods": 4, "periodLengthMin": 12, "standings": "Eastern(5)/Western(6) conference children[], playoffSeed, clincher" },
     "basketball/wnba":                      { "extends": "basketball", "espnLeagueId": "59", "name": "WNBA", "abbr": "WNBA", "region": "USA", "priority": "v1", "verifiedIds": true, "periodUnit": "quarter", "regulationPeriods": 4, "periodLengthMin": 10 },
-    "basketball/mens-college-basketball":   { "extends": "basketball", "espnLeagueId": "41", "name": "NCAA Men's Basketball", "abbr": "NCAAM", "region": "USA", "priority": "v1", "verifiedIds": true, "periodUnit": "half", "regulationPeriods": 2, "periodLengthMin": 20, "ranking": "curatedRank", "queryParams": "?groups=50&limit=400", "_note": "THE delta: only basketball league in HALVES (verified format.regulation.periods=2, clock=1200s); OT periods 3+; player box score lacks +/- (13 cols vs NBA 14)" },
-    "basketball/womens-college-basketball": { "extends": "basketball", "espnLeagueId": "54", "name": "NCAA Women's Basketball", "abbr": "NCAAW", "region": "USA", "priority": "v2", "verifiedIds": true, "periodUnit": "quarter", "regulationPeriods": 4, "periodLengthMin": 10, "ranking": "curatedRank", "queryParams": "?groups=50&limit=400", "_note": "VERIFIED quarters since 2015-16 (matches WNBA, NOT NCAAM) — the most error-prone assumption, confirmed against 2025 title game" },
+    "basketball/mens-college-basketball":   { "extends": "basketball", "espnLeagueId": "41", "name": "NCAA Men's Basketball", "abbr": "NCAAM", "region": "USA", "priority": "v1", "verifiedIds": true, "periodUnit": "half", "regulationPeriods": 2, "periodLengthMin": 20, "ranking": "curatedRank", "rankingsFeed": "polls", "queryParams": "?groups=50&limit=400", "_note": "THE delta: only basketball league in HALVES (verified format.regulation.periods=2, clock=1200s); OT periods 3+; player box score lacks +/- (13 cols vs NBA 14)" },
+    "basketball/womens-college-basketball": { "extends": "basketball", "espnLeagueId": "54", "name": "NCAA Women's Basketball", "abbr": "NCAAW", "region": "USA", "priority": "v2", "verifiedIds": true, "periodUnit": "quarter", "regulationPeriods": 4, "periodLengthMin": 10, "ranking": "curatedRank", "rankingsFeed": "polls", "queryParams": "?groups=50&limit=400", "_note": "VERIFIED quarters since 2015-16 (matches WNBA, NOT NCAAM) — the most error-prone assumption, confirmed against 2025 title game" },
     "basketball/nbl":                       { "extends": "basketball", "espnLeagueId": "55", "name": "National Basketball League", "abbr": "NBL", "region": "Australia/NZ", "priority": "v3", "verifiedIds": true, "periodUnit": "quarter", "regulationPeriods": 4, "periodLengthMin": 10, "_note": "Australian/NZ NBL (uid s:40~l:55; includes NZ Breakers). THE delta vs basketball family default 12-min: 10-min quarters (format.regulation.clock=600s) — same as WNBA/NCAAW. Quarters VERIFIED (format.regulation.slug='quarter', 4 linescores per final). 5-min OT clock VERIFIED (format.overtime.clock=300s); unlimited/one-linescore-per-OT inherited from family, NOT directly observed (no OT game in sampled finals). No curatedRank (ranking=none). UNPROBED: playoff/Grand Final shapes (season.type=3, possible best-of series) and standings ladder — inherit family defaults until a finals game is captured." },
 
     "baseball/mlb":              { "extends": "baseball", "espnLeagueId": "10", "name": "Major League Baseball", "abbr": "MLB", "region": "USA", "priority": "v1", "verifiedIds": true, "regulationPeriods": 9, "_note": "id is 10 NOT 1 (1 is the sport segment s:1); Manfred runner on 2B in extras not a field; doubleheaders = 2 events same date" },
@@ -342,7 +352,7 @@
     "racing/nascar-premier": { "extends": "racing", "espnLeagueId": "2021", "name": "NASCAR Cup Series", "abbr": "NASCAR", "region": "USA", "priority": "v3", "verifiedIds": true, "_note": "slug MUST be nascar-premier (racing/nascar 400s). Single competition (id==eventId). Richest vehicle + stats. GWC overtime = more laps, not an OT structure" },
     "racing/irl":            { "extends": "racing", "espnLeagueId": "2040", "name": "IndyCar", "abbr": "INDY", "region": "USA", "priority": "v3", "verifiedIds": true, "_note": "single competition; DNF = no order + sparse stats" },
 
-    "mma/ufc":      { "extends": "mma.standard", "espnLeagueId": "3321", "name": "UFC", "abbr": "UFC", "region": "International", "priority": "v3", "verifiedIds": true, "_note": "richest combat data; method via core API only" },
+    "mma/ufc":      { "extends": "mma.standard", "espnLeagueId": "3321", "name": "UFC", "abbr": "UFC", "region": "International", "priority": "v3", "verifiedIds": true, "rankingsFeed": "divisions", "_note": "richest combat data. VERIFIED 2026-07: site /summary 404s for EVERY MMA event (it proxies a broken core call) — the worker builds the rich tier from core per-bout status (structured result) + competitor linescores (judge scorecards) instead. Site /rankings works: 24 divisions + P4P, inline athletes with recordSummary/hasAccolade. Minor-promotion scoreboards (ksw/cage-warriors/lfa/pfl) all verified working — third-party docs claiming 400s are stale" },
     "mma/pfl":      { "extends": "mma.standard", "espnLeagueId": "3347", "name": "PFL", "abbr": "PFL", "region": "International", "priority": "v3", "verifiedIds": true },
     "mma/bellator": { "extends": "mma.standard", "espnLeagueId": "3323", "name": "Bellator MMA (Bellator Fighting Championship)", "abbr": "BELL", "region": "International", "priority": "v3", "verifiedIds": true },
 

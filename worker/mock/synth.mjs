@@ -359,6 +359,132 @@ export function synthSummary(fixture, eventId) {
 
 export const synthTeams = (fixture) => fixture.teams || { sports: [{ leagues: [{ teams: [] }] }] };
 export const synthStandings = (fixture) => fixture.standings || {};
+// Rankings ride a captured raw payload verbatim (polls/tours/divisions are
+// season-stable); leagues without a capture get an empty list.
+export const synthRankings = (fixture) => fixture.rankings || { rankings: [] };
+
+// ---- golf: tournament meta + hole-by-hole scorecard ---------------------------
+const baseId = (id) => String(id).split('-c')[0].split(':')[0]; // strip clone/comp suffixes
+
+/** extras.golfTournaments for a SYNTHESIZED golf scoreboard: captured core
+ * tournament JSON when the base event matches, else a fabricated one whose
+ * currentRound tracks the synthesized status so the cut line reads coherently. */
+export function synthGolfExtras(registry, key, fixture, sb) {
+  const profile = resolve(registry, key);
+  if (profile.espnSport !== 'golf' || profile.layout !== 'field') return undefined;
+  const golfTournaments = {};
+  for (const ev of sb.events || []) {
+    const id = String(ev.id);
+    const captured = fixture.tournaments?.[id] || fixture.tournaments?.[baseId(id)];
+    if (captured) { golfTournaments[id] = captured; continue; }
+    const rounds = profile.regulationPeriods || 4;
+    const period = ev.competitions?.[0]?.status?.period || rounds;
+    const noCut = hashStr(`${id}:cut`) % 3 === 0; // a third of events: signature/no-cut
+    golfTournaments[id] = {
+      displayName: ev.name, major: hashStr(`${id}:mj`) % 4 === 0,
+      scoringSystem: { name: 'Medal' }, numberOfRounds: rounds,
+      currentRound: Math.min(Math.max(period, 1), rounds),
+      cutRound: noCut ? 0 : 2,
+      ...(noCut ? {} : { cutScore: -(hashStr(`${id}:cs`) % 4 + 1), cutCount: 65 + (hashStr(`${id}:cc`) % 15) }),
+    };
+  }
+  return Object.keys(golfTournaments).length ? { golfTournaments } : undefined;
+}
+
+/** Raw playersummary-shaped payload: captured when present, else fabricated
+ * deterministically (rounds 1..N-2 complete, N-1 in progress, N tee-time-only)
+ * so EVERY leaderboard row opens a walkable scorecard offline. */
+export function synthGolfScorecard(registry, key, fixture, eventId, playerId, { now = Date.now() } = {}) {
+  const captured = fixture.scorecards?.[`${baseId(eventId)}/${playerId}`];
+  if (captured) return captured;
+  const profile = resolve(registry, key);
+  const rounds = profile.regulationPeriods || 4;
+  const PARS = [4, 4, 3, 5, 4, 4, 3, 4, 5, 4, 3, 4, 5, 4, 4, 3, 4, 5]; // a plausible par-72
+  const name = (fixture.events || [])
+    .flatMap((e) => e.competitions || [])
+    .flatMap((c) => c.competitors || [])
+    .find((c) => String(c.id) === String(playerId))?.athlete?.displayName || `Player ${playerId}`;
+  const mkHoles = (r, count) => Array.from({ length: count }, (_, i) => {
+    const par = PARS[i];
+    const d = [0, 0, 0, -1, 1][hashStr(`${eventId}:${playerId}:${r}:${i}`) % 5]; // mostly pars
+    const value = par + d;
+    const types = { '-1': 'BIRDIE', 0: 'PAR', 1: 'BOGEY' };
+    return { period: i + 1, value, displayValue: String(value), par, scoreType: { name: types[d], displayValue: d === 0 ? 'E' : d > 0 ? `+${d}` : String(d) } };
+  });
+  const mkRound = (r) => {
+    const played = r < rounds - 1 ? 18 : r === rounds - 1 ? 12 : 0; // last round pre-start
+    const holes = mkHoles(r, played);
+    const strokes = holes.reduce((s, h) => s + h.value, 0);
+    const toPar = holes.reduce((s, h) => s + (h.value - h.par), 0);
+    return {
+      period: r,
+      value: strokes,
+      displayValue: played ? (toPar === 0 ? 'E' : toPar > 0 ? `+${toPar}` : String(toPar)) : '-',
+      ...(played >= 18 ? { outScore: holes.slice(0, 9).reduce((s, h) => s + h.value, 0), inScore: holes.slice(9).reduce((s, h) => s + h.value, 0) } : {}),
+      teeTime: iso(now - (rounds - r) * DAY + 17 * HOUR),
+      startTee: hashStr(`${eventId}:${playerId}:${r}:tee`) % 2 ? 1 : 10,
+      groupNumber: 1 + (hashStr(`${eventId}:${playerId}:${r}:grp`) % 40),
+      currentPosition: 1 + (hashStr(`${eventId}:${playerId}:pos`) % 70),
+      linescores: holes,
+    };
+  };
+  return {
+    profile: { id: String(playerId), displayName: name },
+    rounds: Array.from({ length: rounds }, (_, i) => mkRound(i + 1)),
+    stats: [
+      { name: 'scoreToPar', displayName: 'Score To Par', displayValue: String(-(hashStr(`${eventId}:${playerId}:stp`) % 15)) },
+      { name: 'driveDistAvg', displayName: 'Driving Distance', displayValue: String(280 + (hashStr(`${eventId}:${playerId}:dd`) % 40)) },
+    ],
+  };
+}
+
+// ---- MMA: fabricated core-event + statuses + judge linescores -----------------
+// The real worker builds the MMA rich tier from core resources (site /summary
+// 404s for MMA). The mock fabricates the SAME core shapes from the synthesized
+// scoreboard event — results deterministic per bout — and feeds them to the real
+// normalizeMmaSummary, keeping the "same normalizers" guarantee.
+const MMA_RESULTS = [
+  { name: 'ko---punches', displayName: 'KO/TKO', shortDisplayName: 'KO' },
+  { name: 'submission---rear-naked-choke', displayName: 'Submission', shortDisplayName: 'Sub' },
+  { name: 'decision---unanimous', displayName: 'Decision - Unanimous', shortDisplayName: 'U Dec' },
+  { name: 'decision---split', displayName: 'Decision - Split', shortDisplayName: 'S Dec' },
+];
+export function synthMmaCore(registry, key, fixture, eventId, { now = Date.now() } = {}) {
+  const sb = synthScoreboard(registry, key, fixture, { now });
+  const ev = (sb.events || []).find((e) => String(e.id) === String(eventId)) || (sb.events || [])[0];
+  if (!ev) return { coreEvent: { id: String(eventId), competitions: [] }, statuses: {}, linescores: {} };
+  const coreEvent = { id: String(ev.id), date: ev.date, competitions: [] };
+  const statuses = {}, linescores = {};
+  (ev.competitions || []).forEach((c, i) => {
+    const boutId = String(c.id ?? `${ev.id}:${i}`);
+    const competitors = (c.competitors || []).map((x) => ({ id: String(x.id) }));
+    coreEvent.competitions.push({ id: boutId, competitors });
+    const ph = phaseOfRaw(c);
+    if (ph === 'live') { statuses[boutId] = { type: { state: 'in' }, period: c.status?.period || 2, displayClock: c.status?.displayClock || '2:30' }; return; }
+    if (ph !== 'final') { statuses[boutId] = { type: { state: 'pre' } }; return; }
+    const r = MMA_RESULTS[hashStr(`${boutId}:res`) % MMA_RESULTS.length];
+    const decision = /decision/.test(r.name);
+    statuses[boutId] = {
+      type: { state: 'post', completed: true },
+      result: r,
+      // a decision goes the distance — round 3 (fabricated cards are 3-rounders)
+      period: decision ? 3 : 1 + (hashStr(`${boutId}:rd`) % 3),
+      displayClock: decision ? '5:00' : `${1 + (hashStr(`${boutId}:min`) % 4)}:${String(hashStr(`${boutId}:sec`) % 60).padStart(2, '0')}`,
+    };
+    if (decision && competitors.length === 2) {
+      const winnerIdx = (c.competitors || []).findIndex((x) => x.winner === true);
+      competitors.forEach((comp, ci) => {
+        const wins = winnerIdx === -1 ? ci === 0 : ci === winnerIdx;
+        const totals = [0, 1, 2].map((j) => {
+          const split = /split/.test(r.name) && j === 2;
+          return (wins ? (split ? 28 : 29) : (split ? 29 : 28));
+        });
+        linescores[`${boutId}/${comp.id}`] = { items: [{ value: totals.reduce((s, v) => s + v, 0), linescores: totals.map((v, j) => ({ value: v, order: j + 1 })) }] };
+      });
+    }
+  });
+  return { coreEvent, statuses, linescores };
+}
 
 // ---- favorite-team card slate ------------------------------------------------
 const eventHasTeam = (ev, teamId) => (ev.competitions || ev.groupings?.flatMap((g) => g.competitions) || []).some((c) => (c.competitors || []).some((x) => String(x.id ?? x.team?.id) === String(teamId)));
@@ -401,4 +527,101 @@ export function synthTeamScoreboard(registry, key, fixture, teamId, { now = Date
     events.push(ev);
   });
   return { leagues: [synthLeague(fixture, profile, key, now)], events };
+}
+
+// ---- team detail: schedule + roster + stats + standing -----------------------
+// The rich team-page tier for the mock. schedule reuses the same phase machinery
+// (a longer past+future slate so "last 5 / next 5" has something to show);
+// roster/stats fall back to a deterministic fabrication when the fixture lacks a
+// capture (so F2 is walkable offline without re-running capture-fixtures).
+
+// Walk a raw ESPN standings tree for one team's group name + 1-based rank.
+function findStandingInRaw(standingsRaw, teamId) {
+  const id = String(teamId);
+  let result;
+  const walk = (n) => {
+    if (result || !n) return;
+    const entries = n.standings?.entries;
+    if (Array.isArray(entries)) {
+      const idx = entries.findIndex((e) => String((e.team || e.athlete)?.id) === id);
+      if (idx >= 0) { result = { group: n.name || n.displayName || '', rank: idx + 1 }; return; }
+    }
+    for (const c of n.children || []) walk(c);
+  };
+  walk(standingsRaw);
+  return result;
+}
+
+// A deterministic "Nth in <group>" — plucked from fixture standings when the team
+// is present, else fabricated so the F3 season line + team-page header always read.
+export function synthStandingSummary(registry, key, fixture, teamId) {
+  const profile = resolve(registry, key);
+  const found = findStandingInRaw(fixture.standings, teamId);
+  const leagueName = fixture.name || profile.name || key.split('/')[1] || '';
+  if (found) return `${ordinal(found.rank)} in ${found.group || leagueName}`;
+  return `${ordinal(1 + (hashStr(`${key}:${teamId}:std`) % 8))} in ${leagueName}`;
+}
+
+const FIRST = ['Alex', 'Sam', 'Jordan', 'Chris', 'Taylor', 'Jamie', 'Casey', 'Drew', 'Morgan', 'Riley', 'Quinn', 'Avery', 'Parker', 'Reese', 'Skyler', 'Cameron'];
+const LAST = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Lopez', 'Wilson', 'Clark', 'Lee', 'Walker', 'Hall', 'Young', 'King'];
+const POS_BY_SPORT = { basketball: ['G', 'G', 'F', 'F', 'C'], baseball: ['P', 'C', '1B', '2B', 'SS', '3B', 'LF', 'CF', 'RF'], football: ['QB', 'RB', 'WR', 'TE', 'OL', 'DL', 'LB', 'CB', 'S'], hockey: ['C', 'LW', 'RW', 'D', 'D', 'G'], soccer: ['GK', 'DF', 'MF', 'FW'] };
+
+function fabricateRoster(profile, key, teamId) {
+  const pos = POS_BY_SPORT[profile.espnSport] || ['—'];
+  const athletes = Array.from({ length: 14 }, (_, i) => {
+    const s = `${key}:${teamId}:ath:${i}`;
+    return {
+      id: `${teamId}-p${i}`,
+      displayName: `${FIRST[hashStr(s + ':f') % FIRST.length]} ${LAST[hashStr(s + ':l') % LAST.length]}`,
+      jersey: String(1 + (hashStr(s + ':j') % 98)),
+      position: { abbreviation: pos[i % pos.length] },
+    };
+  });
+  return { athletes };
+}
+
+function fabricateTeamStats(profile, key, teamId) {
+  const keys = (Array.isArray(profile.teamStatKeys) && profile.teamStatKeys.length)
+    ? profile.teamStatKeys
+    : ['gamesPlayed', 'avgPointsFor', 'avgPointsAgainst', 'winPercent'];
+  const stats = keys.map((name) => {
+    const v = (1 + (hashStr(`${key}:${teamId}:${name}`) % 500) / 10).toFixed(1);
+    return { name, displayName: name, shortDisplayName: name, abbreviation: name.slice(0, 3).toUpperCase(), value: Number(v), displayValue: String(v) };
+  });
+  return { results: { stats: { categories: [{ name: 'general', displayName: 'Season', stats }] } } };
+}
+
+/** Assemble the four raw inputs normalizeTeamDetail expects, keyed to one team.
+ *  schedule: ~9 events (past finals + a live + future scheduled); roster/stats:
+ *  captured when present, else deterministic fabrication; standingsRaw: the
+ *  fixture's standings verbatim (so the standing-pluck runs the real normalizer). */
+export function synthTeamDetailParts(registry, key, fixture, teamId, { now = Date.now() } = {}) {
+  const profile = resolve(registry, key);
+  const pool = (fixture.events && fixture.events.length) ? fixture.events : fabricateFromTeams(fixture, profile, 10);
+  const mine = pool.filter((ev) => eventHasTeam(ev, teamId));
+  const base = ensurePool(mine.length ? mine : pool, 9);
+  const roles = ['final', 'final', 'final', 'final', 'final', 'live', 'scheduled', 'scheduled', 'scheduled'];
+  const events = [];
+  let past = 0, fut = 0;
+  base.slice(0, roles.length).forEach((src, i) => {
+    const role = roles[i];
+    const ev = clone(src);
+    ensureTeamPresent(ev, teamId, fixture);
+    const eid = `${ev.id}-d${i}`;
+    const startMs = role === 'final' ? now - (++past) * 3 * DAY
+      : role === 'live' ? now - 40 * MIN
+        : now + (++fut) * 3 * DAY;
+    applyRole(ev, role, profile, startMs, eid);
+    if (!ev.competitions?.[0]) return;
+    ev.id = eid; ev.competitions[0].id = eid; ev.date = ev.competitions[0].date;
+    events.push(ev);
+  });
+  const teamRaw = findRawTeam(fixture, teamId) || { id: String(teamId) };
+  const team = { ...teamRaw, standingSummary: synthStandingSummary(registry, key, fixture, teamId) };
+  return {
+    schedule: { team, events },
+    roster: fixture.rosters?.[teamId] || fabricateRoster(profile, key, teamId),
+    stats: fixture.teamStats?.[teamId] || fabricateTeamStats(profile, key, teamId),
+    standingsRaw: fixture.standings || null,
+  };
 }
