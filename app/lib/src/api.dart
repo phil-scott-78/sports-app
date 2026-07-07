@@ -1,160 +1,224 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'config.dart';
+import 'data/espn_client.dart';
+import 'data/profiles.dart';
+import 'data/normalize.dart';
+import 'data/summary.dart' as sm;
+import 'data/standings.dart' as st;
+import 'data/rankings.dart' as rk;
+import 'data/scorecard.dart' as sc;
+import 'data/team.dart' as tm;
+import 'data/teamdetail.dart' as td;
+import 'data/overview.dart' as ov;
 import 'models.dart';
-import 'version.dart';
 
-class ApiException implements Exception {
-  final int status;
-  final String message;
-  ApiException(this.status, this.message);
-  @override
-  String toString() => status == 0 ? message : 'HTTP $status';
-}
+export 'data/espn_client.dart' show ApiException;
 
-/// Talks to the Cloudflare worker. The only place the app does networking.
+/// The app's data layer. Formerly a thin HTTP client to the Cloudflare worker;
+/// now it talks to ESPN directly (via [EspnClient]) and runs the SAME canonical
+/// normalizers the worker used to run — ported to Dart under lib/src/data/. The
+/// method surface is unchanged, so providers/UI didn't move.
 ///
-/// Parsing stays on the main isolate on purpose: payloads are small (a league
-/// scoreboard ≈45 KB / ~0.5 ms to parse, a summary ≈10 KB) so the worker has
-/// already done the heavy normalization. `compute()` here would cost more in
-/// isolate-spawn + result-copy than it saves. (The real main-thread cost was
-/// image decoding — see Crest.)
+/// Parsing + normalization stay on the main isolate on purpose: payloads are
+/// small (a league scoreboard ≈45 KB) and the normalizers are pure map work.
 class Api {
-  /// The contract major-version prefix. `/v1` is a contract NAME, not a build
-  /// number — it absorbs additive change (new fields/enums/sports/routes) forever
-  /// because the parser is tolerant. Centralized here so cutting over to a future
-  /// `/v2` (only ever on a breaking reshape) is a one-line change; every method
-  /// below passes a version-less path. See schema/SCHEMA.md §11.
-  static const String apiPrefix = '/v1';
-
+  /// Optional ESPN-origin override (Settings) — points at the offline mock. Empty
+  /// → ESPN direct. (Was the worker base URL; repurposed as the mock override.)
   final String baseUrl;
-  Api(this.baseUrl);
+  final EspnClient _c;
 
-  bool get configured => baseUrl.trim().isNotEmpty;
+  Api(this.baseUrl) : _c = EspnClient(baseUrl);
 
-  Uri _uri(String path, [Map<String, String>? q]) {
-    final base = baseUrl.trim().replaceAll(RegExp(r'/+$'), '');
-    return Uri.parse('$base$apiPrefix$path')
-        .replace(queryParameters: (q != null && q.isNotEmpty) ? q : null);
-  }
+  /// Direct-to-ESPN needs no configuration, so the app is always "configured".
+  bool get configured => true;
 
-  Future<dynamic> _get(String path, [Map<String, String>? q]) async {
-    if (!configured) throw ApiException(0, 'Set your worker URL in Settings.');
-    http.Response r;
-    try {
-      // Tell the worker which build is calling — pure telemetry (logged, never a
-      // cache-key dimension or a routing input). Lets us watch the real version
-      // spread in `wrangler tail` before raising the update gate.
-      r = await http.get(_uri(path, q), headers: {
-        'x-scores-client': '$kClientVersionCode $kClientVersionName',
-      }).timeout(AppConfig.httpTimeout);
-    } catch (e) {
-      throw ApiException(
-          0, 'Network error — check the worker URL and your connection.');
-    }
-    if (r.statusCode != 200) throw ApiException(r.statusCode, r.body);
-    // Decode inside the boundary: a 200 with a non-JSON body (a CDN/edge HTML
-    // error page, an empty/truncated payload) would otherwise throw a raw
-    // FormatException straight into the UI instead of a friendly message.
-    try {
-      return jsonDecode(r.body);
-    } catch (_) {
-      throw ApiException(0, 'Unexpected response from the server.');
-    }
-  }
+  Registry get _reg => Registry.instance;
 
-  /// Worker liveness + the advisory client-version gate (see [HealthInfo]).
-  /// Fetched once on launch to drive the update banner. A worker that omits the
-  /// `client` block (an old build, a fork, or the offline mock) yields a null
-  /// gate → no banner shown (fail-open).
-  Future<HealthInfo> health() async {
-    final j = await _get('/health');
-    return HealthInfo.fromJson(Map<String, dynamic>.from(j as Map));
-  }
+  // ---- health ----------------------------------------------------------------
+  /// No worker to ping and no server-driven version gate when going direct, so
+  /// this returns a healthy stub with a null client gate (→ no update banner).
+  Future<HealthInfo> health() async =>
+      HealthInfo(ok: true, leagues: _reg.leagues.length, client: null);
 
+  // ---- scores ----------------------------------------------------------------
   Future<ScoresResponse> scores(String league, {String? date}) async {
-    final j = await _get('/scores/$league', {if (date != null) 'date': date});
-    return ScoresResponse.fromJson(Map<String, dynamic>.from(j as Map));
+    final sb = await _c.scoreboard(league, date: date) as Map;
+    final extras = await _golfExtras(league, sb);
+    return ScoresResponse.fromJson(normalizeScoreboard(_reg, league, sb, extras));
   }
 
+  /// Golf meta (cut/major/rounds → meta.golf) rides the CORE tournament resource,
+  /// not the scoreboard — fetch it per event (≤3, best-effort). Mirrors the
+  /// worker's golfExtras().
+  Future<Map<String, dynamic>> _golfExtras(String league, Map sb) async {
+    final prof = resolve(_reg, league);
+    if (prof['espnSport'] != 'golf' || prof['layout'] != 'field') return const {};
+    final ids = (sb['events'] is List ? sb['events'] as List : const [])
+        .map((e) => (e as Map)['id'])
+        .where((id) => id != null)
+        .take(3)
+        .toList();
+    if (ids.isEmpty) return const {};
+    final tournaments = <String, dynamic>{};
+    await Future.wait(ids.map((id) async {
+      try {
+        final ev = await _c.coreEvent(league, id.toString());
+        final ref = (ev is Map) ? (ev['tournament'] is Map ? ev['tournament']['\$ref'] : null) : null;
+        if (ref != null) tournaments[id.toString()] = await _c.coreRef(ref.toString());
+      } catch (_) {/* meta optional */}
+    }));
+    return tournaments.isNotEmpty ? {'golfTournaments': tournaments} : const {};
+  }
+
+  // ---- summary ---------------------------------------------------------------
   Future<GameSummary> summary(String league, String eventId) async {
-    final j = await _get('/summary/$league/$eventId');
-    return GameSummary.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  Future<Standings> standings(String league, {int? season}) async {
-    final j = await _get(
-        '/standings/$league', {if (season != null) 'season': '$season'});
-    return Standings.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  /// Rankings feed: college Top-25 polls (AP/Coaches/CFP), ATP/WTA world
-  /// rankings, or UFC divisions — whatever the league's catalog `rankings` flag
-  /// says it has. Empty `polls` when none (offseason / plain pro league).
-  Future<RankingsResponse> rankings(String league) async {
-    final j = await _get('/rankings/$league');
-    return RankingsResponse.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  /// Golf hole-by-hole scorecard for one leaderboard row. [season] should be the
-  /// scores payload's season year (golf seasons are calendar-aligned, so the
-  /// worker's current-year fallback is safe when omitted).
-  Future<GolfScorecard> scorecard(
-      String league, String eventId, String playerId,
-      {int? season}) async {
-    final j = await _get('/scorecard/$league/$eventId/$playerId',
-        {if (season != null) 'season': '$season'});
-    return GolfScorecard.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  Future<List<CatalogSport>> catalog() async {
-    final j = await _get('/catalog') as List<dynamic>;
-    return j
-        .map((s) => CatalogSport.fromJson(Map<String, dynamic>.from(s as Map)))
-        .toList(growable: false);
-  }
-
-  /// Every team in a league — the favorites picker source.
-  Future<List<TeamRef>> teams(String league) async {
-    final j = Map<String, dynamic>.from(await _get('/teams/$league') as Map);
-    return (j['teams'] as List? ?? const [])
-        .map((t) => TeamRef.fromJson(Map<String, dynamic>.from(t as Map)))
-        .toList(growable: false);
-  }
-
-  /// One favorite team's card: live game if any, else last result + next game.
-  Future<TeamCard> teamCard(String league, String teamId) async {
-    final j = await _get('/team/$league/$teamId');
-    return TeamCard.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  /// One team's rich detail page: full-season schedule + roster + season stats +
-  /// standings group. Lazy (fetched when the team page opens).
-  Future<TeamDetail> teamDetail(String league, String teamId) async {
-    final j = await _get('/teamdetail/$league/$teamId');
-    return TeamDetail.fromJson(Map<String, dynamic>.from(j as Map));
-  }
-
-  /// Per-league season-pulse states, keyed by league key, for the Leagues list.
-  /// Selects WHICH leagues three ways (the tiered Leagues view):
-  /// - [priority]: a tier set, e.g. 'v1' or 'v1,v2' (the curated Default/Active tiers)
-  /// - [page]: slice of that set (the worker caps each request at ~48 leagues)
-  /// - [keys]: an explicit league-key set (pinned/followed leagues); overrides priority
-  /// Stable params → the worker shares one cached fan-out across all clients.
-  Future<Map<String, LeagueStateInfo>> overview(
-      {String? priority, int? page, List<String>? keys}) async {
-    final q = <String, String>{
-      if (priority != null) 'priority': priority,
-      if (page != null) 'page': '$page',
-      if (keys != null && keys.isNotEmpty) 'keys': keys.join(','),
-    };
-    final j = Map<String, dynamic>.from(await _get('/overview', q) as Map);
-    final out = <String, LeagueStateInfo>{};
-    for (final e in (j['leagues'] as List? ?? const [])) {
-      final info =
-          LeagueStateInfo.fromJson(Map<String, dynamic>.from(e as Map));
-      out[info.key] = info;
+    if (resolve(_reg, league)['espnSport'] == 'mma') {
+      return GameSummary.fromJson(await _mmaSummary(league, eventId));
     }
-    return out;
+    final raw = await _c.summary(league, eventId) as Map;
+    return GameSummary.fromJson(sm.normalizeSummary(_reg, league, raw));
+  }
+
+  /// MMA: ESPN's site /summary 404s for every event, so the rich tier is built
+  /// from the CORE event — per-bout status refs + judge linescore refs (decisions
+  /// only). Mirrors the worker's mmaSummary().
+  Future<Map<String, dynamic>> _mmaSummary(String league, String eventId) async {
+    final core = await _c.coreEvent(league, eventId) as Map;
+    final comps = core['competitions'] is List ? core['competitions'] as List : const [];
+    final statuses = <String, dynamic>{};
+    await Future.wait(comps.map((c) async {
+      final ref = (c as Map)['status'] is Map ? c['status']['\$ref'] : null;
+      if (c['id'] == null || ref == null) return;
+      try {
+        statuses[c['id'].toString()] = await _c.coreRef(ref.toString());
+      } catch (_) {/* bout unresolved */}
+    }));
+    final linescores = <String, dynamic>{};
+    final futs = <Future>[];
+    for (final c in comps) {
+      final st0 = statuses[(c as Map)['id'].toString()];
+      final resName = (st0 is Map && st0['result'] is Map)
+          ? '${st0['result']['name'] ?? ''}${st0['result']['displayName'] ?? ''}'
+          : '';
+      if (!RegExp('decision', caseSensitive: false).hasMatch(resName)) continue;
+      for (final comp in (c['competitors'] is List ? c['competitors'] as List : const [])) {
+        final ref = (comp as Map)['linescores'] is Map ? comp['linescores']['\$ref'] : null;
+        if (ref == null) continue;
+        futs.add(() async {
+          try {
+            linescores['${c['id']}/${comp['id']}'] = await _c.coreRef(ref.toString());
+          } catch (_) {/* judges optional */}
+        }());
+      }
+    }
+    await Future.wait(futs);
+    return sm.normalizeMmaSummary(core, statuses, linescores);
+  }
+
+  // ---- standings -------------------------------------------------------------
+  Future<Standings> standings(String league, {int? season}) async {
+    final raw = await _c.standings(league, season: season) as Map;
+    final prof = resolve(_reg, league);
+    final seasonYear = (raw['season'] is Map ? raw['season']['year'] : null) ?? season;
+    return Standings.fromJson({
+      'league': league,
+      'season': seasonYear,
+      'columns': prof['standingsColumns'],
+      'groups': st.normalizeStandings(raw),
+    });
+  }
+
+  // ---- rankings --------------------------------------------------------------
+  Future<RankingsResponse> rankings(String league) async {
+    final raw = await _c.rankings(league);
+    return RankingsResponse.fromJson({'league': league, ...rk.normalizeRankings(raw)});
+  }
+
+  // ---- scorecard -------------------------------------------------------------
+  Future<GolfScorecard> scorecard(String league, String eventId, String playerId, {int? season}) async {
+    final s = (season ?? DateTime.now().year).toString();
+    final raw = await _c.golfPlayerSummary(league, eventId, s, playerId);
+    return GolfScorecard.fromJson(sc.normalizeGolfScorecard(league, eventId, playerId, raw));
+  }
+
+  // ---- catalog (computed locally — no fetch) ---------------------------------
+  Future<List<CatalogSport>> catalog() async =>
+      buildCatalog(_reg).map((s) => CatalogSport.fromJson(s)).toList(growable: false);
+
+  // ---- teams -----------------------------------------------------------------
+  Future<List<TeamRef>> teams(String league) async {
+    final raw = await _c.teams(league);
+    return tm.normalizeTeams(_reg, league, raw)
+        .map((t) => TeamRef.fromJson(t))
+        .toList(growable: false);
+  }
+
+  // ---- team card -------------------------------------------------------------
+  Future<TeamCard> teamCard(String league, String teamId) async {
+    final schedule = await _c.teamSchedule(league, teamId);
+    var card = tm.normalizeTeamCard(_reg, league, teamId, schedule);
+    if (card['live'] == null) {
+      try {
+        final sb = await _c.scoreboard(league) as Map;
+        card = tm.applyScoreboardFallback(_reg, league, teamId, card, sb);
+      } catch (_) {/* scoreboard optional — keep schedule-only card */}
+    }
+    return TeamCard.fromJson(card);
+  }
+
+  // ---- team detail -----------------------------------------------------------
+  Future<TeamDetail> teamDetail(String league, String teamId) async {
+    final schedule = await _c.teamSchedule(league, teamId);
+    final rest = await Future.wait([
+      _c.teamRoster(league, teamId).then<dynamic>((v) => v).catchError((_) => null),
+      _c.teamStatistics(league, teamId).then<dynamic>((v) => v).catchError((_) => null),
+      _c.standings(league).then<dynamic>((v) => v).catchError((_) => null),
+    ]);
+    final data = td.normalizeTeamDetail(_reg, league, teamId, {
+      'schedule': schedule,
+      'roster': rest[0],
+      'stats': rest[1],
+      'standingsRaw': rest[2],
+    });
+    return TeamDetail.fromJson(data);
+  }
+
+  // ---- overview (season-pulse fan-out, capped concurrency) -------------------
+  static const _overviewCap = 48;
+
+  Future<Map<String, LeagueStateInfo>> overview({String? priority, int? page, List<String>? keys}) async {
+    List<String> selected;
+    if (keys != null && keys.isNotEmpty) {
+      selected = keys.toSet().where((k) => _reg.leagues.containsKey(k)).take(_overviewCap).toList();
+    } else {
+      final all = leagueKeys(_reg,
+          priority: priority?.split(',').map((s) => s.trim()).toList());
+      final p = (page ?? 0) < 0 ? 0 : (page ?? 0);
+      selected = all.skip(p * _overviewCap).take(_overviewCap).toList();
+    }
+    final now = DateTime.now();
+    final results = await _pool<String, MapEntry<String, LeagueStateInfo>>(selected, 8, (key) async {
+      try {
+        final sb = await _c.scoreboard(key, ttl: 60);
+        final s = ov.classifyLeague(sb, now);
+        return MapEntry(key, LeagueStateInfo.fromJson({'key': key, ...s}));
+      } catch (_) {
+        return MapEntry(key, LeagueStateInfo(key: key, state: 'unknown', detail: '', live: false));
+      }
+    });
+    return {for (final e in results) e.key: e.value};
+  }
+
+  /// Run [fn] over [items] with at most [n] in flight (order-preserving output).
+  Future<List<R>> _pool<T, R>(List<T> items, int n, Future<R> Function(T) fn) async {
+    final out = List<R?>.filled(items.length, null);
+    var i = 0;
+    Future<void> worker() async {
+      while (i < items.length) {
+        final idx = i++;
+        out[idx] = await fn(items[idx]);
+      }
+    }
+
+    await Future.wait(List.generate(n < items.length ? n : items.length, (_) => worker()));
+    return out.cast<R>();
   }
 }

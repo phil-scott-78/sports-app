@@ -1,14 +1,22 @@
 # Normalized sports schema
 
-> The canonical data model every screen and endpoint is built on. Designed from
-> **live ESPN responses verified June 2026** and hardened by an adversarial
-> verification pass (which caught ~30 hallucinated ids / wrong status names /
-> bad field paths — see `.research-digest.md` for the raw evidence).
+> The canonical data model every screen is built on. Designed from **live ESPN
+> responses verified June 2026** and hardened by an adversarial verification pass
+> (which caught ~30 hallucinated ids / wrong status names / bad field paths — see
+> `.research-digest.md` for the raw evidence).
 >
 > Three files, one contract:
-> - **`canonical.ts`** — the wire types the worker emits and the client consumes.
+> - **`canonical.ts`** — the canonical types the normalizers emit and the UI consumes.
 > - **`league-profiles.json`** — the data-driven league registry (inheritance).
 > - **`SCHEMA.md`** (this) — how they fit, the mappings, the quirks, examples.
+>
+> **Note on producer:** this doc predates `drop-the-worker.md` and still says
+> "the worker" and names `/v1/…` routes + `worker/src/*.js`. The **canonical shape
+> is unchanged** — only the producer moved: the normalizers now run **on-device**
+> in `app/lib/src/data/` (faithful Dart ports of those same `worker/src/*.js`,
+> which survive as the golden-parity oracle). Read "the worker emits X on `/v1/Y`"
+> as "the app builds X via `api.dart`'s `Y(...)`". ESPN→canonical mappings + quirks
+> below are all still accurate.
 
 ---
 

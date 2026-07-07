@@ -1,0 +1,199 @@
+[
+  {
+    "sport": "soccer",
+    "leagues": [
+      {
+        "key": "soccer/eng.1",
+        "league": "eng.1",
+        "name": "English Premier League",
+        "leagueId": "700",
+        "abbr": "ENG.1",
+        "region": "England",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.1",
+        "league": "esp.1",
+        "name": "Spanish LALIGA",
+        "leagueId": "740",
+        "abbr": "ESP.1",
+        "region": "Spain",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ger.1",
+        "league": "ger.1",
+        "name": "German Bundesliga",
+        "leagueId": "720",
+        "abbr": "GER.1",
+        "region": "Germany",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ita.1",
+        "league": "ita.1",
+        "name": "Italian Serie A",
+        "leagueId": "730",
+        "abbr": "ITA.1",
+        "region": "Italy",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.1",
+        "league": "fra.1",
+        "name": "French Ligue 1",
+        "leagueId": "710",
+        "abbr": "FRA.1",
+        "region": "France",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.champions",
+        "league": "uefa.champions",
+        "name": "UEFA Champions League",
+        "leagueId": "775",
+        "abbr": "UCL",
+        "region": "Europe",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.world",
+        "league": "fifa.world",
+        "name": "FIFA World Cup",
+        "leagueId": "606",
+        "abbr": "FIFA",
+        "region": "International",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "football",
+    "leagues": [
+      {
+        "key": "football/nfl",
+        "league": "nfl",
+        "name": "NFL",
+        "leagueId": "28",
+        "abbr": "NFL",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "football/college-football",
+        "league": "college-football",
+        "name": "NCAA Football (FBS)",
+        "leagueId": "23",
+        "abbr": "NCAAF",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team",
+        "rankings": "polls"
+      }
+    ]
+  },
+  {
+    "sport": "basketball",
+    "leagues": [
+      {
+        "key": "basketball/nba",
+        "league": "nba",
+        "name": "NBA",
+        "leagueId": "46",
+        "abbr": "NBA",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/wnba",
+        "league": "wnba",
+        "name": "WNBA",
+        "leagueId": "59",
+        "abbr": "WNBA",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/mens-college-basketball",
+        "league": "mens-college-basketball",
+        "name": "NCAA Men's Basketball",
+        "leagueId": "41",
+        "abbr": "NCAAM",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team",
+        "rankings": "polls"
+      }
+    ]
+  },
+  {
+    "sport": "baseball",
+    "leagues": [
+      {
+        "key": "baseball/mlb",
+        "league": "mlb",
+        "name": "Major League Baseball",
+        "leagueId": "10",
+        "abbr": "MLB",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "hockey",
+    "leagues": [
+      {
+        "key": "hockey/nhl",
+        "league": "nhl",
+        "name": "NHL",
+        "leagueId": "90",
+        "abbr": "NHL",
+        "region": "USA/Canada",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "cricket",
+    "leagues": [
+      {
+        "key": "cricket/8039",
+        "league": "8039",
+        "name": "ICC Cricket World Cup",
+        "leagueId": "8039",
+        "abbr": "CWC",
+        "region": "International",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  }
+]

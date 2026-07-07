@@ -1,17 +1,13 @@
 {
-  "name": "sports-scores-worker",
-  "version": "0.1.0",
+  "name": "sports-scores-tooling",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "main": "src/index.js",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "mock": "node scripts/mock-server.mjs",
+    "mock": "node scripts/mock-espn-server.mjs",
     "capture": "node scripts/capture-fixtures.mjs",
-    "test": "node test/mock.test.mjs && node test/ttl.test.mjs && node test/units.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs && node test/teamdetail.test.mjs"
-  },
-  "devDependencies": {
-    "wrangler": "^4.0.0"
+    "capture-extra": "node scripts/capture-extra.mjs",
+    "goldens": "node scripts/gen-goldens.mjs",
+    "test": "node test/mock.test.mjs && node test/units.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs && node test/teamdetail.test.mjs"
   }
 }

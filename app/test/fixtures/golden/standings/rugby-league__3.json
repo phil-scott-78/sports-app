@@ -1,0 +1,2441 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "rugby-league/3",
+    "raw": {
+      "name": "Rugby League",
+      "abbreviation": "NRL",
+      "children": [
+        {
+          "name": "Round-Robin",
+          "abbreviation": "RR",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "289199",
+                  "displayName": "Panthers",
+                  "name": "Panthers",
+                  "abbreviation": "PEN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289199.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "12.6",
+                    "value": 12.615385
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "33.6",
+                    "value": 33.615383
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+21.0",
+                    "value": 21
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+273",
+                    "value": 273
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "28",
+                    "value": 28
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "164",
+                    "value": 164
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "437",
+                    "value": 437
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289201",
+                  "displayName": "Warriors",
+                  "name": "Warriors",
+                  "abbreviation": "NEW",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289201.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "17.2",
+                    "value": 17.23077
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "28.9",
+                    "value": 28.923077
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+11.7",
+                    "value": 11.7
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+152",
+                    "value": 152
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "224",
+                    "value": 224
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "376",
+                    "value": 376
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289196",
+                  "displayName": "Sea Eagles",
+                  "name": "Sea Eagles",
+                  "abbreviation": "MAN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289196.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "19.2",
+                    "value": 19.23077
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "28.2",
+                    "value": 28.23077
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+9.0",
+                    "value": 9
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+117",
+                    "value": 117
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "250",
+                    "value": 250
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "367",
+                    "value": 367
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289346",
+                  "displayName": "Dolphins",
+                  "name": "Dolphins",
+                  "abbreviation": "DOL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289346.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "20.2",
+                    "value": 20.23077
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "29.1",
+                    "value": 29.076923
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+8.9",
+                    "value": 8.900000000000002
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+115",
+                    "value": 115
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "263",
+                    "value": 263
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "378",
+                    "value": 378
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289203",
+                  "displayName": "Sharks",
+                  "name": "Sharks",
+                  "abbreviation": "CRO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289203.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "23.2",
+                    "value": 23.23077
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "28.2",
+                    "value": 28.153847
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+5.0",
+                    "value": 5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+64",
+                    "value": 64
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "302",
+                    "value": 302
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "366",
+                    "value": 366
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289204",
+                  "displayName": "Roosters",
+                  "name": "Roosters",
+                  "abbreviation": "SYD",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289204.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "22.9",
+                    "value": 22.923077
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "25.6",
+                    "value": 25.615385
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+2.7",
+                    "value": 2.700000000000003
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+35",
+                    "value": 35
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "298",
+                    "value": 298
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "333",
+                    "value": 333
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289207",
+                  "displayName": "Knights",
+                  "name": "Knights",
+                  "abbreviation": "NEW",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289207.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "26.0",
+                    "value": 26
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "28.5",
+                    "value": 28.461538
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+2.5",
+                    "value": 2.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+32",
+                    "value": 32
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "338",
+                    "value": 338
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "370",
+                    "value": 370
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289205",
+                  "displayName": "Rabbitohs",
+                  "name": "Rabbitohs",
+                  "abbreviation": "SOU",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289205.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "23.1",
+                    "value": 23.076923
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "29.7",
+                    "value": 29.692308
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+6.6",
+                    "value": 6.599999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "+86",
+                    "value": 86
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "300",
+                    "value": 300
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "386",
+                    "value": 386
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289202",
+                  "displayName": "Cowboys",
+                  "name": "Cowboys",
+                  "abbreviation": "NOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289202.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "25.4",
+                    "value": 25.428572
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "24.5",
+                    "value": 24.5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.9",
+                    "value": -0.8999999999999986
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-13",
+                    "value": -13
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "356",
+                    "value": 356
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "343",
+                    "value": 343
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289200",
+                  "displayName": "Wests Tigers",
+                  "name": "Wests Tigers",
+                  "abbreviation": "WES",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289200.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "29.3",
+                    "value": 29.307692
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "23.9",
+                    "value": 23.923077
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-5.4",
+                    "value": -5.400000000000002
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-70",
+                    "value": -70
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "381",
+                    "value": 381
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "311",
+                    "value": 311
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289208",
+                  "displayName": "Storm",
+                  "name": "Storm",
+                  "abbreviation": "MEL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289208.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "24.9",
+                    "value": 24.857143
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "24.7",
+                    "value": 24.714285
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.2",
+                    "value": -0.1999999999999993
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "348",
+                    "value": 348
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "346",
+                    "value": 346
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289197",
+                  "displayName": "Bulldogs",
+                  "name": "Bulldogs",
+                  "abbreviation": "CAN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289197.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "25.4",
+                    "value": 25.384615
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "17.9",
+                    "value": 17.923077
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-7.5",
+                    "value": -7.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-97",
+                    "value": -97
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "330",
+                    "value": 330
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "233",
+                    "value": 233
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289198",
+                  "displayName": "Raiders",
+                  "name": "Raiders",
+                  "abbreviation": "CAN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289198.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "25.9",
+                    "value": 25.857143
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "18.6",
+                    "value": 18.642857
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-7.3",
+                    "value": -7.299999999999997
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-101",
+                    "value": -101
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "362",
+                    "value": 362
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "261",
+                    "value": 261
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289195",
+                  "displayName": "Broncos",
+                  "name": "Broncos",
+                  "abbreviation": "BRI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289195.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "27.8",
+                    "value": 27.785715
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "20.1",
+                    "value": 20.071428
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-7.7",
+                    "value": -7.699999999999999
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-108",
+                    "value": -108
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "389",
+                    "value": 389
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "281",
+                    "value": 281
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289194",
+                  "displayName": "Eels",
+                  "name": "Eels",
+                  "abbreviation": "PAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289194.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "30.9",
+                    "value": 30.928572
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "20.3",
+                    "value": 20.285715
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-10.6",
+                    "value": -10.599999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-149",
+                    "value": -149
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "433",
+                    "value": 433
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "284",
+                    "value": 284
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289206",
+                  "displayName": "Titans",
+                  "name": "Titans",
+                  "abbreviation": "GOL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289206.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "26.1",
+                    "value": 26.076923
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "19.1",
+                    "value": 19.076923
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-7.0",
+                    "value": -7
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-91",
+                    "value": -91
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "339",
+                    "value": 339
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "248",
+                    "value": 248
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "289209",
+                  "displayName": "Dragons",
+                  "name": "Dragons",
+                  "abbreviation": "ST.",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289209.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "32.8",
+                    "value": 32.846153
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "14.2",
+                    "value": 14.153846
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-18.6",
+                    "value": -18.599999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesLost",
+                    "type": "gameslost",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsDifference",
+                    "type": "pointsdifference",
+                    "displayValue": "-243",
+                    "value": -243
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "427",
+                    "value": 427
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "184",
+                    "value": 184
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "Round-Robin",
+      "rows": [
+        {
+          "team": {
+            "id": "289199",
+            "name": "Panthers",
+            "abbr": "PEN",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289199.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289199.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "12.6",
+            "avgPointsFor": "33.6",
+            "differential": "+21.0",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "1",
+            "playoffSeed": "1",
+            "pointsDifference": "+273",
+            "points": "28",
+            "pointsAgainst": "164",
+            "pointsFor": "437",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289201",
+            "name": "Warriors",
+            "abbr": "NEW",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289201.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289201.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "17.2",
+            "avgPointsFor": "28.9",
+            "differential": "+11.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "4",
+            "playoffSeed": "2",
+            "pointsDifference": "+152",
+            "points": "22",
+            "pointsAgainst": "224",
+            "pointsFor": "376",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289196",
+            "name": "Sea Eagles",
+            "abbr": "MAN",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289196.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289196.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "19.2",
+            "avgPointsFor": "28.2",
+            "differential": "+9.0",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "5",
+            "playoffSeed": "3",
+            "pointsDifference": "+117",
+            "points": "20",
+            "pointsAgainst": "250",
+            "pointsFor": "367",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289346",
+            "name": "Dolphins",
+            "abbr": "DOL",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289346.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289346.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "20.2",
+            "avgPointsFor": "29.1",
+            "differential": "+8.9",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "5",
+            "playoffSeed": "4",
+            "pointsDifference": "+115",
+            "points": "20",
+            "pointsAgainst": "263",
+            "pointsFor": "378",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289203",
+            "name": "Sharks",
+            "abbr": "CRO",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289203.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289203.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "23.2",
+            "avgPointsFor": "28.2",
+            "differential": "+5.0",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "5",
+            "playoffSeed": "5",
+            "pointsDifference": "+64",
+            "points": "20",
+            "pointsAgainst": "302",
+            "pointsFor": "366",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289204",
+            "name": "Roosters",
+            "abbr": "SYD",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289204.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289204.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "22.9",
+            "avgPointsFor": "25.6",
+            "differential": "+2.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "5",
+            "playoffSeed": "6",
+            "pointsDifference": "+35",
+            "points": "20",
+            "pointsAgainst": "298",
+            "pointsFor": "333",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289207",
+            "name": "Knights",
+            "abbr": "NEW",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289207.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289207.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "26.0",
+            "avgPointsFor": "28.5",
+            "differential": "+2.5",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "5",
+            "playoffSeed": "7",
+            "pointsDifference": "+32",
+            "points": "20",
+            "pointsAgainst": "338",
+            "pointsFor": "370",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289205",
+            "name": "Rabbitohs",
+            "abbr": "SOU",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289205.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289205.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "23.1",
+            "avgPointsFor": "29.7",
+            "differential": "+6.6",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "6",
+            "playoffSeed": "8",
+            "pointsDifference": "+86",
+            "points": "18",
+            "pointsAgainst": "300",
+            "pointsFor": "386",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289202",
+            "name": "Cowboys",
+            "abbr": "NOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289202.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289202.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "25.4",
+            "avgPointsFor": "24.5",
+            "differential": "-0.9",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "14",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "6",
+            "playoffSeed": "9",
+            "pointsDifference": "-13",
+            "points": "18",
+            "pointsAgainst": "356",
+            "pointsFor": "343",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289200",
+            "name": "Wests Tigers",
+            "abbr": "WES",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289200.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289200.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "29.3",
+            "avgPointsFor": "23.9",
+            "differential": "-5.4",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "6",
+            "playoffSeed": "10",
+            "pointsDifference": "-70",
+            "points": "18",
+            "pointsAgainst": "381",
+            "pointsFor": "311",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289208",
+            "name": "Storm",
+            "abbr": "MEL",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289208.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289208.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "24.9",
+            "avgPointsFor": "24.7",
+            "differential": "-0.2",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "14",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "8",
+            "playoffSeed": "11",
+            "pointsDifference": "-2",
+            "points": "14",
+            "pointsAgainst": "348",
+            "pointsFor": "346",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289197",
+            "name": "Bulldogs",
+            "abbr": "CAN",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289197.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289197.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "25.4",
+            "avgPointsFor": "17.9",
+            "differential": "-7.5",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "8",
+            "playoffSeed": "12",
+            "pointsDifference": "-97",
+            "points": "14",
+            "pointsAgainst": "330",
+            "pointsFor": "233",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289198",
+            "name": "Raiders",
+            "abbr": "CAN",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289198.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289198.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "25.9",
+            "avgPointsFor": "18.6",
+            "differential": "-7.3",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "14",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "9",
+            "playoffSeed": "13",
+            "pointsDifference": "-101",
+            "points": "12",
+            "pointsAgainst": "362",
+            "pointsFor": "261",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289195",
+            "name": "Broncos",
+            "abbr": "BRI",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289195.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289195.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "27.8",
+            "avgPointsFor": "20.1",
+            "differential": "-7.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "14",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "9",
+            "playoffSeed": "14",
+            "pointsDifference": "-108",
+            "points": "12",
+            "pointsAgainst": "389",
+            "pointsFor": "281",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289194",
+            "name": "Eels",
+            "abbr": "PAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289194.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289194.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "30.9",
+            "avgPointsFor": "20.3",
+            "differential": "-10.6",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "14",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "9",
+            "playoffSeed": "15",
+            "pointsDifference": "-149",
+            "points": "12",
+            "pointsAgainst": "433",
+            "pointsFor": "284",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289206",
+            "name": "Titans",
+            "abbr": "GOL",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289206.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289206.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "26.1",
+            "avgPointsFor": "19.1",
+            "differential": "-7.0",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "10",
+            "playoffSeed": "16",
+            "pointsDifference": "-91",
+            "points": "10",
+            "pointsAgainst": "339",
+            "pointsFor": "248",
+            "streak": "-"
+          }
+        },
+        {
+          "team": {
+            "id": "289209",
+            "name": "Dragons",
+            "abbr": "ST.",
+            "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/289209.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/289209.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "32.8",
+            "avgPointsFor": "14.2",
+            "differential": "-18.6",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "gamesPlayed": "13",
+            "leagueWinPercent": "0.000",
+            "gamesLost": "12",
+            "playoffSeed": "17",
+            "pointsDifference": "-243",
+            "points": "6",
+            "pointsAgainst": "427",
+            "pointsFor": "184",
+            "streak": "-"
+          }
+        }
+      ]
+    }
+  ]
+}

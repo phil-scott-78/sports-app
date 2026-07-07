@@ -1,0 +1,1584 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "hockey/womens-college-hockey",
+    "raw": {
+      "name": "NCAA Women's Hockey",
+      "abbreviation": "CWHOC",
+      "standings": {
+        "entries": [
+          {
+            "team": {
+              "id": "172",
+              "displayName": "Cornell Big Red",
+              "name": "Big Red",
+              "abbreviation": "COR",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/172.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "33",
+                "value": 33
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "5",
+                "value": 5
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".857",
+                "value": 0.85714287
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "104",
+              "displayName": "Boston University Terriers",
+              "name": "Terriers",
+              "abbreviation": "BU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "37",
+                "value": 37
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "11",
+                "value": 11
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "2",
+                "value": 2
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".686",
+                "value": 0.6857143
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "134",
+              "displayName": "Minnesota Duluth Bulldogs",
+              "name": "Bulldogs",
+              "abbreviation": "UMD",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/134.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "37",
+                "value": 37
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "14",
+                "value": 14
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "2",
+                "value": 2
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".600",
+                "value": 0.6
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "194",
+              "displayName": "Ohio State Buckeyes",
+              "name": "Buckeyes",
+              "abbreviation": "OSU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "37",
+                "value": 37
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "7",
+                "value": 7
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "3",
+                "value": 3
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".794",
+                "value": 0.7941176
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "213",
+              "displayName": "Penn State Nittany Lions",
+              "name": "Nittany Lions",
+              "abbreviation": "PSU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "37",
+                "value": 37
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "5",
+                "value": 5
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "1",
+                "value": 1
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".861",
+                "value": 0.8611111
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "2779",
+              "displayName": "St. Lawrence Saints",
+              "name": "Saints",
+              "abbreviation": "USL",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2779.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "37",
+                "value": 37
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "11",
+                "value": 11
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "5",
+                "value": 5
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".656",
+                "value": 0.65625
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "275",
+              "displayName": "Wisconsin Badgers",
+              "name": "Badgers",
+              "abbreviation": "WIS",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "38",
+                "value": 38
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "1",
+                "value": 1
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "2",
+                "value": 2
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".972",
+                "value": 0.9722222
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "2137",
+              "displayName": "Clarkson Golden Knights",
+              "name": "Golden Knights",
+              "abbreviation": "CLAR",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2137.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "38",
+                "value": 38
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "12",
+                "value": 12
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "2",
+                "value": 2
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".667",
+                "value": 0.6666667
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "2142",
+              "displayName": "Colgate Raiders",
+              "name": "Raiders",
+              "abbreviation": "COLG",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2142.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "38",
+                "value": 38
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "8",
+                "value": 8
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".789",
+                "value": 0.7894737
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "2529",
+              "displayName": "Sacred Heart Pioneers",
+              "name": "Pioneers",
+              "abbreviation": "SHU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/2529.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "38",
+                "value": 38
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "14",
+                "value": 14
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "3",
+                "value": 3
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".600",
+                "value": 0.6
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "135",
+              "displayName": "Minnesota Golden Gophers",
+              "name": "Golden Gophers",
+              "abbreviation": "MINN",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "OTLosses",
+                "type": "otlosses",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "OTWins",
+                "type": "otwins",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsAgainst",
+                "type": "avgpointsagainst",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "avgPointsFor",
+                "type": "avgpointsfor",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "differential",
+                "type": "differential",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "gamesBehind",
+                "type": "gamesbehind",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "gamesPlayed",
+                "type": "gamesplayed",
+                "displayValue": "40",
+                "value": 40
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "11",
+                "value": 11
+              },
+              {
+                "name": "playoffSeed",
+                "type": "playoffseed",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "points",
+                "type": "points",
+                "displayValue": "0.0",
+                "value": 0
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "0",
+                "value": 0
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "-",
+                "value": 0
+              },
+              {
+                "name": "ties",
+                "type": "ties",
+                "displayValue": "1",
+                "value": 1
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".718",
+                "value": 0.71794873
+              }
+            ]
+          }
+        ]
+      },
+      "children": []
+    }
+  },
+  "output": [
+    {
+      "name": "NCAA Women's Hockey",
+      "rows": [
+        {
+          "team": {
+            "id": "172",
+            "name": "Cornell Big Red",
+            "abbr": "COR",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/172.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/172.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "33",
+            "losses": "4",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "5",
+            "winPercent": ".857"
+          }
+        },
+        {
+          "team": {
+            "id": "104",
+            "name": "Boston University Terriers",
+            "abbr": "BU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/104.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/104.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "37",
+            "losses": "11",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "2",
+            "winPercent": ".686"
+          }
+        },
+        {
+          "team": {
+            "id": "134",
+            "name": "Minnesota Duluth Bulldogs",
+            "abbr": "UMD",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/134.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/134.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "37",
+            "losses": "14",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "2",
+            "winPercent": ".600"
+          }
+        },
+        {
+          "team": {
+            "id": "194",
+            "name": "Ohio State Buckeyes",
+            "abbr": "OSU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "37",
+            "losses": "7",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "3",
+            "winPercent": ".794"
+          }
+        },
+        {
+          "team": {
+            "id": "213",
+            "name": "Penn State Nittany Lions",
+            "abbr": "PSU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/213.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "37",
+            "losses": "5",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "1",
+            "winPercent": ".861"
+          }
+        },
+        {
+          "team": {
+            "id": "2779",
+            "name": "St. Lawrence Saints",
+            "abbr": "USL",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2779.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2779.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "37",
+            "losses": "11",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "5",
+            "winPercent": ".656"
+          }
+        },
+        {
+          "team": {
+            "id": "275",
+            "name": "Wisconsin Badgers",
+            "abbr": "WIS",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "38",
+            "losses": "1",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "2",
+            "winPercent": ".972"
+          }
+        },
+        {
+          "team": {
+            "id": "2137",
+            "name": "Clarkson Golden Knights",
+            "abbr": "CLAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2137.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2137.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "38",
+            "losses": "12",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "2",
+            "winPercent": ".667"
+          }
+        },
+        {
+          "team": {
+            "id": "2142",
+            "name": "Colgate Raiders",
+            "abbr": "COLG",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2142.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2142.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "38",
+            "losses": "8",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "0",
+            "winPercent": ".789"
+          }
+        },
+        {
+          "team": {
+            "id": "2529",
+            "name": "Sacred Heart Pioneers",
+            "abbr": "SHU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2529.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/2529.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "38",
+            "losses": "14",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "3",
+            "winPercent": ".600"
+          }
+        },
+        {
+          "team": {
+            "id": "135",
+            "name": "Minnesota Golden Gophers",
+            "abbr": "MINN",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/135.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "40",
+            "losses": "11",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "ties": "1",
+            "winPercent": ".718"
+          }
+        }
+      ]
+    }
+  ]
+}

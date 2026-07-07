@@ -2,11 +2,11 @@
 /// (persisted), so this only holds defaults. Mirrors v1's config so both apps
 /// speak to the same worker with the same cadences.
 class AppConfig {
-  /// Default worker URL — used on a fresh install so the app works out of the
-  /// box. A previously-saved URL always wins. Overridable per-run for dev
-  /// against the offline mock: `flutter run --dart-define=WORKER_URL=http://localhost:8787`.
+  /// ESPN-origin override — EMPTY by default, meaning the app talks to ESPN
+  /// directly (no worker). Set it (in Settings, or via `--dart-define=WORKER_URL=`)
+  /// only to point at the offline mock backend. A previously-saved value wins.
   static const String defaultBaseUrl = String.fromEnvironment('WORKER_URL',
-      defaultValue: 'https://api.scores.philco.dev');
+      defaultValue: '');
 
   /// Leagues followed on first run (until the user customizes in Following).
   static const List<String> defaultFollowed = [

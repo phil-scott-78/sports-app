@@ -1,0 +1,1140 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "soccer/fifa.wwc",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "2750",
+                    "displayName": "Argentina",
+                    "name": "Argentina",
+                    "shortDisplayName": "Argentina",
+                    "abbreviation": "ARG",
+                    "color": "74acdf",
+                    "alternateColor": "173e69",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/arg.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2751",
+                    "displayName": "Australia",
+                    "name": "Australia",
+                    "shortDisplayName": "Australia",
+                    "abbreviation": "AUS",
+                    "color": "2a2d7c",
+                    "alternateColor": "ed2f31",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/aus.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2752",
+                    "displayName": "Brazil",
+                    "name": "Brazil",
+                    "shortDisplayName": "Brazil",
+                    "abbreviation": "BRA",
+                    "color": "fee000",
+                    "alternateColor": "009c37",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/bra.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2753",
+                    "displayName": "Canada",
+                    "name": "Canada",
+                    "shortDisplayName": "Canada ",
+                    "abbreviation": "CAN",
+                    "color": "ed2224",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/can.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2754",
+                    "displayName": "China",
+                    "name": "China",
+                    "shortDisplayName": "China",
+                    "abbreviation": "CHN",
+                    "color": "dd342c",
+                    "alternateColor": "ffe533",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/chn.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/chn.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "11337",
+                    "displayName": "Colombia",
+                    "name": "Colombia",
+                    "shortDisplayName": "Colombia",
+                    "abbreviation": "COL",
+                    "color": "fbd632",
+                    "alternateColor": "21418c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/col.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2894",
+                    "displayName": "Costa Rica",
+                    "name": "Costa Rica",
+                    "shortDisplayName": "Costa Rica",
+                    "abbreviation": "CRC",
+                    "color": "ce1126",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/crc.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2896",
+                    "displayName": "Denmark",
+                    "name": "Denmark",
+                    "shortDisplayName": "Denmark",
+                    "abbreviation": "DEN",
+                    "color": "d02a3e",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/den.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "5159",
+                    "displayName": "England",
+                    "name": "England",
+                    "shortDisplayName": "England",
+                    "abbreviation": "ENG",
+                    "color": "ce1124",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/eng.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2755",
+                    "displayName": "France",
+                    "name": "France",
+                    "shortDisplayName": "France",
+                    "abbreviation": "FRA",
+                    "color": "002f79",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/fra.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2756",
+                    "displayName": "Germany",
+                    "name": "Germany",
+                    "shortDisplayName": "Germany",
+                    "abbreviation": "GER",
+                    "color": "000000",
+                    "alternateColor": "db2c32",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ger.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2891",
+                    "displayName": "Haiti",
+                    "name": "Haiti",
+                    "shortDisplayName": "Haiti",
+                    "abbreviation": "HAI",
+                    "color": "0033a0",
+                    "alternateColor": "EF0000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/hai.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2792",
+                    "displayName": "Italy",
+                    "name": "Italy",
+                    "shortDisplayName": "Italy",
+                    "abbreviation": "ITA",
+                    "color": "24923c",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ita.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2893",
+                    "displayName": "Jamaica",
+                    "name": "Jamaica",
+                    "shortDisplayName": "Jamaica",
+                    "abbreviation": "JAM",
+                    "color": "348b42",
+                    "alternateColor": "f9e032",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/jam.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/jam.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2758",
+                    "displayName": "Japan",
+                    "name": "Japan",
+                    "shortDisplayName": "Japan",
+                    "abbreviation": "JPN",
+                    "color": "ed1c24",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/jpn.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "18221",
+                    "displayName": "Morocco",
+                    "name": "Morocco",
+                    "shortDisplayName": "Morocco",
+                    "abbreviation": "MAR",
+                    "color": "df2027",
+                    "alternateColor": "009060",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/mor.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/mor.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "7151",
+                    "displayName": "Netherlands",
+                    "name": "Netherlands",
+                    "shortDisplayName": "Netherlands",
+                    "abbreviation": "NED",
+                    "color": "ec2f00",
+                    "alternateColor": "003da5",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ned.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "4153",
+                    "displayName": "New Zealand",
+                    "name": "New Zealand",
+                    "shortDisplayName": "New Zealand",
+                    "abbreviation": "NZL",
+                    "color": "273476",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nzl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2761",
+                    "displayName": "Nigeria",
+                    "name": "Nigeria",
+                    "shortDisplayName": "Nigeria",
+                    "abbreviation": "NGA",
+                    "color": "008751",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nga.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2762",
+                    "displayName": "Norway",
+                    "name": "Norway",
+                    "shortDisplayName": "Norway",
+                    "abbreviation": "NOR",
+                    "color": "ef2b2d",
+                    "alternateColor": "002868",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nor.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2895",
+                    "displayName": "Panama",
+                    "name": "Panama",
+                    "shortDisplayName": "Panama",
+                    "abbreviation": "PAN",
+                    "color": "d60a14",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/pan.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/pan.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "21546",
+                    "displayName": "Philippines",
+                    "name": "Philippines",
+                    "shortDisplayName": "Philippines",
+                    "abbreviation": "PHI",
+                    "color": "1f449b",
+                    "alternateColor": "ce2931",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/phi.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/phi.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "9531",
+                    "displayName": "Portugal",
+                    "name": "Portugal",
+                    "shortDisplayName": "Portugal",
+                    "abbreviation": "POR",
+                    "color": "006600",
+                    "alternateColor": "da291c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/por.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "4178",
+                    "displayName": "Republic of Ireland",
+                    "name": "Republic of Ireland",
+                    "shortDisplayName": "Rep Ireland",
+                    "abbreviation": "IRL",
+                    "color": "049a64",
+                    "alternateColor": "f58241",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/irl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "13313",
+                    "displayName": "South Africa",
+                    "name": "South Africa",
+                    "shortDisplayName": "South Africa",
+                    "abbreviation": "RSA",
+                    "color": "ffef00",
+                    "alternateColor": "002f00",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/rsa.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "17639",
+                    "displayName": "South Korea",
+                    "name": "South Korea",
+                    "shortDisplayName": "South Korea",
+                    "abbreviation": "KOR",
+                    "color": "ce2028",
+                    "alternateColor": "1e4384",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/kors.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "17640",
+                    "displayName": "Spain",
+                    "name": "Spain",
+                    "shortDisplayName": "Spain",
+                    "abbreviation": "ESP",
+                    "color": "c60b1e",
+                    "alternateColor": "ffc400",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/esp.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2764",
+                    "displayName": "Sweden",
+                    "name": "Sweden",
+                    "shortDisplayName": "Sweden",
+                    "abbreviation": "SWE",
+                    "color": "fecb00",
+                    "alternateColor": "006aa7",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/swe.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "17641",
+                    "displayName": "Switzerland",
+                    "name": "Switzerland",
+                    "shortDisplayName": "Switzerland",
+                    "abbreviation": "SUI",
+                    "color": "d72b2c",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/sui.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2765",
+                    "displayName": "United States",
+                    "name": "United States",
+                    "shortDisplayName": "USA",
+                    "abbreviation": "USA",
+                    "color": "213065",
+                    "alternateColor": "d42339",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/usa.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "17815",
+                    "displayName": "Vietnam",
+                    "name": "Vietnam",
+                    "shortDisplayName": "Vietnam",
+                    "abbreviation": "VIE",
+                    "color": "DA251D",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/vie.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/vie.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "20795",
+                    "displayName": "Zambia",
+                    "name": "Zambia",
+                    "shortDisplayName": "Zambia",
+                    "abbreviation": "ZAM",
+                    "color": "00843d",
+                    "alternateColor": "FFCD00",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500/zam.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/countries/500-dark/zam.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "2750",
+      "displayName": "Argentina",
+      "abbreviation": "ARG",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/arg.png",
+      "color": "74acdf"
+    },
+    {
+      "id": "2751",
+      "displayName": "Australia",
+      "abbreviation": "AUS",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/aus.png",
+      "color": "2a2d7c"
+    },
+    {
+      "id": "2752",
+      "displayName": "Brazil",
+      "abbreviation": "BRA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/bra.png",
+      "color": "fee000"
+    },
+    {
+      "id": "2753",
+      "displayName": "Canada",
+      "abbreviation": "CAN",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/can.png",
+      "color": "ed2224"
+    },
+    {
+      "id": "2754",
+      "displayName": "China",
+      "abbreviation": "CHN",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/chn.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/chn.png",
+      "color": "dd342c"
+    },
+    {
+      "id": "11337",
+      "displayName": "Colombia",
+      "abbreviation": "COL",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/col.png",
+      "color": "fbd632"
+    },
+    {
+      "id": "2894",
+      "displayName": "Costa Rica",
+      "abbreviation": "CRC",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/crc.png",
+      "color": "ce1126"
+    },
+    {
+      "id": "2896",
+      "displayName": "Denmark",
+      "abbreviation": "DEN",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/den.png",
+      "color": "d02a3e"
+    },
+    {
+      "id": "5159",
+      "displayName": "England",
+      "abbreviation": "ENG",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/eng.png",
+      "color": "ce1124"
+    },
+    {
+      "id": "2755",
+      "displayName": "France",
+      "abbreviation": "FRA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/fra.png",
+      "color": "002f79"
+    },
+    {
+      "id": "2756",
+      "displayName": "Germany",
+      "abbreviation": "GER",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ger.png",
+      "color": "000000"
+    },
+    {
+      "id": "2891",
+      "displayName": "Haiti",
+      "abbreviation": "HAI",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/hai.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/hai.png",
+      "color": "0033a0"
+    },
+    {
+      "id": "2792",
+      "displayName": "Italy",
+      "abbreviation": "ITA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ita.png",
+      "color": "24923c"
+    },
+    {
+      "id": "2893",
+      "displayName": "Jamaica",
+      "abbreviation": "JAM",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jam.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/jam.png",
+      "color": "348b42"
+    },
+    {
+      "id": "2758",
+      "displayName": "Japan",
+      "abbreviation": "JPN",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/jpn.png",
+      "color": "ed1c24"
+    },
+    {
+      "id": "18221",
+      "displayName": "Morocco",
+      "abbreviation": "MAR",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mor.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/mor.png",
+      "color": "df2027"
+    },
+    {
+      "id": "7151",
+      "displayName": "Netherlands",
+      "abbreviation": "NED",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/ned.png",
+      "color": "ec2f00"
+    },
+    {
+      "id": "4153",
+      "displayName": "New Zealand",
+      "abbreviation": "NZL",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nzl.png",
+      "color": "273476"
+    },
+    {
+      "id": "2761",
+      "displayName": "Nigeria",
+      "abbreviation": "NGA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nga.png",
+      "color": "008751"
+    },
+    {
+      "id": "2762",
+      "displayName": "Norway",
+      "abbreviation": "NOR",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nor.png",
+      "color": "ef2b2d"
+    },
+    {
+      "id": "2895",
+      "displayName": "Panama",
+      "abbreviation": "PAN",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/pan.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/pan.png",
+      "color": "d60a14"
+    },
+    {
+      "id": "21546",
+      "displayName": "Philippines",
+      "abbreviation": "PHI",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/phi.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/phi.png",
+      "color": "1f449b"
+    },
+    {
+      "id": "9531",
+      "displayName": "Portugal",
+      "abbreviation": "POR",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/por.png",
+      "color": "006600"
+    },
+    {
+      "id": "4178",
+      "displayName": "Republic of Ireland",
+      "abbreviation": "IRL",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/irl.png",
+      "color": "049a64"
+    },
+    {
+      "id": "13313",
+      "displayName": "South Africa",
+      "abbreviation": "RSA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/rsa.png",
+      "color": "ffef00"
+    },
+    {
+      "id": "17639",
+      "displayName": "South Korea",
+      "abbreviation": "KOR",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/kors.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/kors.png",
+      "color": "ce2028"
+    },
+    {
+      "id": "17640",
+      "displayName": "Spain",
+      "abbreviation": "ESP",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/esp.png",
+      "color": "c60b1e"
+    },
+    {
+      "id": "2764",
+      "displayName": "Sweden",
+      "abbreviation": "SWE",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/swe.png",
+      "color": "fecb00"
+    },
+    {
+      "id": "17641",
+      "displayName": "Switzerland",
+      "abbreviation": "SUI",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/sui.png",
+      "color": "d72b2c"
+    },
+    {
+      "id": "2765",
+      "displayName": "United States",
+      "abbreviation": "USA",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/usa.png",
+      "color": "213065"
+    },
+    {
+      "id": "17815",
+      "displayName": "Vietnam",
+      "abbreviation": "VIE",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/vie.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/vie.png",
+      "color": "DA251D"
+    },
+    {
+      "id": "20795",
+      "displayName": "Zambia",
+      "abbreviation": "ZAM",
+      "logo": "https://a.espncdn.com/i/teamlogos/countries/500/zam.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/zam.png",
+      "color": "00843d"
+    }
+  ]
+}

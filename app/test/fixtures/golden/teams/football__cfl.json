@@ -1,0 +1,146 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "football/cfl",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "79",
+                    "displayName": "BC Lions",
+                    "name": "Lions",
+                    "shortDisplayName": "Lions",
+                    "abbreviation": "BCL"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "80",
+                    "displayName": "Calgary Stampeders",
+                    "name": "Stampeders",
+                    "shortDisplayName": "Stampeders",
+                    "abbreviation": "CSP"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "81",
+                    "displayName": "Edmonton Elks",
+                    "name": "Elks",
+                    "shortDisplayName": "Elks",
+                    "abbreviation": "EES"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "82",
+                    "displayName": "Hamilton Tiger-Cats",
+                    "name": "Tiger-Cats",
+                    "shortDisplayName": "Tiger-Cats",
+                    "abbreviation": "HTC"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "83",
+                    "displayName": "Montreal Alouettes",
+                    "name": "Alouettes",
+                    "shortDisplayName": "Alouettes",
+                    "abbreviation": "MTA"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "87",
+                    "displayName": "Ottawa Red Blacks",
+                    "name": "Red Blacks",
+                    "shortDisplayName": "Red Blacks",
+                    "abbreviation": "ORB"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "84",
+                    "displayName": "Saskatchewan Roughriders",
+                    "name": "Roughriders",
+                    "shortDisplayName": "Roughriders",
+                    "abbreviation": "SRR"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "85",
+                    "displayName": "Toronto Argonauts",
+                    "name": "Argonauts",
+                    "shortDisplayName": "Argonauts",
+                    "abbreviation": "TAT"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "86",
+                    "displayName": "Winnipeg Blue Bombers",
+                    "name": "Blue Bombers",
+                    "shortDisplayName": "Blue Bombers",
+                    "abbreviation": "WBB"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "79",
+      "displayName": "BC Lions",
+      "abbreviation": "BCL"
+    },
+    {
+      "id": "80",
+      "displayName": "Calgary Stampeders",
+      "abbreviation": "CSP"
+    },
+    {
+      "id": "81",
+      "displayName": "Edmonton Elks",
+      "abbreviation": "EES"
+    },
+    {
+      "id": "82",
+      "displayName": "Hamilton Tiger-Cats",
+      "abbreviation": "HTC"
+    },
+    {
+      "id": "83",
+      "displayName": "Montreal Alouettes",
+      "abbreviation": "MTA"
+    },
+    {
+      "id": "87",
+      "displayName": "Ottawa Red Blacks",
+      "abbreviation": "ORB"
+    },
+    {
+      "id": "84",
+      "displayName": "Saskatchewan Roughriders",
+      "abbreviation": "SRR"
+    },
+    {
+      "id": "85",
+      "displayName": "Toronto Argonauts",
+      "abbreviation": "TAT"
+    },
+    {
+      "id": "86",
+      "displayName": "Winnipeg Blue Bombers",
+      "abbreviation": "WBB"
+    }
+  ]
+}

@@ -1,0 +1,774 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "football/ufl",
+    "raw": {
+      "name": "UFL",
+      "abbreviation": "UFL",
+      "standings": {
+        "entries": [
+          {
+            "team": {
+              "id": "132263",
+              "displayName": "Orlando Storm",
+              "name": "Storm",
+              "abbreviation": "ORL",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/orl.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/orl.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "8",
+                "value": 8
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "2",
+                "value": 2
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".800",
+                "value": 0.8
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "232",
+                "value": 232
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "186",
+                "value": 186
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "+46",
+                "value": 46
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "W4",
+                "value": 4
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "z",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "112651",
+              "displayName": "St. Louis Battlehawks",
+              "name": "Battlehawks",
+              "abbreviation": "STL",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/stl.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/stl.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "6",
+                "value": 6
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".600",
+                "value": 0.6
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "212",
+                "value": 212
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "197",
+                "value": 197
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "+15",
+                "value": 15
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "L1",
+                "value": -1
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "x",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "132262",
+              "displayName": "Louisville Kings",
+              "name": "Kings",
+              "abbreviation": "LOU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/lou.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/lou.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "6",
+                "value": 6
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".600",
+                "value": 0.6
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "265",
+                "value": 265
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "219",
+                "value": 219
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "+46",
+                "value": 46
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "W4",
+                "value": 4
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "x",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "112646",
+              "displayName": "DC Defenders",
+              "name": "Defenders",
+              "abbreviation": "DC",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/dc.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/dc.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "5",
+                "value": 5
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "5",
+                "value": 5
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".500",
+                "value": 0.5
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "281",
+                "value": 281
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "224",
+                "value": 224
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "+57",
+                "value": 57
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "L4",
+                "value": -4
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "x",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "126075",
+              "displayName": "Houston Gamblers",
+              "name": "Gamblers",
+              "abbreviation": "HOU",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/hou.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/hou.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "6",
+                "value": 6
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".400",
+                "value": 0.4
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "189",
+                "value": 189
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "236",
+                "value": 236
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "-47",
+                "value": -47
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "W1",
+                "value": 1
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "e",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "126073",
+              "displayName": "Birmingham Stallions",
+              "name": "Stallions",
+              "abbreviation": "BHAM",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/bham.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/bham.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "6",
+                "value": 6
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".400",
+                "value": 0.4
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "190",
+                "value": 190
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "229",
+                "value": 229
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "-39",
+                "value": -39
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "L2",
+                "value": -2
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "e",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "112647",
+              "displayName": "Dallas Renegades",
+              "name": "Renegades",
+              "abbreviation": "DAL",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/dal.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/dal.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "4",
+                "value": 4
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "6",
+                "value": 6
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".400",
+                "value": 0.4
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "224",
+                "value": 224
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "259",
+                "value": 259
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "-35",
+                "value": -35
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "W1",
+                "value": 1
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "e",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "team": {
+              "id": "132261",
+              "displayName": "Columbus Aviators",
+              "name": "Aviators",
+              "abbreviation": "CLB",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500/clb.png",
+                  "rel": [
+                    "full",
+                    "default"
+                  ]
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/clb.png",
+                  "rel": [
+                    "full",
+                    "scoreboard",
+                    "dark"
+                  ]
+                }
+              ]
+            },
+            "stats": [
+              {
+                "name": "wins",
+                "type": "wins",
+                "displayValue": "3",
+                "value": 3
+              },
+              {
+                "name": "losses",
+                "type": "losses",
+                "displayValue": "7",
+                "value": 7
+              },
+              {
+                "name": "winPercent",
+                "type": "winpercent",
+                "displayValue": ".300",
+                "value": 0.3
+              },
+              {
+                "name": "pointsFor",
+                "type": "pointsfor",
+                "displayValue": "216",
+                "value": 216
+              },
+              {
+                "name": "pointsAgainst",
+                "type": "pointsagainst",
+                "displayValue": "259",
+                "value": 259
+              },
+              {
+                "name": "pointDifferential",
+                "type": "pointdifferential",
+                "displayValue": "-43",
+                "value": -43
+              },
+              {
+                "name": "streak",
+                "type": "streak",
+                "displayValue": "L1",
+                "value": -1
+              },
+              {
+                "name": "clincher",
+                "type": "clincher",
+                "displayValue": "e",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "children": []
+    }
+  },
+  "output": [
+    {
+      "name": "UFL",
+      "rows": [
+        {
+          "team": {
+            "id": "132263",
+            "name": "Orlando Storm",
+            "abbr": "ORL",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/orl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/orl.png"
+          },
+          "stats": {
+            "wins": "8",
+            "losses": "2",
+            "winPercent": ".800",
+            "pointsFor": "232",
+            "pointsAgainst": "186",
+            "pointDifferential": "+46",
+            "streak": "W4",
+            "clincher": "z"
+          }
+        },
+        {
+          "team": {
+            "id": "112651",
+            "name": "St. Louis Battlehawks",
+            "abbr": "STL",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/stl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/stl.png"
+          },
+          "stats": {
+            "wins": "6",
+            "losses": "4",
+            "winPercent": ".600",
+            "pointsFor": "212",
+            "pointsAgainst": "197",
+            "pointDifferential": "+15",
+            "streak": "L1",
+            "clincher": "x"
+          }
+        },
+        {
+          "team": {
+            "id": "132262",
+            "name": "Louisville Kings",
+            "abbr": "LOU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/lou.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/lou.png"
+          },
+          "stats": {
+            "wins": "6",
+            "losses": "4",
+            "winPercent": ".600",
+            "pointsFor": "265",
+            "pointsAgainst": "219",
+            "pointDifferential": "+46",
+            "streak": "W4",
+            "clincher": "x"
+          }
+        },
+        {
+          "team": {
+            "id": "112646",
+            "name": "DC Defenders",
+            "abbr": "DC",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/dc.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/dc.png"
+          },
+          "stats": {
+            "wins": "5",
+            "losses": "5",
+            "winPercent": ".500",
+            "pointsFor": "281",
+            "pointsAgainst": "224",
+            "pointDifferential": "+57",
+            "streak": "L4",
+            "clincher": "x"
+          }
+        },
+        {
+          "team": {
+            "id": "126075",
+            "name": "Houston Gamblers",
+            "abbr": "HOU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/hou.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/hou.png"
+          },
+          "stats": {
+            "wins": "4",
+            "losses": "6",
+            "winPercent": ".400",
+            "pointsFor": "189",
+            "pointsAgainst": "236",
+            "pointDifferential": "-47",
+            "streak": "W1",
+            "clincher": "e"
+          }
+        },
+        {
+          "team": {
+            "id": "126073",
+            "name": "Birmingham Stallions",
+            "abbr": "BHAM",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/bham.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/bham.png"
+          },
+          "stats": {
+            "wins": "4",
+            "losses": "6",
+            "winPercent": ".400",
+            "pointsFor": "190",
+            "pointsAgainst": "229",
+            "pointDifferential": "-39",
+            "streak": "L2",
+            "clincher": "e"
+          }
+        },
+        {
+          "team": {
+            "id": "112647",
+            "name": "Dallas Renegades",
+            "abbr": "DAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/dal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/dal.png"
+          },
+          "stats": {
+            "wins": "4",
+            "losses": "6",
+            "winPercent": ".400",
+            "pointsFor": "224",
+            "pointsAgainst": "259",
+            "pointDifferential": "-35",
+            "streak": "W1",
+            "clincher": "e"
+          }
+        },
+        {
+          "team": {
+            "id": "132261",
+            "name": "Columbus Aviators",
+            "abbr": "CLB",
+            "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/clb.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ufl/500-dark/scoreboard/clb.png"
+          },
+          "stats": {
+            "wins": "3",
+            "losses": "7",
+            "winPercent": ".300",
+            "pointsFor": "216",
+            "pointsAgainst": "259",
+            "pointDifferential": "-43",
+            "streak": "L1",
+            "clincher": "e"
+          }
+        }
+      ]
+    }
+  ]
+}

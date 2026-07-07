@@ -1,0 +1,4634 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "hockey/mens-college-hockey",
+    "eventId": "401862339",
+    "raw": {
+      "header": {
+        "id": "401862339",
+        "competitions": [
+          {
+            "id": "401862339",
+            "date": "2026-04-09T21:00Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "Final",
+                "detail": "Final",
+                "shortDetail": "Final"
+              },
+              "featuredAthletes": [
+                {
+                  "name": "winningGoalie",
+                  "displayName": "Winning Goalie",
+                  "playerId": 5342561,
+                  "athlete": {
+                    "id": "5342561",
+                    "uid": "s:70~l:91~a:5342561",
+                    "fullName": "Daniel Hauser",
+                    "displayName": "Daniel Hauser",
+                    "shortName": "D. Hauser",
+                    "links": [
+                      {
+                        "language": "en-US",
+                        "rel": [
+                          "stats",
+                          "sportscenter",
+                          "app",
+                          "athlete"
+                        ],
+                        "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:91~a:5342561&section=stats",
+                        "text": "Stats",
+                        "shortText": "Stats"
+                      }
+                    ]
+                  },
+                  "team": {
+                    "id": "275",
+                    "name": "Badgers",
+                    "nickname": "Wisconsin",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "default"
+                        ],
+                        "lastUpdated": "2026-07-01T04:35Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/275.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ],
+                        "lastUpdated": "2026-07-01T04:34Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/primary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:25Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/b613b28b-b69b-35e4-86b2-80c357bc82be/logos/secondary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:26Z"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "losingGoalie",
+                  "displayName": "Losing Goalie",
+                  "playerId": 5342443,
+                  "athlete": {
+                    "id": "5342443",
+                    "uid": "s:70~l:91~a:5342443",
+                    "fullName": "Jan Spunar",
+                    "displayName": "Jan Spunar",
+                    "shortName": "J. Spunar",
+                    "links": [
+                      {
+                        "language": "en-US",
+                        "rel": [
+                          "stats",
+                          "sportscenter",
+                          "app",
+                          "athlete"
+                        ],
+                        "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:91~a:5342443&section=stats",
+                        "text": "Stats",
+                        "shortText": "Stats"
+                      }
+                    ]
+                  },
+                  "team": {
+                    "id": "155",
+                    "name": "Fighting Hawks",
+                    "nickname": "North Dakota",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/155.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "default"
+                        ],
+                        "lastUpdated": "2023-01-20T22:36Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/155.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ],
+                        "lastUpdated": "2023-01-20T22:35Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/primary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/f8fa4a3f-0eda-3070-a3ea-b6d627777b1b/logos/secondary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:03Z"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "competitors": [
+              {
+                "id": "155",
+                "homeAway": "home",
+                "order": 0,
+                "winner": false,
+                "score": "1",
+                "linescores": [
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "1"
+                  }
+                ],
+                "team": {
+                  "id": "155",
+                  "abbreviation": "UND",
+                  "displayName": "North Dakota Fighting Hawks"
+                }
+              },
+              {
+                "id": "275",
+                "homeAway": "away",
+                "order": 1,
+                "winner": true,
+                "score": "2",
+                "linescores": [
+                  {
+                    "displayValue": "2"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  }
+                ],
+                "team": {
+                  "id": "275",
+                  "abbreviation": "WISC",
+                  "displayName": "Wisconsin Badgers"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "275",
+              "uid": "s:70~l:91~t:275",
+              "slug": "wisconsin-badgers",
+              "location": "Wisconsin",
+              "name": "Badgers",
+              "abbreviation": "WISC",
+              "displayName": "Wisconsin Badgers",
+              "shortDisplayName": "Wisconsin",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png"
+            },
+            "statistics": [
+              {
+                "name": "blockedShots",
+                "abbreviation": "BS",
+                "displayValue": "0",
+                "label": "Blocked Shots"
+              },
+              {
+                "name": "hits",
+                "abbreviation": "HT",
+                "displayValue": "0",
+                "label": "Hits"
+              },
+              {
+                "name": "takeaways",
+                "abbreviation": "TK",
+                "displayValue": "0",
+                "label": "Takeaways"
+              },
+              {
+                "name": "shotsTotal",
+                "abbreviation": "S",
+                "displayValue": "37",
+                "label": "Shots"
+              },
+              {
+                "name": "powerPlayGoals",
+                "abbreviation": "PPG",
+                "displayValue": "0",
+                "label": "Power Play Goals"
+              },
+              {
+                "name": "powerPlayOpportunities",
+                "abbreviation": "PPO",
+                "displayValue": "2",
+                "label": "Power Play Opportunities"
+              },
+              {
+                "name": "powerPlayPct",
+                "abbreviation": "PCT",
+                "displayValue": "0.0",
+                "label": "Power Play Percentage"
+              },
+              {
+                "name": "shortHandedGoals",
+                "abbreviation": "SHG",
+                "displayValue": "0",
+                "label": "Short Handed Goals"
+              },
+              {
+                "name": "shootoutGoals",
+                "abbreviation": "SOG",
+                "displayValue": "0",
+                "label": "Shootout Goals"
+              },
+              {
+                "name": "faceoffsWon",
+                "abbreviation": "FW",
+                "displayValue": "0",
+                "label": "Faceoffs Won"
+              },
+              {
+                "name": "faceoffPercent",
+                "abbreviation": "FO%",
+                "displayValue": "0.0",
+                "label": "Faceoff Win Percent"
+              },
+              {
+                "name": "giveaways",
+                "abbreviation": "GV",
+                "displayValue": "0",
+                "label": "Giveaways"
+              },
+              {
+                "name": "penalties",
+                "abbreviation": "PN",
+                "displayValue": "5",
+                "label": "Total Penalties"
+              },
+              {
+                "name": "penaltyMinutes",
+                "abbreviation": "PIM",
+                "displayValue": "10",
+                "label": "Penalty Minutes"
+              }
+            ],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "155",
+              "uid": "s:70~l:91~t:155",
+              "slug": "north-dakota-fighting-hawks",
+              "location": "North Dakota",
+              "name": "Fighting Hawks",
+              "abbreviation": "UND",
+              "displayName": "North Dakota Fighting Hawks",
+              "shortDisplayName": "North Dakota",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/155.png"
+            },
+            "statistics": [
+              {
+                "name": "blockedShots",
+                "abbreviation": "BS",
+                "displayValue": "0",
+                "label": "Blocked Shots"
+              },
+              {
+                "name": "hits",
+                "abbreviation": "HT",
+                "displayValue": "0",
+                "label": "Hits"
+              },
+              {
+                "name": "takeaways",
+                "abbreviation": "TK",
+                "displayValue": "0",
+                "label": "Takeaways"
+              },
+              {
+                "name": "shotsTotal",
+                "abbreviation": "S",
+                "displayValue": "22",
+                "label": "Shots"
+              },
+              {
+                "name": "powerPlayGoals",
+                "abbreviation": "PPG",
+                "displayValue": "0",
+                "label": "Power Play Goals"
+              },
+              {
+                "name": "powerPlayOpportunities",
+                "abbreviation": "PPO",
+                "displayValue": "5",
+                "label": "Power Play Opportunities"
+              },
+              {
+                "name": "powerPlayPct",
+                "abbreviation": "PCT",
+                "displayValue": "0.0",
+                "label": "Power Play Percentage"
+              },
+              {
+                "name": "shortHandedGoals",
+                "abbreviation": "SHG",
+                "displayValue": "0",
+                "label": "Short Handed Goals"
+              },
+              {
+                "name": "shootoutGoals",
+                "abbreviation": "SOG",
+                "displayValue": "0",
+                "label": "Shootout Goals"
+              },
+              {
+                "name": "faceoffsWon",
+                "abbreviation": "FW",
+                "displayValue": "0",
+                "label": "Faceoffs Won"
+              },
+              {
+                "name": "faceoffPercent",
+                "abbreviation": "FO%",
+                "displayValue": "0.0",
+                "label": "Faceoff Win Percent"
+              },
+              {
+                "name": "giveaways",
+                "abbreviation": "GV",
+                "displayValue": "0",
+                "label": "Giveaways"
+              },
+              {
+                "name": "penalties",
+                "abbreviation": "PN",
+                "displayValue": "2",
+                "label": "Total Penalties"
+              },
+              {
+                "name": "penaltyMinutes",
+                "abbreviation": "PIM",
+                "displayValue": "4",
+                "label": "Penalty Minutes"
+              }
+            ],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "275",
+              "uid": "s:70~l:91~t:275",
+              "slug": "wisconsin-badgers",
+              "location": "Wisconsin",
+              "name": "Badgers",
+              "abbreviation": "WISC",
+              "displayName": "Wisconsin Badgers",
+              "shortDisplayName": "Wisconsin",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/275.png"
+            },
+            "statistics": [
+              {
+                "name": "forwards",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5342557",
+                      "uid": "s:70~l:91~a:5342557",
+                      "lastName": "Botterill",
+                      "displayName": "Ryan Botterill",
+                      "shortName": "R. Botterill",
+                      "links": [],
+                      "jersey": "21",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342559",
+                      "uid": "s:70~l:91~a:5342559",
+                      "lastName": "Brink",
+                      "displayName": "Finn Brink",
+                      "shortName": "F. Brink",
+                      "links": [],
+                      "jersey": "27",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342555",
+                      "uid": "s:70~l:91~a:5342555",
+                      "lastName": "Deering",
+                      "displayName": "Grady Deering",
+                      "shortName": "G. Deering",
+                      "links": [],
+                      "jersey": "17",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5188344",
+                      "uid": "s:70~l:91~a:5188344",
+                      "lastName": "Finley",
+                      "displayName": "Quinn Finley",
+                      "shortName": "Q. Finley",
+                      "links": [],
+                      "jersey": "19",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5136805",
+                      "uid": "s:70~l:91~a:5136805",
+                      "lastName": "Fitzgerald",
+                      "displayName": "Christian Fitzgerald",
+                      "shortName": "C. Fitzgerald",
+                      "links": [],
+                      "jersey": "13",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5206753",
+                      "uid": "s:70~l:91~a:5206753",
+                      "lastName": "Horbach",
+                      "displayName": "Jack Horbach",
+                      "shortName": "J. Horbach",
+                      "links": [],
+                      "jersey": "22",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "4",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5137161",
+                      "uid": "s:70~l:91~a:5137161",
+                      "lastName": "Kukkonen",
+                      "displayName": "Kyle Kukkonen",
+                      "shortName": "K. Kukkonen",
+                      "links": [],
+                      "jersey": "9",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342563",
+                      "uid": "s:70~l:91~a:5342563",
+                      "lastName": "Montgomery",
+                      "displayName": "Blake Montgomery",
+                      "shortName": "B. Montgomery",
+                      "links": [],
+                      "jersey": "47",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "5",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342554",
+                      "uid": "s:70~l:91~a:5342554",
+                      "lastName": "Morrissey",
+                      "displayName": "Gavin Morrissey",
+                      "shortName": "G. Morrissey",
+                      "links": [],
+                      "jersey": "7",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342556",
+                      "uid": "s:70~l:91~a:5342556",
+                      "lastName": "Pietila",
+                      "displayName": "Adam Pietila",
+                      "shortName": "A. Pietila",
+                      "links": [],
+                      "jersey": "18",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5136809",
+                      "uid": "s:70~l:91~a:5136809",
+                      "lastName": "Tassy",
+                      "displayName": "Simon Tassy",
+                      "shortName": "S. Tassy",
+                      "links": [],
+                      "jersey": "11",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "6",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342564",
+                      "uid": "s:70~l:91~a:5342564",
+                      "lastName": "Tulk",
+                      "displayName": "Oliver Tulk",
+                      "shortName": "O. Tulk",
+                      "links": [],
+                      "jersey": "55",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "4",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342566",
+                      "uid": "s:70~l:91~a:5342566",
+                      "lastName": "Zelenov",
+                      "displayName": "Vasily Zelenov",
+                      "shortName": "V. Zelenov",
+                      "links": [],
+                      "jersey": "94",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "defenses",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5206751",
+                      "uid": "s:70~l:91~a:5206751",
+                      "lastName": "Dexheimer",
+                      "displayName": "Ben Dexheimer",
+                      "shortName": "B. Dexheimer",
+                      "links": [],
+                      "jersey": "4",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342560",
+                      "uid": "s:70~l:91~a:5342560",
+                      "lastName": "Dubinsky",
+                      "displayName": "Aiden Dubinsky",
+                      "shortName": "A. Dubinsky",
+                      "links": [],
+                      "jersey": "28",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342558",
+                      "uid": "s:70~l:91~a:5342558",
+                      "lastName": "Knox",
+                      "displayName": "Weston Knox",
+                      "shortName": "W. Knox",
+                      "links": [],
+                      "jersey": "26",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342553",
+                      "uid": "s:70~l:91~a:5342553",
+                      "lastName": "Osburn",
+                      "displayName": "Luke Osburn",
+                      "shortName": "L. Osburn",
+                      "links": [],
+                      "jersey": "2",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "2",
+                      "4"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5206752",
+                      "uid": "s:70~l:91~a:5206752",
+                      "lastName": "Palodichuk",
+                      "displayName": "Joe Palodichuk",
+                      "shortName": "J. Palodichuk",
+                      "links": [],
+                      "jersey": "14",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5188519",
+                      "uid": "s:70~l:91~a:5188519",
+                      "lastName": "Phelan",
+                      "displayName": "Jack Phelan",
+                      "shortName": "J. Phelan",
+                      "links": [],
+                      "jersey": "8",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "skaters",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": []
+              },
+              {
+                "name": "goalies",
+                "keys": [
+                  "goalsAgainst",
+                  "shotsAgainst",
+                  "shootoutSaves",
+                  "shootoutShotsAgainst",
+                  "saves",
+                  "savePct",
+                  "evenStrengthSaves",
+                  "powerPlaySaves",
+                  "shortHandedSaves",
+                  "timeOnIce",
+                  "ytdGoals",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "GA",
+                  "SA",
+                  "SOS",
+                  "SOSA",
+                  "SV",
+                  "SV%",
+                  "ESSV",
+                  "PPSV",
+                  "SHSV",
+                  "TOI",
+                  "YTDG",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total goals against.",
+                  "Total shots against.",
+                  "Total shootout saves.",
+                  "Total shootout shots against.",
+                  "Total saves.",
+                  "Percentage of shots saved.",
+                  "Saves made at even strength.",
+                  "Saves made while in a power play.",
+                  "Saves made while shorthanded",
+                  "Total time on ice.",
+                  "Year to date goals/",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5342561",
+                      "uid": "s:70~l:91~a:5342561",
+                      "lastName": "Hauser",
+                      "displayName": "Daniel Hauser",
+                      "shortName": "D. Hauser",
+                      "links": [],
+                      "jersey": "31",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/5?lang=en&region=us",
+                        "id": "5",
+                        "name": "Goaltender",
+                        "displayName": "Goaltender",
+                        "abbreviation": "G",
+                        "leaf": false
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "1",
+                      "22",
+                      "0",
+                      "0",
+                      "21",
+                      ".955",
+                      "0",
+                      "0",
+                      "0",
+                      "60:00",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "155",
+              "uid": "s:70~l:91~t:155",
+              "slug": "north-dakota-fighting-hawks",
+              "location": "North Dakota",
+              "name": "Fighting Hawks",
+              "abbreviation": "UND",
+              "displayName": "North Dakota Fighting Hawks",
+              "shortDisplayName": "North Dakota",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/155.png"
+            },
+            "statistics": [
+              {
+                "name": "forwards",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5275567",
+                      "uid": "s:70~l:91~a:5275567",
+                      "lastName": "Croal",
+                      "displayName": "Cody Croal",
+                      "shortName": "C. Croal",
+                      "links": [],
+                      "jersey": "19",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5080208",
+                      "uid": "s:70~l:91~a:5080208",
+                      "lastName": "James",
+                      "displayName": "Dylan James",
+                      "shortName": "D. James",
+                      "links": [],
+                      "jersey": "26",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342435",
+                      "uid": "s:70~l:91~a:5342435",
+                      "lastName": "Josephson",
+                      "displayName": "Ollie Josephson",
+                      "shortName": "O. Josephson",
+                      "links": [],
+                      "jersey": "8",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342439",
+                      "uid": "s:70~l:91~a:5342439",
+                      "lastName": "Kernan",
+                      "displayName": "Jack Kernan",
+                      "shortName": "J. Kernan",
+                      "links": [],
+                      "jersey": "15",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5188596",
+                      "uid": "s:70~l:91~a:5188596",
+                      "lastName": "Klee",
+                      "displayName": "David Klee",
+                      "shortName": "D. Klee",
+                      "links": [],
+                      "jersey": "22",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5291954",
+                      "uid": "s:70~l:91~a:5291954",
+                      "lastName": "Reschny",
+                      "displayName": "Cole Reschny",
+                      "shortName": "C. Reschny",
+                      "links": [],
+                      "jersey": "17",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5275616",
+                      "uid": "s:70~l:91~a:5275616",
+                      "lastName": "Rickwood",
+                      "displayName": "Ellis Rickwood",
+                      "shortName": "E. Rickwood",
+                      "links": [],
+                      "jersey": "29",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "4914967",
+                      "uid": "s:70~l:91~a:4914967",
+                      "lastName": "Strinden",
+                      "displayName": "Ben Strinden",
+                      "shortName": "B. Strinden",
+                      "links": [],
+                      "jersey": "21",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5275565",
+                      "uid": "s:70~l:91~a:5275565",
+                      "lastName": "Swanson",
+                      "displayName": "Mac Swanson",
+                      "shortName": "M. Swanson",
+                      "links": [],
+                      "jersey": "7",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5137140",
+                      "uid": "s:70~l:91~a:5137140",
+                      "lastName": "Young",
+                      "displayName": "Tyler Young",
+                      "shortName": "T. Young",
+                      "links": [],
+                      "jersey": "14",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342441",
+                      "uid": "s:70~l:91~a:5342441",
+                      "lastName": "Zakreski",
+                      "displayName": "Josh Zakreski",
+                      "shortName": "J. Zakreski",
+                      "links": [],
+                      "jersey": "24",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342436",
+                      "uid": "s:70~l:91~a:5342436",
+                      "lastName": "Zellers",
+                      "displayName": "Will Zellers",
+                      "shortName": "W. Zellers",
+                      "links": [],
+                      "jersey": "9",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": false,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "defenses",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5216899",
+                      "uid": "s:70~l:91~a:5216899",
+                      "lastName": "Emery",
+                      "displayName": "EJ Emery",
+                      "shortName": "E. Emery",
+                      "links": [],
+                      "jersey": "6",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342438",
+                      "uid": "s:70~l:91~a:5342438",
+                      "lastName": "Laurila",
+                      "displayName": "Sam Laurila",
+                      "shortName": "S. Laurila",
+                      "links": [],
+                      "jersey": "13",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5206630",
+                      "uid": "s:70~l:91~a:5206630",
+                      "lastName": "Livanavage",
+                      "displayName": "Jake Livanavage",
+                      "shortName": "J. Livanavage",
+                      "links": [],
+                      "jersey": "4",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": false,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5188660",
+                      "uid": "s:70~l:91~a:5188660",
+                      "lastName": "Strathmann",
+                      "displayName": "Andrew Strathmann",
+                      "shortName": "A. Strathmann",
+                      "links": [],
+                      "jersey": "16",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5342440",
+                      "uid": "s:70~l:91~a:5342440",
+                      "lastName": "Verhoeff",
+                      "displayName": "Keaton Verhoeff",
+                      "shortName": "K. Verhoeff",
+                      "links": [],
+                      "jersey": "18",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": false,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "5",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5104209",
+                      "uid": "s:70~l:91~a:5104209",
+                      "lastName": "Wiebe",
+                      "displayName": "Abram Wiebe",
+                      "shortName": "A. Wiebe",
+                      "links": [],
+                      "jersey": "25",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": false,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "4996018",
+                      "uid": "s:70~l:91~a:4996018",
+                      "lastName": "Zmolek",
+                      "displayName": "Bennett Zmolek",
+                      "shortName": "B. Zmolek",
+                      "links": [],
+                      "jersey": "2",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "skaters",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": []
+              },
+              {
+                "name": "goalies",
+                "keys": [
+                  "goalsAgainst",
+                  "shotsAgainst",
+                  "shootoutSaves",
+                  "shootoutShotsAgainst",
+                  "saves",
+                  "savePct",
+                  "evenStrengthSaves",
+                  "powerPlaySaves",
+                  "shortHandedSaves",
+                  "timeOnIce",
+                  "ytdGoals",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "GA",
+                  "SA",
+                  "SOS",
+                  "SOSA",
+                  "SV",
+                  "SV%",
+                  "ESSV",
+                  "PPSV",
+                  "SHSV",
+                  "TOI",
+                  "YTDG",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total goals against.",
+                  "Total shots against.",
+                  "Total shootout saves.",
+                  "Total shootout shots against.",
+                  "Total saves.",
+                  "Percentage of shots saved.",
+                  "Saves made at even strength.",
+                  "Saves made while in a power play.",
+                  "Saves made while shorthanded",
+                  "Total time on ice.",
+                  "Year to date goals/",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5342443",
+                      "uid": "s:70~l:91~a:5342443",
+                      "lastName": "Spunar",
+                      "displayName": "Jan Spunar",
+                      "shortName": "J. Spunar",
+                      "links": [],
+                      "jersey": "35",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/mens-college-hockey/positions/5?lang=en&region=us",
+                        "id": "5",
+                        "name": "Goaltender",
+                        "displayName": "Goaltender",
+                        "abbreviation": "G",
+                        "leaf": false
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "2",
+                      "37",
+                      "0",
+                      "0",
+                      "35",
+                      ".946",
+                      "0",
+                      "0",
+                      "0",
+                      "56:27",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "plays": [
+        {
+          "id": "40186233905554",
+          "sequenceNumber": "1",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Simon Tassy assisted by Vasily Zelenov",
+          "awayScore": 1,
+          "homeScore": 0,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "12:54"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-04-09T23:47Z",
+          "team": {
+            "id": "275"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5136809",
+                "displayName": "Simon Tassy",
+                "shortName": "S. Tassy"
+              },
+              "type": "scorer",
+              "ytdGoals": 14
+            },
+            {
+              "athlete": {
+                "id": "5342566",
+                "displayName": "Vasily Zelenov",
+                "shortName": "V. Zelenov"
+              },
+              "type": "assister",
+              "ytdAssists": 13
+            }
+          ],
+          "wallclock": "2026-04-09T23:47:02Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233905555",
+          "sequenceNumber": "2",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Ryan Botterill assisted by Ben Dexheimer and Joe Palodichuk",
+          "awayScore": 2,
+          "homeScore": 0,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "13:21"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-04-09T23:47Z",
+          "team": {
+            "id": "275"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5342557",
+                "displayName": "Ryan Botterill",
+                "shortName": "R. Botterill"
+              },
+              "type": "scorer",
+              "ytdGoals": 10
+            },
+            {
+              "athlete": {
+                "id": "5206751",
+                "displayName": "Ben Dexheimer",
+                "shortName": "B. Dexheimer"
+              },
+              "type": "assister",
+              "ytdAssists": 21
+            },
+            {
+              "athlete": {
+                "id": "5206752",
+                "displayName": "Joe Palodichuk",
+                "shortName": "J. Palodichuk"
+              },
+              "type": "assister",
+              "ytdAssists": 15
+            }
+          ],
+          "wallclock": "2026-04-09T23:47:02Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233905563",
+          "sequenceNumber": "3",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Extra Attacker Goal Scored by Ellis Rickwood assisted by Dylan James and Ben Strinden",
+          "awayScore": 2,
+          "homeScore": 1,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd"
+          },
+          "clock": {
+            "displayValue": "19:08"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-04-09T23:47Z",
+          "team": {
+            "id": "155"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5275616",
+                "displayName": "Ellis Rickwood",
+                "shortName": "E. Rickwood"
+              },
+              "type": "scorer",
+              "ytdGoals": 9
+            },
+            {
+              "athlete": {
+                "id": "5080208",
+                "displayName": "Dylan James",
+                "shortName": "D. James"
+              },
+              "type": "assister",
+              "ytdAssists": 11
+            },
+            {
+              "athlete": {
+                "id": "4914967",
+                "displayName": "Ben Strinden",
+                "shortName": "B. Strinden"
+              },
+              "type": "assister",
+              "ytdAssists": 20
+            }
+          ],
+          "wallclock": "2026-04-09T23:47:02Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        }
+      ],
+      "gameInfo": {
+        "attendance": 0,
+        "officials": []
+      }
+    }
+  },
+  "output": {
+    "eventId": "401862339",
+    "live": false,
+    "teamStats": [
+      {
+        "label": "Blocked Shots",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Hits",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Takeaways",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Shots",
+        "away": "37",
+        "home": "22"
+      },
+      {
+        "label": "Power Play Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Power Play Opportunities",
+        "away": "2",
+        "home": "5"
+      },
+      {
+        "label": "Power Play Percentage",
+        "away": "0.0",
+        "home": "0.0"
+      },
+      {
+        "label": "Short Handed Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Shootout Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Faceoffs Won",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Faceoff Win Percent",
+        "away": "0.0",
+        "home": "0.0"
+      },
+      {
+        "label": "Giveaways",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Total Penalties",
+        "away": "5",
+        "home": "2"
+      },
+      {
+        "label": "Penalty Minutes",
+        "away": "10",
+        "home": "4"
+      }
+    ],
+    "boxGroups": [
+      {
+        "title": "Forwards",
+        "columns": [
+          "BS",
+          "HT",
+          "TK",
+          "+/-",
+          "TOI",
+          "PPTOI",
+          "SHTOI",
+          "ESTOI",
+          "SHFT",
+          "G",
+          "YTDG",
+          "A",
+          "S",
+          "SM",
+          "SOG",
+          "FW",
+          "FL",
+          "FO%",
+          "GV",
+          "PN",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "WISC",
+            "rows": [
+              {
+                "name": "R. Botterill",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "F. Brink",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "G. Deering",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "Q. Finley",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "C. Fitzgerald",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Horbach",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "4",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "K. Kukkonen",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "B. Montgomery",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "5",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "G. Morrissey",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Pietila",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Tassy",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "6",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "O. Tulk",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "4",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "V. Zelenov",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "UND",
+            "rows": [
+              {
+                "name": "C. Croal",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "D. James",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "O. Josephson",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "J. Kernan",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "D. Klee",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "C. Reschny",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. Rickwood",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "B. Strinden",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Swanson",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "T. Young",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Zakreski",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "W. Zellers",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Defenses",
+        "columns": [
+          "BS",
+          "HT",
+          "TK",
+          "+/-",
+          "TOI",
+          "PPTOI",
+          "SHTOI",
+          "ESTOI",
+          "SHFT",
+          "G",
+          "YTDG",
+          "A",
+          "S",
+          "SM",
+          "SOG",
+          "FW",
+          "FL",
+          "FO%",
+          "GV",
+          "PN",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "WISC",
+            "rows": [
+              {
+                "name": "B. Dexheimer",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "A. Dubinsky",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "W. Knox",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "L. Osburn",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "2",
+                  "4"
+                ]
+              },
+              {
+                "name": "J. Palodichuk",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "J. Phelan",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "UND",
+            "rows": [
+              {
+                "name": "E. Emery",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Laurila",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Livanavage",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Strathmann",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "K. Verhoeff",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "5",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Wiebe",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "B. Zmolek",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Goalies",
+        "columns": [
+          "GA",
+          "SA",
+          "SOS",
+          "SOSA",
+          "SV",
+          "SV%",
+          "ESSV",
+          "PPSV",
+          "SHSV",
+          "TOI",
+          "YTDG",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "WISC",
+            "rows": [
+              {
+                "name": "D. Hauser",
+                "pos": "G",
+                "stats": [
+                  "1",
+                  "22",
+                  "0",
+                  "0",
+                  "21",
+                  ".955",
+                  "0",
+                  "0",
+                  "0",
+                  "60:00",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "UND",
+            "rows": [
+              {
+                "name": "J. Spunar",
+                "pos": "G",
+                "stats": [
+                  "2",
+                  "37",
+                  "0",
+                  "0",
+                  "35",
+                  ".946",
+                  "0",
+                  "0",
+                  "0",
+                  "56:27",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scoringPlays": [
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "12:54",
+        "side": "away",
+        "teamAbbr": "WISC",
+        "text": "Even Strength Goal Scored by Simon Tassy assisted by Vasily Zelenov",
+        "away": 1,
+        "home": 0,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "13:21",
+        "side": "away",
+        "teamAbbr": "WISC",
+        "text": "Even Strength Goal Scored by Ryan Botterill assisted by Ben Dexheimer and Joe Palodichuk",
+        "away": 2,
+        "home": 0,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd",
+        "clock": "19:08",
+        "side": "home",
+        "teamAbbr": "UND",
+        "text": "Extra Attacker Goal Scored by Ellis Rickwood assisted by Dylan James and Ben Strinden",
+        "away": 2,
+        "home": 1,
+        "type": "Goal",
+        "scoring": true
+      }
+    ],
+    "lineups": [],
+    "periodLines": {
+      "unit": "period",
+      "labels": [
+        "1",
+        "2",
+        "3"
+      ],
+      "away": {
+        "abbr": "WISC",
+        "values": [
+          "2",
+          "0",
+          "0"
+        ],
+        "total": "2"
+      },
+      "home": {
+        "abbr": "UND",
+        "values": [
+          "0",
+          "0",
+          "1"
+        ],
+        "total": "1"
+      }
+    },
+    "plays": [
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "12:54",
+        "side": "away",
+        "teamAbbr": "WISC",
+        "text": "Even Strength Goal Scored by Simon Tassy assisted by Vasily Zelenov",
+        "away": 1,
+        "home": 0,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "13:21",
+        "side": "away",
+        "teamAbbr": "WISC",
+        "text": "Even Strength Goal Scored by Ryan Botterill assisted by Ben Dexheimer and Joe Palodichuk",
+        "away": 2,
+        "home": 0,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd",
+        "clock": "19:08",
+        "side": "home",
+        "teamAbbr": "UND",
+        "text": "Extra Attacker Goal Scored by Ellis Rickwood assisted by Dylan James and Ben Strinden",
+        "away": 2,
+        "home": 1,
+        "type": "Goal",
+        "scoring": true
+      }
+    ]
+  }
+}

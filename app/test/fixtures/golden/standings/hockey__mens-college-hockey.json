@@ -1,0 +1,205 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "hockey/mens-college-hockey",
+    "raw": {
+      "name": "NCAA Mens Hockey",
+      "abbreviation": "NCAAH",
+      "children": [
+        {
+          "name": "Atlantic Hockey America",
+          "abbreviation": "AHA"
+        },
+        {
+          "name": "Big Ten Conference",
+          "abbreviation": "Big Ten",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "194",
+                  "displayName": "Ohio State Buckeyes",
+                  "name": "Buckeyes",
+                  "abbreviation": "OSU",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "tiegames",
+                    "type": "tiegames",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": "1.000",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Central Collegiate Hockey Association",
+          "abbreviation": "CCHA"
+        },
+        {
+          "name": "College Hockey America",
+          "abbreviation": "CHA"
+        },
+        {
+          "name": "East Coast Athletic Conference",
+          "abbreviation": "ECAC"
+        },
+        {
+          "name": "Hockey East",
+          "abbreviation": "HE"
+        },
+        {
+          "name": "Independent",
+          "abbreviation": "IND"
+        },
+        {
+          "name": "Metro Atlantic Athletic Conference",
+          "abbreviation": "MAAC"
+        },
+        {
+          "name": "National Collegiate Hockey Conference",
+          "abbreviation": "NCHC"
+        },
+        {
+          "name": "Northeast 10 Conference",
+          "abbreviation": "NE10"
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "Big Ten Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "194",
+            "name": "Ohio State Buckeyes",
+            "abbr": "OSU",
+            "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "0",
+            "avgPointsAgainst": "0.0",
+            "avgPointsFor": "0.0",
+            "differential": "0.0",
+            "gamesBehind": "-",
+            "gamesPlayed": "26",
+            "losses": "0",
+            "playoffSeed": "0",
+            "pointDifferential": "0",
+            "points": "0.0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "streak": "-",
+            "tiegames": "2",
+            "winPercent": "1.000"
+          }
+        }
+      ]
+    }
+  ]
+}

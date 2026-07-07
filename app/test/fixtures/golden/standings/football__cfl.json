@@ -1,0 +1,21 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "football/cfl",
+    "raw": {
+      "name": "Canadian Football League",
+      "abbreviation": "CFL",
+      "children": [
+        {
+          "name": "East Division",
+          "abbreviation": "EAST"
+        },
+        {
+          "name": "West Division",
+          "abbreviation": "WEST"
+        }
+      ]
+    }
+  },
+  "output": []
+}

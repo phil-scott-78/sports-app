@@ -1,0 +1,5449 @@
+{
+  "endpoint": "overview",
+  "args": {
+    "key": "mma/bellator",
+    "sb": {
+      "events": [
+        {
+          "id": "600044095",
+          "uid": "s:3301~l:3323~e:600044095",
+          "date": "2024-09-14T16:30Z",
+          "name": "Bellator Champions Series London: McCourt vs. Collins",
+          "shortName": "Bellator Champions Series London",
+          "season": {
+            "year": 2024,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "401694292",
+              "uid": "s:3301~l:3323~e:600044095~c:401694292",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4881916",
+                  "uid": "s:3301~a:4881916",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Darragh Kelly",
+                    "displayName": "Darragh Kelly",
+                    "shortName": "D. Kelly",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5119240",
+                  "uid": "s:3301~a:5119240",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Dmytrii Hrytsenko",
+                    "displayName": "Dmytrii Hrytsenko",
+                    "shortName": "D. Hrytsenko",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ukr.png",
+                      "alt": "Ukraine",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401719847",
+              "uid": "s:3301~l:3323~e:600044095~c:401719847",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "1002",
+                "abbreviation": "Catch Weight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4881912",
+                  "uid": "s:3301~a:4881912",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Ciaran Clarke",
+                    "displayName": "Ciaran Clarke",
+                    "shortName": "C. Clarke",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5119606",
+                  "uid": "s:3301~a:5119606",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Tuomas Grönvall",
+                    "displayName": "Tuomas Grönvall",
+                    "shortName": "T. Grönvall",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fin.png",
+                      "alt": "Finland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-9-1"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401698288",
+              "uid": "s:3301~l:3323~e:600044095~c:401698288",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "1002",
+                "abbreviation": "Catch Weight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "5088321",
+                  "uid": "s:3301~a:5088321",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Steven Hill",
+                    "displayName": "Steven Hill",
+                    "shortName": "S. Hill",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-2-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5146218",
+                  "uid": "s:3301~a:5146218",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Joseph Luciano",
+                    "displayName": "Joseph Luciano",
+                    "shortName": "J. Luciano",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 82,
+                "displayClock": "1:22",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401698629",
+              "uid": "s:3301~l:3323~e:600044095~c:401698629",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "972",
+                "abbreviation": "Middleweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4084363",
+                  "uid": "s:3301~a:4084363",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Mike Shipman",
+                    "displayName": "Mike Shipman",
+                    "shortName": "M. Shipman",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "17-5-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4905067",
+                  "uid": "s:3301~a:4905067",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Eslam Abdul Baset",
+                    "displayName": "Eslam Abdul Baset",
+                    "shortName": "E. Abdul Baset",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+                      "alt": "Egypt",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 152,
+                "displayClock": "2:32",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401698289",
+              "uid": "s:3301~l:3323~e:600044095~c:401698289",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4878438",
+                  "uid": "s:3301~a:4878438",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Archie Colgan",
+                    "displayName": "Archie Colgan",
+                    "shortName": "A. Colgan",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "13-0-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5085291",
+                  "uid": "s:3301~a:5085291",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Manoel Sousa",
+                    "displayName": "Manoel Sousa",
+                    "shortName": "M. Sousa",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401690362",
+              "uid": "s:3301~l:3323~e:600044095~c:401690362",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3109287",
+                  "uid": "s:3301~a:3109287",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Tim Wilde",
+                    "displayName": "Tim Wilde",
+                    "shortName": "T. Wilde",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "17-6-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "4056004",
+                  "uid": "s:3301~a:4056004",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Marc Diakiese",
+                    "displayName": "Marc Diakiese",
+                    "shortName": "M. Diakiese",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/drc.png",
+                      "alt": "Democratic Republic of Congo",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "18-8-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401691138",
+              "uid": "s:3301~l:3323~e:600044095~c:401691138",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "990",
+                "abbreviation": "Light Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4331571",
+                  "uid": "s:3301~a:4331571",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Laurynas Urbonavicius",
+                    "displayName": "Laurynas Urbonavicius",
+                    "shortName": "L. Urbonavicius",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ltu.png",
+                      "alt": "Lithuania",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-2-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4875324",
+                  "uid": "s:3301~a:4875324",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Luke Trainer",
+                    "displayName": "Luke Trainer",
+                    "shortName": "L. Trainer",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 298,
+                "displayClock": "4:58",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401698516",
+              "uid": "s:3301~l:3323~e:600044095~c:401698516",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "990",
+                "abbreviation": "Light Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4073993",
+                  "uid": "s:3301~a:4073993",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Rafael Xavier",
+                    "displayName": "Rafael Xavier",
+                    "shortName": "R. Xavier",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                      "alt": "Germany",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-9-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4915658",
+                  "uid": "s:3301~a:4915658",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Simeon Powell",
+                    "displayName": "Simeon Powell",
+                    "shortName": "S. Powell",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-2-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401690530",
+              "uid": "s:3301~l:3323~e:600044095~c:401690530",
+              "date": "2024-09-14T16:30Z",
+              "endDate": "2024-09-14T16:30Z",
+              "type": {
+                "id": "1004",
+                "abbreviation": "W Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "2698",
+                "fullName": "OVO Arena Wembley",
+                "address": {
+                  "city": "London",
+                  "country": "England"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4571680",
+                  "uid": "s:3301~a:4571680",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Leah McCourt",
+                    "displayName": "Leah McCourt",
+                    "shortName": "L. McCourt",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nir.png",
+                      "alt": "Northern Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "8-4-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5127785",
+                  "uid": "s:3301~a:5127785",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Sara Collins",
+                    "displayName": "Sara Collins",
+                    "shortName": "S. Collins",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "6-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 145,
+                "displayClock": "2:25",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-09-14T16:30Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/mma/fightcenter/_/id/600044095/league/bellator",
+              "text": "Gamecast",
+              "shortText": "Gamecast",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "venues": [
+            {
+              "id": "2698",
+              "fullName": "OVO Arena Wembley",
+              "address": {
+                "city": "London",
+                "country": "England"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "600044093",
+          "uid": "s:3301~l:3323~e:600044093",
+          "date": "2024-06-22T16:00Z",
+          "name": "Bellator Champions Series Dublin: Jackson vs. Kuramagomedov",
+          "shortName": "Bellator Champions Series Dublin",
+          "season": {
+            "year": 2024,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "401653626",
+              "uid": "s:3301~l:3323~e:600044093~c:401653626",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "1004",
+                "abbreviation": "W Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4916255",
+                  "uid": "s:3301~a:4916255",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Karolina Sobek",
+                    "displayName": "Karolina Sobek",
+                    "shortName": "K. Sobek",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/pol.png",
+                      "alt": "Poland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "4-3-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4916259",
+                  "uid": "s:3301~a:4916259",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Michelle Montague",
+                    "displayName": "Michelle Montague",
+                    "shortName": "M. Montague",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "8-0-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 161,
+                "displayClock": "2:41",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654853",
+              "uid": "s:3301~l:3323~e:600044093~c:401654853",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "970",
+                "abbreviation": "Bantamweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "5079258",
+                  "uid": "s:3301~a:5079258",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Shinobu Ota",
+                    "displayName": "Shinobu Ota",
+                    "shortName": "S. Ota",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+                      "alt": "Japan",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-4-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5215591",
+                  "uid": "s:3301~a:5215591",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Roger Blanque",
+                    "displayName": "Roger Blanque",
+                    "shortName": "R. Blanque",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "5-6-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 138,
+                "displayClock": "2:18",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654854",
+              "uid": "s:3301~l:3323~e:600044093~c:401654854",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "970",
+                "abbreviation": "Bantamweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "5022142",
+                  "uid": "s:3301~a:5022142",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Sarvarjon Khamidov",
+                    "displayName": "Sarvarjon Khamidov",
+                    "shortName": "S. Khamidov",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/tjk.png",
+                      "alt": "Tajikistan",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5120295",
+                  "uid": "s:3301~a:5120295",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcirley Alves",
+                    "displayName": "Marcirley Alves",
+                    "shortName": "M. Alves",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "15-5-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401675174",
+              "uid": "s:3301~l:3323~e:600044093~c:401675174",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4715264",
+                  "uid": "s:3301~a:4715264",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Khasan Magomedsharipov",
+                    "displayName": "Khasan Magomedsharipov",
+                    "shortName": "K. Magomedsharipov",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+                      "alt": "Russia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-0-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4878473",
+                  "uid": "s:3301~a:4878473",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Tyler Mathison",
+                    "displayName": "Tyler Mathison",
+                    "shortName": "T. Mathison",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "6-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654667",
+              "uid": "s:3301~l:3323~e:600044093~c:401654667",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4913286",
+                  "uid": "s:3301~a:4913286",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jose Sanchez",
+                    "displayName": "Jose Sanchez",
+                    "shortName": "J. Sanchez",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "13-3-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "4913833",
+                  "uid": "s:3301~a:4913833",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Nathan Kelly",
+                    "displayName": "Nathan Kelly",
+                    "shortName": "N. Kelly",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-5-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 222,
+                "displayClock": "3:42",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401653628",
+              "uid": "s:3301~l:3323~e:600044093~c:401653628",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "970",
+                "abbreviation": "Bantamweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3896616",
+                  "uid": "s:3301~a:3896616",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Matheus Mattos",
+                    "displayName": "Matheus Mattos",
+                    "shortName": "M. Mattos",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-4-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "5152982",
+                  "uid": "s:3301~a:5152982",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Kasum Kasumov",
+                    "displayName": "Kasum Kasumov",
+                    "shortName": "K. Kasumov",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+                      "alt": "Russia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-3-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401678580",
+              "uid": "s:3301~l:3323~e:600044093~c:401678580",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4881916",
+                  "uid": "s:3301~a:4881916",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Darragh Kelly",
+                    "displayName": "Darragh Kelly",
+                    "shortName": "D. Kelly",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5210199",
+                  "uid": "s:3301~a:5210199",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Mathias Poiron",
+                    "displayName": "Mathias Poiron",
+                    "shortName": "M. Poiron",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-2-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 89,
+                "displayClock": "1:29",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401655690",
+              "uid": "s:3301~l:3323~e:600044093~c:401655690",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "972",
+                "abbreviation": "Middleweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4588646",
+                  "uid": "s:3301~a:4588646",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Norbert Novenyi Jr.",
+                    "displayName": "Norbert Novenyi Jr.",
+                    "shortName": "N. Novenyi Jr.",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/hun.png",
+                      "alt": "Hungary",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4744150",
+                  "uid": "s:3301~a:4744150",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Dalton Rosta",
+                    "displayName": "Dalton Rosta",
+                    "shortName": "D. Rosta",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-3-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401653627",
+              "uid": "s:3301~l:3323~e:600044093~c:401653627",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "1004",
+                "abbreviation": "W Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3161696",
+                  "uid": "s:3301~a:3161696",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Arlene Blencowe",
+                    "displayName": "Arlene Blencowe",
+                    "shortName": "A. Blencowe",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-10-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4078216",
+                  "uid": "s:3301~a:4078216",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Sinead Kavanagh",
+                    "displayName": "Sinead Kavanagh",
+                    "shortName": "S. Kavanagh",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-7-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 182,
+                "displayClock": "3:02",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401657119",
+              "uid": "s:3301~l:3323~e:600044093~c:401657119",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4712360",
+                  "uid": "s:3301~a:4712360",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Paul Hughes",
+                    "displayName": "Paul Hughes",
+                    "shortName": "P. Hughes",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-3-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4814452",
+                  "uid": "s:3301~a:4814452",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Bobby King",
+                    "displayName": "Bobby King",
+                    "shortName": "B. King",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-7-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 290,
+                "displayClock": "4:50",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401650677",
+              "uid": "s:3301~l:3323~e:600044093~c:401650677",
+              "date": "2024-06-22T16:00Z",
+              "endDate": "2024-06-22T16:00Z",
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "4754",
+                "fullName": "3Arena",
+                "address": {
+                  "city": "Dublin",
+                  "country": "Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3120931",
+                  "uid": "s:3301~a:3120931",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jason Jackson",
+                    "displayName": "Jason Jackson",
+                    "shortName": "J. Jackson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/jam.png",
+                      "alt": "Jamaica",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "20-6-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4425611",
+                  "uid": "s:3301~a:4425611",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Ramazan Kuramagomedov",
+                    "displayName": "Ramazan Kuramagomedov",
+                    "shortName": "R. Kuramagomedov",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+                      "alt": "Russia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-0-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 5,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 5
+                }
+              },
+              "startDate": "2024-06-22T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/mma/fightcenter/_/id/600044093/league/bellator",
+              "text": "Gamecast",
+              "shortText": "Gamecast",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "venues": [
+            {
+              "id": "4754",
+              "fullName": "3Arena",
+              "address": {
+                "city": "Dublin",
+                "country": "Ireland"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "600043633",
+          "uid": "s:3301~l:3323~e:600043633",
+          "date": "2024-05-17T16:00Z",
+          "name": "Bellator Champions Series Paris: Mix vs. Magomedov 2",
+          "shortName": "Bellator Champions Series Paris",
+          "season": {
+            "year": 2024,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "401654317",
+              "uid": "s:3301~l:3323~e:600043633~c:401654317",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4894845",
+                  "uid": "s:3301~a:4894845",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Asaël Adjoudj",
+                    "displayName": "Asaël Adjoudj",
+                    "shortName": "A. Adjoudj",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+                      "alt": "Algeria",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5209577",
+                  "uid": "s:3301~a:5209577",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Bruno Fontes",
+                    "displayName": "Bruno Fontes",
+                    "shortName": "B. Fontes",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 71,
+                "displayClock": "1:11",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654025",
+              "uid": "s:3301~l:3323~e:600043633~c:401654025",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "1004",
+                "abbreviation": "W Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3167160",
+                  "uid": "s:3301~a:3167160",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Aspen Ladd",
+                    "displayName": "Aspen Ladd",
+                    "shortName": "A. Ladd",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-5-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5120811",
+                  "uid": "s:3301~a:5120811",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Ekaterina Shakalova",
+                    "displayName": "Ekaterina Shakalova",
+                    "shortName": "E. Shakalova",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ukr.png",
+                      "alt": "Ukraine",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654316",
+              "uid": "s:3301~l:3323~e:600043633~c:401654316",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "972",
+                "abbreviation": "Middleweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4084363",
+                  "uid": "s:3301~a:4084363",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Mike Shipman",
+                    "displayName": "Mike Shipman",
+                    "shortName": "M. Shipman",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "17-5-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5088321",
+                  "uid": "s:3301~a:5088321",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Steven Hill",
+                    "displayName": "Steven Hill",
+                    "shortName": "S. Hill",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "7-2-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401645299",
+              "uid": "s:3301~l:3323~e:600043633~c:401645299",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3067201",
+                  "uid": "s:3301~a:3067201",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Mansour Barnaoui",
+                    "displayName": "Mansour Barnaoui",
+                    "shortName": "M. Barnaoui",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
+                      "alt": "Tunisia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "22-7-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4039836",
+                  "uid": "s:3301~a:4039836",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Yusuke Yachi",
+                    "displayName": "Yusuke Yachi",
+                    "shortName": "Y. Yachi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+                      "alt": "Japan",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "27-14-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 248,
+                "displayClock": "4:08",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401645300",
+              "uid": "s:3301~l:3323~e:600043633~c:401645300",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "982",
+                "abbreviation": "Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "5080572",
+                  "uid": "s:3301~a:5080572",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Louie Sutherland",
+                    "displayName": "Louie Sutherland",
+                    "shortName": "L. Sutherland",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-5-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5101131",
+                  "uid": "s:3301~a:5101131",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Slim Trabelsi",
+                    "displayName": "Slim Trabelsi",
+                    "shortName": "S. Trabelsi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
+                      "alt": "Tunisia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "8-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654420",
+              "uid": "s:3301~l:3323~e:600043633~c:401654420",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3965445",
+                  "uid": "s:3301~a:3965445",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Thibault Gouti",
+                    "displayName": "Thibault Gouti",
+                    "shortName": "T. Gouti",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "17-7-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4878438",
+                  "uid": "s:3301~a:4878438",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Archie Colgan",
+                    "displayName": "Archie Colgan",
+                    "shortName": "A. Colgan",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "13-0-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401654419",
+              "uid": "s:3301~l:3323~e:600043633~c:401654419",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3022308",
+                  "uid": "s:3301~a:3022308",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Yves Landu",
+                    "displayName": "Yves Landu",
+                    "shortName": "Y. Landu",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "21-10-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4884867",
+                  "uid": "s:3301~a:4884867",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jonas Bilharinho",
+                    "displayName": "Jonas Bilharinho",
+                    "shortName": "J. Bilharinho",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-3-1"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401645298",
+              "uid": "s:3301~l:3323~e:600043633~c:401645298",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "972",
+                "abbreviation": "Middleweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "2559789",
+                  "uid": "s:3301~a:2559789",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Gregory Babene",
+                    "displayName": "Gregory Babene",
+                    "shortName": "G. Babene",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "23-13-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4330791",
+                  "uid": "s:3301~a:4330791",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Costello van Steenis",
+                    "displayName": "Costello van Steenis",
+                    "shortName": "C. van Steenis",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "18-3-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 136,
+                "displayClock": "2:16",
+                "period": 2,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401656119",
+              "uid": "s:3301~l:3323~e:600043633~c:401656119",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "969",
+                "abbreviation": "Welterweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3960085",
+                  "uid": "s:3301~a:3960085",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jaleel Willis",
+                    "displayName": "Jaleel Willis",
+                    "shortName": "J. Willis",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-7-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5082905",
+                  "uid": "s:3301~a:5082905",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Cedric Doumbé",
+                    "displayName": "Cedric Doumbé",
+                    "shortName": "C. Doumbé",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "6-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 213,
+                "displayClock": "3:33",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401645297",
+              "uid": "s:3301~l:3323~e:600043633~c:401645297",
+              "date": "2024-05-17T16:00Z",
+              "endDate": "2024-05-17T16:00Z",
+              "type": {
+                "id": "970",
+                "abbreviation": "Bantamweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "6271",
+                "fullName": "Bercy Arena",
+                "address": {
+                  "city": "Paris",
+                  "country": "France"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "2966188",
+                  "uid": "s:3301~a:2966188",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Magomed Magomedov",
+                    "displayName": "Magomed Magomedov",
+                    "shortName": "M. Magomedov",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+                      "alt": "Russia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "23-4-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4350925",
+                  "uid": "s:3301~a:4350925",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Patchy Mix",
+                    "displayName": "Patchy Mix",
+                    "shortName": "P. Mix",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "19-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 5,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 5
+                }
+              },
+              "startDate": "2024-05-17T16:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/mma/fightcenter/_/id/600043633/league/bellator",
+              "text": "Gamecast",
+              "shortText": "Gamecast",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "venues": [
+            {
+              "id": "6271",
+              "fullName": "Bercy Arena",
+              "address": {
+                "city": "Paris",
+                "country": "France"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "600042873",
+          "uid": "s:3301~l:3323~e:600042873",
+          "date": "2024-03-22T17:00Z",
+          "name": "Bellator Champions Series Belfast: Anderson vs. Moore",
+          "shortName": "Bellator Champions Series Belfast",
+          "season": {
+            "year": 2024,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "401639772",
+              "uid": "s:3301~l:3323~e:600042873~c:401639772",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4820893",
+                  "uid": "s:3301~a:4820893",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Alfie Davis",
+                    "displayName": "Alfie Davis",
+                    "shortName": "A. Davis",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "20-6-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "5137436",
+                  "uid": "s:3301~a:5137436",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Oscar Ownsworth",
+                    "displayName": "Oscar Ownsworth",
+                    "shortName": "O. Ownsworth",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "8-4-1"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639773",
+              "uid": "s:3301~l:3323~e:600042873~c:401639773",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4913833",
+                  "uid": "s:3301~a:4913833",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Nathan Kelly",
+                    "displayName": "Nathan Kelly",
+                    "shortName": "N. Kelly",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "11-5-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5124793",
+                  "uid": "s:3301~a:5124793",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Vikas Singh Ruhil",
+                    "displayName": "Vikas Singh Ruhil",
+                    "shortName": "V. Singh Ruhil",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ind.png",
+                      "alt": "India",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-8-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 14,
+                "displayClock": "0:14",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401643878",
+              "uid": "s:3301~l:3323~e:600042873~c:401643878",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "990",
+                "abbreviation": "Light Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4703598",
+                  "uid": "s:3301~a:4703598",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Grant Neal",
+                    "displayName": "Grant Neal",
+                    "shortName": "G. Neal",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "9-2-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4875324",
+                  "uid": "s:3301~a:4875324",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Luke Trainer",
+                    "displayName": "Luke Trainer",
+                    "shortName": "L. Trainer",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639774",
+              "uid": "s:3301~l:3323~e:600042873~c:401639774",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "982",
+                "abbreviation": "Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3049739",
+                  "uid": "s:3301~a:3049739",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Isaiah Pinson",
+                    "displayName": "Isaiah Pinson",
+                    "shortName": "I. Pinson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "3-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5080573",
+                  "uid": "s:3301~a:5080573",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Abraham Bably",
+                    "displayName": "Abraham Bably",
+                    "shortName": "A. Bably",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "8-2-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639771",
+              "uid": "s:3301~l:3323~e:600042873~c:401639771",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "970",
+                "abbreviation": "Bantamweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4881912",
+                  "uid": "s:3301~a:4881912",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Ciaran Clarke",
+                    "displayName": "Ciaran Clarke",
+                    "shortName": "C. Clarke",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "10-1-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "5088781",
+                  "uid": "s:3301~a:5088781",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Darius Mafi",
+                    "displayName": "Darius Mafi",
+                    "shortName": "D. Mafi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "4-2-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 41,
+                "displayClock": "0:41",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639769",
+              "uid": "s:3301~l:3323~e:600042873~c:401639769",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3028866",
+                  "uid": "s:3301~a:3028866",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Leandro Higo",
+                    "displayName": "Leandro Higo",
+                    "shortName": "L. Higo",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "23-8-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4024128",
+                  "uid": "s:3301~a:4024128",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "James Gallagher",
+                    "displayName": "James Gallagher",
+                    "shortName": "J. Gallagher",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-3-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639770",
+              "uid": "s:3301~l:3323~e:600042873~c:401639770",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "986",
+                "abbreviation": "Lightweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3109287",
+                  "uid": "s:3301~a:3109287",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Tim Wilde",
+                    "displayName": "Tim Wilde",
+                    "shortName": "T. Wilde",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "17-6-1"
+                    }
+                  ]
+                },
+                {
+                  "id": "5085291",
+                  "uid": "s:3301~a:5085291",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Manoel Sousa",
+                    "displayName": "Manoel Sousa",
+                    "shortName": "M. Sousa",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "14-1-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 288,
+                "displayClock": "4:48",
+                "period": 1,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401639768",
+              "uid": "s:3301~l:3323~e:600042873~c:401639768",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "972",
+                "abbreviation": "Middleweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "4255574",
+                  "uid": "s:3301~a:4255574",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Aaron Jeffery",
+                    "displayName": "Aaron Jeffery",
+                    "shortName": "A. Jeffery",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-6-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4341543",
+                  "uid": "s:3301~a:4341543",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Fabian Edwards",
+                    "displayName": "Fabian Edwards",
+                    "shortName": "F. Edwards",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "16-5-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 3
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401643876",
+              "uid": "s:3301~l:3323~e:600042873~c:401643876",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "999",
+                "abbreviation": "Featherweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "2532870",
+                  "uid": "s:3301~a:2532870",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Patricio Pitbull",
+                    "displayName": "Patricio Pitbull",
+                    "shortName": "P. Pitbull",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "37-9-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "4034830",
+                  "uid": "s:3301~a:4034830",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jeremy Kennedy",
+                    "displayName": "Jeremy Kennedy",
+                    "shortName": "J. Kennedy",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+                      "alt": "Canada",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "19-7-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 247,
+                "displayClock": "4:07",
+                "period": 3,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 5
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            },
+            {
+              "id": "401638363",
+              "uid": "s:3301~l:3323~e:600042873~c:401638363",
+              "date": "2024-03-22T17:00Z",
+              "endDate": "2024-03-22T17:00Z",
+              "type": {
+                "id": "990",
+                "abbreviation": "Light Heavyweight"
+              },
+              "timeValid": true,
+              "neutralSite": false,
+              "playByPlayAvailable": false,
+              "recent": false,
+              "venue": {
+                "id": "5093",
+                "fullName": "SSE Arena (NIR)",
+                "address": {
+                  "city": "Belfast",
+                  "country": "Northern Ireland"
+                },
+                "indoor": true
+              },
+              "competitors": [
+                {
+                  "id": "3112020",
+                  "uid": "s:3301~a:3112020",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Corey Anderson",
+                    "displayName": "Corey Anderson",
+                    "shortName": "C. Anderson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "21-6-0"
+                    }
+                  ]
+                },
+                {
+                  "id": "3950364",
+                  "uid": "s:3301~a:3950364",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Karl Moore",
+                    "displayName": "Karl Moore",
+                    "shortName": "K. Moore",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/irl.png",
+                      "alt": "Ireland",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "overall",
+                      "abbreviation": "TOT",
+                      "type": "total",
+                      "summary": "12-4-0"
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 300,
+                "displayClock": "5:00",
+                "period": 5,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                },
+                "featured": false
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "HBO Max"
+                  ]
+                }
+              ],
+              "format": {
+                "regulation": {
+                  "periods": 5
+                }
+              },
+              "startDate": "2024-03-22T17:00Z",
+              "broadcast": "HBO Max",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "4",
+                    "shortName": "Streaming"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "HBO Max"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/mma/fightcenter/_/id/600042873/league/bellator",
+              "text": "Gamecast",
+              "shortText": "Gamecast",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "venues": [
+            {
+              "id": "5093",
+              "fullName": "SSE Arena (NIR)",
+              "address": {
+                "city": "Belfast",
+                "country": "Northern Ireland"
+              }
+            }
+          ],
+          "status": {
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        }
+      ],
+      "leagues": [
+        {
+          "id": "3323",
+          "uid": "s:3301~l:3323",
+          "name": "Bellator Fighting Championship",
+          "abbreviation": "BFC",
+          "shortName": "Bellator",
+          "slug": "bellator",
+          "season": {
+            "year": 2024,
+            "startDate": "2024-01-01T08:00Z",
+            "endDate": "2024-12-31T08:00Z",
+            "displayName": "2024",
+            "type": {
+              "id": "2",
+              "type": 2,
+              "name": "Regular Season",
+              "abbreviation": "reg"
+            }
+          },
+          "calendarType": "list",
+          "calendar": [
+            {
+              "label": "Bellator Champions Series Belfast: Anderson vs. Moore",
+              "startDate": "2024-03-22T20:00Z",
+              "endDate": "2024-03-23T06:59Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/mma/leagues/bellator/events/600042873?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Bellator Champions Series Paris: Mix vs. Magomedov 2",
+              "startDate": "2024-05-17T19:00Z",
+              "endDate": "2024-05-18T06:59Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/mma/leagues/bellator/events/600043633?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Bellator Champions Series Dublin: Jackson vs. Kuramagomedov",
+              "startDate": "2024-06-22T19:00Z",
+              "endDate": "2024-06-23T06:59Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/mma/leagues/bellator/events/600044093?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Bellator Champions Series San Diego: Nurmagomedov vs. Shabliy",
+              "startDate": "2024-09-08T03:00Z",
+              "endDate": "2024-09-08T06:59Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/mma/leagues/bellator/events/600044094?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Bellator Champions Series London: McCourt vs. Collins",
+              "startDate": "2024-09-14T19:30Z",
+              "endDate": "2024-09-15T06:59Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/mma/leagues/bellator/events/600044095?lang=en&region=us"
+              }
+            }
+          ],
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-mma.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "default"
+              ],
+              "lastUpdated": "2021-08-03T15:56Z"
+            }
+          ]
+        }
+      ],
+      "day": {
+        "date": "2024-09-14"
+      }
+    },
+    "nowMs": 1783368000000
+  },
+  "output": {
+    "state": "offseason",
+    "detail": "Off-season",
+    "live": false
+  }
+}

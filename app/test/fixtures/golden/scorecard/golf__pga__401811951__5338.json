@@ -1,0 +1,1804 @@
+{
+  "endpoint": "scorecard",
+  "args": {
+    "key": "golf/pga",
+    "eventId": "401811951",
+    "playerId": "5338",
+    "raw": {
+      "profile": {
+        "id": "5338",
+        "uid": "s:1100~a:5338",
+        "guid": "7e5fd4d5-21f0-3329-d172-07de56c7ff76",
+        "displayName": "Bud Cauley",
+        "age": 36,
+        "dateOfBirth": "1990-03-16T08:00Z",
+        "college": "Alabama",
+        "hand": "R",
+        "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5338.png",
+        "link": "https://www.espn.com/golf/player/_/id/5338/bud-cauley",
+        "birthPlace": "Jacksonville, Florida",
+        "rank": "31st",
+        "earnings": "$3,941,167"
+      },
+      "rounds": [
+        {
+          "value": 69,
+          "displayValue": "-1",
+          "period": 1,
+          "linescores": [
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 10,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 11,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 12,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 13,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 14,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 15,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 16,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 17,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 18,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 5
+            },
+            {
+              "value": 6,
+              "displayValue": "6",
+              "period": 1,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 5
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 2,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 3,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 4,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 5,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 6,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 2,
+              "displayValue": "2",
+              "period": 7,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 8,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 9,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            }
+          ],
+          "inScore": 35,
+          "outScore": 34,
+          "courseId": 11309,
+          "hasStream": false,
+          "currentPosition": 73,
+          "startTee": 10,
+          "groupNumber": 20,
+          "teeTime": "2026-06-11T12:17Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 3,
+                    "displayValue": "3"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 2,
+                    "displayValue": "2"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 13,
+                    "displayValue": "13"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Thu Jun 11 08:17:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 63,
+          "displayValue": "-7",
+          "period": 2,
+          "linescores": [
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 1,
+              "scoreType": {
+                "name": "EAGLE",
+                "displayName": "Eagle",
+                "displayValue": "-2"
+              },
+              "par": 5
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 2,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 3,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 4,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 5,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 6,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 7,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 8,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 9,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 10,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 11,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 12,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 13,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 14,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 15,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 16,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 17,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 18,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 5
+            }
+          ],
+          "inScore": 31,
+          "outScore": 32,
+          "courseId": 11309,
+          "hasStream": false,
+          "startPosition": 73,
+          "currentPosition": 7,
+          "startTee": 1,
+          "groupNumber": 20,
+          "movement": -66,
+          "teeTime": "2026-06-12T17:32Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 5,
+                    "displayValue": "5"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 1,
+                    "displayValue": "1"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 12,
+                    "displayValue": "12"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Fri Jun 12 13:32:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 66,
+          "displayValue": "-4",
+          "period": 3,
+          "linescores": [
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 1,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 5
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 2,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 3,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 4,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 5,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 6,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 7,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 8,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 9,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 10,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 11,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 12,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 13,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 2,
+              "displayValue": "2",
+              "period": 14,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 15,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 16,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 17,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 18,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 5
+            }
+          ],
+          "inScore": 32,
+          "outScore": 34,
+          "courseId": 11309,
+          "hasStream": false,
+          "startPosition": 7,
+          "currentPosition": 2,
+          "startTee": 1,
+          "groupNumber": 34,
+          "movement": -5,
+          "teeTime": "2026-06-13T17:05Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 7,
+                    "displayValue": "7"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 3,
+                    "displayValue": "3"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 8,
+                    "displayValue": "8"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Sat Jun 13 13:05:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 65,
+          "displayValue": "-5",
+          "period": 4,
+          "linescores": [
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 1,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 5
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 2,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 3,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 4,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 5,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 6,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 7,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 8,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 9,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 10,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 2,
+              "displayValue": "2",
+              "period": 11,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 12,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 13,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 14,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 3
+            },
+            {
+              "value": 3,
+              "displayValue": "3",
+              "period": 15,
+              "scoreType": {
+                "name": "BIRDIE",
+                "displayName": "Birdie",
+                "displayValue": "-1"
+              },
+              "par": 4
+            },
+            {
+              "value": 4,
+              "displayValue": "4",
+              "period": 16,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 17,
+              "scoreType": {
+                "name": "BOGEY",
+                "displayName": "Bogey",
+                "displayValue": "+1"
+              },
+              "par": 4
+            },
+            {
+              "value": 5,
+              "displayValue": "5",
+              "period": 18,
+              "scoreType": {
+                "name": "PAR",
+                "displayName": "Par",
+                "displayValue": "E"
+              },
+              "par": 5
+            }
+          ],
+          "inScore": 32,
+          "outScore": 33,
+          "courseId": 11309,
+          "hasStream": false,
+          "startPosition": 2,
+          "currentPosition": 1,
+          "startTee": 1,
+          "groupNumber": 13,
+          "movement": -1,
+          "teeTime": "2026-06-14T16:42Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 7,
+                    "displayValue": "7"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 2,
+                    "displayValue": "2"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 9,
+                    "displayValue": "9"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Sun Jun 14 12:42:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "stats": [
+        {
+          "name": "tournamentsPlayed",
+          "displayName": "Tournaments played",
+          "displayValue": "0"
+        },
+        {
+          "name": "startScore",
+          "displayName": "Starting Score",
+          "displayValue": "E"
+        },
+        {
+          "name": "regScore",
+          "displayName": "Total",
+          "displayValue": "263"
+        },
+        {
+          "name": "scoreToPar",
+          "displayName": "Score To Par",
+          "displayValue": "-17"
+        },
+        {
+          "name": "driveDistAvg",
+          "displayName": "Driving Distance",
+          "displayValue": "302.3"
+        },
+        {
+          "name": "driveAccuracyPct",
+          "displayName": "Driving accuracy %",
+          "displayValue": "58.9"
+        },
+        {
+          "name": "gir",
+          "displayName": "GIR - Greens In Regulation ",
+          "displayValue": "72.2"
+        },
+        {
+          "name": "girPoss",
+          "displayName": "Possible GIR",
+          "displayValue": "72"
+        },
+        {
+          "name": "puttsGirAvg",
+          "displayName": "Putts per GIR",
+          "displayValue": "1.577"
+        },
+        {
+          "name": "sandSaves",
+          "displayName": "Sand save %",
+          "displayValue": "75"
+        },
+        {
+          "name": "sandSavesPoss",
+          "displayName": "Possible Sand Saves",
+          "displayValue": "4"
+        },
+        {
+          "name": "eagles",
+          "displayName": "Eagles",
+          "displayValue": "1"
+        },
+        {
+          "name": "birdies",
+          "displayName": "Birdies",
+          "displayValue": "22"
+        },
+        {
+          "name": "pars",
+          "displayName": "Pars",
+          "displayValue": "42"
+        },
+        {
+          "name": "bogeys",
+          "displayName": "Bogeys",
+          "displayValue": "7"
+        },
+        {
+          "name": "doubles",
+          "displayName": "DBL",
+          "displayValue": "0"
+        },
+        {
+          "name": "doubleBogeysAndWorse",
+          "displayName": "DBL+",
+          "displayValue": "0"
+        },
+        {
+          "name": "tripleBogeysAndWorse",
+          "displayName": "TPL+",
+          "displayValue": "0"
+        },
+        {
+          "name": "penalties",
+          "displayName": "Penalties",
+          "displayValue": "0"
+        },
+        {
+          "name": "amount",
+          "displayName": "Official money won",
+          "displayValue": "$1,764,000"
+        },
+        {
+          "name": "cutsMade",
+          "displayName": "Cuts made",
+          "displayValue": "0"
+        },
+        {
+          "name": "consecutiveCuts",
+          "displayName": "Consecutive Cuts",
+          "displayValue": "0"
+        },
+        {
+          "name": "officialAmount",
+          "displayName": "Official Earnings",
+          "displayValue": "$1,764,000"
+        },
+        {
+          "name": "adjustedScoringAverage",
+          "displayName": "Adjusted Scoring Average",
+          "displayValue": "0"
+        },
+        {
+          "name": "adjustment",
+          "displayName": "Adjustment",
+          "displayValue": "0"
+        },
+        {
+          "name": "cupPoints",
+          "displayName": "FedExCup Points",
+          "displayValue": "500"
+        }
+      ]
+    }
+  },
+  "output": {
+    "league": "golf/pga",
+    "eventId": "401811951",
+    "player": {
+      "id": "5338",
+      "name": "Bud Cauley",
+      "headshot": "https://a.espncdn.com/i/headshots/golf/players/full/5338.png"
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "strokes": 69,
+        "toPar": "-1",
+        "outScore": 34,
+        "inScore": 35,
+        "teeTime": "2026-06-11T12:17Z",
+        "startTee": 10,
+        "groupNumber": 20,
+        "currentPosition": 73,
+        "holes": [
+          {
+            "hole": 10,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 11,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 12,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 13,
+            "par": 4,
+            "strokes": 5,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 14,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 15,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 16,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 17,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 18,
+            "par": 5,
+            "strokes": 5,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 1,
+            "par": 5,
+            "strokes": 6,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 2,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 3,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 4,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 5,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 6,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 7,
+            "par": 3,
+            "strokes": 2,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 8,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 9,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "strokes": 63,
+        "toPar": "-7",
+        "outScore": 32,
+        "inScore": 31,
+        "teeTime": "2026-06-12T17:32Z",
+        "startTee": 1,
+        "groupNumber": 20,
+        "currentPosition": 7,
+        "holes": [
+          {
+            "hole": 1,
+            "par": 5,
+            "strokes": 3,
+            "scoreType": "EAGLE"
+          },
+          {
+            "hole": 2,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 3,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 4,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 5,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 6,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 7,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 8,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 9,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 10,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 11,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 12,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 13,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 14,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 15,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 16,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 17,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 18,
+            "par": 5,
+            "strokes": 4,
+            "scoreType": "BIRDIE"
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "strokes": 66,
+        "toPar": "-4",
+        "outScore": 34,
+        "inScore": 32,
+        "teeTime": "2026-06-13T17:05Z",
+        "startTee": 1,
+        "groupNumber": 34,
+        "currentPosition": 2,
+        "holes": [
+          {
+            "hole": 1,
+            "par": 5,
+            "strokes": 4,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 2,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 3,
+            "par": 4,
+            "strokes": 5,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 4,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 5,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 6,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 7,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 8,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 9,
+            "par": 4,
+            "strokes": 5,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 10,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 11,
+            "par": 3,
+            "strokes": 4,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 12,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 13,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 14,
+            "par": 3,
+            "strokes": 2,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 15,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 16,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 17,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 18,
+            "par": 5,
+            "strokes": 5,
+            "scoreType": "PAR"
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "strokes": 65,
+        "toPar": "-5",
+        "outScore": 33,
+        "inScore": 32,
+        "teeTime": "2026-06-14T16:42Z",
+        "startTee": 1,
+        "groupNumber": 13,
+        "currentPosition": 1,
+        "holes": [
+          {
+            "hole": 1,
+            "par": 5,
+            "strokes": 4,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 2,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 3,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 4,
+            "par": 3,
+            "strokes": 4,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 5,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 6,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 7,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 8,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 9,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 10,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 11,
+            "par": 3,
+            "strokes": 2,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 12,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 13,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 14,
+            "par": 3,
+            "strokes": 3,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 15,
+            "par": 4,
+            "strokes": 3,
+            "scoreType": "BIRDIE"
+          },
+          {
+            "hole": 16,
+            "par": 4,
+            "strokes": 4,
+            "scoreType": "PAR"
+          },
+          {
+            "hole": 17,
+            "par": 4,
+            "strokes": 5,
+            "scoreType": "BOGEY"
+          },
+          {
+            "hole": 18,
+            "par": 5,
+            "strokes": 5,
+            "scoreType": "PAR"
+          }
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "name": "regScore",
+        "label": "Total",
+        "value": "263"
+      },
+      {
+        "name": "scoreToPar",
+        "label": "Score To Par",
+        "value": "-17"
+      },
+      {
+        "name": "driveDistAvg",
+        "label": "Driving Distance",
+        "value": "302.3"
+      },
+      {
+        "name": "driveAccuracyPct",
+        "label": "Driving accuracy %",
+        "value": "58.9"
+      },
+      {
+        "name": "eagles",
+        "label": "Eagles",
+        "value": "1"
+      },
+      {
+        "name": "birdies",
+        "label": "Birdies",
+        "value": "22"
+      }
+    ]
+  }
+}

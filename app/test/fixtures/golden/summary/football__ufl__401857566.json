@@ -1,0 +1,743 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "football/ufl",
+    "eventId": "401857566",
+    "raw": {
+      "header": {
+        "id": "401857566",
+        "competitions": [
+          {
+            "id": "401857566",
+            "date": "2026-06-13T19:00Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "Final",
+                "detail": "Final",
+                "shortDetail": "Final"
+              }
+            },
+            "competitors": [
+              {
+                "id": "132262",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": "27",
+                "linescores": [
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "7"
+                  },
+                  {
+                    "displayValue": "6"
+                  },
+                  {
+                    "displayValue": "14"
+                  }
+                ],
+                "team": {
+                  "id": "132262",
+                  "abbreviation": "LOU",
+                  "displayName": "Louisville Kings"
+                }
+              },
+              {
+                "id": "112646",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": "20",
+                "linescores": [
+                  {
+                    "displayValue": "3"
+                  },
+                  {
+                    "displayValue": "13"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "4"
+                  }
+                ],
+                "team": {
+                  "id": "112646",
+                  "abbreviation": "DC",
+                  "displayName": "DC Defenders"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "112646",
+              "uid": "s:20~l:37~t:112646",
+              "slug": "dc-defenders",
+              "location": "DC",
+              "name": "Defenders",
+              "abbreviation": "DC",
+              "displayName": "DC Defenders",
+              "shortDisplayName": "Defenders",
+              "color": "c8102e",
+              "alternateColor": "ffffff",
+              "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/dc.png"
+            },
+            "statistics": [],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "132262",
+              "uid": "s:20~l:37~t:132262",
+              "slug": "louisville-kings",
+              "location": "Louisville",
+              "name": "Kings",
+              "abbreviation": "LOU",
+              "displayName": "Louisville Kings",
+              "shortDisplayName": "Kings",
+              "color": "06190a",
+              "alternateColor": "97d700",
+              "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/lou.png"
+            },
+            "statistics": [],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "112646",
+              "uid": "s:20~l:37~t:112646",
+              "slug": "dc-defenders",
+              "location": "DC",
+              "name": "Defenders",
+              "abbreviation": "DC",
+              "displayName": "DC Defenders",
+              "shortDisplayName": "Defenders",
+              "color": "c8102e",
+              "alternateColor": "ffffff",
+              "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/dc.png"
+            },
+            "statistics": [
+              {
+                "name": "passing",
+                "keys": [
+                  "completions/passingAttempts",
+                  "passingYards",
+                  "yardsPerPassAttempt",
+                  "passingTouchdowns",
+                  "interceptions",
+                  "adjQBR"
+                ],
+                "text": "DC Passing",
+                "labels": [
+                  "C/ATT",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "INT"
+                ],
+                "descriptions": [
+                  "Completions/Attempts",
+                  "Yards",
+                  "Yards Per Pass Attempt",
+                  "Touchdowns",
+                  "Interceptions"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "rushing",
+                "keys": [
+                  "rushingAttempts",
+                  "rushingYards",
+                  "yardsPerRushAttempt",
+                  "rushingTouchdowns",
+                  "longRushing"
+                ],
+                "text": "DC Rushing",
+                "labels": [
+                  "CAR",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "LONG"
+                ],
+                "descriptions": [
+                  "Rushing Attempts",
+                  "Yards",
+                  "Yards Per Rushing Attempt",
+                  "Touchdowns",
+                  "Longest Run"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "receiving",
+                "keys": [
+                  "receptions",
+                  "receivingYards",
+                  "yardsPerReception",
+                  "receivingTouchdowns",
+                  "longReception",
+                  "receivingTargets"
+                ],
+                "text": "DC Receiving",
+                "labels": [
+                  "REC",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "LONG",
+                  "TGTS"
+                ],
+                "descriptions": [
+                  "Receptions",
+                  "Yards",
+                  "Yards Per Reception",
+                  "Touchdowns",
+                  "Longest Reception",
+                  "Receiving Targets"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "fumbles",
+                "keys": [
+                  "fumbles",
+                  "fumblesLost",
+                  "fumblesRecovered"
+                ],
+                "text": "DC Fumbles",
+                "labels": [
+                  "FUM",
+                  "LOST",
+                  "REC"
+                ],
+                "descriptions": [
+                  "Fumbles",
+                  "Fumbles Lost",
+                  "Fumbles Recovered"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "defensive",
+                "keys": [
+                  "totalTackles",
+                  "soloTackles",
+                  "sacks",
+                  "tacklesForLoss",
+                  "passesDefended",
+                  "hurries",
+                  "defensiveTouchdowns"
+                ],
+                "text": "DC Defense",
+                "labels": [
+                  "TOT",
+                  "SOLO",
+                  "SACKS",
+                  "TFL",
+                  "PD",
+                  "QB HUR",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Tackles",
+                  "Solo Tackles",
+                  "Sacks",
+                  "Tackles For Loss",
+                  "Passes Defended",
+                  "Quarterback Hurries",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "interceptions",
+                "keys": [
+                  "interceptions",
+                  "interceptionYards",
+                  "interceptionTouchdowns"
+                ],
+                "text": "DC Interceptions",
+                "labels": [
+                  "INT",
+                  "YDS",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Interceptions",
+                  "Yards",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "kickReturns",
+                "keys": [
+                  "kickReturns",
+                  "kickReturnYards",
+                  "yardsPerKickReturn",
+                  "longKickReturn",
+                  "kickReturnTouchdowns"
+                ],
+                "text": "DC Kick Returns",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "LONG",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Kick Returns",
+                  "Yards",
+                  "Yards Per Kick Return",
+                  "Longest Kick Return",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "puntReturns",
+                "keys": [
+                  "puntReturns",
+                  "puntReturnYards",
+                  "yardsPerPuntReturn",
+                  "longPuntReturn",
+                  "puntReturnTouchdowns"
+                ],
+                "text": "DC Punt Returns",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "LONG",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Punt Returns",
+                  "Yards",
+                  "Yards Per Punt Return",
+                  "Longest Punt Return",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "kicking",
+                "keys": [
+                  "fieldGoalsMade/fieldGoalAttempts",
+                  "fieldGoalPct",
+                  "longFieldGoalMade",
+                  "extraPointsMade/extraPointAttempts",
+                  "totalKickingPoints"
+                ],
+                "text": "DC Kicking",
+                "labels": [
+                  "FG",
+                  "PCT",
+                  "LONG",
+                  "XP",
+                  "PTS"
+                ],
+                "descriptions": [
+                  "Field Goals Made/Attempts",
+                  "Field Goal Percentage",
+                  "Longest Field Goal Made",
+                  "Extra Points Made/Attempts",
+                  "Kicking Points"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "punting",
+                "keys": [
+                  "punts",
+                  "puntYards",
+                  "grossAvgPuntYards",
+                  "touchbacks",
+                  "puntsInside20",
+                  "longPunt"
+                ],
+                "text": "DC Punting",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "TB",
+                  "In 20",
+                  "LONG"
+                ],
+                "descriptions": [
+                  "Punts",
+                  "Yards",
+                  "Average Punt Yards",
+                  "Touchbacks",
+                  "Punts Inside 20",
+                  "Longest Punt"
+                ],
+                "athletes": [],
+                "totals": []
+              }
+            ],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "132262",
+              "uid": "s:20~l:37~t:132262",
+              "slug": "louisville-kings",
+              "location": "Louisville",
+              "name": "Kings",
+              "abbreviation": "LOU",
+              "displayName": "Louisville Kings",
+              "shortDisplayName": "Kings",
+              "color": "06190a",
+              "alternateColor": "97d700",
+              "logo": "https://a.espncdn.com/i/teamlogos/ufl/500/lou.png"
+            },
+            "statistics": [
+              {
+                "name": "passing",
+                "keys": [
+                  "completions/passingAttempts",
+                  "passingYards",
+                  "yardsPerPassAttempt",
+                  "passingTouchdowns",
+                  "interceptions",
+                  "adjQBR"
+                ],
+                "text": "Louisville Passing",
+                "labels": [
+                  "C/ATT",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "INT"
+                ],
+                "descriptions": [
+                  "Completions/Attempts",
+                  "Yards",
+                  "Yards Per Pass Attempt",
+                  "Touchdowns",
+                  "Interceptions"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "rushing",
+                "keys": [
+                  "rushingAttempts",
+                  "rushingYards",
+                  "yardsPerRushAttempt",
+                  "rushingTouchdowns",
+                  "longRushing"
+                ],
+                "text": "Louisville Rushing",
+                "labels": [
+                  "CAR",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "LONG"
+                ],
+                "descriptions": [
+                  "Rushing Attempts",
+                  "Yards",
+                  "Yards Per Rushing Attempt",
+                  "Touchdowns",
+                  "Longest Run"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "receiving",
+                "keys": [
+                  "receptions",
+                  "receivingYards",
+                  "yardsPerReception",
+                  "receivingTouchdowns",
+                  "longReception",
+                  "receivingTargets"
+                ],
+                "text": "Louisville Receiving",
+                "labels": [
+                  "REC",
+                  "YDS",
+                  "AVG",
+                  "TD",
+                  "LONG",
+                  "TGTS"
+                ],
+                "descriptions": [
+                  "Receptions",
+                  "Yards",
+                  "Yards Per Reception",
+                  "Touchdowns",
+                  "Longest Reception",
+                  "Receiving Targets"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "fumbles",
+                "keys": [
+                  "fumbles",
+                  "fumblesLost",
+                  "fumblesRecovered"
+                ],
+                "text": "Louisville Fumbles",
+                "labels": [
+                  "FUM",
+                  "LOST",
+                  "REC"
+                ],
+                "descriptions": [
+                  "Fumbles",
+                  "Fumbles Lost",
+                  "Fumbles Recovered"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "defensive",
+                "keys": [
+                  "totalTackles",
+                  "soloTackles",
+                  "sacks",
+                  "tacklesForLoss",
+                  "passesDefended",
+                  "hurries",
+                  "defensiveTouchdowns"
+                ],
+                "text": "Louisville Defense",
+                "labels": [
+                  "TOT",
+                  "SOLO",
+                  "SACKS",
+                  "TFL",
+                  "PD",
+                  "QB HUR",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Tackles",
+                  "Solo Tackles",
+                  "Sacks",
+                  "Tackles For Loss",
+                  "Passes Defended",
+                  "Quarterback Hurries",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "interceptions",
+                "keys": [
+                  "interceptions",
+                  "interceptionYards",
+                  "interceptionTouchdowns"
+                ],
+                "text": "Louisville Interceptions",
+                "labels": [
+                  "INT",
+                  "YDS",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Interceptions",
+                  "Yards",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "kickReturns",
+                "keys": [
+                  "kickReturns",
+                  "kickReturnYards",
+                  "yardsPerKickReturn",
+                  "longKickReturn",
+                  "kickReturnTouchdowns"
+                ],
+                "text": "Louisville Kick Returns",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "LONG",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Kick Returns",
+                  "Yards",
+                  "Yards Per Kick Return",
+                  "Longest Kick Return",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "puntReturns",
+                "keys": [
+                  "puntReturns",
+                  "puntReturnYards",
+                  "yardsPerPuntReturn",
+                  "longPuntReturn",
+                  "puntReturnTouchdowns"
+                ],
+                "text": "Louisville Punt Returns",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "LONG",
+                  "TD"
+                ],
+                "descriptions": [
+                  "Punt Returns",
+                  "Yards",
+                  "Yards Per Punt Return",
+                  "Longest Punt Return",
+                  "Touchdowns"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "kicking",
+                "keys": [
+                  "fieldGoalsMade/fieldGoalAttempts",
+                  "fieldGoalPct",
+                  "longFieldGoalMade",
+                  "extraPointsMade/extraPointAttempts",
+                  "totalKickingPoints"
+                ],
+                "text": "Louisville Kicking",
+                "labels": [
+                  "FG",
+                  "PCT",
+                  "LONG",
+                  "XP",
+                  "PTS"
+                ],
+                "descriptions": [
+                  "Field Goals Made/Attempts",
+                  "Field Goal Percentage",
+                  "Longest Field Goal Made",
+                  "Extra Points Made/Attempts",
+                  "Kicking Points"
+                ],
+                "athletes": [],
+                "totals": []
+              },
+              {
+                "name": "punting",
+                "keys": [
+                  "punts",
+                  "puntYards",
+                  "grossAvgPuntYards",
+                  "touchbacks",
+                  "puntsInside20",
+                  "longPunt"
+                ],
+                "text": "Louisville Punting",
+                "labels": [
+                  "NO",
+                  "YDS",
+                  "AVG",
+                  "TB",
+                  "In 20",
+                  "LONG"
+                ],
+                "descriptions": [
+                  "Punts",
+                  "Yards",
+                  "Average Punt Yards",
+                  "Touchbacks",
+                  "Punts Inside 20",
+                  "Longest Punt"
+                ],
+                "athletes": [],
+                "totals": []
+              }
+            ],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "gameInfo": {
+        "attendance": 0
+      }
+    }
+  },
+  "output": {
+    "eventId": "401857566",
+    "live": false,
+    "teamStats": [],
+    "boxGroups": [],
+    "scoringPlays": [],
+    "lineups": [],
+    "periodLines": {
+      "unit": "quarter",
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "away": {
+        "abbr": "DC",
+        "values": [
+          "3",
+          "13",
+          "0",
+          "4"
+        ],
+        "total": "20"
+      },
+      "home": {
+        "abbr": "LOU",
+        "values": [
+          "0",
+          "7",
+          "6",
+          "14"
+        ],
+        "total": "27"
+      }
+    }
+  }
+}

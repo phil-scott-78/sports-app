@@ -1,0 +1,4796 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "hockey/womens-college-hockey",
+    "eventId": "401862337",
+    "raw": {
+      "header": {
+        "id": "401862337",
+        "competitions": [
+          {
+            "id": "401862337",
+            "date": "2026-03-20T20:00Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "Final",
+                "detail": "Final",
+                "shortDetail": "Final"
+              },
+              "featuredAthletes": [
+                {
+                  "name": "winningGoalie",
+                  "displayName": "Winning Goalie",
+                  "playerId": 5272966,
+                  "athlete": {
+                    "id": "5272966",
+                    "uid": "s:70~l:92~a:5272966",
+                    "fullName": "Hailey MacLeod",
+                    "displayName": "Hailey MacLeod",
+                    "shortName": "H. MacLeod",
+                    "links": [
+                      {
+                        "language": "en-US",
+                        "rel": [
+                          "stats",
+                          "sportscenter",
+                          "app",
+                          "athlete"
+                        ],
+                        "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:92~a:5272966&section=stats",
+                        "text": "Stats",
+                        "shortText": "Stats"
+                      }
+                    ]
+                  },
+                  "team": {
+                    "id": "194",
+                    "name": "Buckeyes",
+                    "nickname": "Ohio State",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "default"
+                        ],
+                        "lastUpdated": "2025-12-23T01:44Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/194.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ],
+                        "lastUpdated": "2025-12-23T01:44Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/primary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7403797-e193-356a-b981-5c9fa195b178/logos/secondary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:05Z"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "losingGoalie",
+                  "displayName": "Losing Goalie",
+                  "playerId": 5273210,
+                  "athlete": {
+                    "id": "5273210",
+                    "uid": "s:70~l:92~a:5273210",
+                    "fullName": "Lisa Jonsson",
+                    "displayName": "Lisa Jonsson",
+                    "shortName": "L. Jonsson",
+                    "links": [
+                      {
+                        "language": "en-US",
+                        "rel": [
+                          "stats",
+                          "sportscenter",
+                          "app",
+                          "athlete"
+                        ],
+                        "href": "sportscenter://x-callback-url/showClubhouse?uid=s:70~l:92~a:5273210&section=stats",
+                        "text": "Stats",
+                        "shortText": "Stats"
+                      }
+                    ]
+                  },
+                  "team": {
+                    "id": "111",
+                    "name": "Huskies",
+                    "nickname": "Northeastern",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "default"
+                        ],
+                        "lastUpdated": "2022-12-08T22:16Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/ncaa/500-dark/111.png",
+                        "width": 500,
+                        "height": 500,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ],
+                        "lastUpdated": "2022-12-08T22:18Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/primary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "primary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_on_white_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_white_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_on_black_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_black_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_on_primary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_primary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_on_secondary_color.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_on_secondary_color"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_black.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_black"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      },
+                      {
+                        "href": "https://a.espncdn.com/guid/c7291ea8-db22-3446-99ee-9ec753b0df6b/logos/secondary_logo_white.png",
+                        "width": 4096,
+                        "height": 4096,
+                        "alt": "",
+                        "rel": [
+                          "full",
+                          "secondary_logo_white"
+                        ],
+                        "lastUpdated": "2026-02-13T18:01Z"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "competitors": [
+              {
+                "id": "194",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": "5",
+                "linescores": [
+                  {
+                    "displayValue": "4"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "1"
+                  }
+                ],
+                "team": {
+                  "id": "194",
+                  "abbreviation": "OSU",
+                  "displayName": "Ohio State Buckeyes"
+                }
+              },
+              {
+                "id": "111",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": "0",
+                "linescores": [
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  }
+                ],
+                "team": {
+                  "id": "111",
+                  "abbreviation": "NE",
+                  "displayName": "Northeastern Huskies"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "111",
+              "uid": "s:70~l:92~t:111",
+              "slug": "northeastern-huskies",
+              "location": "Northeastern",
+              "name": "Huskies",
+              "abbreviation": "NE",
+              "displayName": "Northeastern Huskies",
+              "shortDisplayName": "Northeastern",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png"
+            },
+            "statistics": [
+              {
+                "name": "blockedShots",
+                "abbreviation": "BS",
+                "displayValue": "0",
+                "label": "Blocked Shots"
+              },
+              {
+                "name": "hits",
+                "abbreviation": "HT",
+                "displayValue": "0",
+                "label": "Hits"
+              },
+              {
+                "name": "takeaways",
+                "abbreviation": "TK",
+                "displayValue": "0",
+                "label": "Takeaways"
+              },
+              {
+                "name": "shotsTotal",
+                "abbreviation": "S",
+                "displayValue": "15",
+                "label": "Shots"
+              },
+              {
+                "name": "powerPlayGoals",
+                "abbreviation": "PPG",
+                "displayValue": "0",
+                "label": "Power Play Goals"
+              },
+              {
+                "name": "powerPlayOpportunities",
+                "abbreviation": "PPO",
+                "displayValue": "4",
+                "label": "Power Play Opportunities"
+              },
+              {
+                "name": "powerPlayPct",
+                "abbreviation": "PCT",
+                "displayValue": "0.0",
+                "label": "Power Play Percentage"
+              },
+              {
+                "name": "shortHandedGoals",
+                "abbreviation": "SHG",
+                "displayValue": "0",
+                "label": "Short Handed Goals"
+              },
+              {
+                "name": "shootoutGoals",
+                "abbreviation": "SOG",
+                "displayValue": "0",
+                "label": "Shootout Goals"
+              },
+              {
+                "name": "faceoffsWon",
+                "abbreviation": "FW",
+                "displayValue": "0",
+                "label": "Faceoffs Won"
+              },
+              {
+                "name": "faceoffPercent",
+                "abbreviation": "FO%",
+                "displayValue": "0.0",
+                "label": "Faceoff Win Percent"
+              },
+              {
+                "name": "giveaways",
+                "abbreviation": "GV",
+                "displayValue": "0",
+                "label": "Giveaways"
+              },
+              {
+                "name": "penalties",
+                "abbreviation": "PN",
+                "displayValue": "3",
+                "label": "Total Penalties"
+              },
+              {
+                "name": "penaltyMinutes",
+                "abbreviation": "PIM",
+                "displayValue": "6",
+                "label": "Penalty Minutes"
+              }
+            ],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "194",
+              "uid": "s:70~l:92~t:194",
+              "slug": "ohio-state-buckeyes",
+              "location": "Ohio State",
+              "name": "Buckeyes",
+              "abbreviation": "OSU",
+              "displayName": "Ohio State Buckeyes",
+              "shortDisplayName": "Ohio State",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png"
+            },
+            "statistics": [
+              {
+                "name": "blockedShots",
+                "abbreviation": "BS",
+                "displayValue": "0",
+                "label": "Blocked Shots"
+              },
+              {
+                "name": "hits",
+                "abbreviation": "HT",
+                "displayValue": "0",
+                "label": "Hits"
+              },
+              {
+                "name": "takeaways",
+                "abbreviation": "TK",
+                "displayValue": "0",
+                "label": "Takeaways"
+              },
+              {
+                "name": "shotsTotal",
+                "abbreviation": "S",
+                "displayValue": "42",
+                "label": "Shots"
+              },
+              {
+                "name": "powerPlayGoals",
+                "abbreviation": "PPG",
+                "displayValue": "0",
+                "label": "Power Play Goals"
+              },
+              {
+                "name": "powerPlayOpportunities",
+                "abbreviation": "PPO",
+                "displayValue": "2",
+                "label": "Power Play Opportunities"
+              },
+              {
+                "name": "powerPlayPct",
+                "abbreviation": "PCT",
+                "displayValue": "0.0",
+                "label": "Power Play Percentage"
+              },
+              {
+                "name": "shortHandedGoals",
+                "abbreviation": "SHG",
+                "displayValue": "0",
+                "label": "Short Handed Goals"
+              },
+              {
+                "name": "shootoutGoals",
+                "abbreviation": "SOG",
+                "displayValue": "0",
+                "label": "Shootout Goals"
+              },
+              {
+                "name": "faceoffsWon",
+                "abbreviation": "FW",
+                "displayValue": "0",
+                "label": "Faceoffs Won"
+              },
+              {
+                "name": "faceoffPercent",
+                "abbreviation": "FO%",
+                "displayValue": "0.0",
+                "label": "Faceoff Win Percent"
+              },
+              {
+                "name": "giveaways",
+                "abbreviation": "GV",
+                "displayValue": "0",
+                "label": "Giveaways"
+              },
+              {
+                "name": "penalties",
+                "abbreviation": "PN",
+                "displayValue": "4",
+                "label": "Total Penalties"
+              },
+              {
+                "name": "penaltyMinutes",
+                "abbreviation": "PIM",
+                "displayValue": "8",
+                "label": "Penalty Minutes"
+              }
+            ],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "111",
+              "uid": "s:70~l:92~t:111",
+              "slug": "northeastern-huskies",
+              "location": "Northeastern",
+              "name": "Huskies",
+              "abbreviation": "NE",
+              "displayName": "Northeastern Huskies",
+              "shortDisplayName": "Northeastern",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png"
+            },
+            "statistics": [
+              {
+                "name": "forwards",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5273217",
+                      "uid": "s:70~l:92~a:5273217",
+                      "lastName": "Abela",
+                      "displayName": "Holly Abela",
+                      "shortName": "H. Abela",
+                      "links": [],
+                      "jersey": "10",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273233",
+                      "uid": "s:70~l:92~a:5273233",
+                      "lastName": "Bogden",
+                      "displayName": "Jaden Bogden",
+                      "shortName": "J. Bogden",
+                      "links": [],
+                      "jersey": "74",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273231",
+                      "uid": "s:70~l:92~a:5273231",
+                      "lastName": "Brazis",
+                      "displayName": "Lily Brazis",
+                      "shortName": "L. Brazis",
+                      "links": [],
+                      "jersey": "61",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273236",
+                      "uid": "s:70~l:92~a:5273236",
+                      "lastName": "Caron",
+                      "displayName": "Eloise Caron",
+                      "shortName": "E. Caron",
+                      "links": [],
+                      "jersey": "91",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-3",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "2",
+                      "4"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273224",
+                      "uid": "s:70~l:92~a:5273224",
+                      "lastName": "Compton",
+                      "displayName": "Peyton Compton",
+                      "shortName": "P. Compton",
+                      "links": [],
+                      "jersey": "22",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273218",
+                      "uid": "s:70~l:92~a:5273218",
+                      "lastName": "Jackson",
+                      "displayName": "Morgan Jackson",
+                      "shortName": "M. Jackson",
+                      "links": [],
+                      "jersey": "92",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273214",
+                      "uid": "s:70~l:92~a:5273214",
+                      "lastName": "Lalonde",
+                      "displayName": "Allie Lalonde",
+                      "shortName": "A. Lalonde",
+                      "links": [],
+                      "jersey": "6",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273222",
+                      "uid": "s:70~l:92~a:5273222",
+                      "lastName": "Langlois",
+                      "displayName": "Mia Langlois",
+                      "shortName": "M. Langlois",
+                      "links": [],
+                      "jersey": "17",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273220",
+                      "uid": "s:70~l:92~a:5273220",
+                      "lastName": "Mabardy",
+                      "displayName": "Ellie Mabardy",
+                      "shortName": "E. Mabardy",
+                      "links": [],
+                      "jersey": "15",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339319",
+                      "uid": "s:70~l:92~a:5339319",
+                      "lastName": "MacCurtain",
+                      "displayName": "Molly MacCurtain",
+                      "shortName": "M. MacCurtain",
+                      "links": [],
+                      "jersey": "5",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339321",
+                      "uid": "s:70~l:92~a:5339321",
+                      "lastName": "McDermid",
+                      "displayName": "Emy McDermid",
+                      "shortName": "E. McDermid",
+                      "links": [],
+                      "jersey": "14",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273211",
+                      "uid": "s:70~l:92~a:5273211",
+                      "lastName": "Shannon",
+                      "displayName": "Lily Shannon",
+                      "shortName": "L. Shannon",
+                      "links": [],
+                      "jersey": "2",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-3",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339324",
+                      "uid": "s:70~l:92~a:5339324",
+                      "lastName": "Zablocki",
+                      "displayName": "Stryker Zablocki",
+                      "shortName": "S. Zablocki",
+                      "links": [],
+                      "jersey": "21",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "5",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "defenses",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5273216",
+                      "uid": "s:70~l:92~a:5273216",
+                      "lastName": "Allard",
+                      "displayName": "Kristina Allard",
+                      "shortName": "K. Allard",
+                      "links": [],
+                      "jersey": "9",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-3",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5332668",
+                      "uid": "s:70~l:92~a:5332668",
+                      "lastName": "Baechler",
+                      "displayName": "Alessia Baechler",
+                      "shortName": "A. Baechler",
+                      "links": [],
+                      "jersey": "82",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273229",
+                      "uid": "s:70~l:92~a:5273229",
+                      "lastName": "Constantinople",
+                      "displayName": "Jules Constantinople",
+                      "shortName": "J. Constantinople",
+                      "links": [],
+                      "jersey": "41",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-3",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273225",
+                      "uid": "s:70~l:92~a:5273225",
+                      "lastName": "Jones",
+                      "displayName": "Rylie Jones",
+                      "shortName": "R. Jones",
+                      "links": [],
+                      "jersey": "26",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "-2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339322",
+                      "uid": "s:70~l:92~a:5339322",
+                      "lastName": "Lloyd",
+                      "displayName": "Ella Lloyd",
+                      "shortName": "E. Lloyd",
+                      "links": [],
+                      "jersey": "16",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5273226",
+                      "uid": "s:70~l:92~a:5273226",
+                      "lastName": "Thompson",
+                      "displayName": "Tristan Thompson",
+                      "shortName": "T. Thompson",
+                      "links": [],
+                      "jersey": "27",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "skaters",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": []
+              },
+              {
+                "name": "goalies",
+                "keys": [
+                  "goalsAgainst",
+                  "shotsAgainst",
+                  "shootoutSaves",
+                  "shootoutShotsAgainst",
+                  "saves",
+                  "savePct",
+                  "evenStrengthSaves",
+                  "powerPlaySaves",
+                  "shortHandedSaves",
+                  "timeOnIce",
+                  "ytdGoals",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "GA",
+                  "SA",
+                  "SOS",
+                  "SOSA",
+                  "SV",
+                  "SV%",
+                  "ESSV",
+                  "PPSV",
+                  "SHSV",
+                  "TOI",
+                  "YTDG",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total goals against.",
+                  "Total shots against.",
+                  "Total shootout saves.",
+                  "Total shootout shots against.",
+                  "Total saves.",
+                  "Percentage of shots saved.",
+                  "Saves made at even strength.",
+                  "Saves made while in a power play.",
+                  "Saves made while shorthanded",
+                  "Total time on ice.",
+                  "Year to date goals/",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5273210",
+                      "uid": "s:70~l:92~a:5273210",
+                      "lastName": "Jonsson",
+                      "displayName": "Lisa Jonsson",
+                      "shortName": "L. Jonsson",
+                      "links": [],
+                      "jersey": "1",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/5?lang=en&region=us",
+                        "id": "5",
+                        "name": "Goaltender",
+                        "displayName": "Goaltender",
+                        "abbreviation": "G",
+                        "leaf": false
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "5",
+                      "42",
+                      "0",
+                      "0",
+                      "37",
+                      ".881",
+                      "0",
+                      "0",
+                      "0",
+                      "60:00",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "194",
+              "uid": "s:70~l:92~t:194",
+              "slug": "ohio-state-buckeyes",
+              "location": "Ohio State",
+              "name": "Buckeyes",
+              "abbreviation": "OSU",
+              "displayName": "Ohio State Buckeyes",
+              "shortDisplayName": "Ohio State",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png"
+            },
+            "statistics": [
+              {
+                "name": "forwards",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5272957",
+                      "uid": "s:70~l:92~a:5272957",
+                      "lastName": "Amos",
+                      "displayName": "Jocelyn Amos",
+                      "shortName": "J. Amos",
+                      "links": [],
+                      "jersey": "17",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "6",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272962",
+                      "uid": "s:70~l:92~a:5272962",
+                      "lastName": "Baxter",
+                      "displayName": "Jordan Baxter",
+                      "shortName": "J. Baxter",
+                      "links": [],
+                      "jersey": "27",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339301",
+                      "uid": "s:70~l:92~a:5339301",
+                      "lastName": "Carmichael",
+                      "displayName": "Kassidy Carmichael",
+                      "shortName": "K. Carmichael",
+                      "links": [],
+                      "jersey": "29",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339299",
+                      "uid": "s:70~l:92~a:5339299",
+                      "lastName": "Cimoroni",
+                      "displayName": "Maxine Cimoroni",
+                      "shortName": "M. Cimoroni",
+                      "links": [],
+                      "jersey": "18",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "2",
+                      "4"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272956",
+                      "uid": "s:70~l:92~a:5272956",
+                      "lastName": "Dunne",
+                      "displayName": "Joy Dunne",
+                      "shortName": "J. Dunne",
+                      "links": [],
+                      "jersey": "16",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "1",
+                      "8",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272994",
+                      "uid": "s:70~l:92~a:5272994",
+                      "lastName": "Malachino",
+                      "displayName": "Kaia Malachino",
+                      "shortName": "K. Malachino",
+                      "links": [],
+                      "jersey": "11",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "1",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272961",
+                      "uid": "s:70~l:92~a:5272961",
+                      "lastName": "Matthews",
+                      "displayName": "Sloane Matthews",
+                      "shortName": "S. Matthews",
+                      "links": [],
+                      "jersey": "22",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272959",
+                      "uid": "s:70~l:92~a:5272959",
+                      "lastName": "Petrie",
+                      "displayName": "Jordyn Petrie",
+                      "shortName": "J. Petrie",
+                      "links": [],
+                      "jersey": "19",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339298",
+                      "uid": "s:70~l:92~a:5339298",
+                      "lastName": "Rasmussen",
+                      "displayName": "Macy Rasmussen",
+                      "shortName": "M. Rasmussen",
+                      "links": [],
+                      "jersey": "15",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5332646",
+                      "uid": "s:70~l:92~a:5332646",
+                      "lastName": "Svensson",
+                      "displayName": "Hilda Svensson",
+                      "shortName": "H. Svensson",
+                      "links": [],
+                      "jersey": "8",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "4915895",
+                      "uid": "s:70~l:92~a:4915895",
+                      "lastName": "Vanhanen",
+                      "displayName": "Sanni Vanhanen",
+                      "shortName": "S. Vanhanen",
+                      "links": [],
+                      "jersey": "21",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/20?lang=en&region=us",
+                        "id": "20",
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "4",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "defenses",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5272963",
+                      "uid": "s:70~l:92~a:5272963",
+                      "lastName": "Disher",
+                      "displayName": "Brooke Disher",
+                      "shortName": "B. Disher",
+                      "links": [],
+                      "jersey": "28",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272955",
+                      "uid": "s:70~l:92~a:5272955",
+                      "lastName": "Jungaker",
+                      "displayName": "Mira Jungaker",
+                      "shortName": "M. Jungaker",
+                      "links": [],
+                      "jersey": "14",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272953",
+                      "uid": "s:70~l:92~a:5272953",
+                      "lastName": "McCoshen",
+                      "displayName": "Grace McCoshen",
+                      "shortName": "G. McCoshen",
+                      "links": [],
+                      "jersey": "12",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272948",
+                      "uid": "s:70~l:92~a:5272948",
+                      "lastName": "Peschel",
+                      "displayName": "Emma Peschel",
+                      "shortName": "E. Peschel",
+                      "links": [],
+                      "jersey": "7",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "4",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5332644",
+                      "uid": "s:70~l:92~a:5332644",
+                      "lastName": "Raunio",
+                      "displayName": "Jenna Raunio",
+                      "shortName": "J. Raunio",
+                      "links": [],
+                      "jersey": "9",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272960",
+                      "uid": "s:70~l:92~a:5272960",
+                      "lastName": "Roth",
+                      "displayName": "Maria Roth",
+                      "shortName": "M. Roth",
+                      "links": [],
+                      "jersey": "20",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5272946",
+                      "uid": "s:70~l:92~a:5272946",
+                      "lastName": "Swiderski",
+                      "displayName": "Sara Swiderski",
+                      "shortName": "S. Swiderski",
+                      "links": [],
+                      "jersey": "4",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "4",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "athlete": {
+                      "id": "5339300",
+                      "uid": "s:70~l:92~a:5339300",
+                      "lastName": "Wicks",
+                      "displayName": "Leah Wicks",
+                      "shortName": "L. Wicks",
+                      "links": [],
+                      "jersey": "23",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/4?lang=en&region=us",
+                        "id": "4",
+                        "name": "Defense",
+                        "displayName": "Defense",
+                        "abbreviation": "D",
+                        "leaf": true,
+                        "parent": {
+                          "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/27?lang=en&region=us"
+                        }
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0:00",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0.0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "skaters",
+                "keys": [
+                  "blockedShots",
+                  "hits",
+                  "takeaways",
+                  "plusMinus",
+                  "timeOnIce",
+                  "powerPlayTimeOnIce",
+                  "shortHandedTimeOnIce",
+                  "evenStrengthTimeOnIce",
+                  "shifts",
+                  "goals",
+                  "ytdGoals",
+                  "assists",
+                  "shotsTotal",
+                  "shotsMissed",
+                  "shootoutGoals",
+                  "faceoffsWon",
+                  "faceoffsLost",
+                  "faceoffPercent",
+                  "giveaways",
+                  "penalties",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "BS",
+                  "HT",
+                  "TK",
+                  "+/-",
+                  "TOI",
+                  "PPTOI",
+                  "SHTOI",
+                  "ESTOI",
+                  "SHFT",
+                  "G",
+                  "YTDG",
+                  "A",
+                  "S",
+                  "SM",
+                  "SOG",
+                  "FW",
+                  "FL",
+                  "FO%",
+                  "GV",
+                  "PN",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total shots blocked.",
+                  "Total hits.",
+                  "Total takeaways.",
+                  "Plus/Minus Rating",
+                  "Total time on ice.",
+                  "Total power play time on ice.",
+                  "Total short handed time on ice.",
+                  "Total even strength time on ice.",
+                  "Total shifts.",
+                  "Total goals scored.",
+                  "Year to date goals/",
+                  "Total goal assists.",
+                  "Total shots.",
+                  "Total missed shots.",
+                  "Total shootout goals.",
+                  "Total faceoffs won.",
+                  "Total faceoffs lost.",
+                  "Percentage of faceoffs won.",
+                  "Total giveaways.",
+                  "Total number of penalties.",
+                  "Total penalty minutes."
+                ],
+                "athletes": []
+              },
+              {
+                "name": "goalies",
+                "keys": [
+                  "goalsAgainst",
+                  "shotsAgainst",
+                  "shootoutSaves",
+                  "shootoutShotsAgainst",
+                  "saves",
+                  "savePct",
+                  "evenStrengthSaves",
+                  "powerPlaySaves",
+                  "shortHandedSaves",
+                  "timeOnIce",
+                  "ytdGoals",
+                  "penaltyMinutes"
+                ],
+                "labels": [
+                  "GA",
+                  "SA",
+                  "SOS",
+                  "SOSA",
+                  "SV",
+                  "SV%",
+                  "ESSV",
+                  "PPSV",
+                  "SHSV",
+                  "TOI",
+                  "YTDG",
+                  "PIM"
+                ],
+                "descriptions": [
+                  "Total goals against.",
+                  "Total shots against.",
+                  "Total shootout saves.",
+                  "Total shootout shots against.",
+                  "Total saves.",
+                  "Percentage of shots saved.",
+                  "Saves made at even strength.",
+                  "Saves made while in a power play.",
+                  "Saves made while shorthanded",
+                  "Total time on ice.",
+                  "Year to date goals/",
+                  "Total penalty minutes."
+                ],
+                "athletes": [
+                  {
+                    "athlete": {
+                      "id": "5272966",
+                      "uid": "s:70~l:92~a:5272966",
+                      "lastName": "MacLeod",
+                      "displayName": "Hailey MacLeod",
+                      "shortName": "H. MacLeod",
+                      "links": [],
+                      "jersey": "35",
+                      "position": {
+                        "$ref": "http://sports.core.api.espn.pvt/v2/sports/hockey/leagues/womens-college-hockey/positions/5?lang=en&region=us",
+                        "id": "5",
+                        "name": "Goaltender",
+                        "displayName": "Goaltender",
+                        "abbreviation": "G",
+                        "leaf": false
+                      },
+                      "active": true,
+                      "scratched": false
+                    },
+                    "stats": [
+                      "0",
+                      "15",
+                      "0",
+                      "0",
+                      "15",
+                      "1.000",
+                      "0",
+                      "0",
+                      "0",
+                      "60:00",
+                      "0",
+                      "0"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "plays": [
+        {
+          "id": "40186233705335",
+          "sequenceNumber": "1",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Joy Dunne assisted by Jocelyn Amos and Mira Jungaker",
+          "awayScore": 0,
+          "homeScore": 1,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "10:14"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-03-20T21:47Z",
+          "team": {
+            "id": "194"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5272956",
+                "displayName": "Joy Dunne",
+                "shortName": "J. Dunne"
+              },
+              "type": "scorer",
+              "ytdGoals": 27
+            },
+            {
+              "athlete": {
+                "id": "5272957",
+                "displayName": "Jocelyn Amos",
+                "shortName": "J. Amos"
+              },
+              "type": "assister",
+              "ytdAssists": 26
+            },
+            {
+              "athlete": {
+                "id": "5272955",
+                "displayName": "Mira Jungaker",
+                "shortName": "M. Jungaker"
+              },
+              "type": "assister",
+              "ytdAssists": 18
+            }
+          ],
+          "wallclock": "2026-03-20T22:20:41Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233705337",
+          "sequenceNumber": "2",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Kaia Malachino",
+          "awayScore": 0,
+          "homeScore": 2,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "16:33"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-03-20T21:47Z",
+          "team": {
+            "id": "194"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5272994",
+                "displayName": "Kaia Malachino",
+                "shortName": "K. Malachino"
+              },
+              "type": "scorer",
+              "ytdGoals": 13
+            }
+          ],
+          "wallclock": "2026-03-20T22:20:41Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233705338",
+          "sequenceNumber": "3",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Sanni Vanhanen assisted by Hilda Svensson",
+          "awayScore": 0,
+          "homeScore": 3,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "17:36"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-03-20T21:47Z",
+          "team": {
+            "id": "194"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4915895",
+                "displayName": "Sanni Vanhanen",
+                "shortName": "S. Vanhanen"
+              },
+              "type": "scorer",
+              "ytdGoals": 14
+            },
+            {
+              "athlete": {
+                "id": "5332646",
+                "displayName": "Hilda Svensson",
+                "shortName": "H. Svensson"
+              },
+              "type": "assister",
+              "ytdAssists": 33
+            }
+          ],
+          "wallclock": "2026-03-20T22:20:41Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233705339",
+          "sequenceNumber": "4",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Emma Peschel assisted by Joy Dunne and Sloane Matthews",
+          "awayScore": 0,
+          "homeScore": 4,
+          "period": {
+            "number": 1,
+            "displayValue": "1st"
+          },
+          "clock": {
+            "displayValue": "19:59"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-03-20T21:47Z",
+          "team": {
+            "id": "194"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5272948",
+                "displayName": "Emma Peschel",
+                "shortName": "E. Peschel"
+              },
+              "type": "scorer",
+              "ytdGoals": 10
+            },
+            {
+              "athlete": {
+                "id": "5272956",
+                "displayName": "Joy Dunne",
+                "shortName": "J. Dunne"
+              },
+              "type": "assister",
+              "ytdAssists": 23
+            },
+            {
+              "athlete": {
+                "id": "5272961",
+                "displayName": "Sloane Matthews",
+                "shortName": "S. Matthews"
+              },
+              "type": "assister",
+              "ytdAssists": 24
+            }
+          ],
+          "wallclock": "2026-03-20T22:20:41Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        },
+        {
+          "id": "40186233705342",
+          "sequenceNumber": "5",
+          "type": {
+            "id": "505",
+            "text": "Goal",
+            "abbreviation": "goal"
+          },
+          "text": "Even Strength Goal Scored by Sara Swiderski assisted by Jordan Baxter and Kaia Malachino",
+          "awayScore": 0,
+          "homeScore": 5,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd"
+          },
+          "clock": {
+            "displayValue": "2:31"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "modified": "2026-03-20T21:47Z",
+          "team": {
+            "id": "194"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5272946",
+                "displayName": "Sara Swiderski",
+                "shortName": "S. Swiderski"
+              },
+              "type": "scorer",
+              "ytdGoals": 8
+            },
+            {
+              "athlete": {
+                "id": "5272962",
+                "displayName": "Jordan Baxter",
+                "shortName": "J. Baxter"
+              },
+              "type": "assister",
+              "ytdAssists": 3
+            },
+            {
+              "athlete": {
+                "id": "5272994",
+                "displayName": "Kaia Malachino",
+                "shortName": "K. Malachino"
+              },
+              "type": "assister",
+              "ytdAssists": 7
+            }
+          ],
+          "wallclock": "2026-03-20T22:20:42Z",
+          "shootingPlay": true,
+          "shotInfo": {
+            "id": "901",
+            "text": "None",
+            "abbreviation": "regular"
+          },
+          "strength": {
+            "id": "701",
+            "text": "Even Strength",
+            "abbreviation": "even-strength"
+          }
+        }
+      ],
+      "gameInfo": {
+        "attendance": 0,
+        "officials": []
+      }
+    }
+  },
+  "output": {
+    "eventId": "401862337",
+    "live": false,
+    "teamStats": [
+      {
+        "label": "Blocked Shots",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Hits",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Takeaways",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Shots",
+        "away": "15",
+        "home": "42"
+      },
+      {
+        "label": "Power Play Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Power Play Opportunities",
+        "away": "4",
+        "home": "2"
+      },
+      {
+        "label": "Power Play Percentage",
+        "away": "0.0",
+        "home": "0.0"
+      },
+      {
+        "label": "Short Handed Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Shootout Goals",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Faceoffs Won",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Faceoff Win Percent",
+        "away": "0.0",
+        "home": "0.0"
+      },
+      {
+        "label": "Giveaways",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Total Penalties",
+        "away": "3",
+        "home": "4"
+      },
+      {
+        "label": "Penalty Minutes",
+        "away": "6",
+        "home": "8"
+      }
+    ],
+    "boxGroups": [
+      {
+        "title": "Forwards",
+        "columns": [
+          "BS",
+          "HT",
+          "TK",
+          "+/-",
+          "TOI",
+          "PPTOI",
+          "SHTOI",
+          "ESTOI",
+          "SHFT",
+          "G",
+          "YTDG",
+          "A",
+          "S",
+          "SM",
+          "SOG",
+          "FW",
+          "FL",
+          "FO%",
+          "GV",
+          "PN",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "NE",
+            "rows": [
+              {
+                "name": "H. Abela",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Bogden",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "L. Brazis",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. Caron",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "2",
+                  "4"
+                ]
+              },
+              {
+                "name": "P. Compton",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Jackson",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Lalonde",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Langlois",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. Mabardy",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. MacCurtain",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. McDermid",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "L. Shannon",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Zablocki",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "5",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "OSU",
+            "rows": [
+              {
+                "name": "J. Amos",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "6",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Baxter",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "K. Carmichael",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "M. Cimoroni",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "2",
+                  "4"
+                ]
+              },
+              {
+                "name": "J. Dunne",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "1",
+                  "8",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "K. Malachino",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "1",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Matthews",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Petrie",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Rasmussen",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "H. Svensson",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "3",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Vanhanen",
+                "pos": "F",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "4",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Defenses",
+        "columns": [
+          "BS",
+          "HT",
+          "TK",
+          "+/-",
+          "TOI",
+          "PPTOI",
+          "SHTOI",
+          "ESTOI",
+          "SHFT",
+          "G",
+          "YTDG",
+          "A",
+          "S",
+          "SM",
+          "SOG",
+          "FW",
+          "FL",
+          "FO%",
+          "GV",
+          "PN",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "NE",
+            "rows": [
+              {
+                "name": "K. Allard",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "A. Baechler",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Constantinople",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-3",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "R. Jones",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "-2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. Lloyd",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "T. Thompson",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "OSU",
+            "rows": [
+              {
+                "name": "B. Disher",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Jungaker",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "G. McCoshen",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "E. Peschel",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "4",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Raunio",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Roth",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "S. Swiderski",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "4",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "L. Wicks",
+                "pos": "D",
+                "stats": [
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0:00",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0.0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Goalies",
+        "columns": [
+          "GA",
+          "SA",
+          "SOS",
+          "SOSA",
+          "SV",
+          "SV%",
+          "ESSV",
+          "PPSV",
+          "SHSV",
+          "TOI",
+          "YTDG",
+          "PIM"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "NE",
+            "rows": [
+              {
+                "name": "L. Jonsson",
+                "pos": "G",
+                "stats": [
+                  "5",
+                  "42",
+                  "0",
+                  "0",
+                  "37",
+                  ".881",
+                  "0",
+                  "0",
+                  "0",
+                  "60:00",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "OSU",
+            "rows": [
+              {
+                "name": "H. MacLeod",
+                "pos": "G",
+                "stats": [
+                  "0",
+                  "15",
+                  "0",
+                  "0",
+                  "15",
+                  "1.000",
+                  "0",
+                  "0",
+                  "0",
+                  "60:00",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scoringPlays": [
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "10:14",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Joy Dunne assisted by Jocelyn Amos and Mira Jungaker",
+        "away": 0,
+        "home": 1,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "16:33",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Kaia Malachino",
+        "away": 0,
+        "home": 2,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "17:36",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Sanni Vanhanen assisted by Hilda Svensson",
+        "away": 0,
+        "home": 3,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "19:59",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Emma Peschel assisted by Joy Dunne and Sloane Matthews",
+        "away": 0,
+        "home": 4,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd",
+        "clock": "2:31",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Sara Swiderski assisted by Jordan Baxter and Kaia Malachino",
+        "away": 0,
+        "home": 5,
+        "type": "Goal",
+        "scoring": true
+      }
+    ],
+    "lineups": [],
+    "periodLines": {
+      "unit": "period",
+      "labels": [
+        "1",
+        "2",
+        "3"
+      ],
+      "away": {
+        "abbr": "NE",
+        "values": [
+          "0",
+          "0",
+          "0"
+        ],
+        "total": "0"
+      },
+      "home": {
+        "abbr": "OSU",
+        "values": [
+          "4",
+          "0",
+          "1"
+        ],
+        "total": "5"
+      }
+    },
+    "plays": [
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "10:14",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Joy Dunne assisted by Jocelyn Amos and Mira Jungaker",
+        "away": 0,
+        "home": 1,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "16:33",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Kaia Malachino",
+        "away": 0,
+        "home": 2,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "17:36",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Sanni Vanhanen assisted by Hilda Svensson",
+        "away": 0,
+        "home": 3,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st",
+        "clock": "19:59",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Emma Peschel assisted by Joy Dunne and Sloane Matthews",
+        "away": 0,
+        "home": 4,
+        "type": "Goal",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd",
+        "clock": "2:31",
+        "side": "home",
+        "teamAbbr": "OSU",
+        "text": "Even Strength Goal Scored by Sara Swiderski assisted by Jordan Baxter and Kaia Malachino",
+        "away": 0,
+        "home": 5,
+        "type": "Goal",
+        "scoring": true
+      }
+    ]
+  }
+}

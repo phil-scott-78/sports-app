@@ -1,0 +1,190 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "racing/f1",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "106922",
+                    "displayName": "Alpine",
+                    "name": "Alpine",
+                    "shortDisplayName": "SCS",
+                    "abbreviation": "SCS",
+                    "color": "FFF500"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "123986",
+                    "displayName": "Aston Martin",
+                    "name": "Aston Martin",
+                    "shortDisplayName": "ASTM",
+                    "abbreviation": "ASTM",
+                    "color": "006F62"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "132212",
+                    "displayName": "Audi",
+                    "name": "Audi",
+                    "color": "FF2D00"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "132211",
+                    "displayName": "Cadillac",
+                    "name": "Cadillac",
+                    "color": "A2AAAD"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "106842",
+                    "displayName": "Ferrari",
+                    "name": "Ferrari",
+                    "shortDisplayName": "JK",
+                    "abbreviation": "JK",
+                    "color": "DC0000"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "111427",
+                    "displayName": "Haas",
+                    "name": "Haas",
+                    "shortDisplayName": "JH",
+                    "abbreviation": "JH",
+                    "color": "5A5A5A"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "106892",
+                    "displayName": "McLaren",
+                    "name": "McLaren",
+                    "shortDisplayName": "DH",
+                    "abbreviation": "DH",
+                    "color": "FF8700"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "106893",
+                    "displayName": "Mercedes",
+                    "name": "Mercedes",
+                    "shortDisplayName": "LP",
+                    "abbreviation": "LP",
+                    "color": "00D2BE"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "123988",
+                    "displayName": "Racing Bulls",
+                    "name": "Racing Bulls",
+                    "shortDisplayName": "RB",
+                    "abbreviation": "RB",
+                    "color": "6692FF"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "106921",
+                    "displayName": "Red Bull",
+                    "name": "Red Bull",
+                    "shortDisplayName": "GL",
+                    "abbreviation": "GL",
+                    "color": "00327D"
+                  }
+                },
+                {
+                  "team": {
+                    "id": "106967",
+                    "displayName": "Williams",
+                    "name": "Williams",
+                    "shortDisplayName": "RM",
+                    "abbreviation": "RM",
+                    "color": "FFFFFF"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "106922",
+      "displayName": "Alpine",
+      "abbreviation": "SCS",
+      "color": "FFF500"
+    },
+    {
+      "id": "123986",
+      "displayName": "Aston Martin",
+      "abbreviation": "ASTM",
+      "color": "006F62"
+    },
+    {
+      "id": "132212",
+      "displayName": "Audi",
+      "color": "FF2D00"
+    },
+    {
+      "id": "132211",
+      "displayName": "Cadillac",
+      "color": "A2AAAD"
+    },
+    {
+      "id": "106842",
+      "displayName": "Ferrari",
+      "abbreviation": "JK",
+      "color": "DC0000"
+    },
+    {
+      "id": "111427",
+      "displayName": "Haas",
+      "abbreviation": "JH",
+      "color": "5A5A5A"
+    },
+    {
+      "id": "106892",
+      "displayName": "McLaren",
+      "abbreviation": "DH",
+      "color": "FF8700"
+    },
+    {
+      "id": "106893",
+      "displayName": "Mercedes",
+      "abbreviation": "LP",
+      "color": "00D2BE"
+    },
+    {
+      "id": "123988",
+      "displayName": "Racing Bulls",
+      "abbreviation": "RB",
+      "color": "6692FF"
+    },
+    {
+      "id": "106921",
+      "displayName": "Red Bull",
+      "abbreviation": "GL",
+      "color": "00327D"
+    },
+    {
+      "id": "106967",
+      "displayName": "Williams",
+      "abbreviation": "RM",
+      "color": "FFFFFF"
+    }
+  ]
+}

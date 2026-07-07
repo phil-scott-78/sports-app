@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../config.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../version.dart';
 import 'widgets.dart';
 
-/// Minimal settings: the worker base URL (the only knob v2 needs) + about.
+/// Minimal settings: the optional API base override (the app talks to ESPN
+/// directly by default; set this only to point at the offline mock) + about.
 class SettingsPage extends ConsumerStatefulWidget {
   const SettingsPage({super.key});
   @override
@@ -34,7 +34,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
     ref.invalidate(favoritesFeedProvider);
     FocusScope.of(context).unfocus();
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Worker URL saved'),
+      content: Text('API base saved'),
       behavior: SnackBarBehavior.floating,
     ));
   }
@@ -49,11 +49,11 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
         children: [
           V2Card(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const CardLabel('Worker URL'),
+              const CardLabel('API base override'),
               const SizedBox(height: 8),
               Text(
-                'The Cloudflare worker this app reads scores from. '
-                'Point it at your own deployment, or the offline mock '
+                'Leave empty to read scores straight from ESPN (the default). '
+                'Set it only to point at the offline mock backend '
                 '(http://10.0.2.2:8787 on the Android emulator).',
                 style: T.caption.copyWith(height: 1.5),
               ),
@@ -65,7 +65,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 cursorColor: T.gold,
                 onSubmitted: (_) => _save(),
                 decoration: InputDecoration(
-                  hintText: AppConfig.defaultBaseUrl,
+                  hintText: 'ESPN direct (default)',
                   hintStyle:
                       const TextStyle(fontSize: 14, color: T.textFaint),
                   filled: true,
@@ -84,9 +84,9 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
                 _Button(label: 'Save', primary: true, onTap: _save),
                 const SizedBox(width: 10),
                 _Button(
-                  label: 'Reset default',
+                  label: 'Clear (ESPN direct)',
                   onTap: () {
-                    _url.text = AppConfig.defaultBaseUrl;
+                    _url.text = '';
                     _save();
                   },
                 ),

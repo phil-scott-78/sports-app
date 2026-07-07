@@ -1,0 +1,545 @@
+{
+  "endpoint": "scorecard",
+  "args": {
+    "key": "golf/eur",
+    "eventId": "401822694",
+    "playerId": "6970",
+    "raw": {
+      "profile": {
+        "id": "6970",
+        "uid": "s:1100~a:6970",
+        "guid": "6eb10b94-a60a-bb69-5658-e94c1ceae342",
+        "displayName": "Joe Dean",
+        "age": 32,
+        "dateOfBirth": "1994-06-24T07:00Z",
+        "hand": "R",
+        "link": "https://www.espn.com/golf/player/_/id/6970/joe-dean"
+      },
+      "rounds": [
+        {
+          "value": 66,
+          "displayValue": "-5",
+          "period": 1,
+          "linescores": [],
+          "courseId": 10907,
+          "hasStream": false,
+          "currentPosition": 2,
+          "startTee": 1,
+          "groupNumber": 0,
+          "teeTime": "2026-06-04T06:20Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Thu Jun 04 02:20:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 70,
+          "displayValue": "-1",
+          "period": 2,
+          "linescores": [],
+          "courseId": 10907,
+          "hasStream": false,
+          "startPosition": 2,
+          "currentPosition": 6,
+          "startTee": 10,
+          "groupNumber": 0,
+          "movement": 4,
+          "teeTime": "2026-06-05T14:50Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Fri Jun 05 10:50:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 71,
+          "displayValue": "E",
+          "period": 3,
+          "linescores": [],
+          "courseId": 10907,
+          "hasStream": false,
+          "startPosition": 6,
+          "currentPosition": 10,
+          "startTee": 1,
+          "groupNumber": 0,
+          "movement": 4,
+          "teeTime": "2026-06-06T09:53Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Sat Jun 06 05:53:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "value": 69,
+          "displayValue": "-2",
+          "period": 4,
+          "linescores": [],
+          "courseId": 10907,
+          "hasStream": false,
+          "startPosition": 10,
+          "currentPosition": 3,
+          "startTee": 1,
+          "groupNumber": 0,
+          "movement": -7,
+          "teeTime": "2026-06-07T09:54Z",
+          "statistics": {
+            "categories": [
+              {
+                "name": "generalStatistics",
+                "displayName": "General Statistics",
+                "stats": [
+                  {
+                    "name": "birdies",
+                    "displayName": "birdies",
+                    "description": "Birdies",
+                    "abbreviation": "BIRDIES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bogeys",
+                    "displayName": "bogeys",
+                    "description": "Bogeys",
+                    "abbreviation": "BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "bunkers",
+                    "displayName": "bunkers",
+                    "description": "Bunkers",
+                    "abbreviation": "BUNKERS",
+                    "value": 0,
+                    "displayValue": "0.0"
+                  },
+                  {
+                    "name": "doubleBogeys",
+                    "displayName": "doubleBogeys",
+                    "description": "Double Bogeys",
+                    "abbreviation": "DOUBLE BOGEYS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "eagles",
+                    "displayName": "eagles",
+                    "description": "Eagles",
+                    "abbreviation": "EAGLES",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "pars",
+                    "displayName": "pars",
+                    "description": "Pars",
+                    "abbreviation": "PARS",
+                    "value": 0,
+                    "displayValue": "0"
+                  },
+                  {
+                    "name": "teeTime",
+                    "displayName": "teeTime",
+                    "description": "teeTime",
+                    "abbreviation": "TEE TIME ",
+                    "displayValue": "Sun Jun 07 05:54:00 PDT 2026"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "stats": [
+        {
+          "name": "tournamentsPlayed",
+          "displayName": "Tournaments played",
+          "displayValue": "0"
+        },
+        {
+          "name": "startScore",
+          "displayName": "Starting Score",
+          "displayValue": "E"
+        },
+        {
+          "name": "regScore",
+          "displayName": "Total",
+          "displayValue": "276"
+        },
+        {
+          "name": "scoreToPar",
+          "displayName": "Score To Par",
+          "displayValue": "-8"
+        },
+        {
+          "name": "driveDistAvg",
+          "displayName": "Driving Distance",
+          "displayValue": "0"
+        },
+        {
+          "name": "driveAccuracyPct",
+          "displayName": "Driving accuracy %",
+          "displayValue": "0"
+        },
+        {
+          "name": "gir",
+          "displayName": "GIR - Greens In Regulation ",
+          "displayValue": "0"
+        },
+        {
+          "name": "girPoss",
+          "displayName": "Possible GIR",
+          "displayValue": "0"
+        },
+        {
+          "name": "puttsGirAvg",
+          "displayName": "Putts per GIR",
+          "displayValue": "0.000"
+        },
+        {
+          "name": "sandSaves",
+          "displayName": "Sand save %",
+          "displayValue": "-"
+        },
+        {
+          "name": "sandSavesPoss",
+          "displayName": "Possible Sand Saves",
+          "displayValue": "0"
+        },
+        {
+          "name": "eagles",
+          "displayName": "Eagles",
+          "displayValue": "0"
+        },
+        {
+          "name": "birdies",
+          "displayName": "Birdies",
+          "displayValue": "0"
+        },
+        {
+          "name": "pars",
+          "displayName": "Pars",
+          "displayValue": "0"
+        },
+        {
+          "name": "bogeys",
+          "displayName": "Bogeys",
+          "displayValue": "0"
+        },
+        {
+          "name": "doubles",
+          "displayName": "DBL",
+          "displayValue": "0"
+        },
+        {
+          "name": "doubleBogeysAndWorse",
+          "displayName": "DBL+",
+          "displayValue": "0"
+        },
+        {
+          "name": "tripleBogeysAndWorse",
+          "displayName": "TPL+",
+          "displayValue": "0"
+        },
+        {
+          "name": "penalties",
+          "displayName": "Penalties",
+          "displayValue": "0"
+        },
+        {
+          "name": "amount",
+          "displayName": "Official money won",
+          "displayValue": "$0"
+        },
+        {
+          "name": "cutsMade",
+          "displayName": "Cuts made",
+          "displayValue": "0"
+        },
+        {
+          "name": "consecutiveCuts",
+          "displayName": "Consecutive Cuts",
+          "displayValue": "0"
+        },
+        {
+          "name": "officialAmount",
+          "displayName": "Official Earnings",
+          "displayValue": "$0"
+        },
+        {
+          "name": "adjustedScoringAverage",
+          "displayName": "Adjusted Scoring Average",
+          "displayValue": "0"
+        },
+        {
+          "name": "adjustment",
+          "displayName": "Adjustment",
+          "displayValue": "0"
+        }
+      ]
+    }
+  },
+  "output": {
+    "league": "golf/eur",
+    "eventId": "401822694",
+    "player": {
+      "id": "6970",
+      "name": "Joe Dean"
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "strokes": 66,
+        "toPar": "-5",
+        "teeTime": "2026-06-04T06:20Z",
+        "startTee": 1,
+        "groupNumber": 0,
+        "currentPosition": 2,
+        "holes": []
+      },
+      {
+        "round": 2,
+        "strokes": 70,
+        "toPar": "-1",
+        "teeTime": "2026-06-05T14:50Z",
+        "startTee": 10,
+        "groupNumber": 0,
+        "currentPosition": 6,
+        "holes": []
+      },
+      {
+        "round": 3,
+        "strokes": 71,
+        "toPar": "E",
+        "teeTime": "2026-06-06T09:53Z",
+        "startTee": 1,
+        "groupNumber": 0,
+        "currentPosition": 10,
+        "holes": []
+      },
+      {
+        "round": 4,
+        "strokes": 69,
+        "toPar": "-2",
+        "teeTime": "2026-06-07T09:54Z",
+        "startTee": 1,
+        "groupNumber": 0,
+        "currentPosition": 3,
+        "holes": []
+      }
+    ],
+    "stats": [
+      {
+        "name": "regScore",
+        "label": "Total",
+        "value": "276"
+      },
+      {
+        "name": "scoreToPar",
+        "label": "Score To Par",
+        "value": "-8"
+      },
+      {
+        "name": "driveDistAvg",
+        "label": "Driving Distance",
+        "value": "0"
+      },
+      {
+        "name": "driveAccuracyPct",
+        "label": "Driving accuracy %",
+        "value": "0"
+      },
+      {
+        "name": "eagles",
+        "label": "Eagles",
+        "value": "0"
+      },
+      {
+        "name": "birdies",
+        "label": "Birdies",
+        "value": "0"
+      }
+    ]
+  }
+}

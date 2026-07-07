@@ -1,8 +1,9 @@
 // ============================================================================
-// Canonical sports data contract  (worker output / client input)
+// Canonical sports data contract  (the app's internal normalization boundary)
 // ----------------------------------------------------------------------------
-// ONE shape for every sport. The worker normalizes ESPN's (or any provider's)
-// raw JSON into this; the Flutter client only ever sees this. Swapping data
+// ONE shape for every sport. The app's on-device normalizers (app/lib/src/data/,
+// ported from the removed worker — see drop-the-worker.md) turn ESPN's (or any
+// provider's) raw JSON into this; the UI only ever sees this. Swapping data
 // providers must never change anything below this line.
 //
 // Design: a thin UNIVERSAL envelope + a small set of DISCRIMINATORS

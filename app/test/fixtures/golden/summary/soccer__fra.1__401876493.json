@@ -1,0 +1,999 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "soccer/fra.1",
+    "eventId": "401876493",
+    "raw": {
+      "header": {
+        "id": "401876493",
+        "competitions": [
+          {
+            "id": "401876493",
+            "date": "2026-08-22T18:00Z",
+            "status": {
+              "type": {
+                "id": "1",
+                "name": "STATUS_SCHEDULED",
+                "state": "pre",
+                "completed": false,
+                "description": "Scheduled",
+                "detail": "8/22 - TBD",
+                "shortDetail": "TBD"
+              }
+            },
+            "competitors": [
+              {
+                "id": "7868",
+                "homeAway": "home",
+                "order": 0,
+                "winner": false,
+                "team": {
+                  "id": "7868",
+                  "abbreviation": "ANG",
+                  "displayName": "Angers"
+                }
+              },
+              {
+                "id": "166",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "team": {
+                  "id": "166",
+                  "abbreviation": "LILL",
+                  "displayName": "Lille"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "form": [
+          {
+            "displayOrder": 1,
+            "team": {
+              "id": "7868",
+              "uid": "s:600~t:7868",
+              "displayName": "Angers",
+              "abbreviation": "ANG",
+              "links": [
+                {
+                  "href": "https://www.espn.com/soccer/club/_/id/7868/angers",
+                  "text": "Clubhouse"
+                },
+                {
+                  "href": "https://www.espn.com/soccer/team/fixtures/_/id/7868/angers",
+                  "text": "Fixtures"
+                }
+              ],
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7868.png",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500/7868.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2023-06-19T15:51Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/7868.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2023-06-19T15:50Z"
+                }
+              ]
+            },
+            "events": [
+              {
+                "id": "746709",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746709/angers-brest",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-17T19:00Z",
+                "score": "1-1",
+                "homeTeamId": "6997",
+                "awayTeamId": "7868",
+                "homeTeamScore": "1",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Ligue 1",
+                "opponent": {
+                  "id": "6997",
+                  "uid": "s:600~t:6997",
+                  "displayName": "Brest",
+                  "abbreviation": "BRE",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/6997/brest",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/6997/brest",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6997.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/6997.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/6997.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6997.png",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1"
+              },
+              {
+                "id": "746704",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746704/strasbourg-angers",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-10T19:00Z",
+                "score": "1-1",
+                "homeTeamId": "7868",
+                "awayTeamId": "180",
+                "homeTeamScore": "1",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "180",
+                  "uid": "s:600~t:180",
+                  "displayName": "Strasbourg",
+                  "abbreviation": "STR",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/180/strasbourg",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/180/strasbourg",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/180.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/180.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/180.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/180.png"
+              },
+              {
+                "id": "746699",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746699/angers-aj-auxerre",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-03T15:15Z",
+                "score": "3-1",
+                "homeTeamId": "172",
+                "awayTeamId": "7868",
+                "homeTeamScore": "3",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "L",
+                "competitionName": "2025-26 Ligue 1",
+                "opponent": {
+                  "id": "172",
+                  "uid": "s:600~t:172",
+                  "displayName": "AJ Auxerre",
+                  "abbreviation": "AUX",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/172/aj-auxerre",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/172/aj-auxerre",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/172.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1"
+              },
+              {
+                "id": "746682",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746682/paris-saint-germain-angers",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-04-25T17:00Z",
+                "score": "3-0",
+                "homeTeamId": "7868",
+                "awayTeamId": "160",
+                "homeTeamScore": "0",
+                "awayTeamScore": "3",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "L",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "160",
+                  "uid": "s:600~t:160",
+                  "displayName": "Paris Saint-Germain",
+                  "abbreviation": "PSG",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/160/paris-saint-germain",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/160/paris-saint-germain",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/160.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png"
+              },
+              {
+                "id": "746673",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746673/le-havre-ac-angers",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-04-18T17:00Z",
+                "score": "1-1",
+                "homeTeamId": "7868",
+                "awayTeamId": "3236",
+                "homeTeamScore": "1",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "3236",
+                  "uid": "s:600~t:3236",
+                  "displayName": "Le Havre AC",
+                  "abbreviation": "HAC",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/3236/le-havre-ac",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/3236/le-havre-ac",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3236.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png"
+              }
+            ]
+          },
+          {
+            "displayOrder": 2,
+            "team": {
+              "id": "166",
+              "uid": "s:600~t:166",
+              "displayName": "Lille",
+              "abbreviation": "LILL",
+              "links": [
+                {
+                  "href": "https://www.espn.com/soccer/club/_/id/166/lille",
+                  "text": "Clubhouse"
+                },
+                {
+                  "href": "https://www.espn.com/soccer/team/fixtures/_/id/166/lille",
+                  "text": "Fixtures"
+                }
+              ],
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2021-08-30T14:53Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/166.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2021-08-30T14:53Z"
+                }
+              ]
+            },
+            "events": [
+              {
+                "id": "746710",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746710/aj-auxerre-lille",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-17T19:00Z",
+                "score": "2-0",
+                "homeTeamId": "166",
+                "awayTeamId": "172",
+                "homeTeamScore": "0",
+                "awayTeamScore": "2",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "L",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "172",
+                  "uid": "s:600~t:172",
+                  "displayName": "AJ Auxerre",
+                  "abbreviation": "AUX",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/172/aj-auxerre",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/172/aj-auxerre",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/172.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png"
+              },
+              {
+                "id": "746703",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746703/lille-as-monaco",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-10T19:00Z",
+                "score": "1-0",
+                "homeTeamId": "174",
+                "awayTeamId": "166",
+                "homeTeamScore": "0",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "174",
+                  "uid": "s:600~t:174",
+                  "displayName": "AS Monaco",
+                  "abbreviation": "MON",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/174/as-monaco",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/174/as-monaco",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/174.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png"
+              },
+              {
+                "id": "746691",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746691/le-havre-ac-lille",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-03T13:00Z",
+                "score": "1-1",
+                "homeTeamId": "166",
+                "awayTeamId": "3236",
+                "homeTeamScore": "1",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Ligue 1",
+                "opponent": {
+                  "id": "3236",
+                  "uid": "s:600~t:3236",
+                  "displayName": "Le Havre AC",
+                  "abbreviation": "HAC",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/3236/le-havre-ac",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/3236/le-havre-ac",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3236.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1"
+              },
+              {
+                "id": "746688",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746688/lille-paris-fc",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-04-26T15:15Z",
+                "score": "1-0",
+                "homeTeamId": "6851",
+                "awayTeamId": "166",
+                "homeTeamScore": "0",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Ligue 1",
+                "opponent": {
+                  "id": "6851",
+                  "uid": "s:600~t:6851",
+                  "displayName": "Paris FC",
+                  "abbreviation": "PAR",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/6851/paris-fc",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/6851/paris-fc",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6851.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/6851.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/6851.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/6851.png",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1"
+              },
+              {
+                "id": "746675",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/746675/nice-lille",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-04-18T19:05Z",
+                "score": "0-0",
+                "homeTeamId": "166",
+                "awayTeamId": "2502",
+                "homeTeamScore": "0",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Ligue 1",
+                "leagueName": "French Ligue 1",
+                "leagueAbbreviation": "Ligue 1",
+                "opponent": {
+                  "id": "2502",
+                  "uid": "s:600~t:2502",
+                  "displayName": "Nice",
+                  "abbreviation": "NICE",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/2502/nice",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/2502/nice",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2502.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2502.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2022-10-26T21:13Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2502.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2022-10-26T21:14Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/2502.png"
+              }
+            ]
+          }
+        ],
+        "teams": [
+          {
+            "team": {
+              "id": "7868",
+              "uid": "s:600~t:7868",
+              "slug": "fra.angers",
+              "location": "Angers",
+              "name": "Angers",
+              "abbreviation": "ANG",
+              "displayName": "Angers",
+              "shortDisplayName": "Angers",
+              "color": "1a1a1a",
+              "alternateColor": "ffffff",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7868.png"
+            },
+            "statistics": [],
+            "displayOrder": 1,
+            "homeAway": "home"
+          },
+          {
+            "team": {
+              "id": "166",
+              "uid": "s:600~t:166",
+              "slug": "fra.lille",
+              "location": "Lille",
+              "name": "Lille",
+              "abbreviation": "LILL",
+              "displayName": "Lille",
+              "shortDisplayName": "Lille",
+              "color": "c2051b",
+              "alternateColor": "e2d3d7",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png"
+            },
+            "statistics": [],
+            "displayOrder": 2,
+            "homeAway": "away"
+          }
+        ]
+      },
+      "rosters": [
+        {
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "7868",
+            "abbreviation": "ANG",
+            "displayName": "Angers",
+            "color": "1a1a1a",
+            "alternateColor": "ffffff",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/7868.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2023-06-19T15:51Z"
+              },
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/7868.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "dark"
+                ],
+                "lastUpdated": "2023-06-19T15:50Z"
+              }
+            ]
+          }
+        },
+        {
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "166",
+            "abbreviation": "LILL",
+            "displayName": "Lille",
+            "color": "c2051b",
+            "alternateColor": "e2d3d7",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2021-08-30T14:53Z"
+              },
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/166.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "dark"
+                ],
+                "lastUpdated": "2021-08-30T14:53Z"
+              }
+            ]
+          }
+        }
+      ],
+      "gameInfo": {},
+      "lastFiveGames": [
+        {
+          "team": {
+            "id": "7868",
+            "abbreviation": "ANG"
+          },
+          "events": [
+            {
+              "gameResult": "D",
+              "gameDate": "2026-04-18T17:00Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-04-25T17:00Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-05-03T15:15Z"
+            },
+            {
+              "gameResult": "D",
+              "gameDate": "2026-05-10T19:00Z"
+            },
+            {
+              "gameResult": "D",
+              "gameDate": "2026-05-17T19:00Z"
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": "166",
+            "abbreviation": "LILL"
+          },
+          "events": [
+            {
+              "gameResult": "D",
+              "gameDate": "2026-04-18T19:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-04-26T15:15Z"
+            },
+            {
+              "gameResult": "D",
+              "gameDate": "2026-05-03T13:00Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-10T19:00Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-05-17T19:00Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "401876493",
+    "live": false,
+    "teamStats": [],
+    "boxGroups": [],
+    "scoringPlays": [],
+    "lineups": [],
+    "recentForm": [
+      {
+        "side": "home",
+        "abbr": "ANG",
+        "form": "DLLDD"
+      },
+      {
+        "side": "away",
+        "abbr": "LILL",
+        "form": "DWDWL"
+      }
+    ],
+    "nextStartMs": 1787421600000
+  }
+}

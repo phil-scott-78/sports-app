@@ -1,0 +1,4445 @@
+{
+  "endpoint": "scores",
+  "args": {
+    "key": "cricket/8634",
+    "sb": {
+      "events": [
+        {
+          "id": "1490681",
+          "uid": "s:200~e:1490681",
+          "date": "2026-06-14T09:30Z",
+          "endDate": "2026-06-15T23:59Z",
+          "name": "Bangladesh Women v Netherlands Women",
+          "shortName": "BAN-W v NL-W",
+          "description": "5th Match, Group 1, ICC Women's T20 World Cup at Birmingham, Jun 14 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490681",
+              "uid": "s:200~e:1490681~c:1490681",
+              "description": "5th Match, Group 1",
+              "shortDescription": "5th Match, Group 1,  at Birmingham",
+              "date": "2026-06-14T09:30Z",
+              "endDate": "2026-06-15T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "56788",
+                "fullName": "Edgbaston, Birmingham",
+                "address": {
+                  "city": "Birmingham",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Edgbaston Stadium, Edgbaston Road, Edgbaston, Birmingham, West Midlands B5 7QU. (Phone: 0844 635 1092)"
+                },
+                "capacity": 24803,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "299037",
+                  "uid": "s:200~e:1490681~c:1490681~t:299037",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "home",
+                  "winner": "true",
+                  "score": "141/4 (19.1/20 ov, target 140)",
+                  "team": {
+                    "id": "299037",
+                    "uid": "s:200~t:299037",
+                    "location": "Bangladesh",
+                    "name": "Bangladesh Women",
+                    "abbreviation": "BAN-W",
+                    "displayName": "Bangladesh Women",
+                    "shortDisplayName": "BAN-W",
+                    "isActive": true,
+                    "countryCode": "BD",
+                    "color": "#ed3507",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/299037/bangladesh-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/299037.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 4,
+                      "runs": 141,
+                      "overs": 19.1,
+                      "isBatting": true,
+                      "description": "target reached",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490681/competitions/1490681/competitors/299037/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "2410",
+                  "uid": "s:200~e:1490681~c:1490681~t:2410",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "139/8",
+                  "team": {
+                    "id": "2410",
+                    "uid": "s:200~t:2410",
+                    "location": "Netherlands",
+                    "name": "Netherlands Women",
+                    "abbreviation": "NL-W",
+                    "displayName": "Netherlands Women",
+                    "shortDisplayName": "NL-W",
+                    "isActive": true,
+                    "countryCode": "NL",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/2410/netherlands-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2410.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 8,
+                      "runs": 139,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 19.1,
+                      "isBatting": false,
+                      "description": "target reached",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490681/competitions/1490681/competitors/2410/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "1352221",
+                      "name": "Juairiya Ferdous",
+                      "shortName": "",
+                      "fullName": "Juairiya Ferdous",
+                      "displayName": "Juairiya Ferdous",
+                      "position": "WBT",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/default-player-logo-500.png",
+                      "team": {
+                        "id": "25"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/1352221.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490681/competitions/1490681/competitors/299037/roster/1352221/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 1352221,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "299037"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "BAN Women won by 6 wkts (5b rem)",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-14T09:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490681/bangladesh-women-vs-netherlands-women-5th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490681/bangladesh-women-vs-netherlands-women-5th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490681/bangladesh-women-vs-netherlands-women-5th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "BAN Women won by 6 wkts (5b rem)",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490682",
+          "uid": "s:200~e:1490682",
+          "date": "2026-06-14T13:30Z",
+          "endDate": "2026-06-15T23:59Z",
+          "name": "India Women v Pakistan Women",
+          "shortName": "IND-W v PAK-W",
+          "description": "6th Match, Group 1, ICC Women's T20 World Cup at Birmingham, Jun 14 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490682",
+              "uid": "s:200~e:1490682~c:1490682",
+              "description": "6th Match, Group 1",
+              "shortDescription": "6th Match, Group 1,  at Birmingham",
+              "date": "2026-06-14T13:30Z",
+              "endDate": "2026-06-15T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "56788",
+                "fullName": "Edgbaston, Birmingham",
+                "address": {
+                  "city": "Birmingham",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Edgbaston Stadium, Edgbaston Road, Edgbaston, Birmingham, West Midlands B5 7QU. (Phone: 0844 635 1092)"
+                },
+                "capacity": 24803,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1812",
+                  "uid": "s:200~e:1490682~c:1490682~t:1812",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "true",
+                  "score": "170/6",
+                  "team": {
+                    "id": "1812",
+                    "uid": "s:200~t:1812",
+                    "location": "India",
+                    "name": "India Women",
+                    "abbreviation": "IND-W",
+                    "displayName": "India Women",
+                    "shortDisplayName": "IND-W",
+                    "isActive": true,
+                    "countryCode": "IN",
+                    "color": "#050ceb",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1812/india-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1812.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 6,
+                      "runs": 170,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 17,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490682/competitions/1490682/competitors/1812/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "2971",
+                  "uid": "s:200~e:1490682~c:1490682~t:2971",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "106 (17/20 ov, target 171)",
+                  "team": {
+                    "id": "2971",
+                    "uid": "s:200~t:2971",
+                    "location": "Pakistan",
+                    "name": "Pakistan Women",
+                    "abbreviation": "PAK-W",
+                    "displayName": "Pakistan Women",
+                    "shortDisplayName": "PAK-W",
+                    "isActive": true,
+                    "countryCode": "PK",
+                    "color": "#07df52",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/2971/pakistan-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2971.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 106,
+                      "overs": 17,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490682/competitions/1490682/competitors/2971/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "597811",
+                      "name": "Deepti Sharma",
+                      "shortName": "Deepti Sharma",
+                      "fullName": "Deepti Bhagwan Sharma",
+                      "displayName": "Deepti Sharma",
+                      "position": "AR",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/default-player-logo-500.png",
+                      "team": {
+                        "id": "6"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/597811.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490682/competitions/1490682/competitors/1812/roster/597811/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 597811,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "1812"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "IND Women won by 64 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-14T13:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490682/india-women-vs-pakistan-women-6th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490682/india-women-vs-pakistan-women-6th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490682/india-women-vs-pakistan-women-6th-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "IND Women won by 64 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490678",
+          "uid": "s:200~e:1490678",
+          "date": "2026-06-13T09:30Z",
+          "endDate": "2026-06-14T23:59Z",
+          "name": "Ireland Women v Scotland Women",
+          "shortName": "IRE-W v SCO-W",
+          "description": "2nd Match, Group 2, ICC Women's T20 World Cup at Manchester, Jun 13 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490678",
+              "uid": "s:200~e:1490678~c:1490678",
+              "description": "2nd Match, Group 2",
+              "shortDescription": "2nd Match, Group 2,  at Manchester",
+              "date": "2026-06-13T09:30Z",
+              "endDate": "2026-06-14T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "57160",
+                "fullName": "Old Trafford, Manchester",
+                "address": {
+                  "city": "Manchester",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Old Trafford Cricket Ground, Talbot Road, Manchester, M16 0PX (Phone: 0161 282 4000)"
+                },
+                "capacity": 19000,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "2234",
+                  "uid": "s:200~e:1490678~c:1490678~t:2234",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "121 (19.1/20 ov, target 162)",
+                  "team": {
+                    "id": "2234",
+                    "uid": "s:200~t:2234",
+                    "location": "Ireland",
+                    "name": "Ireland Women",
+                    "abbreviation": "IRE-W",
+                    "displayName": "Ireland Women",
+                    "shortDisplayName": "IRE-W",
+                    "isActive": true,
+                    "countryCode": "IE",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/2234/ireland-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 121,
+                      "overs": 19.1,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490678/competitions/1490678/competitors/2234/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "3454",
+                  "uid": "s:200~e:1490678~c:1490678~t:3454",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": "true",
+                  "score": "161/5",
+                  "team": {
+                    "id": "3454",
+                    "uid": "s:200~t:3454",
+                    "location": "Scotland",
+                    "name": "Scotland Women",
+                    "abbreviation": "SCO-W",
+                    "displayName": "Scotland Women",
+                    "shortDisplayName": "SCO-W",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "#90d091",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/3454/scotland-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3454.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 5,
+                      "runs": 161,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 19.1,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490678/competitions/1490678/competitors/3454/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "914675",
+                      "name": "Kathryn Bryce",
+                      "shortName": "Kathryn Bryce",
+                      "fullName": "Kathryn Emma Bryce",
+                      "displayName": "Kathryn Bryce",
+                      "position": "AR",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/full/914675.png",
+                      "team": {
+                        "id": "30"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/914675.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490678/competitions/1490678/competitors/3454/roster/914675/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 914675,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "3454"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "SCO Women won by 40 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-13T09:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490678/ireland-women-vs-scotland-women-2nd-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490678/ireland-women-vs-scotland-women-2nd-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490678/ireland-women-vs-scotland-women-2nd-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "SCO Women won by 40 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490679",
+          "uid": "s:200~e:1490679",
+          "date": "2026-06-13T13:30Z",
+          "endDate": "2026-06-14T23:59Z",
+          "name": "Australia Women v South Africa Women",
+          "shortName": "AUS-W v SA-W",
+          "description": "3rd Match, Group 1, ICC Women's T20 World Cup at Manchester, Jun 13 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490679",
+              "uid": "s:200~e:1490679~c:1490679",
+              "description": "3rd Match, Group 1",
+              "shortDescription": "3rd Match, Group 1,  at Manchester",
+              "date": "2026-06-13T13:30Z",
+              "endDate": "2026-06-14T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "57160",
+                "fullName": "Old Trafford, Manchester",
+                "address": {
+                  "city": "Manchester",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Old Trafford Cricket Ground, Talbot Road, Manchester, M16 0PX (Phone: 0161 282 4000)"
+                },
+                "capacity": 19000,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "238",
+                  "uid": "s:200~e:1490679~c:1490679~t:238",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "true",
+                  "score": "172/8",
+                  "team": {
+                    "id": "238",
+                    "uid": "s:200~t:238",
+                    "location": "Australia",
+                    "name": "Australia Women",
+                    "abbreviation": "AUS-W",
+                    "displayName": "Australia Women",
+                    "shortDisplayName": "AUS-W",
+                    "isActive": true,
+                    "countryCode": "AU",
+                    "color": "#f3f702",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/238/australia-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/238.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 8,
+                      "runs": 172,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 16.4,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490679/competitions/1490679/competitors/238/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "3328",
+                  "uid": "s:200~e:1490679~c:1490679~t:3328",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "107 (16.4/20 ov, target 173)",
+                  "team": {
+                    "id": "3328",
+                    "uid": "s:200~t:3328",
+                    "location": "South Africa",
+                    "name": "South Africa Women",
+                    "abbreviation": "SA-W",
+                    "displayName": "South Africa Women",
+                    "shortDisplayName": "SA-W",
+                    "isActive": true,
+                    "countryCode": "ZA",
+                    "color": "#1c9b36",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/3328/south-africa-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3328.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 107,
+                      "overs": 16.4,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490679/competitions/1490679/competitors/3328/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "946057",
+                      "name": "Georgia Wareham",
+                      "shortName": "Wareham",
+                      "fullName": "Georgia Wareham",
+                      "displayName": "Georgia Wareham",
+                      "position": "BL",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/full/946057.png",
+                      "team": {
+                        "id": "2"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/946057.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490679/competitions/1490679/competitors/238/roster/946057/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 946057,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "238"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "AUS Women won by 65 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-13T13:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490679/australia-women-vs-south-africa-women-3rd-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490679/australia-women-vs-south-africa-women-3rd-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490679/australia-women-vs-south-africa-women-3rd-match-group-1-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "AUS Women won by 65 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490680",
+          "uid": "s:200~e:1490680",
+          "date": "2026-06-13T17:30Z",
+          "endDate": "2026-06-15T23:59Z",
+          "name": "New Zealand Women v West Indies Women",
+          "shortName": "NZ-W v WI-W",
+          "description": "4th Match, Group 2 (D/N), ICC Women's T20 World Cup at Southampton, Jun 13 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490680",
+              "uid": "s:200~e:1490680~c:1490680",
+              "description": "4th Match, Group 2",
+              "shortDescription": "4th Match, Group 2,  (D/N) at Southampton",
+              "date": "2026-06-13T17:30Z",
+              "endDate": "2026-06-15T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "57312",
+                "fullName": "The Rose Bowl, Southampton",
+                "address": {
+                  "city": "Southampton",
+                  "state": "",
+                  "country": "England",
+                  "summary": ""
+                },
+                "capacity": 6500,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "2563",
+                  "uid": "s:200~e:1490680~c:1490680~t:2563",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "162/6",
+                  "team": {
+                    "id": "2563",
+                    "uid": "s:200~t:2563",
+                    "location": "New Zealand",
+                    "name": "New Zealand Women",
+                    "abbreviation": "NZ-W",
+                    "displayName": "New Zealand Women",
+                    "shortDisplayName": "NZ-W",
+                    "isActive": true,
+                    "countryCode": "NZ",
+                    "color": "#b7c0c8",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/2563/new-zealand-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2563.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 6,
+                      "runs": 162,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 19.5,
+                      "isBatting": false,
+                      "description": "target reached",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490680/competitions/1490680/competitors/2563/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "3816",
+                  "uid": "s:200~e:1490680~c:1490680~t:3816",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "true",
+                  "score": "163/3 (19.5/20 ov, target 163)",
+                  "team": {
+                    "id": "3816",
+                    "uid": "s:200~t:3816",
+                    "location": "West Indies",
+                    "name": "West Indies Women",
+                    "abbreviation": "WI-W",
+                    "displayName": "West Indies Women",
+                    "shortDisplayName": "WI-W",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "#790d1a",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/3816/west-indies-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3816.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 3,
+                      "runs": 163,
+                      "overs": 19.5,
+                      "isBatting": true,
+                      "description": "target reached",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490680/competitions/1490680/competitors/3816/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "424631",
+                      "name": "Shemaine Campbelle",
+                      "shortName": "Campbelle",
+                      "fullName": "Shemaine Altia Campbelle",
+                      "displayName": "Shemaine Campbelle",
+                      "position": "WBT",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/default-player-logo-500.png",
+                      "team": {
+                        "id": "4"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/424631.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490680/competitions/1490680/competitors/3816/roster/424631/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 424631,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "3816"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "WI Women won by 7 wkts (1b rem)",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-13T17:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": [
+                {
+                  "id": 49058177,
+                  "cerebroId": "6a2e3d612f39d9111d189817",
+                  "source": "espn",
+                  "headline": "Watch - Campbelle's six takes WI closer to victory",
+                  "description": "Shemaine Campbelle steps out and smashes a six to take West Indies closer to the finish line",
+                  "lastModified": "2026-06-14T06:00:04Z",
+                  "originalPublishDate": "2026-06-14T05:34:27Z",
+                  "duration": 20,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T04:32:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49058177/watch-campbelle-six-takes-wi-closer-victory",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49058177/watch-campbelle-six-takes-wi-closer-victory",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=0e925819a8304"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/fac98f10-2ad0-4015-bca1-0cda8a97d55b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058177/watch-campbelle-six-takes-wi-closer-victory",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49058177"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/fac98f10-2ad0-4015-bca1-0cda8a97d55b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058177/watch-campbelle-six-takes-wi-closer-victory"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/fac98f10-2ad0-4015-bca1-0cda8a97d55b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058177/watch-campbelle-six-takes-wi-closer-victory"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49058177"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/fac98f10-2ad0-4015-bca1-0cda8a97d55b"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/fac98f10-2ad0-4015-bca1-0cda8a97d55b/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix/dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49058177&videoDSI=0e925819a8304"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_NZvsWI_CampbelleSix",
+                    "trackingId": "dm_260614_WWC_T20_2026_NZvsWI_CampbelleSix",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49058147,
+                  "cerebroId": "6a2e3cdd2f39d9111d1897f6",
+                  "source": "espn",
+                  "headline": "Watch - Campbelle's six brings up her fifty",
+                  "description": "Shemaine Campbelle launches one into the stands off the bowling of Kerr to bring up a half century",
+                  "lastModified": "2026-06-14T05:59:57Z",
+                  "originalPublishDate": "2026-06-14T05:32:15Z",
+                  "duration": 20,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T04:29:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49058147/watch-campbelle-six-brings-fifty",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49058147/watch-campbelle-six-brings-fifty",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=6bdd2db4bf8e7"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/64d6c31c-e9c6-4db2-bb6f-b521b11e9f6d/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058147/watch-campbelle-six-brings-fifty",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49058147"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/64d6c31c-e9c6-4db2-bb6f-b521b11e9f6d/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058147/watch-campbelle-six-brings-fifty"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/64d6c31c-e9c6-4db2-bb6f-b521b11e9f6d/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058147/watch-campbelle-six-brings-fifty"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49058147"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/64d6c31c-e9c6-4db2-bb6f-b521b11e9f6d"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/64d6c31c-e9c6-4db2-bb6f-b521b11e9f6d/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_Campbelle50/dm_260614_WWC_T20_2026_Campbelle50_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49058147&videoDSI=6bdd2db4bf8e7"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_Campbelle50",
+                    "trackingId": "dm_260614_WWC_T20_2026_Campbelle50",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49058107,
+                  "cerebroId": "6a2e3c382f39d9111d1896a3",
+                  "source": "espn",
+                  "headline": "Watch - WI's winning moment",
+                  "description": "Claxton scampers through for a quick single, as West Indies seal a 7-wicket win vs NZ with one ball to spare",
+                  "lastModified": "2026-06-14T05:52:31Z",
+                  "originalPublishDate": "2026-06-14T05:29:30Z",
+                  "duration": 30,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T04:26:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49058107/watch-wi-winning-moment",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49058107/watch-wi-winning-moment",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=deb5a7a136158"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/74e046c8-5cd2-4aea-ba6b-08998ca3f744/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058107/watch-wi-winning-moment",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49058107"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/74e046c8-5cd2-4aea-ba6b-08998ca3f744/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058107/watch-wi-winning-moment"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/74e046c8-5cd2-4aea-ba6b-08998ca3f744/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49058107/watch-wi-winning-moment"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49058107"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/74e046c8-5cd2-4aea-ba6b-08998ca3f744"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/74e046c8-5cd2-4aea-ba6b-08998ca3f744/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0614/dm_260614_WWC_T20_2026_WinningMoment/dm_260614_WWC_T20_2026_WinningMoment_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49058107&videoDSI=deb5a7a136158"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_WinningMoment",
+                    "trackingId": "dm_260614_WWC_T20_2026_WinningMoment",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49056865,
+                  "cerebroId": "6a2e26375887345046dd6d93",
+                  "source": "espn",
+                  "headline": "Watch - Devine's jaw-dropping shot",
+                  "description": "Sophie Devine loses balance while attempting a sweep shot, but somehow still manages to connect well",
+                  "lastModified": "2026-06-14T04:07:13Z",
+                  "originalPublishDate": "2026-06-14T03:55:37Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T02:53:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49056865/watch-devine-jaw-dropping-shot",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49056865/watch-devine-jaw-dropping-shot",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=5958a6101170f"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/ed4699ee-7e0a-42b9-a901-1954e35c4503/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056865/watch-devine-jaw-dropping-shot",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49056865"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/ed4699ee-7e0a-42b9-a901-1954e35c4503/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056865/watch-devine-jaw-dropping-shot"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/ed4699ee-7e0a-42b9-a901-1954e35c4503/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056865/watch-devine-jaw-dropping-shot"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49056865"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/ed4699ee-7e0a-42b9-a901-1954e35c4503"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/ed4699ee-7e0a-42b9-a901-1954e35c4503/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep/dm_260613_WWC_T20_2026_NZvsWI_SophieSweep_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49056865&videoDSI=5958a6101170f"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_NZvsWI_SophieSweep",
+                    "trackingId": "dm_260613_WWC_T20_2026_NZvsWI_SophieSweep",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49056705,
+                  "cerebroId": "6a2e233d1bf54a00fd64b513",
+                  "source": "espn",
+                  "headline": "Women's T20 World Cup highlights - Mix-up leads to Qiana Joseph's dismissal",
+                  "description": "Qiana Joseph and Hayley Matthews in a yes-and-no game to gift New Zealand a wicket",
+                  "lastModified": "2026-06-14T04:01:24Z",
+                  "originalPublishDate": "2026-06-14T03:42:54Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T02:40:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49056705/watch-mix-leads-qiana-joseph-dismissal",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49056705/watch-mix-leads-qiana-joseph-dismissal",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=0a2cf3dca67e4"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c130a8d7-1d1f-444d-b9c2-9915710ddcaf/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056705/watch-mix-leads-qiana-joseph-dismissal",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49056705"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c130a8d7-1d1f-444d-b9c2-9915710ddcaf/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056705/watch-mix-leads-qiana-joseph-dismissal"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/c130a8d7-1d1f-444d-b9c2-9915710ddcaf/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056705/watch-mix-leads-qiana-joseph-dismissal"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49056705"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/c130a8d7-1d1f-444d-b9c2-9915710ddcaf"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/c130a8d7-1d1f-444d-b9c2-9915710ddcaf/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout/dm_260613_WWC_T20_2026_NZvsWI_QianaRunout_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49056705&videoDSI=0a2cf3dca67e4"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_NZvsWI_QianaRunout",
+                    "trackingId": "dm_260613_WWC_T20_2026_NZvsWI_QianaRunout",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49056452,
+                  "cerebroId": "6a2e1e5c1bf54a00fd64a963",
+                  "source": "espn",
+                  "headline": "Watch - Matthews survives, then hits four",
+                  "description": "Hayley Matthews is put down at cover, and she follows it up with a boundary",
+                  "lastModified": "2026-06-14T03:40:09Z",
+                  "originalPublishDate": "2026-06-14T03:22:06Z",
+                  "duration": 27,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-14T02:19:00Z",
+                    "expirationDate": "2048-06-17T07:19:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49056452/watch-matthews-survives-hits-four",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49056452/watch-matthews-survives-hits-four",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=52c742a94d5ef"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/47763c92-938e-4353-aaba-028d448f57e1/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056452/watch-matthews-survives-hits-four",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49056452"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/47763c92-938e-4353-aaba-028d448f57e1/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056452/watch-matthews-survives-hits-four"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/47763c92-938e-4353-aaba-028d448f57e1/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49056452/watch-matthews-survives-hits-four"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49056452"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/47763c92-938e-4353-aaba-028d448f57e1"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/47763c92-938e-4353-aaba-028d448f57e1/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour/dm_260613_WWC_T20_2026_NZvsWI_MathewsFour_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49056452&videoDSI=52c742a94d5ef"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_NZvsWI_MathewsFour",
+                    "trackingId": "dm_260613_WWC_T20_2026_NZvsWI_MathewsFour",
+                    "program": "Jiostar"
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490680/new-zealand-women-vs-west-indies-women-4th-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490680/new-zealand-women-vs-west-indies-women-4th-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490680/new-zealand-women-vs-west-indies-women-4th-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "WI Women won by 7 wkts (1b rem)",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490677",
+          "uid": "s:200~e:1490677",
+          "date": "2026-06-12T17:30Z",
+          "endDate": "2026-06-14T23:59Z",
+          "name": "England Women v Sri Lanka Women",
+          "shortName": "ENG-W v SL-W",
+          "description": "1st Match, Group 2 (D/N), ICC Women's T20 World Cup at Birmingham, Jun 12 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490677",
+              "uid": "s:200~e:1490677~c:1490677",
+              "description": "1st Match, Group 2",
+              "shortDescription": "1st Match, Group 2,  (D/N) at Birmingham",
+              "date": "2026-06-12T17:30Z",
+              "endDate": "2026-06-14T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "56788",
+                "fullName": "Edgbaston, Birmingham",
+                "address": {
+                  "city": "Birmingham",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Edgbaston Stadium, Edgbaston Road, Edgbaston, Birmingham, West Midlands B5 7QU. (Phone: 0844 635 1092)"
+                },
+                "capacity": 24803,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "975",
+                  "uid": "s:200~e:1490677~c:1490677~t:975",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "true",
+                  "score": "219/1",
+                  "team": {
+                    "id": "975",
+                    "uid": "s:200~t:975",
+                    "location": "England",
+                    "name": "England Women",
+                    "abbreviation": "ENG-W",
+                    "displayName": "England Women",
+                    "shortDisplayName": "ENG-W",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "#0673c1",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/975/england-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 1,
+                      "runs": 219,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490677/competitions/1490677/competitors/975/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "3621",
+                  "uid": "s:200~e:1490677~c:1490677~t:3621",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "132 (20 ov, target 220)",
+                  "team": {
+                    "id": "3621",
+                    "uid": "s:200~t:3621",
+                    "location": "Sri Lanka",
+                    "name": "Sri Lanka Women",
+                    "abbreviation": "SL-W",
+                    "displayName": "Sri Lanka Women",
+                    "shortDisplayName": "SL-W",
+                    "isActive": true,
+                    "countryCode": "LK",
+                    "color": "#203d89",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/3621/sri-lanka-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3621.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "description": "complete",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 132,
+                      "overs": 20,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490677/competitions/1490677/competitors/3621/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 2,
+                "featuredAthletes": [
+                  {
+                    "abbreviation": "POTM",
+                    "athlete": {
+                      "id": "254168",
+                      "name": "Danni Wyatt-Hodge",
+                      "shortName": "Wyatt-Hodge",
+                      "fullName": "Danielle Nicole Wyatt-Hodge",
+                      "displayName": "Danni Wyatt-Hodge",
+                      "position": "TBT",
+                      "headshot": "https://a.espncdn.com/i/headshots/cricket/players/default-player-logo-500.png",
+                      "team": {
+                        "id": "1"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop"
+                          ],
+                          "href": "https://www.espncricinfo.com/ci/content/player/254168.html"
+                        }
+                      ]
+                    },
+                    "displayName": "Player Of The Match",
+                    "linescores": {
+                      "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490677/competitions/1490677/competitors/975/roster/254168/linescores"
+                    },
+                    "name": "playerOfTheMatch",
+                    "playerId": 254168,
+                    "shortDisplayName": "POTM",
+                    "team": {
+                      "id": "975"
+                    },
+                    "statistics": []
+                  }
+                ],
+                "summary": "ENG Women won by 87 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-12T17:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": [
+                {
+                  "id": 49047070,
+                  "cerebroId": "6a2cd9405887345046dbb2c0",
+                  "source": "espn",
+                  "headline": "Watch - Kemp's strikes derails SL chase",
+                  "description": "Freya Kemp runs through SL's lower-middle order to hand England a firm advantage",
+                  "lastModified": "2026-06-13T04:28:42Z",
+                  "originalPublishDate": "2026-06-13T04:14:57Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-13T03:12:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49047070/watch-kemp-strikes-derail-sl-chase",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49047070/watch-kemp-strikes-derail-sl-chase",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=33918a992fb0a"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/42394cfe-f386-4d3e-978d-f7913fc7b524/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49047070/watch-kemp-strikes-derail-sl-chase",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49047070"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/42394cfe-f386-4d3e-978d-f7913fc7b524/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49047070/watch-kemp-strikes-derail-sl-chase"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/42394cfe-f386-4d3e-978d-f7913fc7b524/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49047070/watch-kemp-strikes-derail-sl-chase"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49047070"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/42394cfe-f386-4d3e-978d-f7913fc7b524"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/42394cfe-f386-4d3e-978d-f7913fc7b524/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0613/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts/dm_260613_WWC_T20_2026_ENGvsSL_KempWkts_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49047070&videoDSI=33918a992fb0a"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_ENGvsSL_KempWkts",
+                    "trackingId": "dm_260613_WWC_T20_2026_ENGvsSL_KempWkts",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49046866,
+                  "cerebroId": "6a2cd2795887345046dbaff8",
+                  "source": "espn",
+                  "headline": "Watch - Athapaththu skies it, Wyatt-Hodge holds on",
+                  "description": "Dani Wyatt-Hodge takes a good catch to dismiss Sri Lanka's skipper early",
+                  "lastModified": "2026-06-13T04:13:42Z",
+                  "originalPublishDate": "2026-06-13T03:46:02Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-13T02:44:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49046866/watch-athapaththu-skies-wyatt-hodge-holds-on",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49046866/watch-athapaththu-skies-wyatt-hodge-holds-on",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=ca7b3a6c38d5e"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/7d002be6-8dda-4462-9c7a-b7c3bb22711a/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046866/watch-athapaththu-skies-wyatt-hodge-holds-on",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49046866"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/7d002be6-8dda-4462-9c7a-b7c3bb22711a/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046866/watch-athapaththu-skies-wyatt-hodge-holds-on"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/7d002be6-8dda-4462-9c7a-b7c3bb22711a/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046866/watch-athapaththu-skies-wyatt-hodge-holds-on"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49046866"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/7d002be6-8dda-4462-9c7a-b7c3bb22711a"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/7d002be6-8dda-4462-9c7a-b7c3bb22711a/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT/dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49046866&videoDSI=ca7b3a6c38d5e"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWC_T20_2026_ENGvsSL_ChamariWKT",
+                    "trackingId": "dm_260612_WWC_T20_2026_ENGvsSL_ChamariWKT",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49046853,
+                  "cerebroId": "6a2cd1dc2f39d9111d16d9ea",
+                  "source": "espn",
+                  "headline": "Watch - Wyatt swats it over point for four",
+                  "description": "Dani Wyatt-Hodge shows intent early in her innings, finding the vacant areas in the field with ease",
+                  "lastModified": "2026-06-13T03:57:50Z",
+                  "originalPublishDate": "2026-06-13T03:43:26Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-13T02:40:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49046853/watch-wyatt-swats-point-four",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49046853/watch-wyatt-swats-point-four",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=62163ff90f825"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8cc8bb01-5fdc-4c9f-b21a-f738e555a276/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046853/watch-wyatt-swats-point-four",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49046853"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8cc8bb01-5fdc-4c9f-b21a-f738e555a276/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046853/watch-wyatt-swats-point-four"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8cc8bb01-5fdc-4c9f-b21a-f738e555a276/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046853/watch-wyatt-swats-point-four"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49046853"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/8cc8bb01-5fdc-4c9f-b21a-f738e555a276"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/8cc8bb01-5fdc-4c9f-b21a-f738e555a276/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_WWCT20_2026_ENGvsSL_WyattFour/dm_260612_WWCT20_2026_ENGvsSL_WyattFour_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49046853&videoDSI=62163ff90f825"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "WWCT20_2026_ENGvsSL_WyattFour",
+                    "trackingId": "dm_260612_WWCT20_2026_ENGvsSL_WyattFour",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49046597,
+                  "cerebroId": "6a2cca062f39d9111d16d6d8",
+                  "source": "espn",
+                  "headline": "Women's T20 World Cup - Amy Jones sweeps one for maximum",
+                  "description": "Amy Jones gets down on one knee and heaves the ball over the leg-side fence for a six",
+                  "lastModified": "2026-06-13T03:41:08Z",
+                  "originalPublishDate": "2026-06-13T03:10:00Z",
+                  "duration": 17,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-13T02:07:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49046597/watch-jones-sweeps-one-maximum",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49046597/watch-jones-sweeps-one-maximum",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=ec197997a8a96"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/03f2cb25-edfc-4e6c-971b-a345c0ef34bb/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046597/watch-jones-sweeps-one-maximum",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49046597"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/03f2cb25-edfc-4e6c-971b-a345c0ef34bb/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046597/watch-jones-sweeps-one-maximum"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/03f2cb25-edfc-4e6c-971b-a345c0ef34bb/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046597/watch-jones-sweeps-one-maximum"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49046597"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/03f2cb25-edfc-4e6c-971b-a345c0ef34bb"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/03f2cb25-edfc-4e6c-971b-a345c0ef34bb/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix/dm_260612_ENGvsSL_T20WWC_Clips_JonesSix_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49046597&videoDSI=ec197997a8a96"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "ENGvsSL_T20WWC_Clips_JonesSix",
+                    "trackingId": "dm_260612_ENGvsSL_T20WWC_Clips_JonesSix",
+                    "program": "Jiostar"
+                  }
+                },
+                {
+                  "id": 49046403,
+                  "cerebroId": "6a2cc6a51bf54a00fd632432",
+                  "source": "espn",
+                  "headline": "Wyatt-Hodge brings up an incredible 100 vs SL",
+                  "description": "Dani Wyatt Hodge finds the boundary to bring up a match-winning century vs Sri Lanka in the 2026 Women's T20 WC",
+                  "lastModified": "2026-06-13T03:10:25Z",
+                  "originalPublishDate": "2026-06-13T02:55:35Z",
+                  "duration": 27,
+                  "timeRestrictions": {
+                    "embargoDate": "2026-06-13T01:49:00Z",
+                    "expirationDate": "2026-12-31T11:30:00Z"
+                  },
+                  "deviceRestrictions": {
+                    "type": "whitelist",
+                    "devices": [
+                      "settop",
+                      "tablet",
+                      "handset",
+                      "ipad",
+                      "desktop"
+                    ]
+                  },
+                  "geoRestrictions": {
+                    "type": "whitelist",
+                    "countries": [
+                      "IN"
+                    ]
+                  },
+                  "thumbnail": "https://a.espncdn.com/media/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury.jpg",
+                  "links": {
+                    "web": {
+                      "href": "https://www.espn.com/video/clip/_/id/49046403/wyatt-hodge-brings-incredible-100-vs-sl",
+                      "self": {
+                        "href": "https://www.espn.com/video/clip/_/id/49046403/wyatt-hodge-brings-incredible-100-vs-sl",
+                        "dsi": {
+                          "href": "https://www.espn.com/video/clip?id=c6155945c59ee"
+                        }
+                      }
+                    },
+                    "mobile": {
+                      "href": "https://watch.auth.api.espn.com/video/auth/brightcove/442cae45-bacf-4542-b409-6bca694b6f86/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046403/wyatt-hodge-brings-incredible-100-vs-sl",
+                      "source": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury.mp4"
+                      },
+                      "alert": {
+                        "href": "https://m.espn.com/general/video/videoAlert?vid=49046403"
+                      },
+                      "streaming": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/442cae45-bacf-4542-b409-6bca694b6f86/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046403/wyatt-hodge-brings-incredible-100-vs-sl"
+                      },
+                      "progressiveDownload": {
+                        "href": "https://watch.auth.api.espn.com/video/auth/brightcove/442cae45-bacf-4542-b409-6bca694b6f86/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49046403/wyatt-hodge-brings-incredible-100-vs-sl"
+                      }
+                    },
+                    "api": {
+                      "self": {
+                        "href": "https://content.core.api.espn.com/v1/video/clips/49046403"
+                      },
+                      "artwork": {
+                        "href": "https://artwork.api.espn.com/artwork/collections/media/442cae45-bacf-4542-b409-6bca694b6f86"
+                      }
+                    },
+                    "source": {
+                      "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury_360p30_1464k.mp4",
+                      "mezzanine": {
+                        "href": "https://media.video-origin.espn.com/espnvideo/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury.mp4"
+                      },
+                      "flash": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury.smil"
+                      },
+                      "hds": {
+                        "href": "https://hds.video-cdn.espn.com/z/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury_rel.smil/manifest.f4m"
+                      },
+                      "HLS": {
+                        "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury/playlist.m3u8",
+                        "HD": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury/playlist.m3u8"
+                        },
+                        "cmaf": {
+                          "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury/playlist.m3u8"
+                        },
+                        "shield": {
+                          "href": "https://watch.auth.api.espn.com/video/auth/media/442cae45-bacf-4542-b409-6bca694b6f86/asset"
+                        }
+                      },
+                      "HD": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury_720p30_2896k.mp4"
+                      },
+                      "full": {
+                        "href": "https://media.video-cdn.espn.com/motion/2026/0612/dm_260612_ENGvsSL_Clips_Wyattcentury/dm_260612_ENGvsSL_Clips_Wyattcentury_360p30_1464k.mp4"
+                      }
+                    },
+                    "sportscenter": {
+                      "href": "sportscenter://x-callback-url/showVideo?videoID=49046403&videoDSI=c6155945c59ee"
+                    }
+                  },
+                  "ad": {
+                    "sport": "Cricket",
+                    "bundle": "Cricinfo_generic"
+                  },
+                  "tracking": {
+                    "sportName": "cricket",
+                    "leagueName": "ICC Women's T20 World Cup",
+                    "coverageType": "Highlight",
+                    "trackingName": "ENGvsSL_Clips_Wyattcentury",
+                    "trackingId": "dm_260612_ENGvsSL_Clips_Wyattcentury",
+                    "program": "Jiostar"
+                  }
+                }
+              ]
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/scorecard/1490677/england-women-vs-sri-lanka-women-1st-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/report/1490677/england-women-vs-sri-lanka-women-1st-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490677/england-women-vs-sri-lanka-women-1st-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 2,
+            "summary": "ENG Women won by 87 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1490684",
+          "uid": "s:200~e:1490684",
+          "date": "2026-06-16T17:30Z",
+          "endDate": "2026-06-18T23:59Z",
+          "name": "England Women v Ireland Women",
+          "shortName": "ENG-W v IRE-W",
+          "description": "8th Match, Group 2 (D/N), ICC Women's T20 World Cup at Southampton, Jun 16 2026",
+          "season": {
+            "year": 2026,
+            "type": 8634
+          },
+          "competitions": [
+            {
+              "id": "1490684",
+              "uid": "s:200~e:1490684~c:1490684",
+              "description": "8th Match, Group 2",
+              "shortDescription": "8th Match, Group 2,  (D/N) at Southampton",
+              "date": "2026-06-16T17:30Z",
+              "endDate": "2026-06-18T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "10",
+                "generalClassId": "17",
+                "generalClassCard": "Women T20",
+                "name": "Women's Twenty20 Internationals",
+                "eventType": "T20"
+              },
+              "venue": {
+                "id": "57312",
+                "fullName": "The Rose Bowl, Southampton",
+                "address": {
+                  "city": "Southampton",
+                  "state": "",
+                  "country": "England",
+                  "summary": ""
+                },
+                "capacity": 6500,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "975",
+                  "uid": "s:200~e:1490684~c:1490684~t:975",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "",
+                  "team": {
+                    "id": "975",
+                    "uid": "s:200~t:975",
+                    "location": "England",
+                    "name": "England Women",
+                    "abbreviation": "ENG-W",
+                    "displayName": "England Women",
+                    "shortDisplayName": "ENG-W",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "#0673c1",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/975/england-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png"
+                  },
+                  "linescores": [],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490684/competitions/1490684/competitors/975/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "2234",
+                  "uid": "s:200~e:1490684~c:1490684~t:2234",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "",
+                  "team": {
+                    "id": "2234",
+                    "uid": "s:200~t:2234",
+                    "location": "Ireland",
+                    "name": "Ireland Women",
+                    "abbreviation": "IRE-W",
+                    "displayName": "Ireland Women",
+                    "shortDisplayName": "IRE-W",
+                    "isActive": true,
+                    "countryCode": "IE",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/2234/ireland-women",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png"
+                  },
+                  "linescores": [],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8634/events/1490684/competitions/1490684/competitors/2234/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 0,
+                "featuredAthletes": [],
+                "summary": "Starts at 18:30 local time",
+                "type": {
+                  "id": "0",
+                  "description": "Scheduled",
+                  "detail": "Scheduled",
+                  "shortDetail": "Scheduled",
+                  "state": "pre"
+                }
+              },
+              "odds": [],
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-16T17:30Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/game/1490684/england-women-vs-ireland-women-8th-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "preview",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8634/preview/1490684/england-women-vs-ireland-women-8th-match-group-2-icc-womens-t20-world-cup-2026",
+              "text": "Preview",
+              "shortText": "Preview",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8634/season/2026/icc-womens-t20-world-cup",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 0,
+            "summary": "Starts at 18:30 local time",
+            "type": {
+              "id": "0",
+              "description": "Scheduled",
+              "detail": "Scheduled",
+              "shortDetail": "Scheduled",
+              "state": "pre"
+            }
+          }
+        }
+      ],
+      "leagues": [
+        {
+          "id": "8634",
+          "uid": "s:200~l:8634",
+          "name": "ICC Women's T20 World Cup",
+          "abbreviation": "Women's T20 World Cup",
+          "slug": "8634",
+          "season": {},
+          "calendarType": "day",
+          "calendar": [
+            "2026-06-12T00:00:00Z",
+            "2026-06-13T00:00:00Z",
+            "2026-06-14T00:00:00Z",
+            "2026-06-16T00:00:00Z",
+            "2026-06-17T00:00:00Z",
+            "2026-06-18T00:00:00Z",
+            "2026-06-19T00:00:00Z",
+            "2026-06-20T00:00:00Z",
+            "2026-06-21T00:00:00Z",
+            "2026-06-23T00:00:00Z",
+            "2026-06-24T00:00:00Z",
+            "2026-06-25T00:00:00Z",
+            "2026-06-26T00:00:00Z",
+            "2026-06-27T00:00:00Z",
+            "2026-06-28T00:00:00Z",
+            "2026-06-30T00:00:00Z",
+            "2026-07-02T00:00:00Z",
+            "2026-07-05T00:00:00Z"
+          ]
+        }
+      ]
+    },
+    "extras": {}
+  },
+  "output": {
+    "sport": "cricket",
+    "league": "8634",
+    "leagueId": "8634",
+    "leagueName": "ICC Women's T20 World Cup",
+    "season": {},
+    "updated": null,
+    "anyLive": false,
+    "nextStartMs": 1781631000000,
+    "calendarDays": [
+      "20260611",
+      "20260612",
+      "20260613",
+      "20260615",
+      "20260616",
+      "20260617",
+      "20260618",
+      "20260619",
+      "20260620",
+      "20260622",
+      "20260623",
+      "20260624",
+      "20260625",
+      "20260626",
+      "20260627",
+      "20260629",
+      "20260701",
+      "20260704"
+    ],
+    "events": [
+      {
+        "id": "1490681",
+        "name": "Bangladesh Women v Netherlands Women",
+        "shortName": "BAN-W v NL-W",
+        "start": "2026-06-14T09:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "Edgbaston, Birmingham",
+          "city": "Birmingham",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490681/bangladesh-women-vs-netherlands-women-5th-match-group-1-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490681/bangladesh-women-vs-netherlands-women-5th-match-group-1-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490681",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "299037",
+                "displayName": "Bangladesh Women",
+                "shortName": "BAN-W",
+                "abbreviation": "BAN-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/299037.png",
+                "color": "#ed3507",
+                "homeAway": "home",
+                "order": 2,
+                "winner": "true",
+                "score": {
+                  "display": "141/4 (19.1/20 ov, target 140)",
+                  "cricket": {
+                    "runs": 141,
+                    "wickets": 4,
+                    "overs": 19.1,
+                    "target": 140
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 141,
+                      "wickets": 4,
+                      "overs": 19.1,
+                      "isBatting": true,
+                      "reason": "target reached"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "2410",
+                "displayName": "Netherlands Women",
+                "shortName": "NL-W",
+                "abbreviation": "NL-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2410.png",
+                "homeAway": "away",
+                "order": 1,
+                "winner": "false",
+                "score": {
+                  "display": "139/8",
+                  "cricket": {
+                    "runs": 139,
+                    "wickets": 8
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 139,
+                      "wickets": 8,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 19.1,
+                      "isBatting": false,
+                      "reason": "target reached"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "BAN Women won by 6 wkts (5b rem)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490682",
+        "name": "India Women v Pakistan Women",
+        "shortName": "IND-W v PAK-W",
+        "start": "2026-06-14T13:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "Edgbaston, Birmingham",
+          "city": "Birmingham",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490682/india-women-vs-pakistan-women-6th-match-group-1-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490682/india-women-vs-pakistan-women-6th-match-group-1-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490682",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "1812",
+                "displayName": "India Women",
+                "shortName": "IND-W",
+                "abbreviation": "IND-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1812.png",
+                "color": "#050ceb",
+                "homeAway": "home",
+                "order": 1,
+                "winner": "true",
+                "score": {
+                  "display": "170/6",
+                  "cricket": {
+                    "runs": 170,
+                    "wickets": 6
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 170,
+                      "wickets": 6,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 17,
+                      "isBatting": false,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "2971",
+                "displayName": "Pakistan Women",
+                "shortName": "PAK-W",
+                "abbreviation": "PAK-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2971.png",
+                "color": "#07df52",
+                "homeAway": "away",
+                "order": 2,
+                "winner": "false",
+                "score": {
+                  "display": "106 (17/20 ov, target 171)",
+                  "cricket": {
+                    "runs": 106,
+                    "overs": 17,
+                    "target": 171
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 106,
+                      "wickets": 10,
+                      "overs": 17,
+                      "isBatting": true,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "IND Women won by 64 runs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490678",
+        "name": "Ireland Women v Scotland Women",
+        "shortName": "IRE-W v SCO-W",
+        "start": "2026-06-13T09:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "Old Trafford, Manchester",
+          "city": "Manchester",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490678/ireland-women-vs-scotland-women-2nd-match-group-2-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490678/ireland-women-vs-scotland-women-2nd-match-group-2-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490678",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "2234",
+                "displayName": "Ireland Women",
+                "shortName": "IRE-W",
+                "abbreviation": "IRE-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png",
+                "homeAway": "home",
+                "order": 2,
+                "winner": "false",
+                "score": {
+                  "display": "121 (19.1/20 ov, target 162)",
+                  "cricket": {
+                    "runs": 121,
+                    "overs": 19.1,
+                    "target": 162
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 121,
+                      "wickets": 10,
+                      "overs": 19.1,
+                      "isBatting": true,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "3454",
+                "displayName": "Scotland Women",
+                "shortName": "SCO-W",
+                "abbreviation": "SCO-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3454.png",
+                "color": "#90d091",
+                "homeAway": "away",
+                "order": 1,
+                "winner": "true",
+                "score": {
+                  "display": "161/5",
+                  "cricket": {
+                    "runs": 161,
+                    "wickets": 5
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 161,
+                      "wickets": 5,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 19.1,
+                      "isBatting": false,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "SCO Women won by 40 runs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490679",
+        "name": "Australia Women v South Africa Women",
+        "shortName": "AUS-W v SA-W",
+        "start": "2026-06-13T13:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "Old Trafford, Manchester",
+          "city": "Manchester",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490679/australia-women-vs-south-africa-women-3rd-match-group-1-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490679/australia-women-vs-south-africa-women-3rd-match-group-1-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490679",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "238",
+                "displayName": "Australia Women",
+                "shortName": "AUS-W",
+                "abbreviation": "AUS-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/238.png",
+                "color": "#f3f702",
+                "homeAway": "home",
+                "order": 1,
+                "winner": "true",
+                "score": {
+                  "display": "172/8",
+                  "cricket": {
+                    "runs": 172,
+                    "wickets": 8
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 172,
+                      "wickets": 8,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 16.4,
+                      "isBatting": false,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "3328",
+                "displayName": "South Africa Women",
+                "shortName": "SA-W",
+                "abbreviation": "SA-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3328.png",
+                "color": "#1c9b36",
+                "homeAway": "away",
+                "order": 2,
+                "winner": "false",
+                "score": {
+                  "display": "107 (16.4/20 ov, target 173)",
+                  "cricket": {
+                    "runs": 107,
+                    "overs": 16.4,
+                    "target": 173
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 107,
+                      "wickets": 10,
+                      "overs": 16.4,
+                      "isBatting": true,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "AUS Women won by 65 runs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490680",
+        "name": "New Zealand Women v West Indies Women",
+        "shortName": "NZ-W v WI-W",
+        "start": "2026-06-13T17:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "The Rose Bowl, Southampton",
+          "city": "Southampton",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490680/new-zealand-women-vs-west-indies-women-4th-match-group-2-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490680/new-zealand-women-vs-west-indies-women-4th-match-group-2-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490680",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "2563",
+                "displayName": "New Zealand Women",
+                "shortName": "NZ-W",
+                "abbreviation": "NZ-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2563.png",
+                "color": "#b7c0c8",
+                "homeAway": "home",
+                "order": 1,
+                "winner": "false",
+                "score": {
+                  "display": "162/6",
+                  "cricket": {
+                    "runs": 162,
+                    "wickets": 6
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 162,
+                      "wickets": 6,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 19.5,
+                      "isBatting": false,
+                      "reason": "target reached"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "3816",
+                "displayName": "West Indies Women",
+                "shortName": "WI-W",
+                "abbreviation": "WI-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3816.png",
+                "color": "#790d1a",
+                "homeAway": "away",
+                "order": 2,
+                "winner": "true",
+                "score": {
+                  "display": "163/3 (19.5/20 ov, target 163)",
+                  "cricket": {
+                    "runs": 163,
+                    "wickets": 3,
+                    "overs": 19.5,
+                    "target": 163
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 163,
+                      "wickets": 3,
+                      "overs": 19.5,
+                      "isBatting": true,
+                      "reason": "target reached"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "WI Women won by 7 wkts (1b rem)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490677",
+        "name": "England Women v Sri Lanka Women",
+        "shortName": "ENG-W v SL-W",
+        "start": "2026-06-12T17:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "Edgbaston, Birmingham",
+          "city": "Birmingham",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/scorecard/1490677/england-women-vs-sri-lanka-women-1st-match-group-2-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/scorecard/1490677/england-women-vs-sri-lanka-women-1st-match-group-2-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490677",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": false,
+              "period": 2,
+              "periodLabel": "Final",
+              "espnName": "",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "975",
+                "displayName": "England Women",
+                "shortName": "ENG-W",
+                "abbreviation": "ENG-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png",
+                "color": "#0673c1",
+                "homeAway": "home",
+                "order": 1,
+                "winner": "true",
+                "score": {
+                  "display": "219/1",
+                  "cricket": {
+                    "runs": 219,
+                    "wickets": 1
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 219,
+                      "wickets": 1,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "3621",
+                "displayName": "Sri Lanka Women",
+                "shortName": "SL-W",
+                "abbreviation": "SL-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3621.png",
+                "color": "#203d89",
+                "homeAway": "away",
+                "order": 2,
+                "winner": "false",
+                "score": {
+                  "display": "132 (20 ov, target 220)",
+                  "cricket": {
+                    "runs": 132,
+                    "overs": 20,
+                    "target": 220
+                  }
+                },
+                "periodScores": [
+                  {
+                    "period": 1,
+                    "value": 1,
+                    "display": 1,
+                    "cricket": {
+                      "runs": 0,
+                      "wickets": 0,
+                      "overs": 20,
+                      "isBatting": false,
+                      "reason": "complete"
+                    }
+                  },
+                  {
+                    "period": 2,
+                    "value": 2,
+                    "display": 2,
+                    "cricket": {
+                      "runs": 132,
+                      "wickets": 10,
+                      "overs": 20,
+                      "isBatting": true,
+                      "reason": "all out"
+                    }
+                  }
+                ],
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "ENG Women won by 87 runs"
+            }
+          }
+        ]
+      },
+      {
+        "id": "1490684",
+        "name": "England Women v Ireland Women",
+        "shortName": "ENG-W v IRE-W",
+        "start": "2026-06-16T17:30Z",
+        "neutralSite": true,
+        "venue": {
+          "name": "The Rose Bowl, Southampton",
+          "city": "Southampton",
+          "country": "England",
+          "indoor": false
+        },
+        "broadcasts": [],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.in/cricket/series/8634/game/1490684/england-women-vs-ireland-women-8th-match-group-2-icc-womens-t20-world-cup-2026",
+          "box": "https://www.espn.in/cricket/series/8634/game/1490684/england-women-vs-ireland-women-8th-match-group-2-icc-womens-t20-world-cup-2026"
+        },
+        "competitions": [
+          {
+            "id": "1490684",
+            "layout": "headToHead",
+            "scoreKind": "cricket",
+            "competitorKind": "team",
+            "status": {
+              "phase": "scheduled",
+              "live": false,
+              "ended": false,
+              "period": 0,
+              "periodLabel": "Scheduled",
+              "espnName": "",
+              "detail": "Scheduled",
+              "shortDetail": "Scheduled"
+            },
+            "periods": {
+              "unit": "over_innings",
+              "regulation": 2,
+              "played": 0,
+              "isOvertime": false
+            },
+            "decision": null,
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "975",
+                "displayName": "England Women",
+                "shortName": "ENG-W",
+                "abbreviation": "ENG-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png",
+                "color": "#0673c1",
+                "homeAway": "home",
+                "order": 1,
+                "winner": "false",
+                "score": {
+                  "display": ""
+                },
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              },
+              {
+                "kind": "team",
+                "id": "2234",
+                "displayName": "Ireland Women",
+                "shortName": "IRE-W",
+                "abbreviation": "IRE-W",
+                "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png",
+                "homeAway": "away",
+                "order": 2,
+                "winner": "false",
+                "score": {
+                  "display": ""
+                },
+                "records": [
+                  {
+                    "type": "total",
+                    "summary": ""
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "cricketClass": "Women T20",
+              "cricketSummary": "Starts at 18:30 local time"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

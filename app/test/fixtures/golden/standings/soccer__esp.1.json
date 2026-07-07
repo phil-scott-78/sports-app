@@ -1,0 +1,2587 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "soccer/esp.1",
+    "raw": {
+      "name": "Spanish LALIGA",
+      "abbreviation": "LALIGA",
+      "children": [
+        {
+          "name": "2025-26 LALIGA",
+          "abbreviation": "2025-2026",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "83",
+                  "displayName": "Barcelona",
+                  "name": "Barcelona",
+                  "abbreviation": "BAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+59",
+                    "value": 59
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "94",
+                    "value": 94
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "36",
+                    "value": 36
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "95",
+                    "value": 95
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "31",
+                    "value": 31
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "31-1-6"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "86",
+                  "displayName": "Real Madrid",
+                  "name": "Real Madrid",
+                  "abbreviation": "RMA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+42",
+                    "value": 42
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "86",
+                    "value": 86
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "77",
+                    "value": 77
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "27-5-6"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "102",
+                  "displayName": "Villarreal",
+                  "name": "Villarreal",
+                  "abbreviation": "VIL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "72",
+                    "value": 72
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "72",
+                    "value": 72
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "22-6-10"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1068",
+                  "displayName": "Atlético Madrid",
+                  "name": "Atlético Madrid",
+                  "abbreviation": "ATM",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+18",
+                    "value": 18
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "69",
+                    "value": 69
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "62",
+                    "value": 62
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "21-6-11"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "244",
+                  "displayName": "Real Betis",
+                  "name": "Real Betis",
+                  "abbreviation": "BET",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+11",
+                    "value": 11
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "60",
+                    "value": 60
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "48",
+                    "value": 48
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "59",
+                    "value": 59
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "15-15-8"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "85",
+                  "displayName": "Celta Vigo",
+                  "name": "Celta Vigo",
+                  "abbreviation": "CEL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+5",
+                    "value": 5
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "54",
+                    "value": 54
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "48",
+                    "value": 48
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "53",
+                    "value": 53
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "14-12-12"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2922",
+                  "displayName": "Getafe",
+                  "name": "Getafe",
+                  "abbreviation": "GET",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-6",
+                    "value": -6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "51",
+                    "value": 51
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "32",
+                    "value": 32
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "15-6-17"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "101",
+                  "displayName": "Rayo Vallecano",
+                  "name": "Rayo Vallecano",
+                  "abbreviation": "RAY",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-3",
+                    "value": -3
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "12-14-12"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "94",
+                  "displayName": "Valencia",
+                  "name": "Valencia",
+                  "abbreviation": "VAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/94.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-9",
+                    "value": -9
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "55",
+                    "value": 55
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "13-10-15"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "89",
+                  "displayName": "Real Sociedad",
+                  "name": "Real Sociedad",
+                  "abbreviation": "RSO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "61",
+                    "value": 61
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "59",
+                    "value": 59
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "11-13-14"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "88",
+                  "displayName": "Espanyol",
+                  "name": "Espanyol",
+                  "abbreviation": "ESP",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-12",
+                    "value": -12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "55",
+                    "value": 55
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "12-10-16"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "93",
+                  "displayName": "Athletic Club",
+                  "name": "Athletic Club",
+                  "abbreviation": "ATH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-15",
+                    "value": -15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "58",
+                    "value": 58
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "13-6-19"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "243",
+                  "displayName": "Sevilla",
+                  "name": "Sevilla",
+                  "abbreviation": "SEV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/243.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-14",
+                    "value": -14
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "60",
+                    "value": 60
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "12-7-19"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "96",
+                  "displayName": "Alavés",
+                  "name": "Alavés",
+                  "abbreviation": "ALA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-12",
+                    "value": -12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "56",
+                    "value": 56
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "11-10-17"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3751",
+                  "displayName": "Elche",
+                  "name": "Elche",
+                  "abbreviation": "ELC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-8",
+                    "value": -8
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "57",
+                    "value": 57
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "10-13-15"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1538",
+                  "displayName": "Levante",
+                  "name": "Levante",
+                  "abbreviation": "LEV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-14",
+                    "value": -14
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "61",
+                    "value": 61
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "47",
+                    "value": 47
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "11-9-18"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "97",
+                  "displayName": "Osasuna",
+                  "name": "Osasuna",
+                  "abbreviation": "OSA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-6",
+                    "value": -6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "11-9-18"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "84",
+                  "displayName": "Mallorca",
+                  "name": "Mallorca",
+                  "abbreviation": "MLL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/84.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-10",
+                    "value": -10
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "57",
+                    "value": 57
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "47",
+                    "value": 47
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "11-9-18"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "9812",
+                  "displayName": "Girona",
+                  "name": "Girona",
+                  "abbreviation": "GIR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/9812.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-16",
+                    "value": -16
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "55",
+                    "value": 55
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "9-14-15"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "92",
+                  "displayName": "Real Oviedo",
+                  "name": "Real Oviedo",
+                  "abbreviation": "OVI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/92.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-34",
+                    "value": -34
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "60",
+                    "value": 60
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "6-11-21"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "2025-26 LALIGA",
+      "rows": [
+        {
+          "team": {
+            "id": "83",
+            "name": "Barcelona",
+            "abbr": "BAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/83.png"
+          },
+          "rank": 1,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "6",
+            "pointDifferential": "+59",
+            "points": "94",
+            "pointsAgainst": "36",
+            "pointsFor": "95",
+            "ties": "1",
+            "wins": "31",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "1",
+            "rankChange": "0",
+            "overall": "31-1-6"
+          }
+        },
+        {
+          "team": {
+            "id": "86",
+            "name": "Real Madrid",
+            "abbr": "RMA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/86.png"
+          },
+          "rank": 2,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "6",
+            "pointDifferential": "+42",
+            "points": "86",
+            "pointsAgainst": "35",
+            "pointsFor": "77",
+            "ties": "5",
+            "wins": "27",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "2",
+            "rankChange": "0",
+            "overall": "27-5-6"
+          }
+        },
+        {
+          "team": {
+            "id": "102",
+            "name": "Villarreal",
+            "abbr": "VIL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/102.png"
+          },
+          "rank": 3,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "10",
+            "pointDifferential": "+26",
+            "points": "72",
+            "pointsAgainst": "46",
+            "pointsFor": "72",
+            "ties": "6",
+            "wins": "22",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "3",
+            "rankChange": "0",
+            "overall": "22-6-10"
+          }
+        },
+        {
+          "team": {
+            "id": "1068",
+            "name": "Atlético Madrid",
+            "abbr": "ATM",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/1068.png"
+          },
+          "rank": 4,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "11",
+            "pointDifferential": "+18",
+            "points": "69",
+            "pointsAgainst": "44",
+            "pointsFor": "62",
+            "ties": "6",
+            "wins": "21",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "4",
+            "rankChange": "0",
+            "overall": "21-6-11"
+          }
+        },
+        {
+          "team": {
+            "id": "244",
+            "name": "Real Betis",
+            "abbr": "BET",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/244.png"
+          },
+          "rank": 5,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "8",
+            "pointDifferential": "+11",
+            "points": "60",
+            "pointsAgainst": "48",
+            "pointsFor": "59",
+            "ties": "15",
+            "wins": "15",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "5",
+            "rankChange": "0",
+            "overall": "15-15-8"
+          }
+        },
+        {
+          "team": {
+            "id": "85",
+            "name": "Celta Vigo",
+            "abbr": "CEL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/85.png"
+          },
+          "rank": 6,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "12",
+            "pointDifferential": "+5",
+            "points": "54",
+            "pointsAgainst": "48",
+            "pointsFor": "53",
+            "ties": "12",
+            "wins": "14",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "6",
+            "rankChange": "0",
+            "overall": "14-12-12"
+          }
+        },
+        {
+          "team": {
+            "id": "2922",
+            "name": "Getafe",
+            "abbr": "GET",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2922.png"
+          },
+          "rank": 7,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "17",
+            "pointDifferential": "-6",
+            "points": "51",
+            "pointsAgainst": "38",
+            "pointsFor": "32",
+            "ties": "6",
+            "wins": "15",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "7",
+            "rankChange": "0",
+            "overall": "15-6-17"
+          }
+        },
+        {
+          "team": {
+            "id": "101",
+            "name": "Rayo Vallecano",
+            "abbr": "RAY",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/101.png"
+          },
+          "rank": 8,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "12",
+            "pointDifferential": "-3",
+            "points": "50",
+            "pointsAgainst": "44",
+            "pointsFor": "41",
+            "ties": "14",
+            "wins": "12",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "8",
+            "rankChange": "0",
+            "overall": "12-14-12"
+          }
+        },
+        {
+          "team": {
+            "id": "94",
+            "name": "Valencia",
+            "abbr": "VAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/94.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/94.png"
+          },
+          "rank": 9,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "15",
+            "pointDifferential": "-9",
+            "points": "49",
+            "pointsAgainst": "55",
+            "pointsFor": "46",
+            "ties": "10",
+            "wins": "13",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "9",
+            "rankChange": "0",
+            "overall": "13-10-15"
+          }
+        },
+        {
+          "team": {
+            "id": "89",
+            "name": "Real Sociedad",
+            "abbr": "RSO",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/89.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/89.png"
+          },
+          "rank": 10,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "14",
+            "pointDifferential": "-2",
+            "points": "46",
+            "pointsAgainst": "61",
+            "pointsFor": "59",
+            "ties": "13",
+            "wins": "11",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "10",
+            "rankChange": "0",
+            "overall": "11-13-14"
+          }
+        },
+        {
+          "team": {
+            "id": "88",
+            "name": "Espanyol",
+            "abbr": "ESP",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/88.png"
+          },
+          "rank": 11,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "16",
+            "pointDifferential": "-12",
+            "points": "46",
+            "pointsAgainst": "55",
+            "pointsFor": "43",
+            "ties": "10",
+            "wins": "12",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "11",
+            "rankChange": "0",
+            "overall": "12-10-16"
+          }
+        },
+        {
+          "team": {
+            "id": "93",
+            "name": "Athletic Club",
+            "abbr": "ATH",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/93.png"
+          },
+          "rank": 12,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "19",
+            "pointDifferential": "-15",
+            "points": "45",
+            "pointsAgainst": "58",
+            "pointsFor": "43",
+            "ties": "6",
+            "wins": "13",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "12",
+            "rankChange": "0",
+            "overall": "13-6-19"
+          }
+        },
+        {
+          "team": {
+            "id": "243",
+            "name": "Sevilla",
+            "abbr": "SEV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/243.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/243.png"
+          },
+          "rank": 13,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "19",
+            "pointDifferential": "-14",
+            "points": "43",
+            "pointsAgainst": "60",
+            "pointsFor": "46",
+            "ties": "7",
+            "wins": "12",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "13",
+            "rankChange": "0",
+            "overall": "12-7-19"
+          }
+        },
+        {
+          "team": {
+            "id": "96",
+            "name": "Alavés",
+            "abbr": "ALA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/96.png"
+          },
+          "rank": 14,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "17",
+            "pointDifferential": "-12",
+            "points": "43",
+            "pointsAgainst": "56",
+            "pointsFor": "44",
+            "ties": "10",
+            "wins": "11",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "14",
+            "rankChange": "0",
+            "overall": "11-10-17"
+          }
+        },
+        {
+          "team": {
+            "id": "3751",
+            "name": "Elche",
+            "abbr": "ELC",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3751.png"
+          },
+          "rank": 15,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "15",
+            "pointDifferential": "-8",
+            "points": "43",
+            "pointsAgainst": "57",
+            "pointsFor": "49",
+            "ties": "13",
+            "wins": "10",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "15",
+            "rankChange": "0",
+            "overall": "10-13-15"
+          }
+        },
+        {
+          "team": {
+            "id": "1538",
+            "name": "Levante",
+            "abbr": "LEV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/1538.png"
+          },
+          "rank": 16,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "18",
+            "pointDifferential": "-14",
+            "points": "42",
+            "pointsAgainst": "61",
+            "pointsFor": "47",
+            "ties": "9",
+            "wins": "11",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "16",
+            "rankChange": "0",
+            "overall": "11-9-18"
+          }
+        },
+        {
+          "team": {
+            "id": "97",
+            "name": "Osasuna",
+            "abbr": "OSA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/97.png"
+          },
+          "rank": 17,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "18",
+            "pointDifferential": "-6",
+            "points": "42",
+            "pointsAgainst": "50",
+            "pointsFor": "44",
+            "ties": "9",
+            "wins": "11",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "17",
+            "rankChange": "0",
+            "overall": "11-9-18"
+          }
+        },
+        {
+          "team": {
+            "id": "84",
+            "name": "Mallorca",
+            "abbr": "MLL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/84.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/84.png"
+          },
+          "rank": 18,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "18",
+            "pointDifferential": "-10",
+            "points": "42",
+            "pointsAgainst": "57",
+            "pointsFor": "47",
+            "ties": "9",
+            "wins": "11",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "18",
+            "rankChange": "0",
+            "overall": "11-9-18"
+          }
+        },
+        {
+          "team": {
+            "id": "9812",
+            "name": "Girona",
+            "abbr": "GIR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9812.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/9812.png"
+          },
+          "rank": 19,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "15",
+            "pointDifferential": "-16",
+            "points": "41",
+            "pointsAgainst": "55",
+            "pointsFor": "39",
+            "ties": "14",
+            "wins": "9",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "19",
+            "rankChange": "0",
+            "overall": "9-14-15"
+          }
+        },
+        {
+          "team": {
+            "id": "92",
+            "name": "Real Oviedo",
+            "abbr": "OVI",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/92.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/92.png"
+          },
+          "rank": 20,
+          "stats": {
+            "gamesPlayed": "38",
+            "losses": "21",
+            "pointDifferential": "-34",
+            "points": "29",
+            "pointsAgainst": "60",
+            "pointsFor": "26",
+            "ties": "11",
+            "wins": "6",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "20",
+            "rankChange": "0",
+            "overall": "6-11-21"
+          }
+        }
+      ]
+    }
+  ]
+}

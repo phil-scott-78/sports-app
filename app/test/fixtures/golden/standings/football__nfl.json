@@ -1,0 +1,4840 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "football/nfl",
+    "raw": {
+      "name": "National Football League",
+      "abbreviation": "NFL",
+      "children": [
+        {
+          "name": "American Football Conference",
+          "abbreviation": "AFC",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "17",
+                  "displayName": "New England Patriots",
+                  "name": "Patriots",
+                  "abbreviation": "NE",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ne.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+170",
+                    "value": 170
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+170",
+                    "value": 170
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "320",
+                    "value": 320
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "490",
+                    "value": 490
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".824",
+                    "value": 0.8235294
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "5-1",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "5.000",
+                    "value": 5
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "30",
+                  "displayName": "Jacksonville Jaguars",
+                  "name": "Jaguars",
+                  "abbreviation": "JAX",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/jax.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+138",
+                    "value": 138
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+138",
+                    "value": 138
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "336",
+                    "value": 336
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "474",
+                    "value": 474
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W8",
+                    "value": 8
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".765",
+                    "value": 0.7647059
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "5-1",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "5.000",
+                    "value": 5
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "23",
+                  "displayName": "Pittsburgh Steelers",
+                  "name": "Steelers",
+                  "abbreviation": "PIT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/pit.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+10",
+                    "value": 10
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "387",
+                    "value": 387
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "397",
+                    "value": 397
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".588",
+                    "value": 0.5882353
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "34",
+                  "displayName": "Houston Texans",
+                  "name": "Texans",
+                  "abbreviation": "HOU",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/hou.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+109",
+                    "value": 109
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+109",
+                    "value": 109
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "295",
+                    "value": 295
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "404",
+                    "value": 404
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W9",
+                    "value": 9
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".706",
+                    "value": 0.7058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "5-1",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "5.000",
+                    "value": 5
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2",
+                  "displayName": "Buffalo Bills",
+                  "name": "Bills",
+                  "abbreviation": "BUF",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/buf.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+116",
+                    "value": 116
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+116",
+                    "value": 116
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "365",
+                    "value": 365
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "481",
+                    "value": 481
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".706",
+                    "value": 0.7058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "24",
+                  "displayName": "Los Angeles Chargers",
+                  "name": "Chargers",
+                  "abbreviation": "LAC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lac.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+28",
+                    "value": 28
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+28",
+                    "value": 28
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "340",
+                    "value": 340
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "368",
+                    "value": 368
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".647",
+                    "value": 0.64705884
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "5-1",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "5.000",
+                    "value": 5
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "11",
+                  "displayName": "Indianapolis Colts",
+                  "name": "Colts",
+                  "abbreviation": "IND",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ind.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+54",
+                    "value": 54
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+54",
+                    "value": 54
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "412",
+                    "value": 412
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "466",
+                    "value": 466
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L7",
+                    "value": -7
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".471",
+                    "value": 0.47058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "2-4",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "2.000",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "33",
+                  "displayName": "Baltimore Ravens",
+                  "name": "Ravens",
+                  "abbreviation": "BAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/bal.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "398",
+                    "value": 398
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "424",
+                    "value": 424
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".471",
+                    "value": 0.47058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "15",
+                  "displayName": "Miami Dolphins",
+                  "name": "Dolphins",
+                  "abbreviation": "MIA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/mia.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-77",
+                    "value": -77
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-77",
+                    "value": -77
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "424",
+                    "value": 424
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "347",
+                    "value": 347
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".412",
+                    "value": 0.4117647
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "4",
+                  "displayName": "Cincinnati Bengals",
+                  "name": "Bengals",
+                  "abbreviation": "CIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/cin.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-78",
+                    "value": -78
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-78",
+                    "value": -78
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "492",
+                    "value": 492
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "414",
+                    "value": 414
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".353",
+                    "value": 0.3529412
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "12",
+                  "displayName": "Kansas City Chiefs",
+                  "name": "Chiefs",
+                  "abbreviation": "KC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/kc.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+34",
+                    "value": 34
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+34",
+                    "value": 34
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "328",
+                    "value": 328
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "362",
+                    "value": 362
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L6",
+                    "value": -6
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".353",
+                    "value": 0.3529412
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "1-5",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "1.000",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "5",
+                  "displayName": "Cleveland Browns",
+                  "name": "Browns",
+                  "abbreviation": "CLE",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/cle.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-100",
+                    "value": -100
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-100",
+                    "value": -100
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "379",
+                    "value": 379
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "279",
+                    "value": 279
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".294",
+                    "value": 0.29411766
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "2-4",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "2.000",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "13",
+                  "displayName": "Las Vegas Raiders",
+                  "name": "Raiders",
+                  "abbreviation": "LV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lv.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-191",
+                    "value": -191
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-191",
+                    "value": -191
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "432",
+                    "value": 432
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "241",
+                    "value": 241
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".176",
+                    "value": 0.1764706
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "1-5",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "1.000",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "20",
+                  "displayName": "New York Jets",
+                  "name": "Jets",
+                  "abbreviation": "NYJ",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyj.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-203",
+                    "value": -203
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-203",
+                    "value": -203
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "503",
+                    "value": 503
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "300",
+                    "value": 300
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L5",
+                    "value": -5
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".176",
+                    "value": 0.1764706
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "0-6",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "0.000",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "10",
+                  "displayName": "Tennessee Titans",
+                  "name": "Titans",
+                  "abbreviation": "TEN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ten.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-194",
+                    "value": -194
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-194",
+                    "value": -194
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "478",
+                    "value": 478
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "284",
+                    "value": 284
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".176",
+                    "value": 0.1764706
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "0-6",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "0.000",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "7",
+                  "displayName": "Denver Broncos",
+                  "name": "Broncos",
+                  "abbreviation": "DEN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/den.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "*",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+90",
+                    "value": 90
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+90",
+                    "value": 90
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "311",
+                    "value": 311
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "401",
+                    "value": 401
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".824",
+                    "value": 0.8235294
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "5-1",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "5.000",
+                    "value": 5
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "National Football Conference",
+          "abbreviation": "NFC",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "3",
+                  "displayName": "Chicago Bears",
+                  "name": "Bears",
+                  "abbreviation": "CHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/chi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "415",
+                    "value": 415
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "441",
+                    "value": 441
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".647",
+                    "value": 0.64705884
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "2-4",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "2.000",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "21",
+                  "displayName": "Philadelphia Eagles",
+                  "name": "Eagles",
+                  "abbreviation": "PHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/phi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+54",
+                    "value": 54
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+54",
+                    "value": 54
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "325",
+                    "value": 325
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "379",
+                    "value": 379
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".647",
+                    "value": 0.64705884
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "29",
+                  "displayName": "Carolina Panthers",
+                  "name": "Panthers",
+                  "abbreviation": "CAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/car.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-69",
+                    "value": -69
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-69",
+                    "value": -69
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "380",
+                    "value": 380
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "311",
+                    "value": 311
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".471",
+                    "value": 0.47058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "14",
+                  "displayName": "Los Angeles Rams",
+                  "name": "Rams",
+                  "abbreviation": "LAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lar.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+172",
+                    "value": 172
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+172",
+                    "value": 172
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "346",
+                    "value": 346
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "518",
+                    "value": 518
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".706",
+                    "value": 0.7058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "25",
+                  "displayName": "San Francisco 49ers",
+                  "name": "49ers",
+                  "abbreviation": "SF",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/sf.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+66",
+                    "value": 66
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+66",
+                    "value": 66
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "371",
+                    "value": 371
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "437",
+                    "value": 437
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".706",
+                    "value": 0.7058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "9",
+                  "displayName": "Green Bay Packers",
+                  "name": "Packers",
+                  "abbreviation": "GB",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/gb.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+31",
+                    "value": 31
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4.5",
+                    "value": 4.5
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+31",
+                    "value": 31
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "360",
+                    "value": 360
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "391",
+                    "value": 391
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L4",
+                    "value": -4
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".559",
+                    "value": 0.5588235
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "16",
+                  "displayName": "Minnesota Vikings",
+                  "name": "Vikings",
+                  "abbreviation": "MIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/min.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+11",
+                    "value": 11
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "333",
+                    "value": 333
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "344",
+                    "value": 344
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W5",
+                    "value": 5
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".529",
+                    "value": 0.5294118
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "8",
+                  "displayName": "Detroit Lions",
+                  "name": "Lions",
+                  "abbreviation": "DET",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/det.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+68",
+                    "value": 68
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+68",
+                    "value": 68
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "413",
+                    "value": 413
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "481",
+                    "value": 481
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".529",
+                    "value": 0.5294118
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "2-4",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "2.000",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "27",
+                  "displayName": "Tampa Bay Buccaneers",
+                  "name": "Buccaneers",
+                  "abbreviation": "TB",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/tb.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-31",
+                    "value": -31
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-31",
+                    "value": -31
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "411",
+                    "value": 411
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "380",
+                    "value": 380
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".471",
+                    "value": 0.47058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1",
+                  "displayName": "Atlanta Falcons",
+                  "name": "Falcons",
+                  "abbreviation": "ATL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/atl.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-48",
+                    "value": -48
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-48",
+                    "value": -48
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "401",
+                    "value": 401
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "353",
+                    "value": 353
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".471",
+                    "value": 0.47058824
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "6",
+                  "displayName": "Dallas Cowboys",
+                  "name": "Cowboys",
+                  "abbreviation": "DAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/dal.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-40",
+                    "value": -40
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6.5",
+                    "value": 6.5
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-40",
+                    "value": -40
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "511",
+                    "value": 511
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "471",
+                    "value": 471
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".441",
+                    "value": 0.44117647
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "18",
+                  "displayName": "New Orleans Saints",
+                  "name": "Saints",
+                  "abbreviation": "NO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/no.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-77",
+                    "value": -77
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-77",
+                    "value": -77
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "383",
+                    "value": 383
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "306",
+                    "value": 306
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".353",
+                    "value": 0.3529412
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "28",
+                  "displayName": "Washington Commanders",
+                  "name": "Commanders",
+                  "abbreviation": "WSH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/wsh.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-95",
+                    "value": -95
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-95",
+                    "value": -95
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "451",
+                    "value": 451
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "356",
+                    "value": 356
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".294",
+                    "value": 0.29411766
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "3-3",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "3.000",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "19",
+                  "displayName": "New York Giants",
+                  "name": "Giants",
+                  "abbreviation": "NYG",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyg.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-58",
+                    "value": -58
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-58",
+                    "value": -58
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "439",
+                    "value": 439
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "381",
+                    "value": 381
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".235",
+                    "value": 0.23529412
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "2-4",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "2.000",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "22",
+                  "displayName": "Arizona Cardinals",
+                  "name": "Cardinals",
+                  "abbreviation": "ARI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ari.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-133",
+                    "value": -133
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-133",
+                    "value": -133
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "488",
+                    "value": 488
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "355",
+                    "value": 355
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L9",
+                    "value": -9
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".176",
+                    "value": 0.1764706
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "0-6",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "0.000",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "26",
+                  "displayName": "Seattle Seahawks",
+                  "name": "Seahawks",
+                  "abbreviation": "SEA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/sea.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "*",
+                    "value": 0
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+191",
+                    "value": 191
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+191",
+                    "value": 191
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "292",
+                    "value": 292
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "483",
+                    "value": 483
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W7",
+                    "value": 7
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".824",
+                    "value": 0.8235294
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "divisionLosses",
+                    "type": "divisionlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "divisionRecord",
+                    "type": "divisionrecord",
+                    "displayValue": "4-2",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionTies",
+                    "type": "divisionties",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "divisionWins",
+                    "type": "divisionwins",
+                    "displayValue": "4.000",
+                    "value": 4
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "American Football Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "17",
+            "name": "New England Patriots",
+            "abbr": "NE",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ne.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "+170",
+            "gamesBehind": "-",
+            "losses": "3",
+            "playoffSeed": "2",
+            "pointDifferential": "+170",
+            "pointsAgainst": "320",
+            "pointsFor": "490",
+            "streak": "W3",
+            "ties": "0",
+            "winPercent": ".824",
+            "wins": "14",
+            "divisionLosses": "1",
+            "divisionRecord": "5-1",
+            "divisionTies": "0.000",
+            "divisionWins": "5.000"
+          }
+        },
+        {
+          "team": {
+            "id": "30",
+            "name": "Jacksonville Jaguars",
+            "abbr": "JAX",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/jax.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/jax.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "+138",
+            "gamesBehind": "1",
+            "losses": "4",
+            "playoffSeed": "3",
+            "pointDifferential": "+138",
+            "pointsAgainst": "336",
+            "pointsFor": "474",
+            "streak": "W8",
+            "ties": "0",
+            "winPercent": ".765",
+            "wins": "13",
+            "divisionLosses": "1",
+            "divisionRecord": "5-1",
+            "divisionTies": "0.000",
+            "divisionWins": "5.000"
+          }
+        },
+        {
+          "team": {
+            "id": "23",
+            "name": "Pittsburgh Steelers",
+            "abbr": "PIT",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/pit.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/pit.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "+10",
+            "gamesBehind": "4",
+            "losses": "7",
+            "playoffSeed": "4",
+            "pointDifferential": "+10",
+            "pointsAgainst": "387",
+            "pointsFor": "397",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".588",
+            "wins": "10",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "34",
+            "name": "Houston Texans",
+            "abbr": "HOU",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/hou.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+109",
+            "gamesBehind": "2",
+            "losses": "5",
+            "playoffSeed": "5",
+            "pointDifferential": "+109",
+            "pointsAgainst": "295",
+            "pointsFor": "404",
+            "streak": "W9",
+            "ties": "0",
+            "winPercent": ".706",
+            "wins": "12",
+            "divisionLosses": "1",
+            "divisionRecord": "5-1",
+            "divisionTies": "0.000",
+            "divisionWins": "5.000"
+          }
+        },
+        {
+          "team": {
+            "id": "2",
+            "name": "Buffalo Bills",
+            "abbr": "BUF",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/buf.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+116",
+            "gamesBehind": "2",
+            "losses": "5",
+            "playoffSeed": "6",
+            "pointDifferential": "+116",
+            "pointsAgainst": "365",
+            "pointsFor": "481",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".706",
+            "wins": "12",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "24",
+            "name": "Los Angeles Chargers",
+            "abbr": "LAC",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lac.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+28",
+            "gamesBehind": "3",
+            "losses": "6",
+            "playoffSeed": "7",
+            "pointDifferential": "+28",
+            "pointsAgainst": "340",
+            "pointsFor": "368",
+            "streak": "L2",
+            "ties": "0",
+            "winPercent": ".647",
+            "wins": "11",
+            "divisionLosses": "1",
+            "divisionRecord": "5-1",
+            "divisionTies": "0.000",
+            "divisionWins": "5.000"
+          }
+        },
+        {
+          "team": {
+            "id": "11",
+            "name": "Indianapolis Colts",
+            "abbr": "IND",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ind.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "+54",
+            "gamesBehind": "6",
+            "losses": "9",
+            "playoffSeed": "8",
+            "pointDifferential": "+54",
+            "pointsAgainst": "412",
+            "pointsFor": "466",
+            "streak": "L7",
+            "ties": "0",
+            "winPercent": ".471",
+            "wins": "8",
+            "divisionLosses": "4",
+            "divisionRecord": "2-4",
+            "divisionTies": "0.000",
+            "divisionWins": "2.000"
+          }
+        },
+        {
+          "team": {
+            "id": "33",
+            "name": "Baltimore Ravens",
+            "abbr": "BAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/bal.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "+26",
+            "gamesBehind": "6",
+            "losses": "9",
+            "playoffSeed": "9",
+            "pointDifferential": "+26",
+            "pointsAgainst": "398",
+            "pointsFor": "424",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".471",
+            "wins": "8",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "15",
+            "name": "Miami Dolphins",
+            "abbr": "MIA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/mia.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/mia.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-77",
+            "gamesBehind": "7",
+            "losses": "10",
+            "playoffSeed": "10",
+            "pointDifferential": "-77",
+            "pointsAgainst": "424",
+            "pointsFor": "347",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".412",
+            "wins": "7",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "4",
+            "name": "Cincinnati Bengals",
+            "abbr": "CIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/cin.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-78",
+            "gamesBehind": "8",
+            "losses": "11",
+            "playoffSeed": "11",
+            "pointDifferential": "-78",
+            "pointsAgainst": "492",
+            "pointsFor": "414",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".353",
+            "wins": "6",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "12",
+            "name": "Kansas City Chiefs",
+            "abbr": "KC",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/kc.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "+34",
+            "gamesBehind": "8",
+            "losses": "11",
+            "playoffSeed": "12",
+            "pointDifferential": "+34",
+            "pointsAgainst": "328",
+            "pointsFor": "362",
+            "streak": "L6",
+            "ties": "0",
+            "winPercent": ".353",
+            "wins": "6",
+            "divisionLosses": "5",
+            "divisionRecord": "1-5",
+            "divisionTies": "0.000",
+            "divisionWins": "1.000"
+          }
+        },
+        {
+          "team": {
+            "id": "5",
+            "name": "Cleveland Browns",
+            "abbr": "CLE",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/cle.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/cle.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-100",
+            "gamesBehind": "9",
+            "losses": "12",
+            "playoffSeed": "13",
+            "pointDifferential": "-100",
+            "pointsAgainst": "379",
+            "pointsFor": "279",
+            "streak": "W2",
+            "ties": "0",
+            "winPercent": ".294",
+            "wins": "5",
+            "divisionLosses": "4",
+            "divisionRecord": "2-4",
+            "divisionTies": "0.000",
+            "divisionWins": "2.000"
+          }
+        },
+        {
+          "team": {
+            "id": "13",
+            "name": "Las Vegas Raiders",
+            "abbr": "LV",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lv.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-191",
+            "gamesBehind": "11",
+            "losses": "14",
+            "playoffSeed": "14",
+            "pointDifferential": "-191",
+            "pointsAgainst": "432",
+            "pointsFor": "241",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".176",
+            "wins": "3",
+            "divisionLosses": "5",
+            "divisionRecord": "1-5",
+            "divisionTies": "0.000",
+            "divisionWins": "1.000"
+          }
+        },
+        {
+          "team": {
+            "id": "20",
+            "name": "New York Jets",
+            "abbr": "NYJ",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyj.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-203",
+            "gamesBehind": "11",
+            "losses": "14",
+            "playoffSeed": "15",
+            "pointDifferential": "-203",
+            "pointsAgainst": "503",
+            "pointsFor": "300",
+            "streak": "L5",
+            "ties": "0",
+            "winPercent": ".176",
+            "wins": "3",
+            "divisionLosses": "6",
+            "divisionRecord": "0-6",
+            "divisionTies": "0.000",
+            "divisionWins": "0.000"
+          }
+        },
+        {
+          "team": {
+            "id": "10",
+            "name": "Tennessee Titans",
+            "abbr": "TEN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ten.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ten.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-194",
+            "gamesBehind": "11",
+            "losses": "14",
+            "playoffSeed": "16",
+            "pointDifferential": "-194",
+            "pointsAgainst": "478",
+            "pointsFor": "284",
+            "streak": "L2",
+            "ties": "0",
+            "winPercent": ".176",
+            "wins": "3",
+            "divisionLosses": "6",
+            "divisionRecord": "0-6",
+            "divisionTies": "0.000",
+            "divisionWins": "0.000"
+          }
+        },
+        {
+          "team": {
+            "id": "7",
+            "name": "Denver Broncos",
+            "abbr": "DEN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/den.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/den.png"
+          },
+          "stats": {
+            "clincher": "*",
+            "differential": "+90",
+            "gamesBehind": "-",
+            "losses": "3",
+            "playoffSeed": "1",
+            "pointDifferential": "+90",
+            "pointsAgainst": "311",
+            "pointsFor": "401",
+            "streak": "W2",
+            "ties": "0",
+            "winPercent": ".824",
+            "wins": "14",
+            "divisionLosses": "1",
+            "divisionRecord": "5-1",
+            "divisionTies": "0.000",
+            "divisionWins": "5.000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "National Football Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "3",
+            "name": "Chicago Bears",
+            "abbr": "CHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/chi.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "+26",
+            "gamesBehind": "3",
+            "losses": "6",
+            "playoffSeed": "2",
+            "pointDifferential": "+26",
+            "pointsAgainst": "415",
+            "pointsFor": "441",
+            "streak": "L2",
+            "ties": "0",
+            "winPercent": ".647",
+            "wins": "11",
+            "divisionLosses": "4",
+            "divisionRecord": "2-4",
+            "divisionTies": "0.000",
+            "divisionWins": "2.000"
+          }
+        },
+        {
+          "team": {
+            "id": "21",
+            "name": "Philadelphia Eagles",
+            "abbr": "PHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/phi.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "+54",
+            "gamesBehind": "3",
+            "losses": "6",
+            "playoffSeed": "3",
+            "pointDifferential": "+54",
+            "pointsAgainst": "325",
+            "pointsFor": "379",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".647",
+            "wins": "11",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "29",
+            "name": "Carolina Panthers",
+            "abbr": "CAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/car.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/car.png"
+          },
+          "stats": {
+            "clincher": "z",
+            "differential": "-69",
+            "gamesBehind": "6",
+            "losses": "9",
+            "playoffSeed": "4",
+            "pointDifferential": "-69",
+            "pointsAgainst": "380",
+            "pointsFor": "311",
+            "streak": "L2",
+            "ties": "0",
+            "winPercent": ".471",
+            "wins": "8",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "14",
+            "name": "Los Angeles Rams",
+            "abbr": "LAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lar.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+172",
+            "gamesBehind": "2",
+            "losses": "5",
+            "playoffSeed": "5",
+            "pointDifferential": "+172",
+            "pointsAgainst": "346",
+            "pointsFor": "518",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".706",
+            "wins": "12",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "25",
+            "name": "San Francisco 49ers",
+            "abbr": "SF",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/sf.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+66",
+            "gamesBehind": "2",
+            "losses": "5",
+            "playoffSeed": "6",
+            "pointDifferential": "+66",
+            "pointsAgainst": "371",
+            "pointsFor": "437",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".706",
+            "wins": "12",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "9",
+            "name": "Green Bay Packers",
+            "abbr": "GB",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/gb.png"
+          },
+          "stats": {
+            "clincher": "y",
+            "differential": "+31",
+            "gamesBehind": "4.5",
+            "losses": "7",
+            "playoffSeed": "7",
+            "pointDifferential": "+31",
+            "pointsAgainst": "360",
+            "pointsFor": "391",
+            "streak": "L4",
+            "ties": "1",
+            "winPercent": ".559",
+            "wins": "9",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "16",
+            "name": "Minnesota Vikings",
+            "abbr": "MIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/min.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/min.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "+11",
+            "gamesBehind": "5",
+            "losses": "8",
+            "playoffSeed": "8",
+            "pointDifferential": "+11",
+            "pointsAgainst": "333",
+            "pointsFor": "344",
+            "streak": "W5",
+            "ties": "0",
+            "winPercent": ".529",
+            "wins": "9",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "8",
+            "name": "Detroit Lions",
+            "abbr": "DET",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/det.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/det.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "+68",
+            "gamesBehind": "5",
+            "losses": "8",
+            "playoffSeed": "9",
+            "pointDifferential": "+68",
+            "pointsAgainst": "413",
+            "pointsFor": "481",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".529",
+            "wins": "9",
+            "divisionLosses": "4",
+            "divisionRecord": "2-4",
+            "divisionTies": "0.000",
+            "divisionWins": "2.000"
+          }
+        },
+        {
+          "team": {
+            "id": "27",
+            "name": "Tampa Bay Buccaneers",
+            "abbr": "TB",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/tb.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-31",
+            "gamesBehind": "6",
+            "losses": "9",
+            "playoffSeed": "10",
+            "pointDifferential": "-31",
+            "pointsAgainst": "411",
+            "pointsFor": "380",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".471",
+            "wins": "8",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "1",
+            "name": "Atlanta Falcons",
+            "abbr": "ATL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/atl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/atl.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-48",
+            "gamesBehind": "6",
+            "losses": "9",
+            "playoffSeed": "11",
+            "pointDifferential": "-48",
+            "pointsAgainst": "401",
+            "pointsFor": "353",
+            "streak": "W4",
+            "ties": "0",
+            "winPercent": ".471",
+            "wins": "8",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "6",
+            "name": "Dallas Cowboys",
+            "abbr": "DAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/dal.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-40",
+            "gamesBehind": "6.5",
+            "losses": "9",
+            "playoffSeed": "12",
+            "pointDifferential": "-40",
+            "pointsAgainst": "511",
+            "pointsFor": "471",
+            "streak": "L1",
+            "ties": "1",
+            "winPercent": ".441",
+            "wins": "7",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        },
+        {
+          "team": {
+            "id": "18",
+            "name": "New Orleans Saints",
+            "abbr": "NO",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/no.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/no.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-77",
+            "gamesBehind": "8",
+            "losses": "11",
+            "playoffSeed": "13",
+            "pointDifferential": "-77",
+            "pointsAgainst": "383",
+            "pointsFor": "306",
+            "streak": "L1",
+            "ties": "0",
+            "winPercent": ".353",
+            "wins": "6",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "28",
+            "name": "Washington Commanders",
+            "abbr": "WSH",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/wsh.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-95",
+            "gamesBehind": "9",
+            "losses": "12",
+            "playoffSeed": "14",
+            "pointDifferential": "-95",
+            "pointsAgainst": "451",
+            "pointsFor": "356",
+            "streak": "W1",
+            "ties": "0",
+            "winPercent": ".294",
+            "wins": "5",
+            "divisionLosses": "3",
+            "divisionRecord": "3-3",
+            "divisionTies": "0.000",
+            "divisionWins": "3.000"
+          }
+        },
+        {
+          "team": {
+            "id": "19",
+            "name": "New York Giants",
+            "abbr": "NYG",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyg.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-58",
+            "gamesBehind": "10",
+            "losses": "13",
+            "playoffSeed": "15",
+            "pointDifferential": "-58",
+            "pointsAgainst": "439",
+            "pointsFor": "381",
+            "streak": "W2",
+            "ties": "0",
+            "winPercent": ".235",
+            "wins": "4",
+            "divisionLosses": "4",
+            "divisionRecord": "2-4",
+            "divisionTies": "0.000",
+            "divisionWins": "2.000"
+          }
+        },
+        {
+          "team": {
+            "id": "22",
+            "name": "Arizona Cardinals",
+            "abbr": "ARI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/ari.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ari.png"
+          },
+          "stats": {
+            "clincher": "e",
+            "differential": "-133",
+            "gamesBehind": "11",
+            "losses": "14",
+            "playoffSeed": "16",
+            "pointDifferential": "-133",
+            "pointsAgainst": "488",
+            "pointsFor": "355",
+            "streak": "L9",
+            "ties": "0",
+            "winPercent": ".176",
+            "wins": "3",
+            "divisionLosses": "6",
+            "divisionRecord": "0-6",
+            "divisionTies": "0.000",
+            "divisionWins": "0.000"
+          }
+        },
+        {
+          "team": {
+            "id": "26",
+            "name": "Seattle Seahawks",
+            "abbr": "SEA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/sea.png"
+          },
+          "stats": {
+            "clincher": "*",
+            "differential": "+191",
+            "gamesBehind": "-",
+            "losses": "3",
+            "playoffSeed": "1",
+            "pointDifferential": "+191",
+            "pointsAgainst": "292",
+            "pointsFor": "483",
+            "streak": "W7",
+            "ties": "0",
+            "winPercent": ".824",
+            "wins": "14",
+            "divisionLosses": "2",
+            "divisionRecord": "4-2",
+            "divisionTies": "0.000",
+            "divisionWins": "4.000"
+          }
+        }
+      ]
+    }
+  ]
+}

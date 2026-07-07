@@ -22,6 +22,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    # The locked data model (schema/league-profiles.json). Bundled so the app
+    # resolves league profiles + builds the catalog on-device — no worker. Kept
+    # byte-identical to the schema source by tool/sync_registry via a guard test
+    # (test/registry_sync_test.dart). Edit schema/league-profiles.json, then run
+    # `dart run tool/sync_registry.dart` (or `node ../schema/tools/... ` sync).
+    - assets/league-profiles.json
+
   fonts:
     # Scoreboard voice — team names, scores, clocks, stat numbers.
     - family: BarlowCondensed

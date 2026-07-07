@@ -1,0 +1,6079 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "basketball/womens-college-basketball",
+    "eventId": "401865139",
+    "raw": {
+      "header": {
+        "id": "401865139",
+        "competitions": [
+          {
+            "id": "401865139",
+            "date": "2026-04-04T19:00Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "Final",
+                "detail": "Final",
+                "shortDetail": "Final"
+              }
+            },
+            "competitors": [
+              {
+                "id": "276",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": "66",
+                "linescores": [
+                  {
+                    "displayValue": "21"
+                  },
+                  {
+                    "displayValue": "10"
+                  },
+                  {
+                    "displayValue": "19"
+                  },
+                  {
+                    "displayValue": "16"
+                  }
+                ],
+                "team": {
+                  "id": "276",
+                  "abbreviation": "MRSH",
+                  "displayName": "Marshall Thundering Herd"
+                }
+              },
+              {
+                "id": "2287",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": "41",
+                "linescores": [
+                  {
+                    "displayValue": "10"
+                  },
+                  {
+                    "displayValue": "11"
+                  },
+                  {
+                    "displayValue": "13"
+                  },
+                  {
+                    "displayValue": "7"
+                  }
+                ],
+                "team": {
+                  "id": "2287",
+                  "abbreviation": "ILST",
+                  "displayName": "Illinois State Redbirds"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "2287",
+              "uid": "s:40~l:54~t:2287",
+              "slug": "illinois-state-redbirds",
+              "location": "Illinois State",
+              "name": "Redbirds",
+              "abbreviation": "ILST",
+              "displayName": "Illinois State Redbirds",
+              "shortDisplayName": "Illinois St",
+              "color": "CE1126",
+              "alternateColor": "ffe716",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2287.png"
+            },
+            "statistics": [
+              {
+                "name": "fieldGoalsMade-fieldGoalsAttempted",
+                "displayValue": "14-48",
+                "label": "FG"
+              },
+              {
+                "name": "fieldGoalPct",
+                "displayValue": "29",
+                "abbreviation": "FG%",
+                "label": "Field Goal %"
+              },
+              {
+                "name": "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                "displayValue": "3-17",
+                "label": "3PT"
+              },
+              {
+                "name": "threePointFieldGoalPct",
+                "displayValue": "18",
+                "abbreviation": "3P%",
+                "label": "Three Point %"
+              },
+              {
+                "name": "freeThrowsMade-freeThrowsAttempted",
+                "displayValue": "10-12",
+                "label": "FT"
+              },
+              {
+                "name": "freeThrowPct",
+                "displayValue": "83",
+                "abbreviation": "FT%",
+                "label": "Free Throw %"
+              },
+              {
+                "name": "totalRebounds",
+                "displayValue": "33",
+                "abbreviation": "REB",
+                "label": "Rebounds"
+              },
+              {
+                "name": "offensiveRebounds",
+                "displayValue": "12",
+                "abbreviation": "OR",
+                "label": "Offensive Rebounds"
+              },
+              {
+                "name": "defensiveRebounds",
+                "displayValue": "21",
+                "abbreviation": "DR",
+                "label": "Defensive Rebounds"
+              },
+              {
+                "name": "assists",
+                "displayValue": "7",
+                "abbreviation": "AST",
+                "label": "Assists"
+              },
+              {
+                "name": "steals",
+                "displayValue": "8",
+                "abbreviation": "STL",
+                "label": "Steals"
+              },
+              {
+                "name": "blocks",
+                "displayValue": "2",
+                "abbreviation": "BLK",
+                "label": "Blocks"
+              },
+              {
+                "name": "turnovers",
+                "displayValue": "23",
+                "abbreviation": "TO",
+                "label": "Turnovers"
+              },
+              {
+                "name": "teamTurnovers",
+                "displayValue": "1",
+                "abbreviation": "TTO",
+                "label": "Team Turnovers"
+              },
+              {
+                "name": "totalTurnovers",
+                "displayValue": "23",
+                "abbreviation": "ToTO",
+                "label": "Total Turnovers"
+              },
+              {
+                "name": "technicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Technical Fouls"
+              },
+              {
+                "name": "totalTechnicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Total Technical Fouls"
+              },
+              {
+                "name": "turnoverPoints",
+                "displayValue": "8",
+                "abbreviation": "PTS OFF TO",
+                "label": "Points Off Turnovers"
+              },
+              {
+                "name": "fastBreakPoints",
+                "displayValue": "4",
+                "abbreviation": "FBPs",
+                "label": "Fast Break Points"
+              },
+              {
+                "name": "pointsInPaint",
+                "displayValue": "18",
+                "abbreviation": "PIP",
+                "label": "Points in Paint"
+              },
+              {
+                "name": "fouls",
+                "displayValue": "6",
+                "abbreviation": "PF",
+                "label": "Fouls"
+              },
+              {
+                "name": "largestLead",
+                "displayValue": "3",
+                "abbreviation": "LL",
+                "label": "Largest Lead"
+              },
+              {
+                "name": "leadChanges",
+                "displayValue": "1",
+                "abbreviation": "LC",
+                "label": "Lead Change"
+              },
+              {
+                "name": "leadPercentage",
+                "displayValue": "5",
+                "abbreviation": "LPCT",
+                "label": "Percent Led"
+              }
+            ],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "276",
+              "uid": "s:40~l:54~t:276",
+              "slug": "marshall-thundering-herd",
+              "location": "Marshall",
+              "name": "Thundering Herd",
+              "abbreviation": "MRSH",
+              "displayName": "Marshall Thundering Herd",
+              "shortDisplayName": "Marshall",
+              "color": "00b140",
+              "alternateColor": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/276.png"
+            },
+            "statistics": [
+              {
+                "name": "fieldGoalsMade-fieldGoalsAttempted",
+                "displayValue": "28-57",
+                "label": "FG"
+              },
+              {
+                "name": "fieldGoalPct",
+                "displayValue": "49",
+                "abbreviation": "FG%",
+                "label": "Field Goal %"
+              },
+              {
+                "name": "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                "displayValue": "6-22",
+                "label": "3PT"
+              },
+              {
+                "name": "threePointFieldGoalPct",
+                "displayValue": "27",
+                "abbreviation": "3P%",
+                "label": "Three Point %"
+              },
+              {
+                "name": "freeThrowsMade-freeThrowsAttempted",
+                "displayValue": "4-4",
+                "label": "FT"
+              },
+              {
+                "name": "freeThrowPct",
+                "displayValue": "100",
+                "abbreviation": "FT%",
+                "label": "Free Throw %"
+              },
+              {
+                "name": "totalRebounds",
+                "displayValue": "30",
+                "abbreviation": "REB",
+                "label": "Rebounds"
+              },
+              {
+                "name": "offensiveRebounds",
+                "displayValue": "8",
+                "abbreviation": "OR",
+                "label": "Offensive Rebounds"
+              },
+              {
+                "name": "defensiveRebounds",
+                "displayValue": "22",
+                "abbreviation": "DR",
+                "label": "Defensive Rebounds"
+              },
+              {
+                "name": "assists",
+                "displayValue": "15",
+                "abbreviation": "AST",
+                "label": "Assists"
+              },
+              {
+                "name": "steals",
+                "displayValue": "15",
+                "abbreviation": "STL",
+                "label": "Steals"
+              },
+              {
+                "name": "blocks",
+                "displayValue": "8",
+                "abbreviation": "BLK",
+                "label": "Blocks"
+              },
+              {
+                "name": "turnovers",
+                "displayValue": "13",
+                "abbreviation": "TO",
+                "label": "Turnovers"
+              },
+              {
+                "name": "teamTurnovers",
+                "displayValue": "1",
+                "abbreviation": "TTO",
+                "label": "Team Turnovers"
+              },
+              {
+                "name": "totalTurnovers",
+                "displayValue": "13",
+                "abbreviation": "ToTO",
+                "label": "Total Turnovers"
+              },
+              {
+                "name": "technicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Technical Fouls"
+              },
+              {
+                "name": "totalTechnicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Total Technical Fouls"
+              },
+              {
+                "name": "turnoverPoints",
+                "displayValue": "17",
+                "abbreviation": "PTS OFF TO",
+                "label": "Points Off Turnovers"
+              },
+              {
+                "name": "fastBreakPoints",
+                "displayValue": "16",
+                "abbreviation": "FBPs",
+                "label": "Fast Break Points"
+              },
+              {
+                "name": "pointsInPaint",
+                "displayValue": "44",
+                "abbreviation": "PIP",
+                "label": "Points in Paint"
+              },
+              {
+                "name": "fouls",
+                "displayValue": "11",
+                "abbreviation": "PF",
+                "label": "Fouls"
+              },
+              {
+                "name": "largestLead",
+                "displayValue": "26",
+                "abbreviation": "LL",
+                "label": "Largest Lead"
+              },
+              {
+                "name": "leadChanges",
+                "displayValue": "1",
+                "abbreviation": "LC",
+                "label": "Lead Change"
+              },
+              {
+                "name": "leadPercentage",
+                "displayValue": "95",
+                "abbreviation": "LPCT",
+                "label": "Percent Led"
+              }
+            ],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "2287",
+              "uid": "s:40~l:54~t:2287",
+              "slug": "illinois-state-redbirds",
+              "location": "Illinois State",
+              "name": "Redbirds",
+              "abbreviation": "ILST",
+              "displayName": "Illinois State Redbirds",
+              "shortDisplayName": "Illinois St",
+              "color": "CE1126",
+              "alternateColor": "ffe716",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2287.png"
+            },
+            "statistics": [
+              {
+                "names": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "keys": [
+                  "minutes",
+                  "points",
+                  "fieldGoalsMade-fieldGoalsAttempted",
+                  "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                  "freeThrowsMade-freeThrowsAttempted",
+                  "rebounds",
+                  "assists",
+                  "turnovers",
+                  "steals",
+                  "blocks",
+                  "offensiveRebounds",
+                  "defensiveRebounds",
+                  "fouls"
+                ],
+                "labels": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "descriptions": [
+                  "Minutes",
+                  "Points",
+                  "Field Goals Made/Attempted",
+                  "3-Point Field Goals Made/Attempted",
+                  "Free Throws Made/Attempted",
+                  "Rebounds",
+                  "Assists",
+                  "Turnovers",
+                  "Steals",
+                  "Blocks",
+                  "Offensive Rebounds",
+                  "Defensive Rebounds",
+                  "Personal Fouls"
+                ],
+                "athletes": [
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5242020",
+                      "uid": "s:40~l:54~a:5242020",
+                      "guid": "e7ea6c52-0fbd-3692-ab6f-974e1ac64c54",
+                      "displayName": "Doneelah Washington",
+                      "shortName": "D. Washington",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242020/doneelah-washington",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242020.png",
+                        "alt": "Doneelah Washington"
+                      },
+                      "jersey": "22",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "24",
+                      "0",
+                      "0-7",
+                      "0-3",
+                      "0-0",
+                      "5",
+                      "1",
+                      "2",
+                      "3",
+                      "1",
+                      "0",
+                      "5",
+                      "3"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4899861",
+                      "uid": "s:40~l:54~a:4899861",
+                      "guid": "bea0f0c5-5b35-3ef3-94bd-55d0c809cba6",
+                      "displayName": "Addison Martin",
+                      "shortName": "A. Martin",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4899861/addison-martin",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4899861.png",
+                        "alt": "Addison Martin"
+                      },
+                      "jersey": "24",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "37",
+                      "11",
+                      "4-9",
+                      "0-0",
+                      "3-4",
+                      "3",
+                      "0",
+                      "2",
+                      "0",
+                      "1",
+                      "1",
+                      "2",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5314938",
+                      "uid": "s:40~l:54~a:5314938",
+                      "guid": "6934901c-a905-3228-ade5-225dc20be947",
+                      "displayName": "Jaeden Pratt",
+                      "shortName": "J. Pratt",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5314938/jaeden-pratt",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5314938.png",
+                        "alt": "Jaeden Pratt"
+                      },
+                      "jersey": "4",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "22",
+                      "2",
+                      "1-3",
+                      "0-2",
+                      "0-0",
+                      "4",
+                      "1",
+                      "5",
+                      "2",
+                      "0",
+                      "2",
+                      "2",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5242019",
+                      "uid": "s:40~l:54~a:5242019",
+                      "guid": "054242fc-0030-39c8-9e73-69e2b15b7f79",
+                      "displayName": "Grace Nelson",
+                      "shortName": "G. Nelson",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242019/grace-nelson",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242019.png",
+                        "alt": "Grace Nelson"
+                      },
+                      "jersey": "23",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "23",
+                      "6",
+                      "2-7",
+                      "2-5",
+                      "0-0",
+                      "2",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5242017",
+                      "uid": "s:40~l:54~a:5242017",
+                      "guid": "30244ca5-f90b-3b96-b4a8-d2c6463874b2",
+                      "displayName": "Trista Fayta",
+                      "shortName": "T. Fayta",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242017/trista-fayta",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242017.png",
+                        "alt": "Trista Fayta"
+                      },
+                      "jersey": "3",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "33",
+                      "9",
+                      "2-6",
+                      "1-3",
+                      "4-4",
+                      "3",
+                      "2",
+                      "7",
+                      "0",
+                      "0",
+                      "1",
+                      "2",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5314939",
+                      "uid": "s:40~l:54~a:5314939",
+                      "guid": "0c0c203c-bf98-3cb1-8413-7b9470ecff24",
+                      "displayName": "Madison Austin",
+                      "shortName": "M. Austin",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5314939/madison-austin",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5314939.png",
+                        "alt": "Madison Austin"
+                      },
+                      "jersey": "8",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "16",
+                      "3",
+                      "0-3",
+                      "0-1",
+                      "3-4",
+                      "5",
+                      "0",
+                      "3",
+                      "1",
+                      "0",
+                      "2",
+                      "3",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5314941",
+                      "uid": "s:40~l:54~a:5314941",
+                      "guid": "57fd5afa-1982-385b-80f1-75444ab58e29",
+                      "displayName": "Jordan Fenske",
+                      "shortName": "J. Fenske",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5314941/jordan-fenske",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5314941.png",
+                        "alt": "Jordan Fenske"
+                      },
+                      "jersey": "12",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "3",
+                      "0",
+                      "0-1",
+                      "0-1",
+                      "0-0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5314940",
+                      "uid": "s:40~l:54~a:5314940",
+                      "guid": "ae89dc90-3a18-32ed-9ce1-5bed43bab661",
+                      "displayName": "Kya Hurt",
+                      "shortName": "K. Hurt",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5314940/kya-hurt",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5314940.png",
+                        "alt": "Kya Hurt"
+                      },
+                      "jersey": "11",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "17",
+                      "4",
+                      "2-4",
+                      "0-0",
+                      "0-0",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5242016",
+                      "uid": "s:40~l:54~a:5242016",
+                      "guid": "60250edd-11e5-3d24-9df3-bbdb34f5104e",
+                      "displayName": "Morgan Bruno",
+                      "shortName": "M. Bruno",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242016/morgan-bruno",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242016.png",
+                        "alt": "Morgan Bruno"
+                      },
+                      "jersey": "5",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "3",
+                      "0",
+                      "0-0",
+                      "0-0",
+                      "0-0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5176119",
+                      "uid": "s:40~l:54~a:5176119",
+                      "guid": "5d6f4a58-2255-3e2f-83a1-08b8251cf3c6",
+                      "displayName": "De'Shawnti Thomas",
+                      "shortName": "D. Thomas",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5176119/deshawnti-thomas",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5176119.png",
+                        "alt": "De'Shawnti Thomas"
+                      },
+                      "jersey": "2",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "3",
+                      "0",
+                      "0-1",
+                      "0-0",
+                      "0-0",
+                      "1",
+                      "0",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5109353",
+                      "uid": "s:40~l:54~a:5109353",
+                      "guid": "791f10b4-c3ba-33d5-8926-1849f68605d4",
+                      "displayName": "Bella Finnegan",
+                      "shortName": "B. Finnegan",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5109353/bella-finnegan",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5109353.png",
+                        "alt": "Bella Finnegan"
+                      },
+                      "jersey": "33",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "19",
+                      "6",
+                      "3-7",
+                      "0-2",
+                      "0-0",
+                      "0",
+                      "1",
+                      "1",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5178237",
+                      "uid": "s:40~l:54~a:5178237",
+                      "guid": "c0711710-d2b3-3851-9071-83b217630a8d",
+                      "displayName": "Nevaeh Thomas",
+                      "shortName": "N. Thomas",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5178237/nevaeh-thomas",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5178237.png",
+                        "alt": "Nevaeh Thomas"
+                      },
+                      "jersey": "21",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5314942",
+                      "uid": "s:40~l:54~a:5314942",
+                      "guid": "976f1a2e-b228-3265-af16-d7961085fe8e",
+                      "displayName": "Zanyra Adams",
+                      "shortName": "Z. Adams",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5314942/zanyra-adams",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5314942.png",
+                        "alt": "Zanyra Adams"
+                      },
+                      "jersey": "32",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5109177",
+                      "uid": "s:40~l:54~a:5109177",
+                      "guid": "a5c54e4c-8bba-38d2-b658-bf9ae5bd7e8d",
+                      "displayName": "Taylor Veach",
+                      "shortName": "T. Veach",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5109177/taylor-veach",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5109177.png",
+                        "alt": "Taylor Veach"
+                      },
+                      "jersey": "15",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  }
+                ],
+                "totals": [
+                  "",
+                  "41",
+                  "14-48",
+                  "3-17",
+                  "10-12",
+                  "33",
+                  "7",
+                  "23",
+                  "8",
+                  "2",
+                  "12",
+                  "21",
+                  "6"
+                ]
+              }
+            ],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "276",
+              "uid": "s:40~l:54~t:276",
+              "slug": "marshall-thundering-herd",
+              "location": "Marshall",
+              "name": "Thundering Herd",
+              "abbreviation": "MRSH",
+              "displayName": "Marshall Thundering Herd",
+              "shortDisplayName": "Marshall",
+              "color": "00b140",
+              "alternateColor": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/276.png"
+            },
+            "statistics": [
+              {
+                "names": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "keys": [
+                  "minutes",
+                  "points",
+                  "fieldGoalsMade-fieldGoalsAttempted",
+                  "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                  "freeThrowsMade-freeThrowsAttempted",
+                  "rebounds",
+                  "assists",
+                  "turnovers",
+                  "steals",
+                  "blocks",
+                  "offensiveRebounds",
+                  "defensiveRebounds",
+                  "fouls"
+                ],
+                "labels": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "descriptions": [
+                  "Minutes",
+                  "Points",
+                  "Field Goals Made/Attempted",
+                  "3-Point Field Goals Made/Attempted",
+                  "Free Throws Made/Attempted",
+                  "Rebounds",
+                  "Assists",
+                  "Turnovers",
+                  "Steals",
+                  "Blocks",
+                  "Offensive Rebounds",
+                  "Defensive Rebounds",
+                  "Personal Fouls"
+                ],
+                "athletes": [
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5241085",
+                      "uid": "s:40~l:54~a:5241085",
+                      "guid": "018998a1-7ead-37e9-a778-f08fa2a681c4",
+                      "displayName": "Leyocha Marigney",
+                      "shortName": "L. Marigney",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5241085/leyocha-marigney",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5241085.png",
+                        "alt": "Leyocha Marigney"
+                      },
+                      "jersey": "13",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "17",
+                      "4",
+                      "2-2",
+                      "0-0",
+                      "0-0",
+                      "3",
+                      "1",
+                      "1",
+                      "1",
+                      "4",
+                      "2",
+                      "1",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5176106",
+                      "uid": "s:40~l:54~a:5176106",
+                      "guid": "7357c8fc-434c-37f1-a55a-d54e70e95c60",
+                      "displayName": "Timberlynn Yeast",
+                      "shortName": "T. Yeast",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5176106/timberlynn-yeast",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5176106.png",
+                        "alt": "Timberlynn Yeast"
+                      },
+                      "jersey": "0",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "28",
+                      "5",
+                      "2-5",
+                      "0-2",
+                      "1-1",
+                      "4",
+                      "2",
+                      "1",
+                      "2",
+                      "0",
+                      "0",
+                      "4",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5108637",
+                      "uid": "s:40~l:54~a:5108637",
+                      "guid": "bf01052b-b1ba-3dfa-a567-d45972820e50",
+                      "displayName": "Meredith Maier",
+                      "shortName": "M. Maier",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5108637/meredith-maier",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5108637.png",
+                        "alt": "Meredith Maier"
+                      },
+                      "jersey": "23",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "24",
+                      "6",
+                      "2-7",
+                      "2-6",
+                      "0-0",
+                      "3",
+                      "2",
+                      "0",
+                      "0",
+                      "2",
+                      "0",
+                      "3",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5108636",
+                      "uid": "s:40~l:54~a:5108636",
+                      "guid": "c4dbbd05-f089-3b6c-962d-839f72c18527",
+                      "displayName": "Peyton Ilderton",
+                      "shortName": "P. Ilderton",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5108636/peyton-ilderton",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5108636.png",
+                        "alt": "Peyton Ilderton"
+                      },
+                      "jersey": "20",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "32",
+                      "3",
+                      "1-7",
+                      "1-6",
+                      "0-0",
+                      "1",
+                      "3",
+                      "2",
+                      "1",
+                      "0",
+                      "0",
+                      "1",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5107543",
+                      "uid": "s:40~l:54~a:5107543",
+                      "guid": "bb81d121-c529-3c6e-b268-df996eb7e592",
+                      "displayName": "Timaya Lewis-Eutsey",
+                      "shortName": "T. Lewis-Eutsey",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5107543/timaya-lewis-eutsey",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5107543.png",
+                        "alt": "Timaya Lewis-Eutsey"
+                      },
+                      "jersey": "3",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "30",
+                      "27",
+                      "12-17",
+                      "3-3",
+                      "0-0",
+                      "3",
+                      "3",
+                      "3",
+                      "7",
+                      "0",
+                      "2",
+                      "1",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5262469",
+                      "uid": "s:40~l:54~a:5262469",
+                      "guid": "331a8ab6-4b78-3eec-9887-917945dcf643",
+                      "displayName": "Ni'Kiah Chesterfield",
+                      "shortName": "N. Chesterfield",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5262469/nikiah-chesterfield",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5262469.png",
+                        "alt": "Ni'Kiah Chesterfield"
+                      },
+                      "jersey": "15",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "17",
+                      "7",
+                      "2-3",
+                      "0-1",
+                      "3-3",
+                      "1",
+                      "1",
+                      "2",
+                      "2",
+                      "1",
+                      "1",
+                      "0",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5241084",
+                      "uid": "s:40~l:54~a:5241084",
+                      "guid": "9a1ba513-1eda-348d-bf59-248995a37c4f",
+                      "displayName": "TreShondra Williams",
+                      "shortName": "T. Williams",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5241084/treshondra-williams",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5241084.png",
+                        "alt": "TreShondra Williams"
+                      },
+                      "jersey": "1",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "7",
+                      "2",
+                      "1-4",
+                      "0-2",
+                      "0-0",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4704482",
+                      "uid": "s:40~l:54~a:4704482",
+                      "guid": "7c91656e-dd61-3032-bcf9-c7f24c07e0ac",
+                      "displayName": "Aarionna Redman",
+                      "shortName": "A. Redman",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4704482/aarionna-redman",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4704482.png",
+                        "alt": "Aarionna Redman"
+                      },
+                      "jersey": "30",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "9",
+                      "2",
+                      "1-3",
+                      "0-1",
+                      "0-0",
+                      "1",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5241086",
+                      "uid": "s:40~l:54~a:5241086",
+                      "guid": "769d3707-2fbc-3289-ae53-f1f2a2481dc2",
+                      "displayName": "Kassie Ingram",
+                      "shortName": "K. Ingram",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5241086/kassie-ingram",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5241086.png",
+                        "alt": "Kassie Ingram"
+                      },
+                      "jersey": "24",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "16",
+                      "4",
+                      "2-5",
+                      "0-1",
+                      "0-0",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5178412",
+                      "uid": "s:40~l:54~a:5178412",
+                      "guid": "8b985849-9da3-3b3e-9011-54fc179d3207",
+                      "displayName": "Blessing King",
+                      "shortName": "B. King",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5178412/blessing-king",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5178412.png",
+                        "alt": "Blessing King"
+                      },
+                      "jersey": "2",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "20",
+                      "6",
+                      "3-4",
+                      "0-0",
+                      "0-0",
+                      "8",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "1",
+                      "7",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5315159",
+                      "uid": "s:40~l:54~a:5315159",
+                      "guid": "aa37ea6f-15fa-3ec7-beaf-39ce07f544cf",
+                      "displayName": "Zenthia Stowers",
+                      "shortName": "Z. Stowers",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5315159/zenthia-stowers",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5315159.png",
+                        "alt": "Zenthia Stowers"
+                      },
+                      "jersey": "4",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5315160",
+                      "uid": "s:40~l:54~a:5315160",
+                      "guid": "6c3dfee2-1aeb-3628-9c8d-bf068660dc8c",
+                      "displayName": "Olivia Olson",
+                      "shortName": "O. Olson",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5315160/olivia-olson",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5315160.png",
+                        "alt": "Olivia Olson"
+                      },
+                      "jersey": "5",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5254927",
+                      "uid": "s:40~l:54~a:5254927",
+                      "guid": "0069812e-6d87-3c61-be52-3a56bde591f2",
+                      "displayName": "Emari Doby",
+                      "shortName": "E. Doby",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5254927/emari-doby",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5254927.png",
+                        "alt": "Emari Doby"
+                      },
+                      "jersey": "21",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5242178",
+                      "uid": "s:40~l:54~a:5242178",
+                      "guid": "c917258d-019a-3010-9cb7-93665f302556",
+                      "displayName": "Emily Bratton",
+                      "shortName": "E. Bratton",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242178/emily-bratton",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242178.png",
+                        "alt": "Emily Bratton"
+                      },
+                      "jersey": "22",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  }
+                ],
+                "totals": [
+                  "",
+                  "66",
+                  "28-57",
+                  "6-22",
+                  "4-4",
+                  "30",
+                  "15",
+                  "13",
+                  "15",
+                  "8",
+                  "8",
+                  "22",
+                  "11"
+                ]
+              }
+            ],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "plays": [
+        {
+          "id": "401865139120412868",
+          "sequenceNumber": "120412868",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Grace Nelson makes 24-foot three point jumper (Doneelah Washington assists)",
+          "awayScore": 3,
+          "homeScore": 0,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "9:49"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242019"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5242020"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:02:58Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 2,
+            "y": 1
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120412873",
+          "sequenceNumber": "120412873",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 3,
+          "homeScore": 2,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "9:34"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:03:13Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412888",
+          "sequenceNumber": "120412888",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 3,
+          "homeScore": 4,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:56"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:04:51Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 27,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412891",
+          "sequenceNumber": "120412891",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 3,
+          "homeScore": 6,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:40"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:05:07Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 27,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412894",
+          "sequenceNumber": "120412894",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 3,
+          "homeScore": 8,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:00"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:06:10Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 23,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412901",
+          "sequenceNumber": "120412901",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Grace Nelson makes 26-foot three point jumper (Jaeden Pratt assists)",
+          "awayScore": 6,
+          "homeScore": 8,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "5:59"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242019"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5314938"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:07:12Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 13,
+            "y": 23
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120412904",
+          "sequenceNumber": "120412904",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Meredith Maier assists)",
+          "awayScore": 6,
+          "homeScore": 11,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "5:25"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108637"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:07:47Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 25
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120412923",
+          "sequenceNumber": "120412923",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Addison Martin makes layup",
+          "awayScore": 8,
+          "homeScore": 11,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "4:59"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:08:41Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412928",
+          "sequenceNumber": "120412928",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Ni'Kiah Chesterfield makes layup",
+          "awayScore": 8,
+          "homeScore": 13,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "4:33"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:09:08Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 6
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412940",
+          "sequenceNumber": "120412940",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Ni'Kiah Chesterfield makes layup (Kassie Ingram assists)",
+          "awayScore": 8,
+          "homeScore": 15,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "3:48"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5241086"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:09:46Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412972",
+          "sequenceNumber": "120412972",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Ni'Kiah Chesterfield makes free throw 1 of 1",
+          "awayScore": 8,
+          "homeScore": 16,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "3:48"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:13:21Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120412973",
+          "sequenceNumber": "120412973",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Addison Martin makes 11-foot jumper (Trista Fayta assists)",
+          "awayScore": 10,
+          "homeScore": 16,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "3:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:13:44Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 27,
+            "y": 11
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120412975",
+          "sequenceNumber": "120412975",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes 26-foot three point jumper (Kassie Ingram assists)",
+          "awayScore": 10,
+          "homeScore": 19,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "3:03"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5241086"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:14:11Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 26
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120412979",
+          "sequenceNumber": "120412979",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Kassie Ingram makes layup (Timaya Lewis-Eutsey assists)",
+          "awayScore": 10,
+          "homeScore": 21,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "2:37"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5241086"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:14:35Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413036",
+          "sequenceNumber": "120413036",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Jaeden Pratt makes layup",
+          "awayScore": 12,
+          "homeScore": 21,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:42"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314938"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:22:06Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413048",
+          "sequenceNumber": "120413048",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Trista Fayta makes free throw 1 of 2",
+          "awayScore": 13,
+          "homeScore": 21,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:20"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:22:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413049",
+          "sequenceNumber": "120413049",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Trista Fayta makes free throw 2 of 2",
+          "awayScore": 14,
+          "homeScore": 21,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:20"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:23:08Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413098",
+          "sequenceNumber": "120413098",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 14,
+          "homeScore": 23,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:49"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:27:20Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 27,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413115",
+          "sequenceNumber": "120413115",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Ni'Kiah Chesterfield makes free throw 1 of 2",
+          "awayScore": 14,
+          "homeScore": 24,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:21"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:28:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413116",
+          "sequenceNumber": "120413116",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Ni'Kiah Chesterfield makes free throw 2 of 2",
+          "awayScore": 14,
+          "homeScore": 25,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:21"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:28:31Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413192",
+          "sequenceNumber": "120413192",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Addison Martin makes layup (Grace Nelson assists)",
+          "awayScore": 16,
+          "homeScore": 25,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:28"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5242019"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:39:44Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 5
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413197",
+          "sequenceNumber": "120413197",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup (Meredith Maier assists)",
+          "awayScore": 16,
+          "homeScore": 27,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:05"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108637"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:40:31Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 21,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413171",
+          "sequenceNumber": "120413171",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Addison Martin makes free throw 2 of 2",
+          "awayScore": 17,
+          "homeScore": 27,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:41"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:41:41Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413226",
+          "sequenceNumber": "120413226",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Addison Martin makes 13-foot jumper (Bella Finnegan assists)",
+          "awayScore": 19,
+          "homeScore": 27,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:56"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5109353"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:43:16Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 14,
+            "y": 6
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413230",
+          "sequenceNumber": "120413230",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Blessing King makes layup (Peyton Ilderton assists)",
+          "awayScore": 19,
+          "homeScore": 29,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:28"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5178412"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108636"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:43:43Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 5
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413269",
+          "sequenceNumber": "120413269",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Bella Finnegan makes 13-foot jumper",
+          "awayScore": 21,
+          "homeScore": 29,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:12"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5109353"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:46:18Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 23,
+            "y": 13
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413270",
+          "sequenceNumber": "120413270",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Blessing King makes layup (Aarionna Redman assists)",
+          "awayScore": 21,
+          "homeScore": 31,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:00"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5178412"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4704482"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T19:46:30Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413258",
+          "sequenceNumber": "120413258",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Peyton Ilderton makes 24-foot three point jumper (Timaya Lewis-Eutsey assists)",
+          "awayScore": 21,
+          "homeScore": 34,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:46"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108636"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:03:43Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 45,
+            "y": 14
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120413282",
+          "sequenceNumber": "120413282",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timberlynn Yeast makes layup (Leyocha Marigney assists)",
+          "awayScore": 21,
+          "homeScore": 36,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:22"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5176106"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5241085"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:04:03Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413287",
+          "sequenceNumber": "120413287",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timberlynn Yeast makes layup (Peyton Ilderton assists)",
+          "awayScore": 21,
+          "homeScore": 38,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:36"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5176106"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108636"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:04:50Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413293",
+          "sequenceNumber": "120413293",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Timberlynn Yeast makes free throw 1 of 1",
+          "awayScore": 21,
+          "homeScore": 39,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:35"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5176106"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:05:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413310",
+          "sequenceNumber": "120413310",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Blessing King makes layup",
+          "awayScore": 21,
+          "homeScore": 41,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:47"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5178412"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:07:37Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413323",
+          "sequenceNumber": "120413323",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Kassie Ingram makes layup (Ni'Kiah Chesterfield assists)",
+          "awayScore": 21,
+          "homeScore": 43,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "5:31"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5241086"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5262469"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:09:22Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413331",
+          "sequenceNumber": "120413331",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Bella Finnegan makes 19-foot jumper",
+          "awayScore": 23,
+          "homeScore": 43,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "5:09"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5109353"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:13:00Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 18,
+            "y": 18
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413368",
+          "sequenceNumber": "120413368",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Kya Hurt makes 10-foot jumper",
+          "awayScore": 25,
+          "homeScore": 43,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:52"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314940"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:17:51Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 9
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413371",
+          "sequenceNumber": "120413371",
+          "type": {
+            "id": "437",
+            "text": "TipShot"
+          },
+          "text": "Leyocha Marigney makes 0-foot tip in layup",
+          "awayScore": 25,
+          "homeScore": 45,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5241085"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:18:11Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413379",
+          "sequenceNumber": "120413379",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Madison Austin makes free throw 1 of 2",
+          "awayScore": 26,
+          "homeScore": 45,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:14"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314939"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:18:56Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413400",
+          "sequenceNumber": "120413400",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Madison Austin makes free throw 2 of 2",
+          "awayScore": 27,
+          "homeScore": 45,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:14"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314939"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:19:07Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413401",
+          "sequenceNumber": "120413401",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Timberlynn Yeast assists)",
+          "awayScore": 27,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:53"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5176106"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:19:32Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 43,
+            "y": 15
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120413411",
+          "sequenceNumber": "120413411",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Addison Martin makes free throw 1 of 2",
+          "awayScore": 28,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:13"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:20:40Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413412",
+          "sequenceNumber": "120413412",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Addison Martin makes free throw 2 of 2",
+          "awayScore": 29,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:13"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4899861"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:20:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413413",
+          "sequenceNumber": "120413413",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes 13-foot jumper",
+          "awayScore": 29,
+          "homeScore": 50,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:45"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:21:27Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 30,
+            "y": 13
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413414",
+          "sequenceNumber": "120413414",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Trista Fayta makes 27-foot three point jumper (Kya Hurt assists)",
+          "awayScore": 32,
+          "homeScore": 50,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5314940"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:21:42Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 37,
+            "y": 24
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120413426",
+          "sequenceNumber": "120413426",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Bella Finnegan makes 10-foot jumper (Trista Fayta assists)",
+          "awayScore": 34,
+          "homeScore": 50,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:46"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5109353"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:22:49Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 9
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413527",
+          "sequenceNumber": "120413527",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Meredith Maier makes 26-foot three point jumper (Timberlynn Yeast assists)",
+          "awayScore": 34,
+          "homeScore": 53,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "9:29"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108637"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5176106"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:27:58Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 40,
+            "y": 22
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120413457",
+          "sequenceNumber": "120413457",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Meredith Maier makes 27-foot three point jumper (Peyton Ilderton assists)",
+          "awayScore": 34,
+          "homeScore": 56,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "8:57"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108637"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108636"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:28:29Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 14,
+            "y": 25
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401865139120413541",
+          "sequenceNumber": "120413541",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 34,
+          "homeScore": 58,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "8:37"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:28:49Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413592",
+          "sequenceNumber": "120413592",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Timaya Lewis-Eutsey makes layup",
+          "awayScore": 34,
+          "homeScore": 60,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "7:13"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:34:30Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 5
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413617",
+          "sequenceNumber": "120413617",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Trista Fayta makes free throw 1 of 2",
+          "awayScore": 35,
+          "homeScore": 60,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "6:32"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:36:16Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413620",
+          "sequenceNumber": "120413620",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Trista Fayta makes free throw 2 of 2",
+          "awayScore": 36,
+          "homeScore": 60,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "6:32"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:36:28Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413640",
+          "sequenceNumber": "120413640",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "TreShondra Williams makes layup",
+          "awayScore": 36,
+          "homeScore": 62,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "5:20"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5241084"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:38:12Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413650",
+          "sequenceNumber": "120413650",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Trista Fayta makes layup",
+          "awayScore": 38,
+          "homeScore": 62,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "4:19"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5242017"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:39:34Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413655",
+          "sequenceNumber": "120413655",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Kya Hurt makes 12-foot jumper",
+          "awayScore": 40,
+          "homeScore": 62,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "3:21"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314940"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:40:32Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 12
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413704",
+          "sequenceNumber": "120413704",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Madison Austin makes free throw 2 of 2",
+          "awayScore": 41,
+          "homeScore": 62,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "1:33"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2287"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5314939"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:44:32Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401865139120413713",
+          "sequenceNumber": "120413713",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Aarionna Redman makes layup",
+          "awayScore": 41,
+          "homeScore": 64,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "1:23"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4704482"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:44:45Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401865139120413727",
+          "sequenceNumber": "120413727",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Leyocha Marigney makes layup (Timaya Lewis-Eutsey assists)",
+          "awayScore": 41,
+          "homeScore": 66,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "0:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "276"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5241085"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5107543"
+              }
+            }
+          ],
+          "wallclock": "2026-04-04T20:45:51Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 7
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        }
+      ],
+      "gameInfo": {
+        "attendance": 5475,
+        "officials": [
+          {
+            "fullName": "Julie Krommenhoek",
+            "displayName": "Julie Krommenhoek",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          },
+          {
+            "fullName": "Maggie Tieman",
+            "displayName": "Maggie Tieman",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          },
+          {
+            "fullName": "Ashlee Goode",
+            "displayName": "Ashlee Goode",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          }
+        ]
+      },
+      "winprobability": [
+        {
+          "homeWinPercentage": 1,
+          "tiePercentage": 0,
+          "playId": "401865139120413756"
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "401865139",
+    "live": false,
+    "teamStats": [
+      {
+        "label": "FG",
+        "away": "14-48",
+        "home": "28-57"
+      },
+      {
+        "label": "Field Goal %",
+        "away": "29",
+        "home": "49"
+      },
+      {
+        "label": "3PT",
+        "away": "3-17",
+        "home": "6-22"
+      },
+      {
+        "label": "Three Point %",
+        "away": "18",
+        "home": "27"
+      },
+      {
+        "label": "FT",
+        "away": "10-12",
+        "home": "4-4"
+      },
+      {
+        "label": "Free Throw %",
+        "away": "83",
+        "home": "100"
+      },
+      {
+        "label": "Rebounds",
+        "away": "33",
+        "home": "30"
+      },
+      {
+        "label": "Offensive Rebounds",
+        "away": "12",
+        "home": "8"
+      },
+      {
+        "label": "Defensive Rebounds",
+        "away": "21",
+        "home": "22"
+      },
+      {
+        "label": "Assists",
+        "away": "7",
+        "home": "15"
+      },
+      {
+        "label": "Steals",
+        "away": "8",
+        "home": "15"
+      },
+      {
+        "label": "Blocks",
+        "away": "2",
+        "home": "8"
+      },
+      {
+        "label": "Turnovers",
+        "away": "23",
+        "home": "13"
+      },
+      {
+        "label": "Technical Fouls",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Points Off Turnovers",
+        "away": "8",
+        "home": "17"
+      },
+      {
+        "label": "Fast Break Points",
+        "away": "4",
+        "home": "16"
+      },
+      {
+        "label": "Points in Paint",
+        "away": "18",
+        "home": "44"
+      },
+      {
+        "label": "Fouls",
+        "away": "6",
+        "home": "11"
+      }
+    ],
+    "boxGroups": [
+      {
+        "title": "Players",
+        "columns": [
+          "MIN",
+          "PTS",
+          "FG",
+          "3PT",
+          "FT",
+          "REB",
+          "AST",
+          "TO",
+          "STL",
+          "BLK",
+          "OREB",
+          "DREB",
+          "PF"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "ILST",
+            "rows": [
+              {
+                "name": "D. Washington",
+                "pos": "F",
+                "stats": [
+                  "24",
+                  "0",
+                  "0-7",
+                  "0-3",
+                  "0-0",
+                  "5",
+                  "1",
+                  "2",
+                  "3",
+                  "1",
+                  "0",
+                  "5",
+                  "3"
+                ]
+              },
+              {
+                "name": "A. Martin",
+                "pos": "F",
+                "stats": [
+                  "37",
+                  "11",
+                  "4-9",
+                  "0-0",
+                  "3-4",
+                  "3",
+                  "0",
+                  "2",
+                  "0",
+                  "1",
+                  "1",
+                  "2",
+                  "1"
+                ]
+              },
+              {
+                "name": "J. Pratt",
+                "pos": "G",
+                "stats": [
+                  "22",
+                  "2",
+                  "1-3",
+                  "0-2",
+                  "0-0",
+                  "4",
+                  "1",
+                  "5",
+                  "2",
+                  "0",
+                  "2",
+                  "2",
+                  "2"
+                ]
+              },
+              {
+                "name": "G. Nelson",
+                "pos": "G",
+                "stats": [
+                  "23",
+                  "6",
+                  "2-7",
+                  "2-5",
+                  "0-0",
+                  "2",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "0"
+                ]
+              },
+              {
+                "name": "T. Fayta",
+                "pos": "G",
+                "stats": [
+                  "33",
+                  "9",
+                  "2-6",
+                  "1-3",
+                  "4-4",
+                  "3",
+                  "2",
+                  "7",
+                  "0",
+                  "0",
+                  "1",
+                  "2",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Austin",
+                "pos": "F",
+                "stats": [
+                  "16",
+                  "3",
+                  "0-3",
+                  "0-1",
+                  "3-4",
+                  "5",
+                  "0",
+                  "3",
+                  "1",
+                  "0",
+                  "2",
+                  "3",
+                  "0"
+                ]
+              },
+              {
+                "name": "J. Fenske",
+                "pos": "G",
+                "stats": [
+                  "3",
+                  "0",
+                  "0-1",
+                  "0-1",
+                  "0-0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0"
+                ]
+              },
+              {
+                "name": "K. Hurt",
+                "pos": "G",
+                "stats": [
+                  "17",
+                  "4",
+                  "2-4",
+                  "0-0",
+                  "0-0",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Bruno",
+                "pos": "G",
+                "stats": [
+                  "3",
+                  "0",
+                  "0-0",
+                  "0-0",
+                  "0-0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "D. Thomas",
+                "pos": "G",
+                "stats": [
+                  "3",
+                  "0",
+                  "0-1",
+                  "0-0",
+                  "0-0",
+                  "1",
+                  "0",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0"
+                ]
+              },
+              {
+                "name": "B. Finnegan",
+                "pos": "G",
+                "stats": [
+                  "19",
+                  "6",
+                  "3-7",
+                  "0-2",
+                  "0-0",
+                  "0",
+                  "1",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "MRSH",
+            "rows": [
+              {
+                "name": "L. Marigney",
+                "pos": "F",
+                "stats": [
+                  "17",
+                  "4",
+                  "2-2",
+                  "0-0",
+                  "0-0",
+                  "3",
+                  "1",
+                  "1",
+                  "1",
+                  "4",
+                  "2",
+                  "1",
+                  "2"
+                ]
+              },
+              {
+                "name": "T. Yeast",
+                "pos": "F",
+                "stats": [
+                  "28",
+                  "5",
+                  "2-5",
+                  "0-2",
+                  "1-1",
+                  "4",
+                  "2",
+                  "1",
+                  "2",
+                  "0",
+                  "0",
+                  "4",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. Maier",
+                "pos": "F",
+                "stats": [
+                  "24",
+                  "6",
+                  "2-7",
+                  "2-6",
+                  "0-0",
+                  "3",
+                  "2",
+                  "0",
+                  "0",
+                  "2",
+                  "0",
+                  "3",
+                  "2"
+                ]
+              },
+              {
+                "name": "P. Ilderton",
+                "pos": "G",
+                "stats": [
+                  "32",
+                  "3",
+                  "1-7",
+                  "1-6",
+                  "0-0",
+                  "1",
+                  "3",
+                  "2",
+                  "1",
+                  "0",
+                  "0",
+                  "1",
+                  "1"
+                ]
+              },
+              {
+                "name": "T. Lewis-Eutsey",
+                "pos": "G",
+                "stats": [
+                  "30",
+                  "27",
+                  "12-17",
+                  "3-3",
+                  "0-0",
+                  "3",
+                  "3",
+                  "3",
+                  "7",
+                  "0",
+                  "2",
+                  "1",
+                  "1"
+                ]
+              },
+              {
+                "name": "N. Chesterfield",
+                "pos": "F",
+                "stats": [
+                  "17",
+                  "7",
+                  "2-3",
+                  "0-1",
+                  "3-3",
+                  "1",
+                  "1",
+                  "2",
+                  "2",
+                  "1",
+                  "1",
+                  "0",
+                  "1"
+                ]
+              },
+              {
+                "name": "T. Williams",
+                "pos": "F",
+                "stats": [
+                  "7",
+                  "2",
+                  "1-4",
+                  "0-2",
+                  "0-0",
+                  "0",
+                  "0",
+                  "1",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Redman",
+                "pos": "F",
+                "stats": [
+                  "9",
+                  "2",
+                  "1-3",
+                  "0-1",
+                  "0-0",
+                  "1",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "K. Ingram",
+                "pos": "G",
+                "stats": [
+                  "16",
+                  "4",
+                  "2-5",
+                  "0-1",
+                  "0-0",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "3"
+                ]
+              },
+              {
+                "name": "B. King",
+                "pos": "G",
+                "stats": [
+                  "20",
+                  "6",
+                  "3-4",
+                  "0-0",
+                  "0-0",
+                  "8",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "1",
+                  "7",
+                  "1"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scoringPlays": [
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:49",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Grace Nelson makes 24-foot three point jumper (Doneelah Washington assists)",
+        "away": 3,
+        "home": 0,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:34",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 2,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:56",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 4,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:40",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 6,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:00",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 8,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:59",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Grace Nelson makes 26-foot three point jumper (Jaeden Pratt assists)",
+        "away": 6,
+        "home": 8,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:25",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Meredith Maier assists)",
+        "away": 6,
+        "home": 11,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:59",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes layup",
+        "away": 8,
+        "home": 11,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:33",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes layup",
+        "away": 8,
+        "home": 13,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:48",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes layup (Kassie Ingram assists)",
+        "away": 8,
+        "home": 15,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:48",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 1 of 1",
+        "away": 8,
+        "home": 16,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:30",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes 11-foot jumper (Trista Fayta assists)",
+        "away": 10,
+        "home": 16,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:03",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 26-foot three point jumper (Kassie Ingram assists)",
+        "away": 10,
+        "home": 19,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "2:37",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Kassie Ingram makes layup (Timaya Lewis-Eutsey assists)",
+        "away": 10,
+        "home": 21,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:42",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Jaeden Pratt makes layup",
+        "away": 12,
+        "home": 21,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:20",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 1 of 2",
+        "away": 13,
+        "home": 21,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:20",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 2 of 2",
+        "away": 14,
+        "home": 21,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:49",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 14,
+        "home": 23,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:21",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 1 of 2",
+        "away": 14,
+        "home": 24,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:21",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 2 of 2",
+        "away": 14,
+        "home": 25,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "3:28",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes layup (Grace Nelson assists)",
+        "away": 16,
+        "home": 25,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "3:05",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup (Meredith Maier assists)",
+        "away": 16,
+        "home": 27,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "2:41",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 2 of 2",
+        "away": 17,
+        "home": 27,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:56",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes 13-foot jumper (Bella Finnegan assists)",
+        "away": 19,
+        "home": 27,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:28",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup (Peyton Ilderton assists)",
+        "away": 19,
+        "home": 29,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:12",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 13-foot jumper",
+        "away": 21,
+        "home": 29,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:00",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup (Aarionna Redman assists)",
+        "away": 21,
+        "home": 31,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:46",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Peyton Ilderton makes 24-foot three point jumper (Timaya Lewis-Eutsey assists)",
+        "away": 21,
+        "home": 34,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:22",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes layup (Leyocha Marigney assists)",
+        "away": 21,
+        "home": 36,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:36",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes layup (Peyton Ilderton assists)",
+        "away": 21,
+        "home": 38,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:35",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes free throw 1 of 1",
+        "away": 21,
+        "home": 39,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:47",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup",
+        "away": 21,
+        "home": 41,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:31",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Kassie Ingram makes layup (Ni'Kiah Chesterfield assists)",
+        "away": 21,
+        "home": 43,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:09",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 19-foot jumper",
+        "away": 23,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:52",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Kya Hurt makes 10-foot jumper",
+        "away": 25,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:30",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Leyocha Marigney makes 0-foot tip in layup",
+        "away": 25,
+        "home": 45,
+        "type": "TipShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:14",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 1 of 2",
+        "away": 26,
+        "home": 45,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:14",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 2 of 2",
+        "away": 27,
+        "home": 45,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:53",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Timberlynn Yeast assists)",
+        "away": 27,
+        "home": 48,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:13",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 1 of 2",
+        "away": 28,
+        "home": 48,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:13",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 2 of 2",
+        "away": 29,
+        "home": 48,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:45",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 13-foot jumper",
+        "away": 29,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:30",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes 27-foot three point jumper (Kya Hurt assists)",
+        "away": 32,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:46",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 10-foot jumper (Trista Fayta assists)",
+        "away": 34,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "9:29",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Meredith Maier makes 26-foot three point jumper (Timberlynn Yeast assists)",
+        "away": 34,
+        "home": 53,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:57",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Meredith Maier makes 27-foot three point jumper (Peyton Ilderton assists)",
+        "away": 34,
+        "home": 56,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:37",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 34,
+        "home": 58,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:13",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 34,
+        "home": 60,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:32",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 1 of 2",
+        "away": 35,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:32",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 2 of 2",
+        "away": 36,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:20",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "TreShondra Williams makes layup",
+        "away": 36,
+        "home": 62,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:19",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes layup",
+        "away": 38,
+        "home": 62,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:21",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Kya Hurt makes 12-foot jumper",
+        "away": 40,
+        "home": 62,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:33",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 2 of 2",
+        "away": 41,
+        "home": 62,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:23",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Aarionna Redman makes layup",
+        "away": 41,
+        "home": 64,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "0:30",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Leyocha Marigney makes layup (Timaya Lewis-Eutsey assists)",
+        "away": 41,
+        "home": 66,
+        "type": "LayUpShot",
+        "scoring": true
+      }
+    ],
+    "lineups": [],
+    "periodLines": {
+      "unit": "quarter",
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "away": {
+        "abbr": "ILST",
+        "values": [
+          "10",
+          "11",
+          "13",
+          "7"
+        ],
+        "total": "41"
+      },
+      "home": {
+        "abbr": "MRSH",
+        "values": [
+          "21",
+          "10",
+          "19",
+          "16"
+        ],
+        "total": "66"
+      }
+    },
+    "winProbability": {
+      "home": 100,
+      "away": 0
+    },
+    "plays": [
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:49",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Grace Nelson makes 24-foot three point jumper (Doneelah Washington assists)",
+        "away": 3,
+        "home": 0,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:34",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 2,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:56",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 4,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:40",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 6,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:00",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 3,
+        "home": 8,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:59",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Grace Nelson makes 26-foot three point jumper (Jaeden Pratt assists)",
+        "away": 6,
+        "home": 8,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:25",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Meredith Maier assists)",
+        "away": 6,
+        "home": 11,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:59",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes layup",
+        "away": 8,
+        "home": 11,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:33",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes layup",
+        "away": 8,
+        "home": 13,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:48",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes layup (Kassie Ingram assists)",
+        "away": 8,
+        "home": 15,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:48",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 1 of 1",
+        "away": 8,
+        "home": 16,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:30",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes 11-foot jumper (Trista Fayta assists)",
+        "away": 10,
+        "home": 16,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:03",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 26-foot three point jumper (Kassie Ingram assists)",
+        "away": 10,
+        "home": 19,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "2:37",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Kassie Ingram makes layup (Timaya Lewis-Eutsey assists)",
+        "away": 10,
+        "home": 21,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:42",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Jaeden Pratt makes layup",
+        "away": 12,
+        "home": 21,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:20",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 1 of 2",
+        "away": 13,
+        "home": 21,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:20",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 2 of 2",
+        "away": 14,
+        "home": 21,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:49",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 14,
+        "home": 23,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:21",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 1 of 2",
+        "away": 14,
+        "home": 24,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:21",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Ni'Kiah Chesterfield makes free throw 2 of 2",
+        "away": 14,
+        "home": 25,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "3:28",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes layup (Grace Nelson assists)",
+        "away": 16,
+        "home": 25,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "3:05",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup (Meredith Maier assists)",
+        "away": 16,
+        "home": 27,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "2:41",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 2 of 2",
+        "away": 17,
+        "home": 27,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:56",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes 13-foot jumper (Bella Finnegan assists)",
+        "away": 19,
+        "home": 27,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:28",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup (Peyton Ilderton assists)",
+        "away": 19,
+        "home": 29,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:12",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 13-foot jumper",
+        "away": 21,
+        "home": 29,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:00",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup (Aarionna Redman assists)",
+        "away": 21,
+        "home": 31,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:46",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Peyton Ilderton makes 24-foot three point jumper (Timaya Lewis-Eutsey assists)",
+        "away": 21,
+        "home": 34,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:22",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes layup (Leyocha Marigney assists)",
+        "away": 21,
+        "home": 36,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:36",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes layup (Peyton Ilderton assists)",
+        "away": 21,
+        "home": 38,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:35",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timberlynn Yeast makes free throw 1 of 1",
+        "away": 21,
+        "home": 39,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:47",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Blessing King makes layup",
+        "away": 21,
+        "home": 41,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:31",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Kassie Ingram makes layup (Ni'Kiah Chesterfield assists)",
+        "away": 21,
+        "home": 43,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:09",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 19-foot jumper",
+        "away": 23,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:52",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Kya Hurt makes 10-foot jumper",
+        "away": 25,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:30",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Leyocha Marigney makes 0-foot tip in layup",
+        "away": 25,
+        "home": 45,
+        "type": "TipShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:14",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 1 of 2",
+        "away": 26,
+        "home": 45,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:14",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 2 of 2",
+        "away": 27,
+        "home": 45,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:53",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 24-foot three point jumper (Timberlynn Yeast assists)",
+        "away": 27,
+        "home": 48,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:13",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 1 of 2",
+        "away": 28,
+        "home": 48,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:13",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Addison Martin makes free throw 2 of 2",
+        "away": 29,
+        "home": 48,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:45",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes 13-foot jumper",
+        "away": 29,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:30",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes 27-foot three point jumper (Kya Hurt assists)",
+        "away": 32,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:46",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Bella Finnegan makes 10-foot jumper (Trista Fayta assists)",
+        "away": 34,
+        "home": 50,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "9:29",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Meredith Maier makes 26-foot three point jumper (Timberlynn Yeast assists)",
+        "away": 34,
+        "home": 53,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:57",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Meredith Maier makes 27-foot three point jumper (Peyton Ilderton assists)",
+        "away": 34,
+        "home": 56,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:37",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 34,
+        "home": 58,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:13",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Timaya Lewis-Eutsey makes layup",
+        "away": 34,
+        "home": 60,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:32",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 1 of 2",
+        "away": 35,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:32",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes free throw 2 of 2",
+        "away": 36,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:20",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "TreShondra Williams makes layup",
+        "away": 36,
+        "home": 62,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:19",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Trista Fayta makes layup",
+        "away": 38,
+        "home": 62,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:21",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Kya Hurt makes 12-foot jumper",
+        "away": 40,
+        "home": 62,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:33",
+        "side": "away",
+        "teamAbbr": "ILST",
+        "text": "Madison Austin makes free throw 2 of 2",
+        "away": 41,
+        "home": 62,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:23",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Aarionna Redman makes layup",
+        "away": 41,
+        "home": 64,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "0:30",
+        "side": "home",
+        "teamAbbr": "MRSH",
+        "text": "Leyocha Marigney makes layup (Timaya Lewis-Eutsey assists)",
+        "away": 41,
+        "home": 66,
+        "type": "LayUpShot",
+        "scoring": true
+      }
+    ],
+    "attendance": 5475,
+    "officials": [
+      {
+        "name": "Julie Krommenhoek",
+        "role": "Referee"
+      },
+      {
+        "name": "Maggie Tieman",
+        "role": "Referee"
+      },
+      {
+        "name": "Ashlee Goode",
+        "role": "Referee"
+      }
+    ]
+  }
+}

@@ -1,0 +1,999 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "soccer/ita.1",
+    "eventId": "401874928",
+    "raw": {
+      "header": {
+        "id": "401874928",
+        "competitions": [
+          {
+            "id": "401874928",
+            "date": "2026-08-24T18:45Z",
+            "status": {
+              "type": {
+                "id": "1",
+                "name": "STATUS_SCHEDULED",
+                "state": "pre",
+                "completed": false,
+                "description": "Scheduled",
+                "detail": "Mon, August 24th at 2:45 PM EDT",
+                "shortDetail": "8/24 - 2:45 PM EDT"
+              }
+            },
+            "competitors": [
+              {
+                "id": "104",
+                "homeAway": "home",
+                "order": 0,
+                "winner": false,
+                "team": {
+                  "id": "104",
+                  "abbreviation": "ROMA",
+                  "displayName": "AS Roma"
+                }
+              },
+              {
+                "id": "109",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "team": {
+                  "id": "109",
+                  "abbreviation": "FIO",
+                  "displayName": "Fiorentina"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "form": [
+          {
+            "displayOrder": 1,
+            "team": {
+              "id": "104",
+              "uid": "s:600~t:104",
+              "displayName": "AS Roma",
+              "abbreviation": "ROMA",
+              "links": [
+                {
+                  "href": "https://www.espn.com/soccer/club/_/id/104/as-roma",
+                  "text": "Clubhouse"
+                },
+                {
+                  "href": "https://www.espn.com/soccer/team/fixtures/_/id/104/as-roma",
+                  "text": "Fixtures"
+                }
+              ],
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2024-01-04T17:49Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/104.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2024-01-04T17:53Z"
+                }
+              ]
+            },
+            "events": [
+              {
+                "id": "737160",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737160/as-roma-hellas-verona",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-24T18:45Z",
+                "score": "2-0",
+                "homeTeamId": "119",
+                "awayTeamId": "104",
+                "homeTeamScore": "0",
+                "awayTeamScore": "2",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "119",
+                  "uid": "s:600~t:119",
+                  "displayName": "Hellas Verona",
+                  "abbreviation": "VER",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/119/hellas-verona",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/119/hellas-verona",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/119.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2024-01-04T17:53Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png"
+              },
+              {
+                "id": "737148",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737148/lazio-as-roma",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-17T10:00Z",
+                "score": "2-0",
+                "homeTeamId": "104",
+                "awayTeamId": "112",
+                "homeTeamScore": "2",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "112",
+                  "uid": "s:600~t:112",
+                  "displayName": "Lazio",
+                  "abbreviation": "LAZ",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/112/lazio",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/112/lazio",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/112.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2024-01-04T17:53Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png"
+              },
+              {
+                "id": "737134",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737134/as-roma-parma",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-10T16:00Z",
+                "score": "3-2",
+                "homeTeamId": "115",
+                "awayTeamId": "104",
+                "homeTeamScore": "2",
+                "awayTeamScore": "3",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "115",
+                  "uid": "s:600~t:115",
+                  "displayName": "Parma",
+                  "abbreviation": "PAR",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/115/parma",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/115/parma",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/115.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png"
+              },
+              {
+                "id": "737125",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737125/fiorentina-as-roma",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-04T18:45Z",
+                "score": "4-0",
+                "homeTeamId": "104",
+                "awayTeamId": "109",
+                "homeTeamScore": "4",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "opponent": {
+                  "id": "109",
+                  "uid": "s:600~t:109",
+                  "displayName": "Fiorentina",
+                  "abbreviation": "FIO",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/109/fiorentina",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/109/fiorentina",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/109.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A"
+              },
+              {
+                "id": "737114",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737114/as-roma-bologna",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-04-25T16:00Z",
+                "score": "2-0",
+                "homeTeamId": "107",
+                "awayTeamId": "104",
+                "homeTeamScore": "0",
+                "awayTeamScore": "2",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "107",
+                  "uid": "s:600~t:107",
+                  "displayName": "Bologna",
+                  "abbreviation": "BOL",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/107/bologna",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/107/bologna",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/107.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2023-01-27T21:39Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png"
+              }
+            ]
+          },
+          {
+            "displayOrder": 2,
+            "team": {
+              "id": "109",
+              "uid": "s:600~t:109",
+              "displayName": "Fiorentina",
+              "abbreviation": "FIO",
+              "links": [
+                {
+                  "href": "https://www.espn.com/soccer/club/_/id/109/fiorentina",
+                  "text": "Clubhouse"
+                },
+                {
+                  "href": "https://www.espn.com/soccer/team/fixtures/_/id/109/fiorentina",
+                  "text": "Fixtures"
+                }
+              ],
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+              "logos": [
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "default"
+                  ],
+                  "lastUpdated": "2019-05-08T16:07Z"
+                },
+                {
+                  "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/109.png",
+                  "width": 500,
+                  "height": 500,
+                  "alt": "",
+                  "rel": [
+                    "full",
+                    "dark"
+                  ],
+                  "lastUpdated": "2019-05-08T16:07Z"
+                }
+              ]
+            },
+            "events": [
+              {
+                "id": "737161",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737161/atalanta-fiorentina",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-22T18:45Z",
+                "score": "1-1",
+                "homeTeamId": "109",
+                "awayTeamId": "105",
+                "homeTeamScore": "1",
+                "awayTeamScore": "1",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "105",
+                  "uid": "s:600~t:105",
+                  "displayName": "Atalanta",
+                  "abbreviation": "ATA",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/105/atalanta",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/105/atalanta",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2022-07-26T12:56Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/105.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2022-07-26T12:56Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png"
+              },
+              {
+                "id": "737150",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737150/fiorentina-juventus",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-17T10:00Z",
+                "score": "2-0",
+                "homeTeamId": "111",
+                "awayTeamId": "109",
+                "homeTeamScore": "0",
+                "awayTeamScore": "2",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "W",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "111",
+                  "uid": "s:600~t:111",
+                  "displayName": "Juventus",
+                  "abbreviation": "JUV",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/111/juventus",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/111/juventus",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/111.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2024-01-04T17:53Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png"
+              },
+              {
+                "id": "737140",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737140/genoa-fiorentina",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-05-10T13:00Z",
+                "score": "0-0",
+                "homeTeamId": "109",
+                "awayTeamId": "3263",
+                "homeTeamScore": "0",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "3263",
+                  "uid": "s:600~t:3263",
+                  "displayName": "Genoa",
+                  "abbreviation": "GEN",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/3263/genoa",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/3263/genoa",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3263.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2019-05-08T16:07Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png"
+              },
+              {
+                "id": "737125",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737125/fiorentina-as-roma",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "@",
+                "gameDate": "2026-05-04T18:45Z",
+                "score": "4-0",
+                "homeTeamId": "104",
+                "awayTeamId": "109",
+                "homeTeamScore": "4",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "L",
+                "competitionName": "2025-26 Italian Serie A",
+                "opponent": {
+                  "id": "104",
+                  "uid": "s:600~t:104",
+                  "displayName": "AS Roma",
+                  "abbreviation": "ROMA",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/104/as-roma",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/104/as-roma",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/104.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2024-01-04T17:53Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A"
+              },
+              {
+                "id": "737121",
+                "links": [
+                  {
+                    "href": "https://www.espn.com/soccer/match/_/gameId/737121/sassuolo-fiorentina",
+                    "text": "Summary"
+                  }
+                ],
+                "atVs": "vs",
+                "gameDate": "2026-04-26T10:30Z",
+                "score": "0-0",
+                "homeTeamId": "109",
+                "awayTeamId": "3997",
+                "homeTeamScore": "0",
+                "awayTeamScore": "0",
+                "homeAggregateScore": "0",
+                "awayAggregateScore": "0",
+                "homeShootoutScore": "0",
+                "awayShootoutScore": "0",
+                "gameResult": "D",
+                "competitionName": "2025-26 Italian Serie A",
+                "leagueName": "Italian Serie A",
+                "leagueAbbreviation": "Serie A",
+                "opponent": {
+                  "id": "3997",
+                  "uid": "s:600~t:3997",
+                  "displayName": "Sassuolo",
+                  "abbreviation": "SAS",
+                  "links": [
+                    {
+                      "href": "https://www.espn.com/soccer/club/_/id/3997/sassuolo",
+                      "text": "Clubhouse"
+                    },
+                    {
+                      "href": "https://www.espn.com/soccer/team/fixtures/_/id/3997/sassuolo",
+                      "text": "Fixtures"
+                    }
+                  ],
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "default"
+                      ],
+                      "lastUpdated": "2024-01-04T17:49Z"
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3997.png",
+                      "width": 500,
+                      "height": 500,
+                      "alt": "",
+                      "rel": [
+                        "full",
+                        "dark"
+                      ],
+                      "lastUpdated": "2024-01-04T17:52Z"
+                    }
+                  ]
+                },
+                "opponentLogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png"
+              }
+            ]
+          }
+        ],
+        "teams": [
+          {
+            "team": {
+              "id": "104",
+              "uid": "s:600~t:104",
+              "slug": "ita.as_roma",
+              "location": "AS Roma",
+              "name": "AS Roma",
+              "abbreviation": "ROMA",
+              "displayName": "AS Roma",
+              "shortDisplayName": "AS Roma",
+              "color": "990a2c",
+              "alternateColor": "eae9e7",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png"
+            },
+            "statistics": [],
+            "displayOrder": 1,
+            "homeAway": "home"
+          },
+          {
+            "team": {
+              "id": "109",
+              "uid": "s:600~t:109",
+              "slug": "ita.fiorentina",
+              "location": "Fiorentina",
+              "name": "Fiorentina",
+              "abbreviation": "FIO",
+              "displayName": "Fiorentina",
+              "shortDisplayName": "Fiorentina",
+              "color": "4c1d84",
+              "alternateColor": "ffffff",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png"
+            },
+            "statistics": [],
+            "displayOrder": 2,
+            "homeAway": "away"
+          }
+        ]
+      },
+      "rosters": [
+        {
+          "homeAway": "home",
+          "winner": false,
+          "team": {
+            "id": "104",
+            "abbreviation": "ROMA",
+            "displayName": "AS Roma",
+            "color": "990a2c",
+            "alternateColor": "eae9e7",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2024-01-04T17:49Z"
+              },
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/104.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "dark"
+                ],
+                "lastUpdated": "2024-01-04T17:53Z"
+              }
+            ]
+          }
+        },
+        {
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "109",
+            "abbreviation": "FIO",
+            "displayName": "Fiorentina",
+            "color": "4c1d84",
+            "alternateColor": "ffffff",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              },
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/109.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "dark"
+                ],
+                "lastUpdated": "2019-05-08T16:07Z"
+              }
+            ]
+          }
+        }
+      ],
+      "gameInfo": {},
+      "lastFiveGames": [
+        {
+          "team": {
+            "id": "104",
+            "abbreviation": "ROMA"
+          },
+          "events": [
+            {
+              "gameResult": "W",
+              "gameDate": "2026-04-25T16:00Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-04T18:45Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-10T16:00Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-17T10:00Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-24T18:45Z"
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": "109",
+            "abbreviation": "FIO"
+          },
+          "events": [
+            {
+              "gameResult": "D",
+              "gameDate": "2026-04-26T10:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-05-04T18:45Z"
+            },
+            {
+              "gameResult": "D",
+              "gameDate": "2026-05-10T13:00Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-17T10:00Z"
+            },
+            {
+              "gameResult": "D",
+              "gameDate": "2026-05-22T18:45Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "401874928",
+    "live": false,
+    "teamStats": [],
+    "boxGroups": [],
+    "scoringPlays": [],
+    "lineups": [],
+    "recentForm": [
+      {
+        "side": "home",
+        "abbr": "ROMA",
+        "form": "WWWWW"
+      },
+      {
+        "side": "away",
+        "abbr": "FIO",
+        "form": "DLDWD"
+      }
+    ],
+    "nextStartMs": 1787597100000
+  }
+}

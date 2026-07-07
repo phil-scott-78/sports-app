@@ -1,0 +1,2217 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "rugby/242041",
+    "eventId": "603212",
+    "raw": {
+      "header": {
+        "id": "603212",
+        "competitions": [
+          {
+            "id": "603212",
+            "date": "2026-06-12T07:05Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "FT",
+                "detail": "FT",
+                "shortDetail": "FT"
+              }
+            },
+            "competitors": [
+              {
+                "id": "25934",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": "49",
+                "linescores": [
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "49"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  }
+                ],
+                "team": {
+                  "id": "25934",
+                  "abbreviation": "CHI",
+                  "displayName": "Chiefs"
+                }
+              },
+              {
+                "id": "25936",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": "12",
+                "linescores": [
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "12"
+                  },
+                  {
+                    "displayValue": "0"
+                  },
+                  {
+                    "displayValue": "0"
+                  }
+                ],
+                "team": {
+                  "id": "25936",
+                  "abbreviation": "CRU",
+                  "displayName": "Crusaders"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "25934",
+              "uid": "s:300~t:25934",
+              "slug": "chiefs",
+              "name": "Chiefs",
+              "abbreviation": "CHI",
+              "displayName": "Chiefs",
+              "shortDisplayName": "Chiefs",
+              "color": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25934.png"
+            },
+            "statistics": [],
+            "displayOrder": 1,
+            "homeAway": "home"
+          },
+          {
+            "team": {
+              "id": "25936",
+              "uid": "s:300~t:25936",
+              "slug": "crusaders",
+              "name": "Crusaders",
+              "abbreviation": "CRU",
+              "displayName": "Crusaders",
+              "shortDisplayName": "Crusaders",
+              "color": "FF0000",
+              "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25936.png"
+            },
+            "statistics": [],
+            "displayOrder": 2,
+            "homeAway": "away"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "25934",
+              "uid": "s:300~t:25934",
+              "slug": "chiefs",
+              "name": "Chiefs",
+              "abbreviation": "CHI",
+              "displayName": "Chiefs",
+              "shortDisplayName": "Chiefs",
+              "color": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25934.png"
+            },
+            "statistics": [],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "25936",
+              "uid": "s:300~t:25936",
+              "slug": "crusaders",
+              "name": "Crusaders",
+              "abbreviation": "CRU",
+              "displayName": "Crusaders",
+              "shortDisplayName": "Crusaders",
+              "color": "FF0000",
+              "logo": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25936.png"
+            },
+            "statistics": [],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "rosters": [
+        {
+          "homeAway": "home",
+          "winner": true,
+          "team": {
+            "id": "25934",
+            "abbreviation": "CHI",
+            "displayName": "Chiefs",
+            "color": "000000",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25934.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2018-06-05T12:12Z"
+              }
+            ]
+          },
+          "roster": [
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "15",
+              "athlete": {
+                "id": "305890",
+                "uid": "s:300~a:305890",
+                "guid": "5f731018-4c7f-309c-af57-0ac27ad89837",
+                "lastName": "Hutchinson",
+                "fullName": "Isaac Hutchinson",
+                "displayName": "Isaac Hutchinson",
+                "shortName": "I. Hutchinson",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "1",
+                "name": "fullback",
+                "displayName": "Fullback",
+                "abbreviation": "FB"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "14",
+              "athlete": {
+                "id": "300772",
+                "uid": "s:300~a:300772",
+                "guid": "d7c1dd7a-e1d3-37df-8063-d921679fa375",
+                "lastName": "Coombes-Fabling",
+                "fullName": "Liam Coombes-Fabling",
+                "displayName": "Liam Coombes-Fabling",
+                "shortName": "L. Coombes-Fabling",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "2",
+                "name": "wing",
+                "displayName": "wing",
+                "abbreviation": "W"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "13",
+              "athlete": {
+                "id": "184446",
+                "uid": "s:300~a:184446",
+                "guid": "78fb9ae3-bf96-399a-9b9b-73e4f26c90ea",
+                "lastName": "Foketi",
+                "fullName": "Lalakai Foketi",
+                "displayName": "Lalakai Foketi",
+                "shortName": "L. Foketi",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/3?lang=en&region=us",
+                  "id": "3",
+                  "name": "centre",
+                  "displayName": "centre",
+                  "abbreviation": "C",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "3",
+                "name": "centre",
+                "displayName": "centre",
+                "abbreviation": "C"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "12",
+              "athlete": {
+                "id": "294901",
+                "uid": "s:300~a:294901",
+                "guid": "38b7b470-edfd-3244-9300-5e637c54e5c8",
+                "lastName": "Tupaea",
+                "fullName": "Quinn Tupaea",
+                "displayName": "Quinn Tupaea",
+                "shortName": "Q. Tupaea",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/3?lang=en&region=us",
+                  "id": "3",
+                  "name": "centre",
+                  "displayName": "centre",
+                  "abbreviation": "C",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "3",
+                "name": "centre",
+                "displayName": "centre",
+                "abbreviation": "C"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "11",
+              "athlete": {
+                "id": "303267",
+                "uid": "s:300~a:303267",
+                "guid": "99be06f9-6dcb-319c-9f9a-8625c82f8edf",
+                "lastName": "Taumoefolau",
+                "fullName": "Kyren Taumoefolau",
+                "displayName": "Kyren Taumoefolau",
+                "shortName": "K. Taumoefolau",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "2",
+                "name": "wing",
+                "displayName": "wing",
+                "abbreviation": "W"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "10",
+              "athlete": {
+                "id": "228027",
+                "uid": "s:300~a:228027",
+                "guid": "1e49df65-b773-3de8-b76c-09aa46a26de7",
+                "lastName": "McKenzie",
+                "fullName": "Damian McKenzie",
+                "displayName": "Damian McKenzie",
+                "shortName": "D. McKenzie",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "4",
+                "name": "fly-half",
+                "displayName": "fly-half",
+                "abbreviation": "FH"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "9",
+              "athlete": {
+                "id": "300774",
+                "uid": "s:300~a:300774",
+                "guid": "45fde19a-d3cb-3006-a728-4dec92d2f2f9",
+                "lastName": "Ratima",
+                "fullName": "Cortez Ratima",
+                "displayName": "Cortez Ratima",
+                "shortName": "C. Ratima",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/5?lang=en&region=us",
+                  "id": "5",
+                  "name": "scrum-half",
+                  "displayName": "scrum-half",
+                  "abbreviation": "SH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "5",
+                "name": "scrum-half",
+                "displayName": "scrum-half",
+                "abbreviation": "SH"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "1",
+              "athlete": {
+                "id": "296759",
+                "uid": "s:300~a:296759",
+                "guid": "81aac9a0-8d70-3136-ae52-5efab75e1f2a",
+                "lastName": "Norris",
+                "fullName": "Ollie Norris",
+                "displayName": "Ollie Norris",
+                "shortName": "O. Norris",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "6",
+                "name": "prop",
+                "displayName": "prop",
+                "abbreviation": "P"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "2",
+              "athlete": {
+                "id": "291731",
+                "uid": "s:300~a:291731",
+                "guid": "b8b490a8-5a9b-3510-9fc1-65ab89ee6ad3",
+                "lastName": "Taukei'aho",
+                "fullName": "Samisoni Taukei'aho",
+                "displayName": "Samisoni Taukei'aho",
+                "shortName": "S. Taukei'aho",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/7?lang=en&region=us",
+                  "id": "7",
+                  "name": "hooker",
+                  "displayName": "hooker",
+                  "abbreviation": "H",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "7",
+                "name": "hooker",
+                "displayName": "hooker",
+                "abbreviation": "H"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "3",
+              "athlete": {
+                "id": "300842",
+                "uid": "s:300~a:300842",
+                "guid": "eff0d2ef-cfa8-3c19-86c7-b884e349e3b9",
+                "lastName": "Ahio",
+                "fullName": "Sione Ahio",
+                "displayName": "Sione Ahio",
+                "shortName": "S. Ahio",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "6",
+                "name": "prop",
+                "displayName": "prop",
+                "abbreviation": "P"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "4",
+              "athlete": {
+                "id": "296806",
+                "uid": "s:300~a:296806",
+                "guid": "8728e811-5eac-3629-b45e-4578c0f70590",
+                "lastName": "Lord",
+                "fullName": "Josh Lord",
+                "displayName": "Josh Lord",
+                "shortName": "J. Lord",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "8",
+                "name": "lock",
+                "displayName": "lock",
+                "abbreviation": "L"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "5",
+              "athlete": {
+                "id": "295036",
+                "uid": "s:300~a:295036",
+                "guid": "b6eb211b-6b47-3cbb-9495-e14fcf35f73e",
+                "lastName": "Vaa'i",
+                "fullName": "Tupou Vaa'i",
+                "displayName": "Tupou Vaa'i",
+                "shortName": "T. Vaa'i",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "8",
+                "name": "lock",
+                "displayName": "lock",
+                "abbreviation": "L"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "6",
+              "athlete": {
+                "id": "296867",
+                "uid": "s:300~a:296867",
+                "guid": "e08878a0-94d2-3052-95c2-92d1ec92eedc",
+                "lastName": "Finau",
+                "fullName": "Samipeni Finau",
+                "displayName": "Samipeni Finau",
+                "shortName": "S. Finau",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "9",
+                "name": "flanker",
+                "displayName": "Flanker",
+                "abbreviation": "FL"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "7",
+              "athlete": {
+                "id": "292612",
+                "uid": "s:300~a:292612",
+                "guid": "3bd197f9-9eae-3d0f-9dcc-0b755c8d75f3",
+                "lastName": "Jacobson",
+                "fullName": "Luke Jacobson",
+                "displayName": "Luke Jacobson",
+                "shortName": "L. Jacobson",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "9",
+                "name": "flanker",
+                "displayName": "Flanker",
+                "abbreviation": "FL"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "8",
+              "athlete": {
+                "id": "296763",
+                "uid": "s:300~a:296763",
+                "guid": "a370fe56-7838-3295-b0a3-9c142bd1521a",
+                "lastName": "Parker",
+                "fullName": "Simon Parker",
+                "displayName": "Simon Parker",
+                "shortName": "S. Parker",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "10",
+                "name": "no. 8",
+                "displayName": "no. 8",
+                "abbreviation": "N8"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "16",
+              "athlete": {
+                "id": "294782",
+                "uid": "s:300~a:294782",
+                "guid": "7705d785-2461-3265-b426-8c39097b4dab",
+                "lastName": "McAlister",
+                "fullName": "Brodie McAlister",
+                "displayName": "Brodie McAlister",
+                "shortName": "B. McAlister",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/7?lang=en&region=us",
+                  "id": "7",
+                  "name": "hooker",
+                  "displayName": "hooker",
+                  "abbreviation": "H",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "17",
+              "athlete": {
+                "id": "272409",
+                "uid": "s:300~a:272409",
+                "guid": "dd6cefd9-0f1a-3e99-8658-6a175723fd1a",
+                "lastName": "Proffit",
+                "fullName": "Jared Proffit",
+                "displayName": "Jared Proffit",
+                "shortName": "J. Proffit",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "18",
+              "athlete": {
+                "id": "300773",
+                "uid": "s:300~a:300773",
+                "guid": "80c07739-dc4b-3e3b-8840-c55ec76f09c7",
+                "lastName": "Dyer",
+                "fullName": "George Dyer",
+                "displayName": "George Dyer",
+                "shortName": "G. Dyer",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "19",
+              "athlete": {
+                "id": "296795",
+                "uid": "s:300~a:296795",
+                "guid": "ed8ba588-b4ec-3a1a-8465-0b9aaf07d52b",
+                "lastName": "Ah Kuoi",
+                "fullName": "Seuseu Naitoa Ah Kuoi",
+                "displayName": "Seuseu Naitoa Ah Kuoi",
+                "shortName": "S. Ah Kuoi",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "20",
+              "athlete": {
+                "id": "296783",
+                "uid": "s:300~a:296783",
+                "guid": "8403eb99-962e-3290-bb14-a1f648649d67",
+                "lastName": "Boshier",
+                "fullName": "Kaylum Boshier",
+                "displayName": "Kaylum Boshier",
+                "shortName": "K. Boshier",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "21",
+              "athlete": {
+                "id": "294995",
+                "uid": "s:300~a:294995",
+                "guid": "feafcf2c-21fe-302b-81d8-7cfddb5410b9",
+                "lastName": "Roe",
+                "fullName": "Xavier Roe",
+                "displayName": "Xavier Roe",
+                "shortName": "X. Roe",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/5?lang=en&region=us",
+                  "id": "5",
+                  "name": "scrum-half",
+                  "displayName": "scrum-half",
+                  "abbreviation": "SH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "22",
+              "athlete": {
+                "id": "300986",
+                "uid": "s:300~a:300986",
+                "guid": "528dd35f-7218-3cc0-b864-53579b88cf0e",
+                "lastName": "Jacomb",
+                "fullName": "Josh Jacomb",
+                "displayName": "Josh Jacomb",
+                "shortName": "J. Jacomb",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/0?lang=en&region=us",
+                  "id": "0",
+                  "name": "default",
+                  "displayName": "default",
+                  "leaf": false
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "23",
+              "athlete": {
+                "id": "296766",
+                "uid": "s:300~a:296766",
+                "guid": "7e3f7835-1893-3e13-936c-8d9099f7c75c",
+                "lastName": "Carter",
+                "fullName": "Leroy Carter",
+                "displayName": "Leroy Carter",
+                "shortName": "L. Carter",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/5?lang=en&region=us",
+                  "id": "5",
+                  "name": "scrum-half",
+                  "displayName": "scrum-half",
+                  "abbreviation": "SH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            }
+          ]
+        },
+        {
+          "homeAway": "away",
+          "winner": false,
+          "team": {
+            "id": "25936",
+            "abbreviation": "CRU",
+            "displayName": "Crusaders",
+            "color": "FF0000",
+            "logos": [
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25936.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "default"
+                ],
+                "lastUpdated": "2020-02-05T19:24Z"
+              },
+              {
+                "href": "https://a.espncdn.com/i/teamlogos/rugby/teams/500-dark/25936.png",
+                "width": 500,
+                "height": 500,
+                "alt": "",
+                "rel": [
+                  "full",
+                  "dark"
+                ],
+                "lastUpdated": "2020-02-05T19:24Z"
+              }
+            ]
+          },
+          "roster": [
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "15",
+              "athlete": {
+                "id": "144885",
+                "uid": "s:300~a:144885",
+                "guid": "fef2e081-8470-3e4c-82b6-7f0ee98b7fd0",
+                "lastName": "McNicholl",
+                "fullName": "Johnny McNicholl",
+                "displayName": "Johnny McNicholl",
+                "shortName": "J. McNicholl",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "1",
+                "name": "fullback",
+                "displayName": "Fullback",
+                "abbreviation": "FB"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "14",
+              "athlete": {
+                "id": "299024",
+                "uid": "s:300~a:299024",
+                "guid": "cf016413-853e-3718-bc41-f9917c722cae",
+                "lastName": "Fihaki",
+                "fullName": "Chay Fihaki",
+                "displayName": "Chay Fihaki",
+                "shortName": "C. Fihaki",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "2",
+                "name": "wing",
+                "displayName": "wing",
+                "abbreviation": "W"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "13",
+              "athlete": {
+                "id": "292626",
+                "uid": "s:300~a:292626",
+                "guid": "3dceab43-1b0e-3e36-abda-fe8ab3589b7b",
+                "lastName": "Ennor",
+                "fullName": "Braydon Ennor",
+                "displayName": "Braydon Ennor",
+                "shortName": "B. Ennor",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/3?lang=en&region=us",
+                  "id": "3",
+                  "name": "centre",
+                  "displayName": "centre",
+                  "abbreviation": "C",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "3",
+                "name": "centre",
+                "displayName": "centre",
+                "abbreviation": "C"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "12",
+              "athlete": {
+                "id": "229623",
+                "uid": "s:300~a:229623",
+                "guid": "7bac21e7-7351-35a6-8170-361cda91768b",
+                "lastName": "Havili",
+                "fullName": "David Havili",
+                "displayName": "David Havili",
+                "shortName": "D. Havili",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/3?lang=en&region=us",
+                  "id": "3",
+                  "name": "centre",
+                  "displayName": "centre",
+                  "abbreviation": "C",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "3",
+                "name": "centre",
+                "displayName": "centre",
+                "abbreviation": "C"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "11",
+              "athlete": {
+                "id": "291268",
+                "uid": "s:300~a:291268",
+                "guid": "85ddb4bb-ff6e-3090-a38c-ed2bd892323b",
+                "lastName": "Reece",
+                "fullName": "Sevu Reece",
+                "displayName": "Sevu Reece",
+                "shortName": "S. Reece",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/2?lang=en&region=us",
+                  "id": "2",
+                  "name": "wing",
+                  "displayName": "wing",
+                  "abbreviation": "W",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "2",
+                "name": "wing",
+                "displayName": "wing",
+                "abbreviation": "W"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "10",
+              "athlete": {
+                "id": "301990",
+                "uid": "s:300~a:301990",
+                "guid": "a244e70e-3125-34a4-be9d-891513083f75",
+                "lastName": "Kemara",
+                "fullName": "Taha Kemara",
+                "displayName": "Taha Kemara",
+                "shortName": "T. Kemara",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/0?lang=en&region=us",
+                  "id": "0",
+                  "name": "default",
+                  "displayName": "default",
+                  "leaf": false
+                },
+                "links": []
+              },
+              "position": {
+                "id": "4",
+                "name": "fly-half",
+                "displayName": "fly-half",
+                "abbreviation": "FH"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "9",
+              "athlete": {
+                "id": "301081",
+                "uid": "s:300~a:301081",
+                "guid": "0838a8c0-f80a-31f2-b417-b42c41cf0569",
+                "lastName": "Hotham",
+                "fullName": "Noah Hotham",
+                "displayName": "Noah Hotham",
+                "shortName": "N. Hotham",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/5?lang=en&region=us",
+                  "id": "5",
+                  "name": "scrum-half",
+                  "displayName": "scrum-half",
+                  "abbreviation": "SH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "5",
+                "name": "scrum-half",
+                "displayName": "scrum-half",
+                "abbreviation": "SH"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "1",
+              "athlete": {
+                "id": "300796",
+                "uid": "s:300~a:300796",
+                "guid": "5cb01af1-a725-3440-b4ed-8ca977518281",
+                "lastName": "Brewis",
+                "fullName": "Finlay Brewis",
+                "displayName": "Finlay Brewis",
+                "shortName": "F. Brewis",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "6",
+                "name": "prop",
+                "displayName": "prop",
+                "abbreviation": "P"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "2",
+              "athlete": {
+                "id": "142048",
+                "uid": "s:300~a:142048",
+                "guid": "b57ee133-0e33-36db-8eac-766d077a7516",
+                "lastName": "Taylor",
+                "fullName": "Codie Taylor",
+                "displayName": "Codie Taylor",
+                "shortName": "C. Taylor",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/7?lang=en&region=us",
+                  "id": "7",
+                  "name": "hooker",
+                  "displayName": "hooker",
+                  "abbreviation": "H",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "7",
+                "name": "hooker",
+                "displayName": "hooker",
+                "abbreviation": "H"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "3",
+              "athlete": {
+                "id": "299026",
+                "uid": "s:300~a:299026",
+                "guid": "b6e07711-dc6c-3ecd-a530-5c51bf89e963",
+                "lastName": "Newell",
+                "fullName": "Fletcher Newell",
+                "displayName": "Fletcher Newell",
+                "shortName": "F. Newell",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "6",
+                "name": "prop",
+                "displayName": "prop",
+                "abbreviation": "P"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "4",
+              "athlete": {
+                "id": "296760",
+                "uid": "s:300~a:296760",
+                "guid": "a897ef95-b80f-32ab-8783-e429fc3066ce",
+                "lastName": "Shalfoon",
+                "fullName": "Antonio Shalfoon",
+                "displayName": "Antonio Shalfoon",
+                "shortName": "A. Shalfoon",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "8",
+                "name": "lock",
+                "displayName": "lock",
+                "abbreviation": "L"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "5",
+              "athlete": {
+                "id": "304431",
+                "uid": "s:300~a:304431",
+                "guid": "bb50e87d-d575-3d96-abfa-e49d34877680",
+                "lastName": "Hannah",
+                "fullName": "Jamie Hannah",
+                "displayName": "Jamie Hannah",
+                "shortName": "J. Hannah",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "8",
+                "name": "lock",
+                "displayName": "lock",
+                "abbreviation": "L"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "6",
+              "athlete": {
+                "id": "291316",
+                "uid": "s:300~a:291316",
+                "guid": "25a3dadb-cbc7-311c-8637-b8adeb1ab879",
+                "lastName": "Blackadder",
+                "fullName": "Ethan Blackadder",
+                "displayName": "Ethan Blackadder",
+                "shortName": "E. Blackadder",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "9",
+                "name": "flanker",
+                "displayName": "Flanker",
+                "abbreviation": "FL"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "7",
+              "athlete": {
+                "id": "295066",
+                "uid": "s:300~a:295066",
+                "guid": "59dedea0-09df-36a6-b82d-ab308027755e",
+                "lastName": "Fainga'anuku",
+                "fullName": "Leicester Fainga'anuku",
+                "displayName": "Leicester Fainga'anuku",
+                "shortName": "L. Fainga'anuku",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/2?lang=en&region=us",
+                  "id": "2",
+                  "name": "wing",
+                  "displayName": "wing",
+                  "abbreviation": "W",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/32?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "9",
+                "name": "flanker",
+                "displayName": "Flanker",
+                "abbreviation": "FL"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "8",
+              "athlete": {
+                "id": "300770",
+                "uid": "s:300~a:300770",
+                "guid": "45735356-1269-3d1e-b9ea-e003feec523b",
+                "lastName": "Lio-Willie",
+                "fullName": "Christian Lio-Willie",
+                "displayName": "Christian Lio-Willie",
+                "shortName": "C. Lio-Willie",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "10",
+                "name": "no. 8",
+                "displayName": "no. 8",
+                "abbreviation": "N8"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "16",
+              "athlete": {
+                "id": "307721",
+                "uid": "s:300~a:307721",
+                "guid": "051d65b9-e7b6-36a3-8179-81459d90c8f9",
+                "lastName": "Letiu",
+                "fullName": "Manumaua Letiu",
+                "displayName": "Manumaua Letiu",
+                "shortName": "M. Letiu",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/7?lang=en&region=us",
+                  "id": "7",
+                  "name": "hooker",
+                  "displayName": "hooker",
+                  "abbreviation": "H",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "17",
+              "athlete": {
+                "id": "305346",
+                "uid": "s:300~a:305346",
+                "guid": "319a7c27-10f4-3959-b714-23eea045f262",
+                "lastName": "Sexton",
+                "fullName": "Jack Sexton",
+                "displayName": "Jack Sexton",
+                "shortName": "J. Sexton",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "18",
+              "athlete": {
+                "id": "240437",
+                "uid": "s:300~a:240437",
+                "guid": "4c3c5a51-75fc-36fa-a81f-545b5d123e45",
+                "lastName": "Bower",
+                "fullName": "George Bower",
+                "displayName": "George Bower",
+                "shortName": "G. Bower",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/6?lang=en&region=us",
+                  "id": "6",
+                  "name": "prop",
+                  "displayName": "prop",
+                  "abbreviation": "P",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "19",
+              "athlete": {
+                "id": "304563",
+                "uid": "s:300~a:304563",
+                "guid": "1b6b5125-7430-3d9a-a50f-ce32d08117c2",
+                "lastName": "Cahill",
+                "fullName": "Tahlor Cahill",
+                "displayName": "Tahlor Cahill",
+                "shortName": "T. Cahill",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/8?lang=en&region=us",
+                  "id": "8",
+                  "name": "lock",
+                  "displayName": "lock",
+                  "abbreviation": "L",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/48?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "20",
+              "athlete": {
+                "id": "300799",
+                "uid": "s:300~a:300799",
+                "guid": "52bc77ed-3179-3a1a-82bb-6ae4a72b7e9b",
+                "lastName": "Gardiner",
+                "fullName": "Dominic Gardiner",
+                "displayName": "Dominic Gardiner",
+                "shortName": "D. Gardiner",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/9?lang=en&region=us",
+                  "id": "9",
+                  "name": "flanker",
+                  "displayName": "Flanker",
+                  "abbreviation": "FL",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/49?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "21",
+              "athlete": {
+                "id": "306302",
+                "uid": "s:300~a:306302",
+                "guid": "12e2fbff-ab62-355d-841e-28f18e5d0dac",
+                "lastName": "Preston",
+                "fullName": "Kyle Preston",
+                "displayName": "Kyle Preston",
+                "shortName": "K. Preston",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/5?lang=en&region=us",
+                  "id": "5",
+                  "name": "scrum-half",
+                  "displayName": "scrum-half",
+                  "abbreviation": "SH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "22",
+              "athlete": {
+                "id": "296758",
+                "uid": "s:300~a:296758",
+                "guid": "2a9bf46a-f8a5-35b4-8147-24270a235bd1",
+                "lastName": "Reihana",
+                "fullName": "Rivez Reihana",
+                "displayName": "Rivez Reihana",
+                "shortName": "R. Reihana",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/4?lang=en&region=us",
+                  "id": "4",
+                  "name": "fly-half",
+                  "displayName": "fly-half",
+                  "abbreviation": "FH",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/50?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            },
+            {
+              "active": false,
+              "starter": false,
+              "jersey": "23",
+              "athlete": {
+                "id": "300905",
+                "uid": "s:300~a:300905",
+                "guid": "da844c76-6502-31f9-9e8f-66b9be918810",
+                "lastName": "Springer",
+                "fullName": "Macca Springer",
+                "displayName": "Macca Springer",
+                "shortName": "M. Springer",
+                "position": {
+                  "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/1?lang=en&region=us",
+                  "id": "1",
+                  "name": "fullback",
+                  "displayName": "Fullback",
+                  "abbreviation": "FB",
+                  "leaf": true,
+                  "parent": {
+                    "$ref": "http://sports.core.api.espn.pvt/v2/sports/rugby/positions/47?lang=en&region=us"
+                  }
+                },
+                "links": []
+              },
+              "position": {
+                "id": "20",
+                "name": "replacement",
+                "displayName": "replacement",
+                "abbreviation": "R"
+              },
+              "captain": false,
+              "subbedIn": false,
+              "subbedOut": false,
+              "media": {}
+            }
+          ]
+        }
+      ],
+      "gameInfo": {
+        "attendance": 0
+      },
+      "lastFiveGames": [
+        {
+          "team": {
+            "id": "25934",
+            "abbreviation": "CHI"
+          },
+          "events": [
+            {
+              "gameResult": "L",
+              "gameDate": "2026-06-20T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-06-12T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-06-06T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-30T07:05Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-05-22T07:05Z"
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": "25936",
+            "abbreviation": "CRU"
+          },
+          "events": [
+            {
+              "gameResult": "L",
+              "gameDate": "2026-06-12T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-06-06T04:35Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-29T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-22T07:05Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-05-08T07:05Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "603212",
+    "live": false,
+    "teamStats": [],
+    "boxGroups": [],
+    "scoringPlays": [],
+    "lineups": [
+      {
+        "side": "home",
+        "abbr": "CHI",
+        "starters": [],
+        "bench": [
+          {
+            "name": "I. Hutchinson",
+            "pos": "FB",
+            "jersey": "15"
+          },
+          {
+            "name": "L. Coombes-Fabling",
+            "pos": "W",
+            "jersey": "14"
+          },
+          {
+            "name": "L. Foketi",
+            "pos": "C",
+            "jersey": "13"
+          },
+          {
+            "name": "Q. Tupaea",
+            "pos": "C",
+            "jersey": "12"
+          },
+          {
+            "name": "K. Taumoefolau",
+            "pos": "W",
+            "jersey": "11"
+          },
+          {
+            "name": "D. McKenzie",
+            "pos": "FH",
+            "jersey": "10"
+          },
+          {
+            "name": "C. Ratima",
+            "pos": "SH",
+            "jersey": "9"
+          },
+          {
+            "name": "O. Norris",
+            "pos": "P",
+            "jersey": "1"
+          },
+          {
+            "name": "S. Taukei'aho",
+            "pos": "H",
+            "jersey": "2"
+          },
+          {
+            "name": "S. Ahio",
+            "pos": "P",
+            "jersey": "3"
+          },
+          {
+            "name": "J. Lord",
+            "pos": "L",
+            "jersey": "4"
+          },
+          {
+            "name": "T. Vaa'i",
+            "pos": "L",
+            "jersey": "5"
+          },
+          {
+            "name": "S. Finau",
+            "pos": "FL",
+            "jersey": "6"
+          },
+          {
+            "name": "L. Jacobson",
+            "pos": "FL",
+            "jersey": "7"
+          },
+          {
+            "name": "S. Parker",
+            "pos": "N8",
+            "jersey": "8"
+          },
+          {
+            "name": "B. McAlister",
+            "pos": "R",
+            "jersey": "16"
+          },
+          {
+            "name": "J. Proffit",
+            "pos": "R",
+            "jersey": "17"
+          },
+          {
+            "name": "G. Dyer",
+            "pos": "R",
+            "jersey": "18"
+          },
+          {
+            "name": "S. Ah Kuoi",
+            "pos": "R",
+            "jersey": "19"
+          },
+          {
+            "name": "K. Boshier",
+            "pos": "R",
+            "jersey": "20"
+          },
+          {
+            "name": "X. Roe",
+            "pos": "R",
+            "jersey": "21"
+          },
+          {
+            "name": "J. Jacomb",
+            "pos": "R",
+            "jersey": "22"
+          },
+          {
+            "name": "L. Carter",
+            "pos": "R",
+            "jersey": "23"
+          }
+        ]
+      },
+      {
+        "side": "away",
+        "abbr": "CRU",
+        "starters": [],
+        "bench": [
+          {
+            "name": "J. McNicholl",
+            "pos": "FB",
+            "jersey": "15"
+          },
+          {
+            "name": "C. Fihaki",
+            "pos": "W",
+            "jersey": "14"
+          },
+          {
+            "name": "B. Ennor",
+            "pos": "C",
+            "jersey": "13"
+          },
+          {
+            "name": "D. Havili",
+            "pos": "C",
+            "jersey": "12"
+          },
+          {
+            "name": "S. Reece",
+            "pos": "W",
+            "jersey": "11"
+          },
+          {
+            "name": "T. Kemara",
+            "pos": "FH",
+            "jersey": "10"
+          },
+          {
+            "name": "N. Hotham",
+            "pos": "SH",
+            "jersey": "9"
+          },
+          {
+            "name": "F. Brewis",
+            "pos": "P",
+            "jersey": "1"
+          },
+          {
+            "name": "C. Taylor",
+            "pos": "H",
+            "jersey": "2"
+          },
+          {
+            "name": "F. Newell",
+            "pos": "P",
+            "jersey": "3"
+          },
+          {
+            "name": "A. Shalfoon",
+            "pos": "L",
+            "jersey": "4"
+          },
+          {
+            "name": "J. Hannah",
+            "pos": "L",
+            "jersey": "5"
+          },
+          {
+            "name": "E. Blackadder",
+            "pos": "FL",
+            "jersey": "6"
+          },
+          {
+            "name": "L. Fainga'anuku",
+            "pos": "FL",
+            "jersey": "7"
+          },
+          {
+            "name": "C. Lio-Willie",
+            "pos": "N8",
+            "jersey": "8"
+          },
+          {
+            "name": "M. Letiu",
+            "pos": "R",
+            "jersey": "16"
+          },
+          {
+            "name": "J. Sexton",
+            "pos": "R",
+            "jersey": "17"
+          },
+          {
+            "name": "G. Bower",
+            "pos": "R",
+            "jersey": "18"
+          },
+          {
+            "name": "T. Cahill",
+            "pos": "R",
+            "jersey": "19"
+          },
+          {
+            "name": "D. Gardiner",
+            "pos": "R",
+            "jersey": "20"
+          },
+          {
+            "name": "K. Preston",
+            "pos": "R",
+            "jersey": "21"
+          },
+          {
+            "name": "R. Reihana",
+            "pos": "R",
+            "jersey": "22"
+          },
+          {
+            "name": "M. Springer",
+            "pos": "R",
+            "jersey": "23"
+          }
+        ]
+      }
+    ],
+    "periodLines": {
+      "unit": "half",
+      "labels": [
+        "1",
+        "2",
+        "OT",
+        "2OT"
+      ],
+      "away": {
+        "abbr": "CRU",
+        "values": [
+          "0",
+          "12",
+          "0",
+          "0"
+        ],
+        "total": "12"
+      },
+      "home": {
+        "abbr": "CHI",
+        "values": [
+          "0",
+          "49",
+          "0",
+          "0"
+        ],
+        "total": "49"
+      }
+    },
+    "recentForm": [
+      {
+        "side": "home",
+        "abbr": "CHI",
+        "form": "LWWWL"
+      },
+      {
+        "side": "away",
+        "abbr": "CRU",
+        "form": "WWWWL"
+      }
+    ]
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "basketball/nbl",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "1",
+                    "displayName": "Adelaide 36ers",
+                    "name": "36ers",
+                    "shortDisplayName": "36ers",
+                    "abbreviation": "ADL",
+                    "color": "ed302e",
+                    "alternateColor": "25387c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/adl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/adl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2",
+                    "displayName": "Brisbane Bullets",
+                    "name": "Bullets",
+                    "shortDisplayName": "Bullets",
+                    "abbreviation": "BRI",
+                    "color": "1f4fa2",
+                    "alternateColor": "f9b71a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/bri.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/bri.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "3",
+                    "displayName": "Cairns Taipans",
+                    "name": "Taipans",
+                    "shortDisplayName": "Taipans",
+                    "abbreviation": "CNS",
+                    "color": "f69138",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/cns.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/cns.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "4",
+                    "displayName": "Illawarra Hawks",
+                    "name": "Hawks",
+                    "shortDisplayName": "Hawks",
+                    "abbreviation": "HWK",
+                    "color": "ce202f",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/hwk.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/hwk.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "5",
+                    "displayName": "Melbourne United",
+                    "name": "United",
+                    "shortDisplayName": "United",
+                    "abbreviation": "MEL",
+                    "color": "4370b7",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/mel.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/mel.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "6",
+                    "displayName": "New Zealand Breakers",
+                    "name": "Breakers",
+                    "shortDisplayName": "Breakers",
+                    "abbreviation": "NZL",
+                    "color": "e33c95",
+                    "alternateColor": "33aee3",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/nzl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/nzl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "7",
+                    "displayName": "Perth Wildcats",
+                    "name": "Wildcats",
+                    "shortDisplayName": "Wildcats",
+                    "abbreviation": "PER",
+                    "color": "ec1c23",
+                    "alternateColor": "f1f2f3",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/per.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/per.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "8",
+                    "displayName": "South East Melbourne Phoenix",
+                    "name": "Phoenix",
+                    "shortDisplayName": "Phoenix",
+                    "abbreviation": "PNX",
+                    "color": "69bf29",
+                    "alternateColor": "f1f2f3",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/pnx.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/pnx.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "9",
+                    "displayName": "Sydney Kings",
+                    "name": "Kings",
+                    "shortDisplayName": "Kings",
+                    "abbreviation": "SYD",
+                    "color": "552583",
+                    "alternateColor": "FDB927",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/syd.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/syd.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "10",
+                    "displayName": "Tasmania JackJumpers",
+                    "name": "JackJumpers",
+                    "shortDisplayName": "JackJumpers",
+                    "abbreviation": "TAS",
+                    "color": "008b45",
+                    "alternateColor": "faaf3c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500/tas.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/tas.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "1",
+      "displayName": "Adelaide 36ers",
+      "abbreviation": "ADL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/adl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/adl.png",
+      "color": "ed302e"
+    },
+    {
+      "id": "2",
+      "displayName": "Brisbane Bullets",
+      "abbreviation": "BRI",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/bri.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/bri.png",
+      "color": "1f4fa2"
+    },
+    {
+      "id": "3",
+      "displayName": "Cairns Taipans",
+      "abbreviation": "CNS",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/cns.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/cns.png",
+      "color": "f69138"
+    },
+    {
+      "id": "4",
+      "displayName": "Illawarra Hawks",
+      "abbreviation": "HWK",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/hwk.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/hwk.png",
+      "color": "ce202f"
+    },
+    {
+      "id": "5",
+      "displayName": "Melbourne United",
+      "abbreviation": "MEL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/mel.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/mel.png",
+      "color": "4370b7"
+    },
+    {
+      "id": "6",
+      "displayName": "New Zealand Breakers",
+      "abbreviation": "NZL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/nzl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/nzl.png",
+      "color": "e33c95"
+    },
+    {
+      "id": "7",
+      "displayName": "Perth Wildcats",
+      "abbreviation": "PER",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/per.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/per.png",
+      "color": "ec1c23"
+    },
+    {
+      "id": "8",
+      "displayName": "South East Melbourne Phoenix",
+      "abbreviation": "PNX",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/pnx.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/pnx.png",
+      "color": "69bf29"
+    },
+    {
+      "id": "9",
+      "displayName": "Sydney Kings",
+      "abbreviation": "SYD",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/syd.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/syd.png",
+      "color": "552583"
+    },
+    {
+      "id": "10",
+      "displayName": "Tasmania JackJumpers",
+      "abbreviation": "TAS",
+      "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/tas.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nbl/500-dark/tas.png",
+      "color": "008b45"
+    }
+  ]
+}

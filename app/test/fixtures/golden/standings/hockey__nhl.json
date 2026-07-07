@@ -1,0 +1,4840 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "hockey/nhl",
+    "raw": {
+      "name": "National Hockey League",
+      "abbreviation": "NHL",
+      "children": [
+        {
+          "name": "Eastern Conference",
+          "abbreviation": "East",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "7",
+                  "displayName": "Carolina Hurricanes",
+                  "name": "Hurricanes",
+                  "abbreviation": "CAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/car.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/car.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "z",
+                    "value": 4
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.7",
+                    "value": 0.7000000000000002
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+56",
+                    "value": 56
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "113",
+                    "value": 113
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "240",
+                    "value": 240
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "296",
+                    "value": 296
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "53",
+                    "value": 53
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+56",
+                    "value": 56
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2",
+                  "displayName": "Buffalo Sabres",
+                  "name": "Sabres",
+                  "abbreviation": "BUF",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/buf.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/buf.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 3
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.6",
+                    "value": 0.6000000000000001
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "23",
+                    "value": 23
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+47",
+                    "value": 47
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "109",
+                    "value": 109
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "241",
+                    "value": 241
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "288",
+                    "value": 288
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+47",
+                    "value": 47
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "20",
+                  "displayName": "Tampa Bay Lightning",
+                  "name": "Lightning",
+                  "abbreviation": "TB",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/tb.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/tb.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.7",
+                    "value": 0.7000000000000002
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+59",
+                    "value": 59
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "106",
+                    "value": 106
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "231",
+                    "value": 231
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "290",
+                    "value": 290
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+59",
+                    "value": 59
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "10",
+                  "displayName": "Montreal Canadiens",
+                  "name": "Canadiens",
+                  "abbreviation": "MTL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/mtl.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.4",
+                    "value": 0.3999999999999999
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "24",
+                    "value": 24
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+27",
+                    "value": 27
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "106",
+                    "value": 106
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "256",
+                    "value": 256
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "283",
+                    "value": 283
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "48",
+                    "value": 48
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+27",
+                    "value": 27
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1",
+                  "displayName": "Boston Bruins",
+                  "name": "Bruins",
+                  "abbreviation": "BOS",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/bos.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/bos.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.3",
+                    "value": 0.2999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+22",
+                    "value": 22
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "100",
+                    "value": 100
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "250",
+                    "value": 250
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "272",
+                    "value": 272
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+22",
+                    "value": 22
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "14",
+                  "displayName": "Ottawa Senators",
+                  "name": "Senators",
+                  "abbreviation": "OTT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/ott.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/ott.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.4",
+                    "value": 0.3999999999999999
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+32",
+                    "value": 32
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "99",
+                    "value": 99
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "246",
+                    "value": 246
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "278",
+                    "value": 278
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+32",
+                    "value": 32
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "16",
+                  "displayName": "Pittsburgh Penguins",
+                  "name": "Penguins",
+                  "abbreviation": "PIT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/pit.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/pit.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.3",
+                    "value": 0.30000000000000027
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "25",
+                    "value": 25
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+25",
+                    "value": 25
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "98",
+                    "value": 98
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "268",
+                    "value": 268
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "293",
+                    "value": 293
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+25",
+                    "value": 25
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "15",
+                  "displayName": "Philadelphia Flyers",
+                  "name": "Flyers",
+                  "abbreviation": "PHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/phi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/phi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+7",
+                    "value": 7
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "98",
+                    "value": 98
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "243",
+                    "value": 243
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "250",
+                    "value": 250
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+7",
+                    "value": 7
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "23",
+                  "displayName": "Washington Capitals",
+                  "name": "Capitals",
+                  "abbreviation": "WSH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/wsh.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.2",
+                    "value": 0.20000000000000018
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "30",
+                    "value": 30
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+19",
+                    "value": 19
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "95",
+                    "value": 95
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "244",
+                    "value": 244
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "263",
+                    "value": 263
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+19",
+                    "value": 19
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "5",
+                  "displayName": "Detroit Red Wings",
+                  "name": "Red Wings",
+                  "abbreviation": "DET",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/det.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/det.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.2",
+                    "value": -0.20000000000000018
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "31",
+                    "value": 31
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-17",
+                    "value": -17
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "258",
+                    "value": 258
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "241",
+                    "value": 241
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-17",
+                    "value": -17
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "29",
+                  "displayName": "Columbus Blue Jackets",
+                  "name": "Blue Jackets",
+                  "abbreviation": "CBJ",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/cbj.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "30",
+                    "value": 30
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "253",
+                    "value": 253
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "253",
+                    "value": 253
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "40",
+                    "value": 40
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "0",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "12",
+                  "displayName": "New York Islanders",
+                  "name": "Islanders",
+                  "abbreviation": "NYI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nyi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.1",
+                    "value": -0.10000000000000009
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-8",
+                    "value": -8
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "241",
+                    "value": 241
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "233",
+                    "value": 233
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-8",
+                    "value": -8
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "11",
+                  "displayName": "New Jersey Devils",
+                  "name": "Devils",
+                  "abbreviation": "NJ",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/nj.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nj.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.30000000000000027
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "37",
+                    "value": 37
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-24",
+                    "value": -24
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "87",
+                    "value": 87
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "254",
+                    "value": 254
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "230",
+                    "value": 230
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-24",
+                    "value": -24
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "26",
+                  "displayName": "Florida Panthers",
+                  "name": "Panthers",
+                  "abbreviation": "FLA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/fla.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/fla.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.2999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-25",
+                    "value": -25
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "84",
+                    "value": 84
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "276",
+                    "value": 276
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "251",
+                    "value": 251
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "40",
+                    "value": 40
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-25",
+                    "value": -25
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "21",
+                  "displayName": "Toronto Maple Leafs",
+                  "name": "Maple Leafs",
+                  "abbreviation": "TOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/tor.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/tor.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "36",
+                    "value": 36
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-46",
+                    "value": -46
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "78",
+                    "value": 78
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "299",
+                    "value": 299
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "253",
+                    "value": 253
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L7",
+                    "value": -7
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "32",
+                    "value": 32
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-46",
+                    "value": -46
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "13",
+                  "displayName": "New York Rangers",
+                  "name": "Rangers",
+                  "abbreviation": "NYR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nyr.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.1",
+                    "value": -0.10000000000000009
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "36",
+                    "value": 36
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-12",
+                    "value": -12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "77",
+                    "value": 77
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "250",
+                    "value": 250
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "238",
+                    "value": 238
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-12",
+                    "value": -12
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Western Conference",
+          "abbreviation": "West",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "37",
+                  "displayName": "Vegas Golden Knights",
+                  "name": "Golden Knights",
+                  "abbreviation": "VGK",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/vgk.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "y",
+                    "value": 3
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.2",
+                    "value": 0.20000000000000018
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+15",
+                    "value": 15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "95",
+                    "value": 95
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "250",
+                    "value": 250
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "265",
+                    "value": 265
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+15",
+                    "value": 15
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "9",
+                  "displayName": "Dallas Stars",
+                  "name": "Stars",
+                  "abbreviation": "DAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/dal.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/dal.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.6",
+                    "value": 0.6000000000000001
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+53",
+                    "value": 53
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "112",
+                    "value": 112
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "226",
+                    "value": 226
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "279",
+                    "value": 279
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W5",
+                    "value": 5
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+53",
+                    "value": 53
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "30",
+                  "displayName": "Minnesota Wild",
+                  "name": "Wild",
+                  "abbreviation": "MIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/min.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/min.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.4",
+                    "value": 0.3999999999999999
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "24",
+                    "value": 24
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+32",
+                    "value": 32
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "104",
+                    "value": 104
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "240",
+                    "value": 240
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "272",
+                    "value": 272
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+32",
+                    "value": 32
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "6",
+                  "displayName": "Edmonton Oilers",
+                  "name": "Oilers",
+                  "abbreviation": "EDM",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/edm.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/edm.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.1",
+                    "value": 0.10000000000000009
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "28",
+                    "value": 28
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "30",
+                    "value": 30
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+13",
+                    "value": 13
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "93",
+                    "value": 93
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "269",
+                    "value": 269
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "282",
+                    "value": 282
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+13",
+                    "value": 13
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "129764",
+                  "displayName": "Utah Mammoth",
+                  "name": "Mammoth",
+                  "abbreviation": "UTA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/uta.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/uta.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.4",
+                    "value": 0.3999999999999999
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+28",
+                    "value": 28
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "240",
+                    "value": 240
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "268",
+                    "value": 268
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+28",
+                    "value": 28
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "25",
+                  "displayName": "Anaheim Ducks",
+                  "name": "Ducks",
+                  "abbreviation": "ANA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/ana.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/ana.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.2",
+                    "value": -0.20000000000000018
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-15",
+                    "value": -15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "288",
+                    "value": 288
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "273",
+                    "value": 273
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-15",
+                    "value": -15
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "8",
+                  "displayName": "Los Angeles Kings",
+                  "name": "Kings",
+                  "abbreviation": "LA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/la.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/la.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "x",
+                    "value": 2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.2999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "31",
+                    "value": 31
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-22",
+                    "value": -22
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "90",
+                    "value": 90
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "247",
+                    "value": 247
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "225",
+                    "value": 225
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-22",
+                    "value": -22
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "19",
+                  "displayName": "St. Louis Blues",
+                  "name": "Blues",
+                  "abbreviation": "STL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/stl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/stl.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.30000000000000027
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-27",
+                    "value": -27
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "86",
+                    "value": 86
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "258",
+                    "value": 258
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "231",
+                    "value": 231
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "37",
+                    "value": 37
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-27",
+                    "value": -27
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "27",
+                  "displayName": "Nashville Predators",
+                  "name": "Predators",
+                  "abbreviation": "NSH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nsh.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.2999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-22",
+                    "value": -22
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "86",
+                    "value": 86
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "269",
+                    "value": 269
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "247",
+                    "value": 247
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-22",
+                    "value": -22
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "18",
+                  "displayName": "San Jose Sharks",
+                  "name": "Sharks",
+                  "abbreviation": "SJ",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/sj.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/sj.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-41",
+                    "value": -41
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "86",
+                    "value": 86
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "292",
+                    "value": 292
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "251",
+                    "value": 251
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-41",
+                    "value": -41
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "28",
+                  "displayName": "Winnipeg Jets",
+                  "name": "Jets",
+                  "abbreviation": "WPG",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/wpg.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.4",
+                    "value": -0.40000000000000036
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-29",
+                    "value": -29
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "260",
+                    "value": 260
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "231",
+                    "value": 231
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L4",
+                    "value": -4
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-29",
+                    "value": -29
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "124292",
+                  "displayName": "Seattle Kraken",
+                  "name": "Kraken",
+                  "abbreviation": "SEA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/sea.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/sea.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.4",
+                    "value": -0.40000000000000036
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "37",
+                    "value": 37
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-37",
+                    "value": -37
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "79",
+                    "value": 79
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "263",
+                    "value": 263
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "226",
+                    "value": 226
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-37",
+                    "value": -37
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3",
+                  "displayName": "Calgary Flames",
+                  "name": "Flames",
+                  "abbreviation": "CGY",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/cgy.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.6",
+                    "value": -0.6000000000000001
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "44",
+                    "value": 44
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-47",
+                    "value": -47
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "77",
+                    "value": 77
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "259",
+                    "value": 259
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "212",
+                    "value": 212
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-47",
+                    "value": -47
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "4",
+                  "displayName": "Chicago Blackhawks",
+                  "name": "Blackhawks",
+                  "abbreviation": "CHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/chi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/chi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.8",
+                    "value": -0.7999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "39",
+                    "value": 39
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-62",
+                    "value": -62
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "72",
+                    "value": 72
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "275",
+                    "value": 275
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "213",
+                    "value": 213
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-62",
+                    "value": -62
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "22",
+                  "displayName": "Vancouver Canucks",
+                  "name": "Canucks",
+                  "abbreviation": "VAN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/van.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/van.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "e",
+                    "value": 5
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-1.3",
+                    "value": -1.2999999999999998
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "63",
+                    "value": 63
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-100",
+                    "value": -100
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "58",
+                    "value": 58
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "316",
+                    "value": 316
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "216",
+                    "value": 216
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "25",
+                    "value": 25
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "-100",
+                    "value": -100
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "17",
+                  "displayName": "Colorado Avalanche",
+                  "name": "Avalanche",
+                  "abbreviation": "COL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500/col.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/col.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "otLosses",
+                    "type": "otlosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "clincher",
+                    "type": "clincher",
+                    "displayValue": "*",
+                    "value": 6
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+1.2",
+                    "value": 1.2000000000000002
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "82",
+                    "value": 82
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+99",
+                    "value": 99
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "121",
+                    "value": 121
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "203",
+                    "value": 203
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "302",
+                    "value": 302
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "55",
+                    "value": 55
+                  },
+                  {
+                    "name": "overtimeLosses",
+                    "type": "overtimelosses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "overtimeWins",
+                    "type": "overtimewins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsDiff",
+                    "type": "pointsdiff",
+                    "displayValue": "+99",
+                    "value": 99
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "Eastern Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "7",
+            "name": "Carolina Hurricanes",
+            "abbr": "CAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/car.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/car.png"
+          },
+          "stats": {
+            "otLosses": "7",
+            "clincher": "z",
+            "differential": "+0.7",
+            "gamesBehind": "-",
+            "gamesPlayed": "82",
+            "losses": "22",
+            "playoffSeed": "1",
+            "pointDifferential": "+56",
+            "points": "113",
+            "pointsAgainst": "240",
+            "pointsFor": "296",
+            "streak": "W1",
+            "wins": "53",
+            "overtimeLosses": "7",
+            "overtimeWins": "14",
+            "pointsDiff": "+56"
+          }
+        },
+        {
+          "team": {
+            "id": "2",
+            "name": "Buffalo Sabres",
+            "abbr": "BUF",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/buf.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/buf.png"
+          },
+          "stats": {
+            "otLosses": "9",
+            "clincher": "y",
+            "differential": "+0.6",
+            "gamesBehind": "4",
+            "gamesPlayed": "82",
+            "losses": "23",
+            "playoffSeed": "2",
+            "pointDifferential": "+47",
+            "points": "109",
+            "pointsAgainst": "241",
+            "pointsFor": "288",
+            "streak": "L1",
+            "wins": "50",
+            "overtimeLosses": "9",
+            "overtimeWins": "8",
+            "pointsDiff": "+47"
+          }
+        },
+        {
+          "team": {
+            "id": "20",
+            "name": "Tampa Bay Lightning",
+            "abbr": "TB",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/tb.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/tb.png"
+          },
+          "stats": {
+            "otLosses": "6",
+            "clincher": "x",
+            "differential": "+0.7",
+            "gamesBehind": "7",
+            "gamesPlayed": "82",
+            "losses": "26",
+            "playoffSeed": "3",
+            "pointDifferential": "+59",
+            "points": "106",
+            "pointsAgainst": "231",
+            "pointsFor": "290",
+            "streak": "L1",
+            "wins": "50",
+            "overtimeLosses": "6",
+            "overtimeWins": "10",
+            "pointsDiff": "+59"
+          }
+        },
+        {
+          "team": {
+            "id": "10",
+            "name": "Montreal Canadiens",
+            "abbr": "MTL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/mtl.png"
+          },
+          "stats": {
+            "otLosses": "10",
+            "clincher": "x",
+            "differential": "+0.4",
+            "gamesBehind": "7",
+            "gamesPlayed": "82",
+            "losses": "24",
+            "playoffSeed": "4",
+            "pointDifferential": "+27",
+            "points": "106",
+            "pointsAgainst": "256",
+            "pointsFor": "283",
+            "streak": "L1",
+            "wins": "48",
+            "overtimeLosses": "10",
+            "overtimeWins": "14",
+            "pointsDiff": "+27"
+          }
+        },
+        {
+          "team": {
+            "id": "1",
+            "name": "Boston Bruins",
+            "abbr": "BOS",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/bos.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/bos.png"
+          },
+          "stats": {
+            "otLosses": "10",
+            "clincher": "x",
+            "differential": "+0.3",
+            "gamesBehind": "13",
+            "gamesPlayed": "82",
+            "losses": "27",
+            "playoffSeed": "5",
+            "pointDifferential": "+22",
+            "points": "100",
+            "pointsAgainst": "250",
+            "pointsFor": "272",
+            "streak": "W2",
+            "wins": "45",
+            "overtimeLosses": "10",
+            "overtimeWins": "12",
+            "pointsDiff": "+22"
+          }
+        },
+        {
+          "team": {
+            "id": "14",
+            "name": "Ottawa Senators",
+            "abbr": "OTT",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/ott.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/ott.png"
+          },
+          "stats": {
+            "otLosses": "11",
+            "clincher": "x",
+            "differential": "+0.4",
+            "gamesBehind": "14",
+            "gamesPlayed": "82",
+            "losses": "27",
+            "playoffSeed": "6",
+            "pointDifferential": "+32",
+            "points": "99",
+            "pointsAgainst": "246",
+            "pointsFor": "278",
+            "streak": "W1",
+            "wins": "44",
+            "overtimeLosses": "11",
+            "overtimeWins": "6",
+            "pointsDiff": "+32"
+          }
+        },
+        {
+          "team": {
+            "id": "16",
+            "name": "Pittsburgh Penguins",
+            "abbr": "PIT",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/pit.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/pit.png"
+          },
+          "stats": {
+            "otLosses": "16",
+            "clincher": "x",
+            "differential": "+0.3",
+            "gamesBehind": "15",
+            "gamesPlayed": "82",
+            "losses": "25",
+            "playoffSeed": "7",
+            "pointDifferential": "+25",
+            "points": "98",
+            "pointsAgainst": "268",
+            "pointsFor": "293",
+            "streak": "L3",
+            "wins": "41",
+            "overtimeLosses": "16",
+            "overtimeWins": "7",
+            "pointsDiff": "+25"
+          }
+        },
+        {
+          "team": {
+            "id": "15",
+            "name": "Philadelphia Flyers",
+            "abbr": "PHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/phi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/phi.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "x",
+            "differential": "0.0",
+            "gamesBehind": "15",
+            "gamesPlayed": "82",
+            "losses": "27",
+            "playoffSeed": "8",
+            "pointDifferential": "+7",
+            "points": "98",
+            "pointsAgainst": "243",
+            "pointsFor": "250",
+            "streak": "W3",
+            "wins": "43",
+            "overtimeLosses": "12",
+            "overtimeWins": "16",
+            "pointsDiff": "+7"
+          }
+        },
+        {
+          "team": {
+            "id": "23",
+            "name": "Washington Capitals",
+            "abbr": "WSH",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/wsh.png"
+          },
+          "stats": {
+            "otLosses": "9",
+            "clincher": "e",
+            "differential": "+0.2",
+            "gamesBehind": "18",
+            "gamesPlayed": "82",
+            "losses": "30",
+            "playoffSeed": "9",
+            "pointDifferential": "+19",
+            "points": "95",
+            "pointsAgainst": "244",
+            "pointsFor": "263",
+            "streak": "W4",
+            "wins": "43",
+            "overtimeLosses": "9",
+            "overtimeWins": "6",
+            "pointsDiff": "+19"
+          }
+        },
+        {
+          "team": {
+            "id": "5",
+            "name": "Detroit Red Wings",
+            "abbr": "DET",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/det.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/det.png"
+          },
+          "stats": {
+            "otLosses": "10",
+            "clincher": "e",
+            "differential": "-0.2",
+            "gamesBehind": "21",
+            "gamesPlayed": "82",
+            "losses": "31",
+            "playoffSeed": "10",
+            "pointDifferential": "-17",
+            "points": "92",
+            "pointsAgainst": "258",
+            "pointsFor": "241",
+            "streak": "L3",
+            "wins": "41",
+            "overtimeLosses": "10",
+            "overtimeWins": "11",
+            "pointsDiff": "-17"
+          }
+        },
+        {
+          "team": {
+            "id": "29",
+            "name": "Columbus Blue Jackets",
+            "abbr": "CBJ",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/cbj.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "e",
+            "differential": "0.0",
+            "gamesBehind": "21",
+            "gamesPlayed": "82",
+            "losses": "30",
+            "playoffSeed": "11",
+            "pointDifferential": "0",
+            "points": "92",
+            "pointsAgainst": "253",
+            "pointsFor": "253",
+            "streak": "L2",
+            "wins": "40",
+            "overtimeLosses": "12",
+            "overtimeWins": "12",
+            "pointsDiff": "0"
+          }
+        },
+        {
+          "team": {
+            "id": "12",
+            "name": "New York Islanders",
+            "abbr": "NYI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nyi.png"
+          },
+          "stats": {
+            "otLosses": "5",
+            "clincher": "e",
+            "differential": "-0.1",
+            "gamesBehind": "22",
+            "gamesPlayed": "82",
+            "losses": "34",
+            "playoffSeed": "12",
+            "pointDifferential": "-8",
+            "points": "91",
+            "pointsAgainst": "241",
+            "pointsFor": "233",
+            "streak": "L3",
+            "wins": "43",
+            "overtimeLosses": "5",
+            "overtimeWins": "14",
+            "pointsDiff": "-8"
+          }
+        },
+        {
+          "team": {
+            "id": "11",
+            "name": "New Jersey Devils",
+            "abbr": "NJ",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/nj.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nj.png"
+          },
+          "stats": {
+            "otLosses": "3",
+            "clincher": "e",
+            "differential": "-0.3",
+            "gamesBehind": "26",
+            "gamesPlayed": "82",
+            "losses": "37",
+            "playoffSeed": "13",
+            "pointDifferential": "-24",
+            "points": "87",
+            "pointsAgainst": "254",
+            "pointsFor": "230",
+            "streak": "L1",
+            "wins": "42",
+            "overtimeLosses": "3",
+            "overtimeWins": "13",
+            "pointsDiff": "-24"
+          }
+        },
+        {
+          "team": {
+            "id": "26",
+            "name": "Florida Panthers",
+            "abbr": "FLA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/fla.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/fla.png"
+          },
+          "stats": {
+            "otLosses": "4",
+            "clincher": "e",
+            "differential": "-0.3",
+            "gamesBehind": "29",
+            "gamesPlayed": "82",
+            "losses": "38",
+            "playoffSeed": "14",
+            "pointDifferential": "-25",
+            "points": "84",
+            "pointsAgainst": "276",
+            "pointsFor": "251",
+            "streak": "W3",
+            "wins": "40",
+            "overtimeLosses": "4",
+            "overtimeWins": "8",
+            "pointsDiff": "-25"
+          }
+        },
+        {
+          "team": {
+            "id": "21",
+            "name": "Toronto Maple Leafs",
+            "abbr": "TOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/tor.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/tor.png"
+          },
+          "stats": {
+            "otLosses": "14",
+            "clincher": "e",
+            "differential": "-0.5",
+            "gamesBehind": "35",
+            "gamesPlayed": "82",
+            "losses": "36",
+            "playoffSeed": "15",
+            "pointDifferential": "-46",
+            "points": "78",
+            "pointsAgainst": "299",
+            "pointsFor": "253",
+            "streak": "L7",
+            "wins": "32",
+            "overtimeLosses": "14",
+            "overtimeWins": "9",
+            "pointsDiff": "-46"
+          }
+        },
+        {
+          "team": {
+            "id": "13",
+            "name": "New York Rangers",
+            "abbr": "NYR",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nyr.png"
+          },
+          "stats": {
+            "otLosses": "9",
+            "clincher": "e",
+            "differential": "-0.1",
+            "gamesBehind": "36",
+            "gamesPlayed": "82",
+            "losses": "39",
+            "playoffSeed": "16",
+            "pointDifferential": "-12",
+            "points": "77",
+            "pointsAgainst": "250",
+            "pointsFor": "238",
+            "streak": "W1",
+            "wins": "34",
+            "overtimeLosses": "9",
+            "overtimeWins": "9",
+            "pointsDiff": "-12"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Western Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "37",
+            "name": "Vegas Golden Knights",
+            "abbr": "VGK",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/vgk.png"
+          },
+          "stats": {
+            "otLosses": "17",
+            "clincher": "y",
+            "differential": "+0.2",
+            "gamesBehind": "26",
+            "gamesPlayed": "82",
+            "losses": "26",
+            "playoffSeed": "4",
+            "pointDifferential": "+15",
+            "points": "95",
+            "pointsAgainst": "250",
+            "pointsFor": "265",
+            "streak": "W3",
+            "wins": "39",
+            "overtimeLosses": "17",
+            "overtimeWins": "9",
+            "pointsDiff": "+15"
+          }
+        },
+        {
+          "team": {
+            "id": "9",
+            "name": "Dallas Stars",
+            "abbr": "DAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/dal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/dal.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "x",
+            "differential": "+0.6",
+            "gamesBehind": "9",
+            "gamesPlayed": "82",
+            "losses": "20",
+            "playoffSeed": "2",
+            "pointDifferential": "+53",
+            "points": "112",
+            "pointsAgainst": "226",
+            "pointsFor": "279",
+            "streak": "W5",
+            "wins": "50",
+            "overtimeLosses": "12",
+            "overtimeWins": "12",
+            "pointsDiff": "+53"
+          }
+        },
+        {
+          "team": {
+            "id": "30",
+            "name": "Minnesota Wild",
+            "abbr": "MIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/min.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/min.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "x",
+            "differential": "+0.4",
+            "gamesBehind": "17",
+            "gamesPlayed": "82",
+            "losses": "24",
+            "playoffSeed": "3",
+            "pointDifferential": "+32",
+            "points": "104",
+            "pointsAgainst": "240",
+            "pointsFor": "272",
+            "streak": "W1",
+            "wins": "46",
+            "overtimeLosses": "12",
+            "overtimeWins": "15",
+            "pointsDiff": "+32"
+          }
+        },
+        {
+          "team": {
+            "id": "6",
+            "name": "Edmonton Oilers",
+            "abbr": "EDM",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/edm.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/edm.png"
+          },
+          "stats": {
+            "otLosses": "11",
+            "clincher": "x",
+            "differential": "+0.1",
+            "gamesBehind": "28",
+            "gamesPlayed": "82",
+            "losses": "30",
+            "playoffSeed": "5",
+            "pointDifferential": "+13",
+            "points": "93",
+            "pointsAgainst": "269",
+            "pointsFor": "282",
+            "streak": "W1",
+            "wins": "41",
+            "overtimeLosses": "11",
+            "overtimeWins": "9",
+            "pointsDiff": "+13"
+          }
+        },
+        {
+          "team": {
+            "id": "129764",
+            "name": "Utah Mammoth",
+            "abbr": "UTA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/uta.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/uta.png"
+          },
+          "stats": {
+            "otLosses": "6",
+            "clincher": "x",
+            "differential": "+0.4",
+            "gamesBehind": "29",
+            "gamesPlayed": "82",
+            "losses": "33",
+            "playoffSeed": "6",
+            "pointDifferential": "+28",
+            "points": "92",
+            "pointsAgainst": "240",
+            "pointsFor": "268",
+            "streak": "L1",
+            "wins": "43",
+            "overtimeLosses": "6",
+            "overtimeWins": "10",
+            "pointsDiff": "+28"
+          }
+        },
+        {
+          "team": {
+            "id": "25",
+            "name": "Anaheim Ducks",
+            "abbr": "ANA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/ana.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/ana.png"
+          },
+          "stats": {
+            "otLosses": "6",
+            "clincher": "x",
+            "differential": "-0.2",
+            "gamesBehind": "29",
+            "gamesPlayed": "82",
+            "losses": "33",
+            "playoffSeed": "7",
+            "pointDifferential": "-15",
+            "points": "92",
+            "pointsAgainst": "288",
+            "pointsFor": "273",
+            "streak": "W1",
+            "wins": "43",
+            "overtimeLosses": "6",
+            "overtimeWins": "17",
+            "pointsDiff": "-15"
+          }
+        },
+        {
+          "team": {
+            "id": "8",
+            "name": "Los Angeles Kings",
+            "abbr": "LA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/la.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/la.png"
+          },
+          "stats": {
+            "otLosses": "20",
+            "clincher": "x",
+            "differential": "-0.3",
+            "gamesBehind": "31",
+            "gamesPlayed": "82",
+            "losses": "27",
+            "playoffSeed": "8",
+            "pointDifferential": "-22",
+            "points": "90",
+            "pointsAgainst": "247",
+            "pointsFor": "225",
+            "streak": "L2",
+            "wins": "35",
+            "overtimeLosses": "20",
+            "overtimeWins": "13",
+            "pointsDiff": "-22"
+          }
+        },
+        {
+          "team": {
+            "id": "19",
+            "name": "St. Louis Blues",
+            "abbr": "STL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/stl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/stl.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "e",
+            "differential": "-0.3",
+            "gamesBehind": "35",
+            "gamesPlayed": "82",
+            "losses": "33",
+            "playoffSeed": "9",
+            "pointDifferential": "-27",
+            "points": "86",
+            "pointsAgainst": "258",
+            "pointsFor": "231",
+            "streak": "W4",
+            "wins": "37",
+            "overtimeLosses": "12",
+            "overtimeWins": "4",
+            "pointsDiff": "-27"
+          }
+        },
+        {
+          "team": {
+            "id": "27",
+            "name": "Nashville Predators",
+            "abbr": "NSH",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/nsh.png"
+          },
+          "stats": {
+            "otLosses": "10",
+            "clincher": "e",
+            "differential": "-0.3",
+            "gamesBehind": "35",
+            "gamesPlayed": "82",
+            "losses": "34",
+            "playoffSeed": "10",
+            "pointDifferential": "-22",
+            "points": "86",
+            "pointsAgainst": "269",
+            "pointsFor": "247",
+            "streak": "L2",
+            "wins": "38",
+            "overtimeLosses": "10",
+            "overtimeWins": "10",
+            "pointsDiff": "-22"
+          }
+        },
+        {
+          "team": {
+            "id": "18",
+            "name": "San Jose Sharks",
+            "abbr": "SJ",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/sj.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/sj.png"
+          },
+          "stats": {
+            "otLosses": "8",
+            "clincher": "e",
+            "differential": "-0.5",
+            "gamesBehind": "35",
+            "gamesPlayed": "82",
+            "losses": "35",
+            "playoffSeed": "11",
+            "pointDifferential": "-41",
+            "points": "86",
+            "pointsAgainst": "292",
+            "pointsFor": "251",
+            "streak": "W1",
+            "wins": "39",
+            "overtimeLosses": "8",
+            "overtimeWins": "12",
+            "pointsDiff": "-41"
+          }
+        },
+        {
+          "team": {
+            "id": "28",
+            "name": "Winnipeg Jets",
+            "abbr": "WPG",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/wpg.png"
+          },
+          "stats": {
+            "otLosses": "12",
+            "clincher": "e",
+            "differential": "-0.4",
+            "gamesBehind": "39",
+            "gamesPlayed": "82",
+            "losses": "35",
+            "playoffSeed": "12",
+            "pointDifferential": "-29",
+            "points": "82",
+            "pointsAgainst": "260",
+            "pointsFor": "231",
+            "streak": "L4",
+            "wins": "35",
+            "overtimeLosses": "12",
+            "overtimeWins": "7",
+            "pointsDiff": "-29"
+          }
+        },
+        {
+          "team": {
+            "id": "124292",
+            "name": "Seattle Kraken",
+            "abbr": "SEA",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/sea.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/sea.png"
+          },
+          "stats": {
+            "otLosses": "11",
+            "clincher": "e",
+            "differential": "-0.4",
+            "gamesBehind": "42",
+            "gamesPlayed": "82",
+            "losses": "37",
+            "playoffSeed": "13",
+            "pointDifferential": "-37",
+            "points": "79",
+            "pointsAgainst": "263",
+            "pointsFor": "226",
+            "streak": "L3",
+            "wins": "34",
+            "overtimeLosses": "11",
+            "overtimeWins": "8",
+            "pointsDiff": "-37"
+          }
+        },
+        {
+          "team": {
+            "id": "3",
+            "name": "Calgary Flames",
+            "abbr": "CGY",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/cgy.png"
+          },
+          "stats": {
+            "otLosses": "9",
+            "clincher": "e",
+            "differential": "-0.6",
+            "gamesBehind": "44",
+            "gamesPlayed": "82",
+            "losses": "39",
+            "playoffSeed": "14",
+            "pointDifferential": "-47",
+            "points": "77",
+            "pointsAgainst": "259",
+            "pointsFor": "212",
+            "streak": "W1",
+            "wins": "34",
+            "overtimeLosses": "9",
+            "overtimeWins": "7",
+            "pointsDiff": "-47"
+          }
+        },
+        {
+          "team": {
+            "id": "4",
+            "name": "Chicago Blackhawks",
+            "abbr": "CHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/chi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/chi.png"
+          },
+          "stats": {
+            "otLosses": "14",
+            "clincher": "e",
+            "differential": "-0.8",
+            "gamesBehind": "49",
+            "gamesPlayed": "82",
+            "losses": "39",
+            "playoffSeed": "15",
+            "pointDifferential": "-62",
+            "points": "72",
+            "pointsAgainst": "275",
+            "pointsFor": "213",
+            "streak": "W1",
+            "wins": "29",
+            "overtimeLosses": "14",
+            "overtimeWins": "7",
+            "pointsDiff": "-62"
+          }
+        },
+        {
+          "team": {
+            "id": "22",
+            "name": "Vancouver Canucks",
+            "abbr": "VAN",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/van.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/van.png"
+          },
+          "stats": {
+            "otLosses": "8",
+            "clincher": "e",
+            "differential": "-1.3",
+            "gamesBehind": "63",
+            "gamesPlayed": "82",
+            "losses": "49",
+            "playoffSeed": "16",
+            "pointDifferential": "-100",
+            "points": "58",
+            "pointsAgainst": "316",
+            "pointsFor": "216",
+            "streak": "L1",
+            "wins": "25",
+            "overtimeLosses": "8",
+            "overtimeWins": "10",
+            "pointsDiff": "-100"
+          }
+        },
+        {
+          "team": {
+            "id": "17",
+            "name": "Colorado Avalanche",
+            "abbr": "COL",
+            "logo": "https://a.espncdn.com/i/teamlogos/nhl/500/col.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/nhl/500-dark/scoreboard/col.png"
+          },
+          "stats": {
+            "otLosses": "11",
+            "clincher": "*",
+            "differential": "+1.2",
+            "gamesBehind": "-",
+            "gamesPlayed": "82",
+            "losses": "16",
+            "playoffSeed": "1",
+            "pointDifferential": "+99",
+            "points": "121",
+            "pointsAgainst": "203",
+            "pointsFor": "302",
+            "streak": "W3",
+            "wins": "55",
+            "overtimeLosses": "11",
+            "overtimeWins": "7",
+            "pointsDiff": "+99"
+          }
+        }
+      ]
+    }
+  ]
+}

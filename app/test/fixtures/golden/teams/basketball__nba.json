@@ -1,0 +1,1070 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "basketball/nba",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "1",
+                    "displayName": "Atlanta Hawks",
+                    "name": "Hawks",
+                    "shortDisplayName": "Hawks",
+                    "abbreviation": "ATL",
+                    "color": "c8102e",
+                    "alternateColor": "fdb927",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2",
+                    "displayName": "Boston Celtics",
+                    "name": "Celtics",
+                    "shortDisplayName": "Celtics",
+                    "abbreviation": "BOS",
+                    "color": "008348",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "17",
+                    "displayName": "Brooklyn Nets",
+                    "name": "Nets",
+                    "shortDisplayName": "Nets",
+                    "abbreviation": "BKN",
+                    "color": "000000",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "30",
+                    "displayName": "Charlotte Hornets",
+                    "name": "Hornets",
+                    "shortDisplayName": "Hornets",
+                    "abbreviation": "CHA",
+                    "color": "008ca8",
+                    "alternateColor": "1d1060",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "4",
+                    "displayName": "Chicago Bulls",
+                    "name": "Bulls",
+                    "shortDisplayName": "Bulls",
+                    "abbreviation": "CHI",
+                    "color": "ce1141",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "5",
+                    "displayName": "Cleveland Cavaliers",
+                    "name": "Cavaliers",
+                    "shortDisplayName": "Cavaliers",
+                    "abbreviation": "CLE",
+                    "color": "860038",
+                    "alternateColor": "bc945c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "6",
+                    "displayName": "Dallas Mavericks",
+                    "name": "Mavericks",
+                    "shortDisplayName": "Mavericks",
+                    "abbreviation": "DAL",
+                    "color": "0064b1",
+                    "alternateColor": "bbc4ca",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/dal.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "7",
+                    "displayName": "Denver Nuggets",
+                    "name": "Nuggets",
+                    "shortDisplayName": "Nuggets",
+                    "abbreviation": "DEN",
+                    "color": "0e2240",
+                    "alternateColor": "fec524",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "8",
+                    "displayName": "Detroit Pistons",
+                    "name": "Pistons",
+                    "shortDisplayName": "Pistons",
+                    "abbreviation": "DET",
+                    "color": "1d428a",
+                    "alternateColor": "c8102e",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "9",
+                    "displayName": "Golden State Warriors",
+                    "name": "Warriors",
+                    "shortDisplayName": "Warriors",
+                    "abbreviation": "GS",
+                    "color": "fdb927",
+                    "alternateColor": "1d428a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "10",
+                    "displayName": "Houston Rockets",
+                    "name": "Rockets",
+                    "shortDisplayName": "Rockets",
+                    "abbreviation": "HOU",
+                    "color": "ce1141",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "11",
+                    "displayName": "Indiana Pacers",
+                    "name": "Pacers",
+                    "shortDisplayName": "Pacers",
+                    "abbreviation": "IND",
+                    "color": "0c2340",
+                    "alternateColor": "ffd520",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "12",
+                    "displayName": "LA Clippers",
+                    "name": "Clippers",
+                    "shortDisplayName": "Clippers",
+                    "abbreviation": "LAC",
+                    "color": "12173f",
+                    "alternateColor": "c8102e",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "13",
+                    "displayName": "Los Angeles Lakers",
+                    "name": "Lakers",
+                    "shortDisplayName": "Lakers",
+                    "abbreviation": "LAL",
+                    "color": "552583",
+                    "alternateColor": "fdb927",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "29",
+                    "displayName": "Memphis Grizzlies",
+                    "name": "Grizzlies",
+                    "shortDisplayName": "Grizzlies",
+                    "abbreviation": "MEM",
+                    "color": "5d76a9",
+                    "alternateColor": "12173f",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "14",
+                    "displayName": "Miami Heat",
+                    "name": "Heat",
+                    "shortDisplayName": "Heat",
+                    "abbreviation": "MIA",
+                    "color": "98002e",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "15",
+                    "displayName": "Milwaukee Bucks",
+                    "name": "Bucks",
+                    "shortDisplayName": "Bucks",
+                    "abbreviation": "MIL",
+                    "color": "00471b",
+                    "alternateColor": "eee1c6",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "16",
+                    "displayName": "Minnesota Timberwolves",
+                    "name": "Timberwolves",
+                    "shortDisplayName": "Timberwolves",
+                    "abbreviation": "MIN",
+                    "color": "266092",
+                    "alternateColor": "79bc43",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "3",
+                    "displayName": "New Orleans Pelicans",
+                    "name": "Pelicans",
+                    "shortDisplayName": "Pelicans",
+                    "abbreviation": "NO",
+                    "color": "0a2240",
+                    "alternateColor": "b4975a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/no.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "18",
+                    "displayName": "New York Knicks",
+                    "name": "Knicks",
+                    "shortDisplayName": "Knicks",
+                    "abbreviation": "NY",
+                    "color": "1d428a",
+                    "alternateColor": "f58426",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "25",
+                    "displayName": "Oklahoma City Thunder",
+                    "name": "Thunder",
+                    "shortDisplayName": "Thunder",
+                    "abbreviation": "OKC",
+                    "color": "007ac1",
+                    "alternateColor": "ef3b24",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "19",
+                    "displayName": "Orlando Magic",
+                    "name": "Magic",
+                    "shortDisplayName": "Magic",
+                    "abbreviation": "ORL",
+                    "color": "0150b5",
+                    "alternateColor": "9ca0a3",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "20",
+                    "displayName": "Philadelphia 76ers",
+                    "name": "76ers",
+                    "shortDisplayName": "76ers",
+                    "abbreviation": "PHI",
+                    "color": "1d428a",
+                    "alternateColor": "e01234",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "21",
+                    "displayName": "Phoenix Suns",
+                    "name": "Suns",
+                    "shortDisplayName": "Suns",
+                    "abbreviation": "PHX",
+                    "color": "29127a",
+                    "alternateColor": "e56020",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "22",
+                    "displayName": "Portland Trail Blazers",
+                    "name": "Trail Blazers",
+                    "shortDisplayName": "Trail Blazers",
+                    "abbreviation": "POR",
+                    "color": "e03a3e",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "23",
+                    "displayName": "Sacramento Kings",
+                    "name": "Kings",
+                    "shortDisplayName": "Kings",
+                    "abbreviation": "SAC",
+                    "color": "5a2d81",
+                    "alternateColor": "6a7a82",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sac.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "24",
+                    "displayName": "San Antonio Spurs",
+                    "name": "Spurs",
+                    "shortDisplayName": "Spurs",
+                    "abbreviation": "SA",
+                    "color": "000000",
+                    "alternateColor": "c4ced4",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "28",
+                    "displayName": "Toronto Raptors",
+                    "name": "Raptors",
+                    "shortDisplayName": "Raptors",
+                    "abbreviation": "TOR",
+                    "color": "d91244",
+                    "alternateColor": "000000",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "26",
+                    "displayName": "Utah Jazz",
+                    "name": "Jazz",
+                    "shortDisplayName": "Jazz",
+                    "abbreviation": "UTAH",
+                    "color": "4e008e",
+                    "alternateColor": "79a3dc",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "27",
+                    "displayName": "Washington Wizards",
+                    "name": "Wizards",
+                    "shortDisplayName": "Wizards",
+                    "abbreviation": "WSH",
+                    "color": "e31837",
+                    "alternateColor": "002b5c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/nba/500-dark/wsh.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "1",
+      "displayName": "Atlanta Hawks",
+      "abbreviation": "ATL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/atl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/atl.png",
+      "color": "c8102e"
+    },
+    {
+      "id": "2",
+      "displayName": "Boston Celtics",
+      "abbreviation": "BOS",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/bos.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bos.png",
+      "color": "008348"
+    },
+    {
+      "id": "17",
+      "displayName": "Brooklyn Nets",
+      "abbreviation": "BKN",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/bkn.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/bkn.png",
+      "color": "000000"
+    },
+    {
+      "id": "30",
+      "displayName": "Charlotte Hornets",
+      "abbreviation": "CHA",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/cha.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cha.png",
+      "color": "008ca8"
+    },
+    {
+      "id": "4",
+      "displayName": "Chicago Bulls",
+      "abbreviation": "CHI",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/chi.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/chi.png",
+      "color": "ce1141"
+    },
+    {
+      "id": "5",
+      "displayName": "Cleveland Cavaliers",
+      "abbreviation": "CLE",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/cle.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/cle.png",
+      "color": "860038"
+    },
+    {
+      "id": "6",
+      "displayName": "Dallas Mavericks",
+      "abbreviation": "DAL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/dal.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/dal.png",
+      "color": "0064b1"
+    },
+    {
+      "id": "7",
+      "displayName": "Denver Nuggets",
+      "abbreviation": "DEN",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/den.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/den.png",
+      "color": "0e2240"
+    },
+    {
+      "id": "8",
+      "displayName": "Detroit Pistons",
+      "abbreviation": "DET",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/det.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/det.png",
+      "color": "1d428a"
+    },
+    {
+      "id": "9",
+      "displayName": "Golden State Warriors",
+      "abbreviation": "GS",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/gs.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/gs.png",
+      "color": "fdb927"
+    },
+    {
+      "id": "10",
+      "displayName": "Houston Rockets",
+      "abbreviation": "HOU",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/hou.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/hou.png",
+      "color": "ce1141"
+    },
+    {
+      "id": "11",
+      "displayName": "Indiana Pacers",
+      "abbreviation": "IND",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ind.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ind.png",
+      "color": "0c2340"
+    },
+    {
+      "id": "12",
+      "displayName": "LA Clippers",
+      "abbreviation": "LAC",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/lac.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lac.png",
+      "color": "12173f"
+    },
+    {
+      "id": "13",
+      "displayName": "Los Angeles Lakers",
+      "abbreviation": "LAL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/lal.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/lal.png",
+      "color": "552583"
+    },
+    {
+      "id": "29",
+      "displayName": "Memphis Grizzlies",
+      "abbreviation": "MEM",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/mem.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mem.png",
+      "color": "5d76a9"
+    },
+    {
+      "id": "14",
+      "displayName": "Miami Heat",
+      "abbreviation": "MIA",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/mia.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mia.png",
+      "color": "98002e"
+    },
+    {
+      "id": "15",
+      "displayName": "Milwaukee Bucks",
+      "abbreviation": "MIL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/mil.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/mil.png",
+      "color": "00471b"
+    },
+    {
+      "id": "16",
+      "displayName": "Minnesota Timberwolves",
+      "abbreviation": "MIN",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/min.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/min.png",
+      "color": "266092"
+    },
+    {
+      "id": "3",
+      "displayName": "New Orleans Pelicans",
+      "abbreviation": "NO",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/no.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/no.png",
+      "color": "0a2240"
+    },
+    {
+      "id": "18",
+      "displayName": "New York Knicks",
+      "abbreviation": "NY",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/ny.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/ny.png",
+      "color": "1d428a"
+    },
+    {
+      "id": "25",
+      "displayName": "Oklahoma City Thunder",
+      "abbreviation": "OKC",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/okc.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/okc.png",
+      "color": "007ac1"
+    },
+    {
+      "id": "19",
+      "displayName": "Orlando Magic",
+      "abbreviation": "ORL",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/orl.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/orl.png",
+      "color": "0150b5"
+    },
+    {
+      "id": "20",
+      "displayName": "Philadelphia 76ers",
+      "abbreviation": "PHI",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/phi.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phi.png",
+      "color": "1d428a"
+    },
+    {
+      "id": "21",
+      "displayName": "Phoenix Suns",
+      "abbreviation": "PHX",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/phx.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/phx.png",
+      "color": "29127a"
+    },
+    {
+      "id": "22",
+      "displayName": "Portland Trail Blazers",
+      "abbreviation": "POR",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/por.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/por.png",
+      "color": "e03a3e"
+    },
+    {
+      "id": "23",
+      "displayName": "Sacramento Kings",
+      "abbreviation": "SAC",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/sac.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sac.png",
+      "color": "5a2d81"
+    },
+    {
+      "id": "24",
+      "displayName": "San Antonio Spurs",
+      "abbreviation": "SA",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/sa.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/sa.png",
+      "color": "000000"
+    },
+    {
+      "id": "28",
+      "displayName": "Toronto Raptors",
+      "abbreviation": "TOR",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/tor.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/tor.png",
+      "color": "d91244"
+    },
+    {
+      "id": "26",
+      "displayName": "Utah Jazz",
+      "abbreviation": "UTAH",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/utah.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/utah.png",
+      "color": "4e008e"
+    },
+    {
+      "id": "27",
+      "displayName": "Washington Wizards",
+      "abbreviation": "WSH",
+      "logo": "https://a.espncdn.com/i/teamlogos/nba/500/wsh.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/nba/500-dark/wsh.png",
+      "color": "e31837"
+    }
+  ]
+}

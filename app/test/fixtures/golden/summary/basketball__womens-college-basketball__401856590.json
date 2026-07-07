@@ -1,0 +1,6948 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "basketball/womens-college-basketball",
+    "eventId": "401856590",
+    "raw": {
+      "header": {
+        "id": "401856590",
+        "competitions": [
+          {
+            "id": "401856590",
+            "date": "2026-04-05T19:30Z",
+            "status": {
+              "type": {
+                "id": "3",
+                "name": "STATUS_FINAL",
+                "state": "post",
+                "completed": true,
+                "description": "Final",
+                "detail": "Final",
+                "shortDetail": "Final"
+              }
+            },
+            "competitors": [
+              {
+                "id": "26",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": "79",
+                "linescores": [
+                  {
+                    "displayValue": "21"
+                  },
+                  {
+                    "displayValue": "15"
+                  },
+                  {
+                    "displayValue": "25"
+                  },
+                  {
+                    "displayValue": "18"
+                  }
+                ],
+                "team": {
+                  "id": "26",
+                  "abbreviation": "UCLA",
+                  "displayName": "UCLA Bruins"
+                }
+              },
+              {
+                "id": "2579",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": "51",
+                "linescores": [
+                  {
+                    "displayValue": "10"
+                  },
+                  {
+                    "displayValue": "13"
+                  },
+                  {
+                    "displayValue": "9"
+                  },
+                  {
+                    "displayValue": "19"
+                  }
+                ],
+                "team": {
+                  "id": "2579",
+                  "abbreviation": "SC",
+                  "displayName": "South Carolina Gamecocks"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "2579",
+              "uid": "s:40~l:54~t:2579",
+              "slug": "south-carolina-gamecocks",
+              "location": "South Carolina",
+              "name": "Gamecocks",
+              "abbreviation": "SC",
+              "displayName": "South Carolina Gamecocks",
+              "shortDisplayName": "South Carolina",
+              "color": "73000a",
+              "alternateColor": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png"
+            },
+            "statistics": [
+              {
+                "name": "fieldGoalsMade-fieldGoalsAttempted",
+                "displayValue": "18-62",
+                "label": "FG"
+              },
+              {
+                "name": "fieldGoalPct",
+                "displayValue": "29",
+                "abbreviation": "FG%",
+                "label": "Field Goal %"
+              },
+              {
+                "name": "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                "displayValue": "2-15",
+                "label": "3PT"
+              },
+              {
+                "name": "threePointFieldGoalPct",
+                "displayValue": "13",
+                "abbreviation": "3P%",
+                "label": "Three Point %"
+              },
+              {
+                "name": "freeThrowsMade-freeThrowsAttempted",
+                "displayValue": "13-17",
+                "label": "FT"
+              },
+              {
+                "name": "freeThrowPct",
+                "displayValue": "76",
+                "abbreviation": "FT%",
+                "label": "Free Throw %"
+              },
+              {
+                "name": "totalRebounds",
+                "displayValue": "37",
+                "abbreviation": "REB",
+                "label": "Rebounds"
+              },
+              {
+                "name": "offensiveRebounds",
+                "displayValue": "17",
+                "abbreviation": "OR",
+                "label": "Offensive Rebounds"
+              },
+              {
+                "name": "defensiveRebounds",
+                "displayValue": "20",
+                "abbreviation": "DR",
+                "label": "Defensive Rebounds"
+              },
+              {
+                "name": "assists",
+                "displayValue": "9",
+                "abbreviation": "AST",
+                "label": "Assists"
+              },
+              {
+                "name": "steals",
+                "displayValue": "6",
+                "abbreviation": "STL",
+                "label": "Steals"
+              },
+              {
+                "name": "blocks",
+                "displayValue": "4",
+                "abbreviation": "BLK",
+                "label": "Blocks"
+              },
+              {
+                "name": "turnovers",
+                "displayValue": "14",
+                "abbreviation": "TO",
+                "label": "Turnovers"
+              },
+              {
+                "name": "teamTurnovers",
+                "displayValue": "1",
+                "abbreviation": "TTO",
+                "label": "Team Turnovers"
+              },
+              {
+                "name": "totalTurnovers",
+                "displayValue": "14",
+                "abbreviation": "ToTO",
+                "label": "Total Turnovers"
+              },
+              {
+                "name": "technicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Technical Fouls"
+              },
+              {
+                "name": "totalTechnicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Total Technical Fouls"
+              },
+              {
+                "name": "turnoverPoints",
+                "displayValue": "10",
+                "abbreviation": "PTS OFF TO",
+                "label": "Points Off Turnovers"
+              },
+              {
+                "name": "fastBreakPoints",
+                "displayValue": "6",
+                "abbreviation": "FBPs",
+                "label": "Fast Break Points"
+              },
+              {
+                "name": "pointsInPaint",
+                "displayValue": "28",
+                "abbreviation": "PIP",
+                "label": "Points in Paint"
+              },
+              {
+                "name": "fouls",
+                "displayValue": "17",
+                "abbreviation": "PF",
+                "label": "Fouls"
+              },
+              {
+                "name": "largestLead",
+                "displayValue": "0",
+                "abbreviation": "LL",
+                "label": "Largest Lead"
+              },
+              {
+                "name": "leadChanges",
+                "displayValue": "0",
+                "abbreviation": "LC",
+                "label": "Lead Changes"
+              },
+              {
+                "name": "leadPercentage",
+                "displayValue": "0",
+                "abbreviation": "LPCT",
+                "label": "Percent Led"
+              }
+            ],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "26",
+              "uid": "s:40~l:54~t:26",
+              "slug": "ucla-bruins",
+              "location": "UCLA",
+              "name": "Bruins",
+              "abbreviation": "UCLA",
+              "displayName": "UCLA Bruins",
+              "shortDisplayName": "UCLA",
+              "color": "2774ae",
+              "alternateColor": "f2a900",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png"
+            },
+            "statistics": [
+              {
+                "name": "fieldGoalsMade-fieldGoalsAttempted",
+                "displayValue": "30-69",
+                "label": "FG"
+              },
+              {
+                "name": "fieldGoalPct",
+                "displayValue": "43",
+                "abbreviation": "FG%",
+                "label": "Field Goal %"
+              },
+              {
+                "name": "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                "displayValue": "8-19",
+                "label": "3PT"
+              },
+              {
+                "name": "threePointFieldGoalPct",
+                "displayValue": "42",
+                "abbreviation": "3P%",
+                "label": "Three Point %"
+              },
+              {
+                "name": "freeThrowsMade-freeThrowsAttempted",
+                "displayValue": "11-13",
+                "label": "FT"
+              },
+              {
+                "name": "freeThrowPct",
+                "displayValue": "85",
+                "abbreviation": "FT%",
+                "label": "Free Throw %"
+              },
+              {
+                "name": "totalRebounds",
+                "displayValue": "49",
+                "abbreviation": "REB",
+                "label": "Rebounds"
+              },
+              {
+                "name": "offensiveRebounds",
+                "displayValue": "21",
+                "abbreviation": "OR",
+                "label": "Offensive Rebounds"
+              },
+              {
+                "name": "defensiveRebounds",
+                "displayValue": "28",
+                "abbreviation": "DR",
+                "label": "Defensive Rebounds"
+              },
+              {
+                "name": "assists",
+                "displayValue": "23",
+                "abbreviation": "AST",
+                "label": "Assists"
+              },
+              {
+                "name": "steals",
+                "displayValue": "7",
+                "abbreviation": "STL",
+                "label": "Steals"
+              },
+              {
+                "name": "blocks",
+                "displayValue": "5",
+                "abbreviation": "BLK",
+                "label": "Blocks"
+              },
+              {
+                "name": "turnovers",
+                "displayValue": "13",
+                "abbreviation": "TO",
+                "label": "Turnovers"
+              },
+              {
+                "name": "teamTurnovers",
+                "displayValue": "4",
+                "abbreviation": "TTO",
+                "label": "Team Turnovers"
+              },
+              {
+                "name": "totalTurnovers",
+                "displayValue": "13",
+                "abbreviation": "ToTO",
+                "label": "Total Turnovers"
+              },
+              {
+                "name": "technicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Technical Fouls"
+              },
+              {
+                "name": "totalTechnicalFouls",
+                "displayValue": "0",
+                "abbreviation": "TECH",
+                "label": "Total Technical Fouls"
+              },
+              {
+                "name": "turnoverPoints",
+                "displayValue": "19",
+                "abbreviation": "PTS OFF TO",
+                "label": "Points Off Turnovers"
+              },
+              {
+                "name": "fastBreakPoints",
+                "displayValue": "11",
+                "abbreviation": "FBPs",
+                "label": "Fast Break Points"
+              },
+              {
+                "name": "pointsInPaint",
+                "displayValue": "40",
+                "abbreviation": "PIP",
+                "label": "Points in Paint"
+              },
+              {
+                "name": "fouls",
+                "displayValue": "17",
+                "abbreviation": "PF",
+                "label": "Fouls"
+              },
+              {
+                "name": "largestLead",
+                "displayValue": "35",
+                "abbreviation": "LL",
+                "label": "Largest Lead"
+              },
+              {
+                "name": "leadChanges",
+                "displayValue": "0",
+                "abbreviation": "LC",
+                "label": "Lead Changes"
+              },
+              {
+                "name": "leadPercentage",
+                "displayValue": "98",
+                "abbreviation": "LPCT",
+                "label": "Percent Led"
+              }
+            ],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ],
+        "players": [
+          {
+            "team": {
+              "id": "2579",
+              "uid": "s:40~l:54~t:2579",
+              "slug": "south-carolina-gamecocks",
+              "location": "South Carolina",
+              "name": "Gamecocks",
+              "abbreviation": "SC",
+              "displayName": "South Carolina Gamecocks",
+              "shortDisplayName": "South Carolina",
+              "color": "73000a",
+              "alternateColor": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png"
+            },
+            "statistics": [
+              {
+                "names": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "keys": [
+                  "minutes",
+                  "points",
+                  "fieldGoalsMade-fieldGoalsAttempted",
+                  "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                  "freeThrowsMade-freeThrowsAttempted",
+                  "rebounds",
+                  "assists",
+                  "turnovers",
+                  "steals",
+                  "blocks",
+                  "offensiveRebounds",
+                  "defensiveRebounds",
+                  "fouls"
+                ],
+                "labels": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "descriptions": [
+                  "Minutes",
+                  "Points",
+                  "Field Goals Made/Attempted",
+                  "3-Point Field Goals Made/Attempted",
+                  "Free Throws Made/Attempted",
+                  "Rebounds",
+                  "Assists",
+                  "Turnovers",
+                  "Steals",
+                  "Blocks",
+                  "Offensive Rebounds",
+                  "Defensive Rebounds",
+                  "Personal Fouls"
+                ],
+                "athletes": [
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5239100",
+                      "uid": "s:40~l:54~a:5239100",
+                      "guid": "88ad377a-4b04-3a72-b3ee-1c39661425bf",
+                      "displayName": "Joyce Edwards",
+                      "shortName": "J. Edwards",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5239100/joyce-edwards",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5239100.png",
+                        "alt": "Joyce Edwards"
+                      },
+                      "jersey": "8",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "30",
+                      "8",
+                      "3-10",
+                      "0-0",
+                      "2-2",
+                      "11",
+                      "3",
+                      "2",
+                      "1",
+                      "0",
+                      "3",
+                      "8",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5108587",
+                      "uid": "s:40~l:54~a:5108587",
+                      "guid": "65d1a858-06e1-3642-bea2-83d7e8b17653",
+                      "displayName": "Madina Okot",
+                      "shortName": "M. Okot",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5108587/madina-okot",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5108587.png",
+                        "alt": "Madina Okot"
+                      },
+                      "jersey": "11",
+                      "position": {
+                        "name": "Center",
+                        "displayName": "Center",
+                        "abbreviation": "C"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "13",
+                      "6",
+                      "3-9",
+                      "0-2",
+                      "0-1",
+                      "3",
+                      "1",
+                      "1",
+                      "1",
+                      "0",
+                      "3",
+                      "0",
+                      "3"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5174284",
+                      "uid": "s:40~l:54~a:5174284",
+                      "guid": "d659fdfb-f829-3f38-91b1-6ec85340439b",
+                      "displayName": "Tessa Johnson",
+                      "shortName": "T. Johnson",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5174284/tessa-johnson",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5174284.png",
+                        "alt": "Tessa Johnson"
+                      },
+                      "jersey": "5",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "30",
+                      "14",
+                      "6-12",
+                      "0-2",
+                      "2-2",
+                      "3",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "3",
+                      "0",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4609797",
+                      "uid": "s:40~l:54~a:4609797",
+                      "guid": "e8210eb0-fe71-31e6-87e9-8c4b286aeb3f",
+                      "displayName": "Ta'Niya Latson",
+                      "shortName": "T. Latson",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4609797/taniya-latson",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4609797.png",
+                        "alt": "Ta'Niya Latson"
+                      },
+                      "jersey": "00",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "25",
+                      "4",
+                      "1-5",
+                      "0-0",
+                      "2-2",
+                      "3",
+                      "2",
+                      "3",
+                      "1",
+                      "0",
+                      "0",
+                      "3",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4433797",
+                      "uid": "s:40~l:54~a:4433797",
+                      "guid": "847d34e9-93c3-3b36-b920-e52db3c812b9",
+                      "displayName": "Raven Johnson",
+                      "shortName": "R. Johnson",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4433797/raven-johnson",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4433797.png",
+                        "alt": "Raven Johnson"
+                      },
+                      "jersey": "25",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "30",
+                      "3",
+                      "1-7",
+                      "0-4",
+                      "1-2",
+                      "3",
+                      "0",
+                      "2",
+                      "1",
+                      "1",
+                      "1",
+                      "2",
+                      "3"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5329673",
+                      "uid": "s:40~l:54~a:5329673",
+                      "guid": "817752e0-b8a4-37e5-a3a6-83bbfeca2883",
+                      "displayName": "Alicia Tournebize",
+                      "shortName": "A. Tournebize",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5329673/alicia-tournebize",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5329673.png",
+                        "alt": "Alicia Tournebize"
+                      },
+                      "jersey": "31",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "15",
+                      "0",
+                      "0-3",
+                      "0-1",
+                      "0-0",
+                      "6",
+                      "0",
+                      "3",
+                      "1",
+                      "1",
+                      "3",
+                      "3",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "4434019",
+                      "uid": "s:40~l:54~a:4434019",
+                      "guid": "ff55b11b-7d1e-32bb-995d-beec21b99f84",
+                      "displayName": "Maryam Dauda",
+                      "shortName": "M. Dauda",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4434019/maryam-dauda",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4434019.png",
+                        "alt": "Maryam Dauda"
+                      },
+                      "jersey": "30",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "14",
+                      "3",
+                      "1-4",
+                      "1-2",
+                      "0-0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "1",
+                      "1",
+                      "3"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5311577",
+                      "uid": "s:40~l:54~a:5311577",
+                      "guid": "b75a0c88-f1eb-3ed2-b930-23ded5e6ebcc",
+                      "displayName": "Agot Makeer",
+                      "shortName": "A. Makeer",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5311577/agot-makeer",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5311577.png",
+                        "alt": "Agot Makeer"
+                      },
+                      "jersey": "44",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "23",
+                      "11",
+                      "3-6",
+                      "1-2",
+                      "4-4",
+                      "2",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "2",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5311576",
+                      "uid": "s:40~l:54~a:5311576",
+                      "guid": "58ea3a1c-4030-3846-a3d7-ad1eac427a27",
+                      "displayName": "Ayla McDowell",
+                      "shortName": "A. McDowell",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5311576/ayla-mcdowell",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5311576.png",
+                        "alt": "Ayla McDowell"
+                      },
+                      "jersey": "24",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "5",
+                      "0",
+                      "0-0",
+                      "0-0",
+                      "0-0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5239099",
+                      "uid": "s:40~l:54~a:5239099",
+                      "guid": "0c8c94a5-582e-3220-9bce-add917f1c8b9",
+                      "displayName": "Maddy McDaniel",
+                      "shortName": "M. McDaniel",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5239099/maddy-mcdaniel",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5239099.png",
+                        "alt": "Maddy McDaniel"
+                      },
+                      "jersey": "1",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "15",
+                      "2",
+                      "0-6",
+                      "0-2",
+                      "2-4",
+                      "0",
+                      "2",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5196144",
+                      "uid": "s:40~l:54~a:5196144",
+                      "guid": "0bb500b0-c07b-359a-b221-bb9a3b07b6bd",
+                      "displayName": "Adhel Tac",
+                      "shortName": "A. Tac",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5196144/adhel-tac",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5196144.png",
+                        "alt": "Adhel Tac"
+                      },
+                      "jersey": "15",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5121055",
+                      "uid": "s:40~l:54~a:5121055",
+                      "guid": "e84447d6-ce27-390c-9326-a2d44fee8e70",
+                      "displayName": "Chloe Kitts",
+                      "shortName": "C. Kitts",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5121055/chloe-kitts",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5121055.png",
+                        "alt": "Chloe Kitts"
+                      },
+                      "jersey": "21",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  }
+                ],
+                "totals": [
+                  "",
+                  "51",
+                  "18-62",
+                  "2-15",
+                  "13-17",
+                  "37",
+                  "9",
+                  "14",
+                  "6",
+                  "4",
+                  "17",
+                  "20",
+                  "17"
+                ]
+              }
+            ],
+            "displayOrder": 1
+          },
+          {
+            "team": {
+              "id": "26",
+              "uid": "s:40~l:54~t:26",
+              "slug": "ucla-bruins",
+              "location": "UCLA",
+              "name": "Bruins",
+              "abbreviation": "UCLA",
+              "displayName": "UCLA Bruins",
+              "shortDisplayName": "UCLA",
+              "color": "2774ae",
+              "alternateColor": "f2a900",
+              "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png"
+            },
+            "statistics": [
+              {
+                "names": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "keys": [
+                  "minutes",
+                  "points",
+                  "fieldGoalsMade-fieldGoalsAttempted",
+                  "threePointFieldGoalsMade-threePointFieldGoalsAttempted",
+                  "freeThrowsMade-freeThrowsAttempted",
+                  "rebounds",
+                  "assists",
+                  "turnovers",
+                  "steals",
+                  "blocks",
+                  "offensiveRebounds",
+                  "defensiveRebounds",
+                  "fouls"
+                ],
+                "labels": [
+                  "MIN",
+                  "PTS",
+                  "FG",
+                  "3PT",
+                  "FT",
+                  "REB",
+                  "AST",
+                  "TO",
+                  "STL",
+                  "BLK",
+                  "OREB",
+                  "DREB",
+                  "PF"
+                ],
+                "descriptions": [
+                  "Minutes",
+                  "Points",
+                  "Field Goals Made/Attempted",
+                  "3-Point Field Goals Made/Attempted",
+                  "Free Throws Made/Attempted",
+                  "Rebounds",
+                  "Assists",
+                  "Turnovers",
+                  "Steals",
+                  "Blocks",
+                  "Offensive Rebounds",
+                  "Defensive Rebounds",
+                  "Personal Fouls"
+                ],
+                "athletes": [
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5105737",
+                      "uid": "s:40~l:54~a:5105737",
+                      "guid": "4e73e15c-bb39-3a82-b4bf-8c71fae48868",
+                      "displayName": "Lauren Betts",
+                      "shortName": "L. Betts",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5105737/lauren-betts",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5105737.png",
+                        "alt": "Lauren Betts"
+                      },
+                      "jersey": "51",
+                      "position": {
+                        "name": "Center",
+                        "displayName": "Center",
+                        "abbreviation": "C"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "31",
+                      "14",
+                      "6-10",
+                      "0-0",
+                      "2-2",
+                      "11",
+                      "2",
+                      "1",
+                      "0",
+                      "2",
+                      "4",
+                      "7",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4898898",
+                      "uid": "s:40~l:54~a:4898898",
+                      "guid": "84510952-68e5-3e34-8395-423168617a53",
+                      "displayName": "Gianna Kneepkens",
+                      "shortName": "G. Kneepkens",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4898898/gianna-kneepkens",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4898898.png",
+                        "alt": "Gianna Kneepkens"
+                      },
+                      "jersey": "8",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "26",
+                      "15",
+                      "5-15",
+                      "3-7",
+                      "2-2",
+                      "1",
+                      "4",
+                      "0",
+                      "1",
+                      "1",
+                      "1",
+                      "0",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4858656",
+                      "uid": "s:40~l:54~a:4858656",
+                      "guid": "9499df6a-a7f8-3467-87a7-25fc67524c3b",
+                      "displayName": "Gabriela Jaquez",
+                      "shortName": "G. Jaquez",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4858656/gabriela-jaquez",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4858656.png",
+                        "alt": "Gabriela Jaquez"
+                      },
+                      "jersey": "11",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "34",
+                      "21",
+                      "8-14",
+                      "2-4",
+                      "3-3",
+                      "10",
+                      "5",
+                      "1",
+                      "1",
+                      "0",
+                      "4",
+                      "6",
+                      "1"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "4703609",
+                      "uid": "s:40~l:54~a:4703609",
+                      "guid": "ffe45994-90cb-3f4b-bdaf-9c030d327caa",
+                      "displayName": "Charlisse Leger-Walker",
+                      "shortName": "C. Leger-Walker",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4703609/charlisse-leger-walker",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4703609.png",
+                        "alt": "Charlisse Leger-Walker"
+                      },
+                      "jersey": "5",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "26",
+                      "10",
+                      "4-12",
+                      "2-5",
+                      "0-0",
+                      "4",
+                      "2",
+                      "4",
+                      "0",
+                      "1",
+                      "1",
+                      "3",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "4565505",
+                      "uid": "s:40~l:54~a:4565505",
+                      "guid": "527099c9-b18c-356a-a939-b950af0427c5",
+                      "displayName": "Kiki Rice",
+                      "shortName": "K. Rice",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4565505/kiki-rice",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4565505.png",
+                        "alt": "Kiki Rice"
+                      },
+                      "jersey": "1",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": true,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "31",
+                      "10",
+                      "3-7",
+                      "1-1",
+                      "3-4",
+                      "6",
+                      "5",
+                      "2",
+                      "3",
+                      "0",
+                      "2",
+                      "4",
+                      "4"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5311746",
+                      "uid": "s:40~l:54~a:5311746",
+                      "guid": "e7c9e64f-c670-3ad6-a9ad-6e161cb2ac53",
+                      "displayName": "Sienna Betts",
+                      "shortName": "S. Betts",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5311746/sienna-betts",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5311746.png",
+                        "alt": "Sienna Betts"
+                      },
+                      "jersey": "16",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "7",
+                      "0",
+                      "0-1",
+                      "0-0",
+                      "0-0",
+                      "4",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "2",
+                      "2",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5175937",
+                      "uid": "s:40~l:54~a:5175937",
+                      "guid": "e9dfe113-69f8-3829-ba23-ffd0f0995771",
+                      "displayName": "Amanda Muse",
+                      "shortName": "A. Muse",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5175937/amanda-muse",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5175937.png",
+                        "alt": "Amanda Muse"
+                      },
+                      "jersey": "33",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "6",
+                      "0",
+                      "0-1",
+                      "0-0",
+                      "0-0",
+                      "1",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "1",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "4433411",
+                      "uid": "s:40~l:54~a:4433411",
+                      "guid": "3a83740b-47c1-36bc-b0d6-b709f5a2723c",
+                      "displayName": "Angela Dugalic",
+                      "shortName": "A. Dugalić",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/4433411/angela-dugalic",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4433411.png",
+                        "alt": "Angela Dugalic"
+                      },
+                      "jersey": "32",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "28",
+                      "9",
+                      "4-8",
+                      "0-1",
+                      "1-2",
+                      "5",
+                      "4",
+                      "1",
+                      "1",
+                      "1",
+                      "1",
+                      "4",
+                      "4"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5311745",
+                      "uid": "s:40~l:54~a:5311745",
+                      "guid": "f3fc2181-0c12-3cca-a366-c996633ee727",
+                      "displayName": "Lena Bilic",
+                      "shortName": "L. Bilić",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5311745/lena-bilic",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5311745.png",
+                        "alt": "Lena Bilic"
+                      },
+                      "jersey": "9",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "9",
+                      "0",
+                      "0-1",
+                      "0-1",
+                      "0-0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "0",
+                      "2"
+                    ]
+                  },
+                  {
+                    "active": true,
+                    "athlete": {
+                      "id": "5311744",
+                      "uid": "s:40~l:54~a:5311744",
+                      "guid": "0a602481-d70f-3141-b4c0-93be32d9ac0e",
+                      "displayName": "Christina Karamouzi",
+                      "shortName": "C. Karamouzi",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5311744/christina-karamouzi",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5311744.png",
+                        "alt": "Christina Karamouzi"
+                      },
+                      "jersey": "3",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": false,
+                    "ejected": false,
+                    "stats": [
+                      "2",
+                      "0",
+                      "0-0",
+                      "0-0",
+                      "0-0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ]
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5105734",
+                      "uid": "s:40~l:54~a:5105734",
+                      "guid": "9d4206de-6946-3bd6-804b-2fd4b7f3dc97",
+                      "displayName": "Timea Gardiner",
+                      "shortName": "T. Gardiner",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5105734/timea-gardiner",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5105734.png",
+                        "alt": "Timea Gardiner"
+                      },
+                      "jersey": "30",
+                      "position": {
+                        "name": "Forward",
+                        "displayName": "Forward",
+                        "abbreviation": "F"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  },
+                  {
+                    "active": false,
+                    "athlete": {
+                      "id": "5127965",
+                      "uid": "s:40~l:54~a:5127965",
+                      "guid": "a3c9dca7-cd46-3182-a632-42daa80b0c6a",
+                      "displayName": "Megan Grant",
+                      "shortName": "M. Grant",
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/womens-college-basketball/player/_/id/5127965/megan-grant",
+                          "text": "Player Card"
+                        }
+                      ],
+                      "headshot": {
+                        "href": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5127965.png",
+                        "alt": "Megan Grant"
+                      },
+                      "jersey": "43",
+                      "position": {
+                        "name": "Guard",
+                        "displayName": "Guard",
+                        "abbreviation": "G"
+                      }
+                    },
+                    "starter": false,
+                    "didNotPlay": true,
+                    "ejected": false,
+                    "stats": []
+                  }
+                ],
+                "totals": [
+                  "",
+                  "79",
+                  "30-69",
+                  "8-19",
+                  "11-13",
+                  "49",
+                  "23",
+                  "13",
+                  "7",
+                  "5",
+                  "21",
+                  "28",
+                  "17"
+                ]
+              }
+            ],
+            "displayOrder": 2
+          }
+        ]
+      },
+      "plays": [
+        {
+          "id": "401856590120415191",
+          "sequenceNumber": "120415191",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Lauren Betts makes 5-foot turnaround jump shot (Gabriela Jaquez assists)",
+          "awayScore": 0,
+          "homeScore": 2,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "9:43"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:43:47Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415197",
+          "sequenceNumber": "120415197",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Madina Okot makes layup (Ta'Niya Latson assists)",
+          "awayScore": 2,
+          "homeScore": 2,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "9:08"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108587"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4609797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:44:21Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415205",
+          "sequenceNumber": "120415205",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Charlisse Leger-Walker makes 14-foot pullup jump shot",
+          "awayScore": 2,
+          "homeScore": 4,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "8:28"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:45:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 14
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415208",
+          "sequenceNumber": "120415208",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+          "awayScore": 2,
+          "homeScore": 6,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:52"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:45:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415216",
+          "sequenceNumber": "120415216",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Ta'Niya Latson makes free throw 1 of 2",
+          "awayScore": 3,
+          "homeScore": 6,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:29"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4609797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:46:49Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415217",
+          "sequenceNumber": "120415217",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Ta'Niya Latson makes free throw 2 of 2",
+          "awayScore": 4,
+          "homeScore": 6,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:29"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4609797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:47:01Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415220",
+          "sequenceNumber": "120415220",
+          "type": {
+            "id": "437",
+            "text": "TipShot"
+          },
+          "text": "Gabriela Jaquez makes 0-foot tip in layup",
+          "awayScore": 4,
+          "homeScore": 8,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:11"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:47:28Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415223",
+          "sequenceNumber": "120415223",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Gabriela Jaquez makes free throw 1 of 1",
+          "awayScore": 4,
+          "homeScore": 9,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "7:11"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:47:53Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415237",
+          "sequenceNumber": "120415237",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Angela Dugalic makes 9-foot step back jumpshot (Gianna Kneepkens assists)",
+          "awayScore": 4,
+          "homeScore": 11,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "5:39"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:49:27Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 8
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415035",
+          "sequenceNumber": "120415036",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Gabriela Jaquez makes free throw 1 of 2",
+          "awayScore": 4,
+          "homeScore": 12,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "5:09"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:50:40Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": -214748340,
+            "y": -214748365
+          },
+          "pointsAttempted": 0,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415036",
+          "sequenceNumber": "120415037",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Gabriela Jaquez makes free throw 2 of 2",
+          "awayScore": 4,
+          "homeScore": 13,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "5:09"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:50:49Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": -214748340,
+            "y": -214748365
+          },
+          "pointsAttempted": 0,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415247",
+          "sequenceNumber": "120415247",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Tessa Johnson makes driving layup",
+          "awayScore": 6,
+          "homeScore": 13,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "4:54"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:51:18Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415037",
+          "sequenceNumber": "120415252",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Tessa Johnson makes free throw 1 of 1",
+          "awayScore": 7,
+          "homeScore": 13,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "4:54"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:55:10Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": -214748340,
+            "y": -214748365
+          },
+          "pointsAttempted": 0,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415261",
+          "sequenceNumber": "120415261",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Agot Makeer makes 24-foot three point jumper (Joyce Edwards assists)",
+          "awayScore": 10,
+          "homeScore": 13,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "4:23"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:55:46Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 8,
+            "y": 17
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415256",
+          "sequenceNumber": "120415256",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+          "awayScore": 10,
+          "homeScore": 16,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "3:45"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T19:56:23Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 2,
+            "y": 2
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415328",
+          "sequenceNumber": "120415328",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+          "awayScore": 10,
+          "homeScore": 18,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "0:27"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:02:29Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415332",
+          "sequenceNumber": "120415332",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Kiki Rice makes 25-foot three point step back jumpshot",
+          "awayScore": 10,
+          "homeScore": 21,
+          "period": {
+            "number": 1,
+            "displayValue": "1st Quarter"
+          },
+          "clock": {
+            "displayValue": "0:02"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:02:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 12,
+            "y": 22
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415342",
+          "sequenceNumber": "120415342",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Angela Dugalic makes layup (Gabriela Jaquez assists)",
+          "awayScore": 10,
+          "homeScore": 23,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:27"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:08:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415344",
+          "sequenceNumber": "120415344",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Tessa Johnson makes 14-foot pullup jump shot (Joyce Edwards assists)",
+          "awayScore": 12,
+          "homeScore": 23,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:12"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:08:30Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 14
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415346",
+          "sequenceNumber": "120415346",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gianna Kneepkens makes 24-foot three point jumper (Angela Dugalic assists)",
+          "awayScore": 12,
+          "homeScore": 26,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:52"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:08:49Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 39,
+            "y": 19
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415348",
+          "sequenceNumber": "120415348",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Tessa Johnson makes driving layup",
+          "awayScore": 14,
+          "homeScore": 26,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:41"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:09:00Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415357",
+          "sequenceNumber": "120415357",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Tessa Johnson makes free throw 1 of 1",
+          "awayScore": 15,
+          "homeScore": 26,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:41"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:09:43Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415359",
+          "sequenceNumber": "120415359",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Gabriela Jaquez makes layup (Angela Dugalic assists)",
+          "awayScore": 15,
+          "homeScore": 28,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:23"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:10:06Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415373",
+          "sequenceNumber": "120415373",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gianna Kneepkens makes 10-foot step back jumpshot",
+          "awayScore": 15,
+          "homeScore": 30,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "7:33"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:11:23Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 15,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415395",
+          "sequenceNumber": "120415395",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Raven Johnson makes 17-foot pullup jump shot",
+          "awayScore": 17,
+          "homeScore": 30,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:09"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:13:09Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 17
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415406",
+          "sequenceNumber": "120415406",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Lauren Betts makes 19-foot jumper (Kiki Rice assists)",
+          "awayScore": 17,
+          "homeScore": 32,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "4:52"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:14:52Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 19
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415415",
+          "sequenceNumber": "120415415",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Joyce Edwards makes 11-foot hook shot",
+          "awayScore": 19,
+          "homeScore": 32,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "4:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:19:18Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 11
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415425",
+          "sequenceNumber": "120415425",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Ta'Niya Latson makes layup",
+          "awayScore": 21,
+          "homeScore": 32,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:48"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4609797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:22:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415435",
+          "sequenceNumber": "120415435",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Kiki Rice makes driving layup (Gianna Kneepkens assists)",
+          "awayScore": 21,
+          "homeScore": 34,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:35"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:27:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415444",
+          "sequenceNumber": "120415444",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gianna Kneepkens makes 12-foot pullup jump shot (Angela Dugalic assists)",
+          "awayScore": 21,
+          "homeScore": 36,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:50"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:28:26Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 12
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415446",
+          "sequenceNumber": "120415446",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Tessa Johnson makes 19-foot pullup jump shot (Madina Okot assists)",
+          "awayScore": 23,
+          "homeScore": 36,
+          "period": {
+            "number": 2,
+            "displayValue": "2nd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:37"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5108587"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:28:39Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 18
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415460",
+          "sequenceNumber": "120415460",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Madina Okot makes layup",
+          "awayScore": 25,
+          "homeScore": 36,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:40"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108587"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:47:06Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 5
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415461",
+          "sequenceNumber": "120415461",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+          "awayScore": 25,
+          "homeScore": 38,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "9:23"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:47:24Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 24,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415478",
+          "sequenceNumber": "120415478",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Gabriela Jaquez makes layup",
+          "awayScore": 25,
+          "homeScore": 40,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "8:37"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:48:52Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415486",
+          "sequenceNumber": "120415486",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+          "awayScore": 25,
+          "homeScore": 43,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "7:56"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:49:34Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 48,
+            "y": 3
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415501",
+          "sequenceNumber": "120415501",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Angela Dugalic makes free throw 1 of 2",
+          "awayScore": 25,
+          "homeScore": 44,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "7:05"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:51:20Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415513",
+          "sequenceNumber": "120415513",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Maddy McDaniel makes free throw 2 of 2",
+          "awayScore": 26,
+          "homeScore": 44,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:52"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239099"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:52:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415519",
+          "sequenceNumber": "120415519",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+          "awayScore": 26,
+          "homeScore": 46,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "6:04"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:54:03Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 30,
+            "y": 4
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415524",
+          "sequenceNumber": "120415524",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Gabriela Jaquez makes layup (Kiki Rice assists)",
+          "awayScore": 26,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "5:44"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:54:24Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415533",
+          "sequenceNumber": "120415533",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Agot Makeer makes layup (Tessa Johnson assists)",
+          "awayScore": 28,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "5:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T20:58:21Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 8
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415279",
+          "sequenceNumber": "120415279",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Tessa Johnson makes 10-foot turnaround jump shot (Joyce Edwards assists)",
+          "awayScore": 30,
+          "homeScore": 48,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "4:29"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:03:38Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 10
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415552",
+          "sequenceNumber": "120415552",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gabriela Jaquez makes 26-foot three point jumper (Lauren Betts assists)",
+          "awayScore": 30,
+          "homeScore": 51,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "3:17"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:05:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 8,
+            "y": 20
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415564",
+          "sequenceNumber": "120415564",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Kiki Rice makes free throw 1 of 2",
+          "awayScore": 30,
+          "homeScore": 52,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:45"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:06:50Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415576",
+          "sequenceNumber": "120415576",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gianna Kneepkens makes 24-foot three point jumper (Lauren Betts assists)",
+          "awayScore": 30,
+          "homeScore": 55,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "2:09"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:09:10Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 49,
+            "y": 4
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415585",
+          "sequenceNumber": "120415585",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Kiki Rice makes free throw 1 of 2",
+          "awayScore": 30,
+          "homeScore": 56,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:50"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:10:35Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415586",
+          "sequenceNumber": "120415586",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Kiki Rice makes free throw 2 of 2",
+          "awayScore": 30,
+          "homeScore": 57,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "1:50"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:10:51Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415597",
+          "sequenceNumber": "120415597",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Charlisse Leger-Walker makes driving layup",
+          "awayScore": 30,
+          "homeScore": 59,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:44"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:12:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415603",
+          "sequenceNumber": "120415603",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Lauren Betts makes free throw 1 of 2",
+          "awayScore": 30,
+          "homeScore": 60,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:26"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:14:41Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415604",
+          "sequenceNumber": "120415604",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Lauren Betts makes free throw 2 of 2",
+          "awayScore": 30,
+          "homeScore": 61,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:26"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:14:51Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415613",
+          "sequenceNumber": "120415613",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Joyce Edwards makes free throw 1 of 2",
+          "awayScore": 31,
+          "homeScore": 61,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:01"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:16:23Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415615",
+          "sequenceNumber": "120415615",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Joyce Edwards makes free throw 2 of 2",
+          "awayScore": 32,
+          "homeScore": 61,
+          "period": {
+            "number": 3,
+            "displayValue": "3rd Quarter"
+          },
+          "clock": {
+            "displayValue": "0:01"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:16:47Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415640",
+          "sequenceNumber": "120415640",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Gabriela Jaquez makes layup",
+          "awayScore": 32,
+          "homeScore": 63,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "9:08"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:23:12Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415661",
+          "sequenceNumber": "120415661",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Gianna Kneepkens makes free throw 1 of 2",
+          "awayScore": 32,
+          "homeScore": 64,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "8:26"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:25:07Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415662",
+          "sequenceNumber": "120415662",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Gianna Kneepkens makes free throw 2 of 2",
+          "awayScore": 32,
+          "homeScore": 65,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "8:26"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:25:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415667",
+          "sequenceNumber": "120415667",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Madina Okot makes layup",
+          "awayScore": 34,
+          "homeScore": 65,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "8:16"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5108587"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:25:47Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 20,
+            "y": 5
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415678",
+          "sequenceNumber": "120415678",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Kiki Rice makes driving layup (Charlisse Leger-Walker assists)",
+          "awayScore": 34,
+          "homeScore": 67,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "7:54"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:26:54Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415681",
+          "sequenceNumber": "120415681",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Joyce Edwards makes layup (Ta'Niya Latson assists)",
+          "awayScore": 36,
+          "homeScore": 67,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "7:35"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4609797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:27:13Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 1
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415686",
+          "sequenceNumber": "120415686",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Tessa Johnson makes 9-foot pullup jump shot",
+          "awayScore": 38,
+          "homeScore": 67,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "7:05"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5174284"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:27:55Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 26,
+            "y": 9
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415694",
+          "sequenceNumber": "120415694",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gianna Kneepkens makes 23-foot three point jumper (Angela Dugalic assists)",
+          "awayScore": 38,
+          "homeScore": 70,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "6:05"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:34:00Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 4,
+            "y": 11
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415698",
+          "sequenceNumber": "120415698",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Joyce Edwards makes layup",
+          "awayScore": 40,
+          "homeScore": 70,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "5:50"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239100"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:34:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 2
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415699",
+          "sequenceNumber": "120415699",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+          "awayScore": 40,
+          "homeScore": 72,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "5:30"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433411"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4898898"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:34:35Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 28,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415734",
+          "sequenceNumber": "120415734",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Raven Johnson makes free throw 2 of 2",
+          "awayScore": 41,
+          "homeScore": 72,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "5:18"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4433797"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:35:40Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415739",
+          "sequenceNumber": "120415739",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Gabriela Jaquez makes driving layup (Lena Bilic assists)",
+          "awayScore": 41,
+          "homeScore": 74,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "4:56"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5311745"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:36:17Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 29,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415743",
+          "sequenceNumber": "120415743",
+          "type": {
+            "id": "572",
+            "text": "LayUpShot"
+          },
+          "text": "Lauren Betts makes driving layup (Kiki Rice assists)",
+          "awayScore": 41,
+          "homeScore": 76,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "4:35"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5105737"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4565505"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:36:39Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 22,
+            "y": 3
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415745",
+          "sequenceNumber": "120415745",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Agot Makeer makes 13-foot pullup jump shot (Maddy McDaniel assists)",
+          "awayScore": 43,
+          "homeScore": 76,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "4:16"
+          },
+          "scoringPlay": true,
+          "scoreValue": 2,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5239099"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:36:58Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 23,
+            "y": 13
+          },
+          "pointsAttempted": 2,
+          "shortDescription": "+2 Points"
+        },
+        {
+          "id": "401856590120415756",
+          "sequenceNumber": "120415756",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Agot Makeer makes free throw 1 of 2",
+          "awayScore": 44,
+          "homeScore": 76,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "3:46"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:38:05Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415758",
+          "sequenceNumber": "120415758",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Agot Makeer makes free throw 2 of 2",
+          "awayScore": 45,
+          "homeScore": 76,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "3:46"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:38:19Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415785",
+          "sequenceNumber": "120415785",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Gabriela Jaquez makes 25-foot three point jumper (Charlisse Leger-Walker assists)",
+          "awayScore": 45,
+          "homeScore": 79,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "2:55"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "26"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4858656"
+              }
+            },
+            {
+              "athlete": {
+                "id": "4703609"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:39:15Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 38,
+            "y": 22
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        },
+        {
+          "id": "401856590120415795",
+          "sequenceNumber": "120415795",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Maddy McDaniel makes free throw 2 of 2",
+          "awayScore": 46,
+          "homeScore": 79,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "2:42"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5239099"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:40:28Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415804",
+          "sequenceNumber": "120415804",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Agot Makeer makes free throw 1 of 2",
+          "awayScore": 47,
+          "homeScore": 79,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "2:14"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:41:38Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415805",
+          "sequenceNumber": "120415805",
+          "type": {
+            "id": "540",
+            "text": "MadeFreeThrow"
+          },
+          "text": "Agot Makeer makes free throw 2 of 2",
+          "awayScore": 48,
+          "homeScore": 79,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "2:14"
+          },
+          "scoringPlay": true,
+          "scoreValue": 1,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "5311577"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:41:45Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 25,
+            "y": 0
+          },
+          "pointsAttempted": 1,
+          "shortDescription": "+1 Point"
+        },
+        {
+          "id": "401856590120415812",
+          "sequenceNumber": "120415812",
+          "type": {
+            "id": "558",
+            "text": "JumpShot"
+          },
+          "text": "Maryam Dauda makes 24-foot three point jumper (Maddy McDaniel assists)",
+          "awayScore": 51,
+          "homeScore": 79,
+          "period": {
+            "number": 4,
+            "displayValue": "4th Quarter"
+          },
+          "clock": {
+            "displayValue": "1:05"
+          },
+          "scoringPlay": true,
+          "scoreValue": 3,
+          "team": {
+            "id": "2579"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "id": "4434019"
+              }
+            },
+            {
+              "athlete": {
+                "id": "5239099"
+              }
+            }
+          ],
+          "wallclock": "2026-04-05T21:43:12Z",
+          "shootingPlay": true,
+          "coordinate": {
+            "x": 12,
+            "y": 20
+          },
+          "pointsAttempted": 3,
+          "shortDescription": "+3 Points"
+        }
+      ],
+      "gameInfo": {
+        "attendance": 15856,
+        "officials": [
+          {
+            "fullName": "Gina Cross",
+            "displayName": "Gina Cross",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          },
+          {
+            "fullName": "Pualani Spurlock",
+            "displayName": "Pualani Spurlock",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          },
+          {
+            "fullName": "Tiffany Bird",
+            "displayName": "Tiffany Bird",
+            "position": {
+              "name": "Referee",
+              "displayName": "Referee"
+            }
+          }
+        ]
+      },
+      "winprobability": [
+        {
+          "homeWinPercentage": 1,
+          "tiePercentage": 0,
+          "playId": "401856590120415841"
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "401856590",
+    "live": false,
+    "teamStats": [
+      {
+        "label": "FG",
+        "away": "18-62",
+        "home": "30-69"
+      },
+      {
+        "label": "Field Goal %",
+        "away": "29",
+        "home": "43"
+      },
+      {
+        "label": "3PT",
+        "away": "2-15",
+        "home": "8-19"
+      },
+      {
+        "label": "Three Point %",
+        "away": "13",
+        "home": "42"
+      },
+      {
+        "label": "FT",
+        "away": "13-17",
+        "home": "11-13"
+      },
+      {
+        "label": "Free Throw %",
+        "away": "76",
+        "home": "85"
+      },
+      {
+        "label": "Rebounds",
+        "away": "37",
+        "home": "49"
+      },
+      {
+        "label": "Offensive Rebounds",
+        "away": "17",
+        "home": "21"
+      },
+      {
+        "label": "Defensive Rebounds",
+        "away": "20",
+        "home": "28"
+      },
+      {
+        "label": "Assists",
+        "away": "9",
+        "home": "23"
+      },
+      {
+        "label": "Steals",
+        "away": "6",
+        "home": "7"
+      },
+      {
+        "label": "Blocks",
+        "away": "4",
+        "home": "5"
+      },
+      {
+        "label": "Turnovers",
+        "away": "14",
+        "home": "13"
+      },
+      {
+        "label": "Technical Fouls",
+        "away": "0",
+        "home": "0"
+      },
+      {
+        "label": "Points Off Turnovers",
+        "away": "10",
+        "home": "19"
+      },
+      {
+        "label": "Fast Break Points",
+        "away": "6",
+        "home": "11"
+      },
+      {
+        "label": "Points in Paint",
+        "away": "28",
+        "home": "40"
+      },
+      {
+        "label": "Fouls",
+        "away": "17",
+        "home": "17"
+      }
+    ],
+    "boxGroups": [
+      {
+        "title": "Players",
+        "columns": [
+          "MIN",
+          "PTS",
+          "FG",
+          "3PT",
+          "FT",
+          "REB",
+          "AST",
+          "TO",
+          "STL",
+          "BLK",
+          "OREB",
+          "DREB",
+          "PF"
+        ],
+        "teams": [
+          {
+            "side": "away",
+            "abbr": "SC",
+            "rows": [
+              {
+                "name": "J. Edwards",
+                "pos": "F",
+                "stats": [
+                  "30",
+                  "8",
+                  "3-10",
+                  "0-0",
+                  "2-2",
+                  "11",
+                  "3",
+                  "2",
+                  "1",
+                  "0",
+                  "3",
+                  "8",
+                  "2"
+                ]
+              },
+              {
+                "name": "M. Okot",
+                "pos": "C",
+                "stats": [
+                  "13",
+                  "6",
+                  "3-9",
+                  "0-2",
+                  "0-1",
+                  "3",
+                  "1",
+                  "1",
+                  "1",
+                  "0",
+                  "3",
+                  "0",
+                  "3"
+                ]
+              },
+              {
+                "name": "T. Johnson",
+                "pos": "G",
+                "stats": [
+                  "30",
+                  "14",
+                  "6-12",
+                  "0-2",
+                  "2-2",
+                  "3",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "0",
+                  "1"
+                ]
+              },
+              {
+                "name": "T. Latson",
+                "pos": "G",
+                "stats": [
+                  "25",
+                  "4",
+                  "1-5",
+                  "0-0",
+                  "2-2",
+                  "3",
+                  "2",
+                  "3",
+                  "1",
+                  "0",
+                  "0",
+                  "3",
+                  "1"
+                ]
+              },
+              {
+                "name": "R. Johnson",
+                "pos": "G",
+                "stats": [
+                  "30",
+                  "3",
+                  "1-7",
+                  "0-4",
+                  "1-2",
+                  "3",
+                  "0",
+                  "2",
+                  "1",
+                  "1",
+                  "1",
+                  "2",
+                  "3"
+                ]
+              },
+              {
+                "name": "A. Tournebize",
+                "pos": "F",
+                "stats": [
+                  "15",
+                  "0",
+                  "0-3",
+                  "0-1",
+                  "0-0",
+                  "6",
+                  "0",
+                  "3",
+                  "1",
+                  "1",
+                  "3",
+                  "3",
+                  "2"
+                ]
+              },
+              {
+                "name": "M. Dauda",
+                "pos": "F",
+                "stats": [
+                  "14",
+                  "3",
+                  "1-4",
+                  "1-2",
+                  "0-0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "1",
+                  "1",
+                  "3"
+                ]
+              },
+              {
+                "name": "A. Makeer",
+                "pos": "G",
+                "stats": [
+                  "23",
+                  "11",
+                  "3-6",
+                  "1-2",
+                  "4-4",
+                  "2",
+                  "0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "2",
+                  "2"
+                ]
+              },
+              {
+                "name": "A. McDowell",
+                "pos": "G",
+                "stats": [
+                  "5",
+                  "0",
+                  "0-0",
+                  "0-0",
+                  "0-0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "M. McDaniel",
+                "pos": "G",
+                "stats": [
+                  "15",
+                  "2",
+                  "0-6",
+                  "0-2",
+                  "2-4",
+                  "0",
+                  "2",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          },
+          {
+            "side": "home",
+            "abbr": "UCLA",
+            "rows": [
+              {
+                "name": "L. Betts",
+                "pos": "C",
+                "stats": [
+                  "31",
+                  "14",
+                  "6-10",
+                  "0-0",
+                  "2-2",
+                  "11",
+                  "2",
+                  "1",
+                  "0",
+                  "2",
+                  "4",
+                  "7",
+                  "0"
+                ]
+              },
+              {
+                "name": "G. Kneepkens",
+                "pos": "G",
+                "stats": [
+                  "26",
+                  "15",
+                  "5-15",
+                  "3-7",
+                  "2-2",
+                  "1",
+                  "4",
+                  "0",
+                  "1",
+                  "1",
+                  "1",
+                  "0",
+                  "2"
+                ]
+              },
+              {
+                "name": "G. Jaquez",
+                "pos": "G",
+                "stats": [
+                  "34",
+                  "21",
+                  "8-14",
+                  "2-4",
+                  "3-3",
+                  "10",
+                  "5",
+                  "1",
+                  "1",
+                  "0",
+                  "4",
+                  "6",
+                  "1"
+                ]
+              },
+              {
+                "name": "C. Leger-Walker",
+                "pos": "G",
+                "stats": [
+                  "26",
+                  "10",
+                  "4-12",
+                  "2-5",
+                  "0-0",
+                  "4",
+                  "2",
+                  "4",
+                  "0",
+                  "1",
+                  "1",
+                  "3",
+                  "2"
+                ]
+              },
+              {
+                "name": "K. Rice",
+                "pos": "G",
+                "stats": [
+                  "31",
+                  "10",
+                  "3-7",
+                  "1-1",
+                  "3-4",
+                  "6",
+                  "5",
+                  "2",
+                  "3",
+                  "0",
+                  "2",
+                  "4",
+                  "4"
+                ]
+              },
+              {
+                "name": "S. Betts",
+                "pos": "F",
+                "stats": [
+                  "7",
+                  "0",
+                  "0-1",
+                  "0-0",
+                  "0-0",
+                  "4",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "2",
+                  "2",
+                  "2"
+                ]
+              },
+              {
+                "name": "A. Muse",
+                "pos": "F",
+                "stats": [
+                  "6",
+                  "0",
+                  "0-1",
+                  "0-0",
+                  "0-0",
+                  "1",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "1",
+                  "0",
+                  "0"
+                ]
+              },
+              {
+                "name": "A. Dugalić",
+                "pos": "F",
+                "stats": [
+                  "28",
+                  "9",
+                  "4-8",
+                  "0-1",
+                  "1-2",
+                  "5",
+                  "4",
+                  "1",
+                  "1",
+                  "1",
+                  "1",
+                  "4",
+                  "4"
+                ]
+              },
+              {
+                "name": "L. Bilić",
+                "pos": "G",
+                "stats": [
+                  "9",
+                  "0",
+                  "0-1",
+                  "0-1",
+                  "0-0",
+                  "1",
+                  "1",
+                  "0",
+                  "0",
+                  "0",
+                  "1",
+                  "0",
+                  "2"
+                ]
+              },
+              {
+                "name": "C. Karamouzi",
+                "pos": "G",
+                "stats": [
+                  "2",
+                  "0",
+                  "0-0",
+                  "0-0",
+                  "0-0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0",
+                  "0"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scoringPlays": [
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:43",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes 5-foot turnaround jump shot (Gabriela Jaquez assists)",
+        "away": 0,
+        "home": 2,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:08",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup (Ta'Niya Latson assists)",
+        "away": 2,
+        "home": 2,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "8:28",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 14-foot pullup jump shot",
+        "away": 2,
+        "home": 4,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 2,
+        "home": 6,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes free throw 1 of 2",
+        "away": 3,
+        "home": 6,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes free throw 2 of 2",
+        "away": 4,
+        "home": 6,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:11",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 0-foot tip in layup",
+        "away": 4,
+        "home": 8,
+        "type": "TipShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:11",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 1 of 1",
+        "away": 4,
+        "home": 9,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:39",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes 9-foot step back jumpshot (Gianna Kneepkens assists)",
+        "away": 4,
+        "home": 11,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 1 of 2",
+        "away": 4,
+        "home": 12,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 2 of 2",
+        "away": 4,
+        "home": 13,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:54",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes driving layup",
+        "away": 6,
+        "home": 13,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:54",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes free throw 1 of 1",
+        "away": 7,
+        "home": 13,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:23",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes 24-foot three point jumper (Joyce Edwards assists)",
+        "away": 10,
+        "home": 13,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:45",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+        "away": 10,
+        "home": 16,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "0:27",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+        "away": 10,
+        "home": 18,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "0:02",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes 25-foot three point step back jumpshot",
+        "away": 10,
+        "home": 21,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:27",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gabriela Jaquez assists)",
+        "away": 10,
+        "home": 23,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:12",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 14-foot pullup jump shot (Joyce Edwards assists)",
+        "away": 12,
+        "home": 23,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 24-foot three point jumper (Angela Dugalic assists)",
+        "away": 12,
+        "home": 26,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:41",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes driving layup",
+        "away": 14,
+        "home": 26,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:41",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes free throw 1 of 1",
+        "away": 15,
+        "home": 26,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:23",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup (Angela Dugalic assists)",
+        "away": 15,
+        "home": 28,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "7:33",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 10-foot step back jumpshot",
+        "away": 15,
+        "home": 30,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:09",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Raven Johnson makes 17-foot pullup jump shot",
+        "away": 17,
+        "home": 30,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "4:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes 19-foot jumper (Kiki Rice assists)",
+        "away": 17,
+        "home": 32,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "4:30",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes 11-foot hook shot",
+        "away": 19,
+        "home": 32,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "2:48",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes layup",
+        "away": 21,
+        "home": 32,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:35",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes driving layup (Gianna Kneepkens assists)",
+        "away": 21,
+        "home": 34,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 12-foot pullup jump shot (Angela Dugalic assists)",
+        "away": 21,
+        "home": 36,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:37",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 19-foot pullup jump shot (Madina Okot assists)",
+        "away": 23,
+        "home": 36,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:40",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup",
+        "away": 25,
+        "home": 36,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:23",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 25,
+        "home": 38,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:37",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup",
+        "away": 25,
+        "home": 40,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "7:56",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+        "away": 25,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "7:05",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes free throw 1 of 2",
+        "away": 25,
+        "home": 44,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:52",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maddy McDaniel makes free throw 2 of 2",
+        "away": 26,
+        "home": 44,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:04",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 26,
+        "home": 46,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:44",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup (Kiki Rice assists)",
+        "away": 26,
+        "home": 48,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:30",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes layup (Tessa Johnson assists)",
+        "away": 28,
+        "home": 48,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "4:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 10-foot turnaround jump shot (Joyce Edwards assists)",
+        "away": 30,
+        "home": 48,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:17",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 26-foot three point jumper (Lauren Betts assists)",
+        "away": 30,
+        "home": 51,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:45",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 1 of 2",
+        "away": 30,
+        "home": 52,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 24-foot three point jumper (Lauren Betts assists)",
+        "away": 30,
+        "home": 55,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 1 of 2",
+        "away": 30,
+        "home": 56,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 2 of 2",
+        "away": 30,
+        "home": 57,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:44",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes driving layup",
+        "away": 30,
+        "home": 59,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes free throw 1 of 2",
+        "away": 30,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes free throw 2 of 2",
+        "away": 30,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:01",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes free throw 1 of 2",
+        "away": 31,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:01",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes free throw 2 of 2",
+        "away": 32,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "9:08",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup",
+        "away": 32,
+        "home": 63,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes free throw 1 of 2",
+        "away": 32,
+        "home": 64,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes free throw 2 of 2",
+        "away": 32,
+        "home": 65,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:16",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup",
+        "away": 34,
+        "home": 65,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:54",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes driving layup (Charlisse Leger-Walker assists)",
+        "away": 34,
+        "home": 67,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:35",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes layup (Ta'Niya Latson assists)",
+        "away": 36,
+        "home": 67,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:05",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 9-foot pullup jump shot",
+        "away": 38,
+        "home": 67,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:05",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 23-foot three point jumper (Angela Dugalic assists)",
+        "away": 38,
+        "home": 70,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:50",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes layup",
+        "away": 40,
+        "home": 70,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:30",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+        "away": 40,
+        "home": 72,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:18",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Raven Johnson makes free throw 2 of 2",
+        "away": 41,
+        "home": 72,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:56",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes driving layup (Lena Bilic assists)",
+        "away": 41,
+        "home": 74,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:35",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes driving layup (Kiki Rice assists)",
+        "away": 41,
+        "home": 76,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:16",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes 13-foot pullup jump shot (Maddy McDaniel assists)",
+        "away": 43,
+        "home": 76,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:46",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 1 of 2",
+        "away": 44,
+        "home": 76,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:46",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 2 of 2",
+        "away": 45,
+        "home": 76,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:55",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 25-foot three point jumper (Charlisse Leger-Walker assists)",
+        "away": 45,
+        "home": 79,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:42",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maddy McDaniel makes free throw 2 of 2",
+        "away": 46,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:14",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 1 of 2",
+        "away": 47,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:14",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 2 of 2",
+        "away": 48,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:05",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maryam Dauda makes 24-foot three point jumper (Maddy McDaniel assists)",
+        "away": 51,
+        "home": 79,
+        "type": "JumpShot",
+        "scoring": true
+      }
+    ],
+    "lineups": [],
+    "periodLines": {
+      "unit": "quarter",
+      "labels": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "away": {
+        "abbr": "SC",
+        "values": [
+          "10",
+          "13",
+          "9",
+          "19"
+        ],
+        "total": "51"
+      },
+      "home": {
+        "abbr": "UCLA",
+        "values": [
+          "21",
+          "15",
+          "25",
+          "18"
+        ],
+        "total": "79"
+      }
+    },
+    "winProbability": {
+      "home": 100,
+      "away": 0
+    },
+    "plays": [
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:43",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes 5-foot turnaround jump shot (Gabriela Jaquez assists)",
+        "away": 0,
+        "home": 2,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "9:08",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup (Ta'Niya Latson assists)",
+        "away": 2,
+        "home": 2,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "8:28",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 14-foot pullup jump shot",
+        "away": 2,
+        "home": 4,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 2,
+        "home": 6,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes free throw 1 of 2",
+        "away": 3,
+        "home": 6,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes free throw 2 of 2",
+        "away": 4,
+        "home": 6,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:11",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 0-foot tip in layup",
+        "away": 4,
+        "home": 8,
+        "type": "TipShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "7:11",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 1 of 1",
+        "away": 4,
+        "home": 9,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:39",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes 9-foot step back jumpshot (Gianna Kneepkens assists)",
+        "away": 4,
+        "home": 11,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 1 of 2",
+        "away": 4,
+        "home": 12,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "5:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes free throw 2 of 2",
+        "away": 4,
+        "home": 13,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:54",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes driving layup",
+        "away": 6,
+        "home": 13,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:54",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes free throw 1 of 1",
+        "away": 7,
+        "home": 13,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "4:23",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes 24-foot three point jumper (Joyce Edwards assists)",
+        "away": 10,
+        "home": 13,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "3:45",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+        "away": 10,
+        "home": 16,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "0:27",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+        "away": 10,
+        "home": 18,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Quarter",
+        "clock": "0:02",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes 25-foot three point step back jumpshot",
+        "away": 10,
+        "home": 21,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:27",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gabriela Jaquez assists)",
+        "away": 10,
+        "home": 23,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "9:12",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 14-foot pullup jump shot (Joyce Edwards assists)",
+        "away": 12,
+        "home": 23,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 24-foot three point jumper (Angela Dugalic assists)",
+        "away": 12,
+        "home": 26,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:41",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes driving layup",
+        "away": 14,
+        "home": 26,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:41",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes free throw 1 of 1",
+        "away": 15,
+        "home": 26,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "8:23",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup (Angela Dugalic assists)",
+        "away": 15,
+        "home": 28,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "7:33",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 10-foot step back jumpshot",
+        "away": 15,
+        "home": 30,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "6:09",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Raven Johnson makes 17-foot pullup jump shot",
+        "away": 17,
+        "home": 30,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "4:52",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes 19-foot jumper (Kiki Rice assists)",
+        "away": 17,
+        "home": 32,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "4:30",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes 11-foot hook shot",
+        "away": 19,
+        "home": 32,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "2:48",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Ta'Niya Latson makes layup",
+        "away": 21,
+        "home": 32,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "1:35",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes driving layup (Gianna Kneepkens assists)",
+        "away": 21,
+        "home": 34,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 12-foot pullup jump shot (Angela Dugalic assists)",
+        "away": 21,
+        "home": 36,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Quarter",
+        "clock": "0:37",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 19-foot pullup jump shot (Madina Okot assists)",
+        "away": 23,
+        "home": 36,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:40",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup",
+        "away": 25,
+        "home": 36,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "9:23",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 25,
+        "home": 38,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "8:37",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup",
+        "away": 25,
+        "home": 40,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "7:56",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes 23-foot three point jumper (Kiki Rice assists)",
+        "away": 25,
+        "home": 43,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "7:05",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes free throw 1 of 2",
+        "away": 25,
+        "home": 44,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:52",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maddy McDaniel makes free throw 2 of 2",
+        "away": 26,
+        "home": 44,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "6:04",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes layup (Gabriela Jaquez assists)",
+        "away": 26,
+        "home": 46,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:44",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup (Kiki Rice assists)",
+        "away": 26,
+        "home": 48,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "5:30",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes layup (Tessa Johnson assists)",
+        "away": 28,
+        "home": 48,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "4:29",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 10-foot turnaround jump shot (Joyce Edwards assists)",
+        "away": 30,
+        "home": 48,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "3:17",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 26-foot three point jumper (Lauren Betts assists)",
+        "away": 30,
+        "home": 51,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:45",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 1 of 2",
+        "away": 30,
+        "home": 52,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "2:09",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 24-foot three point jumper (Lauren Betts assists)",
+        "away": 30,
+        "home": 55,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 1 of 2",
+        "away": 30,
+        "home": 56,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "1:50",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes free throw 2 of 2",
+        "away": 30,
+        "home": 57,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:44",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Charlisse Leger-Walker makes driving layup",
+        "away": 30,
+        "home": 59,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes free throw 1 of 2",
+        "away": 30,
+        "home": 60,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes free throw 2 of 2",
+        "away": 30,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:01",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes free throw 1 of 2",
+        "away": 31,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 3,
+        "periodLabel": "3rd Quarter",
+        "clock": "0:01",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes free throw 2 of 2",
+        "away": 32,
+        "home": 61,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "9:08",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes layup",
+        "away": 32,
+        "home": 63,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes free throw 1 of 2",
+        "away": 32,
+        "home": 64,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:26",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes free throw 2 of 2",
+        "away": 32,
+        "home": 65,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "8:16",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Madina Okot makes layup",
+        "away": 34,
+        "home": 65,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:54",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Kiki Rice makes driving layup (Charlisse Leger-Walker assists)",
+        "away": 34,
+        "home": 67,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:35",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes layup (Ta'Niya Latson assists)",
+        "away": 36,
+        "home": 67,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "7:05",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Tessa Johnson makes 9-foot pullup jump shot",
+        "away": 38,
+        "home": 67,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "6:05",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gianna Kneepkens makes 23-foot three point jumper (Angela Dugalic assists)",
+        "away": 38,
+        "home": 70,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:50",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Joyce Edwards makes layup",
+        "away": 40,
+        "home": 70,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:30",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Angela Dugalic makes layup (Gianna Kneepkens assists)",
+        "away": 40,
+        "home": 72,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "5:18",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Raven Johnson makes free throw 2 of 2",
+        "away": 41,
+        "home": 72,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:56",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes driving layup (Lena Bilic assists)",
+        "away": 41,
+        "home": 74,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:35",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Lauren Betts makes driving layup (Kiki Rice assists)",
+        "away": 41,
+        "home": 76,
+        "type": "LayUpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "4:16",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes 13-foot pullup jump shot (Maddy McDaniel assists)",
+        "away": 43,
+        "home": 76,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:46",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 1 of 2",
+        "away": 44,
+        "home": 76,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "3:46",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 2 of 2",
+        "away": 45,
+        "home": 76,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:55",
+        "side": "home",
+        "teamAbbr": "UCLA",
+        "text": "Gabriela Jaquez makes 25-foot three point jumper (Charlisse Leger-Walker assists)",
+        "away": 45,
+        "home": 79,
+        "type": "JumpShot",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:42",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maddy McDaniel makes free throw 2 of 2",
+        "away": 46,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:14",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 1 of 2",
+        "away": 47,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "2:14",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Agot Makeer makes free throw 2 of 2",
+        "away": 48,
+        "home": 79,
+        "type": "MadeFreeThrow",
+        "scoring": true
+      },
+      {
+        "period": 4,
+        "periodLabel": "4th Quarter",
+        "clock": "1:05",
+        "side": "away",
+        "teamAbbr": "SC",
+        "text": "Maryam Dauda makes 24-foot three point jumper (Maddy McDaniel assists)",
+        "away": 51,
+        "home": 79,
+        "type": "JumpShot",
+        "scoring": true
+      }
+    ],
+    "attendance": 15856,
+    "officials": [
+      {
+        "name": "Gina Cross",
+        "role": "Referee"
+      },
+      {
+        "name": "Pualani Spurlock",
+        "role": "Referee"
+      },
+      {
+        "name": "Tiffany Bird",
+        "role": "Referee"
+      }
+    ]
+  }
+}

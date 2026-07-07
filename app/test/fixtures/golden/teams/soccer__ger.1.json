@@ -1,0 +1,650 @@
+{
+  "endpoint": "teams",
+  "args": {
+    "key": "soccer/ger.1",
+    "raw": {
+      "sports": [
+        {
+          "leagues": [
+            {
+              "teams": [
+                {
+                  "team": {
+                    "id": "6418",
+                    "displayName": "1. FC Heidenheim 1846",
+                    "name": "1. FC Heidenheim 1846",
+                    "shortDisplayName": "Heidenheim",
+                    "abbreviation": "HDH",
+                    "color": "DA0308",
+                    "alternateColor": "003399",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/6418.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/6418.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "598",
+                    "displayName": "1. FC Union Berlin",
+                    "name": "1. FC Union Berlin",
+                    "shortDisplayName": "Union Berlin",
+                    "abbreviation": "FCU",
+                    "color": "DA0308",
+                    "alternateColor": "d4d4d4",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/598.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "131",
+                    "displayName": "Bayer Leverkusen",
+                    "name": "Bayer Leverkusen",
+                    "shortDisplayName": "Leverkusen",
+                    "abbreviation": "B04",
+                    "color": "DA0308",
+                    "alternateColor": "f9fbfc",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/131.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "132",
+                    "displayName": "Bayern Munich",
+                    "name": "Bayern Munich",
+                    "shortDisplayName": "Bayern",
+                    "abbreviation": "MUN",
+                    "color": "dc052d",
+                    "alternateColor": "1a1a1a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/132.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "124",
+                    "displayName": "Borussia Dortmund",
+                    "name": "Borussia Dortmund",
+                    "shortDisplayName": "Dortmund",
+                    "abbreviation": "DOR",
+                    "color": "ffee00",
+                    "alternateColor": "272726",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/124.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "268",
+                    "displayName": "Borussia Mönchengladbach",
+                    "name": "Borussia Mönchengladbach",
+                    "shortDisplayName": "Gladbach",
+                    "abbreviation": "BMG",
+                    "color": "ffffff",
+                    "alternateColor": "03915c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/268.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "125",
+                    "displayName": "Eintracht Frankfurt",
+                    "name": "Eintracht Frankfurt",
+                    "shortDisplayName": "Frankfurt",
+                    "abbreviation": "SGE",
+                    "color": "ffffff",
+                    "alternateColor": "272726",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/125.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "3841",
+                    "displayName": "FC Augsburg",
+                    "name": "FC Augsburg",
+                    "shortDisplayName": "Augsburg",
+                    "abbreviation": "FCA",
+                    "color": "ffffff",
+                    "alternateColor": "03915c",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3841.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3841.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "122",
+                    "displayName": "FC Cologne",
+                    "name": "FC Cologne",
+                    "shortDisplayName": "Cologne",
+                    "abbreviation": "KOE",
+                    "color": "ffffff",
+                    "alternateColor": "DA0308",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/122.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "127",
+                    "displayName": "Hamburg SV",
+                    "name": "Hamburg SV",
+                    "shortDisplayName": "Hamburg",
+                    "abbreviation": "HSV",
+                    "color": "1a26af",
+                    "alternateColor": "1a1a1a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/127.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/127.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "2950",
+                    "displayName": "Mainz",
+                    "name": "Mainz",
+                    "shortDisplayName": "Mainz",
+                    "abbreviation": "M05",
+                    "color": "DA0308",
+                    "alternateColor": "000055",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2950.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "11420",
+                    "displayName": "RB Leipzig",
+                    "name": "RB Leipzig",
+                    "shortDisplayName": "RB Leipzig",
+                    "abbreviation": "RBL",
+                    "color": "ffffff",
+                    "alternateColor": "740c14",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/11420.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "126",
+                    "displayName": "SC Freiburg",
+                    "name": "SC Freiburg",
+                    "shortDisplayName": "Freiburg",
+                    "abbreviation": "SCF",
+                    "color": "DA0308",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/126.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "270",
+                    "displayName": "St. Pauli",
+                    "name": "St. Pauli",
+                    "shortDisplayName": "St. Pauli",
+                    "abbreviation": "STP",
+                    "color": "442e23",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/270.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/270.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "7911",
+                    "displayName": "TSG Hoffenheim",
+                    "name": "TSG Hoffenheim",
+                    "shortDisplayName": "Hoffenheim",
+                    "abbreviation": "TSG",
+                    "color": "003399",
+                    "alternateColor": "000055",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/7911.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "134",
+                    "displayName": "VfB Stuttgart",
+                    "name": "VfB Stuttgart",
+                    "shortDisplayName": "Stuttgart",
+                    "abbreviation": "VFB",
+                    "color": "ffffff",
+                    "alternateColor": "DA0308",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/134.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "138",
+                    "displayName": "VfL Wolfsburg",
+                    "name": "VfL Wolfsburg",
+                    "shortDisplayName": "Wolfsburg",
+                    "abbreviation": "WOB",
+                    "color": "81f733",
+                    "alternateColor": "1a1a1a",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/138.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/138.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "team": {
+                    "id": "137",
+                    "displayName": "Werder Bremen",
+                    "name": "Werder Bremen",
+                    "shortDisplayName": "Bremen",
+                    "abbreviation": "SVW",
+                    "color": "03915c",
+                    "alternateColor": "ffffff",
+                    "logos": [
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500/137.png",
+                        "rel": [
+                          "full",
+                          "default"
+                        ]
+                      },
+                      {
+                        "href": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/137.png",
+                        "rel": [
+                          "full",
+                          "dark"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "id": "6418",
+      "displayName": "1. FC Heidenheim 1846",
+      "abbreviation": "HDH",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6418.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/6418.png",
+      "color": "DA0308"
+    },
+    {
+      "id": "598",
+      "displayName": "1. FC Union Berlin",
+      "abbreviation": "FCU",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/598.png",
+      "color": "DA0308"
+    },
+    {
+      "id": "131",
+      "displayName": "Bayer Leverkusen",
+      "abbreviation": "B04",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/131.png",
+      "color": "DA0308"
+    },
+    {
+      "id": "132",
+      "displayName": "Bayern Munich",
+      "abbreviation": "MUN",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/132.png",
+      "color": "dc052d"
+    },
+    {
+      "id": "124",
+      "displayName": "Borussia Dortmund",
+      "abbreviation": "DOR",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/124.png",
+      "color": "ffee00"
+    },
+    {
+      "id": "268",
+      "displayName": "Borussia Mönchengladbach",
+      "abbreviation": "BMG",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/268.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "125",
+      "displayName": "Eintracht Frankfurt",
+      "abbreviation": "SGE",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/125.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "3841",
+      "displayName": "FC Augsburg",
+      "abbreviation": "FCA",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3841.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3841.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "122",
+      "displayName": "FC Cologne",
+      "abbreviation": "KOE",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/122.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "127",
+      "displayName": "Hamburg SV",
+      "abbreviation": "HSV",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/127.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/127.png",
+      "color": "1a26af"
+    },
+    {
+      "id": "2950",
+      "displayName": "Mainz",
+      "abbreviation": "M05",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2950.png",
+      "color": "DA0308"
+    },
+    {
+      "id": "11420",
+      "displayName": "RB Leipzig",
+      "abbreviation": "RBL",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/11420.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "126",
+      "displayName": "SC Freiburg",
+      "abbreviation": "SCF",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/126.png",
+      "color": "DA0308"
+    },
+    {
+      "id": "270",
+      "displayName": "St. Pauli",
+      "abbreviation": "STP",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/270.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/270.png",
+      "color": "442e23"
+    },
+    {
+      "id": "7911",
+      "displayName": "TSG Hoffenheim",
+      "abbreviation": "TSG",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/7911.png",
+      "color": "003399"
+    },
+    {
+      "id": "134",
+      "displayName": "VfB Stuttgart",
+      "abbreviation": "VFB",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/134.png",
+      "color": "ffffff"
+    },
+    {
+      "id": "138",
+      "displayName": "VfL Wolfsburg",
+      "abbreviation": "WOB",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/138.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/138.png",
+      "color": "81f733"
+    },
+    {
+      "id": "137",
+      "displayName": "Werder Bremen",
+      "abbreviation": "SVW",
+      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/137.png",
+      "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/137.png",
+      "color": "03915c"
+    }
+  ]
+}

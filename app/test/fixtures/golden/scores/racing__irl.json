@@ -1,0 +1,4525 @@
+{
+  "endpoint": "scores",
+  "args": {
+    "key": "racing/irl",
+    "sb": {
+      "events": [
+        {
+          "id": "202605310120",
+          "uid": "s:2000~l:2040~e:202605310120",
+          "date": "2026-05-31T16:30Z",
+          "name": "Grand Prix of Detroit",
+          "shortName": "Grand Prix of Detroit",
+          "season": {
+            "year": 2026,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "202605310120",
+              "uid": "s:2000~l:2040~e:202605310120~c:202605310120",
+              "date": "2026-05-31T16:30Z",
+              "timeValid": true,
+              "recent": false,
+              "competitors": [
+                {
+                  "id": "5632",
+                  "uid": "s:2000~a:5632",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Álex Palou",
+                    "displayName": "Álex Palou",
+                    "shortName": "Á. Palou",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5704",
+                  "uid": "s:2000~a:5704",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyle Kirkwood",
+                    "displayName": "Kyle Kirkwood",
+                    "shortName": "K. Kirkwood",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "872",
+                  "uid": "s:2000~a:872",
+                  "type": "athlete",
+                  "order": 3,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Graham Rahal",
+                    "displayName": "Graham Rahal",
+                    "shortName": "G. Rahal",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5581",
+                  "uid": "s:2000~a:5581",
+                  "type": "athlete",
+                  "order": 4,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Pato O'Ward",
+                    "displayName": "Pato O'Ward",
+                    "shortName": "P. O'Ward",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+                      "alt": "Mexico",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5691",
+                  "uid": "s:2000~a:5691",
+                  "type": "athlete",
+                  "order": 5,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Lundgaard",
+                    "displayName": "Christian Lundgaard",
+                    "shortName": "C. Lundgaard",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5590",
+                  "uid": "s:2000~a:5590",
+                  "type": "athlete",
+                  "order": 6,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Felix Rosenqvist",
+                    "displayName": "Felix Rosenqvist",
+                    "shortName": "F. Rosenqvist",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5842",
+                  "uid": "s:2000~a:5842",
+                  "type": "athlete",
+                  "order": 7,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Louis Foster",
+                    "displayName": "Louis Foster",
+                    "shortName": "L. Foster",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4622",
+                  "uid": "s:2000~a:4622",
+                  "type": "athlete",
+                  "order": 8,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Ericsson",
+                    "displayName": "Marcus Ericsson",
+                    "shortName": "M. Ericsson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5798",
+                  "uid": "s:2000~a:5798",
+                  "type": "athlete",
+                  "order": 9,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyffin Simpson",
+                    "displayName": "Kyffin Simpson",
+                    "shortName": "K. Simpson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/cay.png",
+                      "alt": "Cayman Islands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4526",
+                  "uid": "s:2000~a:4526",
+                  "type": "athlete",
+                  "order": 10,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Josef Newgarden",
+                    "displayName": "Josef Newgarden",
+                    "shortName": "J. Newgarden",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5753",
+                  "uid": "s:2000~a:5753",
+                  "type": "athlete",
+                  "order": 11,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Armstrong",
+                    "displayName": "Marcus Armstrong",
+                    "shortName": "M. Armstrong",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5634",
+                  "uid": "s:2000~a:5634",
+                  "type": "athlete",
+                  "order": 12,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Rinus VeeKay",
+                    "displayName": "Rinus VeeKay",
+                    "shortName": "R. VeeKay",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                      "alt": "Netherlands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5766",
+                  "uid": "s:2000~a:5766",
+                  "type": "athlete",
+                  "order": 13,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Dennis Hauger",
+                    "displayName": "Dennis Hauger",
+                    "shortName": "D. Hauger",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+                      "alt": "Norway",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5750",
+                  "uid": "s:2000~a:5750",
+                  "type": "athlete",
+                  "order": 14,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Sting Ray Robb",
+                    "displayName": "Sting Ray Robb",
+                    "shortName": "S. Robb",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5810",
+                  "uid": "s:2000~a:5810",
+                  "type": "athlete",
+                  "order": 15,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Nolan Siegel",
+                    "displayName": "Nolan Siegel",
+                    "shortName": "N. Siegel",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5880",
+                  "uid": "s:2000~a:5880",
+                  "type": "athlete",
+                  "order": 16,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Caio Collet",
+                    "displayName": "Caio Collet",
+                    "shortName": "C. Collet",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4667",
+                  "uid": "s:2000~a:4667",
+                  "type": "athlete",
+                  "order": 17,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Alexander Rossi",
+                    "displayName": "Alexander Rossi",
+                    "shortName": "A. Rossi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5706",
+                  "uid": "s:2000~a:5706",
+                  "type": "athlete",
+                  "order": 18,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "David Malukas",
+                    "displayName": "David Malukas",
+                    "shortName": "D. Malukas",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5648",
+                  "uid": "s:2000~a:5648",
+                  "type": "athlete",
+                  "order": 19,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott McLaughlin",
+                    "displayName": "Scott McLaughlin",
+                    "shortName": "S. McLaughlin",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4374",
+                  "uid": "s:2000~a:4374",
+                  "type": "athlete",
+                  "order": 20,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Romain Grosjean",
+                    "displayName": "Romain Grosjean",
+                    "shortName": "R. Grosjean",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5654",
+                  "uid": "s:2000~a:5654",
+                  "type": "athlete",
+                  "order": 21,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Mick Schumacher",
+                    "displayName": "Mick Schumacher",
+                    "shortName": "M. Schumacher",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                      "alt": "Germany",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "810",
+                  "uid": "s:2000~a:810",
+                  "type": "athlete",
+                  "order": 22,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Will Power",
+                    "displayName": "Will Power",
+                    "shortName": "W. Power",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5553",
+                  "uid": "s:2000~a:5553",
+                  "type": "athlete",
+                  "order": 23,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Santino Ferrucci",
+                    "displayName": "Santino Ferrucci",
+                    "shortName": "S. Ferrucci",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "518",
+                  "uid": "s:2000~a:518",
+                  "type": "athlete",
+                  "order": 24,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott Dixon",
+                    "displayName": "Scott Dixon",
+                    "shortName": "S. Dixon",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5797",
+                  "uid": "s:2000~a:5797",
+                  "type": "athlete",
+                  "order": 25,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Rasmussen",
+                    "displayName": "Christian Rasmussen",
+                    "shortName": "C. Rasmussen",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "status": {
+                "period": 100,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                }
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "startDate": "2026-05-31T16:30Z",
+              "broadcast": "FOX",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "tickets",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html",
+              "text": "Tickets",
+              "shortText": "Tickets",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "period": 100,
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "202605240106",
+          "uid": "s:2000~l:2040~e:202605240106",
+          "date": "2026-05-24T16:00Z",
+          "name": "Indianapolis 500",
+          "shortName": "Indianapolis 500",
+          "season": {
+            "year": 2026,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "202605240106",
+              "uid": "s:2000~l:2040~e:202605240106~c:202605240106",
+              "date": "2026-05-24T16:00Z",
+              "timeValid": true,
+              "recent": false,
+              "competitors": [
+                {
+                  "id": "5590",
+                  "uid": "s:2000~a:5590",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Felix Rosenqvist",
+                    "displayName": "Felix Rosenqvist",
+                    "shortName": "F. Rosenqvist",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5706",
+                  "uid": "s:2000~a:5706",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "David Malukas",
+                    "displayName": "David Malukas",
+                    "shortName": "D. Malukas",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5648",
+                  "uid": "s:2000~a:5648",
+                  "type": "athlete",
+                  "order": 3,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott McLaughlin",
+                    "displayName": "Scott McLaughlin",
+                    "shortName": "S. McLaughlin",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5581",
+                  "uid": "s:2000~a:5581",
+                  "type": "athlete",
+                  "order": 4,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Pato O'Ward",
+                    "displayName": "Pato O'Ward",
+                    "shortName": "P. O'Ward",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+                      "alt": "Mexico",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5753",
+                  "uid": "s:2000~a:5753",
+                  "type": "athlete",
+                  "order": 5,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Armstrong",
+                    "displayName": "Marcus Armstrong",
+                    "shortName": "M. Armstrong",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5634",
+                  "uid": "s:2000~a:5634",
+                  "type": "athlete",
+                  "order": 6,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Rinus VeeKay",
+                    "displayName": "Rinus VeeKay",
+                    "shortName": "R. VeeKay",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                      "alt": "Netherlands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5632",
+                  "uid": "s:2000~a:5632",
+                  "type": "athlete",
+                  "order": 7,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Álex Palou",
+                    "displayName": "Álex Palou",
+                    "shortName": "Á. Palou",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5553",
+                  "uid": "s:2000~a:5553",
+                  "type": "athlete",
+                  "order": 8,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Santino Ferrucci",
+                    "displayName": "Santino Ferrucci",
+                    "shortName": "S. Ferrucci",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4374",
+                  "uid": "s:2000~a:4374",
+                  "type": "athlete",
+                  "order": 9,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Romain Grosjean",
+                    "displayName": "Romain Grosjean",
+                    "shortName": "R. Grosjean",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "432",
+                  "uid": "s:2000~a:432",
+                  "type": "athlete",
+                  "order": 10,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Takuma Sato",
+                    "displayName": "Takuma Sato",
+                    "shortName": "T. Sato",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
+                      "alt": "Japan",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5810",
+                  "uid": "s:2000~a:5810",
+                  "type": "athlete",
+                  "order": 11,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Nolan Siegel",
+                    "displayName": "Nolan Siegel",
+                    "shortName": "N. Siegel",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4580",
+                  "uid": "s:2000~a:4580",
+                  "type": "athlete",
+                  "order": 12,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Conor Daly",
+                    "displayName": "Conor Daly",
+                    "shortName": "C. Daly",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4622",
+                  "uid": "s:2000~a:4622",
+                  "type": "athlete",
+                  "order": 13,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Ericsson",
+                    "displayName": "Marcus Ericsson",
+                    "shortName": "M. Ericsson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5798",
+                  "uid": "s:2000~a:5798",
+                  "type": "athlete",
+                  "order": 14,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyffin Simpson",
+                    "displayName": "Kyffin Simpson",
+                    "shortName": "K. Simpson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/cay.png",
+                      "alt": "Cayman Islands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "518",
+                  "uid": "s:2000~a:518",
+                  "type": "athlete",
+                  "order": 15,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott Dixon",
+                    "displayName": "Scott Dixon",
+                    "shortName": "S. Dixon",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5704",
+                  "uid": "s:2000~a:5704",
+                  "type": "athlete",
+                  "order": 16,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyle Kirkwood",
+                    "displayName": "Kyle Kirkwood",
+                    "shortName": "K. Kirkwood",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5691",
+                  "uid": "s:2000~a:5691",
+                  "type": "athlete",
+                  "order": 17,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Lundgaard",
+                    "displayName": "Christian Lundgaard",
+                    "shortName": "C. Lundgaard",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5654",
+                  "uid": "s:2000~a:5654",
+                  "type": "athlete",
+                  "order": 18,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Mick Schumacher",
+                    "displayName": "Mick Schumacher",
+                    "shortName": "M. Schumacher",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                      "alt": "Germany",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5766",
+                  "uid": "s:2000~a:5766",
+                  "type": "athlete",
+                  "order": 19,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Dennis Hauger",
+                    "displayName": "Dennis Hauger",
+                    "shortName": "D. Hauger",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+                      "alt": "Norway",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "872",
+                  "uid": "s:2000~a:872",
+                  "type": "athlete",
+                  "order": 20,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Graham Rahal",
+                    "displayName": "Graham Rahal",
+                    "shortName": "G. Rahal",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5842",
+                  "uid": "s:2000~a:5842",
+                  "type": "athlete",
+                  "order": 21,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Louis Foster",
+                    "displayName": "Louis Foster",
+                    "shortName": "L. Foster",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4781",
+                  "uid": "s:2000~a:4781",
+                  "type": "athlete",
+                  "order": 22,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jack Harvey",
+                    "displayName": "Jack Harvey",
+                    "shortName": "J. Harvey",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5750",
+                  "uid": "s:2000~a:5750",
+                  "type": "athlete",
+                  "order": 23,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Sting Ray Robb",
+                    "displayName": "Sting Ray Robb",
+                    "shortName": "S. Robb",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5836",
+                  "uid": "s:2000~a:5836",
+                  "type": "athlete",
+                  "order": 24,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Jacob Abel",
+                    "displayName": "Jacob Abel",
+                    "shortName": "J. Abel",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "33",
+                  "uid": "s:2000~a:33",
+                  "type": "athlete",
+                  "order": 25,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Helio Castroneves",
+                    "displayName": "Helio Castroneves",
+                    "shortName": "H. Castroneves",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5880",
+                  "uid": "s:2000~a:5880",
+                  "type": "athlete",
+                  "order": 26,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Caio Collet",
+                    "displayName": "Caio Collet",
+                    "shortName": "C. Collet",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5797",
+                  "uid": "s:2000~a:5797",
+                  "type": "athlete",
+                  "order": 27,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Rasmussen",
+                    "displayName": "Christian Rasmussen",
+                    "shortName": "C. Rasmussen",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4526",
+                  "uid": "s:2000~a:4526",
+                  "type": "athlete",
+                  "order": 28,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Josef Newgarden",
+                    "displayName": "Josef Newgarden",
+                    "shortName": "J. Newgarden",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "810",
+                  "uid": "s:2000~a:810",
+                  "type": "athlete",
+                  "order": 29,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Will Power",
+                    "displayName": "Will Power",
+                    "shortName": "W. Power",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4667",
+                  "uid": "s:2000~a:4667",
+                  "type": "athlete",
+                  "order": 30,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Alexander Rossi",
+                    "displayName": "Alexander Rossi",
+                    "shortName": "A. Rossi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "578",
+                  "uid": "s:2000~a:578",
+                  "type": "athlete",
+                  "order": 31,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Ed Carpenter",
+                    "displayName": "Ed Carpenter",
+                    "shortName": "E. Carpenter"
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "533",
+                  "uid": "s:2000~a:533",
+                  "type": "athlete",
+                  "order": 32,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Ryan Hunter-Reay",
+                    "displayName": "Ryan Hunter-Reay",
+                    "shortName": "R. Hunter-Reay"
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "808",
+                  "uid": "s:2000~a:808",
+                  "type": "athlete",
+                  "order": 33,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Katherine Legge",
+                    "displayName": "Katherine Legge",
+                    "shortName": "K. Legge",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "status": {
+                "period": 200,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                }
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "startDate": "2026-05-24T16:00Z",
+              "broadcast": "FOX",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "tickets",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html",
+              "text": "Tickets",
+              "shortText": "Tickets",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "period": 200,
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "202605094000",
+          "uid": "s:2000~l:2040~e:202605094000",
+          "date": "2026-05-09T20:30Z",
+          "name": "Grand Prix of Indianapolis (Road Course)",
+          "shortName": "Grand Prix of Indianapolis (Road Course)",
+          "season": {
+            "year": 2026,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "202605094000",
+              "uid": "s:2000~l:2040~e:202605094000~c:202605094000",
+              "date": "2026-05-09T20:30Z",
+              "timeValid": true,
+              "recent": false,
+              "competitors": [
+                {
+                  "id": "5691",
+                  "uid": "s:2000~a:5691",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Christian Lundgaard",
+                    "displayName": "Christian Lundgaard",
+                    "shortName": "C. Lundgaard",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5706",
+                  "uid": "s:2000~a:5706",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "David Malukas",
+                    "displayName": "David Malukas",
+                    "shortName": "D. Malukas",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "872",
+                  "uid": "s:2000~a:872",
+                  "type": "athlete",
+                  "order": 3,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Graham Rahal",
+                    "displayName": "Graham Rahal",
+                    "shortName": "G. Rahal",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4526",
+                  "uid": "s:2000~a:4526",
+                  "type": "athlete",
+                  "order": 4,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Josef Newgarden",
+                    "displayName": "Josef Newgarden",
+                    "shortName": "J. Newgarden",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5632",
+                  "uid": "s:2000~a:5632",
+                  "type": "athlete",
+                  "order": 5,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Álex Palou",
+                    "displayName": "Álex Palou",
+                    "shortName": "Á. Palou",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "518",
+                  "uid": "s:2000~a:518",
+                  "type": "athlete",
+                  "order": 6,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott Dixon",
+                    "displayName": "Scott Dixon",
+                    "shortName": "S. Dixon",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5842",
+                  "uid": "s:2000~a:5842",
+                  "type": "athlete",
+                  "order": 7,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Louis Foster",
+                    "displayName": "Louis Foster",
+                    "shortName": "L. Foster",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5766",
+                  "uid": "s:2000~a:5766",
+                  "type": "athlete",
+                  "order": 8,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Dennis Hauger",
+                    "displayName": "Dennis Hauger",
+                    "shortName": "D. Hauger",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+                      "alt": "Norway",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5704",
+                  "uid": "s:2000~a:5704",
+                  "type": "athlete",
+                  "order": 9,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyle Kirkwood",
+                    "displayName": "Kyle Kirkwood",
+                    "shortName": "K. Kirkwood",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5810",
+                  "uid": "s:2000~a:5810",
+                  "type": "athlete",
+                  "order": 10,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Nolan Siegel",
+                    "displayName": "Nolan Siegel",
+                    "shortName": "N. Siegel",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5753",
+                  "uid": "s:2000~a:5753",
+                  "type": "athlete",
+                  "order": 11,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Armstrong",
+                    "displayName": "Marcus Armstrong",
+                    "shortName": "M. Armstrong",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5798",
+                  "uid": "s:2000~a:5798",
+                  "type": "athlete",
+                  "order": 12,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyffin Simpson",
+                    "displayName": "Kyffin Simpson",
+                    "shortName": "K. Simpson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/cay.png",
+                      "alt": "Cayman Islands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "810",
+                  "uid": "s:2000~a:810",
+                  "type": "athlete",
+                  "order": 13,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Will Power",
+                    "displayName": "Will Power",
+                    "shortName": "W. Power",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5553",
+                  "uid": "s:2000~a:5553",
+                  "type": "athlete",
+                  "order": 14,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Santino Ferrucci",
+                    "displayName": "Santino Ferrucci",
+                    "shortName": "S. Ferrucci",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5634",
+                  "uid": "s:2000~a:5634",
+                  "type": "athlete",
+                  "order": 15,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Rinus VeeKay",
+                    "displayName": "Rinus VeeKay",
+                    "shortName": "R. VeeKay",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                      "alt": "Netherlands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5648",
+                  "uid": "s:2000~a:5648",
+                  "type": "athlete",
+                  "order": 16,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott McLaughlin",
+                    "displayName": "Scott McLaughlin",
+                    "shortName": "S. McLaughlin",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5750",
+                  "uid": "s:2000~a:5750",
+                  "type": "athlete",
+                  "order": 17,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Sting Ray Robb",
+                    "displayName": "Sting Ray Robb",
+                    "shortName": "S. Robb",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5581",
+                  "uid": "s:2000~a:5581",
+                  "type": "athlete",
+                  "order": 18,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Pato O'Ward",
+                    "displayName": "Pato O'Ward",
+                    "shortName": "P. O'Ward",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+                      "alt": "Mexico",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5880",
+                  "uid": "s:2000~a:5880",
+                  "type": "athlete",
+                  "order": 19,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Caio Collet",
+                    "displayName": "Caio Collet",
+                    "shortName": "C. Collet",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5654",
+                  "uid": "s:2000~a:5654",
+                  "type": "athlete",
+                  "order": 20,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Mick Schumacher",
+                    "displayName": "Mick Schumacher",
+                    "shortName": "M. Schumacher",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                      "alt": "Germany",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4374",
+                  "uid": "s:2000~a:4374",
+                  "type": "athlete",
+                  "order": 21,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Romain Grosjean",
+                    "displayName": "Romain Grosjean",
+                    "shortName": "R. Grosjean",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4622",
+                  "uid": "s:2000~a:4622",
+                  "type": "athlete",
+                  "order": 22,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Ericsson",
+                    "displayName": "Marcus Ericsson",
+                    "shortName": "M. Ericsson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5590",
+                  "uid": "s:2000~a:5590",
+                  "type": "athlete",
+                  "order": 23,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Felix Rosenqvist",
+                    "displayName": "Felix Rosenqvist",
+                    "shortName": "F. Rosenqvist",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5797",
+                  "uid": "s:2000~a:5797",
+                  "type": "athlete",
+                  "order": 24,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Rasmussen",
+                    "displayName": "Christian Rasmussen",
+                    "shortName": "C. Rasmussen",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4667",
+                  "uid": "s:2000~a:4667",
+                  "type": "athlete",
+                  "order": 25,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Alexander Rossi",
+                    "displayName": "Alexander Rossi",
+                    "shortName": "A. Rossi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "status": {
+                "period": 85,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                }
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "startDate": "2026-05-09T20:30Z",
+              "broadcast": "FOX",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "tickets",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html",
+              "text": "Tickets",
+              "shortText": "Tickets",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "period": 85,
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "202603290752",
+          "uid": "s:2000~l:2040~e:202603290752",
+          "date": "2026-03-29T17:00Z",
+          "name": "Grand Prix of Alabama",
+          "shortName": "Grand Prix of Alabama",
+          "season": {
+            "year": 2026,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "202603290752",
+              "uid": "s:2000~l:2040~e:202603290752~c:202603290752",
+              "date": "2026-03-29T17:00Z",
+              "timeValid": true,
+              "recent": false,
+              "competitors": [
+                {
+                  "id": "5632",
+                  "uid": "s:2000~a:5632",
+                  "type": "athlete",
+                  "order": 1,
+                  "winner": true,
+                  "athlete": {
+                    "fullName": "Álex Palou",
+                    "displayName": "Álex Palou",
+                    "shortName": "Á. Palou",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                      "alt": "Spain",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5691",
+                  "uid": "s:2000~a:5691",
+                  "type": "athlete",
+                  "order": 2,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Lundgaard",
+                    "displayName": "Christian Lundgaard",
+                    "shortName": "C. Lundgaard",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "872",
+                  "uid": "s:2000~a:872",
+                  "type": "athlete",
+                  "order": 3,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Graham Rahal",
+                    "displayName": "Graham Rahal",
+                    "shortName": "G. Rahal",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5706",
+                  "uid": "s:2000~a:5706",
+                  "type": "athlete",
+                  "order": 4,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "David Malukas",
+                    "displayName": "David Malukas",
+                    "shortName": "D. Malukas",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5704",
+                  "uid": "s:2000~a:5704",
+                  "type": "athlete",
+                  "order": 5,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyle Kirkwood",
+                    "displayName": "Kyle Kirkwood",
+                    "shortName": "K. Kirkwood",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5753",
+                  "uid": "s:2000~a:5753",
+                  "type": "athlete",
+                  "order": 6,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Armstrong",
+                    "displayName": "Marcus Armstrong",
+                    "shortName": "M. Armstrong",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "518",
+                  "uid": "s:2000~a:518",
+                  "type": "athlete",
+                  "order": 7,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott Dixon",
+                    "displayName": "Scott Dixon",
+                    "shortName": "S. Dixon",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5553",
+                  "uid": "s:2000~a:5553",
+                  "type": "athlete",
+                  "order": 8,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Santino Ferrucci",
+                    "displayName": "Santino Ferrucci",
+                    "shortName": "S. Ferrucci",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4622",
+                  "uid": "s:2000~a:4622",
+                  "type": "athlete",
+                  "order": 9,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Marcus Ericsson",
+                    "displayName": "Marcus Ericsson",
+                    "shortName": "M. Ericsson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4526",
+                  "uid": "s:2000~a:4526",
+                  "type": "athlete",
+                  "order": 10,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Josef Newgarden",
+                    "displayName": "Josef Newgarden",
+                    "shortName": "J. Newgarden",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4667",
+                  "uid": "s:2000~a:4667",
+                  "type": "athlete",
+                  "order": 11,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Alexander Rossi",
+                    "displayName": "Alexander Rossi",
+                    "shortName": "A. Rossi",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "810",
+                  "uid": "s:2000~a:810",
+                  "type": "athlete",
+                  "order": 12,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Will Power",
+                    "displayName": "Will Power",
+                    "shortName": "W. Power",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+                      "alt": "Australia",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5590",
+                  "uid": "s:2000~a:5590",
+                  "type": "athlete",
+                  "order": 13,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Felix Rosenqvist",
+                    "displayName": "Felix Rosenqvist",
+                    "shortName": "F. Rosenqvist",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+                      "alt": "Sweden",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5634",
+                  "uid": "s:2000~a:5634",
+                  "type": "athlete",
+                  "order": 14,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Rinus VeeKay",
+                    "displayName": "Rinus VeeKay",
+                    "shortName": "R. VeeKay",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                      "alt": "Netherlands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "4374",
+                  "uid": "s:2000~a:4374",
+                  "type": "athlete",
+                  "order": 15,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Romain Grosjean",
+                    "displayName": "Romain Grosjean",
+                    "shortName": "R. Grosjean",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+                      "alt": "France",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5648",
+                  "uid": "s:2000~a:5648",
+                  "type": "athlete",
+                  "order": 16,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Scott McLaughlin",
+                    "displayName": "Scott McLaughlin",
+                    "shortName": "S. McLaughlin",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+                      "alt": "New Zealand",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5581",
+                  "uid": "s:2000~a:5581",
+                  "type": "athlete",
+                  "order": 17,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Pato O'Ward",
+                    "displayName": "Pato O'Ward",
+                    "shortName": "P. O'Ward",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+                      "alt": "Mexico",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5810",
+                  "uid": "s:2000~a:5810",
+                  "type": "athlete",
+                  "order": 18,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Nolan Siegel",
+                    "displayName": "Nolan Siegel",
+                    "shortName": "N. Siegel",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5797",
+                  "uid": "s:2000~a:5797",
+                  "type": "athlete",
+                  "order": 19,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Christian Rasmussen",
+                    "displayName": "Christian Rasmussen",
+                    "shortName": "C. Rasmussen",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+                      "alt": "Denmark",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5798",
+                  "uid": "s:2000~a:5798",
+                  "type": "athlete",
+                  "order": 20,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Kyffin Simpson",
+                    "displayName": "Kyffin Simpson",
+                    "shortName": "K. Simpson",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/cay.png",
+                      "alt": "Cayman Islands",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5880",
+                  "uid": "s:2000~a:5880",
+                  "type": "athlete",
+                  "order": 21,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Caio Collet",
+                    "displayName": "Caio Collet",
+                    "shortName": "C. Collet",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+                      "alt": "Brazil",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5750",
+                  "uid": "s:2000~a:5750",
+                  "type": "athlete",
+                  "order": 22,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Sting Ray Robb",
+                    "displayName": "Sting Ray Robb",
+                    "shortName": "S. Robb",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+                      "alt": "USA",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5766",
+                  "uid": "s:2000~a:5766",
+                  "type": "athlete",
+                  "order": 23,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Dennis Hauger",
+                    "displayName": "Dennis Hauger",
+                    "shortName": "D. Hauger",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+                      "alt": "Norway",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5654",
+                  "uid": "s:2000~a:5654",
+                  "type": "athlete",
+                  "order": 24,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Mick Schumacher",
+                    "displayName": "Mick Schumacher",
+                    "shortName": "M. Schumacher",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+                      "alt": "Germany",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "5842",
+                  "uid": "s:2000~a:5842",
+                  "type": "athlete",
+                  "order": 25,
+                  "winner": false,
+                  "athlete": {
+                    "fullName": "Louis Foster",
+                    "displayName": "Louis Foster",
+                    "shortName": "L. Foster",
+                    "flag": {
+                      "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                      "alt": "England",
+                      "rel": [
+                        "country-flag"
+                      ]
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "status": {
+                "period": 90,
+                "type": {
+                  "id": "3",
+                  "name": "STATUS_FINAL",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final",
+                  "detail": "Final",
+                  "shortDetail": "Final"
+                }
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "startDate": "2026-03-29T17:00Z",
+              "broadcast": "FOX",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "tickets",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html",
+              "text": "Tickets",
+              "shortText": "Tickets",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "period": 90,
+            "type": {
+              "id": "3",
+              "name": "STATUS_FINAL",
+              "state": "post",
+              "completed": true,
+              "description": "Final",
+              "detail": "Final",
+              "shortDetail": "Final"
+            }
+          }
+        },
+        {
+          "id": "202606210111",
+          "uid": "s:2000~l:2040~e:202606210111",
+          "date": "2026-06-21T18:00Z",
+          "name": "Grand Prix of Road America",
+          "shortName": "Grand Prix of Road America",
+          "season": {
+            "year": 2026,
+            "type": 2,
+            "slug": "regular-season"
+          },
+          "competitions": [
+            {
+              "id": "202606210111",
+              "uid": "s:2000~l:2040~e:202606210111~c:202606210111",
+              "date": "2026-06-21T18:00Z",
+              "timeValid": true,
+              "recent": false,
+              "status": {
+                "period": 0,
+                "type": {
+                  "id": "1",
+                  "name": "STATUS_SCHEDULED",
+                  "state": "pre",
+                  "completed": false,
+                  "description": "Scheduled",
+                  "detail": "Sun, June 21st at 2:00 PM EDT",
+                  "shortDetail": "6/21 - 2:00 PM EDT"
+                }
+              },
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "startDate": "2026-06-21T18:00Z",
+              "broadcast": "FOX",
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "tickets",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html",
+              "text": "Tickets",
+              "shortText": "Tickets",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Sun, June 21st at 2:00 PM EDT",
+              "shortDetail": "6/21 - 2:00 PM EDT"
+            }
+          }
+        }
+      ],
+      "leagues": [
+        {
+          "id": "2040",
+          "uid": "s:2000~l:2040",
+          "name": "IndyCar Series",
+          "abbreviation": "IRL",
+          "slug": "irl",
+          "season": {
+            "year": 2026,
+            "startDate": "2026-01-01T08:00Z",
+            "endDate": "2026-12-31T08:00Z",
+            "displayName": "IndyCar Series",
+            "type": {
+              "id": "2",
+              "type": 2,
+              "name": "Regular Season",
+              "abbreviation": "reg"
+            }
+          },
+          "calendarType": "list",
+          "calendar": [
+            {
+              "label": "Grand Prix of St. Petersburg",
+              "startDate": "2026-03-01T20:00Z",
+              "endDate": "2026-03-01T20:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202603010104?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Phoenix",
+              "startDate": "2026-03-07T23:00Z",
+              "endDate": "2026-03-07T23:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202603070103?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Arlington",
+              "startDate": "2026-03-15T19:30Z",
+              "endDate": "2026-03-15T19:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202603154263?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Alabama",
+              "startDate": "2026-03-29T20:00Z",
+              "endDate": "2026-03-29T20:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202603290752?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Long Beach",
+              "startDate": "2026-04-20T00:30Z",
+              "endDate": "2026-04-20T00:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202604190502?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Indianapolis (Road Course)",
+              "startDate": "2026-05-09T23:30Z",
+              "endDate": "2026-05-09T23:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202605094000?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Indianapolis 500",
+              "startDate": "2026-05-24T19:00Z",
+              "endDate": "2026-05-24T19:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202605240106?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Detroit",
+              "startDate": "2026-05-31T19:30Z",
+              "endDate": "2026-05-31T19:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202605310120?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Illinois",
+              "startDate": "2026-06-08T04:00Z",
+              "endDate": "2026-06-08T04:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202606070785?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Road America",
+              "startDate": "2026-06-21T21:00Z",
+              "endDate": "2026-06-21T21:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202606210111?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Mid-Ohio",
+              "startDate": "2026-07-05T19:30Z",
+              "endDate": "2026-07-05T19:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202607050119?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Nashville",
+              "startDate": "2026-07-19T07:00Z",
+              "endDate": "2026-07-19T07:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202607193999?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Portland",
+              "startDate": "2026-08-09T23:00Z",
+              "endDate": "2026-08-09T23:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202608090790?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Ontario",
+              "startDate": "2026-08-16T19:00Z",
+              "endDate": "2026-08-16T19:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202608164264?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Washington, D.C.",
+              "startDate": "2026-08-23T07:00Z",
+              "endDate": "2026-08-23T07:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202608235829?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Milwaukee Race 1",
+              "startDate": "2026-08-29T21:30Z",
+              "endDate": "2026-08-29T21:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202608294252?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Milwaukee Race 2",
+              "startDate": "2026-08-30T20:00Z",
+              "endDate": "2026-08-30T20:00Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202608304253?lang=en&region=us"
+              }
+            },
+            {
+              "label": "Grand Prix of Monterey",
+              "startDate": "2026-09-06T21:30Z",
+              "endDate": "2026-09-06T21:30Z",
+              "event": {
+                "$ref": "http://sports.core.api.espn.pvt/v2/sports/racing/leagues/irl/events/202609061784?lang=en&region=us"
+              }
+            }
+          ],
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/combiner/i?img=/i/espn/teamlogos/500/indycar_series.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "default"
+              ],
+              "lastUpdated": "2026-06-14T18:24Z"
+            }
+          ]
+        }
+      ],
+      "day": {
+        "date": "2026-06-21"
+      }
+    },
+    "extras": {}
+  },
+  "output": {
+    "sport": "racing",
+    "league": "irl",
+    "leagueId": "2040",
+    "leagueName": "IndyCar Series",
+    "season": {
+      "year": 2026,
+      "type": 2,
+      "slug": "Regular Season",
+      "displayName": "IndyCar Series"
+    },
+    "day": "2026-06-21",
+    "updated": null,
+    "anyLive": false,
+    "nextStartMs": 1782064800000,
+    "seasonWindow": {
+      "startDate": "2026-01-01T08:00Z",
+      "endDate": "2026-12-31T08:00Z"
+    },
+    "events": [
+      {
+        "id": "202605310120",
+        "name": "Grand Prix of Detroit",
+        "shortName": "Grand Prix of Detroit",
+        "start": "2026-05-31T16:30Z",
+        "neutralSite": false,
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html"
+        },
+        "competitions": [
+          {
+            "id": "202605310120",
+            "layout": "field",
+            "scoreKind": "none",
+            "competitorKind": "athlete",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 100,
+              "periodLabel": "Final",
+              "espnName": "STATUS_FINAL",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "lap",
+              "regulation": 0,
+              "played": 100,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "athlete",
+                "id": "5632",
+                "displayName": "Álex Palou",
+                "athletes": [
+                  {
+                    "id": "5632",
+                    "name": "Álex Palou",
+                    "country": "Spain"
+                  }
+                ],
+                "order": 1,
+                "winner": true
+              },
+              {
+                "kind": "athlete",
+                "id": "5704",
+                "displayName": "Kyle Kirkwood",
+                "athletes": [
+                  {
+                    "id": "5704",
+                    "name": "Kyle Kirkwood",
+                    "country": "USA"
+                  }
+                ],
+                "order": 2,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "872",
+                "displayName": "Graham Rahal",
+                "athletes": [
+                  {
+                    "id": "872",
+                    "name": "Graham Rahal",
+                    "country": "USA"
+                  }
+                ],
+                "order": 3,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5581",
+                "displayName": "Pato O'Ward",
+                "athletes": [
+                  {
+                    "id": "5581",
+                    "name": "Pato O'Ward",
+                    "country": "Mexico"
+                  }
+                ],
+                "order": 4,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5691",
+                "displayName": "Christian Lundgaard",
+                "athletes": [
+                  {
+                    "id": "5691",
+                    "name": "Christian Lundgaard",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 5,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5590",
+                "displayName": "Felix Rosenqvist",
+                "athletes": [
+                  {
+                    "id": "5590",
+                    "name": "Felix Rosenqvist",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 6,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5842",
+                "displayName": "Louis Foster",
+                "athletes": [
+                  {
+                    "id": "5842",
+                    "name": "Louis Foster",
+                    "country": "England"
+                  }
+                ],
+                "order": 7,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4622",
+                "displayName": "Marcus Ericsson",
+                "athletes": [
+                  {
+                    "id": "4622",
+                    "name": "Marcus Ericsson",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 8,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5798",
+                "displayName": "Kyffin Simpson",
+                "athletes": [
+                  {
+                    "id": "5798",
+                    "name": "Kyffin Simpson",
+                    "country": "Cayman Islands"
+                  }
+                ],
+                "order": 9,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4526",
+                "displayName": "Josef Newgarden",
+                "athletes": [
+                  {
+                    "id": "4526",
+                    "name": "Josef Newgarden",
+                    "country": "USA"
+                  }
+                ],
+                "order": 10,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5753",
+                "displayName": "Marcus Armstrong",
+                "athletes": [
+                  {
+                    "id": "5753",
+                    "name": "Marcus Armstrong",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 11,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5634",
+                "displayName": "Rinus VeeKay",
+                "athletes": [
+                  {
+                    "id": "5634",
+                    "name": "Rinus VeeKay",
+                    "country": "Netherlands"
+                  }
+                ],
+                "order": 12,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5766",
+                "displayName": "Dennis Hauger",
+                "athletes": [
+                  {
+                    "id": "5766",
+                    "name": "Dennis Hauger",
+                    "country": "Norway"
+                  }
+                ],
+                "order": 13,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5750",
+                "displayName": "Sting Ray Robb",
+                "athletes": [
+                  {
+                    "id": "5750",
+                    "name": "Sting Ray Robb",
+                    "country": "USA"
+                  }
+                ],
+                "order": 14,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5810",
+                "displayName": "Nolan Siegel",
+                "athletes": [
+                  {
+                    "id": "5810",
+                    "name": "Nolan Siegel",
+                    "country": "USA"
+                  }
+                ],
+                "order": 15,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5880",
+                "displayName": "Caio Collet",
+                "athletes": [
+                  {
+                    "id": "5880",
+                    "name": "Caio Collet",
+                    "country": "Brazil"
+                  }
+                ],
+                "order": 16,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4667",
+                "displayName": "Alexander Rossi",
+                "athletes": [
+                  {
+                    "id": "4667",
+                    "name": "Alexander Rossi",
+                    "country": "USA"
+                  }
+                ],
+                "order": 17,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5706",
+                "displayName": "David Malukas",
+                "athletes": [
+                  {
+                    "id": "5706",
+                    "name": "David Malukas",
+                    "country": "USA"
+                  }
+                ],
+                "order": 18,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5648",
+                "displayName": "Scott McLaughlin",
+                "athletes": [
+                  {
+                    "id": "5648",
+                    "name": "Scott McLaughlin",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 19,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4374",
+                "displayName": "Romain Grosjean",
+                "athletes": [
+                  {
+                    "id": "4374",
+                    "name": "Romain Grosjean",
+                    "country": "France"
+                  }
+                ],
+                "order": 20,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5654",
+                "displayName": "Mick Schumacher",
+                "athletes": [
+                  {
+                    "id": "5654",
+                    "name": "Mick Schumacher",
+                    "country": "Germany"
+                  }
+                ],
+                "order": 21,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "810",
+                "displayName": "Will Power",
+                "athletes": [
+                  {
+                    "id": "810",
+                    "name": "Will Power",
+                    "country": "Australia"
+                  }
+                ],
+                "order": 22,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5553",
+                "displayName": "Santino Ferrucci",
+                "athletes": [
+                  {
+                    "id": "5553",
+                    "name": "Santino Ferrucci",
+                    "country": "USA"
+                  }
+                ],
+                "order": 23,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "518",
+                "displayName": "Scott Dixon",
+                "athletes": [
+                  {
+                    "id": "518",
+                    "name": "Scott Dixon",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 24,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5797",
+                "displayName": "Christian Rasmussen",
+                "athletes": [
+                  {
+                    "id": "5797",
+                    "name": "Christian Rasmussen",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 25,
+                "winner": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "202605240106",
+        "name": "Indianapolis 500",
+        "shortName": "Indianapolis 500",
+        "start": "2026-05-24T16:00Z",
+        "neutralSite": false,
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html"
+        },
+        "competitions": [
+          {
+            "id": "202605240106",
+            "layout": "field",
+            "scoreKind": "none",
+            "competitorKind": "athlete",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 200,
+              "periodLabel": "Final",
+              "espnName": "STATUS_FINAL",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "lap",
+              "regulation": 0,
+              "played": 200,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "athlete",
+                "id": "5590",
+                "displayName": "Felix Rosenqvist",
+                "athletes": [
+                  {
+                    "id": "5590",
+                    "name": "Felix Rosenqvist",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 1,
+                "winner": true
+              },
+              {
+                "kind": "athlete",
+                "id": "5706",
+                "displayName": "David Malukas",
+                "athletes": [
+                  {
+                    "id": "5706",
+                    "name": "David Malukas",
+                    "country": "USA"
+                  }
+                ],
+                "order": 2,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5648",
+                "displayName": "Scott McLaughlin",
+                "athletes": [
+                  {
+                    "id": "5648",
+                    "name": "Scott McLaughlin",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 3,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5581",
+                "displayName": "Pato O'Ward",
+                "athletes": [
+                  {
+                    "id": "5581",
+                    "name": "Pato O'Ward",
+                    "country": "Mexico"
+                  }
+                ],
+                "order": 4,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5753",
+                "displayName": "Marcus Armstrong",
+                "athletes": [
+                  {
+                    "id": "5753",
+                    "name": "Marcus Armstrong",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 5,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5634",
+                "displayName": "Rinus VeeKay",
+                "athletes": [
+                  {
+                    "id": "5634",
+                    "name": "Rinus VeeKay",
+                    "country": "Netherlands"
+                  }
+                ],
+                "order": 6,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5632",
+                "displayName": "Álex Palou",
+                "athletes": [
+                  {
+                    "id": "5632",
+                    "name": "Álex Palou",
+                    "country": "Spain"
+                  }
+                ],
+                "order": 7,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5553",
+                "displayName": "Santino Ferrucci",
+                "athletes": [
+                  {
+                    "id": "5553",
+                    "name": "Santino Ferrucci",
+                    "country": "USA"
+                  }
+                ],
+                "order": 8,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4374",
+                "displayName": "Romain Grosjean",
+                "athletes": [
+                  {
+                    "id": "4374",
+                    "name": "Romain Grosjean",
+                    "country": "France"
+                  }
+                ],
+                "order": 9,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "432",
+                "displayName": "Takuma Sato",
+                "athletes": [
+                  {
+                    "id": "432",
+                    "name": "Takuma Sato",
+                    "country": "Japan"
+                  }
+                ],
+                "order": 10,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5810",
+                "displayName": "Nolan Siegel",
+                "athletes": [
+                  {
+                    "id": "5810",
+                    "name": "Nolan Siegel",
+                    "country": "USA"
+                  }
+                ],
+                "order": 11,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4580",
+                "displayName": "Conor Daly",
+                "athletes": [
+                  {
+                    "id": "4580",
+                    "name": "Conor Daly",
+                    "country": "USA"
+                  }
+                ],
+                "order": 12,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4622",
+                "displayName": "Marcus Ericsson",
+                "athletes": [
+                  {
+                    "id": "4622",
+                    "name": "Marcus Ericsson",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 13,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5798",
+                "displayName": "Kyffin Simpson",
+                "athletes": [
+                  {
+                    "id": "5798",
+                    "name": "Kyffin Simpson",
+                    "country": "Cayman Islands"
+                  }
+                ],
+                "order": 14,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "518",
+                "displayName": "Scott Dixon",
+                "athletes": [
+                  {
+                    "id": "518",
+                    "name": "Scott Dixon",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 15,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5704",
+                "displayName": "Kyle Kirkwood",
+                "athletes": [
+                  {
+                    "id": "5704",
+                    "name": "Kyle Kirkwood",
+                    "country": "USA"
+                  }
+                ],
+                "order": 16,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5691",
+                "displayName": "Christian Lundgaard",
+                "athletes": [
+                  {
+                    "id": "5691",
+                    "name": "Christian Lundgaard",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 17,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5654",
+                "displayName": "Mick Schumacher",
+                "athletes": [
+                  {
+                    "id": "5654",
+                    "name": "Mick Schumacher",
+                    "country": "Germany"
+                  }
+                ],
+                "order": 18,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5766",
+                "displayName": "Dennis Hauger",
+                "athletes": [
+                  {
+                    "id": "5766",
+                    "name": "Dennis Hauger",
+                    "country": "Norway"
+                  }
+                ],
+                "order": 19,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "872",
+                "displayName": "Graham Rahal",
+                "athletes": [
+                  {
+                    "id": "872",
+                    "name": "Graham Rahal",
+                    "country": "USA"
+                  }
+                ],
+                "order": 20,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5842",
+                "displayName": "Louis Foster",
+                "athletes": [
+                  {
+                    "id": "5842",
+                    "name": "Louis Foster",
+                    "country": "England"
+                  }
+                ],
+                "order": 21,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4781",
+                "displayName": "Jack Harvey",
+                "athletes": [
+                  {
+                    "id": "4781",
+                    "name": "Jack Harvey",
+                    "country": "England"
+                  }
+                ],
+                "order": 22,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5750",
+                "displayName": "Sting Ray Robb",
+                "athletes": [
+                  {
+                    "id": "5750",
+                    "name": "Sting Ray Robb",
+                    "country": "USA"
+                  }
+                ],
+                "order": 23,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5836",
+                "displayName": "Jacob Abel",
+                "athletes": [
+                  {
+                    "id": "5836",
+                    "name": "Jacob Abel",
+                    "country": "USA"
+                  }
+                ],
+                "order": 24,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "33",
+                "displayName": "Helio Castroneves",
+                "athletes": [
+                  {
+                    "id": "33",
+                    "name": "Helio Castroneves",
+                    "country": "Brazil"
+                  }
+                ],
+                "order": 25,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5880",
+                "displayName": "Caio Collet",
+                "athletes": [
+                  {
+                    "id": "5880",
+                    "name": "Caio Collet",
+                    "country": "Brazil"
+                  }
+                ],
+                "order": 26,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5797",
+                "displayName": "Christian Rasmussen",
+                "athletes": [
+                  {
+                    "id": "5797",
+                    "name": "Christian Rasmussen",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 27,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4526",
+                "displayName": "Josef Newgarden",
+                "athletes": [
+                  {
+                    "id": "4526",
+                    "name": "Josef Newgarden",
+                    "country": "USA"
+                  }
+                ],
+                "order": 28,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "810",
+                "displayName": "Will Power",
+                "athletes": [
+                  {
+                    "id": "810",
+                    "name": "Will Power",
+                    "country": "Australia"
+                  }
+                ],
+                "order": 29,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4667",
+                "displayName": "Alexander Rossi",
+                "athletes": [
+                  {
+                    "id": "4667",
+                    "name": "Alexander Rossi",
+                    "country": "USA"
+                  }
+                ],
+                "order": 30,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "578",
+                "displayName": "Ed Carpenter",
+                "athletes": [
+                  {
+                    "id": "578",
+                    "name": "Ed Carpenter"
+                  }
+                ],
+                "order": 31,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "533",
+                "displayName": "Ryan Hunter-Reay",
+                "athletes": [
+                  {
+                    "id": "533",
+                    "name": "Ryan Hunter-Reay"
+                  }
+                ],
+                "order": 32,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "808",
+                "displayName": "Katherine Legge",
+                "athletes": [
+                  {
+                    "id": "808",
+                    "name": "Katherine Legge",
+                    "country": "England"
+                  }
+                ],
+                "order": 33,
+                "winner": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "202605094000",
+        "name": "Grand Prix of Indianapolis (Road Course)",
+        "shortName": "Grand Prix of Indianapolis (Road Course)",
+        "start": "2026-05-09T20:30Z",
+        "neutralSite": false,
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html"
+        },
+        "competitions": [
+          {
+            "id": "202605094000",
+            "layout": "field",
+            "scoreKind": "none",
+            "competitorKind": "athlete",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 85,
+              "periodLabel": "Final",
+              "espnName": "STATUS_FINAL",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "lap",
+              "regulation": 0,
+              "played": 85,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "athlete",
+                "id": "5691",
+                "displayName": "Christian Lundgaard",
+                "athletes": [
+                  {
+                    "id": "5691",
+                    "name": "Christian Lundgaard",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 1,
+                "winner": true
+              },
+              {
+                "kind": "athlete",
+                "id": "5706",
+                "displayName": "David Malukas",
+                "athletes": [
+                  {
+                    "id": "5706",
+                    "name": "David Malukas",
+                    "country": "USA"
+                  }
+                ],
+                "order": 2,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "872",
+                "displayName": "Graham Rahal",
+                "athletes": [
+                  {
+                    "id": "872",
+                    "name": "Graham Rahal",
+                    "country": "USA"
+                  }
+                ],
+                "order": 3,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4526",
+                "displayName": "Josef Newgarden",
+                "athletes": [
+                  {
+                    "id": "4526",
+                    "name": "Josef Newgarden",
+                    "country": "USA"
+                  }
+                ],
+                "order": 4,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5632",
+                "displayName": "Álex Palou",
+                "athletes": [
+                  {
+                    "id": "5632",
+                    "name": "Álex Palou",
+                    "country": "Spain"
+                  }
+                ],
+                "order": 5,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "518",
+                "displayName": "Scott Dixon",
+                "athletes": [
+                  {
+                    "id": "518",
+                    "name": "Scott Dixon",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 6,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5842",
+                "displayName": "Louis Foster",
+                "athletes": [
+                  {
+                    "id": "5842",
+                    "name": "Louis Foster",
+                    "country": "England"
+                  }
+                ],
+                "order": 7,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5766",
+                "displayName": "Dennis Hauger",
+                "athletes": [
+                  {
+                    "id": "5766",
+                    "name": "Dennis Hauger",
+                    "country": "Norway"
+                  }
+                ],
+                "order": 8,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5704",
+                "displayName": "Kyle Kirkwood",
+                "athletes": [
+                  {
+                    "id": "5704",
+                    "name": "Kyle Kirkwood",
+                    "country": "USA"
+                  }
+                ],
+                "order": 9,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5810",
+                "displayName": "Nolan Siegel",
+                "athletes": [
+                  {
+                    "id": "5810",
+                    "name": "Nolan Siegel",
+                    "country": "USA"
+                  }
+                ],
+                "order": 10,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5753",
+                "displayName": "Marcus Armstrong",
+                "athletes": [
+                  {
+                    "id": "5753",
+                    "name": "Marcus Armstrong",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 11,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5798",
+                "displayName": "Kyffin Simpson",
+                "athletes": [
+                  {
+                    "id": "5798",
+                    "name": "Kyffin Simpson",
+                    "country": "Cayman Islands"
+                  }
+                ],
+                "order": 12,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "810",
+                "displayName": "Will Power",
+                "athletes": [
+                  {
+                    "id": "810",
+                    "name": "Will Power",
+                    "country": "Australia"
+                  }
+                ],
+                "order": 13,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5553",
+                "displayName": "Santino Ferrucci",
+                "athletes": [
+                  {
+                    "id": "5553",
+                    "name": "Santino Ferrucci",
+                    "country": "USA"
+                  }
+                ],
+                "order": 14,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5634",
+                "displayName": "Rinus VeeKay",
+                "athletes": [
+                  {
+                    "id": "5634",
+                    "name": "Rinus VeeKay",
+                    "country": "Netherlands"
+                  }
+                ],
+                "order": 15,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5648",
+                "displayName": "Scott McLaughlin",
+                "athletes": [
+                  {
+                    "id": "5648",
+                    "name": "Scott McLaughlin",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 16,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5750",
+                "displayName": "Sting Ray Robb",
+                "athletes": [
+                  {
+                    "id": "5750",
+                    "name": "Sting Ray Robb",
+                    "country": "USA"
+                  }
+                ],
+                "order": 17,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5581",
+                "displayName": "Pato O'Ward",
+                "athletes": [
+                  {
+                    "id": "5581",
+                    "name": "Pato O'Ward",
+                    "country": "Mexico"
+                  }
+                ],
+                "order": 18,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5880",
+                "displayName": "Caio Collet",
+                "athletes": [
+                  {
+                    "id": "5880",
+                    "name": "Caio Collet",
+                    "country": "Brazil"
+                  }
+                ],
+                "order": 19,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5654",
+                "displayName": "Mick Schumacher",
+                "athletes": [
+                  {
+                    "id": "5654",
+                    "name": "Mick Schumacher",
+                    "country": "Germany"
+                  }
+                ],
+                "order": 20,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4374",
+                "displayName": "Romain Grosjean",
+                "athletes": [
+                  {
+                    "id": "4374",
+                    "name": "Romain Grosjean",
+                    "country": "France"
+                  }
+                ],
+                "order": 21,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4622",
+                "displayName": "Marcus Ericsson",
+                "athletes": [
+                  {
+                    "id": "4622",
+                    "name": "Marcus Ericsson",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 22,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5590",
+                "displayName": "Felix Rosenqvist",
+                "athletes": [
+                  {
+                    "id": "5590",
+                    "name": "Felix Rosenqvist",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 23,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5797",
+                "displayName": "Christian Rasmussen",
+                "athletes": [
+                  {
+                    "id": "5797",
+                    "name": "Christian Rasmussen",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 24,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4667",
+                "displayName": "Alexander Rossi",
+                "athletes": [
+                  {
+                    "id": "4667",
+                    "name": "Alexander Rossi",
+                    "country": "USA"
+                  }
+                ],
+                "order": 25,
+                "winner": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "202603290752",
+        "name": "Grand Prix of Alabama",
+        "shortName": "Grand Prix of Alabama",
+        "start": "2026-03-29T17:00Z",
+        "neutralSite": false,
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html"
+        },
+        "competitions": [
+          {
+            "id": "202603290752",
+            "layout": "field",
+            "scoreKind": "none",
+            "competitorKind": "athlete",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 90,
+              "periodLabel": "Final",
+              "espnName": "STATUS_FINAL",
+              "detail": "Final",
+              "shortDetail": "Final"
+            },
+            "periods": {
+              "unit": "lap",
+              "regulation": 0,
+              "played": 90,
+              "isOvertime": false
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "athlete",
+                "id": "5632",
+                "displayName": "Álex Palou",
+                "athletes": [
+                  {
+                    "id": "5632",
+                    "name": "Álex Palou",
+                    "country": "Spain"
+                  }
+                ],
+                "order": 1,
+                "winner": true
+              },
+              {
+                "kind": "athlete",
+                "id": "5691",
+                "displayName": "Christian Lundgaard",
+                "athletes": [
+                  {
+                    "id": "5691",
+                    "name": "Christian Lundgaard",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 2,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "872",
+                "displayName": "Graham Rahal",
+                "athletes": [
+                  {
+                    "id": "872",
+                    "name": "Graham Rahal",
+                    "country": "USA"
+                  }
+                ],
+                "order": 3,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5706",
+                "displayName": "David Malukas",
+                "athletes": [
+                  {
+                    "id": "5706",
+                    "name": "David Malukas",
+                    "country": "USA"
+                  }
+                ],
+                "order": 4,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5704",
+                "displayName": "Kyle Kirkwood",
+                "athletes": [
+                  {
+                    "id": "5704",
+                    "name": "Kyle Kirkwood",
+                    "country": "USA"
+                  }
+                ],
+                "order": 5,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5753",
+                "displayName": "Marcus Armstrong",
+                "athletes": [
+                  {
+                    "id": "5753",
+                    "name": "Marcus Armstrong",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 6,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "518",
+                "displayName": "Scott Dixon",
+                "athletes": [
+                  {
+                    "id": "518",
+                    "name": "Scott Dixon",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 7,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5553",
+                "displayName": "Santino Ferrucci",
+                "athletes": [
+                  {
+                    "id": "5553",
+                    "name": "Santino Ferrucci",
+                    "country": "USA"
+                  }
+                ],
+                "order": 8,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4622",
+                "displayName": "Marcus Ericsson",
+                "athletes": [
+                  {
+                    "id": "4622",
+                    "name": "Marcus Ericsson",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 9,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4526",
+                "displayName": "Josef Newgarden",
+                "athletes": [
+                  {
+                    "id": "4526",
+                    "name": "Josef Newgarden",
+                    "country": "USA"
+                  }
+                ],
+                "order": 10,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4667",
+                "displayName": "Alexander Rossi",
+                "athletes": [
+                  {
+                    "id": "4667",
+                    "name": "Alexander Rossi",
+                    "country": "USA"
+                  }
+                ],
+                "order": 11,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "810",
+                "displayName": "Will Power",
+                "athletes": [
+                  {
+                    "id": "810",
+                    "name": "Will Power",
+                    "country": "Australia"
+                  }
+                ],
+                "order": 12,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5590",
+                "displayName": "Felix Rosenqvist",
+                "athletes": [
+                  {
+                    "id": "5590",
+                    "name": "Felix Rosenqvist",
+                    "country": "Sweden"
+                  }
+                ],
+                "order": 13,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5634",
+                "displayName": "Rinus VeeKay",
+                "athletes": [
+                  {
+                    "id": "5634",
+                    "name": "Rinus VeeKay",
+                    "country": "Netherlands"
+                  }
+                ],
+                "order": 14,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "4374",
+                "displayName": "Romain Grosjean",
+                "athletes": [
+                  {
+                    "id": "4374",
+                    "name": "Romain Grosjean",
+                    "country": "France"
+                  }
+                ],
+                "order": 15,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5648",
+                "displayName": "Scott McLaughlin",
+                "athletes": [
+                  {
+                    "id": "5648",
+                    "name": "Scott McLaughlin",
+                    "country": "New Zealand"
+                  }
+                ],
+                "order": 16,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5581",
+                "displayName": "Pato O'Ward",
+                "athletes": [
+                  {
+                    "id": "5581",
+                    "name": "Pato O'Ward",
+                    "country": "Mexico"
+                  }
+                ],
+                "order": 17,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5810",
+                "displayName": "Nolan Siegel",
+                "athletes": [
+                  {
+                    "id": "5810",
+                    "name": "Nolan Siegel",
+                    "country": "USA"
+                  }
+                ],
+                "order": 18,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5797",
+                "displayName": "Christian Rasmussen",
+                "athletes": [
+                  {
+                    "id": "5797",
+                    "name": "Christian Rasmussen",
+                    "country": "Denmark"
+                  }
+                ],
+                "order": 19,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5798",
+                "displayName": "Kyffin Simpson",
+                "athletes": [
+                  {
+                    "id": "5798",
+                    "name": "Kyffin Simpson",
+                    "country": "Cayman Islands"
+                  }
+                ],
+                "order": 20,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5880",
+                "displayName": "Caio Collet",
+                "athletes": [
+                  {
+                    "id": "5880",
+                    "name": "Caio Collet",
+                    "country": "Brazil"
+                  }
+                ],
+                "order": 21,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5750",
+                "displayName": "Sting Ray Robb",
+                "athletes": [
+                  {
+                    "id": "5750",
+                    "name": "Sting Ray Robb",
+                    "country": "USA"
+                  }
+                ],
+                "order": 22,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5766",
+                "displayName": "Dennis Hauger",
+                "athletes": [
+                  {
+                    "id": "5766",
+                    "name": "Dennis Hauger",
+                    "country": "Norway"
+                  }
+                ],
+                "order": 23,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5654",
+                "displayName": "Mick Schumacher",
+                "athletes": [
+                  {
+                    "id": "5654",
+                    "name": "Mick Schumacher",
+                    "country": "Germany"
+                  }
+                ],
+                "order": 24,
+                "winner": false
+              },
+              {
+                "kind": "athlete",
+                "id": "5842",
+                "displayName": "Louis Foster",
+                "athletes": [
+                  {
+                    "id": "5842",
+                    "name": "Louis Foster",
+                    "country": "England"
+                  }
+                ],
+                "order": 25,
+                "winner": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "202606210111",
+        "name": "Grand Prix of Road America",
+        "shortName": "Grand Prix of Road America",
+        "start": "2026-06-21T18:00Z",
+        "neutralSite": false,
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.vividseats.com/sports/izod-indycar-series-championship-tickets.html"
+        },
+        "competitions": [
+          {
+            "id": "202606210111",
+            "layout": "field",
+            "scoreKind": "none",
+            "competitorKind": "athlete",
+            "status": {
+              "phase": "scheduled",
+              "live": false,
+              "ended": false,
+              "period": 0,
+              "periodLabel": "6/21 - 2:00 PM EDT",
+              "espnName": "STATUS_SCHEDULED",
+              "detail": "Sun, June 21st at 2:00 PM EDT",
+              "shortDetail": "6/21 - 2:00 PM EDT"
+            },
+            "periods": {
+              "unit": "lap",
+              "regulation": 0,
+              "played": 0,
+              "isOvertime": false
+            },
+            "decision": null,
+            "competitors": []
+          }
+        ]
+      }
+    ]
+  }
+}

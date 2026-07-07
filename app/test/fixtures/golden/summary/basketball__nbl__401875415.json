@@ -1,0 +1,185 @@
+{
+  "endpoint": "summary",
+  "args": {
+    "key": "basketball/nbl",
+    "eventId": "401875415",
+    "raw": {
+      "header": {
+        "id": "401875415",
+        "competitions": [
+          {
+            "id": "401875415",
+            "date": "2026-09-02T07:30Z",
+            "status": {
+              "type": {
+                "id": "1",
+                "name": "STATUS_SCHEDULED",
+                "state": "pre",
+                "completed": false,
+                "description": "Scheduled",
+                "detail": "Wed, September 2nd at 3:30 AM EDT",
+                "shortDetail": "9/2 - 3:30 AM EDT"
+              }
+            },
+            "competitors": [
+              {
+                "id": "3",
+                "homeAway": "home",
+                "order": 0,
+                "team": {
+                  "id": "3",
+                  "abbreviation": "CNS",
+                  "displayName": "Cairns Taipans"
+                }
+              },
+              {
+                "id": "7",
+                "homeAway": "away",
+                "order": 1,
+                "team": {
+                  "id": "7",
+                  "abbreviation": "PER",
+                  "displayName": "Perth Wildcats"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "boxscore": {
+        "teams": [
+          {
+            "team": {
+              "id": "7",
+              "uid": "s:40~l:55~t:7",
+              "slug": "perth-wildcats",
+              "location": "Perth",
+              "name": "Wildcats",
+              "abbreviation": "PER",
+              "displayName": "Perth Wildcats",
+              "shortDisplayName": "Wildcats",
+              "color": "ec1c23",
+              "alternateColor": "f1f2f3",
+              "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/per.png"
+            },
+            "statistics": [],
+            "displayOrder": 1,
+            "homeAway": "away"
+          },
+          {
+            "team": {
+              "id": "3",
+              "uid": "s:40~l:55~t:3",
+              "slug": "cairns-taipans",
+              "location": "Cairns",
+              "name": "Taipans",
+              "abbreviation": "CNS",
+              "displayName": "Cairns Taipans",
+              "shortDisplayName": "Taipans",
+              "color": "f69138",
+              "alternateColor": "000000",
+              "logo": "https://a.espncdn.com/i/teamlogos/nbl/500/cns.png"
+            },
+            "statistics": [],
+            "displayOrder": 2,
+            "homeAway": "home"
+          }
+        ]
+      },
+      "gameInfo": {},
+      "seasonseries": [
+        {
+          "type": "season",
+          "summary": "Series starts 11/8",
+          "seriesScore": "0-0",
+          "title": "Regular Season Series",
+          "description": "Regular Season Series"
+        }
+      ],
+      "lastFiveGames": [
+        {
+          "team": {
+            "id": "3",
+            "abbreviation": "CNS"
+          },
+          "events": [
+            {
+              "gameResult": "L",
+              "gameDate": "2026-02-01T05:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-02-06T10:30Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-02-08T05:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-02-12T08:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-02-19T06:30Z"
+            }
+          ]
+        },
+        {
+          "team": {
+            "id": "7",
+            "abbreviation": "PER"
+          },
+          "events": [
+            {
+              "gameResult": "W",
+              "gameDate": "2026-02-20T10:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-03-04T08:30Z"
+            },
+            {
+              "gameResult": "W",
+              "gameDate": "2026-03-07T09:00Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-03-11T08:30Z"
+            },
+            {
+              "gameResult": "L",
+              "gameDate": "2026-03-14T09:00Z"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "output": {
+    "eventId": "401875415",
+    "live": false,
+    "teamStats": [],
+    "boxGroups": [],
+    "scoringPlays": [],
+    "lineups": [],
+    "seasonSeries": {
+      "summary": "Series starts 11/8",
+      "score": "0-0",
+      "title": "Regular Season Series"
+    },
+    "recentForm": [
+      {
+        "side": "home",
+        "abbr": "CNS",
+        "form": "LLWLL"
+      },
+      {
+        "side": "away",
+        "abbr": "PER",
+        "form": "WLWLL"
+      }
+    ],
+    "nextStartMs": 1788334200000
+  }
+}

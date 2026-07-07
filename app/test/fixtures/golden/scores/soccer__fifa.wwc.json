@@ -1,0 +1,1665 @@
+{
+  "endpoint": "scores",
+  "args": {
+    "key": "soccer/fifa.wwc",
+    "sb": {
+      "events": [
+        {
+          "id": "622586",
+          "uid": "s:600~l:795~e:622586",
+          "date": "2023-08-20T10:00Z",
+          "name": "England at Spain",
+          "shortName": "ENG @ ESP",
+          "season": {
+            "year": 2023,
+            "type": 10632,
+            "slug": "final"
+          },
+          "competitions": [
+            {
+              "id": "622586",
+              "uid": "s:600~l:795~e:622586~c:622586",
+              "date": "2023-08-20T10:00Z",
+              "startDate": "2023-08-20T10:00Z",
+              "attendance": 75784,
+              "timeValid": true,
+              "recent": false,
+              "status": {
+                "clock": 5400,
+                "displayClock": "90'+15'",
+                "period": 2,
+                "type": {
+                  "id": "28",
+                  "name": "STATUS_FULL_TIME",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Full Time",
+                  "detail": "FT",
+                  "shortDetail": "FT"
+                }
+              },
+              "venue": {
+                "id": "4639",
+                "fullName": "Accor Stadium",
+                "address": {
+                  "city": "Sydney",
+                  "country": "Australia"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "FIFA Women's World Cup",
+              "notes": [],
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "17640",
+                  "uid": "s:600~t:17640",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": true,
+                  "form": "WWWLW",
+                  "score": "1",
+                  "team": {
+                    "id": "17640",
+                    "uid": "s:600~t:17640",
+                    "abbreviation": "ESP",
+                    "displayName": "Spain",
+                    "shortDisplayName": "Spain",
+                    "name": "Spain",
+                    "location": "Spain",
+                    "color": "c60b1e",
+                    "alternateColor": "ffc400",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/_/id/17640/spain",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/17640/spain",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/17640/spain",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/17640/spain",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "10424"
+                    }
+                  },
+                  "statistics": [
+                    {
+                      "name": "appearances",
+                      "abbreviation": "APP",
+                      "displayValue": "14"
+                    },
+                    {
+                      "name": "foulsCommitted",
+                      "abbreviation": "FC",
+                      "displayValue": "9"
+                    },
+                    {
+                      "name": "wonCorners",
+                      "abbreviation": "CW",
+                      "displayValue": "7"
+                    },
+                    {
+                      "name": "goalAssists",
+                      "abbreviation": "A",
+                      "displayValue": "1"
+                    },
+                    {
+                      "name": "possessionPct",
+                      "abbreviation": "PP",
+                      "displayValue": "57.2"
+                    },
+                    {
+                      "name": "shotAssists",
+                      "abbreviation": "SHAST",
+                      "displayValue": "12"
+                    },
+                    {
+                      "name": "shotsOnTarget",
+                      "abbreviation": "SOG",
+                      "displayValue": "5"
+                    },
+                    {
+                      "name": "totalGoals",
+                      "abbreviation": "G",
+                      "displayValue": "1"
+                    },
+                    {
+                      "name": "totalShots",
+                      "abbreviation": "SHOT",
+                      "displayValue": "13"
+                    }
+                  ]
+                },
+                {
+                  "id": "5159",
+                  "uid": "s:600~t:5159",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "form": "WLWWW",
+                  "score": "0",
+                  "team": {
+                    "id": "5159",
+                    "uid": "s:600~t:5159",
+                    "abbreviation": "ENG",
+                    "displayName": "England",
+                    "shortDisplayName": "England",
+                    "name": "England",
+                    "location": "England",
+                    "color": "ce1124",
+                    "alternateColor": "ffffff",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/_/id/5159/england",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/5159/england",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/5159/england",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/5159/england",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "10019"
+                    }
+                  },
+                  "statistics": [
+                    {
+                      "name": "appearances",
+                      "abbreviation": "APP",
+                      "displayValue": "14"
+                    },
+                    {
+                      "name": "foulsCommitted",
+                      "abbreviation": "FC",
+                      "displayValue": "16"
+                    },
+                    {
+                      "name": "wonCorners",
+                      "abbreviation": "CW",
+                      "displayValue": "3"
+                    },
+                    {
+                      "name": "goalAssists",
+                      "abbreviation": "A",
+                      "displayValue": "0"
+                    },
+                    {
+                      "name": "possessionPct",
+                      "abbreviation": "PP",
+                      "displayValue": "42.8"
+                    },
+                    {
+                      "name": "shotAssists",
+                      "abbreviation": "SHAST",
+                      "displayValue": "5"
+                    },
+                    {
+                      "name": "shotsOnTarget",
+                      "abbreviation": "SOG",
+                      "displayValue": "3"
+                    },
+                    {
+                      "name": "totalGoals",
+                      "abbreviation": "G",
+                      "displayValue": "0"
+                    },
+                    {
+                      "name": "totalShots",
+                      "abbreviation": "SHOT",
+                      "displayValue": "8"
+                    }
+                  ]
+                }
+              ],
+              "details": [
+                {
+                  "type": {
+                    "id": "70",
+                    "text": "Goal"
+                  },
+                  "clock": {
+                    "value": 1711,
+                    "displayValue": "29'"
+                  },
+                  "team": {
+                    "id": "17640"
+                  },
+                  "scoreValue": 1,
+                  "scoringPlay": true,
+                  "redCard": false,
+                  "yellowCard": false,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "317946",
+                      "displayName": "Olga Carmona",
+                      "shortName": "O. Carmona",
+                      "fullName": "Olga Carmona",
+                      "jersey": "19",
+                      "team": {
+                        "id": "17640"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/317946/olga-carmona",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "LB"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "94",
+                    "text": "Yellow Card"
+                  },
+                  "clock": {
+                    "value": 3241,
+                    "displayValue": "55'"
+                  },
+                  "team": {
+                    "id": "5159"
+                  },
+                  "scoreValue": 0,
+                  "scoringPlay": false,
+                  "redCard": false,
+                  "yellowCard": true,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "296873",
+                      "displayName": "Lauren Hemp",
+                      "shortName": "L. Hemp",
+                      "fullName": "Lauren Hemp",
+                      "jersey": "11",
+                      "team": {
+                        "id": "5159"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/296873/lauren-hemp",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "CF-L"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "94",
+                    "text": "Yellow Card"
+                  },
+                  "clock": {
+                    "value": 4629,
+                    "displayValue": "78'"
+                  },
+                  "team": {
+                    "id": "17640"
+                  },
+                  "scoreValue": 0,
+                  "scoringPlay": false,
+                  "redCard": false,
+                  "yellowCard": true,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "333582",
+                      "displayName": "Salma Paralluelo",
+                      "shortName": "S. Paralluelo",
+                      "fullName": "Salma Paralluelo",
+                      "jersey": "18",
+                      "team": {
+                        "id": "17640"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/333582/salma-paralluelo",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "F"
+                    }
+                  ]
+                }
+              ],
+              "headlines": [
+                {
+                  "description": "Olga Carmona sealed Women's World Cup glory for Spain in Sydney with a first-half goal that clinched a 1-0 victory against England.",
+                  "type": "Recap",
+                  "shortLinkText": "Spain edge England to win first World Cup title"
+                }
+              ],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 5400,
+            "displayClock": "90'+15'",
+            "period": 2,
+            "type": {
+              "id": "28",
+              "name": "STATUS_FULL_TIME",
+              "state": "post",
+              "completed": true,
+              "description": "Full Time",
+              "detail": "FT",
+              "shortDetail": "FT"
+            }
+          },
+          "venue": {
+            "displayName": "Accor Stadium"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/622586/england-spain",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "highlights",
+                "desktop"
+              ],
+              "href": "https://www.espn.com/soccer/video/_/gameId/622586",
+              "text": "Highlights",
+              "shortText": "Highlights",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "recap",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/report/_/gameId/622586",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/622586",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "bracket",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/bracket/_/league/fifa.wwc",
+              "text": "Bracket",
+              "shortText": "Bracket",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "622592",
+          "uid": "s:600~l:795~e:622592",
+          "date": "2023-08-11T01:00Z",
+          "name": "Netherlands at Spain",
+          "shortName": "NED @ ESP",
+          "season": {
+            "year": 2023,
+            "type": 10635,
+            "slug": "quarterfinals"
+          },
+          "competitions": [
+            {
+              "id": "622592",
+              "uid": "s:600~l:795~e:622592~c:622592",
+              "date": "2023-08-11T01:00Z",
+              "startDate": "2023-08-11T01:00Z",
+              "attendance": 32021,
+              "timeValid": true,
+              "recent": false,
+              "status": {
+                "clock": 7200,
+                "displayClock": "120'+2'",
+                "period": 4,
+                "type": {
+                  "id": "45",
+                  "name": "STATUS_FINAL_AET",
+                  "state": "post",
+                  "completed": true,
+                  "description": "Final Score - After Extra Time",
+                  "detail": "AET",
+                  "shortDetail": "AET"
+                }
+              },
+              "venue": {
+                "id": "3058",
+                "fullName": "Sky Stadium",
+                "address": {
+                  "city": "Wellington",
+                  "country": "New Zealand"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "FIFA Women's World Cup",
+              "notes": [],
+              "geoBroadcasts": [
+                {
+                  "type": {
+                    "id": "1",
+                    "shortName": "TV"
+                  },
+                  "market": {
+                    "id": "1",
+                    "type": "National"
+                  },
+                  "media": {
+                    "shortName": "FOX"
+                  },
+                  "lang": "en",
+                  "region": "us"
+                }
+              ],
+              "broadcasts": [
+                {
+                  "market": "national",
+                  "names": [
+                    "FOX"
+                  ]
+                }
+              ],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "17640",
+                  "uid": "s:600~t:17640",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": true,
+                  "advance": true,
+                  "form": "WWWLW",
+                  "score": "2",
+                  "team": {
+                    "id": "17640",
+                    "uid": "s:600~t:17640",
+                    "abbreviation": "ESP",
+                    "displayName": "Spain",
+                    "shortDisplayName": "Spain",
+                    "name": "Spain",
+                    "location": "Spain",
+                    "color": "c60b1e",
+                    "alternateColor": "ffc400",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/_/id/17640/spain",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/17640/spain",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/17640/spain",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/17640/spain",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "10424"
+                    }
+                  },
+                  "statistics": [
+                    {
+                      "name": "appearances",
+                      "abbreviation": "APP",
+                      "displayValue": "17"
+                    },
+                    {
+                      "name": "foulsCommitted",
+                      "abbreviation": "FC",
+                      "displayValue": "7"
+                    },
+                    {
+                      "name": "wonCorners",
+                      "abbreviation": "CW",
+                      "displayValue": "8"
+                    },
+                    {
+                      "name": "goalAssists",
+                      "abbreviation": "A",
+                      "displayValue": "1"
+                    },
+                    {
+                      "name": "possessionPct",
+                      "abbreviation": "PP",
+                      "displayValue": "62"
+                    },
+                    {
+                      "name": "shotAssists",
+                      "abbreviation": "SHAST",
+                      "displayValue": "20"
+                    },
+                    {
+                      "name": "shotsOnTarget",
+                      "abbreviation": "SOG",
+                      "displayValue": "8"
+                    },
+                    {
+                      "name": "totalGoals",
+                      "abbreviation": "G",
+                      "displayValue": "2"
+                    },
+                    {
+                      "name": "totalShots",
+                      "abbreviation": "SHOT",
+                      "displayValue": "28"
+                    }
+                  ]
+                },
+                {
+                  "id": "7151",
+                  "uid": "s:600~t:7151",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "advance": false,
+                  "form": "WLDWW",
+                  "score": "1",
+                  "team": {
+                    "id": "7151",
+                    "uid": "s:600~t:7151",
+                    "abbreviation": "NED",
+                    "displayName": "Netherlands",
+                    "shortDisplayName": "Netherlands",
+                    "name": "Netherlands",
+                    "location": "Netherlands",
+                    "color": "ec2f00",
+                    "alternateColor": "003da5",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/_/id/7151/netherlands",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/7151/netherlands",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/7151/netherlands",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/7151/netherlands",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "47"
+                    }
+                  },
+                  "statistics": [
+                    {
+                      "name": "appearances",
+                      "abbreviation": "APP",
+                      "displayValue": "16"
+                    },
+                    {
+                      "name": "foulsCommitted",
+                      "abbreviation": "FC",
+                      "displayValue": "22"
+                    },
+                    {
+                      "name": "wonCorners",
+                      "abbreviation": "CW",
+                      "displayValue": "2"
+                    },
+                    {
+                      "name": "goalAssists",
+                      "abbreviation": "A",
+                      "displayValue": "1"
+                    },
+                    {
+                      "name": "possessionPct",
+                      "abbreviation": "PP",
+                      "displayValue": "38"
+                    },
+                    {
+                      "name": "shotAssists",
+                      "abbreviation": "SHAST",
+                      "displayValue": "9"
+                    },
+                    {
+                      "name": "shotsOnTarget",
+                      "abbreviation": "SOG",
+                      "displayValue": "4"
+                    },
+                    {
+                      "name": "totalGoals",
+                      "abbreviation": "G",
+                      "displayValue": "1"
+                    },
+                    {
+                      "name": "totalShots",
+                      "abbreviation": "SHOT",
+                      "displayValue": "10"
+                    }
+                  ]
+                }
+              ],
+              "details": [
+                {
+                  "type": {
+                    "id": "94",
+                    "text": "Yellow Card"
+                  },
+                  "clock": {
+                    "value": 2083,
+                    "displayValue": "35'"
+                  },
+                  "team": {
+                    "id": "17640"
+                  },
+                  "scoreValue": 0,
+                  "scoringPlay": false,
+                  "redCard": false,
+                  "yellowCard": true,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "333486",
+                      "displayName": "Oihane Hernández",
+                      "shortName": "O. Hernández",
+                      "fullName": "Oihane Hernández",
+                      "jersey": "12",
+                      "team": {
+                        "id": "17640"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/333486/oihane-hernandez",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "RB"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "94",
+                    "text": "Yellow Card"
+                  },
+                  "clock": {
+                    "value": 3612,
+                    "displayValue": "61'"
+                  },
+                  "team": {
+                    "id": "7151"
+                  },
+                  "scoreValue": 0,
+                  "scoringPlay": false,
+                  "redCard": false,
+                  "yellowCard": true,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "288448",
+                      "displayName": "Damaris Egurrola",
+                      "shortName": "D. Egurrola",
+                      "fullName": "Damaris Egurrola",
+                      "jersey": "21",
+                      "team": {
+                        "id": "7151"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/288448/damaris-egurrola",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "CM-L"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "98",
+                    "text": "Penalty - Scored"
+                  },
+                  "clock": {
+                    "value": 4816,
+                    "displayValue": "81'"
+                  },
+                  "team": {
+                    "id": "17640"
+                  },
+                  "scoreValue": 1,
+                  "scoringPlay": true,
+                  "redCard": false,
+                  "yellowCard": false,
+                  "penaltyKick": true,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "257473",
+                      "displayName": "Mariona Caldentey",
+                      "shortName": "M. Caldentey",
+                      "fullName": "Mariona Caldentey",
+                      "jersey": "8",
+                      "team": {
+                        "id": "17640"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/257473/mariona-caldentey",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "LF"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "70",
+                    "text": "Goal"
+                  },
+                  "clock": {
+                    "value": 5400,
+                    "displayValue": "90'+1'"
+                  },
+                  "team": {
+                    "id": "7151"
+                  },
+                  "scoreValue": 1,
+                  "scoringPlay": true,
+                  "redCard": false,
+                  "yellowCard": false,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "219957",
+                      "displayName": "Stefanie van der Gragt",
+                      "shortName": "S. van der Gragt",
+                      "fullName": "Stefanie van der Gragt",
+                      "jersey": "3",
+                      "team": {
+                        "id": "7151"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/219957/stefanie-van-der-gragt",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "CD"
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "id": "70",
+                    "text": "Goal"
+                  },
+                  "clock": {
+                    "value": 6634,
+                    "displayValue": "111'"
+                  },
+                  "team": {
+                    "id": "17640"
+                  },
+                  "scoreValue": 1,
+                  "scoringPlay": true,
+                  "redCard": false,
+                  "yellowCard": false,
+                  "penaltyKick": false,
+                  "ownGoal": false,
+                  "shootout": false,
+                  "athletesInvolved": [
+                    {
+                      "id": "333582",
+                      "displayName": "Salma Paralluelo",
+                      "shortName": "S. Paralluelo",
+                      "fullName": "Salma Paralluelo",
+                      "jersey": "18",
+                      "team": {
+                        "id": "17640"
+                      },
+                      "links": [
+                        {
+                          "rel": [
+                            "playercard",
+                            "desktop",
+                            "athlete"
+                          ],
+                          "href": "https://www.espn.com/soccer/player/_/id/333582/salma-paralluelo",
+                          "isHidden": false
+                        }
+                      ],
+                      "position": "SUB"
+                    }
+                  ]
+                }
+              ],
+              "headlines": [
+                {
+                  "description": "Substitute Salma Paralluelo scored in extra time to lift Spain to a nervy 2-1 victory over the Netherlands on Friday and into the semi-finals of the Women's World Cup for the first time.",
+                  "type": "Recap",
+                  "shortLinkText": "Spain beat Netherlands to reach 1st WWC semi"
+                }
+              ],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 7200,
+            "displayClock": "120'+2'",
+            "period": 4,
+            "type": {
+              "id": "45",
+              "name": "STATUS_FINAL_AET",
+              "state": "post",
+              "completed": true,
+              "description": "Final Score - After Extra Time",
+              "detail": "AET",
+              "shortDetail": "AET"
+            }
+          },
+          "venue": {
+            "displayName": "Sky Stadium"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/622592/netherlands-spain",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "highlights",
+                "desktop"
+              ],
+              "href": "https://www.espn.com/soccer/video/_/gameId/622592",
+              "text": "Highlights",
+              "shortText": "Highlights",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "recap",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/report/_/gameId/622592",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/622592",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "bracket",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/bracket/_/league/fifa.wwc",
+              "text": "Bracket",
+              "shortText": "Bracket",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        }
+      ],
+      "leagues": [
+        {
+          "id": "795",
+          "uid": "s:600~l:795",
+          "name": "FIFA Women's World Cup",
+          "abbreviation": "FIFA Women's World Cup",
+          "slug": "fifa.wwc",
+          "season": {
+            "year": 2023,
+            "startDate": "2023-07-01T04:00Z",
+            "endDate": "2023-09-01T03:59Z",
+            "displayName": "2023 FIFA Women's World Cup",
+            "type": {
+              "id": "6",
+              "type": 10632,
+              "name": "Final",
+              "abbreviation": "Final"
+            }
+          },
+          "calendarType": "list",
+          "calendar": [
+            {
+              "label": "FIFA Women's World Cup",
+              "startDate": "2023-07-01T04:00Z",
+              "endDate": "2023-09-01T03:59Z",
+              "entries": [
+                {
+                  "label": "Group",
+                  "detail": "Jul 20-Aug 3",
+                  "value": "1",
+                  "startDate": "2023-07-01T07:00Z",
+                  "endDate": "2023-08-04T06:59Z"
+                },
+                {
+                  "label": "Rd of 16",
+                  "detail": "Aug 4-8",
+                  "value": "2",
+                  "startDate": "2023-08-04T07:00Z",
+                  "endDate": "2023-08-10T06:59Z"
+                },
+                {
+                  "label": "Quarterfinals",
+                  "detail": "Aug 10-12",
+                  "value": "3",
+                  "startDate": "2023-08-10T07:00Z",
+                  "endDate": "2023-08-14T06:59Z"
+                },
+                {
+                  "label": "Semifinals",
+                  "detail": "Aug 15-16",
+                  "value": "4",
+                  "startDate": "2023-08-14T07:00Z",
+                  "endDate": "2023-08-18T06:59Z"
+                },
+                {
+                  "label": "3rd-Place",
+                  "detail": "Aug 19",
+                  "value": "5",
+                  "startDate": "2023-08-18T07:00Z",
+                  "endDate": "2023-08-20T06:59Z"
+                },
+                {
+                  "label": "Final",
+                  "detail": "Aug 20",
+                  "value": "6",
+                  "startDate": "2023-08-20T07:00Z",
+                  "endDate": "2023-09-01T06:59Z"
+                }
+              ]
+            }
+          ],
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/i/leaguelogos/soccer/500/60.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "default"
+              ],
+              "lastUpdated": "2023-07-20T10:03Z"
+            },
+            {
+              "href": "https://a.espncdn.com/i/leaguelogos/soccer/500-dark/60.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "dark"
+              ],
+              "lastUpdated": "2023-07-20T10:03Z"
+            }
+          ]
+        }
+      ],
+      "day": {
+        "date": "2023-08-20"
+      }
+    },
+    "extras": {}
+  },
+  "output": {
+    "sport": "soccer",
+    "league": "fifa.wwc",
+    "leagueId": "795",
+    "leagueName": "FIFA Women's World Cup",
+    "season": {
+      "year": 2023,
+      "type": 10632,
+      "slug": "Final",
+      "displayName": "2023 FIFA Women's World Cup"
+    },
+    "day": "2023-08-20",
+    "updated": null,
+    "anyLive": false,
+    "seasonWindow": {
+      "startDate": "2023-07-01T04:00Z",
+      "endDate": "2023-09-01T03:59Z"
+    },
+    "events": [
+      {
+        "id": "622586",
+        "name": "England at Spain",
+        "shortName": "ENG @ ESP",
+        "start": "2023-08-20T10:00Z",
+        "neutralSite": false,
+        "venue": {
+          "name": "Accor Stadium",
+          "city": "Sydney",
+          "country": "Australia"
+        },
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.com/soccer/match/_/gameId/622586/england-spain"
+        },
+        "competitions": [
+          {
+            "id": "622586",
+            "layout": "headToHead",
+            "scoreKind": "numeric",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 2,
+              "periodLabel": "FT",
+              "espnName": "STATUS_FULL_TIME",
+              "detail": "FT",
+              "shortDetail": "FT"
+            },
+            "periods": {
+              "unit": "half",
+              "regulation": 2,
+              "played": 2,
+              "isOvertime": false,
+              "lengthMin": 45
+            },
+            "decision": "regulation",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "17640",
+                "displayName": "Spain",
+                "shortName": "Spain",
+                "abbreviation": "ESP",
+                "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                "color": "c60b1e",
+                "altColor": "ffc400",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": {
+                  "display": "1",
+                  "value": 1
+                },
+                "form": "WWWLW",
+                "stats": {
+                  "APP": "14",
+                  "appearances": "14",
+                  "FC": "9",
+                  "foulsCommitted": "9",
+                  "CW": "7",
+                  "wonCorners": "7",
+                  "A": "1",
+                  "goalAssists": "1",
+                  "PP": "57.2",
+                  "possessionPct": "57.2",
+                  "SHAST": "12",
+                  "shotAssists": "12",
+                  "SOG": "5",
+                  "shotsOnTarget": "5",
+                  "G": "1",
+                  "totalGoals": "1",
+                  "SHOT": "13",
+                  "totalShots": "13"
+                }
+              },
+              {
+                "kind": "team",
+                "id": "5159",
+                "displayName": "England",
+                "shortName": "England",
+                "abbreviation": "ENG",
+                "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+                "color": "ce1124",
+                "altColor": "ffffff",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": {
+                  "display": "0",
+                  "value": 0
+                },
+                "form": "WLWWW",
+                "stats": {
+                  "APP": "14",
+                  "appearances": "14",
+                  "FC": "16",
+                  "foulsCommitted": "16",
+                  "CW": "3",
+                  "wonCorners": "3",
+                  "A": "0",
+                  "goalAssists": "0",
+                  "PP": "42.8",
+                  "possessionPct": "42.8",
+                  "SHAST": "5",
+                  "shotAssists": "5",
+                  "SOG": "3",
+                  "shotsOnTarget": "3",
+                  "G": "0",
+                  "totalGoals": "0",
+                  "SHOT": "8",
+                  "totalShots": "8"
+                }
+              }
+            ],
+            "events": [
+              {
+                "type": "goal",
+                "team": "home",
+                "clock": "29'",
+                "athlete": "O. Carmona",
+                "detail": "Goal",
+                "scoreValue": 1
+              },
+              {
+                "type": "yellow-card",
+                "team": "away",
+                "clock": "55'",
+                "athlete": "L. Hemp",
+                "detail": "Yellow Card",
+                "scoreValue": 0
+              },
+              {
+                "type": "yellow-card",
+                "team": "home",
+                "clock": "78'",
+                "athlete": "S. Paralluelo",
+                "detail": "Yellow Card",
+                "scoreValue": 0
+              }
+            ],
+            "attendance": 75784,
+            "headline": "Spain edge England to win first World Cup title"
+          }
+        ]
+      },
+      {
+        "id": "622592",
+        "name": "Netherlands at Spain",
+        "shortName": "NED @ ESP",
+        "start": "2023-08-11T01:00Z",
+        "neutralSite": false,
+        "venue": {
+          "name": "Sky Stadium",
+          "city": "Wellington",
+          "country": "New Zealand"
+        },
+        "broadcasts": [
+          "FOX"
+        ],
+        "notes": [],
+        "links": {
+          "web": "https://www.espn.com/soccer/match/_/gameId/622592/netherlands-spain"
+        },
+        "competitions": [
+          {
+            "id": "622592",
+            "layout": "headToHead",
+            "scoreKind": "numeric",
+            "competitorKind": "team",
+            "status": {
+              "phase": "final",
+              "live": false,
+              "ended": true,
+              "period": 4,
+              "periodLabel": "AET",
+              "espnName": "STATUS_FINAL_AET",
+              "detail": "AET",
+              "shortDetail": "AET"
+            },
+            "periods": {
+              "unit": "half",
+              "regulation": 2,
+              "played": 4,
+              "isOvertime": true,
+              "lengthMin": 45
+            },
+            "decision": "overtime",
+            "competitors": [
+              {
+                "kind": "team",
+                "id": "17640",
+                "displayName": "Spain",
+                "shortName": "Spain",
+                "abbreviation": "ESP",
+                "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+                "color": "c60b1e",
+                "altColor": "ffc400",
+                "homeAway": "home",
+                "order": 0,
+                "winner": true,
+                "score": {
+                  "display": "2",
+                  "value": 2
+                },
+                "advance": true,
+                "form": "WWWLW",
+                "stats": {
+                  "APP": "17",
+                  "appearances": "17",
+                  "FC": "7",
+                  "foulsCommitted": "7",
+                  "CW": "8",
+                  "wonCorners": "8",
+                  "A": "1",
+                  "goalAssists": "1",
+                  "PP": "62",
+                  "possessionPct": "62",
+                  "SHAST": "20",
+                  "shotAssists": "20",
+                  "SOG": "8",
+                  "shotsOnTarget": "8",
+                  "G": "2",
+                  "totalGoals": "2",
+                  "SHOT": "28",
+                  "totalShots": "28"
+                }
+              },
+              {
+                "kind": "team",
+                "id": "7151",
+                "displayName": "Netherlands",
+                "shortName": "Netherlands",
+                "abbreviation": "NED",
+                "logo": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+                "color": "ec2f00",
+                "altColor": "003da5",
+                "homeAway": "away",
+                "order": 1,
+                "winner": false,
+                "score": {
+                  "display": "1",
+                  "value": 1
+                },
+                "advance": false,
+                "form": "WLDWW",
+                "stats": {
+                  "APP": "16",
+                  "appearances": "16",
+                  "FC": "22",
+                  "foulsCommitted": "22",
+                  "CW": "2",
+                  "wonCorners": "2",
+                  "A": "1",
+                  "goalAssists": "1",
+                  "PP": "38",
+                  "possessionPct": "38",
+                  "SHAST": "9",
+                  "shotAssists": "9",
+                  "SOG": "4",
+                  "shotsOnTarget": "4",
+                  "G": "1",
+                  "totalGoals": "1",
+                  "SHOT": "10",
+                  "totalShots": "10"
+                }
+              }
+            ],
+            "events": [
+              {
+                "type": "yellow-card",
+                "team": "home",
+                "clock": "35'",
+                "athlete": "O. Hernández",
+                "detail": "Yellow Card",
+                "scoreValue": 0
+              },
+              {
+                "type": "yellow-card",
+                "team": "away",
+                "clock": "61'",
+                "athlete": "D. Egurrola",
+                "detail": "Yellow Card",
+                "scoreValue": 0
+              },
+              {
+                "type": "penalty-goal",
+                "team": "home",
+                "clock": "81'",
+                "athlete": "M. Caldentey",
+                "detail": "Penalty - Scored",
+                "scoreValue": 1,
+                "flags": {
+                  "penalty": true
+                }
+              },
+              {
+                "type": "goal",
+                "team": "away",
+                "clock": "90'+1'",
+                "athlete": "S. van der Gragt",
+                "detail": "Goal",
+                "scoreValue": 1
+              },
+              {
+                "type": "goal",
+                "team": "home",
+                "clock": "111'",
+                "athlete": "S. Paralluelo",
+                "detail": "Goal",
+                "scoreValue": 1
+              }
+            ],
+            "attendance": 32021,
+            "headline": "Spain beat Netherlands to reach 1st WWC semi"
+          }
+        ]
+      }
+    ]
+  }
+}

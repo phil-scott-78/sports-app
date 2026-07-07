@@ -1,9 +1,25 @@
-# sports-scores worker
+# sports-scores — offline tooling (the worker was removed)
 
-Cloudflare Worker that wraps ESPN's unofficial API, **normalizes every sport to
-the canonical contract** (`schema/canonical.ts`), and **coalesces all clients
-into one upstream fetch per league per TTL** via the Cache API. Free-tier-shaped:
-no KV/DO writes, no build step, ~zero cost.
+> **The Cloudflare Worker is gone** (see `../drop-the-worker.md`). The Flutter app
+> now talks to ESPN directly and normalizes on-device (`app/lib/src/data/`, ported
+> from the JS normalizers in `src/`). **Nothing here is deployed.** This directory
+> survives as OFFLINE TOOLING only:
+> - `src/*.js` — the pure JS normalizers, kept as the **golden-parity oracle** the
+>   Dart port is tested against (`scripts/gen-goldens.mjs` → `app/test/fixtures/golden/`).
+> - `mock/` + `scripts/mock-espn-server.mjs` — the offline mock backend: serves RAW
+>   ESPN shapes on ESPN paths so the app (with a mock base override) walks every UI
+>   state offline. `scripts/capture-fixtures.mjs` / `capture-extra.mjs` refresh the
+>   committed raw fixtures from live ESPN.
+> - `test/*.test.mjs` — the JS normalizer suites (`npm test`).
+>
+> The route/TTL table below documents the ORIGINAL worker contract for reference;
+> the app now applies the same shapes on-device (endpoints in `espn_client.dart`,
+> freshness via the client poll cadence in `config.dart`).
+
+Original design: a Cloudflare Worker that wrapped ESPN's unofficial API,
+**normalized every sport to the canonical contract** (`schema/canonical.ts`), and
+**coalesced all clients into one upstream fetch per league per TTL** via the
+Cache API.
 
 ## Endpoints
 

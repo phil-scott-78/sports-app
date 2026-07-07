@@ -1,0 +1,1226 @@
+{
+  "endpoint": "overview",
+  "args": {
+    "key": "soccer/fra.1",
+    "sb": {
+      "events": [
+        {
+          "id": "401876493",
+          "uid": "s:600~l:710~e:401876493",
+          "date": "2026-08-22T18:00Z",
+          "name": "Lille at Angers",
+          "shortName": "LILL @ ANG",
+          "season": {
+            "year": 2026,
+            "type": 14252,
+            "slug": "2026-27-ligue-1"
+          },
+          "competitions": [
+            {
+              "id": "401876493",
+              "uid": "s:600~l:710~e:401876493~c:401876493",
+              "date": "2026-08-22T18:00Z",
+              "startDate": "2026-08-22T18:00Z",
+              "attendance": 0,
+              "timeValid": false,
+              "recent": false,
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "type": {
+                  "id": "1",
+                  "name": "STATUS_SCHEDULED",
+                  "state": "pre",
+                  "completed": false,
+                  "description": "Scheduled",
+                  "detail": "TBD",
+                  "shortDetail": "TBD"
+                }
+              },
+              "venue": {
+                "id": "3369",
+                "fullName": "Stade Raymond Kopa",
+                "address": {
+                  "city": "Angers",
+                  "country": "France"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "Ligue 1",
+              "notes": [],
+              "geoBroadcasts": [],
+              "broadcasts": [],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "7868",
+                  "uid": "s:600~t:7868",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": false,
+                  "form": "DDLLD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "7868",
+                    "uid": "s:600~t:7868",
+                    "abbreviation": "ANG",
+                    "displayName": "Angers",
+                    "shortDisplayName": "Angers",
+                    "name": "Angers",
+                    "location": "Angers",
+                    "color": "1a1a1a",
+                    "alternateColor": "ffffff",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7868.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/7868/angers",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/7868/angers",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/7868/angers",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/7868/angers",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "3369"
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "166",
+                  "uid": "s:600~t:166",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "form": "LWDWD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "166",
+                    "uid": "s:600~t:166",
+                    "abbreviation": "LILL",
+                    "displayName": "Lille",
+                    "shortDisplayName": "Lille",
+                    "name": "Lille",
+                    "location": "Lille",
+                    "color": "c2051b",
+                    "alternateColor": "e2d3d7",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/166/lille",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/166/lille",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/166/lille",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/166/lille",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "4947"
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "details": [],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "TBD",
+              "shortDetail": "TBD"
+            }
+          },
+          "venue": {
+            "displayName": "Stade Raymond Kopa"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/401876493/lille-angers",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/401876493",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "401876492",
+          "uid": "s:600~l:710~e:401876492",
+          "date": "2026-08-22T18:00Z",
+          "name": "AS Monaco at Le Havre AC",
+          "shortName": "MON @ HAC",
+          "season": {
+            "year": 2026,
+            "type": 14252,
+            "slug": "2026-27-ligue-1"
+          },
+          "competitions": [
+            {
+              "id": "401876492",
+              "uid": "s:600~l:710~e:401876492~c:401876492",
+              "date": "2026-08-22T18:00Z",
+              "startDate": "2026-08-22T18:00Z",
+              "attendance": 0,
+              "timeValid": false,
+              "recent": false,
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "type": {
+                  "id": "1",
+                  "name": "STATUS_SCHEDULED",
+                  "state": "pre",
+                  "completed": false,
+                  "description": "Scheduled",
+                  "detail": "TBD",
+                  "shortDetail": "TBD"
+                }
+              },
+              "venue": {
+                "id": "4844",
+                "fullName": "Stade Océane",
+                "address": {
+                  "city": "Le Havre",
+                  "country": "France"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "Ligue 1",
+              "notes": [],
+              "geoBroadcasts": [],
+              "broadcasts": [],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "3236",
+                  "uid": "s:600~t:3236",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": false,
+                  "form": "WLDDD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "3236",
+                    "uid": "s:600~t:3236",
+                    "abbreviation": "HAC",
+                    "displayName": "Le Havre AC",
+                    "shortDisplayName": "Le Havre AC",
+                    "name": "Le Havre AC",
+                    "location": "Le Havre AC",
+                    "color": "011F68",
+                    "alternateColor": "ededed",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3236.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/3236/le-havre-ac",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/3236/le-havre-ac",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/3236/le-havre-ac",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/3236/le-havre-ac",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "4844"
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "174",
+                  "uid": "s:600~t:174",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "form": "LLWDD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "174",
+                    "uid": "s:600~t:174",
+                    "abbreviation": "MON",
+                    "displayName": "AS Monaco",
+                    "shortDisplayName": "Monaco",
+                    "name": "AS Monaco",
+                    "location": "AS Monaco",
+                    "color": "E91514",
+                    "alternateColor": "004c37",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/174/as-monaco",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/174/as-monaco",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/174/as-monaco",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/174/as-monaco",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "339"
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "details": [],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "TBD",
+              "shortDetail": "TBD"
+            }
+          },
+          "venue": {
+            "displayName": "Stade Océane"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/401876492/as-monaco-le-havre-ac",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/401876492",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "401876491",
+          "uid": "s:600~l:710~e:401876491",
+          "date": "2026-08-22T18:00Z",
+          "name": "Brest at Le Mans",
+          "shortName": "BRE @ MNS",
+          "season": {
+            "year": 2026,
+            "type": 14252,
+            "slug": "2026-27-ligue-1"
+          },
+          "competitions": [
+            {
+              "id": "401876491",
+              "uid": "s:600~l:710~e:401876491~c:401876491",
+              "date": "2026-08-22T18:00Z",
+              "startDate": "2026-08-22T18:00Z",
+              "attendance": 0,
+              "timeValid": false,
+              "recent": false,
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "type": {
+                  "id": "1",
+                  "name": "STATUS_SCHEDULED",
+                  "state": "pre",
+                  "completed": false,
+                  "description": "Scheduled",
+                  "detail": "TBD",
+                  "shortDetail": "TBD"
+                }
+              },
+              "venue": {
+                "id": "4364",
+                "fullName": "Stade Marie-Marvingt",
+                "address": {
+                  "city": "Le Mans",
+                  "country": "France"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "Ligue 1",
+              "notes": [],
+              "geoBroadcasts": [],
+              "broadcasts": [],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "2697",
+                  "uid": "s:600~t:2697",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": false,
+                  "form": "WDDWD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "2697",
+                    "uid": "s:600~t:2697",
+                    "abbreviation": "MNS",
+                    "displayName": "Le Mans",
+                    "shortDisplayName": "Le Mans",
+                    "name": "Le Mans",
+                    "location": "Le Mans",
+                    "color": "d62b11",
+                    "alternateColor": "d62b11",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2697.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/2697/le-mans",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/2697/le-mans",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/2697/le-mans",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/2697/le-mans",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "4364"
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "6997",
+                  "uid": "s:600~t:6997",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "form": "DLLLD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "6997",
+                    "uid": "s:600~t:6997",
+                    "abbreviation": "BRE",
+                    "displayName": "Brest",
+                    "shortDisplayName": "Brest",
+                    "name": "Brest",
+                    "location": "Brest",
+                    "color": "ef2f24",
+                    "alternateColor": "ffffff",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6997.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/6997/brest",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/6997/brest",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/6997/brest",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/6997/brest",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "4618"
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "details": [],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "TBD",
+              "shortDetail": "TBD"
+            }
+          },
+          "venue": {
+            "displayName": "Stade Marie-Marvingt"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/401876491/brest-le-mans",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/401876491",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        },
+        {
+          "id": "401876490",
+          "uid": "s:600~l:710~e:401876490",
+          "date": "2026-08-22T18:00Z",
+          "name": "AJ Auxerre at Lens",
+          "shortName": "AUX @ RCL",
+          "season": {
+            "year": 2026,
+            "type": 14252,
+            "slug": "2026-27-ligue-1"
+          },
+          "competitions": [
+            {
+              "id": "401876490",
+              "uid": "s:600~l:710~e:401876490~c:401876490",
+              "date": "2026-08-22T18:00Z",
+              "startDate": "2026-08-22T18:00Z",
+              "attendance": 0,
+              "timeValid": false,
+              "recent": false,
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "type": {
+                  "id": "1",
+                  "name": "STATUS_SCHEDULED",
+                  "state": "pre",
+                  "completed": false,
+                  "description": "Scheduled",
+                  "detail": "TBD",
+                  "shortDetail": "TBD"
+                }
+              },
+              "venue": {
+                "id": "10342",
+                "fullName": "Stade Bollaert-Delelis",
+                "address": {
+                  "city": "Lens",
+                  "country": "France"
+                }
+              },
+              "format": {
+                "regulation": {
+                  "periods": 2
+                }
+              },
+              "altGameNote": "Ligue 1",
+              "notes": [],
+              "geoBroadcasts": [],
+              "broadcasts": [],
+              "broadcast": "",
+              "competitors": [
+                {
+                  "id": "175",
+                  "uid": "s:600~t:175",
+                  "type": "team",
+                  "order": 0,
+                  "homeAway": "home",
+                  "winner": false,
+                  "form": "WWLWD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "175",
+                    "uid": "s:600~t:175",
+                    "abbreviation": "RCL",
+                    "displayName": "Lens",
+                    "shortDisplayName": "Lens",
+                    "name": "Lens",
+                    "location": "Lens",
+                    "color": "E91514",
+                    "alternateColor": "004c37",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/175.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/175/lens",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/175/lens",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/175/lens",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/175/lens",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "10342"
+                    }
+                  },
+                  "statistics": []
+                },
+                {
+                  "id": "172",
+                  "uid": "s:600~t:172",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": false,
+                  "form": "WWWLD",
+                  "score": "0",
+                  "records": [
+                    {
+                      "name": "All Splits",
+                      "type": "total",
+                      "summary": "0-0-0",
+                      "abbreviation": "Total"
+                    }
+                  ],
+                  "team": {
+                    "id": "172",
+                    "uid": "s:600~t:172",
+                    "abbreviation": "AUX",
+                    "displayName": "AJ Auxerre",
+                    "shortDisplayName": "Auxerre",
+                    "name": "AJ Auxerre",
+                    "location": "AJ Auxerre",
+                    "color": "ffffff",
+                    "alternateColor": "1a1a1a",
+                    "isActive": true,
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/172.png",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/club/_/id/172/aj-auxerre",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "stats",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/stats/_/id/172/aj-auxerre",
+                        "text": "Stats",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "schedule",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/fixtures/_/id/172/aj-auxerre",
+                        "text": "Fixtures",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      },
+                      {
+                        "rel": [
+                          "squad",
+                          "desktop",
+                          "team"
+                        ],
+                        "href": "https://www.espn.com/soccer/team/squad/_/id/172/aj-auxerre",
+                        "text": "Squad",
+                        "isExternal": false,
+                        "isPremium": false,
+                        "isHidden": false
+                      }
+                    ],
+                    "venue": {
+                      "id": "4617"
+                    }
+                  },
+                  "statistics": []
+                }
+              ],
+              "details": [],
+              "odds": [
+                null
+              ],
+              "wasSuspended": false,
+              "playByPlayAvailable": true,
+              "playByPlayAthletes": true
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "TBD",
+              "shortDetail": "TBD"
+            }
+          },
+          "venue": {
+            "displayName": "Stade Bollaert-Delelis"
+          },
+          "links": [
+            {
+              "language": "en-US",
+              "rel": [
+                "summary",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/match/_/gameId/401876490/aj-auxerre-lens",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            },
+            {
+              "language": "en-US",
+              "rel": [
+                "stats",
+                "desktop",
+                "event"
+              ],
+              "href": "https://www.espn.com/soccer/matchstats/_/gameId/401876490",
+              "text": "Statistics",
+              "shortText": "Statistics",
+              "isExternal": false,
+              "isPremium": false,
+              "isHidden": false
+            }
+          ]
+        }
+      ],
+      "leagues": [
+        {
+          "id": "710",
+          "uid": "s:600~l:710",
+          "name": "French Ligue 1",
+          "abbreviation": "Ligue 1",
+          "slug": "fra.1",
+          "season": {
+            "year": 2026,
+            "startDate": "2026-06-01T04:00Z",
+            "endDate": "2027-06-01T03:59Z",
+            "displayName": "2026-27 French Ligue 1",
+            "type": {
+              "id": "1",
+              "type": 14252,
+              "name": "2026-27 Ligue 1",
+              "abbreviation": "2026-27 Ligue 1"
+            }
+          },
+          "calendarType": "day",
+          "calendar": [
+            "2026-08-22T07:00Z",
+            "2026-08-29T07:00Z",
+            "2026-08-30T07:00Z",
+            "2026-09-05T07:00Z",
+            "2026-09-12T07:00Z",
+            "2026-09-19T07:00Z",
+            "2026-09-20T07:00Z",
+            "2026-10-10T07:00Z",
+            "2026-10-17T07:00Z",
+            "2026-10-24T07:00Z",
+            "2026-10-25T07:00Z",
+            "2026-10-31T07:00Z",
+            "2026-11-07T08:00Z",
+            "2026-11-21T08:00Z",
+            "2026-11-28T08:00Z",
+            "2026-12-05T08:00Z",
+            "2026-12-12T08:00Z",
+            "2026-12-13T08:00Z",
+            "2027-01-02T08:00Z",
+            "2027-01-03T08:00Z",
+            "2027-01-16T08:00Z",
+            "2027-01-23T08:00Z",
+            "2027-01-30T08:00Z",
+            "2027-02-06T08:00Z",
+            "2027-02-07T08:00Z",
+            "2027-02-13T08:00Z",
+            "2027-02-20T08:00Z",
+            "2027-02-27T08:00Z",
+            "2027-02-28T08:00Z",
+            "2027-03-06T08:00Z",
+            "2027-03-13T08:00Z",
+            "2027-03-20T07:00Z",
+            "2027-03-21T07:00Z",
+            "2027-04-03T07:00Z",
+            "2027-04-10T07:00Z",
+            "2027-04-17T07:00Z",
+            "2027-04-24T07:00Z",
+            "2027-05-01T07:00Z",
+            "2027-05-08T07:00Z",
+            "2027-05-09T07:00Z",
+            "2027-05-16T07:00Z",
+            "2027-05-22T07:00Z",
+            "2027-05-29T07:00Z"
+          ],
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/i/leaguelogos/soccer/500/9.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "default"
+              ],
+              "lastUpdated": "2019-05-08T16:07Z"
+            },
+            {
+              "href": "https://a.espncdn.com/i/leaguelogos/soccer/500-dark/9.png",
+              "width": 500,
+              "height": 500,
+              "alt": "",
+              "rel": [
+                "full",
+                "dark"
+              ],
+              "lastUpdated": "2019-05-08T16:07Z"
+            }
+          ]
+        }
+      ],
+      "day": {
+        "date": "2026-08-22"
+      }
+    },
+    "nowMs": 1783368000000
+  },
+  "output": {
+    "state": "upcoming",
+    "detail": "Next Aug 22",
+    "live": false
+  }
+}

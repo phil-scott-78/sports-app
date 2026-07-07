@@ -2,25 +2,26 @@
 
 A way to drive the app through **every UI permutation** — final, live, and
 scheduled games for **every** sport — without waiting on the real-world calendar
-("is the World Cup on right now?"). It serves the exact same routes and canonical
-contract as the production worker, but offline.
+("is the World Cup on right now?"). Since the app now normalizes on-device, the
+mock serves **RAW ESPN shapes on ESPN paths** (it used to serve the worker's
+canonical output); the app's `EspnClient` base override reroutes every ESPN
+request's origin to it.
 
-How it works, in one line: **capture real ESPN once → replay it through the real
-normalizers, with the dates rebased to "now" and the missing game-states
-synthesized.** Real teams, real box scores, real scoring feeds — just time-shifted
-so there's always something live, something final, and something upcoming.
+How it works, in one line: **capture real ESPN once → replay it, with the dates
+rebased to "now" and the missing game-states synthesized.** Real teams, real box
+scores, real scoring feeds — just time-shifted so there's always something live,
+something final, and something upcoming.
 
 ```
 scripts/capture-fixtures.mjs   ──(needs net, run occasionally)──▶  mock/fixtures/*.json  (committed)
 mock/synth.mjs                 pure: a captured pool ──▶ raw ESPN slate anchored at "now" (final+live+scheduled)
-scripts/mock-server.mjs        plain http server: fixture ──▶ synth ──▶ the SAME pure normalizers ──▶ canonical
+scripts/mock-espn-server.mjs   plain http server: fixture ──▶ synth ──▶ RAW ESPN shapes on ESPN paths
 ```
 
-The server reuses `src/normalize.js`, `src/summary.js`, `src/standings.js`,
-`src/team.js`, `src/catalog.js`, `src/overview.js` **unchanged** — so the mock's
-output is guaranteed to match what production emits, and it doubles as live
-exercise of the normalizers. The only thing it skips vs `src/index.js` is the
-Cache API (a single-user dev mock has nothing to coalesce).
+The server needs no normalizers (the app runs them) — just `mock/synth.mjs` +
+`schema/tools/resolve.mjs`. Golf `meta.golf` and MMA bouts ride the core-API
+`$ref` flow: the mock emits `$ref`s whose path points back at itself (`/mock/…`),
+and the app's origin-swap resolves them to the mock.
 
 ## Use it
 
@@ -29,8 +30,7 @@ cd worker
 npm run mock                 # serves http://localhost:8787  (PORT=9000 npm run mock to change)
 ```
 
-Then point the Flutter app at it: **Settings → tap the About row 6× → set the
-worker URL**:
+Then point the Flutter app at it: **Settings → set the API base override**:
 
 - Desktop / iOS simulator / web: `http://localhost:8787`
 - **Android emulator: `http://10.0.2.2:8787`** (the emulator's alias for the host)

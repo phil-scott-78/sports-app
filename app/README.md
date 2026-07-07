@@ -1,8 +1,11 @@
 # Scores — Flutter client
 
 The **broadcast-dark** Flutter client, implementing the design language from the
-Claude Design exploration (*Sports App Explorations.dc.html*, turns 2–8). Same
-worker, same canonical contract.
+Claude Design exploration (*Sports App Explorations.dc.html*, turns 2–8). It talks
+to **ESPN directly** and normalizes every sport to the canonical contract
+**on-device** (`lib/src/data/`, ported from the old worker — see
+`../drop-the-worker.md`). No backend to run; the Settings gear only sets an
+optional API base override for the offline mock.
 
 ## The design language
 

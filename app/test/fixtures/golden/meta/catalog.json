@@ -1,0 +1,2766 @@
+[
+  {
+    "sport": "soccer",
+    "leagues": [
+      {
+        "key": "soccer/eng.1",
+        "league": "eng.1",
+        "name": "English Premier League",
+        "leagueId": "700",
+        "abbr": "ENG.1",
+        "region": "England",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.1",
+        "league": "esp.1",
+        "name": "Spanish LALIGA",
+        "leagueId": "740",
+        "abbr": "ESP.1",
+        "region": "Spain",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ger.1",
+        "league": "ger.1",
+        "name": "German Bundesliga",
+        "leagueId": "720",
+        "abbr": "GER.1",
+        "region": "Germany",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ita.1",
+        "league": "ita.1",
+        "name": "Italian Serie A",
+        "leagueId": "730",
+        "abbr": "ITA.1",
+        "region": "Italy",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.1",
+        "league": "fra.1",
+        "name": "French Ligue 1",
+        "leagueId": "710",
+        "abbr": "FRA.1",
+        "region": "France",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/usa.1",
+        "league": "usa.1",
+        "name": "Major League Soccer",
+        "leagueId": "770",
+        "abbr": "MLS",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.champions",
+        "league": "uefa.champions",
+        "name": "UEFA Champions League",
+        "leagueId": "775",
+        "abbr": "UCL",
+        "region": "Europe",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.europa",
+        "league": "uefa.europa",
+        "name": "UEFA Europa League",
+        "leagueId": "776",
+        "abbr": "UEL",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.world",
+        "league": "fifa.world",
+        "name": "FIFA World Cup",
+        "leagueId": "606",
+        "abbr": "FIFA",
+        "region": "International",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.wwc",
+        "league": "fifa.wwc",
+        "name": "FIFA Women's World Cup",
+        "leagueId": "795",
+        "abbr": "FWWC",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ned.1",
+        "league": "ned.1",
+        "name": "Dutch Eredivisie",
+        "leagueId": "725",
+        "abbr": "NED.1",
+        "region": "Netherlands",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ned.2",
+        "league": "ned.2",
+        "name": "Dutch Keuken Kampioen Divisie",
+        "leagueId": "3933",
+        "abbr": "NED.2",
+        "region": "Netherlands",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/por.1",
+        "league": "por.1",
+        "name": "Portuguese Primeira Liga",
+        "leagueId": "715",
+        "abbr": "POR.1",
+        "region": "Portugal",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/sco.1",
+        "league": "sco.1",
+        "name": "Scottish Premiership",
+        "leagueId": "735",
+        "abbr": "SCO.1",
+        "region": "Scotland",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/sco.2",
+        "league": "sco.2",
+        "name": "Scottish Championship",
+        "leagueId": "3940",
+        "abbr": "SCO.2",
+        "region": "Scotland",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/bra.1",
+        "league": "bra.1",
+        "name": "Brazilian Serie A",
+        "leagueId": "630",
+        "abbr": "BRA.1",
+        "region": "Brazil",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/bra.2",
+        "league": "bra.2",
+        "name": "Brazilian Serie B",
+        "leagueId": "4007",
+        "abbr": "BRA.2",
+        "region": "Brazil",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/arg.1",
+        "league": "arg.1",
+        "name": "Argentine Liga Profesional de Futbol",
+        "leagueId": "745",
+        "abbr": "ARG.1",
+        "region": "Argentina",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ksa.1",
+        "league": "ksa.1",
+        "name": "Saudi Pro League",
+        "leagueId": "21231",
+        "abbr": "KSA.1",
+        "region": "Saudi Arabia",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/mex.1",
+        "league": "mex.1",
+        "name": "Mexican Liga BBVA MX",
+        "leagueId": "760",
+        "abbr": "MEX.1",
+        "region": "Mexico",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/mex.2",
+        "league": "mex.2",
+        "name": "Mexican Liga de Expansion MX",
+        "leagueId": "3932",
+        "abbr": "MEX.2",
+        "region": "Mexico",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/bel.1",
+        "league": "bel.1",
+        "name": "Belgian Pro League",
+        "leagueId": "3901",
+        "abbr": "BEL.1",
+        "region": "Belgium",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/tur.1",
+        "league": "tur.1",
+        "name": "Turkish Super Lig",
+        "leagueId": "3946",
+        "abbr": "TUR.1",
+        "region": "Turkey",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/aut.1",
+        "league": "aut.1",
+        "name": "Austrian Bundesliga",
+        "leagueId": "3907",
+        "abbr": "AUT.1",
+        "region": "Austria",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/gre.1",
+        "league": "gre.1",
+        "name": "Greek Super League",
+        "leagueId": "3955",
+        "abbr": "GRE.1",
+        "region": "Greece",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/den.1",
+        "league": "den.1",
+        "name": "Danish Superliga",
+        "leagueId": "3913",
+        "abbr": "DEN.1",
+        "region": "Denmark",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/nor.1",
+        "league": "nor.1",
+        "name": "Norwegian Eliteserien",
+        "leagueId": "3960",
+        "abbr": "NOR.1",
+        "region": "Norway",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/swe.1",
+        "league": "swe.1",
+        "name": "Swedish Allsvenskan",
+        "leagueId": "3945",
+        "abbr": "SWE.1",
+        "region": "Sweden",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/cyp.1",
+        "league": "cyp.1",
+        "name": "Cypriot First Division",
+        "leagueId": "5346",
+        "abbr": "CYP.1",
+        "region": "Cyprus",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/irl.1",
+        "league": "irl.1",
+        "name": "Irish Premier Division",
+        "leagueId": "3930",
+        "abbr": "IRL.1",
+        "region": "Ireland",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/rus.1",
+        "league": "rus.1",
+        "name": "Russian Premier League",
+        "leagueId": "3939",
+        "abbr": "RUS.1",
+        "region": "Russia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/jpn.1",
+        "league": "jpn.1",
+        "name": "Japanese J.League",
+        "leagueId": "750",
+        "abbr": "JPN.1",
+        "region": "Japan",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/chn.1",
+        "league": "chn.1",
+        "name": "Chinese Super League",
+        "leagueId": "8376",
+        "abbr": "CHN.1",
+        "region": "China",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ind.1",
+        "league": "ind.1",
+        "name": "Indian Super League",
+        "leagueId": "8316",
+        "abbr": "IND.1",
+        "region": "India",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/tha.1",
+        "league": "tha.1",
+        "name": "Thai League 1",
+        "leagueId": "8344",
+        "abbr": "THA.1",
+        "region": "Thailand",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/mys.1",
+        "league": "mys.1",
+        "name": "Malaysian Super League",
+        "leagueId": "8340",
+        "abbr": "MYS.1",
+        "region": "Malaysia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/idn.1",
+        "league": "idn.1",
+        "name": "Indonesian Super League",
+        "leagueId": "8339",
+        "abbr": "IDN.1",
+        "region": "Indonesia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/sgp.1",
+        "league": "sgp.1",
+        "name": "Singaporean Premier League",
+        "leagueId": "8341",
+        "abbr": "SGP.1",
+        "region": "Singapore",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/aus.1",
+        "league": "aus.1",
+        "name": "Australian A-League Men",
+        "leagueId": "3906",
+        "abbr": "AUS.1",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/aus.w.1",
+        "league": "aus.w.1",
+        "name": "Australian A-League Women",
+        "leagueId": "18992",
+        "abbr": "AUS.W.1",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.2",
+        "league": "eng.2",
+        "name": "English Championship",
+        "leagueId": "3914",
+        "abbr": "ENG.2",
+        "region": "England",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.3",
+        "league": "eng.3",
+        "name": "English League One",
+        "leagueId": "3915",
+        "abbr": "ENG.3",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.4",
+        "league": "eng.4",
+        "name": "English League Two",
+        "leagueId": "3916",
+        "abbr": "ENG.4",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.5",
+        "league": "eng.5",
+        "name": "English National League",
+        "leagueId": "3917",
+        "abbr": "ENG.5",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.2",
+        "league": "esp.2",
+        "name": "Spanish LALIGA 2",
+        "leagueId": "3921",
+        "abbr": "ESP.2",
+        "region": "Spain",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ger.2",
+        "league": "ger.2",
+        "name": "German 2. Bundesliga",
+        "leagueId": "3927",
+        "abbr": "GER.2",
+        "region": "Germany",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ita.2",
+        "league": "ita.2",
+        "name": "Italian Serie B",
+        "leagueId": "3931",
+        "abbr": "ITA.2",
+        "region": "Italy",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.2",
+        "league": "fra.2",
+        "name": "French Ligue 2",
+        "leagueId": "3926",
+        "abbr": "FRA.2",
+        "region": "France",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/chi.1",
+        "league": "chi.1",
+        "name": "Chilean Primera Division",
+        "leagueId": "640",
+        "abbr": "CHI.1",
+        "region": "Chile",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/col.1",
+        "league": "col.1",
+        "name": "Colombian Primera A",
+        "leagueId": "650",
+        "abbr": "COL.1",
+        "region": "Colombia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/par.1",
+        "league": "par.1",
+        "name": "Paraguayan Primera Division",
+        "leagueId": "3934",
+        "abbr": "PAR.1",
+        "region": "Paraguay",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/per.1",
+        "league": "per.1",
+        "name": "Peruvian Liga 1",
+        "leagueId": "670",
+        "abbr": "PER.1",
+        "region": "Peru",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uru.1",
+        "league": "uru.1",
+        "name": "Liga AUF Uruguaya",
+        "leagueId": "680",
+        "abbr": "URU.1",
+        "region": "Uruguay",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/bol.1",
+        "league": "bol.1",
+        "name": "Bolivian Liga Profesional",
+        "leagueId": "620",
+        "abbr": "BOL.1",
+        "region": "Bolivia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ecu.1",
+        "league": "ecu.1",
+        "name": "LigaPro Ecuador",
+        "leagueId": "660",
+        "abbr": "ECU.1",
+        "region": "Ecuador",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ven.1",
+        "league": "ven.1",
+        "name": "Venezuelan Primera Division",
+        "leagueId": "3949",
+        "abbr": "VEN.1",
+        "region": "Venezuela",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/rsa.1",
+        "league": "rsa.1",
+        "name": "South African Premiership",
+        "leagueId": "3937",
+        "abbr": "RSA.1",
+        "region": "South Africa",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/nga.1",
+        "league": "nga.1",
+        "name": "Nigerian Professional League",
+        "leagueId": "8345",
+        "abbr": "NGA.1",
+        "region": "Nigeria",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/gha.1",
+        "league": "gha.1",
+        "name": "Ghanaian Premier League",
+        "leagueId": "11052",
+        "abbr": "GHA.1",
+        "region": "Ghana",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.w.1",
+        "league": "eng.w.1",
+        "name": "English Women's Super League",
+        "leagueId": "8097",
+        "abbr": "ENG.W.1",
+        "region": "England",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.w.1",
+        "league": "esp.w.1",
+        "name": "Spanish Liga F",
+        "leagueId": "20956",
+        "abbr": "ESP.W.1",
+        "region": "Spain",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.w.1",
+        "league": "fra.w.1",
+        "name": "French Premiere Ligue",
+        "leagueId": "20955",
+        "abbr": "FRA.W.1",
+        "region": "France",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ned.w.1",
+        "league": "ned.w.1",
+        "name": "Dutch Vrouwen Eredivisie",
+        "leagueId": "19945",
+        "abbr": "NED.W.1",
+        "region": "Netherlands",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/usa.nwsl",
+        "league": "usa.nwsl",
+        "name": "NWSL",
+        "leagueId": "8301",
+        "abbr": "NWSL",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/can.w.nsl",
+        "league": "can.w.nsl",
+        "name": "Northern Super League",
+        "leagueId": "23286",
+        "abbr": "NSL",
+        "region": "Canada",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.europa.conf",
+        "league": "uefa.europa.conf",
+        "name": "UEFA Conference League",
+        "leagueId": "20296",
+        "abbr": "UECL",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.euro",
+        "league": "uefa.euro",
+        "name": "UEFA European Championship",
+        "leagueId": "781",
+        "abbr": "EURO",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.weuro",
+        "league": "uefa.weuro",
+        "name": "UEFA Women's European Championship",
+        "leagueId": "17915",
+        "abbr": "W-EURO",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.nations",
+        "league": "uefa.nations",
+        "name": "UEFA Nations League",
+        "leagueId": "2395",
+        "abbr": "UNL",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.w.nations",
+        "league": "uefa.w.nations",
+        "name": "UEFA Women's Nations League",
+        "leagueId": "23088",
+        "abbr": "W-UNL",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.super_cup",
+        "league": "uefa.super_cup",
+        "name": "UEFA Super Cup",
+        "leagueId": "5462",
+        "abbr": "USC",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.wchampions",
+        "league": "uefa.wchampions",
+        "name": "UEFA Women's Champions League",
+        "leagueId": "19483",
+        "abbr": "UWCL",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/uefa.euro_u21",
+        "league": "uefa.euro_u21",
+        "name": "UEFA European Under-21 Championship",
+        "leagueId": "5693",
+        "abbr": "EU21",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/conmebol.america",
+        "league": "conmebol.america",
+        "name": "Copa America",
+        "leagueId": "780",
+        "abbr": "CA",
+        "region": "South America",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/conmebol.america.femenina",
+        "league": "conmebol.america.femenina",
+        "name": "Copa America Femenina",
+        "leagueId": "20703",
+        "abbr": "CAF-W",
+        "region": "South America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/conmebol.libertadores",
+        "league": "conmebol.libertadores",
+        "name": "CONMEBOL Libertadores",
+        "leagueId": "783",
+        "abbr": "LIB",
+        "region": "South America",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/conmebol.sudamericana",
+        "league": "conmebol.sudamericana",
+        "name": "CONMEBOL Sudamericana",
+        "leagueId": "5454",
+        "abbr": "SUD",
+        "region": "South America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/conmebol.recopa",
+        "league": "conmebol.recopa",
+        "name": "CONMEBOL Recopa",
+        "leagueId": "8333",
+        "abbr": "RECOPA",
+        "region": "South America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.champions",
+        "league": "concacaf.champions",
+        "name": "Concacaf Champions Cup",
+        "leagueId": "5699",
+        "abbr": "CCC",
+        "region": "North America",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.leagues.cup",
+        "league": "concacaf.leagues.cup",
+        "name": "Leagues Cup",
+        "leagueId": "19425",
+        "abbr": "LGS",
+        "region": "North America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.gold",
+        "league": "concacaf.gold",
+        "name": "Concacaf Gold Cup",
+        "leagueId": "4004",
+        "abbr": "GOLD",
+        "region": "North America",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.nations.league",
+        "league": "concacaf.nations.league",
+        "name": "Concacaf Nations League",
+        "leagueId": "19267",
+        "abbr": "CNL",
+        "region": "North America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.w.gold",
+        "league": "concacaf.w.gold",
+        "name": "Concacaf W Gold Cup",
+        "leagueId": "22060",
+        "abbr": "W-GOLD",
+        "region": "North America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/concacaf.w.champions_cup",
+        "league": "concacaf.w.champions_cup",
+        "name": "Concacaf W Champions Cup",
+        "leagueId": "22946",
+        "abbr": "W-CCC",
+        "region": "North America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/campeones.cup",
+        "league": "campeones.cup",
+        "name": "Campeones Cup",
+        "leagueId": "18771",
+        "abbr": "CAMP",
+        "region": "North America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.cwc",
+        "league": "fifa.cwc",
+        "name": "FIFA Club World Cup",
+        "leagueId": "5501",
+        "abbr": "CWC",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.olympics",
+        "league": "fifa.olympics",
+        "name": "Men's Olympic Soccer Tournament",
+        "leagueId": "3924",
+        "abbr": "OLY-M",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.w.olympics",
+        "league": "fifa.w.olympics",
+        "name": "Women's Olympic Soccer Tournament",
+        "leagueId": "3925",
+        "abbr": "OLY-W",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.intercontinental_cup",
+        "league": "fifa.intercontinental_cup",
+        "name": "FIFA Intercontinental Cup",
+        "leagueId": "22902",
+        "abbr": "ICC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.w.champions_cup",
+        "league": "fifa.w.champions_cup",
+        "name": "FIFA Women's Champions Cup",
+        "leagueId": "24081",
+        "abbr": "W-FCC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fifa.shebelieves",
+        "league": "fifa.shebelieves",
+        "name": "SheBelieves Cup",
+        "leagueId": "19728",
+        "abbr": "SBC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/global.finalissima",
+        "league": "global.finalissima",
+        "name": "CONMEBOL-UEFA Cup of Champions (Finalissima)",
+        "leagueId": "20704",
+        "abbr": "FIN",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/caf.nations",
+        "league": "caf.nations",
+        "name": "Africa Cup of Nations",
+        "leagueId": "3908",
+        "abbr": "AFCON",
+        "region": "Africa",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/caf.champions",
+        "league": "caf.champions",
+        "name": "CAF Champions League",
+        "leagueId": "2391",
+        "abbr": "CAF-CL",
+        "region": "Africa",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/caf.confed",
+        "league": "caf.confed",
+        "name": "CAF Confederation Cup",
+        "leagueId": "18000",
+        "abbr": "CAF-CC",
+        "region": "Africa",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/afc.champions",
+        "league": "afc.champions",
+        "name": "AFC Champions League Elite",
+        "leagueId": "3902",
+        "abbr": "ACL-E",
+        "region": "Asia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/afc.cup",
+        "league": "afc.cup",
+        "name": "AFC Champions League Two",
+        "leagueId": "5661",
+        "abbr": "ACL-2",
+        "region": "Asia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/afc.asian.cup",
+        "league": "afc.asian.cup",
+        "name": "AFC Asian Cup",
+        "leagueId": "20219",
+        "abbr": "ASIA",
+        "region": "Asia",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ksa.kings.cup",
+        "league": "ksa.kings.cup",
+        "name": "Saudi King's Cup",
+        "leagueId": "22057",
+        "abbr": "KSA-KC",
+        "region": "Saudi Arabia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.fa",
+        "league": "eng.fa",
+        "name": "English FA Cup",
+        "leagueId": "3918",
+        "abbr": "FA",
+        "region": "England",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.league_cup",
+        "league": "eng.league_cup",
+        "name": "English Carabao Cup",
+        "leagueId": "3920",
+        "abbr": "EFL-C",
+        "region": "England",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.trophy",
+        "league": "eng.trophy",
+        "name": "English EFL Trophy",
+        "leagueId": "18481",
+        "abbr": "EFL-T",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/eng.charity",
+        "league": "eng.charity",
+        "name": "English FA Community Shield",
+        "leagueId": "5329",
+        "abbr": "SHIELD",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.copa_del_rey",
+        "league": "esp.copa_del_rey",
+        "name": "Spanish Copa del Rey",
+        "leagueId": "3951",
+        "abbr": "CDR",
+        "region": "Spain",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/esp.super_cup",
+        "league": "esp.super_cup",
+        "name": "Spanish Supercopa",
+        "leagueId": "8102",
+        "abbr": "SUPERCOPA",
+        "region": "Spain",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ger.dfb_pokal",
+        "league": "ger.dfb_pokal",
+        "name": "German DFB-Pokal",
+        "leagueId": "3954",
+        "abbr": "DFB",
+        "region": "Germany",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ger.super_cup",
+        "league": "ger.super_cup",
+        "name": "German Supercup",
+        "leagueId": "8101",
+        "abbr": "GER-SC",
+        "region": "Germany",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ita.coppa_italia",
+        "league": "ita.coppa_italia",
+        "name": "Coppa Italia",
+        "leagueId": "3956",
+        "abbr": "COPPA",
+        "region": "Italy",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ita.super_cup",
+        "league": "ita.super_cup",
+        "name": "Italian Supercoppa",
+        "leagueId": "8103",
+        "abbr": "SUPERCOPPA",
+        "region": "Italy",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.coupe_de_france",
+        "league": "fra.coupe_de_france",
+        "name": "Coupe de France",
+        "leagueId": "3952",
+        "abbr": "CDF",
+        "region": "France",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/fra.super_cup",
+        "league": "fra.super_cup",
+        "name": "French Trophee des Champions",
+        "leagueId": "8357",
+        "abbr": "TDC",
+        "region": "France",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ned.cup",
+        "league": "ned.cup",
+        "name": "Dutch KNVB Beker",
+        "leagueId": "3957",
+        "abbr": "KNVB",
+        "region": "Netherlands",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/ned.supercup",
+        "league": "ned.supercup",
+        "name": "Dutch Johan Cruyff Shield",
+        "leagueId": "10749",
+        "abbr": "JCS",
+        "region": "Netherlands",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/sco.tennents",
+        "league": "sco.tennents",
+        "name": "Scottish Cup",
+        "leagueId": "3959",
+        "abbr": "SCO-FA",
+        "region": "Scotland",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/sco.cis",
+        "league": "sco.cis",
+        "name": "Scottish League Cup",
+        "leagueId": "5330",
+        "abbr": "SCO-LC",
+        "region": "Scotland",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/por.taca.portugal",
+        "league": "por.taca.portugal",
+        "name": "Taca de Portugal",
+        "leagueId": "20922",
+        "abbr": "TACA",
+        "region": "Portugal",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/usa.open",
+        "league": "usa.open",
+        "name": "U.S. Open Cup",
+        "leagueId": "5337",
+        "abbr": "USOC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/usa.nwsl.cup",
+        "league": "usa.nwsl.cup",
+        "name": "NWSL Challenge Cup",
+        "leagueId": "19868",
+        "abbr": "NWSL-CC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/mex.campeon",
+        "league": "mex.campeon",
+        "name": "Mexican Campeon de Campeones",
+        "leagueId": "17893",
+        "abbr": "CdC",
+        "region": "Mexico",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/mex.supercopa",
+        "league": "mex.supercopa",
+        "name": "Mexican Supercopa MX",
+        "leagueId": "10724",
+        "abbr": "SC-MX",
+        "region": "Mexico",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/arg.copa",
+        "league": "arg.copa",
+        "name": "Copa Argentina",
+        "leagueId": "8107",
+        "abbr": "COPA-ARG",
+        "region": "Argentina",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "soccer/bra.copa_do_brazil",
+        "league": "bra.copa_do_brazil",
+        "name": "Copa do Brasil",
+        "leagueId": "8306",
+        "abbr": "CdB",
+        "region": "Brazil",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "football",
+    "leagues": [
+      {
+        "key": "football/nfl",
+        "league": "nfl",
+        "name": "NFL",
+        "leagueId": "28",
+        "abbr": "NFL",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "football/college-football",
+        "league": "college-football",
+        "name": "NCAA Football (FBS)",
+        "leagueId": "23",
+        "abbr": "NCAAF",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team",
+        "rankings": "polls"
+      },
+      {
+        "key": "football/ufl",
+        "league": "ufl",
+        "name": "United Football League",
+        "leagueId": "37",
+        "abbr": "UFL",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "football/cfl",
+        "league": "cfl",
+        "name": "Canadian Football League",
+        "leagueId": "33",
+        "abbr": "CFL",
+        "region": "Canada",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "basketball",
+    "leagues": [
+      {
+        "key": "basketball/nba",
+        "league": "nba",
+        "name": "NBA",
+        "leagueId": "46",
+        "abbr": "NBA",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/wnba",
+        "league": "wnba",
+        "name": "WNBA",
+        "leagueId": "59",
+        "abbr": "WNBA",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/mens-college-basketball",
+        "league": "mens-college-basketball",
+        "name": "NCAA Men's Basketball",
+        "leagueId": "41",
+        "abbr": "NCAAM",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team",
+        "rankings": "polls"
+      },
+      {
+        "key": "basketball/womens-college-basketball",
+        "league": "womens-college-basketball",
+        "name": "NCAA Women's Basketball",
+        "leagueId": "54",
+        "abbr": "NCAAW",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team",
+        "rankings": "polls"
+      },
+      {
+        "key": "basketball/nbl",
+        "league": "nbl",
+        "name": "National Basketball League",
+        "leagueId": "55",
+        "abbr": "NBL",
+        "region": "Australia/NZ",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/fiba",
+        "league": "fiba",
+        "name": "FIBA World Cup",
+        "leagueId": "53",
+        "abbr": "FIBA",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/mens-olympics-basketball",
+        "league": "mens-olympics-basketball",
+        "name": "Olympics Men's Basketball",
+        "leagueId": "3766",
+        "abbr": "Olympics",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/womens-olympics-basketball",
+        "league": "womens-olympics-basketball",
+        "name": "Olympics Women's Basketball",
+        "leagueId": "3767",
+        "abbr": "Olympics",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-development",
+        "league": "nba-development",
+        "name": "NBA G League",
+        "leagueId": "69",
+        "abbr": "NBA G League",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-las-vegas",
+        "league": "nba-summer-las-vegas",
+        "name": "Las Vegas Summer League",
+        "leagueId": "63",
+        "abbr": "NBALV",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-utah",
+        "league": "nba-summer-utah",
+        "name": "Salt Lake City Summer League",
+        "leagueId": "64",
+        "abbr": "NBAUT",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-orlando",
+        "league": "nba-summer-orlando",
+        "name": "Orlando Summer League",
+        "leagueId": "65",
+        "abbr": "NBAOR",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-sacramento",
+        "league": "nba-summer-sacramento",
+        "name": "Sacramento Summer League",
+        "leagueId": "67",
+        "abbr": "NBAGS",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-california",
+        "league": "nba-summer-california",
+        "name": "NBA California Classic Summer League",
+        "leagueId": "23170",
+        "abbr": "NBACC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "basketball/nba-summer-golden-state",
+        "league": "nba-summer-golden-state",
+        "name": "Golden State Summer League",
+        "leagueId": "20727",
+        "abbr": "NBAGS",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "baseball",
+    "leagues": [
+      {
+        "key": "baseball/mlb",
+        "league": "mlb",
+        "name": "Major League Baseball",
+        "leagueId": "10",
+        "abbr": "MLB",
+        "region": "USA",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/college-baseball",
+        "league": "college-baseball",
+        "name": "NCAA Baseball",
+        "leagueId": "14",
+        "abbr": "CBASE",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/college-softball",
+        "league": "college-softball",
+        "name": "NCAA Softball",
+        "leagueId": "102",
+        "abbr": "CSOFT",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/world-baseball-classic",
+        "league": "world-baseball-classic",
+        "name": "World Baseball Classic",
+        "leagueId": "3454",
+        "abbr": "WBBC",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/olympics-baseball",
+        "league": "olympics-baseball",
+        "name": "Olympics Men's Baseball",
+        "leagueId": "3706",
+        "abbr": "OLYBB",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/caribbean-series",
+        "league": "caribbean-series",
+        "name": "Caribbean Series",
+        "leagueId": "17",
+        "abbr": "CBWS",
+        "region": "Latin America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/dominican-winter-league",
+        "league": "dominican-winter-league",
+        "name": "Dominican Winter League",
+        "leagueId": "15",
+        "abbr": "DOMWL",
+        "region": "Dominican Republic",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/venezuelan-winter-league",
+        "league": "venezuelan-winter-league",
+        "name": "Venezuelan Winter League",
+        "leagueId": "16",
+        "abbr": "VENWL",
+        "region": "Venezuela",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/puerto-rican-winter-league",
+        "league": "puerto-rican-winter-league",
+        "name": "Puerto Rican Winter League",
+        "leagueId": "10843",
+        "abbr": "PUERT",
+        "region": "Puerto Rico",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/mexican-winter-league",
+        "league": "mexican-winter-league",
+        "name": "Mexican League",
+        "leagueId": "10842",
+        "abbr": "LMB",
+        "region": "Mexico",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/llb",
+        "league": "llb",
+        "name": "Little League Baseball World Series",
+        "leagueId": "2",
+        "abbr": "LLBWS",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "baseball/lls",
+        "league": "lls",
+        "name": "Little League Softball World Series",
+        "leagueId": "105",
+        "abbr": "LLSWS",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "hockey",
+    "leagues": [
+      {
+        "key": "hockey/nhl",
+        "league": "nhl",
+        "name": "NHL",
+        "leagueId": "90",
+        "abbr": "NHL",
+        "region": "USA/Canada",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "hockey/mens-college-hockey",
+        "league": "mens-college-hockey",
+        "name": "NCAA Men's Ice Hockey",
+        "leagueId": "91",
+        "abbr": "NCAAH",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "hockey/womens-college-hockey",
+        "league": "womens-college-hockey",
+        "name": "NCAA Women's Hockey",
+        "leagueId": "92",
+        "abbr": "CWHOC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "hockey/hockey-world-cup",
+        "league": "hockey-world-cup",
+        "name": "World Cup of Hockey",
+        "leagueId": "3455",
+        "abbr": "WCH",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "hockey/olympics-mens-ice-hockey",
+        "league": "olympics-mens-ice-hockey",
+        "name": "Olympic Men's Ice Hockey",
+        "leagueId": "20146",
+        "abbr": "OLYM-H-M",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "hockey/olympics-womens-ice-hockey",
+        "league": "olympics-womens-ice-hockey",
+        "name": "Olympic Women's Ice Hockey",
+        "leagueId": "20147",
+        "abbr": "OLYM-H-W",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "tennis",
+    "leagues": [
+      {
+        "key": "tennis/atp",
+        "league": "atp",
+        "name": "ATP Tour",
+        "leagueId": "851",
+        "abbr": "ATP",
+        "region": "Men's",
+        "priority": "v2",
+        "hasTeams": false,
+        "competitorKind": "athlete",
+        "rankings": "tour"
+      },
+      {
+        "key": "tennis/wta",
+        "league": "wta",
+        "name": "WTA Tour",
+        "leagueId": "900",
+        "abbr": "WTA",
+        "region": "Women's",
+        "priority": "v2",
+        "hasTeams": false,
+        "competitorKind": "athlete",
+        "rankings": "tour"
+      }
+    ]
+  },
+  {
+    "sport": "golf",
+    "leagues": [
+      {
+        "key": "golf/pga",
+        "league": "pga",
+        "name": "PGA Tour",
+        "leagueId": "1106",
+        "abbr": "PGA",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/lpga",
+        "league": "lpga",
+        "name": "LPGA Tour",
+        "leagueId": "1107",
+        "abbr": "LPGA",
+        "region": "Women's",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/eur",
+        "league": "eur",
+        "name": "DP World Tour",
+        "leagueId": "7002",
+        "abbr": "EUR",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/champions-tour",
+        "league": "champions-tour",
+        "name": "PGA Tour Champions",
+        "leagueId": "1105",
+        "abbr": "SGA",
+        "region": "Seniors",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/ntw",
+        "league": "ntw",
+        "name": "Korn Ferry Tour",
+        "leagueId": "7001",
+        "abbr": "NTW",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/mens-olympics-golf",
+        "league": "mens-olympics-golf",
+        "name": "Olympic Golf - Men",
+        "leagueId": "7003",
+        "abbr": "OLYM",
+        "region": "Global",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/womens-olympics-golf",
+        "league": "womens-olympics-golf",
+        "name": "Olympic Golf - Women",
+        "leagueId": "7004",
+        "abbr": "OLYW",
+        "region": "Global",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/liv",
+        "league": "liv",
+        "name": "LIV Golf",
+        "leagueId": "1109",
+        "abbr": "LIV",
+        "region": "Global",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "golf/tgl",
+        "league": "tgl",
+        "name": "TGL",
+        "leagueId": "1111",
+        "abbr": "TGL",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "racing",
+    "leagues": [
+      {
+        "key": "racing/f1",
+        "league": "f1",
+        "name": "Formula 1",
+        "leagueId": "2030",
+        "abbr": "F1",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "racing/nascar-premier",
+        "league": "nascar-premier",
+        "name": "NASCAR Cup Series",
+        "leagueId": "2021",
+        "abbr": "NASCAR",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "racing/irl",
+        "league": "irl",
+        "name": "IndyCar",
+        "leagueId": "2040",
+        "abbr": "INDY",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "racing/nascar-secondary",
+        "league": "nascar-secondary",
+        "name": "NASCAR O'Reilly Auto Parts Series",
+        "leagueId": "2022",
+        "abbr": "NASCAR-SECONDARY",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "racing/nascar-truck",
+        "league": "nascar-truck",
+        "name": "NASCAR Truck Series",
+        "leagueId": "2023",
+        "abbr": "NASCAR-TRUCK",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      }
+    ]
+  },
+  {
+    "sport": "mma",
+    "leagues": [
+      {
+        "key": "mma/ufc",
+        "league": "ufc",
+        "name": "UFC",
+        "leagueId": "3321",
+        "abbr": "UFC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete",
+        "rankings": "divisions"
+      },
+      {
+        "key": "mma/pfl",
+        "league": "pfl",
+        "name": "PFL",
+        "leagueId": "3347",
+        "abbr": "PFL",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/bellator",
+        "league": "bellator",
+        "name": "Bellator MMA (Bellator Fighting Championship)",
+        "leagueId": "3323",
+        "abbr": "BELL",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/ksw",
+        "league": "ksw",
+        "name": "Konfrontacja Sztuk Walki",
+        "leagueId": "3349",
+        "abbr": "KSW",
+        "region": "Poland",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/cage-warriors",
+        "league": "cage-warriors",
+        "name": "Cage Warriors Fighting Championship",
+        "leagueId": "3350",
+        "abbr": "CWFC",
+        "region": "United Kingdom",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/ifc",
+        "league": "ifc",
+        "name": "Invicta FC",
+        "leagueId": "3348",
+        "abbr": "IFC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/lfa",
+        "league": "lfa",
+        "name": "Legacy Fighting Alliance",
+        "leagueId": "3355",
+        "abbr": "LFA",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/absolute",
+        "league": "absolute",
+        "name": "Absolute Championship Berkut",
+        "leagueId": "3358",
+        "abbr": "ACB",
+        "region": "Russia",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/fng",
+        "league": "fng",
+        "name": "Fight Nights Global",
+        "leagueId": "7661",
+        "abbr": "FNG",
+        "region": "Russia",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/m1",
+        "league": "m1",
+        "name": "M-1 Mix-Fight Championship",
+        "leagueId": "3326",
+        "abbr": "M-1",
+        "region": "Russia",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/ifl",
+        "league": "ifl",
+        "name": "International Fight League",
+        "leagueId": "3339",
+        "abbr": "IFL",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/dream",
+        "league": "dream",
+        "name": "Dream",
+        "leagueId": "3324",
+        "abbr": "DREAM",
+        "region": "Japan",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/affliction",
+        "league": "affliction",
+        "name": "Affliction",
+        "leagueId": "3338",
+        "abbr": "AFFLICTION",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      },
+      {
+        "key": "mma/lfc",
+        "league": "lfc",
+        "name": "Legacy Fighting Championship",
+        "leagueId": "3344",
+        "abbr": "LFC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": false,
+        "competitorKind": "athlete"
+      }
+    ]
+  },
+  {
+    "sport": "cricket",
+    "leagues": [
+      {
+        "key": "cricket/8048",
+        "league": "8048",
+        "name": "Indian Premier League",
+        "leagueId": "8048",
+        "abbr": "IPL",
+        "region": "India",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8634",
+        "league": "8634",
+        "name": "ICC Women's T20 World Cup",
+        "leagueId": "8634",
+        "abbr": "WT20",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8052",
+        "league": "8052",
+        "name": "County Championship Div 1",
+        "leagueId": "8052",
+        "abbr": "CTY",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8044",
+        "league": "8044",
+        "name": "Big Bash League",
+        "leagueId": "8044",
+        "abbr": "BBL",
+        "region": "Australia",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8679",
+        "league": "8679",
+        "name": "Pakistan Super League",
+        "leagueId": "8679",
+        "abbr": "PSL",
+        "region": "Pakistan",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8653",
+        "league": "8653",
+        "name": "Bangladesh Premier League",
+        "leagueId": "8653",
+        "abbr": "BPL",
+        "region": "Bangladesh",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8053",
+        "league": "8053",
+        "name": "Vitality Blast (T20 Blast)",
+        "leagueId": "8053",
+        "abbr": "BLAST",
+        "region": "England",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8037",
+        "league": "8037",
+        "name": "ICC Champions Trophy",
+        "leagueId": "8037",
+        "abbr": "CT",
+        "region": "International",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8039",
+        "league": "8039",
+        "name": "ICC Cricket World Cup",
+        "leagueId": "8039",
+        "abbr": "CWC",
+        "region": "International",
+        "priority": "v1",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8043",
+        "league": "8043",
+        "name": "Sheffield Shield",
+        "leagueId": "8043",
+        "abbr": "SHIELD",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8050",
+        "league": "8050",
+        "name": "Ranji Trophy",
+        "leagueId": "8050",
+        "abbr": "RANJI",
+        "region": "India",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8626",
+        "league": "8626",
+        "name": "Marsh One-Day Cup",
+        "leagueId": "8626",
+        "abbr": "MODC",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8890",
+        "league": "8890",
+        "name": "Vijay Hazare Trophy",
+        "leagueId": "8890",
+        "abbr": "VHT",
+        "region": "India",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8661",
+        "league": "8661",
+        "name": "Syed Mushtaq Ali Trophy",
+        "leagueId": "8661",
+        "abbr": "SMAT",
+        "region": "India",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8660",
+        "league": "8660",
+        "name": "National T20 Cup (Pakistan)",
+        "leagueId": "8660",
+        "abbr": "NT20",
+        "region": "Pakistan",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8853",
+        "league": "8853",
+        "name": "Regional Super50",
+        "leagueId": "8853",
+        "abbr": "SUPER50",
+        "region": "West Indies",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "cricket/8674",
+        "league": "8674",
+        "name": "ICC Women's Championship",
+        "leagueId": "8674",
+        "abbr": "ICCWC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "rugby",
+    "leagues": [
+      {
+        "key": "rugby/180659",
+        "league": "180659",
+        "name": "Six Nations",
+        "leagueId": "8323",
+        "abbr": "6N",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/164205",
+        "league": "164205",
+        "name": "Rugby World Cup",
+        "leagueId": "8337",
+        "abbr": "RWC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/242041",
+        "league": "242041",
+        "name": "Super Rugby Pacific",
+        "leagueId": "8326",
+        "abbr": "SR",
+        "region": "Pacific",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/270559",
+        "league": "270559",
+        "name": "French Top 14",
+        "leagueId": "8005",
+        "abbr": "T14",
+        "region": "France",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/267979",
+        "league": "267979",
+        "name": "Gallagher Premiership",
+        "leagueId": "8007",
+        "abbr": "PREM",
+        "region": "England",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/270557",
+        "league": "270557",
+        "name": "United Rugby Championship",
+        "leagueId": "8331",
+        "abbr": "URC",
+        "region": "Europe/SthAfrica",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/244293",
+        "league": "244293",
+        "name": "The Rugby Championship",
+        "leagueId": "8328",
+        "abbr": "TRC",
+        "region": "SthHemisphere",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/271937",
+        "league": "271937",
+        "name": "European Rugby Champions Cup",
+        "leagueId": "8329",
+        "abbr": "ERCC",
+        "region": "Europe",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289262",
+        "league": "289262",
+        "name": "Major League Rugby",
+        "leagueId": "19114",
+        "abbr": "MLR",
+        "region": "USA",
+        "priority": "v2",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/272073",
+        "league": "272073",
+        "name": "European Rugby Challenge Cup",
+        "leagueId": "8010",
+        "abbr": "ERCC2",
+        "region": "Europe",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/270555",
+        "league": "270555",
+        "name": "Currie Cup",
+        "leagueId": "8002",
+        "abbr": "CC",
+        "region": "South Africa",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/268565",
+        "league": "268565",
+        "name": "British and Irish Lions Tour",
+        "leagueId": "8016",
+        "abbr": "LIONS",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289234",
+        "league": "289234",
+        "name": "International Test Match",
+        "leagueId": "10659",
+        "abbr": "TEST",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/17567",
+        "league": "17567",
+        "name": "Nations Championship",
+        "leagueId": "24400",
+        "abbr": "NATIONS",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289237",
+        "league": "289237",
+        "name": "Women's Rugby World Cup",
+        "leagueId": "17953",
+        "abbr": "WRWC",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/282",
+        "league": "282",
+        "name": "Olympic Men's Rugby Sevens",
+        "leagueId": "10743",
+        "abbr": "OLY7M",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/283",
+        "league": "283",
+        "name": "Olympic Women's Rugby Sevens",
+        "leagueId": "10729",
+        "abbr": "OLY7W",
+        "region": "International",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/2022",
+        "league": "2022",
+        "name": "Super Rugby Americas",
+        "leagueId": "20617",
+        "abbr": "SRA",
+        "region": "South America",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/2009",
+        "league": "2009",
+        "name": "URBA Primera A",
+        "leagueId": "4001",
+        "abbr": "URBA-A",
+        "region": "Argentina",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289279",
+        "league": "289279",
+        "name": "URBA Top 14",
+        "leagueId": "20113",
+        "abbr": "URBA-T14",
+        "region": "Argentina",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/270563",
+        "league": "270563",
+        "name": "Bunnings NPC",
+        "leagueId": "8004",
+        "abbr": "NPC",
+        "region": "New Zealand",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289271",
+        "league": "289271",
+        "name": "Super Rugby Aotearoa",
+        "leagueId": "19867",
+        "abbr": "SRAO",
+        "region": "New Zealand",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289272",
+        "league": "289272",
+        "name": "Super Rugby AU",
+        "leagueId": "19869",
+        "abbr": "SRAU",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289277",
+        "league": "289277",
+        "name": "Super Rugby Trans-Tasman",
+        "leagueId": "20008",
+        "abbr": "SRTT",
+        "region": "Pacific",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/289274",
+        "league": "289274",
+        "name": "2020 Tri Nations",
+        "leagueId": "19940",
+        "abbr": "TRI2020",
+        "region": "SthHemisphere",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "rugby/236461",
+        "league": "236461",
+        "name": "Anglo-Welsh Cup",
+        "leagueId": "8009",
+        "abbr": "AWC",
+        "region": "England/Wales",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "rugby-league",
+    "leagues": [
+      {
+        "key": "rugby-league/3",
+        "league": "3",
+        "name": "NRL (National Rugby League)",
+        "leagueId": "8370",
+        "abbr": "NRL",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "australian-football",
+    "leagues": [
+      {
+        "key": "australian-football/afl",
+        "league": "afl",
+        "name": "AFL",
+        "leagueId": "35",
+        "abbr": "AFL",
+        "region": "Australia",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "lacrosse",
+    "leagues": [
+      {
+        "key": "lacrosse/pll",
+        "league": "pll",
+        "name": "Premier Lacrosse League",
+        "leagueId": "20813",
+        "abbr": "PLL",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "lacrosse/nll",
+        "league": "nll",
+        "name": "National Lacrosse League",
+        "leagueId": "501",
+        "abbr": "NLL",
+        "region": "USA/Canada",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "lacrosse/mens-college-lacrosse",
+        "league": "mens-college-lacrosse",
+        "name": "NCAA Men's Lacrosse",
+        "leagueId": "502",
+        "abbr": "NCAAM Lacrosse",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "lacrosse/womens-college-lacrosse",
+        "league": "womens-college-lacrosse",
+        "name": "NCAA Women's Lacrosse",
+        "leagueId": "503",
+        "abbr": "NCAAW Lacrosse",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "volleyball",
+    "leagues": [
+      {
+        "key": "volleyball/womens-college-volleyball",
+        "league": "womens-college-volleyball",
+        "name": "NCAA Women's Volleyball",
+        "leagueId": "402",
+        "abbr": "NCAAVB-W",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "volleyball/mens-college-volleyball",
+        "league": "mens-college-volleyball",
+        "name": "NCAA Men's Volleyball",
+        "leagueId": "401",
+        "abbr": "NCAAVB-M",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "water-polo",
+    "leagues": [
+      {
+        "key": "water-polo/mens-college-water-polo",
+        "league": "mens-college-water-polo",
+        "name": "NCAA Men's Water Polo",
+        "leagueId": "1925",
+        "abbr": "NCAAM Water Polo",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      },
+      {
+        "key": "water-polo/womens-college-water-polo",
+        "league": "womens-college-water-polo",
+        "name": "NCAA Women's Water Polo",
+        "leagueId": "1926",
+        "abbr": "NCAAW Water Polo",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  },
+  {
+    "sport": "field-hockey",
+    "leagues": [
+      {
+        "key": "field-hockey/womens-college-field-hockey",
+        "league": "womens-college-field-hockey",
+        "name": "NCAA Women's Field Hockey",
+        "leagueId": "802",
+        "abbr": "CFHOC",
+        "region": "USA",
+        "priority": "v3",
+        "hasTeams": true,
+        "competitorKind": "team"
+      }
+    ]
+  }
+]

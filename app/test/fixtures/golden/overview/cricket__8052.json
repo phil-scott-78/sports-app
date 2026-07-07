@@ -1,0 +1,1694 @@
+{
+  "endpoint": "overview",
+  "args": {
+    "key": "cricket/8052",
+    "sb": {
+      "events": [
+        {
+          "id": "1513360",
+          "uid": "s:200~e:1513360",
+          "date": "2026-06-12T10:00Z",
+          "endDate": "2026-06-16T23:59Z",
+          "name": "Nottinghamshire v Somerset",
+          "shortName": "NOT v SOM",
+          "description": "35th Match, County Championship Division One at Nottingham, Jun 12-15 2026",
+          "season": {
+            "year": 2026,
+            "type": 8052
+          },
+          "competitions": [
+            {
+              "id": "1513360",
+              "uid": "s:200~e:1513360~c:1513360",
+              "description": "35th Match",
+              "shortDescription": "35th Match,  at Nottingham",
+              "date": "2026-06-12T10:00Z",
+              "endDate": "2026-06-16T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": true,
+              "class": {
+                "internationalClassId": "0",
+                "generalClassId": "4",
+                "generalClassCard": "First-class",
+                "name": "First-class matches",
+                "eventType": "Test"
+              },
+              "venue": {
+                "id": "57219",
+                "fullName": "Trent Bridge, Nottingham",
+                "address": {
+                  "city": "Nottingham",
+                  "state": "",
+                  "country": "England",
+                  "summary": "Trent Bridge, Nottingham, Nottinghamshire NG2 6AG (Phone: 0115 982 3000)"
+                },
+                "capacity": 15350,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1231",
+                  "uid": "s:200~e:1513360~c:1513360~t:1231",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "193 & 166 (63.5 ov, target 473)",
+                  "team": {
+                    "id": "1231",
+                    "uid": "s:200~t:1231",
+                    "location": "England",
+                    "name": "Nottinghamshire",
+                    "abbreviation": "NOT",
+                    "displayName": "Nottinghamshire",
+                    "shortDisplayName": "NOT",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1231/nottinghamshire",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1231.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 103,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 193,
+                      "overs": 64,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 97,
+                      "isBatting": false,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 10,
+                      "runs": 166,
+                      "overs": 63.5,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513360/competitions/1513360/competitors/1231/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "1333",
+                  "uid": "s:200~e:1513360~c:1513360~t:1333",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": "true",
+                  "score": "310 & 355/7d",
+                  "team": {
+                    "id": "1333",
+                    "uid": "s:200~t:1333",
+                    "location": "England",
+                    "name": "Somerset",
+                    "abbreviation": "SOM",
+                    "displayName": "Somerset",
+                    "shortDisplayName": "SOM",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1333/somerset",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1333.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 10,
+                      "runs": 310,
+                      "overs": 103,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 64,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 7,
+                      "runs": 355,
+                      "overs": 97,
+                      "isBatting": true,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 63.5,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513360/competitions/1513360/competitors/1333/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 4,
+                "featuredAthletes": [],
+                "summary": "Somerset won by 306 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-12T10:00Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/scorecard/1513360/nottinghamshire-vs-somerset-35th-match-county-championship-division-one-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/report/1513360/nottinghamshire-vs-somerset-35th-match-county-championship-division-one-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/game/1513360/nottinghamshire-vs-somerset-35th-match-county-championship-division-one-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8052/season/2026/county-championship-division-one",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 4,
+            "summary": "Somerset won by 306 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1513359",
+          "uid": "s:200~e:1513359",
+          "date": "2026-06-12T10:00Z",
+          "endDate": "2026-06-15T23:59Z",
+          "name": "Sussex v Glamorgan",
+          "shortName": "SUS v GLA",
+          "description": "34th Match, County Championship Division One at Brighton, Jun 12-14 2026",
+          "season": {
+            "year": 2026,
+            "type": 8052
+          },
+          "competitions": [
+            {
+              "id": "1513359",
+              "uid": "s:200~e:1513359~c:1513359",
+              "description": "34th Match",
+              "shortDescription": "34th Match,  at Brighton",
+              "date": "2026-06-12T10:00Z",
+              "endDate": "2026-06-15T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "0",
+                "generalClassId": "4",
+                "generalClassCard": "First-class",
+                "name": "First-class matches",
+                "eventType": "Test"
+              },
+              "venue": {
+                "id": "56825",
+                "fullName": "County Ground, Hove",
+                "address": {
+                  "city": "Brighton",
+                  "state": "",
+                  "country": "England",
+                  "summary": "The County Ground Eaton Road Hove East Sussex BN3 3A Phone: 01273 827100"
+                },
+                "capacity": 4000,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1371",
+                  "uid": "s:200~e:1513359~c:1513359~t:1371",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "home",
+                  "winner": "true",
+                  "score": "521",
+                  "team": {
+                    "id": "1371",
+                    "uid": "s:200~t:1371",
+                    "location": "England",
+                    "name": "Sussex",
+                    "abbreviation": "SUS",
+                    "displayName": "Sussex",
+                    "shortDisplayName": "SUS",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1371/sussex",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1371.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 51.2,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 521,
+                      "overs": 125.1,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 99.3,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513359/competitions/1513359/competitors/1371/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "1029",
+                  "uid": "s:200~e:1513359~c:1513359~t:1029",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "155 & 268 (99.3 ov)",
+                  "team": {
+                    "id": "1029",
+                    "uid": "s:200~t:1029",
+                    "location": "England",
+                    "name": "Glamorgan",
+                    "abbreviation": "GLA",
+                    "displayName": "Glamorgan",
+                    "shortDisplayName": "GLA",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1029/glamorgan",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1029.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 10,
+                      "runs": 155,
+                      "overs": 51.2,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 125.1,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 10,
+                      "runs": 268,
+                      "overs": 99.3,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513359/competitions/1513359/competitors/1029/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 3,
+                "featuredAthletes": [],
+                "summary": "Sussex won by an inns &amp; 98 runs",
+                "type": {
+                  "id": "1",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-12T10:00Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/scorecard/1513359/sussex-vs-glamorgan-34th-match-county-championship-division-one-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/report/1513359/sussex-vs-glamorgan-34th-match-county-championship-division-one-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/game/1513359/sussex-vs-glamorgan-34th-match-county-championship-division-one-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8052/season/2026/county-championship-division-one",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 3,
+            "summary": "Sussex won by an inns &amp; 98 runs",
+            "type": {
+              "id": "1",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1513356",
+          "uid": "s:200~e:1513356",
+          "date": "2026-06-07T10:00Z",
+          "endDate": "2026-06-11T23:59Z",
+          "name": "Surrey v Hampshire",
+          "shortName": "SUR v HAM",
+          "description": "31st Match, County Championship Division One at London, Jun 7-10 2026",
+          "season": {
+            "year": 2026,
+            "type": 8052
+          },
+          "competitions": [
+            {
+              "id": "1513356",
+              "uid": "s:200~e:1513356~c:1513356",
+              "description": "31st Match",
+              "shortDescription": "31st Match,  at London",
+              "date": "2026-06-07T10:00Z",
+              "endDate": "2026-06-11T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": false,
+              "class": {
+                "internationalClassId": "0",
+                "generalClassId": "4",
+                "generalClassCard": "First-class",
+                "name": "First-class matches",
+                "eventType": "Test"
+              },
+              "venue": {
+                "id": "57127",
+                "fullName": "Kennington Oval, London",
+                "address": {
+                  "city": "London",
+                  "state": "",
+                  "country": "England",
+                  "summary": "The Oval Cricket Ground, Kennington, London, SE 11 5SS (Phone: 020-3946-0100)"
+                },
+                "capacity": 23500,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1358",
+                  "uid": "s:200~e:1513356~c:1513356~t:1358",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "421 & 259/5d",
+                  "team": {
+                    "id": "1358",
+                    "uid": "s:200~t:1358",
+                    "location": "England",
+                    "name": "Surrey",
+                    "abbreviation": "SUR",
+                    "displayName": "Surrey",
+                    "shortDisplayName": "SUR",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1358/surrey",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1358.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 10,
+                      "runs": 421,
+                      "overs": 82.5,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 96.4,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 5,
+                      "runs": 259,
+                      "overs": 48,
+                      "isBatting": true,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 44,
+                      "isBatting": false,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513356/competitions/1513356/competitors/1358/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "1051",
+                  "uid": "s:200~e:1513356~c:1513356~t:1051",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "333 & 101/2 (44 ov, target 348)",
+                  "team": {
+                    "id": "1051",
+                    "uid": "s:200~t:1051",
+                    "location": "England",
+                    "name": "Hampshire",
+                    "abbreviation": "HAM",
+                    "displayName": "Hampshire",
+                    "shortDisplayName": "HAM",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1051/hampshire",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1051.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 82.5,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 333,
+                      "overs": 96.4,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 48,
+                      "isBatting": false,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 2,
+                      "runs": 101,
+                      "overs": 44,
+                      "isBatting": true,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513356/competitions/1513356/competitors/1051/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 4,
+                "featuredAthletes": [],
+                "summary": "Match drawn",
+                "type": {
+                  "id": "4",
+                  "description": "Result",
+                  "detail": "Final",
+                  "shortDetail": "Final",
+                  "state": "post"
+                }
+              },
+              "broadcasts": [],
+              "notes": [],
+              "startDate": "2026-06-07T10:00Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "scorecard",
+                "match",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/scorecard/1513356/surrey-vs-hampshire-31st-match-county-championship-division-one-2026",
+              "text": "Scorecard",
+              "shortText": "Scorecard",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/report/1513356/surrey-vs-hampshire-31st-match-county-championship-division-one-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/game/1513356/surrey-vs-hampshire-31st-match-county-championship-division-one-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8052/season/2026/county-championship-division-one",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 4,
+            "summary": "Match drawn",
+            "type": {
+              "id": "4",
+              "description": "Result",
+              "detail": "Final",
+              "shortDetail": "Final",
+              "state": "post"
+            }
+          }
+        },
+        {
+          "id": "1513357",
+          "uid": "s:200~e:1513357",
+          "date": "2026-06-12T10:00Z",
+          "endDate": "2026-06-16T23:59Z",
+          "name": "Yorkshire v Warwickshire",
+          "shortName": "YOR v WAR",
+          "description": "32nd Match, County Championship Division One at Scarborough, Jun 12-15 2026",
+          "season": {
+            "year": 2026,
+            "type": 8052
+          },
+          "competitions": [
+            {
+              "id": "1513357",
+              "uid": "s:200~e:1513357~c:1513357",
+              "description": "32nd Match",
+              "shortDescription": "32nd Match,  at Scarborough",
+              "date": "2026-06-12T10:00Z",
+              "endDate": "2026-06-16T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": true,
+              "class": {
+                "internationalClassId": "0",
+                "generalClassId": "4",
+                "generalClassCard": "First-class",
+                "name": "First-class matches",
+                "eventType": "Test"
+              },
+              "venue": {
+                "id": "57290",
+                "fullName": "North Marine Road Ground, Scarborough",
+                "address": {
+                  "city": "Scarborough",
+                  "state": "",
+                  "country": "England",
+                  "summary": "The Pavilion, North Marine Road, Scarborough, Yorkshire YO12 7TJ"
+                },
+                "capacity": 11500,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1464",
+                  "uid": "s:200~e:1513357~c:1513357~t:1464",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "469 & 246/6d",
+                  "team": {
+                    "id": "1464",
+                    "uid": "s:200~t:1464",
+                    "location": "England",
+                    "name": "Yorkshire",
+                    "abbreviation": "YOR",
+                    "displayName": "Yorkshire",
+                    "shortDisplayName": "YOR",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1464/yorkshire",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1464.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 10,
+                      "runs": 469,
+                      "overs": 110.4,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 94.2,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 6,
+                      "runs": 246,
+                      "overs": 61,
+                      "isBatting": true,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 64.5,
+                      "isBatting": false,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513357/competitions/1513357/competitors/1464/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "1428",
+                  "uid": "s:200~e:1513357~c:1513357~t:1428",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "263 & 204/5 (64.4 ov, target 453)",
+                  "team": {
+                    "id": "1428",
+                    "uid": "s:200~t:1428",
+                    "location": "England",
+                    "name": "Warwickshire",
+                    "abbreviation": "WAR",
+                    "displayName": "Warwickshire",
+                    "shortDisplayName": "WAR",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1428/warwickshire",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1428.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 110.4,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 263,
+                      "overs": 94.2,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 61,
+                      "isBatting": false,
+                      "description": "declared",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 5,
+                      "runs": 204,
+                      "overs": 64.4,
+                      "isBatting": true,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513357/competitions/1513357/competitors/1428/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 4,
+                "session": "Day 4",
+                "featuredAthletes": [],
+                "summary": "Warwickshire require 249 runs",
+                "type": {
+                  "id": "0",
+                  "description": "Live",
+                  "detail": "Live",
+                  "shortDetail": "Live",
+                  "state": "in"
+                }
+              },
+              "odds": [],
+              "broadcasts": [],
+              "notes": [],
+              "situation": {},
+              "startDate": "2026-06-12T10:00Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/game/1513357/yorkshire-vs-warwickshire-32nd-match-county-championship-division-one-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/report/1513357/yorkshire-vs-warwickshire-32nd-match-county-championship-division-one-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8052/season/2026/county-championship-division-one",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 4,
+            "session": "Day 4",
+            "summary": "Warwickshire require 249 runs",
+            "type": {
+              "id": "0",
+              "description": "Live",
+              "detail": "Live",
+              "shortDetail": "Live",
+              "state": "in"
+            }
+          }
+        },
+        {
+          "id": "1513358",
+          "uid": "s:200~e:1513358",
+          "date": "2026-06-12T10:00Z",
+          "endDate": "2026-06-16T23:59Z",
+          "name": "Leicestershire v Essex",
+          "shortName": "LEI v ESS",
+          "description": "33rd Match, County Championship Division One at Leicester, Jun 12-15 2026",
+          "season": {
+            "year": 2026,
+            "type": 8052
+          },
+          "competitions": [
+            {
+              "id": "1513358",
+              "uid": "s:200~e:1513358~c:1513358",
+              "description": "33rd Match",
+              "shortDescription": "33rd Match,  at Leicester",
+              "date": "2026-06-12T10:00Z",
+              "endDate": "2026-06-16T23:59Z",
+              "timeValid": true,
+              "neutralSite": true,
+              "attendance": 0,
+              "conferenceCompetition": false,
+              "playByPlayAvailable": false,
+              "fastcastAvailable": false,
+              "recent": true,
+              "class": {
+                "internationalClassId": "0",
+                "generalClassId": "4",
+                "generalClassCard": "First-class",
+                "name": "First-class matches",
+                "eventType": "Test"
+              },
+              "venue": {
+                "id": "57100",
+                "fullName": "Grace Road, Leicester",
+                "address": {
+                  "city": "Leicester",
+                  "state": "",
+                  "country": "England",
+                  "summary": "The County Ground Grace Road Leicester LE2 8AD (Phone: 0116 2832128)"
+                },
+                "capacity": 6000,
+                "indoor": false
+              },
+              "competitors": [
+                {
+                  "id": "1133",
+                  "uid": "s:200~e:1513358~c:1513358~t:1133",
+                  "type": "team",
+                  "order": 2,
+                  "homeAway": "home",
+                  "winner": "false",
+                  "score": "187 & 428 (f/o)",
+                  "team": {
+                    "id": "1133",
+                    "uid": "s:200~t:1133",
+                    "location": "England",
+                    "name": "Leicestershire",
+                    "abbreviation": "LEI",
+                    "displayName": "Leicestershire",
+                    "shortDisplayName": "LEI",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/1133/leicestershire",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1133.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 97.4,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 10,
+                      "runs": 187,
+                      "overs": 63.2,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 10,
+                      "runs": 428,
+                      "overs": 153.5,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 13.5,
+                      "isBatting": false,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513358/competitions/1513358/competitors/1133/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                },
+                {
+                  "id": "984",
+                  "uid": "s:200~e:1513358~c:1513358~t:984",
+                  "type": "team",
+                  "order": 1,
+                  "homeAway": "away",
+                  "winner": "false",
+                  "score": "401 & 58/1 (13.5 ov, target 215)",
+                  "team": {
+                    "id": "984",
+                    "uid": "s:200~t:984",
+                    "location": "England",
+                    "name": "Essex",
+                    "abbreviation": "ESS",
+                    "displayName": "Essex",
+                    "shortDisplayName": "ESS",
+                    "isActive": true,
+                    "countryCode": "www",
+                    "color": "",
+                    "links": [
+                      {
+                        "rel": [
+                          "clubhouse",
+                          "desktop"
+                        ],
+                        "href": "https://www.espn.in/cricket/team/_/id/984/essex",
+                        "text": "Clubhouse",
+                        "isExternal": false,
+                        "isPremium": false
+                      }
+                    ],
+                    "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/984.png"
+                  },
+                  "linescores": [
+                    {
+                      "period": 1,
+                      "value": 1,
+                      "displayValue": 1,
+                      "wickets": 10,
+                      "runs": 401,
+                      "overs": 97.4,
+                      "isBatting": true,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 2,
+                      "value": 2,
+                      "displayValue": 2,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 63.2,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 3,
+                      "value": 3,
+                      "displayValue": 3,
+                      "wickets": 0,
+                      "runs": 0,
+                      "overs": 153.5,
+                      "isBatting": false,
+                      "description": "all out",
+                      "isCurrent": 0
+                    },
+                    {
+                      "period": 4,
+                      "value": 4,
+                      "displayValue": 4,
+                      "wickets": 1,
+                      "runs": 58,
+                      "overs": 14,
+                      "isBatting": true,
+                      "description": "",
+                      "isCurrent": 1
+                    }
+                  ],
+                  "leaders": {
+                    "$ref": "http://new.core.espnuk.org/v2/sports/cricket/leagues/8052/events/1513358/competitions/1513358/competitors/984/leaders"
+                  },
+                  "statistics": [],
+                  "records": [
+                    {
+                      "name": "Total",
+                      "abbreviation": "Total",
+                      "type": "total",
+                      "summary": ""
+                    }
+                  ]
+                }
+              ],
+              "status": {
+                "clock": 0,
+                "displayClock": "0'",
+                "period": 4,
+                "session": "Day 4",
+                "featuredAthletes": [],
+                "summary": "Essex require 157 runs",
+                "type": {
+                  "id": "0",
+                  "description": "Live",
+                  "detail": "Live",
+                  "shortDetail": "Live",
+                  "state": "in"
+                }
+              },
+              "odds": [],
+              "broadcasts": [],
+              "notes": [],
+              "situation": {},
+              "startDate": "2026-06-12T10:00Z",
+              "broadcast": "",
+              "geoBroadcasts": [],
+              "highlights": []
+            }
+          ],
+          "links": [
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "boxscore",
+                "match",
+                "live",
+                "summary",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/game/1513358/leicestershire-vs-essex-33rd-match-county-championship-division-one-2026",
+              "text": "Summary",
+              "shortText": "Summary",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "recap",
+                "report",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/8052/report/1513358/leicestershire-vs-essex-33rd-match-county-championship-division-one-2026",
+              "text": "Report",
+              "shortText": "Report",
+              "isExternal": false,
+              "isPremium": false
+            },
+            {
+              "language": "en",
+              "rel": [
+                "event",
+                "league",
+                "serieshome",
+                "desktop"
+              ],
+              "href": "https://www.espn.in/cricket/series/_/id/8052/season/2026/county-championship-division-one",
+              "text": "Series Home",
+              "shortText": "Series Home",
+              "isExternal": false,
+              "isPremium": false
+            }
+          ],
+          "status": {
+            "clock": 0,
+            "displayClock": "0'",
+            "period": 4,
+            "session": "Day 4",
+            "summary": "Essex require 157 runs",
+            "type": {
+              "id": "0",
+              "description": "Live",
+              "detail": "Live",
+              "shortDetail": "Live",
+              "state": "in"
+            }
+          }
+        }
+      ],
+      "leagues": [
+        {
+          "id": "8052",
+          "uid": "s:200~l:8052",
+          "name": "County Championship Division One",
+          "abbreviation": "County Championship Division One",
+          "slug": "8052",
+          "season": {},
+          "calendarType": "day",
+          "calendar": [
+            "2026-04-03T00:00:00Z",
+            "2026-04-04T00:00:00Z",
+            "2026-04-05T00:00:00Z",
+            "2026-04-06T00:00:00Z",
+            "2026-04-10T00:00:00Z",
+            "2026-04-11T00:00:00Z",
+            "2026-04-12T00:00:00Z",
+            "2026-04-13T00:00:00Z",
+            "2026-04-17T00:00:00Z",
+            "2026-04-18T00:00:00Z",
+            "2026-04-19T00:00:00Z",
+            "2026-04-20T00:00:00Z",
+            "2026-04-24T00:00:00Z",
+            "2026-04-25T00:00:00Z",
+            "2026-04-26T00:00:00Z",
+            "2026-04-27T00:00:00Z",
+            "2026-05-01T00:00:00Z",
+            "2026-05-02T00:00:00Z",
+            "2026-05-03T00:00:00Z",
+            "2026-05-04T00:00:00Z",
+            "2026-05-08T00:00:00Z",
+            "2026-05-09T00:00:00Z",
+            "2026-05-10T00:00:00Z",
+            "2026-05-11T00:00:00Z",
+            "2026-05-15T00:00:00Z",
+            "2026-05-16T00:00:00Z",
+            "2026-05-17T00:00:00Z",
+            "2026-05-18T00:00:00Z",
+            "2026-06-07T00:00:00Z",
+            "2026-06-08T00:00:00Z",
+            "2026-06-09T00:00:00Z",
+            "2026-06-10T00:00:00Z",
+            "2026-06-12T00:00:00Z",
+            "2026-06-13T00:00:00Z",
+            "2026-06-14T00:00:00Z",
+            "2026-06-15T00:00:00Z",
+            "2026-06-19T00:00:00Z",
+            "2026-06-20T00:00:00Z",
+            "2026-06-21T00:00:00Z",
+            "2026-06-22T00:00:00Z",
+            "2026-08-20T00:00:00Z",
+            "2026-08-21T00:00:00Z",
+            "2026-08-22T00:00:00Z",
+            "2026-08-23T00:00:00Z",
+            "2026-08-27T00:00:00Z",
+            "2026-08-28T00:00:00Z",
+            "2026-08-29T00:00:00Z",
+            "2026-08-30T00:00:00Z",
+            "2026-09-02T00:00:00Z",
+            "2026-09-03T00:00:00Z",
+            "2026-09-04T00:00:00Z",
+            "2026-09-05T00:00:00Z",
+            "2026-09-08T00:00:00Z",
+            "2026-09-09T00:00:00Z",
+            "2026-09-10T00:00:00Z",
+            "2026-09-11T00:00:00Z",
+            "2026-09-15T00:00:00Z",
+            "2026-09-16T00:00:00Z",
+            "2026-09-17T00:00:00Z",
+            "2026-09-18T00:00:00Z",
+            "2026-09-24T00:00:00Z",
+            "2026-09-25T00:00:00Z",
+            "2026-09-26T00:00:00Z",
+            "2026-09-27T00:00:00Z"
+          ]
+        }
+      ]
+    },
+    "nowMs": 1783368000000
+  },
+  "output": {
+    "state": "upcoming",
+    "detail": "Next Aug 19",
+    "live": false
+  }
+}

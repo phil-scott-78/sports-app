@@ -1,0 +1,2587 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "soccer/ita.1",
+    "raw": {
+      "name": "Italian Serie A",
+      "abbreviation": "Serie A",
+      "children": [
+        {
+          "name": "2026-2027 Italian Serie A",
+          "abbreviation": "2026-2027",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "103",
+                  "displayName": "AC Milan",
+                  "name": "AC Milan",
+                  "abbreviation": "MIL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "105",
+                  "displayName": "Atalanta",
+                  "name": "Atalanta",
+                  "abbreviation": "ATA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "107",
+                  "displayName": "Bologna",
+                  "name": "Bologna",
+                  "abbreviation": "BOL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2925",
+                  "displayName": "Cagliari",
+                  "name": "Cagliari",
+                  "abbreviation": "CAG",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2572",
+                  "displayName": "Como",
+                  "name": "Como",
+                  "abbreviation": "COMO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "109",
+                  "displayName": "Fiorentina",
+                  "name": "Fiorentina",
+                  "abbreviation": "FIO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "4057",
+                  "displayName": "Frosinone",
+                  "name": "Frosinone",
+                  "abbreviation": "FRO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3263",
+                  "displayName": "Genoa",
+                  "name": "Genoa",
+                  "abbreviation": "GEN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "110",
+                  "displayName": "Internazionale",
+                  "name": "Internazionale",
+                  "abbreviation": "INT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "111",
+                  "displayName": "Juventus",
+                  "name": "Juventus",
+                  "abbreviation": "JUV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "112",
+                  "displayName": "Lazio",
+                  "name": "Lazio",
+                  "abbreviation": "LAZ",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "113",
+                  "displayName": "Lecce",
+                  "name": "Lecce",
+                  "abbreviation": "LEC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "4007",
+                  "displayName": "Monza",
+                  "name": "Monza",
+                  "abbreviation": "MON",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "114",
+                  "displayName": "Napoli",
+                  "name": "Napoli",
+                  "abbreviation": "NAP",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "115",
+                  "displayName": "Parma",
+                  "name": "Parma",
+                  "abbreviation": "PAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "104",
+                  "displayName": "AS Roma",
+                  "name": "AS Roma",
+                  "abbreviation": "ROMA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3997",
+                  "displayName": "Sassuolo",
+                  "name": "Sassuolo",
+                  "abbreviation": "SAS",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "239",
+                  "displayName": "Torino",
+                  "name": "Torino",
+                  "abbreviation": "TOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "118",
+                  "displayName": "Udinese",
+                  "name": "Udinese",
+                  "abbreviation": "UDI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "17530",
+                  "displayName": "Venezia",
+                  "name": "Venezia",
+                  "abbreviation": "VEN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-0-0"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "2026-2027 Italian Serie A",
+      "rows": [
+        {
+          "team": {
+            "id": "103",
+            "name": "AC Milan",
+            "abbr": "MIL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/103.png"
+          },
+          "rank": 1,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "1",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "105",
+            "name": "Atalanta",
+            "abbr": "ATA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/105.png"
+          },
+          "rank": 2,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "2",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "107",
+            "name": "Bologna",
+            "abbr": "BOL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/107.png"
+          },
+          "rank": 3,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "3",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "2925",
+            "name": "Cagliari",
+            "abbr": "CAG",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2925.png"
+          },
+          "rank": 4,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "4",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "2572",
+            "name": "Como",
+            "abbr": "COMO",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2572.png"
+          },
+          "rank": 5,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "5",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "109",
+            "name": "Fiorentina",
+            "abbr": "FIO",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/109.png"
+          },
+          "rank": 6,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "6",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "4057",
+            "name": "Frosinone",
+            "abbr": "FRO",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/4057.png"
+          },
+          "rank": 7,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "7",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "3263",
+            "name": "Genoa",
+            "abbr": "GEN",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3263.png"
+          },
+          "rank": 8,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "8",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "110",
+            "name": "Internazionale",
+            "abbr": "INT",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/110.png"
+          },
+          "rank": 9,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "9",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "111",
+            "name": "Juventus",
+            "abbr": "JUV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/111.png"
+          },
+          "rank": 10,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "10",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "112",
+            "name": "Lazio",
+            "abbr": "LAZ",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/112.png"
+          },
+          "rank": 11,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "11",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "113",
+            "name": "Lecce",
+            "abbr": "LEC",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/113.png"
+          },
+          "rank": 12,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "12",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "4007",
+            "name": "Monza",
+            "abbr": "MON",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/4007.png"
+          },
+          "rank": 13,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "13",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "114",
+            "name": "Napoli",
+            "abbr": "NAP",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/114.png"
+          },
+          "rank": 14,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "14",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "115",
+            "name": "Parma",
+            "abbr": "PAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/115.png"
+          },
+          "rank": 15,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "15",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "104",
+            "name": "AS Roma",
+            "abbr": "ROMA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/104.png"
+          },
+          "rank": 16,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "16",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "3997",
+            "name": "Sassuolo",
+            "abbr": "SAS",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/3997.png"
+          },
+          "rank": 17,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "17",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "239",
+            "name": "Torino",
+            "abbr": "TOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/239.png"
+          },
+          "rank": 18,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "18",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "118",
+            "name": "Udinese",
+            "abbr": "UDI",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/118.png"
+          },
+          "rank": 19,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "19",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        },
+        {
+          "team": {
+            "id": "17530",
+            "name": "Venezia",
+            "abbr": "VEN",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/17530.png"
+          },
+          "rank": 20,
+          "stats": {
+            "gamesPlayed": "0",
+            "losses": "0",
+            "pointDifferential": "0",
+            "points": "0",
+            "pointsAgainst": "0",
+            "pointsFor": "0",
+            "ties": "0",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "20",
+            "rankChange": "0",
+            "overall": "0-0-0"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,6 @@ import { normalizeStandings } from '../src/standings.js';
 import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
-import { publicClient } from '../src/client.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 
 let pass = 0, fail = 0;
@@ -259,23 +258,8 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   ok(!both.some(k => k.split('/')[1].startsWith('_')), 'leagueKeys: `_` buckets excluded');
 }
 
-// ---- client gate: /v1/health echo strips internals + fails open -------------
-{
-  // The registry's gate is projected to the wire shape, minus `_`-prefixed keys.
-  const wire = publicClient(registry.client);
-  ok(wire !== null, 'client: registry has a gate block');
-  ok(!('_doc' in wire), 'client: internal _doc stripped from the wire shape');
-  ok(typeof wire.minVersionCode === 'number', `client: minVersionCode is numeric (got ${typeof wire.minVersionCode})`);
-  ok(typeof wire.recommendedVersionCode === 'number', 'client: recommendedVersionCode is numeric');
-  ok(typeof wire.downloadUrl === 'string' && wire.downloadUrl.startsWith('https://'), `client: downloadUrl present (got ${wire.downloadUrl})`);
-  // Default ships inert (0/0) so no user is nagged until the author raises it.
-  ok(wire.minVersionCode === 0 && wire.recommendedVersionCode === 0, `client: gate ships inert 0/0 (got ${wire.minVersionCode}/${wire.recommendedVersionCode})`);
-  // FAIL-OPEN: an absent gate (old worker / fork / offline mock) → null, never a
-  // zero-version that would block every client.
-  ok(publicClient(undefined) === null, 'client: missing gate → null (fail-open)');
-  ok(publicClient(null) === null, 'client: null gate → null (fail-open)');
-  ok(publicClient('nope') === null, 'client: non-object gate → null (fail-open)');
-}
+// (The /v1/health client-gate test was removed with the worker — the app talks to
+// ESPN directly now and shows no server-driven update banner.)
 
 // ============================ 2026-07 additions ==============================
 

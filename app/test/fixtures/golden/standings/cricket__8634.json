@@ -1,0 +1,1324 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "cricket/8634",
+    "raw": {
+      "name": "ICC Women's T20 World Cup",
+      "abbreviation": "Women's T20 World Cup",
+      "children": [
+        {
+          "name": "Group 1",
+          "abbreviation": "Group 1",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "238",
+                  "displayName": "Australia Women",
+                  "name": "Australia Women",
+                  "abbreviation": "AUS-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/238.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "3.25",
+                    "value": 3.25
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "172/20.0",
+                    "value": 8.6
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "107/20.0",
+                    "value": 5.35
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1812",
+                  "displayName": "India Women",
+                  "name": "India Women",
+                  "abbreviation": "IND-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/1812.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "3.2",
+                    "value": 3.2
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "170/20.0",
+                    "value": 8.5
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "106/20.0",
+                    "value": 5.3
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "299037",
+                  "displayName": "Bangladesh Women",
+                  "name": "Bangladesh Women",
+                  "abbreviation": "BAN-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/299037.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "0.407",
+                    "value": 0.407
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "141/19.1",
+                    "value": 7.382
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "139/20.0",
+                    "value": 6.95
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2410",
+                  "displayName": "Netherlands Women",
+                  "name": "Netherlands Women",
+                  "abbreviation": "NL-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/2410.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-0.407",
+                    "value": -0.407
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "139/20.0",
+                    "value": 6.95
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "141/19.1",
+                    "value": 7.382
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2971",
+                  "displayName": "Pakistan Women",
+                  "name": "Pakistan Women",
+                  "abbreviation": "PAK-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/2971.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-3.2",
+                    "value": -3.2
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "106/20.0",
+                    "value": 5.3
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "170/20.0",
+                    "value": 8.5
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3328",
+                  "displayName": "South Africa Women",
+                  "name": "South Africa Women",
+                  "abbreviation": "SA-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/3328.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-3.25",
+                    "value": -3.25
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "107/20.0",
+                    "value": 5.35
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "172/20.0",
+                    "value": 8.6
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Group 2",
+          "abbreviation": "Group 2",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "975",
+                  "displayName": "England Women",
+                  "name": "England Women",
+                  "abbreviation": "ENG-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "4.35",
+                    "value": 4.35
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "219/20.0",
+                    "value": 10.95
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "132/20.0",
+                    "value": 6.6
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3454",
+                  "displayName": "Scotland Women",
+                  "name": "Scotland Women",
+                  "abbreviation": "SCO-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/3454.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "161/20.0",
+                    "value": 8.05
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "121/20.0",
+                    "value": 6.05
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3816",
+                  "displayName": "West Indies Women",
+                  "name": "West Indies Women",
+                  "abbreviation": "WI-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/3816.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "0.118",
+                    "value": 0.118
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "163/19.5",
+                    "value": 8.359
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "162/20.0",
+                    "value": 8.1
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2563",
+                  "displayName": "New Zealand Women",
+                  "name": "New Zealand Women",
+                  "abbreviation": "NZ-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/2563.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-0.118",
+                    "value": -0.118
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "162/20.0",
+                    "value": 8.1
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "163/19.5",
+                    "value": 8.359
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2234",
+                  "displayName": "Ireland Women",
+                  "name": "Ireland Women",
+                  "abbreviation": "IRE-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "121/20.0",
+                    "value": 6.05
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "161/20.0",
+                    "value": 8.05
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3621",
+                  "displayName": "Sri Lanka Women",
+                  "name": "Sri Lanka Women",
+                  "abbreviation": "SL-W",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/cricket/500/3621.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "matchesPlayed",
+                    "type": "matchesplayed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "matchesWon",
+                    "type": "matcheswon",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesLost",
+                    "type": "matcheslost",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "noresult",
+                    "type": "noresult",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchPoints",
+                    "type": "matchpoints",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "matchesTied",
+                    "type": "matchestied",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "netrr",
+                    "type": "nrr",
+                    "displayValue": "-4.35",
+                    "value": -4.35
+                  },
+                  {
+                    "name": "for",
+                    "type": "for",
+                    "displayValue": "132/20.0",
+                    "value": 6.6
+                  },
+                  {
+                    "name": "against",
+                    "type": "against",
+                    "displayValue": "219/20.0",
+                    "value": 10.95
+                  },
+                  {
+                    "name": "Total",
+                    "type": "total",
+                    "displayValue": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "Group 1",
+      "rows": [
+        {
+          "team": {
+            "id": "238",
+            "name": "Australia Women",
+            "abbr": "AUS-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/238.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/238.png"
+          },
+          "rank": 1,
+          "stats": {
+            "rank": "1",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "3.25",
+            "for": "172/20.0",
+            "against": "107/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "1812",
+            "name": "India Women",
+            "abbr": "IND-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/1812.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/1812.png"
+          },
+          "rank": 2,
+          "stats": {
+            "rank": "2",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "3.2",
+            "for": "170/20.0",
+            "against": "106/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "299037",
+            "name": "Bangladesh Women",
+            "abbr": "BAN-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/299037.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/299037.png"
+          },
+          "rank": 3,
+          "stats": {
+            "rank": "3",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "0.407",
+            "for": "141/19.1",
+            "against": "139/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "2410",
+            "name": "Netherlands Women",
+            "abbr": "NL-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2410.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/2410.png"
+          },
+          "rank": 4,
+          "stats": {
+            "rank": "4",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-0.407",
+            "for": "139/20.0",
+            "against": "141/19.1",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "2971",
+            "name": "Pakistan Women",
+            "abbr": "PAK-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2971.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/2971.png"
+          },
+          "rank": 5,
+          "stats": {
+            "rank": "5",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-3.2",
+            "for": "106/20.0",
+            "against": "170/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "3328",
+            "name": "South Africa Women",
+            "abbr": "SA-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3328.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/3328.png"
+          },
+          "rank": 6,
+          "stats": {
+            "rank": "6",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-3.25",
+            "for": "107/20.0",
+            "against": "172/20.0",
+            "Total": ""
+          }
+        }
+      ]
+    },
+    {
+      "name": "Group 2",
+      "rows": [
+        {
+          "team": {
+            "id": "975",
+            "name": "England Women",
+            "abbr": "ENG-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/975.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/975.png"
+          },
+          "rank": 1,
+          "stats": {
+            "rank": "1",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "4.35",
+            "for": "219/20.0",
+            "against": "132/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "3454",
+            "name": "Scotland Women",
+            "abbr": "SCO-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3454.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/3454.png"
+          },
+          "rank": 2,
+          "stats": {
+            "rank": "2",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "2",
+            "for": "161/20.0",
+            "against": "121/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "3816",
+            "name": "West Indies Women",
+            "abbr": "WI-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3816.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/3816.png"
+          },
+          "rank": 3,
+          "stats": {
+            "rank": "3",
+            "matchesPlayed": "1",
+            "matchesWon": "1",
+            "matchesLost": "0",
+            "noresult": "0",
+            "matchPoints": "2",
+            "matchesTied": "0",
+            "netrr": "0.118",
+            "for": "163/19.5",
+            "against": "162/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "2563",
+            "name": "New Zealand Women",
+            "abbr": "NZ-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2563.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/2563.png"
+          },
+          "rank": 4,
+          "stats": {
+            "rank": "4",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-0.118",
+            "for": "162/20.0",
+            "against": "163/19.5",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "2234",
+            "name": "Ireland Women",
+            "abbr": "IRE-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/2234.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/2234.png"
+          },
+          "rank": 5,
+          "stats": {
+            "rank": "5",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-2",
+            "for": "121/20.0",
+            "against": "161/20.0",
+            "Total": ""
+          }
+        },
+        {
+          "team": {
+            "id": "3621",
+            "name": "Sri Lanka Women",
+            "abbr": "SL-W",
+            "logo": "https://a.espncdn.com/i/teamlogos/cricket/500/3621.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/cricket/500-dark/3621.png"
+          },
+          "rank": 6,
+          "stats": {
+            "rank": "6",
+            "matchesPlayed": "1",
+            "matchesWon": "0",
+            "matchesLost": "1",
+            "noresult": "0",
+            "matchPoints": "0",
+            "matchesTied": "0",
+            "netrr": "-4.35",
+            "for": "132/20.0",
+            "against": "219/20.0",
+            "Total": ""
+          }
+        }
+      ]
+    }
+  ]
+}
