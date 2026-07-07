@@ -249,15 +249,15 @@ class ActionFeed extends StatelessWidget {
       case 'penalty-goal':
       case 'own-goal':
         return Container(
-            width: 15,
-            height: 15,
+            width: 16,
+            height: 16,
             decoration: BoxDecoration(color: color, shape: BoxShape.circle));
       case 'score': // generic scoring play / rugby try — the app's ColorBar glyph
         return ColorBar(color, width: 4, height: 22, radius: 2);
       case 'penalty-missed':
         return Container(
-            width: 15,
-            height: 15,
+            width: 16,
+            height: 16,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: color, width: 2)));
@@ -275,16 +275,16 @@ class ActionFeed extends StatelessWidget {
                 color: T.live, borderRadius: BorderRadius.circular(2)));
       case 'substitution':
         return Container(
-            width: 13,
-            height: 13,
+            width: 14,
+            height: 14,
             decoration: BoxDecoration(
                 color: T.track,
                 shape: BoxShape.circle,
                 border: Border.all(color: color, width: 2)));
       case 'var':
         return Container(
-            width: 13,
-            height: 13,
+            width: 14,
+            height: 14,
             decoration: BoxDecoration(
                 color: T.track,
                 borderRadius: BorderRadius.circular(4),

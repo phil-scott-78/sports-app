@@ -85,7 +85,7 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 28),
+          padding: const EdgeInsets.only(bottom: T.scrollBottom),
           children: [
             Padding(
               padding:
@@ -150,10 +150,7 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
                   ),
                 ],
             },
-            if (_hasRankings) ...[
-              const SizedBox(height: 18),
-              _RankingsSection(widget.league),
-            ],
+            if (_hasRankings) _RankingsSection(widget.league),
           ],
         ),
       ),
@@ -184,7 +181,7 @@ class _RankingsSectionState extends ConsumerState<_RankingsSection> {
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Padding(
-        padding: EdgeInsets.fromLTRB(T.pageMargin, 0, T.pageMargin, 6),
+        padding: T.sectionHeaderPad,
         child: Text('RANKINGS', style: T.cardLabelFaint),
       ),
       if (polls.length > 1) ...[
@@ -204,7 +201,7 @@ class _RankingsSectionState extends ConsumerState<_RankingsSection> {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: T.gapFirstCard),
       ],
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
@@ -225,7 +222,7 @@ class _PollChip extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),
+          padding: T.chipPad,
           decoration: BoxDecoration(
             color: selected ? T.invertedBg : T.surface,
             borderRadius: BorderRadius.circular(100),

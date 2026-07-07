@@ -101,7 +101,7 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
 
   Widget _body(TeamDetail d, TeamCard? card) {
     return ListView(
-      padding: const EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
         _IdentityHeader(
           league: widget.league,
@@ -154,7 +154,7 @@ class _SectionLabel extends StatelessWidget {
   const _SectionLabel(this.text);
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 8),
+        padding: T.sectionHeaderPad,
         child: Text(text.toUpperCase(), style: T.cardLabelFaint),
       );
 }

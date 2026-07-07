@@ -23,7 +23,7 @@ class FollowingPage extends ConsumerWidget {
     final catalog = ref.watch(catalogProvider).valueOrNull;
 
     return ListView(
-      padding: const EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
         const Padding(
           padding: EdgeInsets.fromLTRB(T.pageMargin, 14, T.pageMargin, 0),
@@ -125,7 +125,7 @@ class FollowingPage extends ConsumerWidget {
   }
 
   Widget _label(String text) => Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 20, T.pageMargin, 6),
+        padding: T.sectionHeaderPad,
         child: Text(text.toUpperCase(), style: T.cardLabel),
       );
 
@@ -242,7 +242,7 @@ class _AddTile extends StatelessWidget {
           ),
           child: Row(children: [
             const Icon(Icons.add_rounded, size: 18, color: T.textDim),
-            const SizedBox(width: 12),
+            const SizedBox(width: 14),
             Text(label,
                 style: const TextStyle(
                     fontSize: 14,

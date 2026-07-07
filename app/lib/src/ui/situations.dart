@@ -169,7 +169,7 @@ class GridironSituationCard extends StatelessWidget {
             ],
           ),
           if (pos != null) ...[
-            const SizedBox(height: 12),
+            const SizedBox(height: 14),
             _FieldBar(
               ballPct: pos.ballPct,
               sticksPct: pos.sticksPct,
@@ -528,7 +528,7 @@ class MatchTimelineCard extends StatelessWidget {
               child: Column(children: [
                 for (final e in recent)
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 3),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Row(children: [
                       SizedBox(
                           width: 30,
@@ -571,7 +571,7 @@ class MatchTimelineCard extends StatelessWidget {
           width: small ? 8 : 10,
           height: small ? 12 : 14,
           decoration: BoxDecoration(
-              color: T.gold, borderRadius: BorderRadius.circular(1.5)));
+              color: T.gold, borderRadius: BorderRadius.circular(2)));
     }
     final side = e.team == 'home' ? comp.home : comp.away;
     return Container(
@@ -802,6 +802,7 @@ class FieldLeaderboard extends StatelessWidget {
     final hasConstructor =
         showConstructor && !toPar && rows.any((c) => _constructor(c).isNotEmpty);
     return V2Card(
+      padding: T.padTable, // §10 leaderboard table: tighter sides, tables need width
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -50,7 +50,7 @@ class _SettingsPageState extends ConsumerState<SettingsPage> {
           V2Card(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               const CardLabel('Worker URL'),
-              const SizedBox(height: 6),
+              const SizedBox(height: 8),
               Text(
                 'The Cloudflare worker this app reads scores from. '
                 'Point it at your own deployment, or the offline mock '

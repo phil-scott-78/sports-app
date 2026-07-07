@@ -76,12 +76,12 @@ class LeagueEventRow extends StatelessWidget {
             : null,
         child: Column(children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            padding: T.padDenseRow,
             child: body,
           ),
           if (series != null && series.isPlayoff)
             Container(
-              padding: const EdgeInsets.fromLTRB(14, 9, 14, 12),
+              padding: const EdgeInsets.fromLTRB(12, 9, 12, 14),
               decoration: const BoxDecoration(
                   border: Border(top: BorderSide(color: T.divider))),
               child: Row(children: [

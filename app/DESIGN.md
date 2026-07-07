@@ -201,6 +201,14 @@ serif is **not** part of the brand; don't reintroduce it.
 | In-card row | 8–9 vertical padding, 1px `divider` between rows |
 | Bottom of scroll | 28 margin after the last card |
 
+These live as tokens in `theme.dart` (class `T`): `gapCard` (12), `gapFirstCard`
+(14), `scrollBottom` (28), `chipGap` (8), `rowVPad` (9), `sectionHeaderPad`
+(22/6), `chipPad`, `padCompact` (16×18), `padDenseRow` (12×14), `padTable`
+(14×16). **Use the token, not a raw literal** — a hand-typed `18`/`22`/`12`
+is how per-screen drift creeps back in. Padding pairs read `A×B` =
+**horizontal×vertical** (e.g. `padTable` 14×16 = 14 sides / 16 top-bottom — the
+tighter horizontal is deliberate, "tables need width").
+
 Team color bar sizes (width×height, radius):
 
 | Context | Bar |

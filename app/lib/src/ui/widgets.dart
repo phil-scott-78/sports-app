@@ -189,7 +189,7 @@ class RedCardGlyph extends StatelessWidget {
         width: height * 0.7,
         height: height,
         decoration: BoxDecoration(
-            color: T.live, borderRadius: BorderRadius.circular(1.5)),
+            color: T.live, borderRadius: BorderRadius.circular(2)),
       );
 }
 
@@ -216,7 +216,7 @@ class ChipNav extends StatelessWidget {
         child: Row(
           children: [
             for (var i = 0; i < items.length; i++) ...[
-              if (i > 0) const SizedBox(width: 8),
+              if (i > 0) const SizedBox(width: T.chipGap),
               _Chip(
                   label: items[i],
                   selected: i == selected,
@@ -238,7 +238,7 @@ class _Chip extends StatelessWidget {
         onTap: onTap,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 150),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: T.chipPad,
           decoration: BoxDecoration(
             color: selected ? T.invertedBg : null,
             border: selected ? null : Border.all(color: T.border, width: 1.5),

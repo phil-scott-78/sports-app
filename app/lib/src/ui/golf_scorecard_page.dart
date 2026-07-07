@@ -62,7 +62,7 @@ class _GolfScorecardPageState extends ConsumerState<GolfScorecardPage> {
       body: SafeArea(
         bottom: false,
         child: ListView(
-          padding: const EdgeInsets.only(bottom: 28),
+          padding: const EdgeInsets.only(bottom: T.scrollBottom),
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(6, 6, T.pageMargin, 0),
@@ -142,13 +142,13 @@ class _GolfScorecardPageState extends ConsumerState<GolfScorecardPage> {
             ),
         ]),
       ),
-      const SizedBox(height: 12),
+      const SizedBox(height: T.gapFirstCard),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
         child: sel.played ? _RoundCard(sel) : _TeeTimeCard(sel),
       ),
       if (card.stats.isNotEmpty) ...[
-        const SizedBox(height: 12),
+        const SizedBox(height: T.gapCard),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
           child: _StatsCard(card.stats),
@@ -172,7 +172,7 @@ class _RoundChip extends StatelessWidget {
   Widget build(BuildContext context) => GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          padding: T.chipPad,
           decoration: BoxDecoration(
             // §6: active = inverted fill; inactive = 1.5px border outline (no fill).
             color: selected ? T.invertedBg : Colors.transparent,
@@ -224,6 +224,7 @@ class _RoundCard extends StatelessWidget {
     final back = round.holes.where((h) => h.hole > 9).toList();
     final currentHole = _currentHole(round.holes);
     return V2Card(
+      padding: T.padTable, // §10 scorecard table: tighter sides, tables need width
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
           CardLabel('Round ${round.round}'),

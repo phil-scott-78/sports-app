@@ -78,22 +78,51 @@ class _TeamList extends ConsumerWidget {
     final teams = ref.watch(teamsProvider(league));
     final favs = ref.watch(favoriteTeamsProvider);
     return switch (teams) {
-      AsyncData(:final value) => ListView(
-          padding: const EdgeInsets.fromLTRB(
-              T.pageMargin, 8, T.pageMargin, 28),
-          children: [
-            for (final t in value)
-              if (query.isEmpty ||
-                  t.displayName.toLowerCase().contains(query))
-                _teamRow(context, ref, t,
-                    on: favs.any(
-                        (f) => f.league == league && f.teamId == t.id)),
-          ],
-        ),
+      AsyncData(:final value) => _list(context, ref, value, favs),
       AsyncError() => const Center(
           child: HintCard('No team list for this league.')),
       _ => const Center(child: CircularProgressIndicator(color: T.gold)),
     };
+  }
+
+  Widget _list(BuildContext context, WidgetRef ref, List<TeamRef> value,
+      List<FavoriteTeam> favs) {
+    final rows = [
+      for (final t in value)
+        if (query.isEmpty || t.displayName.toLowerCase().contains(query))
+          _teamRow(context, ref, t,
+              on: favs.any((f) => f.league == league && f.teamId == t.id)),
+    ];
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(
+          T.pageMargin, 8, T.pageMargin, T.scrollBottom),
+      children: [
+        if (rows.isEmpty)
+          const HintCard('No teams match your search.')
+        else
+          // §5 dense-list grammar (same as Explore's picker): one radius-16
+          // surface card, rows separated by hairlines — not a divider hanging
+          // under every floating row.
+          Container(
+            decoration: BoxDecoration(
+              color: T.surface,
+              borderRadius: BorderRadius.circular(T.rowCardRadius),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Column(children: [
+              for (var i = 0; i < rows.length; i++)
+                i == 0
+                    ? rows[i]
+                    : DecoratedBox(
+                        decoration: const BoxDecoration(
+                            border:
+                                Border(top: BorderSide(color: T.divider))),
+                        child: rows[i],
+                      ),
+            ]),
+          ),
+      ],
+    );
   }
 
   Widget _teamRow(BuildContext context, WidgetRef ref, TeamRef t,
@@ -106,10 +135,8 @@ class _TeamList extends ConsumerWidget {
             abbr: t.abbreviation,
             color: t.color,
           )),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 11),
-        decoration: const BoxDecoration(
-            border: Border(bottom: BorderSide(color: T.divider))),
+      child: Padding(
+        padding: T.padDenseRow,
         child: Row(children: [
           ColorBar(teamColorOf(t.color), width: 6, height: 22),
           const SizedBox(width: 12),

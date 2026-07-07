@@ -35,7 +35,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
     final standings = ref.watch(standingsProvider(selected));
 
     return ListView(
-      padding: const EdgeInsets.only(bottom: 28),
+      padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
         const Padding(
           padding: EdgeInsets.fromLTRB(T.pageMargin, 14, T.pageMargin, 0),
@@ -47,7 +47,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
           selected: leagues.indexOf(selected),
           onTap: (i) => setState(() => _selected = leagues[i]),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: T.gapFirstCard),
         ...switch (standings) {
           AsyncData(:final value) => _groups(value, selected),
           AsyncError() => [

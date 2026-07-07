@@ -32,10 +32,13 @@ class StandingsGroupCard extends StatelessWidget {
     final cols = _effectiveColumns();
     final keyCol = _keyColumn(cols);
     return V2Card(
-      padding: const EdgeInsets.symmetric(vertical: 14),
+      // §10 data table = T.padTable (14×16), split so the row hairlines + gold
+      // wash bleed to the card edge: the card owns the 16 vertical, the header
+      // and rows own the 14 horizontal.
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 14),
           child: Row(children: [
             Expanded(
                 child: Text(name.toUpperCase(), style: T.cardLabelFaint)),
@@ -96,13 +99,13 @@ class StandingsGroupCard extends StatelessWidget {
         .toList();
   }
 
-  double _colWidth(String label) => label.length >= 4 ? 46 : 38;
+  double _colWidth(String label) => label.length >= 4 ? 44 : 38;
 
   Widget _row(StandingsRow row, List<StandingColumn> cols,
       StandingColumn? keyCol) {
     final hi = highlightIds.contains(row.team.id);
     final content = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: T.rowVPad),
       decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: T.divider))),
       child: Row(children: [

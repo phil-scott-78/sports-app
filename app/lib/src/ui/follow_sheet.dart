@@ -106,7 +106,7 @@ class _FollowSheet extends ConsumerWidget {
 
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 26),
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 10, T.pageMargin, 26),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

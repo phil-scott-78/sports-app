@@ -85,7 +85,7 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
       },
       child: ListView(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: 28),
+        padding: const EdgeInsets.only(bottom: T.scrollBottom),
         children: [
           _DateHeader(
             date: date,
@@ -104,7 +104,7 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
                   for (final f in value)
                     Padding(
                       padding: const EdgeInsets.fromLTRB(
-                          T.pageMargin, 10, T.pageMargin, 0),
+                          T.pageMargin, T.gapCard, T.pageMargin, 0),
                       child: FavoriteHeroCard(f),
                     ),
                 ],
@@ -144,7 +144,7 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
     }
     if (out.isEmpty) {
       out.add(Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 24, T.pageMargin, 0),
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
         child: HintCard(date != null
             ? 'No games on this day in your leagues.'
             : 'No games today in your leagues.\nManage what you follow in the Following tab.'),
@@ -164,7 +164,7 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
       );
 
   Widget _feedError(String message) => Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 24, T.pageMargin, 0),
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
         child: HintCard(message),
       );
 }
@@ -426,7 +426,7 @@ class _SectionHeader extends StatelessWidget {
       onTap: () =>
           openLeaguePage(context, league, name: scores.leagueName),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 6),
+        padding: T.sectionHeaderPad,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,

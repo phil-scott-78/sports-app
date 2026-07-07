@@ -382,7 +382,7 @@ class StatCompareRow extends StatelessWidget {
       Widget half(double? frac, Color color, bool leads, bool alignRight) =>
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(3),
               child: Stack(children: [
                 Container(height: 5, color: T.track),
                 Align(
@@ -399,7 +399,7 @@ class StatCompareRow extends StatelessWidget {
           );
       return Row(children: [
         half(aFrac, awayColor, awayLeads, true),
-        const SizedBox(width: 2),
+        const SizedBox(width: 3),
         half(hFrac, homeColor, homeLeads, false),
       ]);
     }
@@ -410,13 +410,13 @@ class StatCompareRow extends StatelessWidget {
     final aFlex = total <= 0 ? 500 : (av / total * 1000).round().clamp(1, 999);
     final hFlex = total <= 0 ? 500 : (1000 - aFlex).clamp(1, 999);
     return ClipRRect(
-      borderRadius: BorderRadius.circular(2),
+      borderRadius: BorderRadius.circular(3),
       child: Row(children: [
         Expanded(
             flex: aFlex,
             child:
                 Container(height: 5, color: fill(awayColor, awayLeads))),
-        const SizedBox(width: 2),
+        const SizedBox(width: 3),
         Expanded(
             flex: hFlex,
             child:

@@ -173,10 +173,10 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           ),
           SliverPadding(
             padding: const EdgeInsets.fromLTRB(
-                T.pageMargin, 2, T.pageMargin, 28),
+                T.pageMargin, T.gapFirstCard, T.pageMargin, T.scrollBottom),
             sliver: SliverList.separated(
               itemCount: sections.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 12),
+              separatorBuilder: (_, __) => const SizedBox(height: T.gapCard),
               itemBuilder: (_, i) => sections[i],
             ),
           ),
@@ -939,7 +939,7 @@ class _FightCardCard extends StatelessWidget {
         style: T.rowText.copyWith(
             color: winner == null || c == winner ? T.text : T.textDim));
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 11),
+      padding: const EdgeInsets.symmetric(vertical: 9),
       decoration: divider
           ? const BoxDecoration(
               border: Border(top: BorderSide(color: T.divider)))
@@ -1494,6 +1494,7 @@ class _BoxGroupCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final cols = group.columns.take(_maxCols).toList();
     return V2Card(
+      padding: T.padTable, // §10 dense table: tighter sides, tables need width
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CardLabel(group.title),
         for (final team in group.teams) ...[
@@ -1510,7 +1511,7 @@ class _BoxGroupCard extends StatelessWidget {
           ]),
           for (final r in team.rows.take(12))
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 7),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               decoration: const BoxDecoration(
                   border: Border(top: BorderSide(color: T.divider))),
               child: Row(children: [
@@ -1766,10 +1767,11 @@ class _GolfMetaStrip extends StatelessWidget {
         ),
         if (golf.major)
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            // §6 badge geometry (2×6 pad, r4), with a soft gold-tinted fill.
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
             decoration: BoxDecoration(
               color: T.gold.withValues(alpha: 0.14),
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(4),
             ),
             child: const Text('MAJOR',
                 style: TextStyle(
@@ -1929,6 +1931,7 @@ class _CricketInningsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return V2Card(
+      padding: T.padTable, // §10 dense table: tighter sides, tables need width
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
           Expanded(

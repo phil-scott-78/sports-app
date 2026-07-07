@@ -55,6 +55,33 @@ abstract final class T {
   static const cardPad = EdgeInsets.all(18);
   static const pageMargin = 20.0;
 
+  // ---- spacing scale (DESIGN.md §4) ----------------------------------------
+  // The code mirror of the §4 spacing table. Prefer these over raw literals so
+  // the same conceptual gap can't drift a pixel or two per screen. Padding
+  // tokens follow the spec's `A×B` = horizontal×vertical convention (confirmed
+  // by StatTile `12×14` → fromLTRB(12,12,12,14), and §10 "tables need width").
+  static const gapCard = 12.0; // card → card
+  static const gapFirstCard = 14.0; // first card after the chip nav
+  static const scrollBottom = 28.0; // margin after the last card
+  static const chipGap = 8.0; // inter-chip gap in a chip nav
+  static const rowVPad = 9.0; // in-card row vertical padding (8–9 band)
+
+  /// Section header inset: 22 top / 6 bottom, page-margin sides.
+  static const sectionHeaderPad =
+      EdgeInsets.fromLTRB(pageMargin, 22, pageMargin, 6);
+
+  /// Chip-nav chip padding (8×16 → h16/v8), the ChipNav default.
+  static const chipPad = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
+
+  /// Compact / hero-card padding (16×18 → h16/v18).
+  static const padCompact = EdgeInsets.symmetric(horizontal: 16, vertical: 18);
+
+  /// Dense list-row padding (12×14 → h12/v14).
+  static const padDenseRow = EdgeInsets.symmetric(horizontal: 12, vertical: 14);
+
+  /// §10 data-table padding (14×16 → h14/v16 — tighter sides, tables need width).
+  static const padTable = EdgeInsets.symmetric(horizontal: 14, vertical: 16);
+
   // ---- type: scoreboard voice --------------------------------------------
   static const _bc = 'BarlowCondensed';
   static const _tab = [FontFeature.tabularFigures()];

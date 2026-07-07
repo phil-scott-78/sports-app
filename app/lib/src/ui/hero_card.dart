@@ -45,7 +45,7 @@ class FavoriteHeroCard extends StatelessWidget {
         subtitle: card?.leagueName,
       ),
       child: V2Card(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
+        padding: T.padCompact,
         bordered: true,
         child: body,
       ),
@@ -224,9 +224,9 @@ class _IdleBody extends StatelessWidget {
     final last = card.last, next = card.next;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       _seasonHeader(context),
-      const SizedBox(height: 13),
+      const SizedBox(height: 12),
       if (last != null) _resultRow(context, last),
-      if (last != null && next != null) const SizedBox(height: 11),
+      if (last != null && next != null) const SizedBox(height: 8),
       if (next != null) _nextRow(context, next),
     ]);
   }

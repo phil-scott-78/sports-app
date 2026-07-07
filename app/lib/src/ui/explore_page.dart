@@ -40,7 +40,7 @@ class _ExplorePageState extends ConsumerState<ExplorePage> {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.only(bottom: 28),
+                padding: const EdgeInsets.only(bottom: T.scrollBottom),
                 children: _query.isEmpty
                     ? _browse(value, overview, followed)
                     : _searchResults(value, overview, followed),
@@ -126,7 +126,7 @@ class _ExplorePageState extends ConsumerState<ExplorePage> {
   }
 
   Widget _label(String text) => Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 18, T.pageMargin, 6),
+        padding: T.sectionHeaderPad,
         // §3/§5 section headers speak the Barlow scoreboard voice, not copy voice.
         child: Text(text.toUpperCase(), style: T.sectionTitle),
       );
@@ -162,7 +162,7 @@ class _ExplorePageState extends ConsumerState<ExplorePage> {
     return InkWell(
       onTap: () => openLeaguePage(context, l.key, name: l.name),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 11, 8, 11),
+        padding: const EdgeInsets.fromLTRB(12, 14, 8, 14),
         child: Row(children: [
           Expanded(
             child:
@@ -175,7 +175,7 @@ class _ExplorePageState extends ConsumerState<ExplorePage> {
                 Row(mainAxisSize: MainAxisSize.min, children: [
                   if (info?.live == true) ...[
                     const LiveDot(),
-                    const SizedBox(width: 5),
+                    const SizedBox(width: 6),
                   ],
                   Flexible(
                     child: Text(caption,
