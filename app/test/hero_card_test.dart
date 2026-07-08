@@ -9,7 +9,6 @@ import 'package:scores/src/providers.dart';
 import 'package:scores/src/theme.dart';
 import 'package:scores/src/ui/game_detail_page.dart';
 import 'package:scores/src/ui/hero_card.dart';
-import 'package:scores/src/ui/team_page.dart';
 import 'package:scores/src/ui/widgets.dart';
 
 Map<String, dynamic> fixture(String name) =>
@@ -48,57 +47,122 @@ List<Override> navOverrides(SharedPreferences p, TeamCard card) => [
       summaryProvider.overrideWith((ref, k) async => throw 'offline'),
     ];
 
+/// A live NBA playoff card carrying a structured series (drives the derived
+/// 'Game N · X leads' header + the series pips).
+TeamCard seriesLiveCard() => TeamCard.fromJson({
+      'league': 'basketball/nba',
+      'sport': 'basketball',
+      'leagueName': 'NBA',
+      'team': {'id': 'okc', 'displayName': 'Thunder', 'abbreviation': 'OKC'},
+      'live': {
+        'id': 'e1',
+        'name': 'Cavaliers at Thunder',
+        'shortName': 'CLE @ OKC',
+        'start': '2026-06-01T00:00Z',
+        'competitions': [
+          {
+            'id': 'e1',
+            'layout': 'headToHead',
+            'scoreKind': 'numeric',
+            'competitorKind': 'team',
+            'status': {
+              'phase': 'live',
+              'live': true,
+              'ended': false,
+              'period': 4,
+              'periodLabel': 'Q4',
+              'espnName': 'STATUS_IN_PROGRESS',
+              'detail': 'Q4 4:12',
+              'shortDetail': 'Q4 4:12',
+            },
+            'periods': {
+              'unit': 'quarter',
+              'regulation': 4,
+              'played': 4,
+              'isOvertime': false,
+            },
+            'competitors': [
+              {
+                'kind': 'team',
+                'id': 'okc',
+                'displayName': 'Thunder',
+                'abbreviation': 'OKC',
+                'homeAway': 'home',
+                'score': {'display': '88', 'value': 88},
+              },
+              {
+                'kind': 'team',
+                'id': 'cle',
+                'displayName': 'Cavaliers',
+                'abbreviation': 'CLE',
+                'homeAway': 'away',
+                'score': {'display': '84', 'value': 84},
+              },
+            ],
+            'meta': {
+              'series': {
+                'type': 'playoff',
+                'total': 7,
+                'completed': false,
+                'competitors': [
+                  {'id': 'okc', 'wins': 3},
+                  {'id': 'cle', 'wins': 2},
+                ],
+              },
+            },
+          },
+        ],
+      },
+      'anyLive': true,
+    });
+
 void main() {
-  testWidgets('idle hero card: season line + last + next, taps navigate',
+  testWidgets('final hero card: score rows + Final, winner bright, taps to detail',
       (tester) async {
     final p = await prefs();
+    // teamcard_nba's primary is its last game (a final) → the final body.
     final card = TeamCard.fromJson(fixture('teamcard_nba.json'));
-    await tester.pumpWidget(wrap(FavoriteHeroCard(feedFor(card)),
-        navOverrides(p, card)));
+    await tester.pumpWidget(
+        wrap(FavoriteHeroCard(feedFor(card)), navOverrides(p, card)));
     await tester.pump();
 
-    // season line: abbr · record · standingSummary in one text
-    expect(find.textContaining('BOS'), findsOneWidget);
-    expect(find.textContaining('46-36'), findsOneWidget);
-    expect(find.textContaining('2nd in Atlantic'), findsOneWidget);
-    // last result row (Final) + next game row (Upcoming)
-    expect(find.text('Upcoming'), findsOneWidget);
-    expect(find.text('vs PHI'), findsOneWidget); // opponent of the last result
+    // score rows + the Final footer; none of the scheduled/live affordances
+    expect(find.text('123'), findsOneWidget); // BOS (winner)
+    expect(find.text('91'), findsOneWidget); // PHI (loser)
+    expect(find.text('Final'), findsOneWidget);
+    expect(find.byType(LiveDot), findsNothing);
+    expect(find.text('Upcoming'), findsNothing);
 
-    // tap the season line → team page
-    await tester.tap(find.textContaining('2nd in Atlantic'));
-    await tester.pumpAndSettle();
-    expect(find.byType(TeamPage), findsOneWidget);
-  });
-
-  testWidgets('idle hero card: tapping the last result opens its game detail',
-      (tester) async {
-    final p = await prefs();
-    final card = TeamCard.fromJson(fixture('teamcard_nba.json'));
-    await tester.pumpWidget(wrap(FavoriteHeroCard(feedFor(card)),
-        navOverrides(p, card)));
-    await tester.pump();
-
-    await tester.tap(find.text('vs PHI'));
+    // the whole card taps through to the game detail
+    await tester.tap(find.text('123'));
     await tester.pumpAndSettle();
     expect(find.byType(GameDetailPage), findsOneWidget);
   });
 
-  testWidgets('idle hero card: missing standingSummary degrades to record-only',
+  testWidgets('scheduled hero card: compact matchup + kickoff, no live/final',
       (tester) async {
     final p = await prefs();
+    // Strip live+last so the next (scheduled) game is the primary event.
     final j = fixture('teamcard_nba.json');
-    (j['team'] as Map).remove('standingSummary');
+    j['live'] = null;
+    j['last'] = null;
     final card = TeamCard.fromJson(j);
-    await tester.pumpWidget(wrap(FavoriteHeroCard(feedFor(card)),
-        navOverrides(p, card)));
+    await tester.pumpWidget(
+        wrap(FavoriteHeroCard(feedFor(card)), navOverrides(p, card)));
     await tester.pump();
 
-    expect(find.textContaining('46-36'), findsOneWidget);
-    expect(find.textContaining('in Atlantic'), findsNothing);
+    // compact matchup: both tricodes present, no score/Final/live dot
+    expect(find.text('ATL'), findsOneWidget); // away
+    expect(find.text('vs'), findsOneWidget);
+    expect(find.byType(LiveDot), findsNothing);
+    expect(find.text('Final'), findsNothing);
+
+    await tester.tap(find.text('ATL'));
+    await tester.pumpAndSettle();
+    expect(find.byType(GameDetailPage), findsOneWidget);
   });
 
-  testWidgets('live hero card renders the live body, not the idle body',
+  testWidgets('live hero card renders the live body with the live dot',
       (tester) async {
     final p = await prefs();
     final mlb = ScoresResponse.fromJson(fixture('mlb.json'));
@@ -117,13 +181,46 @@ void main() {
       live: liveEv,
       anyLive: true,
     );
-    await tester.pumpWidget(wrap(FavoriteHeroCard(feedFor(card)),
-        navOverrides(p, card)));
+    await tester.pumpWidget(
+        wrap(FavoriteHeroCard(feedFor(card)), navOverrides(p, card)));
     await tester.pump();
 
-    // live path → a live dot, and NONE of the idle-only affordances
     expect(find.byType(LiveDot), findsWidgets);
     expect(find.text('Upcoming'), findsNothing);
     await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets(
+      'live playoff hero: derives "Game N · leads" header + renders series pips',
+      (tester) async {
+    final p = await prefs();
+    final card = seriesLiveCard();
+    await tester.pumpWidget(
+        wrap(FavoriteHeroCard(feedFor(card)), navOverrides(p, card)));
+    await tester.pump();
+
+    // 3+2 games played → Game 6; OKC (3) leads CLE (2).
+    expect(find.textContaining('Game 6'), findsOneWidget);
+    expect(find.textContaining('OKC leads 3'), findsOneWidget);
+    expect(find.byType(SeriesPips), findsOneWidget);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('error hero card: shows the team name + a calm message',
+      (tester) async {
+    final p = await prefs();
+    final feed = FavoriteTeamFeed(
+      const FavoriteTeam(
+          league: 'basketball/nba', teamId: '2', name: 'Celtics'),
+      null,
+      error: 'boom',
+    );
+    await tester.pumpWidget(wrap(FavoriteHeroCard(feed), [
+      sharedPrefsProvider.overrideWithValue(p),
+    ]));
+    await tester.pump();
+
+    expect(find.textContaining('CELTICS'), findsOneWidget);
+    expect(find.textContaining('load'), findsOneWidget);
   });
 }

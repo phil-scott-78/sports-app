@@ -187,7 +187,7 @@ class _FollowSheet extends ConsumerWidget {
                   : 'Follow $displayLeague',
               subtitle: followed
                   ? 'Tap to remove its section from your feed'
-                  : 'Its games get a section in your feed',
+                  : 'Keep the league section on top',
               divider: false,
               onTap: () => ref.read(followedProvider.notifier).toggle(league),
             ),

@@ -479,9 +479,7 @@ class _SectionHeader extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: T.sectionTitle),
             ),
-            Text(
-                '${scores.events.length} game${scores.events.length == 1 ? '' : 's'}',
-                style: T.captionFaint),
+            Text('See all ${scores.events.length}', style: T.captionFaint),
             const SizedBox(width: 4),
             const Icon(Icons.chevron_right_rounded,
                 size: 16, color: T.textFaint),

@@ -85,6 +85,17 @@ fake: capacity/opened/wind, xG, tennis live points…), final verification sweep
 CLAUDE.md updates.
 
 ## Status log
+- 2026-07-08: Phase 5a COMPLETE + committed (ee2b8f3), gate green (390 tests +
+  full worker live suites). Team page 11a–11d grammar, player page 11e,
+  standalone rankings page, venue/circuit tab 14a/13a, lockstep join ids
+  (Venue.id, SportEvent.circuit, BoxRow.id, LineupPlayer.id → 281 goldens).
+  KNOWN GAPS: player game-log W/L omitted; soccer box taps via Lineups only;
+  athlete follow hook held.
+- 2026-07-08: Phase 5b workflow launched (standings 8a wild-card/playoff-line +
+  follow sheet 8b + following manage 8c; home-feed stacked heroes + richer
+  cheap-tier league rows 4a). HomeFeed.dc.html + Standings.dc.html mirrored.
+  Remaining after 5b: tournaments/brackets (5c — NOTE: World Cup 2026 knockout
+  + Wimbledon are LIVE right now, ideal capture window), then Phase 6 closeout.
 - 2026-07-08: Phase 4 COMPLETE + committed (4a03284), gate green FIRST PASS
   (flutter 381/381, worker units 162 + mock 214). Landed: broadcast + odds
   (inline + core moneyline, hasOdds gate), core situation + predictor fallback

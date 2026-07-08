@@ -5,13 +5,12 @@ import '../util.dart';
 import 'follow_sheet.dart';
 import 'game_detail_page.dart';
 import 'situations.dart';
-import 'team_page.dart';
 import 'widgets.dart';
 
-/// One favorite's stacked hero card on the home feed. A live game gets the full
-/// situation treatment (whole card taps through to it); when idle, the card
-/// shows a season line + the last result + the next game, each with its own tap
-/// target (team page / that game's detail).
+/// One favorite's stacked hero card on the home feed. Detail scales with game
+/// state: a live game gets the full situation treatment; a finished game shows
+/// the result with the winner bright; a scheduled game a compact matchup. The
+/// whole card taps through to its game; a long-press opens the follow sheet.
 class FavoriteHeroCard extends StatelessWidget {
   final FavoriteTeamFeed feed;
   const FavoriteHeroCard(this.feed, {super.key});
@@ -21,21 +20,26 @@ class FavoriteHeroCard extends StatelessWidget {
     final card = feed.card;
     final event = card?.primary;
     final comp = event?.main;
-    final live = comp != null && comp.status.live;
 
     Widget body;
+    EdgeInsetsGeometry padding = T.padCompact;
     if (card == null || event == null || comp == null) {
       body = _ErrorBody(feed);
-    } else if (live) {
+    } else if (comp.status.live) {
       body = _LiveBody(card, event, comp);
+    } else if (comp.status.isFinal) {
+      body = _FinalBody(card, event, comp);
     } else {
-      body = _IdleBody(league: feed.fav.league, card: card);
+      body = _ScheduledBody(card, event, comp);
+      // Compact scheduled card: a touch shorter than the live/final bodies.
+      padding = const EdgeInsets.fromLTRB(18, 14, 18, 14);
     }
 
     return GestureDetector(
-      // Live → the whole card opens the game. Idle → the inner rows own their
-      // taps (team page / each game), so the card itself isn't tappable.
-      onTap: live ? () => openGameDetail(context, feed.fav.league, event!) : null,
+      // The whole card opens its game; the inner content is a glance, not a nav.
+      onTap: event == null
+          ? null
+          : () => openGameDetail(context, feed.fav.league, event),
       onLongPress: () => showTeamFollowSheet(
         context,
         league: feed.fav.league,
@@ -44,16 +48,14 @@ class FavoriteHeroCard extends StatelessWidget {
         abbr: feed.fav.abbr,
         subtitle: card?.leagueName,
       ),
-      child: V2Card(
-        padding: T.padCompact,
-        bordered: true,
-        child: body,
-      ),
+      child: V2Card(padding: padding, bordered: true, child: body),
     );
   }
 }
 
-/// 'CUBS · BOT 7' header line + right caption.
+// ═══════════════════════════ shared pieces ═══════════════════════════
+
+/// 'CUBS · BOT 7' header line + right caption (venue / series context).
 class _HeroHeader extends StatelessWidget {
   final String label;
   final String? right;
@@ -73,7 +75,7 @@ class _HeroHeader extends StatelessWidget {
                   letterSpacing: 0.55,
                   color: T.textDim)),
         ),
-        if (right != null)
+        if (right != null && right!.isNotEmpty)
           Text(right!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -81,6 +83,8 @@ class _HeroHeader extends StatelessWidget {
       ]);
 }
 
+/// A full-height matchup row (8×26 bar, Barlow 24/700 tricode, 32/700 score);
+/// the trailing side dims when it's behind / lost.
 class _HeroScoreRow extends StatelessWidget {
   final Competitor c;
   final bool dim;
@@ -96,11 +100,106 @@ class _HeroScoreRow extends StatelessWidget {
       Text(c.label, style: T.heroName.copyWith(color: color)),
       if (badge != null) ...[const SizedBox(width: 10), badge!],
       const Spacer(),
-      Text(c.score?.display ?? '',
-          style: T.heroScore.copyWith(color: color)),
+      Text(c.score?.display ?? '', style: T.heroScore.copyWith(color: color)),
     ]);
   }
 }
+
+/// The hairline-topped footer: a cheap glance line on the left, series pips on
+/// the right. Rendered only when there's something to show.
+class _HeroFooter extends StatelessWidget {
+  final String left;
+  final Competition comp;
+  const _HeroFooter({required this.left, required this.comp});
+
+  @override
+  Widget build(BuildContext context) {
+    final series = comp.meta?.series;
+    final pips = series != null && series.isPlayoff;
+    if (left.isEmpty && !pips) return const SizedBox.shrink();
+    return Container(
+      margin: const EdgeInsets.only(top: 12),
+      padding: const EdgeInsets.only(top: 12),
+      decoration:
+          const BoxDecoration(border: Border(top: BorderSide(color: T.divider))),
+      child: Row(children: [
+        Expanded(
+          child: Text(left,
+              maxLines: 1, overflow: TextOverflow.ellipsis, style: T.caption),
+        ),
+        if (pips) SeriesPips(series: series, comp: comp),
+      ]),
+    );
+  }
+}
+
+/// Playoff-series context for the header caption: 'Game 6 · DAL leads 3–2'.
+/// Both halves are DERIVED (§ Part I.6): game N = played + 1, the lead phrase
+/// from each competitor's win count. Null when there's no live playoff series.
+String? _seriesContext(Competition comp) {
+  final s = comp.meta?.series;
+  if (s == null || !s.isPlayoff) return null;
+  final cs = comp.competitors;
+  if (cs.length < 2) return comp.meta?.seriesSummary;
+  final a = cs[0], b = cs[1];
+  final aw = s.wins(a.id), bw = s.wins(b.id);
+  final played = aw + bw;
+  final gameNo = s.completed ? played : played + 1;
+  final String tail;
+  if (aw == bw) {
+    tail = aw == 0 ? 'Series level' : 'Series tied $aw–$aw';
+  } else {
+    final lead = aw > bw ? a : b;
+    final hi = aw > bw ? aw : bw, lo = aw > bw ? bw : aw;
+    tail = '${lead.label} leads $hi–$lo';
+  }
+  return gameNo > 0 ? 'Game $gameNo · $tail' : tail;
+}
+
+/// The best available CHEAP glance line for a competition's footer, tried in
+/// order: the live situation (count/outs, down & distance), the soccer/rugby
+/// timeline (goal / man-down), the cheap game leaders, then the last-play text.
+String _glanceLine(Competition comp) {
+  final sit = comp.situation;
+  if (sit != null) {
+    final bits = <String>[
+      if (sit.batter != null) '${sit.batter} up',
+      if (sit.balls != null && sit.strikes != null) '${sit.balls}–${sit.strikes}',
+      if (sit.outsText != null)
+        sit.outsText!
+      else if (sit.outs != null)
+        '${sit.outs} out',
+      if (sit.downDistanceText != null) sit.downDistanceText!,
+    ];
+    if (bits.isNotEmpty) return bits.take(3).join(' · ');
+  }
+  // Soccer/rugby (no core situation): lead with the goal — a "10 MEN" badge on
+  // the row already flags the man-down.
+  final match = matchRowContext(comp, goalFirst: true);
+  if (match != null) return match;
+  final leaders = _leadersLine(comp);
+  if (leaders != null) return leaders;
+  return sit?.lastPlay ?? '';
+}
+
+/// 'Hintz 12 shots on goal · Oettinger .938' — the top cheap leader from each
+/// side. Null when the scoreboard carries no usable leaders.
+String? _leadersLine(Competition comp) {
+  final parts = <String>[];
+  for (final c in comp.competitors) {
+    for (final l in c.leaders) {
+      final who = l.athlete, val = l.display;
+      if (who != null && who.isNotEmpty && val != null && val.isNotEmpty) {
+        parts.add('$who $val');
+        break;
+      }
+    }
+    if (parts.length >= 2) break;
+  }
+  return parts.isEmpty ? null : parts.join(' · ');
+}
+
+// ═══════════════════════════ live ═══════════════════════════
 
 class _LiveBody extends StatelessWidget {
   final TeamCard card;
@@ -113,7 +212,6 @@ class _LiveBody extends StatelessWidget {
     final sit = comp.situation;
     final away = comp.away, home = comp.home;
     final lead = leadingSide(comp);
-    final series = comp.meta?.series;
     final diamond = sit != null && sit.hasBaseball
         ? BaseballDiamond(
             onFirst: sit.onFirst ?? false,
@@ -123,16 +221,13 @@ class _LiveBody extends StatelessWidget {
           )
         : null;
 
-    final footerLeft = _footerText(comp);
-    final headerRight =
-        comp.meta?.seriesSummary ?? event.venue?.name ?? '';
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _HeroHeader(
-          '${card.team.abbreviation ?? card.team.displayName} · ${comp.status.shortDetail ?? comp.status.detail}',
-          right: headerRight,
+          '${card.team.abbreviation ?? card.team.displayName} · '
+          '${comp.status.shortDetail ?? comp.status.detail}',
+          right: _seriesContext(comp) ?? event.venue?.name ?? '',
           live: true,
         ),
         const SizedBox(height: 12),
@@ -152,30 +247,13 @@ class _LiveBody extends StatelessWidget {
           ),
           if (diamond != null) ...[const SizedBox(width: 16), diamond],
         ]),
-        if (footerLeft.isNotEmpty || series?.isPlayoff == true) ...[
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.only(top: 12),
-            decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: T.divider))),
-            child: Row(children: [
-              Expanded(
-                child: Text(footerLeft,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: T.caption),
-              ),
-              if (series?.isPlayoff == true)
-                SeriesPips(series: series!, comp: comp),
-            ]),
-          ),
-        ],
+        _HeroFooter(left: _glanceLine(comp), comp: comp),
       ],
     );
   }
 
   /// Man-advantage badges next to a side's name, from the cheap scoreboard:
-  /// soccer's red-card man-down, or hockey's power play (§8 glance glyph).
+  /// hockey's power play, or soccer's red-card man-down.
   Widget? _sideBadge(Competition comp, Competitor c) {
     final sit = comp.situation;
     if (sit != null && sit.hasPowerPlay && sit.strengthTeam == c.id) {
@@ -189,185 +267,117 @@ class _LiveBody extends StatelessWidget {
     }
     return null;
   }
-
-  String _footerText(Competition comp) {
-    final sit = comp.situation;
-    if (sit != null) {
-      final bits = <String>[
-        if (sit.batter != null) '${sit.batter} up',
-        if (sit.balls != null && sit.strikes != null)
-          '${sit.balls}–${sit.strikes}',
-        if (sit.outsText != null)
-          sit.outsText!
-        else if (sit.outs != null)
-          '${sit.outs} out',
-        if (sit.downDistanceText != null) sit.downDistanceText!,
-      ];
-      if (bits.isNotEmpty) return bits.take(3).join(' · ');
-    }
-    // Soccer/rugby (no core situation): the latest goal, else who's a man down
-    // — the "10 MEN" badge already flags the man-down, so lead with the goal.
-    return matchRowContext(comp, goalFirst: true) ?? sit?.lastPlay ?? '';
-  }
 }
 
-/// The idle (not-live) favorite card: a tappable season line (→ team page) over
-/// the last result and the next game, each row tapping through to that game.
-/// Stays ≤ ~3 glanceable lines; a team with only one of last/next shows one row.
-class _IdleBody extends StatelessWidget {
-  final String league;
+// ═══════════════════════════ final ═══════════════════════════
+
+class _FinalBody extends StatelessWidget {
   final TeamCard card;
-  const _IdleBody({required this.league, required this.card});
+  final SportEvent event;
+  final Competition comp;
+  const _FinalBody(this.card, this.event, this.comp);
 
   @override
   Widget build(BuildContext context) {
-    final last = card.last, next = card.next;
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      _seasonHeader(context),
-      const SizedBox(height: 12),
-      if (last != null) _resultRow(context, last),
-      if (last != null && next != null) const SizedBox(height: 8),
-      if (next != null) _nextRow(context, next),
-    ]);
+    final away = comp.away, home = comp.home;
+    final lead = leadingSide(comp); // finals dim by winner
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _HeroHeader(
+          card.team.abbreviation ?? card.team.displayName,
+          right: _seriesContext(comp) ?? event.venue?.name ?? '',
+        ),
+        const SizedBox(height: 12),
+        if (away != null)
+          _HeroScoreRow(away, dim: lead != null && lead != away),
+        const SizedBox(height: 8),
+        if (home != null)
+          _HeroScoreRow(home, dim: lead != null && lead != home),
+        _HeroFooter(left: statusLine(comp, event), comp: comp),
+      ],
+    );
   }
+}
 
-  /// 'BOS · 46-36 · 2nd in Atlantic' — null segments dropped, long strings
-  /// ellipsized. Taps through to the team page.
-  Widget _seasonHeader(BuildContext context) {
-    final t = card.team;
-    final segs = <String>[
-      (t.abbreviation ?? t.displayName).toUpperCase(),
-      if (t.record != null && t.record!.isNotEmpty) t.record!,
-      if (t.standingSummary != null && t.standingSummary!.isNotEmpty)
-        t.standingSummary!,
-    ];
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => openTeamPage(context, league,
-          teamId: t.id, name: t.displayName, color: t.color),
-      child: Row(children: [
-        Expanded(
-          child: Text(segs.join('  ·  '),
+// ═══════════════════════════ scheduled ═══════════════════════════
+
+class _ScheduledBody extends StatelessWidget {
+  final TeamCard card;
+  final SportEvent event;
+  final Competition comp;
+  const _ScheduledBody(this.card, this.event, this.comp);
+
+  @override
+  Widget build(BuildContext context) {
+    final away = comp.away ??
+        (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+    final home = comp.home ??
+        (comp.competitors.length > 1 ? comp.competitors[1] : null);
+    final team = card.team.abbreviation ?? card.team.displayName;
+    final context = _contextLabel();
+    final label = context == null ? team : '$team · $context';
+    final broadcast = comp.broadcast ??
+        (event.broadcasts.isNotEmpty ? event.broadcasts.first : null);
+
+    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Expanded(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(label.toUpperCase(),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontSize: 11.5,
+                  fontSize: 11,
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 0.4,
+                  letterSpacing: 0.55,
                   color: T.textDim)),
-        ),
-        const Icon(Icons.chevron_right_rounded, size: 16, color: T.textFaint),
-      ]),
-    );
-  }
-
-  Competitor? _favSide(Competition comp) {
-    for (final c in comp.competitors) {
-      if (c.id == card.team.id) return c;
-    }
-    return comp.home;
-  }
-
-  Competitor? _oppSide(Competition comp, Competitor? fav) {
-    for (final c in comp.competitors) {
-      if (c != fav) return c;
-    }
-    return null;
-  }
-
-  Widget _resultRow(BuildContext context, SportEvent ev) {
-    final comp = ev.main;
-    if (comp == null) return const SizedBox.shrink();
-    final fav = _favSide(comp);
-    final opp = _oppSide(comp, fav);
-    final tag = fav?.winner == true
-        ? 'W'
-        : (opp?.winner == true ? 'L' : 'D');
-    final tagColor = fav?.winner == true
-        ? T.green
-        : (opp?.winner == true ? T.live : T.textFaint);
-    final joiner = fav?.homeAway == 'home' ? 'vs' : 'at';
-    return _row(
-      context: context,
-      ev: ev,
-      leading: TagBadge(tag, bg: tagColor, fg: Colors.white),
-      opponent: '$joiner ${opp?.label ?? ''}',
-      trailing: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        Text('${fav?.score?.display ?? ''}–${opp?.score?.display ?? ''}',
-            style: T.rowScore.copyWith(fontSize: 17)),
-        Text(statusLine(comp, ev), style: T.captionFaint),
-      ]),
-    );
-  }
-
-  Widget _nextRow(BuildContext context, SportEvent ev) {
-    final comp = ev.main;
-    if (comp == null) return const SizedBox.shrink();
-    final fav = _favSide(comp);
-    final opp = _oppSide(comp, fav);
-    final joiner = fav?.homeAway == 'home' ? 'vs' : 'at';
-    // The pre-game line, when the cheap scoreboard priced it (§2.6): favorite+line
-    // and the total. A single faint line — no book chrome. Absent → nothing shown.
-    final odds = comp.odds;
-    final oddsLine = odds == null
-        ? null
-        : [
-            if (odds.details != null) odds.details!,
-            if (odds.overUnder != null)
-              'O/U ${odds.overUnder! == odds.overUnder!.roundToDouble() ? odds.overUnder!.toInt() : odds.overUnder}',
-          ].join(' · ');
-    return _row(
-      context: context,
-      ev: ev,
-      // Upcoming rows carry no glyph (§5) — the time on the right says it all.
-      leading: const SizedBox.shrink(),
-      opponent: '$joiner ${opp?.label ?? ''}',
-      subtitle: (oddsLine != null && oddsLine.isNotEmpty) ? oddsLine : null,
-      trailing: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-        Text(startLabel(ev.start),
+          const SizedBox(height: 8),
+          Row(children: [
+            if (away != null) _miniTeam(away),
+            if (away != null && home != null) ...[
+              const SizedBox(width: 10),
+              const Text('vs', style: TextStyle(fontSize: 12, color: T.textFaint)),
+              const SizedBox(width: 10),
+            ],
+            if (home != null) _miniTeam(home),
+          ]),
+        ]),
+      ),
+      const SizedBox(width: 12),
+      Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+        Text(startLabel(event.start),
             style: const TextStyle(
                 fontSize: 13, fontWeight: FontWeight.w600, color: T.text)),
-        const Text('Upcoming', style: T.captionFaint),
+        // NO winner-faces / bracket-forward line here — that's core-only (§2.1).
+        if (broadcast != null && broadcast.isNotEmpty) ...[
+          const SizedBox(height: 3),
+          Text(broadcast, style: T.captionFaint),
+        ],
       ]),
-    );
+    ]);
   }
 
-  Widget _row({
-    required BuildContext context,
-    required SportEvent ev,
-    required Widget leading,
-    required String opponent,
-    required Widget trailing,
-    String? subtitle,
-  }) =>
-      GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => openGameDetail(context, league, ev),
-        child: Row(children: [
-          SizedBox(width: 26, height: 24, child: Center(child: leading)),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(opponent,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: T.heroName.copyWith(fontSize: 19)),
-                if (subtitle != null)
-                  Text(subtitle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: T.captionFaint),
-              ],
-            ),
-          ),
-          const SizedBox(width: 10),
-          trailing,
-        ]),
-      );
+  Widget _miniTeam(Competitor c) => Row(mainAxisSize: MainAxisSize.min, children: [
+        ColorBar(teamColor(c), width: 6, height: 18),
+        const SizedBox(width: 7),
+        Text(c.label, style: T.heroName.copyWith(fontSize: 20)),
+      ]);
+
+  /// The scheduled card's context suffix: the round/stage note, else the week
+  /// label — whatever the cheap event carries.
+  String? _contextLabel() {
+    final round = comp.meta?.round;
+    if (round != null && round.isNotEmpty) return round;
+    if (event.notes.isNotEmpty && event.notes.first.isNotEmpty) {
+      return event.notes.first;
+    }
+    final week = event.weekLabel;
+    if (week != null && week.isNotEmpty) return week;
+    return null;
+  }
 }
+
+// ═══════════════════════════ error ═══════════════════════════
 
 class _ErrorBody extends StatelessWidget {
   final FavoriteTeamFeed feed;

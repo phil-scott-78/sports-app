@@ -4,15 +4,16 @@ import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../util.dart';
-import 'add_pages.dart';
-import 'explore_page.dart';
 import 'league_page.dart';
 import 'team_page.dart';
 import 'widgets.dart';
 
-/// The Following tab: drag to reorder favorites (their hero-card order) and
-/// followed leagues (their feed section order), minus to remove, plus explicit
-/// add flows. Long-press anywhere in the app also lands things here.
+/// The Following tab (§8c): a manage screen. TEAMS then LEAGUES, each an r16
+/// surface row — minus-in-circle to remove, a color bar, name + sub-caption, and
+/// a drag handle. Reordering persists to the stored order, which is the same
+/// order the home feed sections (followed leagues) and the favorites strip read.
+/// Adding is done by long-pressing anywhere in the app (footer hint) — there are
+/// no explicit add buttons here.
 class FollowingPage extends ConsumerWidget {
   const FollowingPage({super.key});
 
@@ -34,13 +35,8 @@ class FollowingPage extends ConsumerWidget {
           child: Text('Drag to set the order of your home feed.',
               style: T.caption),
         ),
-        _label('Teams'),
-        if (favs.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
-            child: HintCard('No favorite teams yet.'),
-          )
-        else
+        if (favs.isNotEmpty) ...[
+          _label('Teams'),
           ReorderableListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -55,8 +51,7 @@ class FollowingPage extends ConsumerWidget {
               padding: const EdgeInsets.only(bottom: 8),
               child: _FollowRow(
                 index: i,
-                bar: ColorBar(teamColorOf(favs[i].color),
-                    width: 6, height: 22),
+                bar: ColorBar(teamColorOf(favs[i].color), width: 6, height: 22),
                 title: favs[i].name,
                 subtitle: _leagueName(favs[i].league, catalog),
                 onTap: () => openTeamPage(context, favs[i].league,
@@ -69,21 +64,9 @@ class FollowingPage extends ConsumerWidget {
               ),
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(T.pageMargin, 0, T.pageMargin, 0),
-          child: _AddTile(
-            label: 'Add a team',
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const AddTeamPage())),
-          ),
-        ),
-        _label('Leagues'),
-        if (leagues.isEmpty)
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
-            child: HintCard('No followed leagues yet.'),
-          )
-        else
+        ],
+        if (leagues.isNotEmpty) ...[
+          _label('Leagues'),
           ReorderableListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -107,18 +90,11 @@ class FollowingPage extends ConsumerWidget {
               ),
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
-          child: _AddTile(
-            label: 'Follow a league',
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const ExplorePage())),
-          ),
-        ),
+        ],
         const Padding(
           padding: EdgeInsets.fromLTRB(T.pageMargin, 20, T.pageMargin, 0),
           child: HintCard(
-              'Long-press any team or game in the app to add it here'),
+              'Long-press any team or league in the app to add it here'),
         ),
       ],
     );
@@ -217,38 +193,29 @@ class _FollowRow extends StatelessWidget {
             index: index,
             child: const Padding(
               padding: EdgeInsets.only(left: 6),
-              child: Icon(Icons.drag_handle_rounded,
-                  size: 20, color: T.outline),
+              child: _DragHandle(),
             ),
           ),
         ]),
       );
 }
 
-class _AddTile extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-  const _AddTile({required this.label, required this.onTap});
-
+/// The §8c drag affordance: three 16×2 rules stacked. Neutral by default;
+/// the lifted proxy brightens via the Material elevation in [_proxyDecorator].
+class _DragHandle extends StatelessWidget {
+  const _DragHandle();
   @override
-  Widget build(BuildContext context) => InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(T.rowCardRadius),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
-          decoration: BoxDecoration(
-            border: Border.all(color: T.border, width: 1.5),
-            borderRadius: BorderRadius.circular(T.rowCardRadius),
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          3,
+          (i) => Container(
+            width: 16,
+            height: 2,
+            margin: EdgeInsets.only(top: i == 0 ? 0 : 3),
+            decoration: BoxDecoration(
+                color: T.outline, borderRadius: BorderRadius.circular(1)),
           ),
-          child: Row(children: [
-            const Icon(Icons.add_rounded, size: 18, color: T.textDim),
-            const SizedBox(width: 14),
-            Text(label,
-                style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: T.textDim)),
-          ]),
         ),
       );
 }

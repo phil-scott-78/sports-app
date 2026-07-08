@@ -182,3 +182,177 @@ class StandingsGroupCard extends StatelessWidget {
     return T.textDim;
   }
 }
+
+/// Read the first stat whose key matches (case-insensitive) one of [keys] and
+/// parse it as a number (tolerating a leading '+' and dropping a bare '-'/'—').
+/// Shared by the Wild Card cut-math and the League-view ranking. Null → absent.
+double? statNum(StandingsRow row, List<String> keys) {
+  for (final want in keys) {
+    for (final e in row.stats.entries) {
+      if (e.key.toLowerCase() != want) continue;
+      final raw = e.value.replaceAll('+', '').trim();
+      if (raw.isEmpty || raw == '-' || raw == '—') return 0;
+      final v = double.tryParse(raw);
+      if (v != null) return v;
+    }
+  }
+  return null;
+}
+
+/// The Wild Card view of one conference/league child (§8a). The group's teams
+/// ranked in standing order with a single red PLAYOFF LINE drawn after the cut,
+/// and a games-relative-to-the-line GB column: teams above the line read `+N`
+/// green (games clear of the first team out); below read `N` dim (games back of
+/// the last team in); the last team in reads an em-dash.
+///
+/// The default feed carries no division membership, so this is the *conference*
+/// playoff cut — the whole child ranked, not a division-leader-excluded wild-card
+/// sub-table (that would need a core division fetch; see the standings notes).
+class WildCardCard extends StatelessWidget {
+  final String name;
+
+  /// Rows in standing order (seed ascending). Not re-sorted here.
+  final List<StandingsRow> rows;
+
+  /// Teams above this count are "in"; the line is drawn after it.
+  final int cutCount;
+
+  /// Favorite team ids (gold wash + star), and their identity colors for the bar.
+  final Set<String> highlightIds;
+  final Map<String, Color> barColors;
+  final void Function(StandingsRow)? onRowTap;
+
+  const WildCardCard({
+    super.key,
+    required this.name,
+    required this.rows,
+    required this.cutCount,
+    this.highlightIds = const {},
+    this.barColors = const {},
+    this.onRowTap,
+  });
+
+  static const _gbKeys = ['gamesbehind'];
+
+  @override
+  Widget build(BuildContext context) {
+    // Only draw the line when it falls strictly inside the list.
+    final cut = (cutCount > 0 && cutCount < rows.length) ? cutCount : -1;
+    final lastInGb = cut > 0 ? (statNum(rows[cut - 1], _gbKeys) ?? 0.0) : 0.0;
+    final firstOutGb = cut > 0 ? (statNum(rows[cut], _gbKeys) ?? 0.0) : 0.0;
+
+    final children = <Widget>[
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        child: Row(children: [
+          Expanded(child: Text(name.toUpperCase(), style: T.cardLabelFaint)),
+          const SizedBox(
+            width: 52,
+            child: Text('GB',
+                textAlign: TextAlign.right, style: T.cardLabelFaint),
+          ),
+        ]),
+      ),
+      const SizedBox(height: 10),
+    ];
+    for (var i = 0; i < rows.length; i++) {
+      if (i == cut) {
+        children.add(const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14),
+          child: RuleLabelDivider('PLAYOFF LINE', alarm: true),
+        ));
+      }
+      children.add(_row(rows[i], i + 1,
+          topBorder: i != 0 && i != cut,
+          above: cut < 0 || i < cut,
+          lastInGb: lastInGb,
+          firstOutGb: firstOutGb,
+          hasCut: cut > 0));
+    }
+    return V2Card(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: children),
+    );
+  }
+
+  Widget _row(StandingsRow row, int pos,
+      {required bool topBorder,
+      required bool above,
+      required double lastInGb,
+      required double firstOutGb,
+      required bool hasCut}) {
+    final hi = highlightIds.contains(row.team.id);
+    final gb = statNum(row, _gbKeys) ?? 0;
+    String gbText;
+    Color gbColor;
+    if (!hasCut) {
+      gbText = _fmt(gb);
+      gbColor = T.textDim;
+    } else if (above) {
+      final d = firstOutGb - gb; // games clear of the first team out
+      gbText = d > 0 ? '+${_fmt(d)}' : '—';
+      gbColor = d > 0 ? T.green : T.textDim;
+    } else {
+      final d = gb - lastInGb; // games back of the last team in
+      gbText = d > 0 ? _fmt(d) : '—';
+      gbColor = T.textDim;
+    }
+
+    final content = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: T.rowVPad),
+      decoration: topBorder
+          ? const BoxDecoration(
+              border: Border(top: BorderSide(color: T.divider)))
+          : null,
+      child: Row(children: [
+        SizedBox(
+          width: 14,
+          child: Text('$pos',
+              style: const TextStyle(
+                  fontFamily: 'BarlowCondensed',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13,
+                  color: T.textDim)),
+        ),
+        const SizedBox(width: 9),
+        ColorBar(barColors[row.team.id] ?? T.border, width: 5, height: 16),
+        const SizedBox(width: 9),
+        Flexible(
+          child: Text(row.team.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: T.listText.copyWith(
+                  color: above ? T.text : T.textDim,
+                  fontWeight: hi ? FontWeight.w600 : FontWeight.w400)),
+        ),
+        if (hi) ...[
+          const SizedBox(width: 6),
+          const Icon(Icons.star_rounded, size: 12, color: T.gold),
+        ],
+        const SizedBox(width: 6),
+        SizedBox(
+          width: 52,
+          child: Text(gbText,
+              textAlign: TextAlign.right,
+              style: T.statLine.copyWith(color: gbColor)),
+        ),
+      ]),
+    );
+    final body = hi
+        ? DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+                T.gold.withValues(alpha: 0.08),
+                T.gold.withValues(alpha: 0.0),
+              ]),
+            ),
+            child: content,
+          )
+        : content;
+    if (onRowTap == null) return body;
+    return InkWell(onTap: () => onRowTap!(row), child: body);
+  }
+
+  static String _fmt(double d) =>
+      d == d.roundToDouble() ? d.toInt().toString() : d.toStringAsFixed(1);
+}
