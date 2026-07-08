@@ -4,6 +4,7 @@ import 'package:scores/src/data/overview.dart';
 import 'package:scores/src/data/team.dart';
 import 'package:scores/src/data/teamdetail.dart';
 import 'package:scores/src/data/summary.dart';
+import 'package:scores/src/data/normalize.dart';
 import 'golden_util.dart';
 
 // Phase 2 parity for overview classify + the live-captured Set B (team card with
@@ -53,6 +54,16 @@ void main() {
       final g = readGolden(e['file'] as String);
       final a = g['args'] as Map;
       final got = normalizeMmaSummary(a['coreEvent'], a['statuses'] as Map, a['linescores'] as Map);
+      expect(canonicalJson(got), canonicalJson(g['output']));
+    });
+  }
+
+  // Core competition-odds → canonical Odds (the pre-game moneyline enrichment).
+  for (final e in goldenIndex().where((e) => e['endpoint'] == 'odds')) {
+    test('odds parity: ${e['key']}/${e['eventId']}', () {
+      final g = readGolden(e['file'] as String);
+      final a = g['args'] as Map;
+      final got = normalizeCompetitionOdds(a['raw']);
       expect(canonicalJson(got), canonicalJson(g['output']));
     });
   }

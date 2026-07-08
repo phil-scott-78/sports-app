@@ -23,8 +23,62 @@ function darkLogoOf(team) {
     : undefined;
 }
 
-export function normalizeStandings(raw) {
+// L10 + division/conference sub-records (§2.8) are NOT on the site standings — they
+// ride the CORE group standings-id doc. Map ESPN's record `type` → the canonical
+// column key the app merges into the row's stats. Anything else (total/leaguestandings/
+// intradivision/…) is ignored — we surface only what a US-league table shows.
+// Two record-type vocabularies show up depending on the group level the doc is
+// keyed at: a CONFERENCE-level group (NBA/WNBA) emits vsdiv/vsconf; a LEAGUE-level
+// group (MLB AL/NL) emits intradivision/intraleague for the same idea. Both fold
+// onto div/conf. (VERIFIED live 2026-07: MLB=intradivision/intraleague,
+// WNBA=vsdiv/vsconf.)
+const SUBRECORD_TYPES = {
+  lasttengames: 'l10',
+  vsdiv: 'div',
+  intradivision: 'div',
+  vsconf: 'conf',
+  intraleague: 'conf',
+  home: 'home',
+  road: 'away',
+};
+
+// team id from a `.../teams/{id}?...` (or `.../teams/{id}/...`) $ref.
+function teamIdFromRef(ref) {
+  if (typeof ref !== 'string') return undefined;
+  const m = /\/teams\/(\d+)/.exec(ref);
+  return m ? m[1] : undefined;
+}
+
+// One or more CORE group standings-id docs → { teamId: { l10, div, conf, home, away } }.
+// Each doc: standings[] with team.$ref + records[] (type + summary '4-6'). Pure; a
+// malformed/empty input yields {}. Later docs win on a duplicate team (dedupe by id).
+export function extractGroupRecords(docs) {
+  const out = {};
+  const list = Array.isArray(docs) ? docs : (docs ? [docs] : []);
+  for (const doc of list) {
+    const standings = doc?.standings;
+    if (!Array.isArray(standings)) continue;
+    for (const s of standings) {
+      const id = teamIdFromRef(s?.team?.$ref);
+      if (!id) continue;
+      const bag = out[id] || (out[id] = {});
+      for (const rec of Array.isArray(s?.records) ? s.records : []) {
+        const key = SUBRECORD_TYPES[rec?.type];
+        if (!key) continue;
+        const summary = rec?.summary ?? rec?.displayValue;
+        if (summary != null && summary !== '') bag[key] = String(summary);
+      }
+    }
+  }
+  return out;
+}
+
+// `records` (optional) = the extractGroupRecords() map; when passed, each row's stats
+// gets its team's sub-records merged in (l10/div/conf/home/away). Omit it → the site
+// standings shape, byte-identical to before (every existing golden unchanged).
+export function normalizeStandings(raw, records) {
   const groups = [];
+  const recs = records && typeof records === 'object' ? records : null;
   const walk = node => {
     const entries = node?.standings?.entries;
     if (Array.isArray(entries) && entries.length) {
@@ -37,9 +91,11 @@ export function normalizeStandings(raw) {
             if (k) stats[k] = s.displayValue ?? s.value;
           }
           const who = en.team || en.athlete; // racing: driver championships are athlete-shaped
+          const id = String(who?.id ?? '');
+          if (recs && recs[id]) for (const [k, v] of Object.entries(recs[id])) stats[k] = v;
           return {
             team: {
-              id: String(who?.id ?? ''),
+              id,
               name: who?.displayName || who?.name || who?.shortDisplayName || '',
               abbr: who?.abbreviation,
               logo: https(who?.logos?.[0]?.href),

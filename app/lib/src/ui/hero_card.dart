@@ -306,12 +306,23 @@ class _IdleBody extends StatelessWidget {
     final fav = _favSide(comp);
     final opp = _oppSide(comp, fav);
     final joiner = fav?.homeAway == 'home' ? 'vs' : 'at';
+    // The pre-game line, when the cheap scoreboard priced it (§2.6): favorite+line
+    // and the total. A single faint line — no book chrome. Absent → nothing shown.
+    final odds = comp.odds;
+    final oddsLine = odds == null
+        ? null
+        : [
+            if (odds.details != null) odds.details!,
+            if (odds.overUnder != null)
+              'O/U ${odds.overUnder! == odds.overUnder!.roundToDouble() ? odds.overUnder!.toInt() : odds.overUnder}',
+          ].join(' · ');
     return _row(
       context: context,
       ev: ev,
       // Upcoming rows carry no glyph (§5) — the time on the right says it all.
       leading: const SizedBox.shrink(),
       opponent: '$joiner ${opp?.label ?? ''}',
+      subtitle: (oddsLine != null && oddsLine.isNotEmpty) ? oddsLine : null,
       trailing: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Text(startLabel(ev.start),
             style: const TextStyle(
@@ -327,6 +338,7 @@ class _IdleBody extends StatelessWidget {
     required Widget leading,
     required String opponent,
     required Widget trailing,
+    String? subtitle,
   }) =>
       GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -335,10 +347,21 @@ class _IdleBody extends StatelessWidget {
           SizedBox(width: 26, height: 24, child: Center(child: leading)),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(opponent,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: T.heroName.copyWith(fontSize: 19)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(opponent,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: T.heroName.copyWith(fontSize: 19)),
+                if (subtitle != null)
+                  Text(subtitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.captionFaint),
+              ],
+            ),
           ),
           const SizedBox(width: 10),
           trailing,

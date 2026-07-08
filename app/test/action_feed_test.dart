@@ -94,8 +94,10 @@ void main() {
     expect(find.text('SGA makes 25-foot three point jumper'), findsOneWidget);
     expect(find.text('Mitchell misses driving layup'), findsOneWidget);
     expect(find.text('Mobley makes two point dunk'), findsOneWidget);
-    // Carried running score is lifted onto the scoring plays (away–home).
-    expect(find.text('3–0'), findsOneWidget);
+    // Carried running score is lifted onto the scoring plays (away–home). §9d's
+    // persistent column also carries 3–0 forward onto the following (non-scoring)
+    // miss row, so it renders on both the basket and the quiet row after it.
+    expect(find.text('3–0'), findsNWidgets(2));
     expect(find.text('3–2'), findsOneWidget);
   });
 

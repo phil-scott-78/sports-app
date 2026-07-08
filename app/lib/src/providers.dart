@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'config.dart';
 import 'models.dart';
+import 'util.dart';
 
 /// Overridden in main() with the loaded instance.
 final sharedPrefsProvider = Provider<SharedPreferences>(
@@ -164,6 +165,24 @@ final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
   }));
 });
 
+/// Which days in the date-strip window carry games across the followed leagues —
+/// the strip's per-day has-games dots. ONE wide `?dates=` range scoreboard scan
+/// per followed league (cheap tier), fetched ONCE per window and cached in
+/// espn_client; deliberately NOT invalidated by the poll loop (coverage barely
+/// changes intraday). The window matches [_DateStrip]'s -14..+7 span. A failed
+/// scan yields no days for that league → the strip still dots from the feed's
+/// `calendarDays` hints and never dims a day it can't disprove.
+final homeCoverageProvider = FutureProvider<Set<String>>((ref) async {
+  final api = ref.watch(apiProvider);
+  final leagues = ref.watch(followedProvider);
+  if (leagues.isEmpty) return const <String>{};
+  final now = DateTime.now();
+  final base = DateTime(now.year, now.month, now.day);
+  final start = ymd(base.subtract(const Duration(days: 14)));
+  final end = ymd(base.add(const Duration(days: 7)));
+  return api.coverage(leagues, start, end);
+});
+
 final catalogProvider = FutureProvider<List<CatalogSport>>(
     (ref) => ref.watch(apiProvider).catalog());
 
@@ -191,6 +210,14 @@ final teamCardProvider =
 final teamDetailProvider =
     FutureProvider.autoDispose.family<TeamDetail, TeamKey>(
   (ref, k) => ref.watch(apiProvider).teamDetail(k.league, k.teamId),
+);
+
+/// One team's SEASON leaders (§2.6 TEAM LEADERS card) — CORE-tier + a $ref fan-out,
+/// so it loads INDEPENDENTLY of the team page's main detail (the card renders when
+/// it resolves; the page never blocks on it). autoDispose: alive only while open.
+final teamLeadersProvider =
+    FutureProvider.autoDispose.family<TeamSeasonLeaders, TeamKey>(
+  (ref, k) => ref.watch(apiProvider).teamLeaders(k.league, k.teamId),
 );
 
 /// The stacked hero cards: every favorite's live/last/next card, in parallel.
@@ -261,6 +288,17 @@ final tennisMatchProvider =
     FutureProvider.autoDispose.family<TennisMatchInfo?, TennisMatchKey>(
   (ref, k) =>
       ref.watch(apiProvider).tennisMatchInfo(k.league, k.eventId, k.compId),
+);
+
+/// Pre-game betting line via the CORE competition-odds list, fetched lazily when
+/// a SCHEDULED game detail opens and the cheap scoreboard carried no inline odds.
+/// Capability-gated + best-effort inside [Api.competitionOdds] (null when the
+/// sport isn't priced or nothing is served). autoDispose: alive only while open.
+typedef OddsKey = ({String league, String eventId, String compId});
+
+final oddsProvider = FutureProvider.autoDispose.family<Odds?, OddsKey>(
+  (ref, k) =>
+      ref.watch(apiProvider).competitionOdds(k.league, k.eventId, k.compId),
 );
 
 /// Rankings feed for a league page (college polls / ATP-WTA / UFC divisions).

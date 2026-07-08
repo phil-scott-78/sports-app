@@ -3668,7 +3668,8 @@
             "meta": {
               "round": "Super Bowl LX"
             },
-            "attendance": 70823
+            "attendance": 70823,
+            "broadcast": "NBC/Peacock"
           }
         ]
       },
@@ -3751,7 +3752,14 @@
                   "value": 0
                 }
               }
-            ]
+            ],
+            "broadcast": "NBC",
+            "odds": {
+              "details": "SEA -3.5",
+              "spread": -3.5,
+              "overUnder": 44.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       },
@@ -3839,6 +3847,13 @@
             ],
             "meta": {
               "round": "NFL Melbourne Game"
+            },
+            "broadcast": "Netflix",
+            "odds": {
+              "details": "LAR -3",
+              "spread": -3,
+              "overUnder": 48.5,
+              "provider": "DraftKings"
             }
           }
         ]
@@ -3922,7 +3937,14 @@
                   "value": 0
                 }
               }
-            ]
+            ],
+            "broadcast": "FOX",
+            "odds": {
+              "details": "CIN -3.5",
+              "spread": -3.5,
+              "overUnder": 50.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       },
@@ -4005,7 +4027,14 @@
                   "value": 0
                 }
               }
-            ]
+            ],
+            "broadcast": "FOX",
+            "odds": {
+              "details": "DET -7",
+              "spread": -7,
+              "overUnder": 48.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       }

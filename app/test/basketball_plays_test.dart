@@ -10,6 +10,7 @@ import 'package:scores/src/models.dart';
 import 'package:scores/src/providers.dart';
 import 'package:scores/src/theme.dart';
 import 'package:scores/src/ui/game_detail_page.dart';
+import 'package:scores/src/ui/match_events.dart';
 
 Future<SharedPreferences> prefs() async {
   SharedPreferences.setMockInitialValues({});
@@ -131,5 +132,49 @@ void main() {
     await tester.pump();
     expect(find.text('ZZ_Q1_ONLY'), findsOneWidget);
     expect(find.text('ZZ_Q4_ONLY'), findsNothing);
+  });
+
+  // §9d signal-row discipline + persistent score column, exercised on the dense
+  // feed directly. Three plays in one quarter: an ordinary go-ahead basket
+  // (2–0), a miss, then a basket that flips the lead (2–4 → a §9 signal row).
+  testWidgets('dense feed: quiet ordinary scoring row, persistent column, loud signal row',
+      (tester) async {
+    tester.view.physicalSize = const Size(1000, 2000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final comp = Competition.fromJson(_comp());
+    final events = [
+      for (final p in const [
+        {'period': 1, 'clock': '11:00', 'side': 'away', 'teamAbbr': 'LAL', 'text': 'James makes layup', 'away': 2, 'home': 0, 'scoring': true},
+        {'period': 1, 'clock': '10:30', 'side': 'home', 'teamAbbr': 'BOS', 'text': 'Tatum misses jumper', 'scoring': false},
+        {'period': 1, 'clock': '10:00', 'side': 'home', 'teamAbbr': 'BOS', 'text': 'Brown makes three', 'away': 2, 'home': 4, 'scoring': true},
+      ])
+        MatchEvent.fromSummaryPlay(SummaryPlay.fromJson(p)),
+    ];
+
+    await tester.pumpWidget(MaterialApp(
+      theme: buildV2Theme(),
+      home: Scaffold(body: SingleChildScrollView(child: ActionFeed(events, comp))),
+    ));
+    await tester.pump();
+
+    // Persistent column: the 2–0 running score shows on BOTH the go-ahead basket
+    // AND the following (non-scoring) miss — the tally is carried forward.
+    expect(find.text('2–0'), findsNWidgets(2));
+    // …and both are QUIET: Barlow 14/600 in textFaint (no signal emphasis).
+    for (final t in tester.widgetList<Text>(find.text('2–0'))) {
+      expect(t.style!.fontWeight, FontWeight.w600);
+      expect(t.style!.color, T.textFaint);
+      expect(t.style!.fontSize, 14);
+    }
+
+    // The lead-flipping basket is the one signal row: white 700 score + LEAD pill.
+    expect(find.text('2–4'), findsOneWidget);
+    final signalScore = tester.widget<Text>(find.text('2–4'));
+    expect(signalScore.style!.fontWeight, FontWeight.w700);
+    expect(signalScore.style!.color, T.text);
+    expect(find.text('LEAD'), findsOneWidget);
   });
 }

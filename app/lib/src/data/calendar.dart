@@ -99,6 +99,28 @@ List<Map<String, dynamic>> rangesFromCalendar(dynamic calendarType, dynamic cale
   return out;
 }
 
+/// The set of DEVICE-LOCAL calendar-day 'YYYYMMDD' keys carrying >=1 real event
+/// in a raw scoreboard payload (which may be a `?dates=start-end` RANGE scan).
+/// Device-local (not ET) on purpose: it dots the date-strip chips, whose keys are
+/// device-local (util.ymd). Reads ACTUAL `events[].date` — the truth the strip
+/// dims against — because the scoreboard's own `leagues[].calendar[]` is a HINT
+/// only (dense for NBA/NHL/EPL, sparse season-markers for MLB). Pure.
+Set<String> coverageDaysLocal(dynamic scoreboardRaw) {
+  final out = <String>{};
+  final events = scoreboardRaw is Map ? scoreboardRaw['events'] : null;
+  if (events is! List) return out;
+  for (final e in events) {
+    final date = e is Map ? e['date'] : null;
+    if (date == null) continue;
+    final d = DateTime.tryParse(date.toString());
+    if (d == null) continue;
+    final local = d.toLocal();
+    out.add('${local.year.toString().padLeft(4, '0')}'
+        '${_pad(local.month)}${_pad(local.day)}');
+  }
+  return out;
+}
+
 /// The on-the-scores-payload calendar: a precise game-day list for "day"-type
 /// leagues + the season window. Returns {} when absent. Mirrors buildCalendar.
 Map<String, dynamic> buildCalendar(dynamic lg) {

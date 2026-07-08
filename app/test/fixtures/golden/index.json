@@ -76,21 +76,27 @@
   },
   {
     "endpoint": "summary",
-    "file": "summary/baseball__mlb__401816045.json",
+    "file": "summary/baseball__mlb__401816053.json",
     "key": "baseball/mlb",
-    "eventId": "401816045"
+    "eventId": "401816053"
   },
   {
     "endpoint": "summary",
-    "file": "summary/baseball__mlb__401816046.json",
+    "file": "summary/baseball__mlb__401816054.json",
     "key": "baseball/mlb",
-    "eventId": "401816046"
+    "eventId": "401816054"
   },
   {
     "endpoint": "summary",
-    "file": "summary/baseball__mlb__401816049.json",
+    "file": "summary/baseball__mlb__401816055.json",
     "key": "baseball/mlb",
-    "eventId": "401816049"
+    "eventId": "401816055"
+  },
+  {
+    "endpoint": "summary",
+    "file": "summary/baseball__mlb__401871790.json",
+    "key": "baseball/mlb",
+    "eventId": "401871790"
   },
   {
     "endpoint": "standings",
@@ -1423,5 +1429,87 @@
     "file": "mma/mma__ufc__600058854.json",
     "key": "mma/ufc",
     "eventId": "600058854"
+  },
+  {
+    "endpoint": "odds",
+    "file": "odds/baseball__mlb__401816082.json",
+    "key": "baseball/mlb",
+    "eventId": "401816082"
+  },
+  {
+    "endpoint": "odds",
+    "file": "odds/soccer__eng.1__401879301.json",
+    "key": "soccer/eng.1",
+    "eventId": "401879301"
+  },
+  {
+    "endpoint": "odds",
+    "file": "odds/basketball__wnba__401857048.json",
+    "key": "basketball/wnba",
+    "eventId": "401857048"
+  },
+  {
+    "endpoint": "venue",
+    "file": "venue/baseball__mlb__43.json",
+    "key": "baseball/mlb",
+    "venueId": "43"
+  },
+  {
+    "endpoint": "venue",
+    "file": "venue/basketball__wnba__7546.json",
+    "key": "basketball/wnba",
+    "venueId": "7546"
+  },
+  {
+    "endpoint": "venue",
+    "file": "venue/soccer__eng.1__2267.json",
+    "key": "soccer/eng.1",
+    "venueId": "2267"
+  },
+  {
+    "endpoint": "venue",
+    "file": "venue/racing__f1__257.json",
+    "key": "racing/f1",
+    "venueId": "257"
+  },
+  {
+    "endpoint": "circuit",
+    "file": "circuit/racing__f1__616.json",
+    "key": "racing/f1",
+    "circuitId": "616"
+  },
+  {
+    "endpoint": "athlete",
+    "file": "athlete/baseball__mlb__5136082.json",
+    "key": "baseball/mlb",
+    "athleteId": "5136082"
+  },
+  {
+    "endpoint": "athlete",
+    "file": "athlete/basketball__wnba__4433730.json",
+    "key": "basketball/wnba",
+    "athleteId": "4433730"
+  },
+  {
+    "endpoint": "teamLeaders",
+    "file": "teamLeaders/baseball__mlb__19.json",
+    "key": "baseball/mlb",
+    "teamId": "19"
+  },
+  {
+    "endpoint": "teamLeaders",
+    "file": "teamLeaders/basketball__wnba__3.json",
+    "key": "basketball/wnba",
+    "teamId": "3"
+  },
+  {
+    "endpoint": "standingsRecords",
+    "file": "standingsRecords/baseball__mlb.json",
+    "key": "baseball/mlb"
+  },
+  {
+    "endpoint": "standingsRecords",
+    "file": "standingsRecords/basketball__wnba.json",
+    "key": "basketball/wnba"
   }
 ]

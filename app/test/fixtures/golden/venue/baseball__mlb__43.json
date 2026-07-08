@@ -1,0 +1,50 @@
+{
+  "endpoint": "venue",
+  "args": {
+    "key": "baseball/mlb",
+    "venueId": "43",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/venues/43?lang=en&region=us",
+      "id": "43",
+      "fullName": "Oracle Park",
+      "shortName": "Oracle Park",
+      "address": {
+        "city": "San Francisco",
+        "state": "California",
+        "zipCode": "94107"
+      },
+      "grass": true,
+      "indoor": false,
+      "images": [
+        {
+          "href": "https://a.espncdn.com/i/venues/mlb/day/43.jpg",
+          "width": 2000,
+          "height": 1125,
+          "alt": "",
+          "rel": [
+            "full",
+            "day"
+          ]
+        }
+      ]
+    }
+  },
+  "output": {
+    "id": "43",
+    "name": "Oracle Park",
+    "city": "San Francisco",
+    "state": "California",
+    "images": [
+      {
+        "href": "https://a.espncdn.com/i/venues/mlb/day/43.jpg",
+        "rel": [
+          "full",
+          "day"
+        ]
+      }
+    ],
+    "photo": "https://a.espncdn.com/i/venues/mlb/day/43.jpg",
+    "surface": "grass",
+    "roof": "open"
+  }
+}

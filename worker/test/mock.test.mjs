@@ -11,11 +11,11 @@ import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import {
   synthScoreboard, synthSummary, synthTeamScoreboard, synthTeams,
   synthRankings, synthGolfExtras, synthGolfScorecard, synthMmaCore,
-  synthTeamDetailParts,
+  synthTeamDetailParts, synthCoreSituation, synthCorePredictor, synthCorePlayText,
 } from '../mock/synth.mjs';
 import { getScenario } from '../mock/scenarios.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
-import { normalizeSummary, normalizeMmaSummary } from '../src/summary.js';
+import { normalizeSummary, normalizeMmaSummary, buildCoreSituation, winProbabilityFromPredictor } from '../src/summary.js';
 import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeRankings } from '../src/rankings.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
@@ -299,6 +299,49 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
   // regression: no scenario → the normal mixed 3-state slate, unchanged
   const plain = phasesOf(normalizeScoreboard(registry, 'baseball/mlb', synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW })));
   ok((plain.live || 0) > 0 && (plain.final || 0) > 0 && (plain.scheduled || 0) > 0, 'no scenario → normal 3-state mix preserved');
+}
+
+// ---- 15. mock core resources (situation / predictor) through the normalizers --
+{
+  // Football: down/distance/yardLine/isRedZone + bare-number timeouts + lastPlay.
+  {
+    const prof = { espnSport: 'football' };
+    const sit = synthCoreSituation(prof, 'cfb-1');
+    sit.lastPlay = { $ref: 'x' };
+    const c = buildCoreSituation(sit, synthCorePlayText('cfb-1', 'football'));
+    ok(c && c.down >= 1 && c.down <= 4, `core-sit football: down (${c && c.down})`);
+    ok(typeof c.yardLine === 'number' && typeof c.distance === 'number', 'core-sit football: distance + yardLine numeric');
+    ok(typeof c.homeTimeouts === 'number' && typeof c.awayTimeouts === 'number', 'core-sit football: bare-number timeouts');
+    ok(typeof c.lastPlay === 'string' && c.lastPlay.length > 0, 'core-sit football: lastPlay text resolved');
+    ok(c.downDistanceText === undefined && c.possession === undefined, 'core-sit football: no downDistanceText/possession (core-only truth)');
+  }
+  // Basketball: bonusState → homeBonus/awayBonus + object-timeout remaining.
+  {
+    const sit = synthCoreSituation({ espnSport: 'basketball' }, 'nba-1');
+    const c = buildCoreSituation(sit);
+    ok(typeof c.homeBonus === 'string' && typeof c.awayBonus === 'string', 'core-sit basketball: bonus strings');
+    ok(typeof c.homeTimeouts === 'number' && c.homeTimeouts >= 0 && c.homeTimeouts <= 7, 'core-sit basketball: timeoutsRemainingCurrent unwrapped to a number');
+    ok(c.down === undefined && c.yardLine === undefined, 'core-sit basketball: no gridiron fields');
+  }
+  // Hockey: powerPlay/emptyNet booleans.
+  {
+    const c = buildCoreSituation(synthCoreSituation({ espnSport: 'hockey' }, 'nhl-1'));
+    ok(typeof c.powerPlay === 'boolean' && typeof c.emptyNet === 'boolean', 'core-sit hockey: powerPlay/emptyNet booleans');
+  }
+  // Predictor → win probability that sums to 100, deterministic.
+  {
+    const wp = winProbabilityFromPredictor(synthCorePredictor('cfb-1'));
+    ok(wp && wp.home + wp.away === 100, `predictor: win prob sums to 100 (${JSON.stringify(wp)})`);
+    const again = winProbabilityFromPredictor(synthCorePredictor('cfb-1'));
+    ok(JSON.stringify(wp) === JSON.stringify(again), 'predictor: deterministic per event id');
+    ok(winProbabilityFromPredictor({}) === undefined, 'predictor: empty → undefined (fallback stays off)');
+  }
+  // Deterministic situation per event id (no flicker on poll).
+  {
+    const a = synthCoreSituation({ espnSport: 'football' }, 'cfb-9');
+    const b = synthCoreSituation({ espnSport: 'football' }, 'cfb-9');
+    ok(JSON.stringify(a) === JSON.stringify(b), 'core-sit: deterministic per event id');
+  }
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

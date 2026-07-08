@@ -1,0 +1,57 @@
+{
+  "endpoint": "venue",
+  "args": {
+    "key": "racing/f1",
+    "venueId": "257",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/racing/leagues/f1/venues/257?lang=en&region=us",
+      "id": "257",
+      "fullName": "Spa-Francorchamps",
+      "address": {
+        "city": "Stavelot",
+        "country": "Belgium"
+      },
+      "images": [
+        {
+          "href": "https://a.espncdn.com/i/venues/f1/en/day/257.jpg",
+          "width": 2000,
+          "height": 1125,
+          "alt": "",
+          "rel": [
+            "full",
+            "day"
+          ]
+        }
+      ],
+      "shape": "Track",
+      "length": 7.004,
+      "turns": 19,
+      "alternateId": 4370,
+      "countryFlag": {
+        "href": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+        "alt": "Belgium",
+        "rel": [
+          "country-flag"
+        ]
+      }
+    }
+  },
+  "output": {
+    "id": "257",
+    "name": "Spa-Francorchamps",
+    "city": "Stavelot",
+    "country": "Belgium",
+    "images": [
+      {
+        "href": "https://a.espncdn.com/i/venues/f1/en/day/257.jpg",
+        "rel": [
+          "full",
+          "day"
+        ]
+      }
+    ],
+    "photo": "https://a.espncdn.com/i/venues/f1/en/day/257.jpg",
+    "length": 7.004,
+    "turns": 19
+  }
+}

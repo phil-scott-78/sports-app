@@ -149,6 +149,78 @@ export interface Weather {
 }
 
 // ---------------------------------------------------------------------------
+// Venue & Circuit facts — the LAZY, on-tab-open detail tier (§2.9 Venue tab).
+// Distinct from the cheap `Venue` above: that is the scoreboard header echo
+// (name/city/indoor); THIS is one core fetch keyed by the id the scoreboard
+// already carries (competitions[].venue.id / events[].circuit.id) that adds the
+// photo/track-map + the fact grid. Two shapes, dispatched by data presence
+// (never sport name): stadium → VenueFacts (core venues/{id}); F1 circuit →
+// CircuitFacts (core circuits/{id}). Emitted by worker/src/venue.js.
+// ---------------------------------------------------------------------------
+
+/** A rel-tagged CDN asset — a venue photo (`day`/`full`/`interior`) or a circuit
+ *  track-map diagram (`circuit-dark`/`circuit`/`day-dark`/`day`, svg or jpg). */
+export interface VenueImage {
+  href: string;
+  rel: string[];          // VERIFIED: images[].rel[] / diagrams[].rel[]
+}
+
+/** A parsed measurement string like `"7.004 km"` → value + unit + display.
+ *  QUIRK: circuits serve length/distance as STRINGS ("7.004 km"); we keep the
+ *  original as `display` and split off value+unit for formatting. */
+export interface Measure {
+  value?: number;
+  unit?: string;
+  display: string;
+}
+
+/** Stadium facts (core venues/{id}). VERIFIED presence (see espn-guide
+ *  core-venues-id.md): fullName 100%, address.city 96%, images 85%, grass 65%,
+ *  indoor 65%; address1 4% (MMA-heavy). NOT OBSERVED — omit, never fake:
+ *  capacity (cricket-only ~1%), opened/established (circuits-only). */
+export interface VenueFacts {
+  id: string;
+  name: string;           // fullName
+  city?: string;
+  state?: string;
+  country?: string;
+  address1?: string;      // rare (MMA-heavy) — else fall back to city · state
+  images?: VenueImage[];
+  photo?: string;         // preferred exterior shot (rel day > full > interior)
+  surface?: 'grass' | 'turf';   // DERIVED from `grass` bool (true→grass)
+  roof?: 'open' | 'indoor';     // DERIVED from `indoor` bool (false→open)
+  length?: number;        // non-F1 racing ONLY: venues/{id}.length (miles, number)
+  turns?: number;         // non-F1 racing ONLY: venues/{id}.turns
+}
+
+/** F1 lap record (core circuits/{id}). driver is resolved from
+ *  fastestLapDriver.$ref (one cached fan-out — the record barely changes). */
+export interface LapRecord {
+  time?: string;          // "1:44.701"
+  year?: number;
+  driver?: { name: string; headshot?: string };
+}
+
+/** F1 circuit facts (core circuits/{id}). VERIFIED: every field 100% for F1
+ *  (see espn-guide core-circuits-id.md). Non-F1 racing has NO circuits resource
+ *  → degrade to VenueFacts length/turns. `diagram` prefers the dark vector map. */
+export interface CircuitFacts {
+  id: string;
+  name: string;           // fullName
+  city?: string;
+  country?: string;
+  diagrams?: VenueImage[];
+  diagram?: string;       // track map (rel circuit-dark > circuit > day-dark > day)
+  direction?: string;     // 'Clockwise'
+  established?: number;    // the ONE venue-age field ESPN serves (circuits only)
+  length?: Measure;       // "7.004 km"
+  distance?: Measure;     // "308.052 km" (race distance)
+  laps?: number;
+  turns?: number;
+  fastestLap?: LapRecord;
+}
+
+// ---------------------------------------------------------------------------
 // Competition
 // ---------------------------------------------------------------------------
 
@@ -177,6 +249,30 @@ export interface Competition {
                              // NOT a news feed; emitted only when ESPN sends one
   conferenceGame?: boolean;  // college: conferenceCompetition === true
   wasSuspended?: boolean;    // MLB: game was suspended and later resumed
+  broadcast?: string;        // CHEAP: single terse TV/stream label. VERIFIED 2026-07:
+                             // competitions[].broadcast (100%, e.g. 'MLB.TV/TBS',
+                             // 'ESPN'); falls back to the national
+                             // geoBroadcasts[].media.shortName. All sports; omitted
+                             // when ESPN sends only an empty string.
+  odds?: Odds;               // pre-game betting line. Inline scoreboard odds[] (~8%
+                             // presence, near game time) is CHEAP; when absent the
+                             // detail screen enriches from the CORE competition-odds
+                             // list (lazy, on open). baseball/basketball/football/
+                             // soccer only (capabilities.hasOdds). Omitted otherwise.
+}
+
+/** Pre-game betting line — normalized identically from the inline scoreboard
+ *  odds[] (spread/total only) and the CORE competition-odds list (adds per-team
+ *  moneyline). VERIFIED 2026-07 against schema/espn-guide/{scoreboard,core-odds}.
+ *  Only the served keys are set; the whole object is omitted when nothing is. */
+export interface Odds {
+  details?: string;        // favorite + line summary, e.g. 'SEA -3.5' (odds[].details)
+  spread?: number;         // signed point spread (odds[].spread)
+  overUnder?: number;      // game total (odds[].overUnder)
+  homeMoneyline?: number;  // homeTeamOdds.moneyLine — CORE-ONLY in practice
+  awayMoneyline?: number;  // awayTeamOdds.moneyLine — CORE-ONLY in practice
+  drawMoneyline?: number;  // drawOdds.moneyLine — soccer only
+  provider?: string;       // sportsbook name, e.g. 'DraftKings' (provider.name)
 }
 
 /** Live game situation — a sport-agnostic union; only present keys are set.
@@ -198,11 +294,22 @@ export interface Situation {
   // gridiron
   down?: number;
   distance?: number;
-  downDistanceText?: string; // '3rd & 7 at NE 42'
-  possession?: string;       // team id of side with the ball
+  downDistanceText?: string; // '3rd & 7 at NE 42' (scoreboard only)
+  yardLine?: number;         // VERIFIED: CORE situation gridiron ball spot (0-100);
+                             // the scoreboard football situation is NOT OBSERVED, so
+                             // down/distance/yardLine/isRedZone are CORE-only, fetched
+                             // on detail open (events/{id}/competitions/{id}/situation).
+                             // QUIRK: core carries NO downDistanceText/possession, so
+                             // the field-position bar (which parses the spot text) can't
+                             // render from core — the card shows the down&distance chip.
+  possession?: string;       // team id of side with the ball (scoreboard only)
   isRedZone?: boolean;
-  homeTimeouts?: number;
+  homeTimeouts?: number;     // CORE: homeTimeouts.timeoutsRemainingCurrent | bare number
   awayTimeouts?: number;
+  // basketball bonus (VERIFIED: CORE situation homeFouls/awayFouls.bonusState —
+  // 'NONE' | 'ONE' | 'DOUBLE'; NOT on the scoreboard, fetched on detail open).
+  homeBonus?: string;
+  awayBonus?: string;
   // hockey (CHEAP: scoreboard competition.situation)
   powerPlay?: boolean;   // VERIFIED: NHL scoreboard situation.powerPlay
   emptyNet?: boolean;    // VERIFIED: NHL scoreboard situation.emptyNet
@@ -693,7 +800,11 @@ export interface InjuryItem {
   returnDate?: string; // ISO, when ESPN provides an expected return
 }
 
-/** Current/final win probability (raw.winprobability last entry). Percentages 0-100. */
+/** Current/final win probability (raw.winprobability last entry). Percentages 0-100.
+ *  FALLBACK: when the /summary carries no winprobability[] but the league hasWinProb,
+ *  the app fetches the CORE predictor on detail open and reads each side's
+ *  `gameProjection` stat (homeTeam/awayTeam.statistics[] name==='gameProjection') into
+ *  this SAME shape — home = round(home gameProjection), away = 100 - home. */
 export interface WinProbability {
   home: number;
   away: number;
@@ -727,6 +838,91 @@ export interface BoxRow {
                        // marks a substitute → the app indents the row (§3d / §10).
   note?: string;       // the athlete's LINEUP note ('a-walked for Thomas in the
                        // 7th') — the substitution footnote; excludes pitchingDecision.
+}
+
+// ---------------------------------------------------------------------------
+// Athlete / player profile (the §2.6 "Player rows" — feeds the Phase 5 player
+// page). Emitted by worker/src/athlete.js. This is the RICH, lazy, on-open detail
+// for one athlete: identity + season stats + a last-N game log. All CORE-tier and
+// fanned-out ($ref resolves), so it is NEVER on the cheap scoreboard poll — the
+// app fetches it only when a player row is opened.
+//
+// VERIFIED presence (schema/espn-guide core-athletes-id.md / -statistics.md /
+// -eventlog.md, + live probe 2026-07): identity fields (displayName/jersey/
+// position/headshot) ride the roster row (denser, single-call when arriving from a
+// team) OR the core athletes/{id} doc; team name+color needs the team.$ref resolve.
+// Season stats = athletes/{id}/statistics splits.categories[].stats[]. Last-N =
+// athletes/{id}/eventlog events.items[] (each row a 1–2 $ref fan-out: event → date/
+// matchup, statistics → the per-game line). QUIRK: per-game stat NAMES are inferred
+// in the guide — we bind to whatever the split actually carries, never fabricate.
+// ---------------------------------------------------------------------------
+
+/** One stat cell — the atom shared by season totals and per-game lines. VERIFIED:
+ *  splits.categories[].stats[] carries {name, abbreviation, displayName,
+ *  shortDisplayName, value(number), displayValue(string)}. `description` (verbose
+ *  prose) is dropped. `displayValue` is always present; `value` is 94% (absent for
+ *  a few computed cells) so it is optional. */
+export interface AthleteStat {
+  name: string;
+  abbreviation?: string;
+  displayName?: string;
+  shortDisplayName?: string;
+  value?: number;
+  displayValue: string;
+}
+
+/** A stat category (e.g. Pitching/Fielding, Offensive/Defensive/General). Keyed by
+ *  `name`; the app picks the headline cells per league — never by sport name. */
+export interface AthleteStatCategory {
+  name: string;
+  displayName?: string;
+  stats: AthleteStat[];
+}
+
+/** One row of the last-N game log. eventId + date + matchup come from the resolved
+ *  eventlog `event.$ref`; `stats` (the athlete's line THAT game) from the resolved
+ *  `statistics.$ref` (same category shape as season). Both resolves are best-effort
+ *  — a failed resolve leaves the row with just its id/teamId. */
+export interface AthleteGameRow {
+  eventId: string;
+  date?: string;         // ISO — the game date (event.date)
+  name?: string;         // 'Los Angeles Dodgers at Pittsburgh Pirates'
+  shortName?: string;    // 'LAD @ PIT'
+  teamId?: string;       // the athlete's team in that game (eventlog item.teamId)
+  stats?: AthleteStatCategory[]; // per-game line (absent when statistics unresolved)
+}
+
+/** A player profile (core, lazy, fanned-out). VERIFIED: identity from the roster
+ *  row or athletes/{id}; team from the resolved team.$ref (name/color/logo). age/
+ *  height/weight are ESPN's DISPLAY strings/number, present ~56–67% (omitted when
+ *  absent, never faked). `stats`/`lastGames` are best-effort — a partial profile
+ *  (identity-only) is valid when the stat/eventlog fetches fail. */
+export interface AthleteProfile {
+  id: string;
+  league: string;         // the league key passed in (e.g. 'baseball/mlb')
+  name: string;           // displayName
+  shortName?: string;
+  jersey?: string;
+  position?: string;      // position.abbreviation, else position.displayName
+  headshot?: string;
+  age?: number;
+  height?: string;        // ESPN displayHeight ("6' 2\"")
+  weight?: string;        // ESPN displayWeight ("195 lbs")
+  team?: AthleteTeam;
+  stats?: AthleteStatCategory[];   // season splits.categories
+  lastGames?: AthleteGameRow[];    // most-recent-first, capped (fan-out budget)
+}
+
+/** The athlete's team block, resolved from team.$ref (roster-row path builds it
+ *  from teamId). logoDark = explicit 'dark' rel, else the /500/→/500-dark/ CDN
+ *  derivation (same rule as standings/rankings). */
+export interface AthleteTeam {
+  id: string;
+  name: string;
+  abbr?: string;
+  color?: string;         // hex, no '#'
+  logo?: string;
+  logoDark?: string;
 }
 
 /** A scoring play (or soccer key event) for the timeline feed. */
@@ -894,6 +1090,28 @@ export interface TeamStatItem {
   rank?: number;           // league rank when ESPN provides one (absent on the site endpoint)
 }
 
+/** Team SEASON leaders (§2.6 TEAM LEADERS row) — the per-category top player for a
+ *  team over the whole season. CORE-tier + lazy (team-page open), NEVER on the cheap
+ *  scoreboard poll (the cheaper per-GAME glance is competitors[].leaders on the
+ *  scoreboard). VERIFIED: core .../types/{t}/teams/{id}/leaders → categories[] each
+ *  with leaders[] whose top entry is an athlete.$ref the caller resolves once
+ *  (name/headshot). Data-presence gated: a category with no resolvable athlete is
+ *  dropped; ~6 categories are surfaced (fan-out budget). */
+export interface TeamLeaders {
+  league: string;          // the league key ('baseball/mlb')
+  teamId: string;
+  categories: TeamLeader[]; // [] when the leaders doc is empty / unresolved
+}
+export interface TeamLeader {
+  name: string;            // category key ('goals'|'points'|'homeRuns') — categories[].name
+  label: string;           // display header ('HR'|'PTS') — shortDisplayName/displayName/abbreviation
+  athleteId: string;
+  athlete: string;         // resolved athlete displayName
+  displayValue: string;    // the leader's value string ('23'), VERIFIED string like scores
+  position?: string;       // position.abbreviation, when the resolved athlete carries one
+  headshot?: string;       // forced HTTPS, when present
+}
+
 /** This team's row within its standings group — the exact StandingsRow[] the
  *  standings page renders, filtered to the one group containing the team, with
  *  the same per-family `columns` /v1/standings carries (so the team page shows
@@ -934,7 +1152,14 @@ export interface StandingsRow {
   // logo) so the client renders ONE table shape.
   team: { id: string; name: string; abbr?: string; logo?: string; logoDark?: string };
   rank?: number;                // stats.rank when present
-  stats: Record<string, string>; // ESPN stat name → displayValue
+  // ESPN stat name → displayValue. VERIFIED: the site standings entry carries the
+  // W/L/PCT/GB/streak columns. QUIRK: the L10 + division/conference sub-records are
+  // NOT on the site path — they ride the CORE group standings-id doc
+  // (records[].type 'lasttengames'/'vsdiv'/'vsconf'/'home'/'road', summary '4-6').
+  // When the caller resolves those (only when the league profile's standingsColumns
+  // asks for them), the extra keys are MERGED IN under 'l10'/'div'/'conf'/'home'/
+  // 'away' (see extractGroupRecords in standings.js). Absent otherwise.
+  stats: Record<string, string>;
 }
 
 // =============================================================================

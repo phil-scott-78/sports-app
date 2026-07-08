@@ -225,6 +225,65 @@ function buildCompetitor(profile, raw) {
 
 const pick = (o, keys) => Object.fromEntries(keys.filter(k => o[k] != null).map(k => [k, o[k]]));
 
+// ---- broadcast (cheap TV/stream label) --------------------------------------
+// A single terse network string for the game row/hero. VERIFIED 2026-07:
+// competitions[].broadcast is present 100% (e.g. 'MLB.TV/TBS', 'ESPN') but often
+// an empty string — fall back to the national geoBroadcasts[].media.shortName,
+// then any geoBroadcast. Undefined when nothing carries a label.
+function buildBroadcast(rc) {
+  const b = typeof rc.broadcast === 'string' ? rc.broadcast.trim() : '';
+  if (b) return b;
+  const geos = Array.isArray(rc.geoBroadcasts) ? rc.geoBroadcasts : [];
+  const short = g => (typeof g?.media?.shortName === 'string' ? g.media.shortName.trim() : '');
+  const nat = geos.find(g => g?.market?.type === 'National' && short(g));
+  const any = nat || geos.find(g => short(g));
+  return any ? short(any) : undefined;
+}
+
+// ---- odds (pre-game betting line) -------------------------------------------
+// One canonical shape from BOTH the inline scoreboard odds[] object AND a CORE
+// competition-odds items[] element — they share the same top-level fields
+// (details/spread/overUnder/provider), and the core one adds the per-team
+// moneyline the inline odds omit. VERIFIED 2026-07 (schema/espn-guide/scoreboard,
+// core-odds). Emits only served keys; undefined when no substantive line is present.
+export function buildOdds(o) {
+  if (!o || typeof o !== 'object') return undefined;
+  const num = v => (typeof v === 'number' ? v : undefined);
+  const out = pick({
+    details: typeof o.details === 'string' && o.details.trim() ? o.details.trim() : undefined,
+    spread: num(o.spread),
+    overUnder: num(o.overUnder),
+    homeMoneyline: num(o.homeTeamOdds?.moneyLine),
+    awayMoneyline: num(o.awayTeamOdds?.moneyLine),
+    drawMoneyline: num(o.drawOdds?.moneyLine),
+    provider: typeof o.provider?.name === 'string' && o.provider.name ? o.provider.name : undefined,
+  }, ['details', 'spread', 'overUnder', 'homeMoneyline', 'awayMoneyline', 'drawMoneyline', 'provider']);
+  // Provider name alone is not a line — require at least one price/number.
+  return Object.keys(out).some(k => k !== 'provider') ? out : undefined;
+}
+
+// Pick the highest-priority usable line from a list of odds objects (inline
+// odds[] or core items[]) — DraftKings (priority 1) beats a book with no numbers.
+// Deterministic: highest provider.priority wins, first-seen breaks ties.
+function oddsFromList(items) {
+  if (!Array.isArray(items)) return undefined;
+  let best, bestPrio = -Infinity;
+  for (const it of items) {
+    const o = buildOdds(it);
+    if (!o) continue;
+    const prio = typeof it?.provider?.priority === 'number' ? it.provider.priority : 0;
+    if (prio > bestPrio) { best = o; bestPrio = prio; }
+  }
+  return best;
+}
+
+// The CORE competition-odds resource (`.../competitions/{id}/odds`) → canonical
+// Odds. Fetched lazily on detail open when the inline scoreboard line is absent;
+// the app passes the raw list (its `items[]` carry the moneyline). Pure.
+export function normalizeCompetitionOdds(raw) {
+  return oddsFromList(raw?.items);
+}
+
 // ---- live situation: the "what's happening right now" strip ------------------
 // Sport-agnostic union — only present keys are emitted. Baseball: count/outs/
 // baserunners/pitcher/batter. Gridiron: down/distance/possession/red-zone/timeouts.
@@ -461,6 +520,10 @@ function buildCompetition(profile, rc, rawEvent) {
   const hl = Array.isArray(rc.headlines) ? rc.headlines[0] : undefined;
   const hlText = hl && (hl.shortLinkText || hl.description);
   if (hlText) comp.headline = decodeEntities(String(hlText));
+  const broadcast = buildBroadcast(rc);
+  if (broadcast) comp.broadcast = broadcast;
+  const odds = oddsFromList(rc.odds);
+  if (odds) comp.odds = odds;
 
   const situation = buildSituation(rc);
   if (situation) comp.situation = situation;

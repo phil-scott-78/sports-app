@@ -1,0 +1,28 @@
+{
+  "endpoint": "venue",
+  "args": {
+    "key": "basketball/wnba",
+    "venueId": "7546",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/venues/7546?lang=en&region=us",
+      "id": "7546",
+      "guid": "deacd30f-a17b-3e80-bb44-61a0cd186c45",
+      "fullName": "Coca-Cola Coliseum",
+      "address": {
+        "city": "Toronto",
+        "state": "ON"
+      },
+      "grass": false,
+      "indoor": true,
+      "images": []
+    }
+  },
+  "output": {
+    "id": "7546",
+    "name": "Coca-Cola Coliseum",
+    "city": "Toronto",
+    "state": "ON",
+    "surface": "turf",
+    "roof": "indoor"
+  }
+}

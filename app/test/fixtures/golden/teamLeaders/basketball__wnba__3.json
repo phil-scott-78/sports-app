@@ -1,0 +1,3597 @@
+{
+  "endpoint": "teamLeaders",
+  "args": {
+    "key": "basketball/wnba",
+    "teamId": "3",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/leaders?lang=en&region=us",
+      "id": "0",
+      "name": "Total",
+      "abbreviation": "Total",
+      "type": "total",
+      "categories": [
+        {
+          "name": "pointsPerGame",
+          "displayName": "Points Per Game",
+          "shortDisplayName": "PPG",
+          "abbreviation": "PTS",
+          "leaders": [
+            {
+              "displayValue": "20.0",
+              "value": 20,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "14.6",
+              "value": 14.590909004211426,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "13.2",
+              "value": 13.2380952835083,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "12.9",
+              "value": 12.863636016845703,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.9",
+              "value": 6.909090995788574,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.2",
+              "value": 6.190476417541504,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.0",
+              "value": 6,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "4.1",
+              "value": 4.111111164093018,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "5.5",
+              "value": 5.538461685180664,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "4.0",
+              "value": 4,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.2",
+              "value": 3.25,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.9",
+              "value": 2.866666555404663,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.7",
+              "value": 1.7142857313156128,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "assistsPerGame",
+          "displayName": "Assists Per Game",
+          "shortDisplayName": "APG",
+          "abbreviation": "AST",
+          "leaders": [
+            {
+              "displayValue": "6.0",
+              "value": 6.047618865966797,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "5.3",
+              "value": 5.318181991577148,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.7",
+              "value": 2.6818182468414307,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.8",
+              "value": 1.8095238208770752,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.4",
+              "value": 1.4090908765792847,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.2",
+              "value": 1.1666666269302368,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.1",
+              "value": 1.0526316165924072,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7142857313156128,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.4",
+              "value": 2.384615421295166,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.0",
+              "value": 2,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.4",
+              "value": 1.375,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.5333333611488342,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.3571428656578064,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "reboundsPerGame",
+          "displayName": "Rebounds Per Game",
+          "shortDisplayName": "RPG",
+          "abbreviation": "REB",
+          "leaders": [
+            {
+              "displayValue": "11.5",
+              "value": 11.454545021057129,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "4.0",
+              "value": 4.047618865966797,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.4",
+              "value": 3.4210526943206787,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.1",
+              "value": 3.1111111640930176,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.0",
+              "value": 3,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.9",
+              "value": 2.857142925262451,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.6",
+              "value": 2.6363637447357178,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.8",
+              "value": 1.7619047164916992,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.6",
+              "value": 2.5999999046325684,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.1",
+              "value": 1.1428571939468384,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.8",
+              "value": 0.8461538553237915,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.6",
+              "value": 0.625,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.5,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "defensiveReboundsPerGame",
+          "displayName": "Defensive Rebounds Per Game",
+          "shortDisplayName": "DRPG",
+          "abbreviation": "DRPG",
+          "leaders": [
+            {
+              "displayValue": "8.4",
+              "value": 8.363636016845703,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.5",
+              "value": 3.5238094329833984,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.6",
+              "value": 2.5789473056793213,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.1",
+              "value": 2.1363637447357178,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.1",
+              "value": 2.1111111640930176,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.0",
+              "value": 2,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.0",
+              "value": 1.952380895614624,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.6",
+              "value": 1.600000023841858,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.3",
+              "value": 1.2857142686843872,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.9",
+              "value": 0.8571428656578064,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.8",
+              "value": 0.8461538553237915,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.6",
+              "value": 0.625,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.5,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "offensiveReboundsPerGame",
+          "displayName": "Offensive Rebounds Per Game",
+          "shortDisplayName": "ORPG",
+          "abbreviation": "ORPG",
+          "leaders": [
+            {
+              "displayValue": "3.1",
+              "value": 3.090909004211426,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.9",
+              "value": 0.9047619104385376,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.9",
+              "value": 0.8636363744735718,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.8",
+              "value": 0.8421052694320679,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.6",
+              "value": 0.6363636255264282,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.523809552192688,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.4761904776096344,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.3",
+              "value": 0.2857142984867096,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "stealsPerGame",
+          "displayName": "Steals Per Game",
+          "shortDisplayName": "SPG",
+          "abbreviation": "STL",
+          "leaders": [
+            {
+              "displayValue": "1.8",
+              "value": 1.7619047164916992,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.8",
+              "value": 0.8181818127632141,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7272727489471436,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7222222089767456,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7142857313156128,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.6",
+              "value": 0.5789473652839661,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.4761904776096344,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.6",
+              "value": 0.6153846383094788,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.375,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.3",
+              "value": 0.2857142984867096,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.1",
+              "value": 0.06666667014360428,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "blocksPerGame",
+          "displayName": "Blocks Per Game",
+          "shortDisplayName": "BPG",
+          "abbreviation": "BLK",
+          "leaders": [
+            {
+              "displayValue": "1.2",
+              "value": 1.1578947305679321,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 0.9523809552192688,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.4285714328289032,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.3888888955116272,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.3",
+              "value": 0.3333333432674408,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.2",
+              "value": 0.1818181872367859,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0.04545454680919647,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.5,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.2",
+              "value": 0.25,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.2",
+              "value": 0.1538461595773697,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.1",
+              "value": 0.1428571492433548,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "fieldGoalPercentage",
+          "displayName": "Field Goal Percentage",
+          "shortDisplayName": "FG%",
+          "abbreviation": "FG%",
+          "leaders": [
+            {
+              "displayValue": "58.9",
+              "value": 58.92900085449219,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "51.3",
+              "value": 51.26599884033203,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "47.1",
+              "value": 47.106998443603516,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "100.0",
+              "value": 100,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "52.4",
+              "value": 52.38100051879883,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "48.3",
+              "value": 48.2760009765625,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "46.7",
+              "value": 46.729000091552734,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "45.8",
+              "value": 45.76300048828125,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "40.1",
+              "value": 40.14099884033203,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "39.2",
+              "value": 39.18899917602539,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "34.4",
+              "value": 34.375,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "33.6",
+              "value": 33.5880012512207,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "33.3",
+              "value": 33.33300018310547,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "26.1",
+              "value": 26.086999893188477,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "PER",
+          "displayName": "Player Efficiency Rating",
+          "shortDisplayName": "PER",
+          "abbreviation": "PER",
+          "leaders": [
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "3PointMadePerGame",
+          "displayName": "Average 3-Point Field Goals Made",
+          "shortDisplayName": "3PM",
+          "abbreviation": "3PM",
+          "leaders": [
+            {
+              "displayValue": "1.9",
+              "value": 1.8636363744735718,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.8",
+              "value": 1.8095238208770752,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.8",
+              "value": 1.7619047164916992,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7368420958518982,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.7",
+              "value": 0.7142857313156128,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.5",
+              "value": 0.4545454680919647,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.3888888955116272,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.38461539149284363,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.375,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.4",
+              "value": 0.3571428656578064,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.3",
+              "value": 0.2666666805744171,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "doubleDouble",
+          "displayName": "Double Double",
+          "shortDisplayName": "DBLDBL",
+          "abbreviation": "DBLDBL",
+          "leaders": [
+            {
+              "displayValue": "13.0",
+              "value": 13,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0",
+              "value": 1,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "minutesPerGame",
+          "displayName": "Minutes Per Game",
+          "shortDisplayName": "MPG",
+          "abbreviation": "MPG",
+          "leaders": [
+            {
+              "displayValue": "33.1",
+              "value": 33.14285659790039,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "32.5",
+              "value": 32.45454406738281,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "30.6",
+              "value": 30.571428298950195,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "28.9",
+              "value": 28.863636016845703,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "17.7",
+              "value": 17.6842098236084,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "15.0",
+              "value": 15,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "14.4",
+              "value": 14.428571701049805,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "12.9",
+              "value": 12.909090995788574,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "15.5",
+              "value": 15.538461685180664,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "10.4",
+              "value": 10.375,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "8.8",
+              "value": 8.785714149475098,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "7.9",
+              "value": 7.933333396911621,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.0",
+              "value": 6,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.0",
+              "value": 6,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "foulsPerGame",
+          "displayName": "Personal fouls per game",
+          "shortDisplayName": "PFPG",
+          "abbreviation": "PFPG",
+          "leaders": [
+            {
+              "displayValue": "2.6",
+              "value": 2.6190476417541504,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.3",
+              "value": 2.3333332538604736,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.3",
+              "value": 2.3181817531585693,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.2",
+              "value": 2.238095283508301,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.2",
+              "value": 2.2272727489471436,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.8",
+              "value": 1.7727272510528564,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.6",
+              "value": 1.6190476417541504,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.6",
+              "value": 1.5714285373687744,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.5",
+              "value": 1.4736841917037964,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.4",
+              "value": 1.384615421295166,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.1",
+              "value": 1.1333333253860474,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.1",
+              "value": 1.125,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "0.0",
+              "value": 0,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "rating",
+          "displayName": "Rating",
+          "shortDisplayName": "RAT",
+          "abbreviation": "RAT",
+          "leaders": [
+            {
+              "displayValue": "20.0 PPG, 4.0 RPG, 6.0 APG, 0.7 SPG, 0.4 BPG",
+              "value": 35.44523620605469,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "14.6 PPG, 11.5 RPG, 5.3 APG, 0.7 SPG",
+              "value": 35.41590881347656,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "13.2 PPG, 1.8 RPG, 1.8 APG, 1.8 SPG, 1.0 BPG",
+              "value": 21.309524536132812,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "12.9 PPG, 3.0 RPG, 2.7 APG, 0.8 SPG, 0.0 BPG",
+              "value": 18.57272720336914,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.0 PPG, 3.4 RPG, 1.1 APG, 0.6 SPG, 1.2 BPG",
+              "value": 12.963157653808594,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.9 PPG, 2.6 RPG, 1.4 APG, 1.0 SPG, 0.2 BPG",
+              "value": 12.013635635375977,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "6.2 PPG, 2.9 RPG, 0.7 APG, 0.5 SPG, 0.3 BPG",
+              "value": 11.388094902038574,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "5.5 PPG, 0.8 RPG, 2.4 APG, 0.6 SPG, 0.2 BPG",
+              "value": 10.003846168518066,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "4.1 PPG, 3.1 RPG, 1.2 APG, 0.7 SPG, 0.4 BPG",
+              "value": 9.058333396911621,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "4.0 PPG, 2.0 APG",
+              "value": 8.800000190734863,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "3.2 PPG, 0.6 RPG, 1.4 APG, 0.4 SPG, 0.2 BPG",
+              "value": 6.581250190734863,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "2.9 PPG, 2.6 RPG, 0.5 APG, 0.1 SPG",
+              "value": 5.7166666984558105,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.0 PPG, 0.5 RPG, 1.0 APG, 0.5 BPG",
+              "value": 3.299999952316284,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "1.7 PPG, 1.1 RPG, 0.4 APG, 0.3 SPG, 0.1 BPG",
+              "value": 3.0821430683135986,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        },
+        {
+          "name": "avg48Points",
+          "displayName": "Points Scored Per 48",
+          "shortDisplayName": "PTS/48",
+          "abbreviation": "PTS/48",
+          "leaders": [
+            {
+              "displayValue": "32.0",
+              "value": 32,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/5345473?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/5345473/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "29.0",
+              "value": 28.965517044067383,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433730?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433730/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "25.7",
+              "value": 25.690139770507812,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433807?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433807/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "21.6",
+              "value": 21.579832077026367,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3906949?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3906949/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "21.4",
+              "value": 21.392126083374023,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3904577?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3904577/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "20.8",
+              "value": 20.78504753112793,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4433790?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4433790/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "20.6",
+              "value": 20.594058990478516,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4399415?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4399415/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "17.3",
+              "value": 17.34453773498535,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4336633?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4336633/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "17.1",
+              "value": 17.108911514282227,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/2529047?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/2529047/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "16.3",
+              "value": 16.28571319580078,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4790266?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4790266/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "15.0",
+              "value": 15.036144256591797,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4068159?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4068159/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "13.2",
+              "value": 13.155555725097656,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/3913881?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/3913881/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "9.4",
+              "value": 9.365853309631348,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/924?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/924/statistics/0?lang=en&region=us"
+              }
+            },
+            {
+              "displayValue": "8.0",
+              "value": 8,
+              "rel": [
+                "athlete"
+              ],
+              "athlete": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/athletes/4434015?lang=en&region=us"
+              },
+              "team": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+              },
+              "statistics": {
+                "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/types/2/teams/3/athletes/4434015/statistics/0?lang=en&region=us"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "athletes": {
+      "3906949": {
+        "id": "3906949",
+        "displayName": "Jessica Shepard",
+        "fullName": "Jessica Shepard",
+        "shortName": "J. Shepard",
+        "headshot": {
+          "href": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png"
+        },
+        "position": {
+          "abbreviation": "F",
+          "displayName": "Forward"
+        }
+      },
+      "4433730": {
+        "id": "4433730",
+        "displayName": "Paige Bueckers",
+        "fullName": "Paige Bueckers",
+        "shortName": "P. Bueckers",
+        "headshot": {
+          "href": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png"
+        },
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard"
+        }
+      },
+      "4433790": {
+        "id": "4433790",
+        "displayName": "Azzi Fudd",
+        "fullName": "Azzi Fudd",
+        "shortName": "A. Fudd",
+        "headshot": {
+          "href": "https://a.espncdn.com/i/headshots/wnba/players/full/4433790.png"
+        },
+        "position": {
+          "abbreviation": "G",
+          "displayName": "Guard"
+        }
+      }
+    }
+  },
+  "output": {
+    "league": "basketball/wnba",
+    "teamId": "3",
+    "categories": [
+      {
+        "name": "pointsPerGame",
+        "label": "PPG",
+        "athleteId": "4433730",
+        "athlete": "Paige Bueckers",
+        "displayValue": "20.0",
+        "position": "G",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png"
+      },
+      {
+        "name": "assistsPerGame",
+        "label": "APG",
+        "athleteId": "4433730",
+        "athlete": "Paige Bueckers",
+        "displayValue": "6.0",
+        "position": "G",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png"
+      },
+      {
+        "name": "reboundsPerGame",
+        "label": "RPG",
+        "athleteId": "3906949",
+        "athlete": "Jessica Shepard",
+        "displayValue": "11.5",
+        "position": "F",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png"
+      },
+      {
+        "name": "defensiveReboundsPerGame",
+        "label": "DRPG",
+        "athleteId": "3906949",
+        "athlete": "Jessica Shepard",
+        "displayValue": "8.4",
+        "position": "F",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png"
+      },
+      {
+        "name": "offensiveReboundsPerGame",
+        "label": "ORPG",
+        "athleteId": "3906949",
+        "athlete": "Jessica Shepard",
+        "displayValue": "3.1",
+        "position": "F",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png"
+      },
+      {
+        "name": "stealsPerGame",
+        "label": "SPG",
+        "athleteId": "4433790",
+        "athlete": "Azzi Fudd",
+        "displayValue": "1.8",
+        "position": "G",
+        "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433790.png"
+      }
+    ]
+  }
+}

@@ -23,13 +23,17 @@ import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { resolve } from '../../schema/tools/resolve.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
 import { normalizeSummary } from '../src/summary.js';
-import { normalizeStandings } from '../src/standings.js';
+import { normalizeStandings, extractGroupRecords } from '../src/standings.js';
+import { normalizeTeamLeaders } from '../src/teamleaders.js';
 import { normalizeRankings } from '../src/rankings.js';
 import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeTeams, normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
-import { normalizeMmaSummary } from '../src/summary.js';
+import { normalizeMmaSummary, buildCoreSituation, winProbabilityFromPredictor } from '../src/summary.js';
+import { normalizeCompetitionOdds } from '../src/normalize.js';
 import { classifyLeague } from '../src/overview.js';
+import { normalizeVenueFacts, normalizeCircuitFacts } from '../src/venue.js';
+import { normalizeAthleteProfile } from '../src/athlete.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 import { buildCatalog } from '../src/catalog.js';
 
@@ -64,7 +68,7 @@ function write(endpoint, name, args, output) {
 try { rmSync(OUT_DIR, { recursive: true, force: true }); } catch { /* first run */ }
 
 const fixtures = loadFixtures();
-const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, teamCard: 0, teamDetail: 0, mma: 0 };
+const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, teamCard: 0, teamDetail: 0, mma: 0, odds: 0, situationCore: 0, winprob: 0, venue: 0, circuit: 0, athlete: 0, teamLeaders: 0, standingsRecords: 0 };
 const index = []; // manifest of every golden, for the Dart test to enumerate
 
 for (const [key, fx] of fixtures) {
@@ -177,6 +181,98 @@ for (const [key, fx] of fixtures) {
     write('mma', name, { key, eventId, coreEvent, statuses, linescores }, output);
     index.push({ endpoint: 'mma', file: `mma/${name}.json`, key, eventId });
     counts.mma++;
+  }
+  // core competition-odds → canonical Odds (the pre-game moneyline enrichment).
+  for (const o of (extra?.odds || [])) {
+    const { key, eventId, competitionId, raw } = o;
+    if (!raw) continue; // no scheduled game at capture time
+    const output = normalizeCompetitionOdds(raw) ?? null;
+    const name = `${fileKey(key)}__${eventId}`;
+    write('odds', name, { key, eventId, competitionId, raw }, output);
+    index.push({ endpoint: 'odds', file: `odds/${name}.json`, key, eventId });
+    counts.odds++;
+  }
+  // Venue facts (§2.9): CORE venues/{id} → VenueFacts (stadium photo/surface/roof/
+  // address; racing degrade = length/turns). Stable resource → evergreen goldens.
+  for (const v of (extra?.venues || [])) {
+    const { key, venueId, venue } = v;
+    if (!venue) continue;
+    const output = normalizeVenueFacts(venue) ?? null;
+    const name = `${fileKey(key)}__${venueId}`;
+    write('venue', name, { key, venueId, raw: venue }, output);
+    index.push({ endpoint: 'venue', file: `venue/${name}.json`, key, venueId });
+    counts.venue++;
+  }
+  // Circuit facts (§2.9): CORE circuits/{id} (+ resolved fastestLapDriver) →
+  // CircuitFacts (track map + lap record). Reuses the racing capture's circuit doc.
+  for (const r of (extra?.racing || [])) {
+    const { key, circuit, fastestLapDriver } = r;
+    if (!circuit || circuit.id == null) continue;
+    const circuitId = String(circuit.id);
+    const output = normalizeCircuitFacts(circuit, fastestLapDriver) ?? null;
+    const name = `${fileKey(key)}__${circuitId}`;
+    write('circuit', name, { key, circuitId, raw: circuit, driver: fastestLapDriver ?? null }, output);
+    index.push({ endpoint: 'circuit', file: `circuit/${name}.json`, key, circuitId });
+    counts.circuit++;
+  }
+  // Athlete/player profile (§2.6): identity + season stats + last-N game log, all
+  // CORE-tier + fanned-out. The capture pre-resolves every $ref (identity/team/
+  // statistics/games) exactly as api.dart does; the normalizer is pure map→map over
+  // those. Covers both identity paths (MLB roster-row, WNBA core-athlete).
+  for (const a of (extra?.athletes || [])) {
+    if (!a || a.athleteId == null) continue;
+    const { key, athleteId, identity, team, statistics, games } = a;
+    const output = normalizeAthleteProfile(key, athleteId, { identity, team, statistics, games });
+    const name = `${fileKey(key)}__${athleteId}`;
+    write('athlete', name, { key, athleteId, identity, team, statistics, games }, output);
+    index.push({ endpoint: 'athlete', file: `athlete/${name}.json`, key, athleteId });
+    counts.athlete++;
+  }
+  // Team SEASON leaders (§2.6): the CORE leaders doc + the resolved-athlete map →
+  // canonical TeamLeaders. The capture pre-resolves each top-leader athlete.$ref
+  // exactly as api.dart does; the normalizer is pure over those.
+  for (const l of (extra?.leaders || [])) {
+    if (!l || l.teamId == null) continue;
+    const { key, teamId, raw, athletes } = l;
+    const output = normalizeTeamLeaders(key, teamId, raw, athletes || {});
+    const name = `${fileKey(key)}__${teamId}`;
+    write('teamLeaders', name, { key, teamId, raw, athletes: athletes || {} }, output);
+    index.push({ endpoint: 'teamLeaders', file: `teamLeaders/${name}.json`, key, teamId });
+    counts.teamLeaders++;
+  }
+  // Standings sub-records (§2.8): the committed site standings (fx.standings) merged
+  // with the CORE group standings-id docs → extractGroupRecords → normalizeStandings.
+  // Both inputs are real captures; the merge lands by (stable) team id.
+  for (const s of (extra?.standingsRecords || [])) {
+    if (!s || !s.key) continue;
+    const { key, recordDocs } = s;
+    const fx = fixtures.get(key);
+    if (!fx?.standings || !Array.isArray(recordDocs) || !recordDocs.length) continue;
+    const records = extractGroupRecords(recordDocs);
+    const output = normalizeStandings(fx.standings, records);
+    write('standingsRecords', fileKey(key), { key, raw: fx.standings, recordDocs }, output);
+    index.push({ endpoint: 'standingsRecords', file: `standingsRecords/${fileKey(key)}.json`, key });
+    counts.standingsRecords++;
+  }
+  // core situation + predictor → the detail-open enrichments. LIVE-only, so a golden
+  // exists ONLY when a game was in progress at capture time (offseason leagues emit
+  // nothing here; the guide-shaped unit tests keep the normalizer covered regardless).
+  for (const s of (extra?.situation || [])) {
+    const { key, eventId, situation, lastPlayText, predictor } = s;
+    if (situation) {
+      const output = buildCoreSituation(situation, lastPlayText) ?? null;
+      const name = `${fileKey(key)}__${eventId}`;
+      write('situationCore', name, { key, eventId, raw: situation, lastPlayText: lastPlayText ?? null }, output);
+      index.push({ endpoint: 'situationCore', file: `situationCore/${name}.json`, key, eventId });
+      counts.situationCore++;
+    }
+    if (predictor) {
+      const output = winProbabilityFromPredictor(predictor) ?? null;
+      const name = `${fileKey(key)}__${eventId}`;
+      write('winprob', name, { key, eventId, raw: predictor }, output);
+      index.push({ endpoint: 'winprob', file: `winprob/${name}.json`, key, eventId });
+      counts.winprob++;
+    }
   }
 }
 

@@ -4,12 +4,13 @@
 
 import registry from '../../schema/league-profiles.json' with { type: 'json' };
 import { normalizeScoreboard, golfMetaFromTournament } from '../src/normalize.js';
-import { normalizeSummary, normalizeMmaSummary } from '../src/summary.js';
+import { normalizeSummary, normalizeMmaSummary, buildCoreSituation, winProbabilityFromPredictor } from '../src/summary.js';
 import { normalizeRankings } from '../src/rankings.js';
 import { normalizeStandings } from '../src/standings.js';
 import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
+import { normalizeAthleteProfile } from '../src/athlete.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 
 let pass = 0, fail = 0;
@@ -686,6 +687,129 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   const tcs = normalizeScoreboard(registry, 'tennis/atp', tennisSb).events[0].competitions[0].competitors;
   ok(tcs[0].serving === true, 'tennis: competitor.possession → serving');
   ok(tcs[1].serving === undefined, 'tennis: non-serving competitor carries no serving flag');
+}
+
+// ---- CORE situation → canonical Situation delta (guide-shaped inputs) --------
+// Inputs mirror schema/espn-guide/core-situation.md exactly (real observed shapes).
+// These pin the normalizer where no LIVE gridiron/basketball game is capturable now
+// (football/NBA/NHL offseason 2026-07); the Dart port asserts the SAME expectations
+// in app/test/port_situation_core_test.dart, giving parity without a fabricated golden.
+{
+  // Football (down/distance/yardLine/isRedZone; timeouts as a BARE number).
+  const fb = buildCoreSituation({
+    $ref: 'http://sports.core.api.espn.com/.../situation?lang=en',
+    down: 2, distance: 10, yardLine: 45, isRedZone: false,
+    homeTimeouts: 3, awayTimeouts: 2,
+    lastPlay: { $ref: 'http://sports.core.api.espn.com/.../plays/401?lang=en' },
+  }, 'Pass complete for a first down');
+  ok(fb.down === 2 && fb.distance === 10 && fb.yardLine === 45, 'core-sit football: down/distance/yardLine mapped');
+  ok(fb.isRedZone === false, 'core-sit football: isRedZone boolean');
+  ok(fb.homeTimeouts === 3 && fb.awayTimeouts === 2, 'core-sit football: bare-number timeouts');
+  ok(fb.lastPlay === 'Pass complete for a first down', 'core-sit football: resolved lastPlay text');
+  ok(!('downDistanceText' in fb) && !('possession' in fb), 'core-sit football: core carries no downDistanceText/possession');
+
+  // Basketball (homeFouls.bonusState + object timeouts w/ timeoutsRemainingCurrent).
+  const bb = buildCoreSituation({
+    homeFouls: { bonusState: 'DOUBLE', teamFouls: 19, teamFoulsCurrent: 5, foulsToGive: 0 },
+    awayFouls: { bonusState: 'NONE', teamFouls: 3, teamFoulsCurrent: 3, foulsToGive: 2 },
+    homeTimeouts: { timeoutsCurrent: 0, timeoutsRemainingCurrent: 2 },
+    awayTimeouts: { timeoutsCurrent: 0, timeoutsRemainingCurrent: 4 },
+  });
+  ok(bb.homeBonus === 'DOUBLE' && bb.awayBonus === 'NONE', 'core-sit basketball: bonusState → home/awayBonus');
+  ok(bb.homeTimeouts === 2 && bb.awayTimeouts === 4, 'core-sit basketball: object timeouts → remaining number');
+  ok(!('down' in bb), 'core-sit basketball: no gridiron fields leak');
+
+  // Hockey (powerPlay/emptyNet booleans).
+  const hk = buildCoreSituation({ powerPlay: true, emptyNet: false });
+  ok(hk.powerPlay === true && hk.emptyNet === false, 'core-sit hockey: powerPlay/emptyNet booleans');
+
+  // Baseball core (balls/strikes/outs + baserunners) — same union.
+  const bs = buildCoreSituation({ balls: 2, strikes: 1, outs: 0, onFirst: true, onSecond: false, onThird: false });
+  ok(bs.balls === 2 && bs.strikes === 1 && bs.outs === 0 && bs.onFirst === true, 'core-sit baseball: count + baserunners');
+
+  // Degenerate inputs → undefined (never a phantom card).
+  ok(buildCoreSituation(null) === undefined, 'core-sit: null → undefined');
+  ok(buildCoreSituation({}) === undefined, 'core-sit: empty object → undefined');
+}
+
+// ---- CORE predictor → win-probability fallback (guide-shaped input) ------------
+{
+  // Mirrors core-predictor.md: each side's gameProjection stat = that side's win %.
+  const pred = {
+    homeTeam: { statistics: [
+      { name: 'gameProjection', displayName: 'WIN PROB', value: 36.47643417, displayValue: '36.5' },
+      { name: 'teamChanceLoss', value: 63.5, displayValue: '63.5' },
+    ] },
+    awayTeam: { statistics: [
+      { name: 'gameProjection', displayName: 'WIN PROB', value: 63.523565829999995, displayValue: '63.5' },
+    ] },
+  };
+  const wp = winProbabilityFromPredictor(pred);
+  ok(wp.home === 36 && wp.away === 64, `predictor: home=round(36.47)=36, away=100-home (${JSON.stringify(wp)})`);
+  // Only away present → home derived from it.
+  ok(JSON.stringify(winProbabilityFromPredictor({ awayTeam: { statistics: [{ name: 'gameProjection', value: 70 }] } })) === JSON.stringify({ home: 30, away: 70 }),
+    'predictor: away-only → home derived, sums to 100');
+  ok(winProbabilityFromPredictor(null) === undefined && winProbabilityFromPredictor({}) === undefined, 'predictor: no data → undefined');
+}
+
+// ---- athlete profile (§2.6): identity paths + degraded/partial + stat shaping ---
+// The golden parity suite covers the full happy path off real captures; these pin
+// the shapes the full captures can't reach — a roster-row vs core-athlete identity
+// producing the SAME output, an identity-only (stats/eventlog failed) profile, and
+// the per-game/season stat-cell filtering (drop nameless/description-only cells).
+{
+  const identity = {
+    id: '99', displayName: 'Test Player', shortName: 'T. Player', jersey: '7',
+    position: { abbreviation: 'RP', displayName: 'Relief Pitcher' },
+    headshot: { href: 'http://a/99.png' }, age: 27, displayHeight: "6' 2\"", displayWeight: '205 lbs',
+  };
+  const team = { id: '19', displayName: 'Los Angeles Dodgers', abbreviation: 'LAD', color: '005a9c',
+    logos: [{ href: 'http://a/i/teamlogos/mlb/500/lad.png', rel: ['default'] }] };
+  const statistics = { splits: { categories: [
+    { name: 'pitching', displayName: 'Pitching', stats: [
+      { name: 'saves', abbreviation: 'SV', displayName: 'Saves', shortDisplayName: 'SV', value: 4, displayValue: '4' },
+      { name: '', displayValue: '9' },              // dropped: no name
+      { name: 'era', displayValue: null },          // dropped: no displayValue
+    ] },
+    { name: 'empty', stats: [{ displayValue: '1' }] }, // dropped: no usable cell
+  ] } };
+  const games = [
+    { eventId: '401', teamId: '19', event: { id: '401', date: '2026-06-10T22:40Z', name: 'LAD at PIT', shortName: 'LAD @ PIT' },
+      statistics: { splits: { categories: [{ name: 'pitching', stats: [{ name: 'strikeouts', abbreviation: 'K', value: 2, displayValue: '2' }] }] } } },
+    { eventId: '402', teamId: '19', event: null, statistics: null }, // row survives on id alone, no date/stats
+  ];
+  const p = normalizeAthleteProfile('baseball/mlb', '99', { identity, team, statistics, games });
+  ok(p.id === '99' && p.league === 'baseball/mlb' && p.name === 'Test Player' && p.jersey === '7', 'athlete: identity scalars');
+  ok(p.position === 'RP', 'athlete: position prefers abbreviation');
+  ok(p.headshot === 'https://a/99.png', 'athlete: headshot forced https');
+  ok(p.age === 27 && p.height === "6' 2\"" && p.weight === '205 lbs', 'athlete: age/height/weight display fields');
+  ok(p.team.name === 'Los Angeles Dodgers' && p.team.color === '005a9c'
+    && p.team.logo === 'https://a/i/teamlogos/mlb/500/lad.png'
+    && p.team.logoDark === 'https://a/i/teamlogos/mlb/500-dark/lad.png', 'athlete: team + derived dark logo');
+  ok(p.stats.length === 1 && p.stats[0].name === 'pitching' && p.stats[0].stats.length === 1
+    && p.stats[0].stats[0].name === 'saves', 'athlete: season stat cells filtered (nameless/no-value/empty dropped)');
+  ok(p.lastGames.length === 2 && p.lastGames[0].shortName === 'LAD @ PIT'
+    && p.lastGames[0].stats[0].stats[0].abbreviation === 'K', 'athlete: game log row + per-game line');
+  ok(p.lastGames[1].eventId === '402' && p.lastGames[1].date === undefined && p.lastGames[1].stats === undefined,
+    'athlete: unresolved row survives on eventId alone');
+
+  // Roster-row identity (position obj, jersey, headshot) yields the same identity
+  // fields as the core-athlete doc — proving the single normalizer serves both paths.
+  const rosterRow = { id: '99', displayName: 'Test Player', shortName: 'T. Player', jersey: '7',
+    position: { abbreviation: 'RP' }, headshot: { href: 'http://a/99.png' }, age: 27,
+    displayHeight: "6' 2\"", displayWeight: '205 lbs' };
+  const p2 = normalizeAthleteProfile('baseball/mlb', '99', { identity: rosterRow, team });
+  ok(p2.jersey === '7' && p2.position === 'RP' && p2.headshot === 'https://a/99.png' && p2.name === 'Test Player',
+    'athlete: roster-row identity → same identity output');
+
+  // Identity-only (stats + eventlog fetches failed) → a valid partial profile.
+  const p3 = normalizeAthleteProfile('baseball/mlb', '99', { identity, team: null, statistics: null, games: [] });
+  ok(p3.name === 'Test Player' && p3.stats === undefined && p3.lastGames === undefined && p3.team === undefined,
+    'athlete: identity-only partial profile (no stats/games/team keys)');
+
+  // Missing id falls back to the passed athleteId; empty identity still returns.
+  const p4 = normalizeAthleteProfile('basketball/wnba', '123', { identity: {} });
+  ok(p4.id === '123' && p4.name === '' && p4.league === 'basketball/wnba', 'athlete: empty identity → id fallback + empty name');
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

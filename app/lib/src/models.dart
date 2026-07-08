@@ -255,6 +255,283 @@ class EventLinks {
       EventLinks(web: _strOrNull(j['web']), box: _strOrNull(j['box']));
 }
 
+// ---- Venue & Circuit facts (the §2.9 detail tab; core venues/{id} · circuits/{id})
+
+/// A rel-tagged CDN asset — a venue photo or a circuit track-map diagram.
+class VenueImage {
+  final String href;
+  final List<String> rel;
+  VenueImage({required this.href, this.rel = const []});
+  factory VenueImage.fromJson(Map<String, dynamic> j) => VenueImage(
+        href: _str(j['href']),
+        rel: _list(j['rel']).map(_str).toList(growable: false),
+      );
+}
+
+/// A parsed measurement string like `"7.004 km"` → value + unit + display.
+class Measure {
+  final num? value;
+  final String? unit;
+  final String display;
+  Measure({this.value, this.unit, required this.display});
+  factory Measure.fromJson(Map<String, dynamic> j) => Measure(
+        value: _num(j['value']),
+        unit: _strOrNull(j['unit']),
+        display: _str(j['display']),
+      );
+}
+
+/// F1 lap record: time + year + (best-effort resolved) driver identity.
+class LapRecord {
+  final String? time;
+  final int? year;
+  final String? driverName, driverHeadshot;
+  LapRecord({this.time, this.year, this.driverName, this.driverHeadshot});
+  factory LapRecord.fromJson(Map<String, dynamic> j) {
+    final d = _map(j['driver']);
+    return LapRecord(
+      time: _strOrNull(j['time']),
+      year: _int(j['year']),
+      driverName: _strOrNull(d['name']),
+      driverHeadshot: _strOrNull(d['headshot']),
+    );
+  }
+}
+
+/// Stadium facts for the Venue tab — lazy `core venues/{id}` (join on the
+/// scoreboard `competitions[].venue.id`). NO capacity/opened (NOT OBSERVED).
+/// `length`/`turns` are only present for non-F1 racing venues (ovals).
+class VenueFacts {
+  final String id, name;
+  final String? city, state, country, address1, photo;
+  final List<VenueImage> images;
+  final String? surface; // 'grass' | 'turf'
+  final String? roof; // 'open' | 'indoor'
+  final num? length; // non-F1 racing track length (miles)
+  final int? turns;
+  VenueFacts({
+    required this.id,
+    required this.name,
+    this.city,
+    this.state,
+    this.country,
+    this.address1,
+    this.photo,
+    this.images = const [],
+    this.surface,
+    this.roof,
+    this.length,
+    this.turns,
+  });
+  factory VenueFacts.fromJson(Map<String, dynamic> j) => VenueFacts(
+        id: _str(j['id']),
+        name: _str(j['name']),
+        city: _strOrNull(j['city']),
+        state: _strOrNull(j['state']),
+        country: _strOrNull(j['country']),
+        address1: _strOrNull(j['address1']),
+        photo: _strOrNull(j['photo']),
+        images: _list(j['images'])
+            .map((e) => VenueImage.fromJson(_map(e)))
+            .toList(growable: false),
+        surface: _strOrNull(j['surface']),
+        roof: _strOrNull(j['roof']),
+        length: _num(j['length']),
+        turns: _int(j['turns']),
+      );
+
+  /// 'Chicago, IL' — city then state/country, whichever is present.
+  String get location => [
+        if (city != null && city!.isNotEmpty) city,
+        if (state != null && state!.isNotEmpty) state
+        else if (country != null && country!.isNotEmpty) country,
+      ].join(', ');
+}
+
+/// F1 circuit facts for the Circuit tab — lazy `core circuits/{id}` (join on the
+/// scoreboard `events[].circuit.id`). The happy path: every fact 100% for F1.
+class CircuitFacts {
+  final String id, name;
+  final String? city, country, diagram, direction;
+  final List<VenueImage> diagrams;
+  final int? established, laps, turns;
+  final Measure? length, distance;
+  final LapRecord? fastestLap;
+  CircuitFacts({
+    required this.id,
+    required this.name,
+    this.city,
+    this.country,
+    this.diagram,
+    this.direction,
+    this.diagrams = const [],
+    this.established,
+    this.laps,
+    this.turns,
+    this.length,
+    this.distance,
+    this.fastestLap,
+  });
+  factory CircuitFacts.fromJson(Map<String, dynamic> j) => CircuitFacts(
+        id: _str(j['id']),
+        name: _str(j['name']),
+        city: _strOrNull(j['city']),
+        country: _strOrNull(j['country']),
+        diagram: _strOrNull(j['diagram']),
+        direction: _strOrNull(j['direction']),
+        diagrams: _list(j['diagrams'])
+            .map((e) => VenueImage.fromJson(_map(e)))
+            .toList(growable: false),
+        established: _int(j['established']),
+        laps: _int(j['laps']),
+        turns: _int(j['turns']),
+        length: j['length'] is Map ? Measure.fromJson(_map(j['length'])) : null,
+        distance: j['distance'] is Map ? Measure.fromJson(_map(j['distance'])) : null,
+        fastestLap:
+            j['fastestLap'] is Map ? LapRecord.fromJson(_map(j['fastestLap'])) : null,
+      );
+
+  /// 'Stavelot, Belgium' — city then country.
+  String get location => [
+        if (city != null && city!.isNotEmpty) city,
+        if (country != null && country!.isNotEmpty) country,
+      ].join(', ');
+}
+
+// ---- Athlete / player profile (§2.6; core athletes/{id} + statistics + eventlog)
+
+/// One stat cell — shared by season totals and per-game lines.
+class AthleteStat {
+  final String name, displayValue;
+  final String? abbreviation, displayName, shortDisplayName;
+  final num? value;
+  AthleteStat({
+    required this.name,
+    required this.displayValue,
+    this.abbreviation,
+    this.displayName,
+    this.shortDisplayName,
+    this.value,
+  });
+  factory AthleteStat.fromJson(Map<String, dynamic> j) => AthleteStat(
+        name: _str(j['name']),
+        displayValue: _str(j['displayValue']),
+        abbreviation: _strOrNull(j['abbreviation']),
+        displayName: _strOrNull(j['displayName']),
+        shortDisplayName: _strOrNull(j['shortDisplayName']),
+        value: _num(j['value']),
+      );
+}
+
+/// A stat category (Pitching/Fielding, Offensive/Defensive/General). Keyed by
+/// `name`; the app picks the headline cells per league — never by sport name.
+class AthleteStatCategory {
+  final String name;
+  final String? displayName;
+  final List<AthleteStat> stats;
+  AthleteStatCategory({required this.name, this.displayName, this.stats = const []});
+  factory AthleteStatCategory.fromJson(Map<String, dynamic> j) => AthleteStatCategory(
+        name: _str(j['name']),
+        displayName: _strOrNull(j['displayName']),
+        stats: _list(j['stats'])
+            .map((e) => AthleteStat.fromJson(_map(e)))
+            .toList(growable: false),
+      );
+}
+
+/// One row of the last-N game log (eventlog item, $ref-resolved).
+class AthleteGameRow {
+  final String eventId;
+  final String? date, name, shortName, teamId;
+  final List<AthleteStatCategory> stats;
+  AthleteGameRow({
+    required this.eventId,
+    this.date,
+    this.name,
+    this.shortName,
+    this.teamId,
+    this.stats = const [],
+  });
+  factory AthleteGameRow.fromJson(Map<String, dynamic> j) => AthleteGameRow(
+        eventId: _str(j['eventId']),
+        date: _strOrNull(j['date']),
+        name: _strOrNull(j['name']),
+        shortName: _strOrNull(j['shortName']),
+        teamId: _strOrNull(j['teamId']),
+        stats: _list(j['stats'])
+            .map((e) => AthleteStatCategory.fromJson(_map(e)))
+            .toList(growable: false),
+      );
+}
+
+/// The athlete's team block, resolved from team.$ref.
+class AthleteTeam {
+  final String id, name;
+  final String? abbr, color, logo, logoDark;
+  AthleteTeam({
+    required this.id,
+    required this.name,
+    this.abbr,
+    this.color,
+    this.logo,
+    this.logoDark,
+  });
+  factory AthleteTeam.fromJson(Map<String, dynamic> j) => AthleteTeam(
+        id: _str(j['id']),
+        name: _str(j['name']),
+        abbr: _strOrNull(j['abbr']),
+        color: _strOrNull(j['color']),
+        logo: _strOrNull(j['logo']),
+        logoDark: _strOrNull(j['logoDark']),
+      );
+}
+
+/// A player profile — the lazy, fanned-out §2.6 "Player rows" feed for the Phase 5
+/// player page. Identity always present; `stats`/`lastGames`/`team` are best-effort
+/// (a partial, identity-only profile is valid).
+class AthleteProfile {
+  final String id, league, name;
+  final String? shortName, jersey, position, headshot, height, weight;
+  final int? age;
+  final AthleteTeam? team;
+  final List<AthleteStatCategory> stats;
+  final List<AthleteGameRow> lastGames;
+  AthleteProfile({
+    required this.id,
+    required this.league,
+    required this.name,
+    this.shortName,
+    this.jersey,
+    this.position,
+    this.headshot,
+    this.height,
+    this.weight,
+    this.age,
+    this.team,
+    this.stats = const [],
+    this.lastGames = const [],
+  });
+  factory AthleteProfile.fromJson(Map<String, dynamic> j) => AthleteProfile(
+        id: _str(j['id']),
+        league: _str(j['league']),
+        name: _str(j['name']),
+        shortName: _strOrNull(j['shortName']),
+        jersey: _strOrNull(j['jersey']),
+        position: _strOrNull(j['position']),
+        headshot: _strOrNull(j['headshot']),
+        height: _strOrNull(j['height']),
+        weight: _strOrNull(j['weight']),
+        age: _int(j['age']),
+        team: j['team'] is Map ? AthleteTeam.fromJson(_map(j['team'])) : null,
+        stats: _list(j['stats'])
+            .map((e) => AthleteStatCategory.fromJson(_map(e)))
+            .toList(growable: false),
+        lastGames: _list(j['lastGames'])
+            .map((e) => AthleteGameRow.fromJson(_map(e)))
+            .toList(growable: false),
+      );
+}
+
 class Competition {
   final String id, layout, scoreKind, competitorKind;
   final String? label; // racing session (FP1/Qual/Race)
@@ -271,6 +548,8 @@ class Competition {
   final String? headline; // one-line ESPN recap/preview (a single calm line)
   final bool conferenceGame; // college conference matchup
   final bool wasSuspended; // MLB: suspended earlier, later resumed
+  final String? broadcast; // cheap TV/stream label ('MLB.TV/TBS', 'ESPN')
+  final Odds? odds; // pre-game betting line (inline scoreboard or core enrichment)
 
   Competition({
     required this.id,
@@ -290,9 +569,37 @@ class Competition {
     this.headline,
     this.conferenceGame = false,
     this.wasSuspended = false,
+    this.broadcast,
+    this.odds,
   });
 
   bool get isField => layout == 'field';
+
+  /// A copy with a replaced [situation] — used by the game-detail screen to fold
+  /// the detail-open core situation over the cheap scoreboard one without mutating
+  /// the shared feed model. Everything else is carried through by reference.
+  Competition withSituation(Situation? s) => Competition(
+        id: id,
+        layout: layout,
+        scoreKind: scoreKind,
+        competitorKind: competitorKind,
+        status: status,
+        periods: periods,
+        decision: decision,
+        competitors: competitors,
+        method: method,
+        meta: meta,
+        situation: s,
+        events: events,
+        label: label,
+        attendance: attendance,
+        headline: headline,
+        conferenceGame: conferenceGame,
+        wasSuspended: wasSuspended,
+        broadcast: broadcast,
+        odds: odds,
+      );
+
   Competitor? competitorByHome(String homeAway) {
     for (final c in competitors) {
       if (c.homeAway == homeAway) return c;
@@ -329,6 +636,8 @@ class Competition {
         headline: _strOrNull(j['headline']),
         conferenceGame: _bool(j['conferenceGame']),
         wasSuspended: _bool(j['wasSuspended']),
+        broadcast: _strOrNull(j['broadcast']),
+        odds: j['odds'] == null ? null : Odds.fromJson(_map(j['odds'])),
       );
 
   /// Red cards by side, derived from the cheap [events] timeline — drives the
@@ -342,6 +651,43 @@ class Competition {
     }
     return out;
   }
+}
+
+/// Pre-game betting line (canonical Odds). Spread/total come cheap off the inline
+/// scoreboard odds[]; the per-team moneyline is added when the detail screen
+/// enriches from the core competition-odds list. All fields optional — render
+/// only what's present, hide the block cleanly when nothing is.
+class Odds {
+  final String? details; // 'SEA -3.5' favorite + line summary
+  final num? spread; // signed point spread
+  final num? overUnder; // game total
+  final num? homeMoneyline, awayMoneyline, drawMoneyline;
+  final String? provider; // 'DraftKings'
+  const Odds({
+    this.details,
+    this.spread,
+    this.overUnder,
+    this.homeMoneyline,
+    this.awayMoneyline,
+    this.drawMoneyline,
+    this.provider,
+  });
+  factory Odds.fromJson(Map<String, dynamic> j) => Odds(
+        details: _strOrNull(j['details']),
+        spread: _num(j['spread']),
+        overUnder: _num(j['overUnder']),
+        homeMoneyline: _num(j['homeMoneyline']),
+        awayMoneyline: _num(j['awayMoneyline']),
+        drawMoneyline: _num(j['drawMoneyline']),
+        provider: _strOrNull(j['provider']),
+      );
+
+  bool get hasMoneyline =>
+      homeMoneyline != null || awayMoneyline != null || drawMoneyline != null;
+
+  /// American-odds string for a moneyline number (+150 / -110).
+  static String? moneyline(num? v) =>
+      v == null ? null : (v > 0 ? '+${v.toInt()}' : '${v.toInt()}');
 }
 
 /// One normalized timeline event (goal / card / try) from the cheap scoreboard
@@ -396,9 +742,11 @@ class Situation {
   final String? pitcher, batter, outsText;
   final String? pitcherLine, batterLine; // live matchup lines ('0.2 IP, 0 ER' / '1-3')
   // gridiron
-  final int? down, distance, homeTimeouts, awayTimeouts;
+  final int? down, distance, homeTimeouts, awayTimeouts, yardLine;
   final String? downDistanceText, possession;
   final bool? isRedZone;
+  // basketball (core: bonus state per side, 'NONE' | 'ONE' | 'DOUBLE')
+  final String? homeBonus, awayBonus;
   // hockey (cheap: scoreboard situation)
   final bool? powerPlay, emptyNet;
   final String? strength; // 'power-play' | 'short-handed' | 'even-strength' | 'empty-net'
@@ -421,9 +769,12 @@ class Situation {
     this.distance,
     this.homeTimeouts,
     this.awayTimeouts,
+    this.yardLine,
     this.downDistanceText,
     this.possession,
     this.isRedZone,
+    this.homeBonus,
+    this.awayBonus,
     this.powerPlay,
     this.emptyNet,
     this.strength,
@@ -446,17 +797,68 @@ class Situation {
         distance: _int(j['distance']),
         homeTimeouts: _int(j['homeTimeouts']),
         awayTimeouts: _int(j['awayTimeouts']),
+        yardLine: _int(j['yardLine']),
         downDistanceText: _strOrNull(j['downDistanceText']),
         possession: _strOrNull(j['possession']),
         isRedZone: j['isRedZone'] is bool ? j['isRedZone'] as bool : null,
+        homeBonus: _strOrNull(j['homeBonus']),
+        awayBonus: _strOrNull(j['awayBonus']),
         powerPlay: j['powerPlay'] is bool ? j['powerPlay'] as bool : null,
         emptyNet: j['emptyNet'] is bool ? j['emptyNet'] as bool : null,
         strength: _strOrNull(j['strength']),
         strengthTeam: _strOrNull(j['strengthTeam']),
         lastPlay: _strOrNull(j['lastPlay']),
       );
+
+  /// Overlay a [core] situation (from the detail-open core fetch) onto this
+  /// scoreboard situation: any non-null field of [core] wins, everything else is
+  /// kept. Used by the game-detail screen so the richer core state (gridiron
+  /// down/distance, basketball bonus/timeouts, hockey power play) upgrades the
+  /// cheap glance in place. Null [core] returns this unchanged.
+  Situation mergedWith(Situation? core) {
+    if (core == null) return this;
+    return Situation(
+      balls: core.balls ?? balls,
+      strikes: core.strikes ?? strikes,
+      outs: core.outs ?? outs,
+      onFirst: core.onFirst ?? onFirst,
+      onSecond: core.onSecond ?? onSecond,
+      onThird: core.onThird ?? onThird,
+      pitcher: core.pitcher ?? pitcher,
+      batter: core.batter ?? batter,
+      pitcherLine: core.pitcherLine ?? pitcherLine,
+      batterLine: core.batterLine ?? batterLine,
+      outsText: core.outsText ?? outsText,
+      down: core.down ?? down,
+      distance: core.distance ?? distance,
+      homeTimeouts: core.homeTimeouts ?? homeTimeouts,
+      awayTimeouts: core.awayTimeouts ?? awayTimeouts,
+      yardLine: core.yardLine ?? yardLine,
+      downDistanceText: core.downDistanceText ?? downDistanceText,
+      possession: core.possession ?? possession,
+      isRedZone: core.isRedZone ?? isRedZone,
+      homeBonus: core.homeBonus ?? homeBonus,
+      awayBonus: core.awayBonus ?? awayBonus,
+      powerPlay: core.powerPlay ?? powerPlay,
+      emptyNet: core.emptyNet ?? emptyNet,
+      strength: core.strength ?? strength,
+      strengthTeam: core.strengthTeam ?? strengthTeam,
+      lastPlay: core.lastPlay ?? lastPlay,
+    );
+  }
+
   bool get hasBaseball => balls != null || strikes != null || outs != null;
   bool get hasGridiron => downDistanceText != null || down != null;
+
+  /// A side is (or isn't) in the bonus — the basketball core-situation flourish.
+  /// 'NONE' means not in bonus; any other value ('ONE'/'DOUBLE') is in bonus.
+  bool _inBonus(String? s) => s != null && s.toUpperCase() != 'NONE';
+  bool get homeInBonus => _inBonus(homeBonus);
+  bool get awayInBonus => _inBonus(awayBonus);
+
+  /// Basketball core state worth a card: a bonus reading for either side, or the
+  /// per-side timeout counts the scoreboard doesn't carry.
+  bool get hasBonus => homeBonus != null || awayBonus != null;
 
   /// A side has the man advantage (hockey): an explicit power-play flag, or a
   /// non-even strength label that isn't just an empty net.
@@ -1349,6 +1751,49 @@ class TeamStanding {
       );
 }
 
+/// A team's SEASON leaders (§2.6 TEAM LEADERS row): the top player per stat
+/// category. CORE-tier + lazy (team-page open), fanned-out — a category with no
+/// resolvable athlete is dropped upstream, so `categories` is already display-ready.
+class TeamSeasonLeaders {
+  final String league, teamId;
+  final List<TeamLeader> categories;
+  TeamSeasonLeaders({
+    required this.league,
+    required this.teamId,
+    this.categories = const [],
+  });
+  factory TeamSeasonLeaders.fromJson(Map<String, dynamic> j) => TeamSeasonLeaders(
+        league: _str(j['league']),
+        teamId: _str(j['teamId']),
+        categories: _list(j['categories'])
+            .map((c) => TeamLeader.fromJson(_map(c)))
+            .toList(growable: false),
+      );
+}
+
+class TeamLeader {
+  final String name, label, athleteId, athlete, displayValue;
+  final String? position, headshot;
+  TeamLeader({
+    required this.name,
+    required this.label,
+    required this.athleteId,
+    required this.athlete,
+    required this.displayValue,
+    this.position,
+    this.headshot,
+  });
+  factory TeamLeader.fromJson(Map<String, dynamic> j) => TeamLeader(
+        name: _str(j['name']),
+        label: _str(j['label']),
+        athleteId: _str(j['athleteId']),
+        athlete: _str(j['athlete']),
+        displayValue: _str(j['displayValue']),
+        position: _strOrNull(j['position']),
+        headshot: _strOrNull(j['headshot']),
+      );
+}
+
 /// The rich per-match tennis resource — ESPN's core `events/{id}/competitions/
 /// {cid}` (the tennis drill-in). The site `/summary` is dead for tennis, but the
 /// core competition carries the match's identity: draw type, round + court, and
@@ -1417,6 +1862,10 @@ class GameSummary {
   final List<BoutResult> bouts; // MMA structured results (core-built)
   final List<MatchEvent> timeline; // soccer curated event feed ([] elsewhere)
   final List<AtBat> atBats; // baseball at-bats w/ pitch sequences ([] elsewhere) (§3e)
+  // Detail-open CORE situation, merged into the summary payload by api.dart (NOT
+  // from normalizeSummary): football down/distance, basketball bonus/timeouts,
+  // hockey power play. Null off the poll/for sports without a core situation.
+  final Situation? situation;
   GameSummary({
     required this.eventId,
     required this.live,
@@ -1437,6 +1886,7 @@ class GameSummary {
     this.bouts = const [],
     this.timeline = const [],
     this.atBats = const [],
+    this.situation,
   });
   factory GameSummary.fromJson(Map<String, dynamic> j) => GameSummary(
         eventId: _str(j['eventId']),
@@ -1490,6 +1940,9 @@ class GameSummary {
         atBats: _list(j['atBats'])
             .map((a) => AtBat.fromJson(_map(a)))
             .toList(growable: false),
+        situation: j['situation'] == null
+            ? null
+            : Situation.fromJson(_map(j['situation'])),
       );
 
   bool get isEmpty =>
@@ -1508,7 +1961,8 @@ class GameSummary {
       drives.isEmpty &&
       cricketInnings.isEmpty &&
       bouts.isEmpty &&
-      atBats.isEmpty;
+      atBats.isEmpty &&
+      situation == null;
 
   /// The structured result for one bout (MMA detail is per-bout; the summary is
   /// per-card) — matched by the bout's Competition.id.

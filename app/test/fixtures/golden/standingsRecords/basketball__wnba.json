@@ -1,0 +1,2752 @@
+{
+  "endpoint": "standingsRecords",
+  "args": {
+    "key": "basketball/wnba",
+    "raw": {
+      "name": "Women's National Basketball Assoc.",
+      "abbreviation": "WNBA",
+      "children": [
+        {
+          "name": "Eastern Conference",
+          "abbreviation": "E",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "9",
+                  "displayName": "New York Liberty",
+                  "name": "Liberty",
+                  "abbreviation": "NY",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "81.4",
+                    "value": 81.42857
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "88.4",
+                    "value": 88.42857
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+7.0",
+                    "value": 7
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "1.000",
+                    "value": 1
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+98",
+                    "value": 98
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "3.0",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1140",
+                    "value": 1140
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1238",
+                    "value": 1238
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W7",
+                    "value": 7
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".714",
+                    "value": 0.71428573
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "20",
+                  "displayName": "Atlanta Dream",
+                  "name": "Dream",
+                  "abbreviation": "ATL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "80.7",
+                    "value": 80.69231
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "87.1",
+                    "value": 87.07692
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+6.4",
+                    "value": 6.3999999999999915
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "0.5",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.667",
+                    "value": 0.6666667
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+83",
+                    "value": 83
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "2.5",
+                    "value": 2.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1049",
+                    "value": 1049
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1132",
+                    "value": 1132
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".692",
+                    "value": 0.6923077
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "5",
+                  "displayName": "Indiana Fever",
+                  "name": "Fever",
+                  "abbreviation": "IND",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "86.4",
+                    "value": 86.38461
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "89.9",
+                    "value": 89.92308
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+3.5",
+                    "value": 3.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "1.5",
+                    "value": 1.5
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.667",
+                    "value": 0.6666667
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+46",
+                    "value": 46
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.5",
+                    "value": 1.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1123",
+                    "value": 1123
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1169",
+                    "value": 1169
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".615",
+                    "value": 0.61538464
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "131935",
+                  "displayName": "Toronto Tempo",
+                  "name": "Tempo",
+                  "abbreviation": "TOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "89.7",
+                    "value": 89.71429
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "88.6",
+                    "value": 88.64286
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-1.1",
+                    "value": -1.1000000000000085
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.429",
+                    "value": 0.42857143
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-15",
+                    "value": -15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0.0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1256",
+                    "value": 1256
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1241",
+                    "value": 1241
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "16",
+                  "displayName": "Washington Mystics",
+                  "name": "Mystics",
+                  "abbreviation": "WSH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/wsh.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "86.7",
+                    "value": 86.666664
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "81.4",
+                    "value": 81.416664
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-5.3",
+                    "value": -5.299999999999997
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-63",
+                    "value": -63
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-1.0",
+                    "value": -1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1040",
+                    "value": 1040
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "977",
+                    "value": 977
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".417",
+                    "value": 0.41666666
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "19",
+                  "displayName": "Chicago Sky",
+                  "name": "Sky",
+                  "abbreviation": "CHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "87.8",
+                    "value": 87.76923
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "82.2",
+                    "value": 82.15385
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-5.6",
+                    "value": -5.599999999999994
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "5.5",
+                    "value": 5.5
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.167",
+                    "value": 0.16666667
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-73",
+                    "value": -73
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-2.5",
+                    "value": -2.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1141",
+                    "value": 1141
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1068",
+                    "value": 1068
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".308",
+                    "value": 0.30769232
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "18",
+                  "displayName": "Connecticut Sun",
+                  "name": "Sun",
+                  "abbreviation": "CON",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/con.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "89.1",
+                    "value": 89.13333
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "77.9",
+                    "value": 77.86667
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-11.2",
+                    "value": -11.199999999999989
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8.5",
+                    "value": 8.5
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-169",
+                    "value": -169
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-5.5",
+                    "value": -5.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1337",
+                    "value": 1337
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1168",
+                    "value": 1168
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L5",
+                    "value": -5
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".133",
+                    "value": 0.13333334
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "Western Conference",
+          "abbreviation": "W",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "17",
+                  "displayName": "Las Vegas Aces",
+                  "name": "Aces",
+                  "abbreviation": "LV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "86.6",
+                    "value": 86.61539
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "92.1",
+                    "value": 92.07692
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+5.5",
+                    "value": 5.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.700",
+                    "value": 0.7
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+71",
+                    "value": 71
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "3.5",
+                    "value": 3.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1126",
+                    "value": 1126
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1197",
+                    "value": 1197
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W6",
+                    "value": 6
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".769",
+                    "value": 0.7692308
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "8",
+                  "displayName": "Minnesota Lynx",
+                  "name": "Lynx",
+                  "abbreviation": "MIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "79.8",
+                    "value": 79.84615
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "91.5",
+                    "value": 91.53846
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+11.7",
+                    "value": 11.700000000000003
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.857",
+                    "value": 0.85714287
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+152",
+                    "value": 152
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "3.5",
+                    "value": 3.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1038",
+                    "value": 1038
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1190",
+                    "value": 1190
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".769",
+                    "value": 0.7692308
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3",
+                  "displayName": "Dallas Wings",
+                  "name": "Wings",
+                  "abbreviation": "DAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "83.4",
+                    "value": 83.38461
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "87.5",
+                    "value": 87.53846
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+4.1",
+                    "value": 4.099999999999994
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.571",
+                    "value": 0.5714286
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+54",
+                    "value": 54
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.5",
+                    "value": 1.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1084",
+                    "value": 1084
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1138",
+                    "value": 1138
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".615",
+                    "value": 0.61538464
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "129689",
+                  "displayName": "Golden State Valkyries",
+                  "name": "Valkyries",
+                  "abbreviation": "GS",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/gs.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "79.8",
+                    "value": 79.84615
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "85.2",
+                    "value": 85.15385
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+5.4",
+                    "value": 5.400000000000006
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.625",
+                    "value": 0.625
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+69",
+                    "value": 69
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.5",
+                    "value": 1.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1038",
+                    "value": 1038
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1107",
+                    "value": 1107
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".615",
+                    "value": 0.61538464
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "6",
+                  "displayName": "Los Angeles Sparks",
+                  "name": "Sparks",
+                  "abbreviation": "LA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "91.3",
+                    "value": 91.30769
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "90.4",
+                    "value": 90.38461
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.9",
+                    "value": -0.8999999999999915
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.625",
+                    "value": 0.625
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-12",
+                    "value": -12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0.5",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1187",
+                    "value": 1187
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1175",
+                    "value": 1175
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".538",
+                    "value": 0.53846157
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "132052",
+                  "displayName": "Portland Fire",
+                  "name": "Fire",
+                  "abbreviation": "POR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/por.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "86.7",
+                    "value": 86.73333
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "82.0",
+                    "value": 82
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-4.7",
+                    "value": -4.700000000000003
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.200",
+                    "value": 0.2
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-71",
+                    "value": -71
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1301",
+                    "value": 1301
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1230",
+                    "value": 1230
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".467",
+                    "value": 0.46666667
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "11",
+                  "displayName": "Phoenix Mercury",
+                  "name": "Mercury",
+                  "abbreviation": "PHX",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "86.8",
+                    "value": 86.8
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "82.2",
+                    "value": 82.2
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-4.6",
+                    "value": -4.599999999999994
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.300",
+                    "value": 0.3
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-69",
+                    "value": -69
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-3.5",
+                    "value": -3.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1302",
+                    "value": 1302
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1233",
+                    "value": 1233
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".267",
+                    "value": 0.26666668
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "14",
+                  "displayName": "Seattle Storm",
+                  "name": "Storm",
+                  "abbreviation": "SEA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/sea.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "83.1",
+                    "value": 83.13333
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "76.4",
+                    "value": 76.4
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-6.7",
+                    "value": -6.699999999999989
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.000",
+                    "value": 0
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-101",
+                    "value": -101
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-4.5",
+                    "value": -4.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "1247",
+                    "value": 1247
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "1146",
+                    "value": 1146
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L8",
+                    "value": -8
+                  },
+                  {
+                    "name": "winPercent",
+                    "type": "winpercent",
+                    "displayValue": ".200",
+                    "value": 0.2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "gamesAhead",
+                    "type": "gamesahead",
+                    "displayValue": "-",
+                    "value": 0
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "recordDocs": [
+      {
+        "standings": [
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/5?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "12-8"
+              },
+              {
+                "type": "home",
+                "summary": "8-4"
+              },
+              {
+                "type": "road",
+                "summary": "4-4"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "5-4"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/9?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "13-9"
+              },
+              {
+                "type": "home",
+                "summary": "7-5"
+              },
+              {
+                "type": "road",
+                "summary": "6-4"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "8-1"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/20?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "12-9"
+              },
+              {
+                "type": "home",
+                "summary": "6-3"
+              },
+              {
+                "type": "road",
+                "summary": "6-6"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "7-3"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/16?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "10-10"
+              },
+              {
+                "type": "home",
+                "summary": "4-5"
+              },
+              {
+                "type": "road",
+                "summary": "6-5"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "7-5"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/131935?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "9-11"
+              },
+              {
+                "type": "home",
+                "summary": "5-5"
+              },
+              {
+                "type": "road",
+                "summary": "4-6"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "4-6"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/19?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "7-14"
+              },
+              {
+                "type": "home",
+                "summary": "3-7"
+              },
+              {
+                "type": "road",
+                "summary": "4-7"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "1-7"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/18?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "5-16"
+              },
+              {
+                "type": "home",
+                "summary": "3-8"
+              },
+              {
+                "type": "road",
+                "summary": "2-8"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "2-8"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "standings": [
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/17?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "15-6"
+              },
+              {
+                "type": "home",
+                "summary": "6-4"
+              },
+              {
+                "type": "road",
+                "summary": "9-2"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "10-4"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/8?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "15-6"
+              },
+              {
+                "type": "home",
+                "summary": "6-4"
+              },
+              {
+                "type": "road",
+                "summary": "9-2"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "10-1"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/129689?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "15-7"
+              },
+              {
+                "type": "home",
+                "summary": "10-3"
+              },
+              {
+                "type": "road",
+                "summary": "5-4"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "7-5"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "8-2"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/3?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "14-8"
+              },
+              {
+                "type": "home",
+                "summary": "6-3"
+              },
+              {
+                "type": "road",
+                "summary": "8-5"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "6-6"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/132052?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "9-12"
+              },
+              {
+                "type": "home",
+                "summary": "6-5"
+              },
+              {
+                "type": "road",
+                "summary": "3-7"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "3-5"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/6?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "8-11"
+              },
+              {
+                "type": "home",
+                "summary": "3-7"
+              },
+              {
+                "type": "road",
+                "summary": "5-4"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "5-6"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/11?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "8-14"
+              },
+              {
+                "type": "home",
+                "summary": "3-7"
+              },
+              {
+                "type": "road",
+                "summary": "5-7"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "5-8"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/14?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "6-17"
+              },
+              {
+                "type": "home",
+                "summary": "4-8"
+              },
+              {
+                "type": "road",
+                "summary": "2-9"
+              },
+              {
+                "type": "vsdiv",
+                "summary": "0-0"
+              },
+              {
+                "type": "vsconf",
+                "summary": "1-12"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "output": [
+    {
+      "name": "Eastern Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "9",
+            "name": "New York Liberty",
+            "abbr": "NY",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/ny.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ny.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "81.4",
+            "avgPointsFor": "88.4",
+            "differential": "+7.0",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "leagueWinPercent": "1.000",
+            "losses": "4",
+            "playoffSeed": "1",
+            "pointDifferential": "+98",
+            "points": "3.0",
+            "pointsAgainst": "1140",
+            "pointsFor": "1238",
+            "streak": "W7",
+            "winPercent": ".714",
+            "wins": "10",
+            "gamesAhead": "-",
+            "home": "7-5",
+            "away": "6-4",
+            "div": "0-0",
+            "conf": "8-1",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "20",
+            "name": "Atlanta Dream",
+            "abbr": "ATL",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/atl.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "80.7",
+            "avgPointsFor": "87.1",
+            "differential": "+6.4",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "0.5",
+            "leagueWinPercent": "0.667",
+            "losses": "4",
+            "playoffSeed": "2",
+            "pointDifferential": "+83",
+            "points": "2.5",
+            "pointsAgainst": "1049",
+            "pointsFor": "1132",
+            "streak": "W1",
+            "winPercent": ".692",
+            "wins": "9",
+            "gamesAhead": "-",
+            "home": "6-3",
+            "away": "6-6",
+            "div": "0-0",
+            "conf": "7-3",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "5",
+            "name": "Indiana Fever",
+            "abbr": "IND",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/ind.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/ind.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "86.4",
+            "avgPointsFor": "89.9",
+            "differential": "+3.5",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "1.5",
+            "leagueWinPercent": "0.667",
+            "losses": "5",
+            "playoffSeed": "3",
+            "pointDifferential": "+46",
+            "points": "1.5",
+            "pointsAgainst": "1123",
+            "pointsFor": "1169",
+            "streak": "W3",
+            "winPercent": ".615",
+            "wins": "8",
+            "gamesAhead": "-",
+            "home": "8-4",
+            "away": "4-4",
+            "div": "0-0",
+            "conf": "5-4",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "131935",
+            "name": "Toronto Tempo",
+            "abbr": "TOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/tor.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/tor.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "89.7",
+            "avgPointsFor": "88.6",
+            "differential": "-1.1",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "3",
+            "leagueWinPercent": "0.429",
+            "losses": "7",
+            "playoffSeed": "4",
+            "pointDifferential": "-15",
+            "points": "0.0",
+            "pointsAgainst": "1256",
+            "pointsFor": "1241",
+            "streak": "L2",
+            "winPercent": ".500",
+            "wins": "7",
+            "gamesAhead": "-",
+            "home": "5-5",
+            "away": "4-6",
+            "div": "0-0",
+            "conf": "4-6",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "16",
+            "name": "Washington Mystics",
+            "abbr": "WSH",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/wsh.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "86.7",
+            "avgPointsFor": "81.4",
+            "differential": "-5.3",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "4",
+            "leagueWinPercent": "0.500",
+            "losses": "7",
+            "playoffSeed": "5",
+            "pointDifferential": "-63",
+            "points": "-1.0",
+            "pointsAgainst": "1040",
+            "pointsFor": "977",
+            "streak": "L1",
+            "winPercent": ".417",
+            "wins": "5",
+            "gamesAhead": "-",
+            "home": "4-5",
+            "away": "6-5",
+            "div": "0-0",
+            "conf": "7-5",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "19",
+            "name": "Chicago Sky",
+            "abbr": "CHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/chi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/chi.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "87.8",
+            "avgPointsFor": "82.2",
+            "differential": "-5.6",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "5.5",
+            "leagueWinPercent": "0.167",
+            "losses": "9",
+            "playoffSeed": "6",
+            "pointDifferential": "-73",
+            "points": "-2.5",
+            "pointsAgainst": "1141",
+            "pointsFor": "1068",
+            "streak": "L3",
+            "winPercent": ".308",
+            "wins": "4",
+            "gamesAhead": "-",
+            "home": "3-7",
+            "away": "4-7",
+            "div": "0-0",
+            "conf": "1-7",
+            "l10": "3-7"
+          }
+        },
+        {
+          "team": {
+            "id": "18",
+            "name": "Connecticut Sun",
+            "abbr": "CON",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/con.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/con.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "89.1",
+            "avgPointsFor": "77.9",
+            "differential": "-11.2",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "8.5",
+            "leagueWinPercent": "0.000",
+            "losses": "13",
+            "playoffSeed": "7",
+            "pointDifferential": "-169",
+            "points": "-5.5",
+            "pointsAgainst": "1337",
+            "pointsFor": "1168",
+            "streak": "L5",
+            "winPercent": ".133",
+            "wins": "2",
+            "gamesAhead": "-",
+            "home": "3-8",
+            "away": "2-8",
+            "div": "0-0",
+            "conf": "2-8",
+            "l10": "3-7"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Western Conference",
+      "rows": [
+        {
+          "team": {
+            "id": "17",
+            "name": "Las Vegas Aces",
+            "abbr": "LV",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/lv.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/lv.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "86.6",
+            "avgPointsFor": "92.1",
+            "differential": "+5.5",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "leagueWinPercent": "0.700",
+            "losses": "3",
+            "playoffSeed": "1",
+            "pointDifferential": "+71",
+            "points": "3.5",
+            "pointsAgainst": "1126",
+            "pointsFor": "1197",
+            "streak": "W6",
+            "winPercent": ".769",
+            "wins": "10",
+            "gamesAhead": "-",
+            "home": "6-4",
+            "away": "9-2",
+            "div": "0-0",
+            "conf": "10-4",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "8",
+            "name": "Minnesota Lynx",
+            "abbr": "MIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/min.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "79.8",
+            "avgPointsFor": "91.5",
+            "differential": "+11.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "-",
+            "leagueWinPercent": "0.857",
+            "losses": "3",
+            "playoffSeed": "2",
+            "pointDifferential": "+152",
+            "points": "3.5",
+            "pointsAgainst": "1038",
+            "pointsFor": "1190",
+            "streak": "L1",
+            "winPercent": ".769",
+            "wins": "10",
+            "gamesAhead": "-",
+            "home": "6-4",
+            "away": "9-2",
+            "div": "0-0",
+            "conf": "10-1",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "3",
+            "name": "Dallas Wings",
+            "abbr": "DAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/dal.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "83.4",
+            "avgPointsFor": "87.5",
+            "differential": "+4.1",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "2",
+            "leagueWinPercent": "0.571",
+            "losses": "5",
+            "playoffSeed": "3",
+            "pointDifferential": "+54",
+            "points": "1.5",
+            "pointsAgainst": "1084",
+            "pointsFor": "1138",
+            "streak": "L1",
+            "winPercent": ".615",
+            "wins": "8",
+            "gamesAhead": "-",
+            "home": "6-3",
+            "away": "8-5",
+            "div": "0-0",
+            "conf": "6-6",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "129689",
+            "name": "Golden State Valkyries",
+            "abbr": "GS",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/gs.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/gs.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "79.8",
+            "avgPointsFor": "85.2",
+            "differential": "+5.4",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "2",
+            "leagueWinPercent": "0.625",
+            "losses": "5",
+            "playoffSeed": "4",
+            "pointDifferential": "+69",
+            "points": "1.5",
+            "pointsAgainst": "1038",
+            "pointsFor": "1107",
+            "streak": "W2",
+            "winPercent": ".615",
+            "wins": "8",
+            "gamesAhead": "-",
+            "home": "10-3",
+            "away": "5-4",
+            "div": "0-0",
+            "conf": "7-5",
+            "l10": "8-2"
+          }
+        },
+        {
+          "team": {
+            "id": "6",
+            "name": "Los Angeles Sparks",
+            "abbr": "LA",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/la.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "91.3",
+            "avgPointsFor": "90.4",
+            "differential": "-0.9",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "3",
+            "leagueWinPercent": "0.625",
+            "losses": "6",
+            "playoffSeed": "5",
+            "pointDifferential": "-12",
+            "points": "0.5",
+            "pointsAgainst": "1187",
+            "pointsFor": "1175",
+            "streak": "W3",
+            "winPercent": ".538",
+            "wins": "7",
+            "gamesAhead": "-",
+            "home": "3-7",
+            "away": "5-4",
+            "div": "0-0",
+            "conf": "5-6",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "132052",
+            "name": "Portland Fire",
+            "abbr": "POR",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/por.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/por.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "86.7",
+            "avgPointsFor": "82.0",
+            "differential": "-4.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "4",
+            "leagueWinPercent": "0.200",
+            "losses": "8",
+            "playoffSeed": "6",
+            "pointDifferential": "-71",
+            "points": "-0.5",
+            "pointsAgainst": "1301",
+            "pointsFor": "1230",
+            "streak": "W1",
+            "winPercent": ".467",
+            "wins": "7",
+            "gamesAhead": "-",
+            "home": "6-5",
+            "away": "3-7",
+            "div": "0-0",
+            "conf": "3-5",
+            "l10": "3-7"
+          }
+        },
+        {
+          "team": {
+            "id": "11",
+            "name": "Phoenix Mercury",
+            "abbr": "PHX",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/phx.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/phx.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "86.8",
+            "avgPointsFor": "82.2",
+            "differential": "-4.6",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "7",
+            "leagueWinPercent": "0.300",
+            "losses": "11",
+            "playoffSeed": "7",
+            "pointDifferential": "-69",
+            "points": "-3.5",
+            "pointsAgainst": "1302",
+            "pointsFor": "1233",
+            "streak": "L3",
+            "winPercent": ".267",
+            "wins": "4",
+            "gamesAhead": "-",
+            "home": "3-7",
+            "away": "5-7",
+            "div": "0-0",
+            "conf": "5-8",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "14",
+            "name": "Seattle Storm",
+            "abbr": "SEA",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/sea.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/wnba/500-dark/scoreboard/sea.png"
+          },
+          "stats": {
+            "avgPointsAgainst": "83.1",
+            "avgPointsFor": "76.4",
+            "differential": "-6.7",
+            "divisionWinPercent": "0.000",
+            "gamesBehind": "8",
+            "leagueWinPercent": "0.000",
+            "losses": "12",
+            "playoffSeed": "8",
+            "pointDifferential": "-101",
+            "points": "-4.5",
+            "pointsAgainst": "1247",
+            "pointsFor": "1146",
+            "streak": "L8",
+            "winPercent": ".200",
+            "wins": "3",
+            "gamesAhead": "-",
+            "home": "4-8",
+            "away": "2-9",
+            "div": "0-0",
+            "conf": "1-12",
+            "l10": "3-7"
+          }
+        }
+      ]
+    }
+  ]
+}

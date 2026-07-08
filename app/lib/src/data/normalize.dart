@@ -321,6 +321,89 @@ Map<String, dynamic> _buildCompetitor(Map profile, Map raw) {
   return c;
 }
 
+// ---- broadcast (cheap TV/stream label) --------------------------------------
+// Port of normalize.js buildBroadcast: competitions[].broadcast (often ''), else
+// the national geoBroadcasts[].media.shortName, else any geoBroadcast.
+String? _buildBroadcast(Map rc) {
+  final b = rc['broadcast'] is String ? (rc['broadcast'] as String).trim() : '';
+  if (b.isNotEmpty) return b;
+  final geos = rc['geoBroadcasts'] is List ? rc['geoBroadcasts'] as List : const [];
+  String short(dynamic g) {
+    final s = field(field(g, 'media'), 'shortName');
+    return s is String ? s.trim() : '';
+  }
+
+  dynamic nat;
+  for (final g in geos) {
+    if (field(field(g, 'market'), 'type') == 'National' && short(g).isNotEmpty) {
+      nat = g;
+      break;
+    }
+  }
+  if (nat == null) {
+    for (final g in geos) {
+      if (short(g).isNotEmpty) {
+        nat = g;
+        break;
+      }
+    }
+  }
+  return nat == null ? null : short(nat);
+}
+
+// ---- odds (pre-game betting line) -------------------------------------------
+// Port of normalize.js buildOdds/oddsFromList/normalizeCompetitionOdds. One shape
+// from BOTH the inline scoreboard odds[] and a core competition-odds items[]
+// element (the core one adds the per-team moneyline). Only served keys are kept.
+Map<String, dynamic>? _buildOdds(dynamic o) {
+  if (o is! Map) return null;
+  num? n(dynamic v) => v is num ? v : null;
+  final details = field(o, 'details');
+  final provider = field(field(o, 'provider'), 'name');
+  final out = pickNN({
+    'details':
+        details is String && details.trim().isNotEmpty ? details.trim() : null,
+    'spread': n(field(o, 'spread')),
+    'overUnder': n(field(o, 'overUnder')),
+    'homeMoneyline': n(field(field(o, 'homeTeamOdds'), 'moneyLine')),
+    'awayMoneyline': n(field(field(o, 'awayTeamOdds'), 'moneyLine')),
+    'drawMoneyline': n(field(field(o, 'drawOdds'), 'moneyLine')),
+    'provider': provider is String && provider.isNotEmpty ? provider : null,
+  }, [
+    'details',
+    'spread',
+    'overUnder',
+    'homeMoneyline',
+    'awayMoneyline',
+    'drawMoneyline',
+    'provider',
+  ]);
+  return out.keys.any((k) => k != 'provider') ? out : null;
+}
+
+// Highest-priority usable line from a list (inline odds[] or core items[]).
+Map<String, dynamic>? _oddsFromList(dynamic items) {
+  if (items is! List) return null;
+  Map<String, dynamic>? best;
+  num bestPrio = double.negativeInfinity;
+  for (final it in items) {
+    final o = _buildOdds(it);
+    if (o == null) continue;
+    final prio = field(field(it, 'provider'), 'priority');
+    final p = prio is num ? prio : 0;
+    if (p > bestPrio) {
+      best = o;
+      bestPrio = p;
+    }
+  }
+  return best;
+}
+
+/// The core competition-odds resource (`.../competitions/{id}/odds`) → canonical
+/// Odds map (or null). Lazy detail-open enrichment; pure. Port of normalize.js.
+Map<String, dynamic>? normalizeCompetitionOdds(dynamic raw) =>
+    _oddsFromList(field(raw, 'items'));
+
 // ---- live situation ---------------------------------------------------------
 Map<String, dynamic>? _buildSituation(Map rc) {
   final sit = rc['situation'];
@@ -577,6 +660,10 @@ Map<String, dynamic> _buildCompetition(Map profile, Map rc, Map rawEvent) {
   final hl = rc['headlines'] is List && (rc['headlines'] as List).isNotEmpty ? (rc['headlines'] as List)[0] : null;
   final hlText = hl != null ? (field(hl, 'shortLinkText') ?? field(hl, 'description')) : null;
   if (hlText != null) comp['headline'] = _decodeEntities(jsStr(hlText));
+  final broadcast = _buildBroadcast(rc);
+  if (broadcast != null) comp['broadcast'] = broadcast;
+  final odds = _oddsFromList(rc['odds']);
+  if (odds != null) comp['odds'] = odds;
 
   final situation = _buildSituation(rc);
   if (situation != null) comp['situation'] = situation;

@@ -22,6 +22,7 @@ import { resolve } from '../../schema/tools/resolve.mjs';
 import {
   synthScoreboard, synthSummary, synthTeams, synthStandings, synthRankings,
   synthGolfExtras, synthGolfScorecard, synthMmaCore, synthTeamDetailParts,
+  synthCoreSituation, synthCorePredictor, synthCorePlayText,
 } from '../mock/synth.mjs';
 import { getScenario } from '../mock/scenarios.mjs';
 
@@ -94,11 +95,29 @@ function handle(req, res) {
       const { linescores } = synthMmaCore(registry, key, fxFor(key), seg[4], { now, scenario: SCENARIO });
       return send(res, linescores[`${seg[5]}/${seg[6]}`] || { items: [] });
     }
+    // /mock/coreplay/{sport}/{league}/{eventId} — the text behind situation.lastPlay.$ref
+    if (seg[0] === 'mock' && seg[1] === 'coreplay') {
+      const key = `${seg[2]}/${seg[3]}`;
+      const prof = resolve(registry, key);
+      return send(res, { id: seg[4], text: synthCorePlayText(seg[4], prof.espnSport) });
+    }
 
     // ---- core event: /v2/sports/{sport}/leagues/{league}/events/{id} ---------
     if (seg[0] === 'v2' && seg[1] === 'sports' && seg[3] === 'leagues' && seg[5] === 'events') {
       const key = `${seg[2]}/${seg[4]}`, eventId = seg[6];
       const prof = resolve(registry, key);
+      // Detail-open CORE resources: /events/{id}/competitions/{comp}/{situation|predictor}.
+      // Fabricated deterministically so live gridiron/basketball/hockey detail is
+      // walkable offline through the app's real core-fetch path.
+      if (seg[7] === 'competitions' && seg[9] === 'predictor') {
+        return send(res, { $ref: `${REF_HOST}${url.pathname}`, ...synthCorePredictor(eventId) });
+      }
+      if (seg[7] === 'competitions' && seg[9] === 'situation') {
+        const sit = synthCoreSituation(prof, eventId);
+        // inject the last-play $ref back at us (mirrors the golf/mma ref injection).
+        sit.lastPlay = { $ref: `${REF_HOST}/mock/coreplay/${key}/${eventId}` };
+        return send(res, { $ref: `${REF_HOST}${url.pathname}`, ...sit });
+      }
       if (prof.espnSport === 'mma') {
         const { coreEvent } = synthMmaCore(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
         // inject $refs pointing back at us so the app's per-bout follow works.

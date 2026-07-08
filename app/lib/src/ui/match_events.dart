@@ -63,12 +63,19 @@ class ActionFeed extends StatelessWidget {
       return a.$2 - b.$2;
     });
 
+    // The dense play-by-play archetype (design 9d): every row carries the running
+    // score in a persistent column, and only lead-change rows are §9 signals. The
+    // sparse soccer timeline (tallyScore) and the scoring recaps (scoringOnly)
+    // keep the score on scoring rows only.
+    final dense = !scoringOnly && !tallyScore;
+
     // Walk ascending: tally/carry the running score, flag lead changes (the §9
     // signal), and bucket by period.
     final byPeriod = <int, List<_Row>>{};
     final order = <int>[];
     int home = 0, away = 0;
     int leadSign = 0; // sign of (home − away) at the last scoring event
+    String? running; // the running score carried onto quiet rows (§9d)
     _Row? lastScore;
     for (final (e, _) in keyed) {
       final p = _period(e);
@@ -90,6 +97,7 @@ class ActionFeed extends StatelessWidget {
         }
         if (a != null && h != null) {
           row.score = _score(a, h);
+          running = row.score;
           final sign = h == a ? 0 : (h > a ? 1 : -1);
           if (sign != 0 && leadSign != 0 && sign != leadSign) {
             row.leadChange = true;
@@ -97,6 +105,10 @@ class ActionFeed extends StatelessWidget {
           if (sign != 0) leadSign = sign;
         }
         lastScore = row;
+      } else if (dense && !row.isTimeout) {
+        // §9d persistent column: carry the last running score onto quiet rows so
+        // every row shows the score (timeouts render as dividers, so are skipped).
+        row.score = running;
       }
       (byPeriod[p] ??= (() {
         order.add(p);
@@ -177,14 +189,25 @@ class ActionFeed extends StatelessWidget {
     final e = r.e;
     final color = _sideColor(e.side);
     final scoring = e.isScoring;
+    // §9d signal-row discipline: in the dense play-by-play feed, ordinary rows —
+    // including ordinary scoring rows — stay quiet; only a lead change (the §9
+    // signal) lifts with the team wash + bright clock/score + LEAD pill. The
+    // sparse soccer timeline (tallyScore) and the scoring recaps (scoringOnly)
+    // keep the every-scoring-row lift.
+    final dense = !scoringOnly && !tallyScore;
+    final signal = dense && r.leadChange;
+    final lifted = dense ? signal : scoring;
     final sub = _subtitle(e);
     return Container(
       decoration: BoxDecoration(
-        gradient: scoring
+        gradient: lifted
             ? LinearGradient(
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
-                colors: [color.withValues(alpha: 0.10), Colors.transparent],
+                colors: [
+                  color.withValues(alpha: dense ? 0.11 : 0.10),
+                  Colors.transparent
+                ],
               )
             : null,
         border: const Border(bottom: BorderSide(color: T.divider)),
@@ -198,7 +221,7 @@ class ActionFeed extends StatelessWidget {
                   fontFamily: 'BarlowCondensed',
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
-                  color: scoring ? T.text : T.textDim)),
+                  color: lifted ? T.text : T.textDim)),
         ),
         SizedBox(
             width: 18,
@@ -216,7 +239,9 @@ class ActionFeed extends StatelessWidget {
                 ScoreTypeChip(_scoreType(e)!, color: color),
                 const SizedBox(width: 8),
               ],
-              Flexible(child: _headlineWidget(e, scoring)),
+              Flexible(
+                  child: _headlineWidget(e,
+                      dense: dense, signal: signal, scoring: scoring)),
               // the lead-change signal (§9 D): the LEAD badge, team-tinted.
               if (r.leadChange) ...[
                 const SizedBox(width: 6),
@@ -232,8 +257,28 @@ class ActionFeed extends StatelessWidget {
               ),
           ]),
         ),
-        // the running score after a scoring event (§7.5): Barlow 18, white latest.
-        if (r.score != null)
+        // §9d persistent score column: in the dense feed EVERY row carries the
+        // running score in a fixed-order ~46px column (Barlow 14/600 textFaint,
+        // white 700 on signal rows). The sparse/recap feeds show it only on
+        // scoring rows, at the taller RunningScore size (§7.5, white latest).
+        if (dense)
+          SizedBox(
+            width: 46,
+            child: r.score == null
+                ? null
+                : Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(r.score!,
+                        style: TextStyle(
+                            fontFamily: 'BarlowCondensed',
+                            fontWeight:
+                                signal ? FontWeight.w700 : FontWeight.w600,
+                            fontSize: 14,
+                            fontFeatures: const [FontFeature.tabularFigures()],
+                            color: signal ? T.text : T.textFaint)),
+                  ),
+          )
+        else if (r.score != null)
           Padding(
             padding: const EdgeInsets.only(left: 8),
             child: RunningScore(r.score!, bright: r.bright),
@@ -325,7 +370,13 @@ class ActionFeed extends StatelessWidget {
   /// leads with the bold actor and dims the action; the short actor name ('N.
   /// Jokić') is aligned against the play text's full name by its surname. Rows
   /// with no actor (or a name that doesn't appear in the text) render as-is.
-  Widget _headlineWidget(MatchEvent e, bool scoring) {
+  ///
+  /// In the dense feed (§9d) the actor is white 600 (700 on a signal row) with a
+  /// dim action, and an unresolved line renders wholly dim — per the bug report,
+  /// only highlight the actor when we have the data. The sparse/recap feeds keep
+  /// the every-scoring-row emphasis (actor w700, action white when scoring).
+  Widget _headlineWidget(MatchEvent e,
+      {required bool dense, required bool signal, required bool scoring}) {
     final actor = e.athlete;
     if (actor != null && (e.kind == 'play' || e.kind == 'score')) {
       final text = e.text ?? '';
@@ -333,29 +384,37 @@ class ActionFeed extends StatelessWidget {
       final idx = surname.isEmpty ? -1 : text.indexOf(surname);
       if (idx >= 0) {
         final action = text.substring(idx + surname.length).trim();
+        final actorWeight = dense
+            ? (signal ? FontWeight.w700 : FontWeight.w600)
+            : FontWeight.w700;
+        final actionColor =
+            dense ? T.textDim : (scoring ? T.text : T.textDim);
         return Text.rich(
           TextSpan(children: [
             TextSpan(
                 text: actor,
-                style: const TextStyle(
-                    fontWeight: FontWeight.w700, color: T.text)),
+                style: TextStyle(fontWeight: actorWeight, color: T.text)),
             if (action.isNotEmpty)
               TextSpan(
                   text: ' $action',
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: scoring ? T.text : T.textDim)),
+                      fontWeight: FontWeight.w400, color: actionColor)),
           ]),
           style: const TextStyle(fontSize: 13.5, height: 1.3),
         );
       }
     }
+    // No resolved actor: dense rows render wholly dim (bright weight on signal);
+    // sparse/recap rows keep white with the scoring-weight emphasis.
+    final weight = dense
+        ? (signal ? FontWeight.w700 : FontWeight.w400)
+        : (scoring ? FontWeight.w700 : FontWeight.w500);
     return Text(_headline(e),
         style: TextStyle(
             fontSize: 13.5,
             height: 1.3,
-            fontWeight: scoring ? FontWeight.w700 : FontWeight.w500,
-            color: T.text));
+            fontWeight: weight,
+            color: dense ? T.textDim : T.text));
   }
 
   String _headline(MatchEvent e) {

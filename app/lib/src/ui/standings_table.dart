@@ -25,7 +25,9 @@ class StandingsGroupCard extends StatelessWidget {
     this.onRowTap,
   });
 
-  static const _maxCols = 5;
+  // §10 promotes ONE key column; the rest recede. 6 allows a US-league table to
+  // carry its W/L/PCT/GB plus an L10 (+ DIV) sub-record column without scrolling.
+  static const _maxCols = 6;
 
   @override
   Widget build(BuildContext context) {

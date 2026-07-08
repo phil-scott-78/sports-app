@@ -279,16 +279,16 @@ class _BackToTodayPill extends StatelessWidget {
 /// Horizontal day chips (~2 weeks back … 1 week ahead). The selected chip is
 /// inverted (light on dark) like [ChipNav]; today carries a gold ring. Scrolls
 /// to the selection on open.
-class _DateStrip extends StatefulWidget {
+class _DateStrip extends ConsumerStatefulWidget {
   final DateTime selected;
   final ValueChanged<String?> onPick;
   const _DateStrip({required this.selected, required this.onPick});
 
   @override
-  State<_DateStrip> createState() => _DateStripState();
+  ConsumerState<_DateStrip> createState() => _DateStripState();
 }
 
-class _DateStripState extends State<_DateStrip> {
+class _DateStripState extends ConsumerState<_DateStrip> {
   static const _back = 14, _ahead = 7;
   static const _itemW = 52.0, _gap = 8.0;
   late final List<DateTime> _days;
@@ -315,8 +315,23 @@ class _DateStripState extends State<_DateStrip> {
   @override
   Widget build(BuildContext context) {
     final now = DateTime.now();
+    // The authoritative range scan (null while it lands / if it never does).
+    final scanned = ref.watch(homeCoverageProvider).valueOrNull;
+    // The cheap immediate hint: each followed league's game-day calendar (present
+    // for day-type leagues, empty for gridiron/golf/F1). Dots render from this at
+    // once, then the scan refines (and is the ONLY thing that can dim a day).
+    final hint = <String>{};
+    for (final f in ref.watch(feedProvider).valueOrNull ?? const <LeagueFeed>[]) {
+      hint.addAll(f.scores?.calendarDays ?? const []);
+    }
+    // null = unknown (don't dim, don't dot); true = has games; false = empty.
+    bool? coverageFor(String key) {
+      if (scanned != null) return scanned.contains(key) || hint.contains(key);
+      return hint.contains(key) ? true : null;
+    }
+
     return SizedBox(
-      height: 76,
+      height: 84,
       child: ListView.separated(
         controller: _ctrl,
         scrollDirection: Axis.horizontal,
@@ -332,6 +347,7 @@ class _DateStripState extends State<_DateStrip> {
             width: _itemW,
             selected: sameDay(d, widget.selected),
             isToday: isToday,
+            hasGames: coverageFor(ymd(d)),
             // today picks null (parameterless URL → shared hot cache).
             onTap: () => widget.onPick(isToday ? null : ymd(d)),
           );
@@ -345,6 +361,10 @@ class _DayChip extends StatelessWidget {
   final DateTime day;
   final double width;
   final bool selected, isToday;
+
+  /// Per-day coverage: null = unknown (scan not landed), true = has games,
+  /// false = proven empty. Drives the has-games dot + the empty-day dimming.
+  final bool? hasGames;
   final VoidCallback onTap;
   const _DayChip({
     super.key,
@@ -352,41 +372,63 @@ class _DayChip extends StatelessWidget {
     required this.width,
     required this.selected,
     required this.isToday,
+    required this.hasGames,
     required this.onTap,
   });
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          width: width,
-          decoration: BoxDecoration(
-            color: selected ? T.invertedBg : T.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: isToday && !selected
-                ? Border.all(color: T.gold, width: 1.5)
-                : null,
-          ),
-          alignment: Alignment.center,
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(weekdayAbbrev(day),
-                style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
-                    color: selected ? T.invertedLabel : T.textFaint)),
-            const SizedBox(height: 4),
-            Text('${day.day}',
-                style: TextStyle(
-                    fontFamily: 'BarlowCondensed',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 20,
-                    height: 1.0,
-                    color: selected ? T.invertedText : T.text)),
-          ]),
+  Widget build(BuildContext context) {
+    // Dim only a PROVEN-empty day; an unknown day stays full so the strip never
+    // flashes grey before the scan lands.
+    final empty = hasGames == false;
+    final numColor = selected
+        ? T.invertedText
+        : (empty ? T.textFaint : T.text);
+    // The has-games dot: gold on today, otherwise a quiet neutral; nothing when
+    // empty or unknown (the dimmed number carries "empty").
+    final dotColor = hasGames == true
+        ? (selected ? T.invertedLabel : (isToday ? T.gold : T.textDim))
+        : Colors.transparent;
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        width: width,
+        decoration: BoxDecoration(
+          color: selected ? T.invertedBg : T.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: isToday && !selected
+              ? Border.all(color: T.gold, width: 1.5)
+              : null,
         ),
-      );
+        alignment: Alignment.center,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(weekdayAbbrev(day),
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.5,
+                  color: selected ? T.invertedLabel : T.textFaint)),
+          const SizedBox(height: 4),
+          Text('${day.day}',
+              style: TextStyle(
+                  fontFamily: 'BarlowCondensed',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  height: 1.0,
+                  color: numColor)),
+          const SizedBox(height: 5),
+          // Fixed 5px slot → the dot's presence/absence never reflows the chip.
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            width: 5,
+            height: 5,
+            decoration: BoxDecoration(color: dotColor, shape: BoxShape.circle),
+          ),
+        ]),
+      ),
+    );
+  }
 }
 
 class _CircleButton extends StatelessWidget {

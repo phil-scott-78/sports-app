@@ -32,6 +32,24 @@ const _rankings = 'https://site.api.espn.com/apis/site/v2/sports/{p}/rankings';
 const _coreEvent = 'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}';
 const _coreCompetition =
     'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}';
+const _coreCompetitionOdds =
+    'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/odds';
+const _coreSituation =
+    'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/situation';
+const _corePredictor =
+    'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/predictor';
+const _coreVenue = 'https://sports.core.api.espn.com/v2/sports/{c}/venues/{id}';
+const _coreCircuit = 'https://sports.core.api.espn.com/v2/sports/{c}/circuits/{id}';
+const _coreTeam = 'https://sports.core.api.espn.com/v2/sports/{c}/teams/{id}';
+const _coreTeamLeaders =
+    'https://sports.core.api.espn.com/v2/sports/{c}/seasons/{y}/types/{t}/teams/{id}/leaders';
+const _coreGroupStandings =
+    'https://sports.core.api.espn.com/v2/sports/{c}/seasons/{y}/types/{t}/groups/{g}/standings/{s}';
+const _coreAthlete = 'https://sports.core.api.espn.com/v2/sports/{c}/athletes/{id}';
+const _coreAthleteStats =
+    'https://sports.core.api.espn.com/v2/sports/{c}/athletes/{id}/statistics';
+const _coreAthleteEventLog =
+    'https://sports.core.api.espn.com/v2/sports/{c}/athletes/{id}/eventlog';
 const _golfPlayerSummary =
     'https://site.web.api.espn.com/apis/site/v2/sports/{p}/leaderboard/{event}/playersummary?season={season}&player={player}';
 
@@ -139,6 +157,109 @@ class EspnClient {
               .replaceFirst('{id}', eventId)
               .replaceFirst('{comp}', compId),
           ttl: ttl);
+
+  /// The core competition-odds list (`.../competitions/{id}/odds`) — the pre-game
+  /// betting line (per-team moneyline) fetched lazily on detail open when the
+  /// inline scoreboard line is absent. Cached 5 min: a line barely moves and the
+  /// screen only wants a glance.
+  Future<dynamic> competitionOdds(String key, String eventId, String compId,
+          {int ttl = 300}) =>
+      _get(
+          _coreCompetitionOdds
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{id}', eventId)
+              .replaceFirst('{comp}', compId),
+          ttl: ttl);
+
+  /// The CORE live situation (`.../competitions/{id}/situation`) — the live
+  /// gridiron down/distance, basketball bonus/timeouts, hockey power play the cheap
+  /// scoreboard + /summary don't carry. Fetched on detail open only, piggybacking the
+  /// summary poll (NOT the scores poll). Short TTL: live state moves every play.
+  Future<dynamic> coreSituation(String key, String eventId, String compId,
+          {int ttl = 12}) =>
+      _get(
+          _coreSituation
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{id}', eventId)
+              .replaceFirst('{comp}', compId),
+          ttl: ttl);
+
+  /// The CORE predictor (`.../competitions/{id}/predictor`) — per-side
+  /// `gameProjection` win %. The win-probability fallback when /summary carries no
+  /// winprobability[] but the league hasWinProb. Detail-open, summary-poll cadence.
+  Future<dynamic> corePredictor(String key, String eventId, String compId,
+          {int ttl = 20}) =>
+      _get(
+          _corePredictor
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{id}', eventId)
+              .replaceFirst('{comp}', compId),
+          ttl: ttl);
+
+  /// A stadium's CORE venue resource (`.../venues/{id}`) — the photo + surface/roof
+  /// + address for the §2.9 Venue tab. Keyed by the scoreboard `venue.id`. Fetched
+  /// once on tab open; cached a day — venue facts barely change.
+  Future<dynamic> venue(String key, String venueId, {int ttl = 86400}) =>
+      _get(_coreVenue.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', venueId), ttl: ttl);
+
+  /// An F1 circuit's CORE resource (`.../circuits/{id}`) — the dark track map +
+  /// every circuit fact + lap record for the §2.9 Circuit tab. Keyed by the
+  /// scoreboard `events[].circuit.id`. Fetched once on tab open; cached a day.
+  Future<dynamic> circuit(String key, String circuitId, {int ttl = 86400}) =>
+      _get(_coreCircuit.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', circuitId), ttl: ttl);
+
+  /// A team's CORE resource by id (`.../teams/{id}`) — name/color/logos. Used by
+  /// the athlete profile's roster-row path, where the identity row carries no team
+  /// color (only the core athlete doc's `team.$ref` does). Cached a day.
+  Future<dynamic> coreTeam(String key, String teamId, {int ttl = 86400}) =>
+      _get(_coreTeam.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', teamId), ttl: ttl);
+
+  /// A team's CORE SEASON leaders (`.../seasons/{y}/types/{t}/teams/{id}/leaders`)
+  /// — categories[] each with an athlete.$ref the caller resolves. The season
+  /// version of the TEAM LEADERS row; fetched once on team-page open. Cached 30 min
+  /// (a season leaderboard moves once a game).
+  Future<dynamic> coreTeamLeaders(String key, String teamId, int year, int type,
+          {int ttl = 1800}) =>
+      _get(
+          _coreTeamLeaders
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{y}', '$year')
+              .replaceFirst('{t}', '$type')
+              .replaceFirst('{id}', teamId),
+          ttl: ttl);
+
+  /// One group's CORE standings-id doc (`.../groups/{g}/standings/{s}`) — the
+  /// standings[].records[] (L10 / vs-div / vs-conf sub-records) the site standings
+  /// path lacks. Fetched lazily on standings-open, ONLY for leagues whose profile
+  /// asks for the sub-record columns (fetch-budget rule). Cached 30 min.
+  Future<dynamic> coreGroupStandings(
+          String key, int year, int type, String groupId, String standingsId,
+          {int ttl = 1800}) =>
+      _get(
+          _coreGroupStandings
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{y}', '$year')
+              .replaceFirst('{t}', '$type')
+              .replaceFirst('{g}', groupId)
+              .replaceFirst('{s}', standingsId),
+          ttl: ttl);
+
+  /// The CORE athlete doc (`.../athletes/{id}`) — identity + `team.$ref`. The
+  /// fallback identity source when no roster row is in hand. Cached 30 min: bio
+  /// fields barely change.
+  Future<dynamic> coreAthlete(String key, String athleteId, {int ttl = 1800}) =>
+      _get(_coreAthlete.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', athleteId), ttl: ttl);
+
+  /// The athlete's season stats (`.../athletes/{id}/statistics`) —
+  /// splits.categories[].stats[]. Cached 30 min (a season total moves once a game).
+  Future<dynamic> coreAthleteStatistics(String key, String athleteId, {int ttl = 1800}) =>
+      _get(_coreAthleteStats.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', athleteId), ttl: ttl);
+
+  /// The athlete's game log (`.../athletes/{id}/eventlog`) — events.items[] of
+  /// {event.$ref, statistics.$ref, teamId}. The rows are then a $ref fan-out
+  /// (resolved in api.dart, capped + cached). Cached 5 min.
+  Future<dynamic> coreAthleteEventLog(String key, String athleteId, {int ttl = 300}) =>
+      _get(_coreAthleteEventLog.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', athleteId), ttl: ttl);
 
   Future<dynamic> golfPlayerSummary(String key, String eventId, String season, String playerId, {int ttl = 60}) =>
       _get(_golfPlayerSummary

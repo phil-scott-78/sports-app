@@ -1,0 +1,24 @@
+{
+  "endpoint": "venue",
+  "args": {
+    "key": "soccer/eng.1",
+    "venueId": "2267",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/soccer/leagues/eng.1/venues/2267?lang=en&region=us",
+      "id": "2267",
+      "guid": "b4d3944a-10d2-3ebc-a3cb-0c0f4bca9547",
+      "fullName": "Emirates Stadium",
+      "address": {
+        "city": "London",
+        "country": "England"
+      },
+      "images": []
+    }
+  },
+  "output": {
+    "id": "2267",
+    "name": "Emirates Stadium",
+    "city": "London",
+    "country": "England"
+  }
+}

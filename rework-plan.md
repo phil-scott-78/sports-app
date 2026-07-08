@@ -98,3 +98,38 @@ CLAUDE.md updates.
   DISCOVERY: Phase 2's normalizer side (play.half, actor/participants,
   starter/note box rows, extended drives) is ALSO already in baseline — auditing
   what actually remains before launching Phase 2.
+- 2026-07-08: AUDIT RESULT — polish-plan phases 2+3 are ~done in baseline:
+  3c/3d/3e/5a/5b/9 all DONE (strict, file:line-verified). Remainder: 4b
+  signal-row discipline + persistent score column (folded into Phase 4 workflow),
+  drives chip 34×24 nit, golf followed-player wash + '· following' tag (deferred
+  to Phase 5 player/athlete-following work), 3c stat strip (data-gated absent —
+  acceptable). Tasks #2/#3 updated accordingly.
+- 2026-07-08: Phase 4 workflow launched (phase4-data-capabilities): sequential
+  full-stack chain — broadcast+odds, core situation+win-prob fallback (+ offline
+  mock coverage), venues/circuits docs, athlete profile data, team leaders +
+  standings sub-records, calendar dots — plus the parallel 4b UI fix. Lockstep
+  protocol enforced per item; offseason capture limits flagged (goldens only from
+  real captures; gridiron/hockey live shapes unit-tested from the guide).
+- 2026-07-08: Core situation + win-prob fallback LANDED (build-spec §2.2 / Part I §3
+  fetch-budget / Part V core list). New capability `hasCoreSituation` (football,
+  basketball, hockey). Lockstep: canonical.ts Situation +yardLine/homeBonus/awayBonus
+  +WinProbability predictor note → summary.js `buildCoreSituation`/
+  `winProbabilityFromPredictor` (exported, wired into gen-goldens) → summary.dart
+  port → models.dart (Situation merge + Competition.withSituation + GameSummary
+  .situation) → espn_client.coreSituation/corePredictor → api.dart `_enrichLiveDetail`
+  (merges core situation + win-prob fallback into the summary payload on the SUMMARY
+  poll, not the scores poll; capability-gated, live-only, best-effort). UI:
+  GridironSituationCard RED ZONE chip, new BasketballSituationCard (bonus/timeout
+  chips), hockey PP fed by core `powerPlay` via the merge — all data-presence
+  dispatch. Offline mock: synth `synthCoreSituation`/`synthCorePredictor`/
+  `synthCorePlayText` + mock-server core-situation/predictor/coreplay routes
+  (deterministic by event id) → CFB/NBA/NHL detail walkable offline. Gate green:
+  flutter analyze clean, flutter test 368/368 (incl. new port_situation_core +
+  situation_core_ui suites), worker units 151/151 + mock 214/214.
+  TODO (offseason capture): `node scripts/capture-extra.mjs --only situation`
+  found NO live football/NBA/NHL (nor MLB/WNBA — daytime) games on 2026-07-08, so
+  `situationCore`/`winprob` goldens are 0 — normalizer parity is currently pinned by
+  guide-shaped unit tests (worker/test/units.test.mjs + app port_situation_core).
+  RE-RUN the situation capture when a gridiron/basketball/hockey game is LIVE (and an
+  MLB/WNBA game in-progress in the evening) to land real byte-parity goldens; the
+  capture + gen-goldens + port-test loop is already wired to pick them up.

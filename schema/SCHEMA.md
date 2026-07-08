@@ -110,7 +110,8 @@ empty chip. Every flag below was verified against observed presence in
 |---|---|---|---|
 | `hasSummaryTier` | all except golf / mma / racing / tennis | Box / Plays / Stats chips; the whole rich detail | summary endpoint `—` (404) for exactly those four sports |
 | `hasSituation` | baseball, basketball | bases/count/outs, bonus — the cheap live glance | scoreboard `competitions[].situation` observed only for those two |
-| `hasWinProb` | baseball, basketball, football | the win-probability bar | summary `winprobability[]` |
+| `hasCoreSituation` | football, basketball, hockey | the detail-open CORE `situation` fetch (gridiron down/distance/yardLine/isRedZone, basketball `homeFouls.bonusState`+timeouts, hockey `powerPlay`/`emptyNet`) — merged over the scoreboard situation | core `events/{id}/competitions/{id}/situation` (`schema/espn-guide/core-situation.md`). QUIRK: football carries NO `downDistanceText`/`possession` here (scoreboard-only) → the down&distance chip renders, not the field bar |
+| `hasWinProb` | baseball, basketball, football | the win-probability bar; ALSO the detail-open CORE `predictor` fallback when `/summary` has no `winprobability[]` (reads each side's `gameProjection`) | summary `winprobability[]`; core `predictor` (`schema/espn-guide/core-predictor.md`) |
 | `hasScoringPlaysArray` | football | the `scoringPlays[]` feed shape (others derive from `plays[]`/`keyEvents[]`) | summary `scoringPlays[]` football-only |
 | `hasPlaysFeed` | australian-football, baseball, basketball, hockey | dense play-by-play tab | summary `plays[]` |
 | `hasCommentary` | soccer, cricket | soccer narrative / cricket ball-by-ball | soccer: summary `commentary[]`; cricket: summary `header.competitions[].commentaries.{key}` (different path, same gate) |
@@ -436,6 +437,17 @@ before implementation (John Deere Classic live, Wimbledon live, World Cup live).
 **Cheap tier (scoreboard fields we downloaded and dropped):**
 - `Competition.attendance` / `headline` / `conferenceGame` / `wasSuspended` —
   straight passthroughs, emitted only when present.
+- `Competition.broadcast` — a single terse TV/stream label (all sports):
+  `competitions[].broadcast` (100%, e.g. `MLB.TV/TBS`, `ESPN`; often an empty
+  string → fall back to the national `geoBroadcasts[].media.shortName`). One dim
+  line on the detail hero + Game-info card. Near-free.
+- `Competition.odds` (`Odds`) — the pre-game betting line. The inline scoreboard
+  `odds[]` (~8% presence, near game time) gives spread/total; the per-team
+  moneyline (`homeMoneyline`/`awayMoneyline`, soccer `drawMoneyline`) is CORE-only
+  — the detail screen fetches `.../competitions/{id}/odds` lazily on open when the
+  inline line is absent (`normalizeCompetitionOdds`, capability-gated to
+  baseball/basketball/football/soccer via `capabilities.hasOdds`). Same canonical
+  `Odds` shape from both sources; omitted cleanly when nothing is served.
 - `meta.golf` (**GolfMeta implemented at last** — it had been declared in
   canonical.ts with no producer): the scores route enriches golf events from the
   CORE tournament resource (2 extra fetches per golf event, best-effort;
@@ -514,6 +526,112 @@ best-effort), coalesced behind a 30m TTL. Probed live 2026-07-06:
 **`StandingsResponse` gap closed:** the standings shape shipped in
 `worker/src/standings.js` + `models.dart` but was undeclared in `canonical.ts`;
 now declared retroactively (racing's athlete-shaped rows noted as a QUIRK).
+
+---
+
+## 10c. Venue & Circuit facts (the §2.9 detail tab)
+
+Additive; a LAZY, on-tab-open tier (`worker/src/venue.js`, ported to
+`app/lib/src/data/venue.dart`) that turns the id the cheap scoreboard already
+carries into the photo/track-map + fact grid. **One tab, two shapes, dispatched
+by data presence (never sport name):** `events[].circuit` present → **CircuitFacts**;
+else `competitions[].venue.id` present → **VenueFacts**; neither → hide the tab.
+Every path OBSERVED in `espn-guide/core-venues-id.md` / `core-circuits-id.md`.
+
+- **`VenueFacts`** — one CORE `venues/{id}` fetch (join on `competitions[].venue.id`).
+  `fullName`→name, `address.{city,state,country,address1}`, `images[]` (rel
+  `day`/`full`/`interior`; `photo` picks day>full>interior), **`grass` bool→`surface`**
+  (`'grass'|'turf'`), **`indoor` bool→`roof`** (`'open'|'indoor'`). Non-F1 racing
+  (NASCAR ovals) degrade here: `length` (miles, number) + `turns`. **NOT OBSERVED,
+  omitted never faked:** capacity (cricket-only ~1%), opened/est. year (circuits-only).
+- **`CircuitFacts`** — one CORE `circuits/{id}` fetch (join on `events[].circuit.id`),
+  F1 only, every field 100%. `diagrams[]` + `diagram` (dark track map: rel
+  `circuit-dark`>`circuit`>`day-dark`>`day`, svg preferred), `direction`,
+  `established`, `length`/`distance` (**STRING** `"7.004 km"` → `Measure{value,unit,
+  display}`), `laps`, `turns`, and `fastestLap{time,year,driver}` — the driver is
+  resolved from `fastestLapDriver.$ref` in ONE cached fan-out (→ `{name, headshot}`).
+- **Cost:** both are on-tab-open only (never the scores poll), cached a day in
+  `EspnClient`, best-effort (null on 404/offline → the tab keeps the cheap header).
+  Goldens: `app/test/fixtures/golden/{venue,circuit}/` from stable pinned venue ids
+  + the Spa circuit capture; parity in `app/test/port_venue_test.dart`.
+
+## 10d. Athlete / player profile (the §2.6 "Player rows")
+
+Additive; a LAZY, on-open tier (`worker/src/athlete.js`, ported to
+`app/lib/src/data/athlete.dart`) feeding the Phase 5 player page. All CORE-tier +
+fanned-out ($ref resolves) → **NEVER on the cheap scoreboard poll**; fetched only
+when a player row is opened, cached in `EspnClient`. Every path OBSERVED in
+`espn-guide/core-athletes-id.md` / `-statistics.md` / `-eventlog.md` + a live probe
+(MLB/WNBA, 2026-07). `api.dart`'s `athleteProfile(league, id, {teamId})` does the
+fetches + the fan-out; the normalizer is pure map→map over the pre-resolved raws.
+
+- **`AthleteProfile`** = identity + `team` + `stats` + `lastGames`.
+  - **Identity** rides the ROSTER ROW when `teamId` is known (denser, single-call —
+    teamDetail already fetched that roster) OR the core `athletes/{id}` doc; both
+    share `{displayName, shortName, jersey, position{}, headshot{}, age,
+    displayHeight, displayWeight}`. `position` prefers `abbreviation`; headshot
+    forced https. `age`/`height`/`weight` are ESPN's display values (~56–67% — omit
+    when absent).
+  - **`team`** (name+color+logo+`logoDark`) needs a `team.$ref` resolve either way
+    (the roster row carries no color) — from the core athlete's ref, else built from
+    `teamId`. Dark logo = explicit `dark` rel, else `/500/`→`/500-dark/` derivation.
+  - **`stats`** = `athletes/{id}/statistics` `splits.categories[].stats[]` → compact
+    `{name, abbreviation?, displayName?, shortDisplayName?, value?, displayValue}`
+    (verbose `description` dropped; nameless/no-value cells filtered). Category set
+    is sport-specific (Pitching/Fielding · Offensive/Defensive/General) — read by
+    `name`, never sport-branched. **QUIRK:** per-game stat NAMES are inferred in the
+    guide → bound to whatever the split actually carries, never fabricated.
+  - **`lastGames`** = `athletes/{id}/eventlog` `events.items[]` — the most-recent
+    PLAYED N (cap 5), each row a 1–2 `$ref` fan-out: `event.$ref`→`{date, name,
+    shortName}`, `statistics.$ref`→the per-game line (same category shape). `teamId`
+    is inline. A row survives an unresolved event on its `eventId` alone.
+- **Cost:** on-open only; the eventlog fan-out is capped (5 rows × ≤2 fetches) +
+  concurrency-pooled + cached (immutable past games → a re-open is free) — the cap
+  lives in `api.dart` `_athleteGameCap`/`_athleteGameConc`. Best-effort: a
+  stats/eventlog failure yields a valid identity-only partial profile. Goldens:
+  `app/test/fixtures/golden/athlete/` (MLB roster-row + WNBA core-athlete identity
+  paths); parity in `app/test/port_athlete_test.dart`; degraded/partial paths in
+  `worker/test/units.test.mjs`.
+
+---
+
+## 10e. Team leaders + standings sub-records (§2.6 TEAM LEADERS · §2.8 L10/DIV/CONF)
+
+Two additive CORE-tier, lazy, capability/profile-gated enrichments. Both are pure
+map→map (`worker/src/teamleaders.js` + the `standings.js` extension, ported to
+`app/lib/src/data/`); `api.dart` does the fetch + `$ref` fan-out. Neither ever rides
+the cheap scoreboard poll.
+
+- **`TeamLeaders`** (§2.6, `teamleaders.js` → `teamleaders.dart`) — a team's SEASON
+  leaders, the top player per category. Source: CORE `…/seasons/{y}/types/2/teams/
+  {id}/leaders` → `categories[].leaders[0].athlete.$ref` (OBSERVED 100% across 8
+  sports in `espn-guide/core-season-types-id-teams-id-leaders.md`). `api.dart`'s
+  `teamLeaders(league, teamId)` reads the season year off the (cached) team schedule,
+  caps to **6 categories**, resolves each UNIQUE athlete `$ref` ONCE (name/position/
+  headshot), and hands the resolved map to the normalizer. A category whose top
+  leader can't be resolved is DROPPED (never faked). The cheaper per-GAME glance
+  remains the scoreboard's `competitors[].leaders` (already surfaced inline).
+- **Standings sub-records** (§2.8) — L10 + division/conference records are **NOT on
+  the site standings**; they ride the CORE group standings-id doc
+  (`…/types/{t}/groups/{g}/standings/{s}` → `standings[].records[]`). `standings.js`
+  gains `extractGroupRecords(docs)` → `{ teamId: {l10,div,conf,home,away} }` and a
+  second (optional) arg to `normalizeStandings(raw, records)` that MERGES those keys
+  into each row's `stats` (omit it → byte-identical to before; every prior golden
+  unchanged). **QUIRK (VERIFIED live 2026-07):** the record `type` vocabulary depends
+  on the group level — a CONFERENCE group (NBA/WNBA) emits `vsdiv`/`vsconf`; a LEAGUE
+  group (MLB AL/NL) emits `intradivision`/`intraleague` for the same idea — both fold
+  onto `div`/`conf`. `lasttengames`→`l10`, `home`→`home`, `road`→`away`.
+  - **Fetch-budget gate:** `api.dart`'s `standings()` fans out the group docs ONLY
+    when the league profile's `standingsColumns` lists a sub-record key
+    (`l10`/`div`/`conf`/`home`/`away`) — otherwise never spends the calls. Group ids /
+    seasonType / standingsId are discovered off the site standings raw; the fan-out is
+    capped (12) + concurrency-pooled + best-effort. Sub-record columns were added to
+    the US v1 leagues (MLB/NBA/WNBA/NHL/NFL); read by stable `stats[].name`, never
+    sport-name.
+- **Goldens:** `app/test/fixtures/golden/teamLeaders/` + `standingsRecords/` (MLB +
+  WNBA, live-captured 2026-07); parity in `app/test/port_endpoints_test.dart`. Capture
+  extends `worker/scripts/capture-extra.mjs` (`--only leaders standingsRecords`),
+  size-trimmed to the fields under test (real captures, nothing fabricated).
 
 ---
 

@@ -16,6 +16,7 @@ Widget? situationCardFor(Competition comp) {
   final sit = comp.situation;
   if (sit != null && sit.hasBaseball) return BaseballSituationCard(comp);
   if (sit != null && sit.hasGridiron) return GridironSituationCard(comp);
+  if (sit != null && sit.hasBonus) return BasketballSituationCard(comp);
   if (sit != null && sit.hasPowerPlay) return PowerPlaySituationCard(comp);
   if (comp.status.live && _cricketChase(comp) != null) {
     return CricketChaseCard(comp);
@@ -165,7 +166,14 @@ class GridironSituationCard extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
             children: [
               Expanded(child: Text(headline, style: T.situationHead)),
-              Text(caption, style: T.caption),
+              // Core-situation red-zone flag: loud when the spot-parse field bar
+              // can't render (core carries no downDistanceText), a quiet accent
+              // when it can. Data-driven on situation.isRedZone.
+              if (s.isRedZone == true) ...[
+                const _RedZoneChip(),
+                const SizedBox(width: 10),
+              ],
+              if (caption.isNotEmpty) Text(caption, style: T.caption),
             ],
           ),
           if (pos != null) ...[
@@ -290,6 +298,95 @@ class _FieldBar extends StatelessWidget {
             ),
         ],
       );
+}
+
+/// The §8 gridiron red-zone flag — a small `live`-red pill. Rendered beside the
+/// down&distance headline when core `situation.isRedZone` is set (the one spot
+/// signal the core tier carries when it has no down-distance text to draw a bar).
+class _RedZoneChip extends StatelessWidget {
+  const _RedZoneChip();
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+        decoration: BoxDecoration(
+          color: T.live.withValues(alpha: 0.16),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Text('RED ZONE',
+            style: T.captionFaint.copyWith(
+                color: T.live, fontWeight: FontWeight.w700, letterSpacing: 0.5)),
+      );
+}
+
+// ═══════════════════════════ basketball bonus & timeouts ═════════════════════
+
+/// The §8 basketball footer as its own card — the bonus/timeout state ESPN keeps
+/// on the CORE situation (never the scoreboard), surfaced on detail open. Per side:
+/// the team, a `gold` BONUS / DOUBLE BONUS flag when in the bonus, and the
+/// remaining-timeout dots. Data-driven: rendered only when `situation.hasBonus`.
+class BasketballSituationCard extends StatelessWidget {
+  final Competition comp;
+  const BasketballSituationCard(this.comp, {super.key});
+
+  static String? _bonusLabel(String? state) {
+    if (state == null) return null;
+    final s = state.toUpperCase();
+    if (s == 'NONE') return null;
+    if (s == 'DOUBLE') return 'DOUBLE BONUS';
+    return 'BONUS';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final sit = comp.situation!;
+    return V2Card(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const CardLabel('Bonus & timeouts'),
+        const SizedBox(height: 12),
+        _sideRow(comp.away, _bonusLabel(sit.awayBonus), sit.awayTimeouts),
+        const SizedBox(height: 10),
+        _sideRow(comp.home, _bonusLabel(sit.homeBonus), sit.homeTimeouts),
+        if (sit.lastPlay != null) ...[
+          const SizedBox(height: 12),
+          Container(
+            padding: const EdgeInsets.only(top: 12),
+            decoration: const BoxDecoration(
+                border: Border(top: BorderSide(color: T.divider))),
+            child: Text(sit.lastPlay!,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontSize: 13, height: 1.4, color: T.textDim)),
+          ),
+        ],
+      ]),
+    );
+  }
+
+  Widget _sideRow(Competitor? c, String? bonus, int? timeouts) => Row(children: [
+        ColorBar(teamColor(c), width: 4, height: 20, radius: 2),
+        const SizedBox(width: 10),
+        Text(c?.label ?? '',
+            style: T.statLine.copyWith(fontSize: 14, color: T.text)),
+        if (bonus != null) ...[
+          const SizedBox(width: 10),
+          Text(bonus,
+              style: T.captionFaint
+                  .copyWith(color: T.gold, fontWeight: FontWeight.w700)),
+        ],
+        const Spacer(),
+        if (timeouts != null) ...[
+          // Only the REMAINING count is observed (core has no used total), so
+          // render that many team-color dots — never fabricate the used seats.
+          DotRow(
+              filled: timeouts.clamp(0, 7),
+              total: timeouts.clamp(0, 7),
+              color: teamColor(c),
+              size: 7),
+          const SizedBox(width: 8),
+          Text('${timeouts.clamp(0, 9)} TO', style: T.captionFaint),
+        ],
+      ]);
 }
 
 // ═══════════════════════════ hockey power play ═══════════════════════════════

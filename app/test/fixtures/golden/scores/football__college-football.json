@@ -3819,7 +3819,8 @@
               "round": "College Football Playoff National Championship Presented by AT&T"
             },
             "attendance": 67227,
-            "headline": "Indiana completes undefeated season and wins first national title, beating Miami 27-21 in CFP final"
+            "headline": "Indiana completes undefeated season and wins first national title, beating Miami 27-21 in CFP final",
+            "broadcast": "ESPN"
           }
         ]
       },
@@ -3909,6 +3910,13 @@
             ],
             "meta": {
               "round": "Aer Lingus College Football Classic"
+            },
+            "broadcast": "ESPN",
+            "odds": {
+              "details": "TCU -6.5",
+              "spread": -6.5,
+              "overUnder": 49.5,
+              "provider": "DraftKings"
             }
           }
         ]
@@ -3994,7 +4002,13 @@
                   "value": 0
                 }
               }
-            ]
+            ],
+            "broadcast": "NBC",
+            "odds": {
+              "details": "USC -35.5",
+              "spread": -35.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       },
@@ -4080,7 +4094,14 @@
                 }
               }
             ],
-            "conferenceGame": true
+            "conferenceGame": true,
+            "broadcast": "ESPN",
+            "odds": {
+              "details": "UVA -4.5",
+              "spread": -4.5,
+              "overUnder": 54.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       },
@@ -4165,7 +4186,13 @@
                   "value": 0
                 }
               }
-            ]
+            ],
+            "broadcast": "CBSSN",
+            "odds": {
+              "details": "NDSU -8.5",
+              "spread": -8.5,
+              "provider": "DraftKings"
+            }
           }
         ]
       }

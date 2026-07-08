@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+a{color:#2a78d6}
+a:hover{color:#1a5cad}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-note{margin:0 0 24px;max-width:640px;font:400 12px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t13" data-screen-label="Turn 13 — F1 circuit view">
+<div class="dv-thd"><a class="dv-tid" href="#t13">13</a><span class="dv-tname">F1 circuit view — track map + circuit facts + lap record</span></div>
+<p class="dv-note">The Circuit tab of an F1 race detail. Map card up top (ESPN's dark circuit art), then a 2-col fact grid from the venue data, then the lap record as its own card with a headshot slot. Same card grammar as every other detail screen.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="13a">
+<div class="dv-olabel"><a class="dv-oid" href="#13a">13a</a>Circuit tab — Spa-Francorchamps</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+
+  <!-- event header -->
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em">ROUND 13 · SUN 9:00 AM</span>
+      <span style="font-size:12px;color:#9aa3ad">Stavelot, Belgium</span>
+    </div>
+    <div style="font:700 44px/1 'Barlow Condensed'">BELGIAN GRAND PRIX</div>
+    <div style="font-size:13px;color:#9aa3ad;margin-top:5px">Circuit de Spa-Francorchamps</div>
+  </div>
+
+  <!-- chip nav -->
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Race</span>
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Circuit</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Grid</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Standings</span>
+  </div>
+
+  <!-- track map -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;border:1px solid #262c35;padding:20px 18px 14px">
+    <img src="https://a.espncdn.com/i/venues/f1/circuit-dark/257.svg" alt="Circuit de Spa-Francorchamps track map" style="display:block;width:100%;height:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid #262c35">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">CLOCKWISE</span>
+      <span style="display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#6c7480">Est. 1950
+        <svg width="16" height="16" viewBox="0 0 16 16"><path d="M13 8a5 5 0 1 1-1.5-3.6" fill="none" stroke="#6c7480" stroke-width="1.8" stroke-linecap="round"></path><path d="M12.6 1.6v3h-3" fill="none" stroke="#6c7480" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- fact grid -->
+  <div style="margin:12px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">CIRCUIT LENGTH</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">7.004 <span style="font-size:17px;color:#9aa3ad">KM</span></span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">RACE DISTANCE</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">308.052 <span style="font-size:17px;color:#9aa3ad">KM</span></span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">LAPS</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">44</span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">TURNS</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">19</span>
+    </div>
+  </div>
+
+  <!-- lap record -->
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px;display:flex;align-items:center;gap:14px">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:52px;height:52px;flex:none" id="headshot-perez" shape="circle" placeholder="Photo" hint-size="52px,52px"></x-import>
+    <div style="display:flex;flex-direction:column;gap:3px;flex:1">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad">LAP RECORD</span>
+      <span style="font:700 32px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">1:44.701</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">
+      <span style="font-size:14px;font-weight:600">Sergio Pérez</span>
+      <span style="font-size:12px;color:#6c7480">2024</span>
+    </div>
+  </div>
+
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+</x-dc>
+</body>
+</html>

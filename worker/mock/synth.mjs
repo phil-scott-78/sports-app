@@ -232,6 +232,63 @@ function injectSituation(comp, profile, eventId) {
   }
 }
 
+// ---- CORE detail-open resources (situation / predictor / last-play text) ------
+// The app fetches these on detail open (piggybacking the summary poll) for live
+// gridiron/basketball/hockey. Real ESPN serves them on the core graph; the mock
+// fabricates a deterministic-by-event-id shape so the CFB/NBA/NHL detail states are
+// walkable offline through the SAME code path (mock-espn-server injects the
+// lastPlay.$ref back at itself). Pure — no lastPlay ref here (the server adds it).
+export function synthCoreSituation(profile, eventId) {
+  const sport = profile.espnSport;
+  const r = mulberry(hashStr(eventId + ':core-sit'));
+  if (sport === 'football') {
+    return {
+      down: 1 + Math.floor(r() * 4),      // 1..4
+      distance: 1 + Math.floor(r() * 12), // 1..12
+      yardLine: 1 + Math.floor(r() * 99), // ESPN's raw absolute spot
+      isRedZone: r() > 0.7,
+      homeTimeouts: Math.floor(r() * 4),   // gridiron: a bare number
+      awayTimeouts: Math.floor(r() * 4),
+    };
+  }
+  if (sport === 'basketball') {
+    const states = ['NONE', 'NONE', 'ONE', 'DOUBLE'];
+    const fouls = () => ({
+      bonusState: states[Math.floor(r() * states.length)],
+      teamFouls: Math.floor(r() * 9),
+      teamFoulsCurrent: Math.floor(r() * 8),
+      foulsToGive: Math.floor(r() * 3),
+    });
+    // basketball: timeouts are an OBJECT with timeoutsRemainingCurrent (VERIFIED).
+    const to = () => ({ timeoutsRemainingCurrent: Math.floor(r() * 7), timeoutsCurrent: 0 });
+    return { homeFouls: fouls(), awayFouls: fouls(), homeTimeouts: to(), awayTimeouts: to() };
+  }
+  if (sport === 'hockey') {
+    return { powerPlay: r() > 0.5, emptyNet: r() > 0.9 };
+  }
+  return {};
+}
+
+// Per-side gameProjection win % (sums to 100), the predictor shape the app's
+// winProbabilityFromPredictor reads. Deterministic by event id.
+export function synthCorePredictor(eventId) {
+  const r = mulberry(hashStr(eventId + ':core-pred'));
+  const home = 20 + Math.floor(r() * 60); // 20..79
+  const stat = (v) => [{ name: 'gameProjection', displayName: 'WIN PROB', value: v, displayValue: String(v) }];
+  return { homeTeam: { statistics: stat(home) }, awayTeam: { statistics: stat(100 - home) } };
+}
+
+// The text behind situation.lastPlay.$ref (the mock coreplay route resolves to this).
+export function synthCorePlayText(eventId, sport) {
+  const byS = {
+    football: ['Run up the middle for 4 yards', 'Pass complete for a first down', 'Sacked for a loss of 6', 'Screen pass for a gain of 5'],
+    basketball: ['Pull-up jumper good', 'Driving layup and the foul', 'Steal leads to a fast-break dunk', 'Corner three splashes'],
+    hockey: ['Wrist shot turned aside, rebound cleared', 'Slap shot rings off the post', 'Faceoff won in the offensive zone', 'Shorthanded chance denied'],
+  };
+  const arr = byS[sport] || ['Play under review'];
+  return arr[hashStr(eventId + ':coreplay') % arr.length];
+}
+
 // Apply a phase to a whole event. Multi-competition events (MMA cards, F1
 // weekends) get a realistic progression when the event is the live centrepiece:
 // early bouts done, one in progress, the rest upcoming.

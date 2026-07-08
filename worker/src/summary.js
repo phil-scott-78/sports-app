@@ -433,6 +433,81 @@ function buildWinProbability(raw) {
   return pick({ home, away, tie: tie || undefined }, ['home', 'away', 'tie']);
 }
 
+// ---- CORE situation (detail-open enrichment, NOT the summary payload) ---------
+// The CORE resource events/{id}/competitions/{id}/situation carries the live
+// gridiron/basketball/hockey state the /summary can't: football down/distance/
+// yardLine/isRedZone, basketball homeFouls.bonusState + timeouts, hockey
+// powerPlay/emptyNet. Pure map->canonical-Situation-delta; the app fetches this on
+// the detail poll and MERGES it over the scoreboard situation. `lastPlayText` is the
+// caller-resolved situation.lastPlay.$ref text (best-effort; omitted when unresolved).
+// VERIFIED 2026-07 (schema/espn-guide/core-situation.md): football carries NO
+// downDistanceText/possession here (scoreboard-only), so the field-position bar can't
+// render from core — the down&distance chip does.
+export function buildCoreSituation(raw, lastPlayText) {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const s = {};
+  // numeric baseball/gridiron fields (ESPN serves some as numbers, some as strings)
+  for (const k of ['balls', 'strikes', 'outs', 'down', 'distance', 'yardLine']) {
+    const v = raw[k];
+    if (typeof v === 'number') s[k] = v;
+    else if (typeof v === 'string' && /^\d+$/.test(v)) s[k] = +v;
+  }
+  for (const k of ['onFirst', 'onSecond', 'onThird', 'isRedZone', 'powerPlay', 'emptyNet']) {
+    if (raw[k] != null) s[k] = !!raw[k];
+  }
+  // timeouts: an object {timeoutsRemainingCurrent} (basketball) OR a bare number
+  // (football) — VERIFIED core-situation.md `homeTimeouts` type `object | number`.
+  const toN = (v) => {
+    if (typeof v === 'number') return v;
+    if (v && typeof v === 'object') {
+      const n = v.timeoutsRemainingCurrent ?? v.timeoutsCurrent;
+      return typeof n === 'number' ? n : undefined;
+    }
+    return undefined;
+  };
+  const ht = toN(raw.homeTimeouts); if (ht != null) s.homeTimeouts = ht;
+  const at = toN(raw.awayTimeouts); if (at != null) s.awayTimeouts = at;
+  // basketball bonus state ('NONE' | 'ONE' | 'DOUBLE')
+  const hb = raw.homeFouls && raw.homeFouls.bonusState;
+  if (typeof hb === 'string' && hb) s.homeBonus = hb;
+  const ab = raw.awayFouls && raw.awayFouls.bonusState;
+  if (typeof ab === 'string' && ab) s.awayBonus = ab;
+  // the loud last-play line — resolved from situation.lastPlay.$ref by the caller
+  if (typeof lastPlayText === 'string' && lastPlayText.trim()) s.lastPlay = lastPlayText.trim();
+  return Object.keys(s).length ? s : undefined;
+}
+
+// ---- win probability from the CORE predictor (the winprobability[] fallback) ---
+// When the /summary carries no winprobability[] but the league hasWinProb, the app
+// fetches the CORE predictor on detail open. Each side's `gameProjection` stat is
+// that side's win %; we keep only the single current number in the SAME canonical
+// WinProbability shape the UI already renders. VERIFIED 2026-07
+// (schema/espn-guide/core-predictor.md): baseball/basketball/football only.
+function projectionOf(team) {
+  const stats = team && team.statistics;
+  if (!Array.isArray(stats)) return null;
+  for (const st of stats) {
+    if (st && st.name === 'gameProjection') {
+      if (typeof st.value === 'number') return st.value;
+      if (typeof st.displayValue === 'string' && st.displayValue !== '') {
+        const n = parseFloat(st.displayValue);
+        return Number.isNaN(n) ? null : n;
+      }
+    }
+  }
+  return null;
+}
+
+export function winProbabilityFromPredictor(pred) {
+  if (!pred || typeof pred !== 'object') return undefined;
+  const h = projectionOf(pred.homeTeam);
+  const a = projectionOf(pred.awayTeam);
+  // home wins; derive the other side so the pair always sums to 100.
+  const home = h != null ? Math.round(h) : (a != null ? 100 - Math.round(a) : null);
+  if (home == null) return undefined;
+  return { home, away: 100 - home };
+}
+
 // ---- gridiron drives (raw.drives) --------------------------------------------
 // VERIFIED 2026-07: the NFL/CFB summary has ALWAYS carried drives.previous[] (28
 // per game, each with nested plays[]) — we just never read it, so gridiron had no

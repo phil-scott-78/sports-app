@@ -1,0 +1,5630 @@
+{
+  "endpoint": "standingsRecords",
+  "args": {
+    "key": "baseball/mlb",
+    "raw": {
+      "name": "Major League Baseball",
+      "abbreviation": "MLB",
+      "children": [
+        {
+          "name": "American League",
+          "abbreviation": "AL",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "30",
+                  "displayName": "Tampa Bay Rays",
+                  "name": "Rays",
+                  "abbreviation": "TB",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/tb.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tb.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.2",
+                    "value": 4.1573033
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.5",
+                    "value": 4.52809
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.3",
+                    "value": 0.2999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.720",
+                    "value": 0.72
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "89",
+                    "value": 89
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.661",
+                    "value": 0.66071427
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "36",
+                    "value": 36
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+33",
+                    "value": 33
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "8.5",
+                    "value": 8.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "370",
+                    "value": 370
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "403",
+                    "value": 403
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "10",
+                  "displayName": "New York Yankees",
+                  "name": "Yankees",
+                  "abbreviation": "NYY",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/nyy.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/nyy.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "3.9",
+                    "value": 3.912088
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.8",
+                    "value": 4.7912087
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.9",
+                    "value": 0.8999999999999999
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.566",
+                    "value": 0.56578946
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+80",
+                    "value": 80
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "4.5",
+                    "value": 4.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "356",
+                    "value": 356
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "436",
+                    "value": 436
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "4",
+                  "displayName": "Chicago White Sox",
+                  "name": "White Sox",
+                  "abbreviation": "CHW",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/chw.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/chw.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.6",
+                    "value": 4.5555553
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.8",
+                    "value": 4.766667
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.2",
+                    "value": 0.20000000000000018
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.600",
+                    "value": 0.6
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6.5",
+                    "value": 6.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "90",
+                    "value": 90
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.541",
+                    "value": 0.5409836
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+19",
+                    "value": 19
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "2.0",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "410",
+                    "value": 410
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "429",
+                    "value": 429
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "12",
+                  "displayName": "Seattle Mariners",
+                  "name": "Mariners",
+                  "abbreviation": "SEA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/sea.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sea.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "3.8",
+                    "value": 3.8152175
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.097826
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.3",
+                    "value": 0.2999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.654",
+                    "value": 0.65384614
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7.5",
+                    "value": 7.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.522",
+                    "value": 0.52238804
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+26",
+                    "value": 26
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.0",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "351",
+                    "value": 351
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "377",
+                    "value": 377
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "5",
+                  "displayName": "Cleveland Guardians",
+                  "name": "Guardians",
+                  "abbreviation": "CLE",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/cle.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/cle.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.1",
+                    "value": 4.0652175
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "3.9",
+                    "value": 3.9456522
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.2",
+                    "value": -0.19999999999999973
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.583",
+                    "value": 0.5833333
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "7.5",
+                    "value": 7.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.515",
+                    "value": 0.5147059
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-11",
+                    "value": -11
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.0",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "374",
+                    "value": 374
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "363",
+                    "value": 363
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "13",
+                  "displayName": "Texas Rangers",
+                  "name": "Rangers",
+                  "abbreviation": "TEX",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/tex.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tex.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.2",
+                    "value": 4.1538463
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.120879
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.1",
+                    "value": -0.10000000000000053
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.417",
+                    "value": 0.41666666
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.492",
+                    "value": 0.4918033
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-3",
+                    "value": -3
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0.5",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "378",
+                    "value": 378
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "375",
+                    "value": 375
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "9",
+                  "displayName": "Minnesota Twins",
+                  "name": "Twins",
+                  "abbreviation": "MIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/min.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/min.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.1",
+                    "value": 5.0652175
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.9",
+                    "value": 4.902174
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.2",
+                    "value": -0.1999999999999993
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.520",
+                    "value": 0.52
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9.5",
+                    "value": 9.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.548",
+                    "value": 0.5483871
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "47",
+                    "value": 47
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-15",
+                    "value": -15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-1.0",
+                    "value": -1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "466",
+                    "value": 466
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "451",
+                    "value": 451
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "18",
+                  "displayName": "Houston Astros",
+                  "name": "Astros",
+                  "abbreviation": "HOU",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/hou.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/hou.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.0",
+                    "value": 5.0212765
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.6",
+                    "value": 4.574468
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.4",
+                    "value": -0.40000000000000036
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.429",
+                    "value": 0.42857143
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9.5",
+                    "value": 9.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "94",
+                    "value": 94
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.529",
+                    "value": 0.5294118
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "48",
+                    "value": 48
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-42",
+                    "value": -42
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-1.0",
+                    "value": -1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "472",
+                    "value": 472
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "430",
+                    "value": 430
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "14",
+                  "displayName": "Toronto Blue Jays",
+                  "name": "Blue Jays",
+                  "abbreviation": "TOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/tor.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tor.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.5",
+                    "value": 4.4673915
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.0",
+                    "value": 3.9782608
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11.5",
+                    "value": 11.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.475",
+                    "value": 0.47540984
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-45",
+                    "value": -45
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-3.0",
+                    "value": -3
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "411",
+                    "value": 411
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "366",
+                    "value": 366
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "2",
+                  "displayName": "Boston Red Sox",
+                  "name": "Red Sox",
+                  "abbreviation": "BOS",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/bos.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/bos.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.0",
+                    "value": 3.9662921
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.101124
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.1",
+                    "value": 0.09999999999999964
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.370",
+                    "value": 0.37037036
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "89",
+                    "value": 89
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.484",
+                    "value": 0.48387095
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "48",
+                    "value": 48
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+12",
+                    "value": 12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-3.5",
+                    "value": -3.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "353",
+                    "value": 353
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "365",
+                    "value": 365
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "1",
+                  "displayName": "Baltimore Orioles",
+                  "name": "Orioles",
+                  "abbreviation": "BAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/bal.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/bal.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.9",
+                    "value": 4.880435
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.5",
+                    "value": 4.5434785
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.4",
+                    "value": -0.40000000000000036
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.423",
+                    "value": 0.42307693
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "12.5",
+                    "value": 12.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.469",
+                    "value": 0.46875
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-31",
+                    "value": -31
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-4.0",
+                    "value": -4
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "449",
+                    "value": 449
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "418",
+                    "value": 418
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L2",
+                    "value": -2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "6",
+                  "displayName": "Detroit Tigers",
+                  "name": "Tigers",
+                  "abbreviation": "DET",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/det.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/det.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.1",
+                    "value": 4.065934
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.2",
+                    "value": 4.230769
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.1",
+                    "value": 0.10000000000000053
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.360",
+                    "value": 0.36
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.448",
+                    "value": 0.4477612
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+15",
+                    "value": 15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-4.5",
+                    "value": -4.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "370",
+                    "value": 370
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "385",
+                    "value": 385
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "11",
+                  "displayName": "Athletics",
+                  "name": "Athletics",
+                  "abbreviation": "ATH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/ath.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/ath.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.4",
+                    "value": 5.428571
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.6",
+                    "value": 4.5934067
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.8",
+                    "value": -0.8000000000000007
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.462",
+                    "value": 0.46153846
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "50",
+                    "value": 50
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-76",
+                    "value": -76
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-4.5",
+                    "value": -4.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "494",
+                    "value": 494
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "418",
+                    "value": 418
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L4",
+                    "value": -4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "7",
+                  "displayName": "Kansas City Royals",
+                  "name": "Royals",
+                  "abbreviation": "KC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/kc.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/kc.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.1",
+                    "value": 5.076087
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.3",
+                    "value": 4.347826
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.8",
+                    "value": -0.7999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.433",
+                    "value": 0.43333334
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "16.5",
+                    "value": 16.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.386",
+                    "value": 0.3857143
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "54",
+                    "value": 54
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-67",
+                    "value": -67
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-8.0",
+                    "value": -8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "467",
+                    "value": 467
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "400",
+                    "value": 400
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "3",
+                  "displayName": "Los Angeles Angels",
+                  "name": "Angels",
+                  "abbreviation": "LAA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/laa.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/laa.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.1",
+                    "value": 5.054348
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.4",
+                    "value": 4.369565
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.7",
+                    "value": -0.6999999999999993
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.500",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "18.5",
+                    "value": 18.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.415",
+                    "value": 0.41538462
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "56",
+                    "value": 56
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-63",
+                    "value": -63
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-10.0",
+                    "value": -10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "465",
+                    "value": 465
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "402",
+                    "value": 402
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L7",
+                    "value": -7
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "National League",
+          "abbreviation": "NL",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "19",
+                  "displayName": "Los Angeles Dodgers",
+                  "name": "Dodgers",
+                  "abbreviation": "LAD",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/lad.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/lad.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "3.6",
+                    "value": 3.5591397
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "5.3",
+                    "value": 5.311828
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+1.7",
+                    "value": 1.6999999999999997
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.636",
+                    "value": 0.6363636
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "-",
+                    "value": 0
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "93",
+                    "value": 93
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.633",
+                    "value": 0.6333333
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+163",
+                    "value": 163
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "13.5",
+                    "value": 13.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "331",
+                    "value": 331
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "494",
+                    "value": 494
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "8",
+                  "displayName": "Milwaukee Brewers",
+                  "name": "Brewers",
+                  "abbreviation": "MIL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/mil.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/mil.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "3.6",
+                    "value": 3.6263735
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "5.1",
+                    "value": 5.1318684
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+1.5",
+                    "value": 1.4999999999999996
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.750",
+                    "value": 0.75
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.638",
+                    "value": 0.63793105
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+137",
+                    "value": 137
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "12.5",
+                    "value": 12.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "330",
+                    "value": 330
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "467",
+                    "value": 467
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "15",
+                  "displayName": "Atlanta Braves",
+                  "name": "Braves",
+                  "abbreviation": "ATL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/atl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/atl.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "3.9",
+                    "value": 3.9333334
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.9",
+                    "value": 4.9
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+1.0",
+                    "value": 1.0000000000000004
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.630",
+                    "value": 0.6296296
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "6.5",
+                    "value": 6.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "90",
+                    "value": 90
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.574",
+                    "value": 0.57377046
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "38",
+                    "value": 38
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+87",
+                    "value": 87
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "7.0",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "354",
+                    "value": 354
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "441",
+                    "value": 441
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L3",
+                    "value": -3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "16",
+                  "displayName": "Chicago Cubs",
+                  "name": "Cubs",
+                  "abbreviation": "CHC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/chc.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/chc.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.5",
+                    "value": 4.5164833
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "5.1",
+                    "value": 5.054945
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.6",
+                    "value": 0.5999999999999996
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.478",
+                    "value": 0.47826087
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.612",
+                    "value": 0.6119403
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "40",
+                    "value": 40
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+49",
+                    "value": 49
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "5.5",
+                    "value": 5.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "411",
+                    "value": 411
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "460",
+                    "value": 460
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W2",
+                    "value": 2
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "22",
+                  "displayName": "Philadelphia Phillies",
+                  "name": "Phillies",
+                  "abbreviation": "PHI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/phi.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/phi.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.5",
+                    "value": 4.4673915
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.4",
+                    "value": 4.423913
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.1",
+                    "value": -0.09999999999999964
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.577",
+                    "value": 0.5769231
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "8.5",
+                    "value": 8.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.563",
+                    "value": 0.5633803
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "41",
+                    "value": 41
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-4",
+                    "value": -4
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "5.0",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "411",
+                    "value": 411
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "407",
+                    "value": 407
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "28",
+                  "displayName": "Miami Marlins",
+                  "name": "Marlins",
+                  "abbreviation": "MIA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/mia.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/mia.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.3",
+                    "value": 4.3369565
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.6",
+                    "value": 4.6086955
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.3",
+                    "value": 0.2999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.462",
+                    "value": 0.46153846
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "9.5",
+                    "value": 9.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.574",
+                    "value": 0.57377046
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "42",
+                    "value": 42
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+25",
+                    "value": 25
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "4.0",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "399",
+                    "value": 399
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "424",
+                    "value": 424
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W4",
+                    "value": 4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "24",
+                  "displayName": "St. Louis Cardinals",
+                  "name": "Cardinals",
+                  "abbreviation": "STL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/stl.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/stl.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.5",
+                    "value": 4.5333333
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.6",
+                    "value": 4.5666666
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.1",
+                    "value": 0.09999999999999964
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.538",
+                    "value": 0.53846157
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "11.5",
+                    "value": 11.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "90",
+                    "value": 90
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.544",
+                    "value": 0.54385966
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "43",
+                    "value": 43
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+3",
+                    "value": 3
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "2.0",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "408",
+                    "value": 408
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "411",
+                    "value": 411
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L4",
+                    "value": -4
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "23",
+                  "displayName": "Pittsburgh Pirates",
+                  "name": "Pirates",
+                  "abbreviation": "PIT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/pit.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/pit.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.8",
+                    "value": 4.847826
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "5.3",
+                    "value": 5.2934785
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.5",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.538",
+                    "value": 0.53846157
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "12.5",
+                    "value": 12.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.456",
+                    "value": 0.45588234
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "45",
+                    "value": 45
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+41",
+                    "value": 41
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1.0",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "446",
+                    "value": 446
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "487",
+                    "value": 487
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W3",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "20",
+                  "displayName": "Washington Nationals",
+                  "name": "Nationals",
+                  "abbreviation": "WSH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/wsh.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/wsh.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.3",
+                    "value": 5.3010755
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "5.4",
+                    "value": 5.376344
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "+0.1",
+                    "value": 0.10000000000000053
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.370",
+                    "value": 0.37037036
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "93",
+                    "value": 93
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.453",
+                    "value": 0.453125
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+7",
+                    "value": 7
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "0.5",
+                    "value": 0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "493",
+                    "value": 493
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "500",
+                    "value": 500
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "29",
+                  "displayName": "Arizona Diamondbacks",
+                  "name": "Diamondbacks",
+                  "abbreviation": "ARI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/ari.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/ari.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.5",
+                    "value": 4.5054946
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.2",
+                    "value": 4.2417583
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.3",
+                    "value": -0.2999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.630",
+                    "value": 0.6296296
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.516",
+                    "value": 0.515625
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-24",
+                    "value": -24
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "410",
+                    "value": 410
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "386",
+                    "value": 386
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "25",
+                  "displayName": "San Diego Padres",
+                  "name": "Padres",
+                  "abbreviation": "SD",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/sd.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sd.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.4",
+                    "value": 4.3846154
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "3.9",
+                    "value": 3.8681319
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.5",
+                    "value": -0.5000000000000004
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.519",
+                    "value": 0.5185185
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.438",
+                    "value": 0.4375
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "46",
+                    "value": 46
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-47",
+                    "value": -47
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-0.5",
+                    "value": -0.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "399",
+                    "value": 399
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "352",
+                    "value": 352
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "17",
+                  "displayName": "Cincinnati Reds",
+                  "name": "Reds",
+                  "abbreviation": "CIN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/cin.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/cin.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.8",
+                    "value": 4.8444443
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.1444445
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.7",
+                    "value": -0.7000000000000002
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.200",
+                    "value": 0.2
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "17.5",
+                    "value": 17.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "90",
+                    "value": 90
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.368",
+                    "value": 0.36842105
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "49",
+                    "value": 49
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-63",
+                    "value": -63
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-4.0",
+                    "value": -4
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "436",
+                    "value": 436
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "373",
+                    "value": 373
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "26",
+                  "displayName": "San Francisco Giants",
+                  "name": "Giants",
+                  "abbreviation": "SF",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/sf.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sf.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.8",
+                    "value": 4.835165
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.142857
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.7",
+                    "value": -0.7000000000000002
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.357",
+                    "value": 0.35714287
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "91",
+                    "value": 91
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.423",
+                    "value": 0.4225352
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "53",
+                    "value": 53
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-63",
+                    "value": -63
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-7.5",
+                    "value": -7.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "440",
+                    "value": 440
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "377",
+                    "value": 377
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "21",
+                  "displayName": "New York Mets",
+                  "name": "Mets",
+                  "abbreviation": "NYM",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/nym.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/nym.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "4.8",
+                    "value": 4.8369565
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.1",
+                    "value": 4.1413045
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.7",
+                    "value": -0.7000000000000002
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.462",
+                    "value": 0.46153846
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "21.5",
+                    "value": 21.5
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "92",
+                    "value": 92
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.386",
+                    "value": 0.3857143
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "54",
+                    "value": 54
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-64",
+                    "value": -64
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-8.0",
+                    "value": -8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "445",
+                    "value": 445
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "381",
+                    "value": 381
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "L1",
+                    "value": -1
+                  }
+                ]
+              },
+              {
+                "team": {
+                  "id": "27",
+                  "displayName": "Colorado Rockies",
+                  "name": "Rockies",
+                  "abbreviation": "COL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500/col.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    },
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/col.png",
+                      "rel": [
+                        "full",
+                        "scoreboard",
+                        "dark"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "OTLosses",
+                    "type": "otlosses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "OTWins",
+                    "type": "otwins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "avgPointsAgainst",
+                    "type": "avgpointsagainst",
+                    "displayValue": "5.7",
+                    "value": 5.7311826
+                  },
+                  {
+                    "name": "avgPointsFor",
+                    "type": "avgpointsfor",
+                    "displayValue": "4.9",
+                    "value": 4.8817205
+                  },
+                  {
+                    "name": "differential",
+                    "type": "differential",
+                    "displayValue": "-0.8",
+                    "value": -0.7999999999999998
+                  },
+                  {
+                    "name": "divisionWinPercent",
+                    "type": "divisionwinpercent",
+                    "displayValue": "0.345",
+                    "value": 0.3448276
+                  },
+                  {
+                    "name": "gamesBehind",
+                    "type": "gamesbehind",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "93",
+                    "value": 93
+                  },
+                  {
+                    "name": "leagueWinPercent",
+                    "type": "leaguewinpercent",
+                    "displayValue": "0.362",
+                    "value": 0.36231884
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "55",
+                    "value": 55
+                  },
+                  {
+                    "name": "playoffSeed",
+                    "type": "playoffseed",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-79",
+                    "value": -79
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "-8.5",
+                    "value": -8.5
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "533",
+                    "value": 533
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "454",
+                    "value": 454
+                  },
+                  {
+                    "name": "streak",
+                    "type": "streak",
+                    "displayValue": "W1",
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "recordDocs": [
+      {
+        "standings": [
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/30?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "53-36"
+              },
+              {
+                "type": "home",
+                "summary": "32-13"
+              },
+              {
+                "type": "road",
+                "summary": "21-23"
+              },
+              {
+                "type": "intradivision",
+                "summary": "18-7"
+              },
+              {
+                "type": "intraleague",
+                "summary": "37-19"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/10?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "50-41"
+              },
+              {
+                "type": "home",
+                "summary": "23-20"
+              },
+              {
+                "type": "road",
+                "summary": "27-21"
+              },
+              {
+                "type": "intradivision",
+                "summary": "15-15"
+              },
+              {
+                "type": "intraleague",
+                "summary": "43-33"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "2-8"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/4?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-43"
+              },
+              {
+                "type": "home",
+                "summary": "28-15"
+              },
+              {
+                "type": "road",
+                "summary": "19-28"
+              },
+              {
+                "type": "intradivision",
+                "summary": "18-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "33-28"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/12?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-45"
+              },
+              {
+                "type": "home",
+                "summary": "27-20"
+              },
+              {
+                "type": "road",
+                "summary": "20-25"
+              },
+              {
+                "type": "intradivision",
+                "summary": "17-9"
+              },
+              {
+                "type": "intraleague",
+                "summary": "35-32"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/5?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-45"
+              },
+              {
+                "type": "home",
+                "summary": "24-22"
+              },
+              {
+                "type": "road",
+                "summary": "23-23"
+              },
+              {
+                "type": "intradivision",
+                "summary": "14-10"
+              },
+              {
+                "type": "intraleague",
+                "summary": "35-33"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/13?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "46-45"
+              },
+              {
+                "type": "home",
+                "summary": "21-20"
+              },
+              {
+                "type": "road",
+                "summary": "25-25"
+              },
+              {
+                "type": "intradivision",
+                "summary": "10-14"
+              },
+              {
+                "type": "intraleague",
+                "summary": "30-31"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/9?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "45-47"
+              },
+              {
+                "type": "home",
+                "summary": "23-23"
+              },
+              {
+                "type": "road",
+                "summary": "22-24"
+              },
+              {
+                "type": "intradivision",
+                "summary": "13-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "34-28"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/18?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "46-48"
+              },
+              {
+                "type": "home",
+                "summary": "23-24"
+              },
+              {
+                "type": "road",
+                "summary": "23-24"
+              },
+              {
+                "type": "intradivision",
+                "summary": "12-16"
+              },
+              {
+                "type": "intraleague",
+                "summary": "36-32"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/14?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "43-49"
+              },
+              {
+                "type": "home",
+                "summary": "24-25"
+              },
+              {
+                "type": "road",
+                "summary": "19-24"
+              },
+              {
+                "type": "intradivision",
+                "summary": "13-13"
+              },
+              {
+                "type": "intraleague",
+                "summary": "29-32"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/2?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "41-48"
+              },
+              {
+                "type": "home",
+                "summary": "17-27"
+              },
+              {
+                "type": "road",
+                "summary": "24-21"
+              },
+              {
+                "type": "intradivision",
+                "summary": "10-17"
+              },
+              {
+                "type": "intraleague",
+                "summary": "30-32"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "8-2"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/1?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "42-50"
+              },
+              {
+                "type": "home",
+                "summary": "24-24"
+              },
+              {
+                "type": "road",
+                "summary": "18-26"
+              },
+              {
+                "type": "intradivision",
+                "summary": "11-15"
+              },
+              {
+                "type": "intraleague",
+                "summary": "30-34"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/6?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "41-50"
+              },
+              {
+                "type": "home",
+                "summary": "24-21"
+              },
+              {
+                "type": "road",
+                "summary": "17-29"
+              },
+              {
+                "type": "intradivision",
+                "summary": "9-16"
+              },
+              {
+                "type": "intraleague",
+                "summary": "30-37"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/11?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "41-50"
+              },
+              {
+                "type": "home",
+                "summary": "19-28"
+              },
+              {
+                "type": "road",
+                "summary": "22-22"
+              },
+              {
+                "type": "intradivision",
+                "summary": "15-15"
+              },
+              {
+                "type": "intraleague",
+                "summary": "24-28"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "2-8"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/7?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "38-54"
+              },
+              {
+                "type": "home",
+                "summary": "21-26"
+              },
+              {
+                "type": "road",
+                "summary": "17-28"
+              },
+              {
+                "type": "intradivision",
+                "summary": "13-17"
+              },
+              {
+                "type": "intraleague",
+                "summary": "27-43"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/3?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "36-56"
+              },
+              {
+                "type": "home",
+                "summary": "21-25"
+              },
+              {
+                "type": "road",
+                "summary": "15-31"
+              },
+              {
+                "type": "intradivision",
+                "summary": "14-14"
+              },
+              {
+                "type": "intraleague",
+                "summary": "27-38"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "2-8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "standings": [
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/19?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "60-33"
+              },
+              {
+                "type": "home",
+                "summary": "30-16"
+              },
+              {
+                "type": "road",
+                "summary": "30-17"
+              },
+              {
+                "type": "intradivision",
+                "summary": "21-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "38-22"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/8?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "58-33"
+              },
+              {
+                "type": "home",
+                "summary": "29-18"
+              },
+              {
+                "type": "road",
+                "summary": "29-15"
+              },
+              {
+                "type": "intradivision",
+                "summary": "18-6"
+              },
+              {
+                "type": "intraleague",
+                "summary": "37-21"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "8-2"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/15?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "52-38"
+              },
+              {
+                "type": "home",
+                "summary": "27-18"
+              },
+              {
+                "type": "road",
+                "summary": "25-20"
+              },
+              {
+                "type": "intradivision",
+                "summary": "17-10"
+              },
+              {
+                "type": "intraleague",
+                "summary": "35-26"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/16?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "51-40"
+              },
+              {
+                "type": "home",
+                "summary": "27-19"
+              },
+              {
+                "type": "road",
+                "summary": "24-21"
+              },
+              {
+                "type": "intradivision",
+                "summary": "11-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "41-26"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/22?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "51-41"
+              },
+              {
+                "type": "home",
+                "summary": "25-21"
+              },
+              {
+                "type": "road",
+                "summary": "26-20"
+              },
+              {
+                "type": "intradivision",
+                "summary": "15-11"
+              },
+              {
+                "type": "intraleague",
+                "summary": "40-31"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/28?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "50-42"
+              },
+              {
+                "type": "home",
+                "summary": "29-17"
+              },
+              {
+                "type": "road",
+                "summary": "21-25"
+              },
+              {
+                "type": "intradivision",
+                "summary": "12-14"
+              },
+              {
+                "type": "intraleague",
+                "summary": "35-26"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "7-3"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/24?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-43"
+              },
+              {
+                "type": "home",
+                "summary": "23-24"
+              },
+              {
+                "type": "road",
+                "summary": "24-19"
+              },
+              {
+                "type": "intradivision",
+                "summary": "14-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "31-26"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/23?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-45"
+              },
+              {
+                "type": "home",
+                "summary": "24-22"
+              },
+              {
+                "type": "road",
+                "summary": "23-23"
+              },
+              {
+                "type": "intradivision",
+                "summary": "14-12"
+              },
+              {
+                "type": "intraleague",
+                "summary": "31-37"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/20?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "47-46"
+              },
+              {
+                "type": "home",
+                "summary": "19-28"
+              },
+              {
+                "type": "road",
+                "summary": "28-18"
+              },
+              {
+                "type": "intradivision",
+                "summary": "10-17"
+              },
+              {
+                "type": "intraleague",
+                "summary": "29-35"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "6-4"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/29?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "45-46"
+              },
+              {
+                "type": "home",
+                "summary": "27-20"
+              },
+              {
+                "type": "road",
+                "summary": "18-26"
+              },
+              {
+                "type": "intradivision",
+                "summary": "17-10"
+              },
+              {
+                "type": "intraleague",
+                "summary": "33-31"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/25?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "45-46"
+              },
+              {
+                "type": "home",
+                "summary": "24-22"
+              },
+              {
+                "type": "road",
+                "summary": "21-24"
+              },
+              {
+                "type": "intradivision",
+                "summary": "14-13"
+              },
+              {
+                "type": "intraleague",
+                "summary": "28-36"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "2-8"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/17?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "41-49"
+              },
+              {
+                "type": "home",
+                "summary": "20-25"
+              },
+              {
+                "type": "road",
+                "summary": "21-24"
+              },
+              {
+                "type": "intradivision",
+                "summary": "5-20"
+              },
+              {
+                "type": "intraleague",
+                "summary": "21-36"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "3-7"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/26?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "38-53"
+              },
+              {
+                "type": "home",
+                "summary": "19-23"
+              },
+              {
+                "type": "road",
+                "summary": "19-30"
+              },
+              {
+                "type": "intradivision",
+                "summary": "10-18"
+              },
+              {
+                "type": "intraleague",
+                "summary": "30-41"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/21?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "38-54"
+              },
+              {
+                "type": "home",
+                "summary": "19-25"
+              },
+              {
+                "type": "road",
+                "summary": "19-29"
+              },
+              {
+                "type": "intradivision",
+                "summary": "12-14"
+              },
+              {
+                "type": "intraleague",
+                "summary": "27-43"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "4-6"
+              }
+            ]
+          },
+          {
+            "team": {
+              "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/27?lang=en&region=us"
+            },
+            "records": [
+              {
+                "type": "total",
+                "summary": "38-55"
+              },
+              {
+                "type": "home",
+                "summary": "22-25"
+              },
+              {
+                "type": "road",
+                "summary": "16-30"
+              },
+              {
+                "type": "intradivision",
+                "summary": "10-19"
+              },
+              {
+                "type": "intraleague",
+                "summary": "25-44"
+              },
+              {
+                "type": "lasttengames",
+                "summary": "5-5"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "output": [
+    {
+      "name": "American League",
+      "rows": [
+        {
+          "team": {
+            "id": "30",
+            "name": "Tampa Bay Rays",
+            "abbr": "TB",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/tb.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tb.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "5",
+            "avgPointsAgainst": "4.2",
+            "avgPointsFor": "4.5",
+            "differential": "+0.3",
+            "divisionWinPercent": "0.720",
+            "gamesBehind": "-",
+            "gamesPlayed": "89",
+            "leagueWinPercent": "0.661",
+            "losses": "36",
+            "playoffSeed": "1",
+            "pointDifferential": "+33",
+            "points": "8.5",
+            "pointsAgainst": "370",
+            "pointsFor": "403",
+            "streak": "W1",
+            "home": "32-13",
+            "away": "21-23",
+            "div": "18-7",
+            "conf": "37-19",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "10",
+            "name": "New York Yankees",
+            "abbr": "NYY",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/nyy.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/nyy.png"
+          },
+          "stats": {
+            "OTLosses": "5",
+            "OTWins": "1",
+            "avgPointsAgainst": "3.9",
+            "avgPointsFor": "4.8",
+            "differential": "+0.9",
+            "divisionWinPercent": "0.500",
+            "gamesBehind": "4",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.566",
+            "losses": "41",
+            "playoffSeed": "4",
+            "pointDifferential": "+80",
+            "points": "4.5",
+            "pointsAgainst": "356",
+            "pointsFor": "436",
+            "streak": "L1",
+            "home": "23-20",
+            "away": "27-21",
+            "div": "15-15",
+            "conf": "43-33",
+            "l10": "2-8"
+          }
+        },
+        {
+          "team": {
+            "id": "4",
+            "name": "Chicago White Sox",
+            "abbr": "CHW",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/chw.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/chw.png"
+          },
+          "stats": {
+            "OTLosses": "7",
+            "OTWins": "5",
+            "avgPointsAgainst": "4.6",
+            "avgPointsFor": "4.8",
+            "differential": "+0.2",
+            "divisionWinPercent": "0.600",
+            "gamesBehind": "6.5",
+            "gamesPlayed": "90",
+            "leagueWinPercent": "0.541",
+            "losses": "43",
+            "playoffSeed": "2",
+            "pointDifferential": "+19",
+            "points": "2.0",
+            "pointsAgainst": "410",
+            "pointsFor": "429",
+            "streak": "L1",
+            "home": "28-15",
+            "away": "19-28",
+            "div": "18-12",
+            "conf": "33-28",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "12",
+            "name": "Seattle Mariners",
+            "abbr": "SEA",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/sea.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sea.png"
+          },
+          "stats": {
+            "OTLosses": "5",
+            "OTWins": "5",
+            "avgPointsAgainst": "3.8",
+            "avgPointsFor": "4.1",
+            "differential": "+0.3",
+            "divisionWinPercent": "0.654",
+            "gamesBehind": "7.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.522",
+            "losses": "45",
+            "playoffSeed": "3",
+            "pointDifferential": "+26",
+            "points": "1.0",
+            "pointsAgainst": "351",
+            "pointsFor": "377",
+            "streak": "L1",
+            "home": "27-20",
+            "away": "20-25",
+            "div": "17-9",
+            "conf": "35-32",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "5",
+            "name": "Cleveland Guardians",
+            "abbr": "CLE",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/cle.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/cle.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "4",
+            "avgPointsAgainst": "4.1",
+            "avgPointsFor": "3.9",
+            "differential": "-0.2",
+            "divisionWinPercent": "0.583",
+            "gamesBehind": "7.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.515",
+            "losses": "45",
+            "playoffSeed": "5",
+            "pointDifferential": "-11",
+            "points": "1.0",
+            "pointsAgainst": "374",
+            "pointsFor": "363",
+            "streak": "L3",
+            "home": "24-22",
+            "away": "23-23",
+            "div": "14-10",
+            "conf": "35-33",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "13",
+            "name": "Texas Rangers",
+            "abbr": "TEX",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/tex.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tex.png"
+          },
+          "stats": {
+            "OTLosses": "1",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.2",
+            "avgPointsFor": "4.1",
+            "differential": "-0.1",
+            "divisionWinPercent": "0.417",
+            "gamesBehind": "8",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.492",
+            "losses": "45",
+            "playoffSeed": "6",
+            "pointDifferential": "-3",
+            "points": "0.5",
+            "pointsAgainst": "378",
+            "pointsFor": "375",
+            "streak": "W1",
+            "home": "21-20",
+            "away": "25-25",
+            "div": "10-14",
+            "conf": "30-31",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "9",
+            "name": "Minnesota Twins",
+            "abbr": "MIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/min.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/min.png"
+          },
+          "stats": {
+            "OTLosses": "2",
+            "OTWins": "3",
+            "avgPointsAgainst": "5.1",
+            "avgPointsFor": "4.9",
+            "differential": "-0.2",
+            "divisionWinPercent": "0.520",
+            "gamesBehind": "9.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.548",
+            "losses": "47",
+            "playoffSeed": "7",
+            "pointDifferential": "-15",
+            "points": "-1.0",
+            "pointsAgainst": "466",
+            "pointsFor": "451",
+            "streak": "W3",
+            "home": "23-23",
+            "away": "22-24",
+            "div": "13-12",
+            "conf": "34-28",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "18",
+            "name": "Houston Astros",
+            "abbr": "HOU",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/hou.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/hou.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "5",
+            "avgPointsAgainst": "5.0",
+            "avgPointsFor": "4.6",
+            "differential": "-0.4",
+            "divisionWinPercent": "0.429",
+            "gamesBehind": "9.5",
+            "gamesPlayed": "94",
+            "leagueWinPercent": "0.529",
+            "losses": "48",
+            "playoffSeed": "8",
+            "pointDifferential": "-42",
+            "points": "-1.0",
+            "pointsAgainst": "472",
+            "pointsFor": "430",
+            "streak": "W1",
+            "home": "23-24",
+            "away": "23-24",
+            "div": "12-16",
+            "conf": "36-32",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "14",
+            "name": "Toronto Blue Jays",
+            "abbr": "TOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/tor.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/tor.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "4",
+            "avgPointsAgainst": "4.5",
+            "avgPointsFor": "4.0",
+            "differential": "-0.5",
+            "divisionWinPercent": "0.500",
+            "gamesBehind": "11.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.475",
+            "losses": "49",
+            "playoffSeed": "9",
+            "pointDifferential": "-45",
+            "points": "-3.0",
+            "pointsAgainst": "411",
+            "pointsFor": "366",
+            "streak": "W1",
+            "home": "24-25",
+            "away": "19-24",
+            "div": "13-13",
+            "conf": "29-32",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "2",
+            "name": "Boston Red Sox",
+            "abbr": "BOS",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/bos.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/bos.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.0",
+            "avgPointsFor": "4.1",
+            "differential": "+0.1",
+            "divisionWinPercent": "0.370",
+            "gamesBehind": "12",
+            "gamesPlayed": "89",
+            "leagueWinPercent": "0.484",
+            "losses": "48",
+            "playoffSeed": "10",
+            "pointDifferential": "+12",
+            "points": "-3.5",
+            "pointsAgainst": "353",
+            "pointsFor": "365",
+            "streak": "W4",
+            "home": "17-27",
+            "away": "24-21",
+            "div": "10-17",
+            "conf": "30-32",
+            "l10": "8-2"
+          }
+        },
+        {
+          "team": {
+            "id": "1",
+            "name": "Baltimore Orioles",
+            "abbr": "BAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/bal.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/bal.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.9",
+            "avgPointsFor": "4.5",
+            "differential": "-0.4",
+            "divisionWinPercent": "0.423",
+            "gamesBehind": "12.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.469",
+            "losses": "50",
+            "playoffSeed": "11",
+            "pointDifferential": "-31",
+            "points": "-4.0",
+            "pointsAgainst": "449",
+            "pointsFor": "418",
+            "streak": "L2",
+            "home": "24-24",
+            "away": "18-26",
+            "div": "11-15",
+            "conf": "30-34",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "6",
+            "name": "Detroit Tigers",
+            "abbr": "DET",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/det.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/det.png"
+          },
+          "stats": {
+            "OTLosses": "6",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.1",
+            "avgPointsFor": "4.2",
+            "differential": "+0.1",
+            "divisionWinPercent": "0.360",
+            "gamesBehind": "13",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.448",
+            "losses": "50",
+            "playoffSeed": "12",
+            "pointDifferential": "+15",
+            "points": "-4.5",
+            "pointsAgainst": "370",
+            "pointsFor": "385",
+            "streak": "W3",
+            "home": "24-21",
+            "away": "17-29",
+            "div": "9-16",
+            "conf": "30-37",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "11",
+            "name": "Athletics",
+            "abbr": "ATH",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/ath.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/ath.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "6",
+            "avgPointsAgainst": "5.4",
+            "avgPointsFor": "4.6",
+            "differential": "-0.8",
+            "divisionWinPercent": "0.500",
+            "gamesBehind": "13",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.462",
+            "losses": "50",
+            "playoffSeed": "13",
+            "pointDifferential": "-76",
+            "points": "-4.5",
+            "pointsAgainst": "494",
+            "pointsFor": "418",
+            "streak": "L4",
+            "home": "19-28",
+            "away": "22-22",
+            "div": "15-15",
+            "conf": "24-28",
+            "l10": "2-8"
+          }
+        },
+        {
+          "team": {
+            "id": "7",
+            "name": "Kansas City Royals",
+            "abbr": "KC",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/kc.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/kc.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "3",
+            "avgPointsAgainst": "5.1",
+            "avgPointsFor": "4.3",
+            "differential": "-0.8",
+            "divisionWinPercent": "0.433",
+            "gamesBehind": "16.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.386",
+            "losses": "54",
+            "playoffSeed": "14",
+            "pointDifferential": "-67",
+            "points": "-8.0",
+            "pointsAgainst": "467",
+            "pointsFor": "400",
+            "streak": "W3",
+            "home": "21-26",
+            "away": "17-28",
+            "div": "13-17",
+            "conf": "27-43",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "3",
+            "name": "Los Angeles Angels",
+            "abbr": "LAA",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/laa.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/laa.png"
+          },
+          "stats": {
+            "OTLosses": "7",
+            "OTWins": "4",
+            "avgPointsAgainst": "5.1",
+            "avgPointsFor": "4.4",
+            "differential": "-0.7",
+            "divisionWinPercent": "0.500",
+            "gamesBehind": "18.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.415",
+            "losses": "56",
+            "playoffSeed": "15",
+            "pointDifferential": "-63",
+            "points": "-10.0",
+            "pointsAgainst": "465",
+            "pointsFor": "402",
+            "streak": "L7",
+            "home": "21-25",
+            "away": "15-31",
+            "div": "14-14",
+            "conf": "27-38",
+            "l10": "2-8"
+          }
+        }
+      ]
+    },
+    {
+      "name": "National League",
+      "rows": [
+        {
+          "team": {
+            "id": "19",
+            "name": "Los Angeles Dodgers",
+            "abbr": "LAD",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/lad.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/lad.png"
+          },
+          "stats": {
+            "OTLosses": "0",
+            "OTWins": "1",
+            "avgPointsAgainst": "3.6",
+            "avgPointsFor": "5.3",
+            "differential": "+1.7",
+            "divisionWinPercent": "0.636",
+            "gamesBehind": "-",
+            "gamesPlayed": "93",
+            "leagueWinPercent": "0.633",
+            "losses": "33",
+            "playoffSeed": "1",
+            "pointDifferential": "+163",
+            "points": "13.5",
+            "pointsAgainst": "331",
+            "pointsFor": "494",
+            "streak": "L1",
+            "home": "30-16",
+            "away": "30-17",
+            "div": "21-12",
+            "conf": "38-22",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "8",
+            "name": "Milwaukee Brewers",
+            "abbr": "MIL",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/mil.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/mil.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "7",
+            "avgPointsAgainst": "3.6",
+            "avgPointsFor": "5.1",
+            "differential": "+1.5",
+            "divisionWinPercent": "0.750",
+            "gamesBehind": "1",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.638",
+            "losses": "33",
+            "playoffSeed": "2",
+            "pointDifferential": "+137",
+            "points": "12.5",
+            "pointsAgainst": "330",
+            "pointsFor": "467",
+            "streak": "W4",
+            "home": "29-18",
+            "away": "29-15",
+            "div": "18-6",
+            "conf": "37-21",
+            "l10": "8-2"
+          }
+        },
+        {
+          "team": {
+            "id": "15",
+            "name": "Atlanta Braves",
+            "abbr": "ATL",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/atl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/atl.png"
+          },
+          "stats": {
+            "OTLosses": "5",
+            "OTWins": "2",
+            "avgPointsAgainst": "3.9",
+            "avgPointsFor": "4.9",
+            "differential": "+1.0",
+            "divisionWinPercent": "0.630",
+            "gamesBehind": "6.5",
+            "gamesPlayed": "90",
+            "leagueWinPercent": "0.574",
+            "losses": "38",
+            "playoffSeed": "3",
+            "pointDifferential": "+87",
+            "points": "7.0",
+            "pointsAgainst": "354",
+            "pointsFor": "441",
+            "streak": "L3",
+            "home": "27-18",
+            "away": "25-20",
+            "div": "17-10",
+            "conf": "35-26",
+            "l10": "3-7"
+          }
+        },
+        {
+          "team": {
+            "id": "16",
+            "name": "Chicago Cubs",
+            "abbr": "CHC",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/chc.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/chc.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "7",
+            "avgPointsAgainst": "4.5",
+            "avgPointsFor": "5.1",
+            "differential": "+0.6",
+            "divisionWinPercent": "0.478",
+            "gamesBehind": "8",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.612",
+            "losses": "40",
+            "playoffSeed": "4",
+            "pointDifferential": "+49",
+            "points": "5.5",
+            "pointsAgainst": "411",
+            "pointsFor": "460",
+            "streak": "W2",
+            "home": "27-19",
+            "away": "24-21",
+            "div": "11-12",
+            "conf": "41-26",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "22",
+            "name": "Philadelphia Phillies",
+            "abbr": "PHI",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/phi.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/phi.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "4",
+            "avgPointsAgainst": "4.5",
+            "avgPointsFor": "4.4",
+            "differential": "-0.1",
+            "divisionWinPercent": "0.577",
+            "gamesBehind": "8.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.563",
+            "losses": "41",
+            "playoffSeed": "5",
+            "pointDifferential": "-4",
+            "points": "5.0",
+            "pointsAgainst": "411",
+            "pointsFor": "407",
+            "streak": "W1",
+            "home": "25-21",
+            "away": "26-20",
+            "div": "15-11",
+            "conf": "40-31",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "28",
+            "name": "Miami Marlins",
+            "abbr": "MIA",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/mia.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/mia.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.3",
+            "avgPointsFor": "4.6",
+            "differential": "+0.3",
+            "divisionWinPercent": "0.462",
+            "gamesBehind": "9.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.574",
+            "losses": "42",
+            "playoffSeed": "6",
+            "pointDifferential": "+25",
+            "points": "4.0",
+            "pointsAgainst": "399",
+            "pointsFor": "424",
+            "streak": "W4",
+            "home": "29-17",
+            "away": "21-25",
+            "div": "12-14",
+            "conf": "35-26",
+            "l10": "7-3"
+          }
+        },
+        {
+          "team": {
+            "id": "24",
+            "name": "St. Louis Cardinals",
+            "abbr": "STL",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/stl.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/stl.png"
+          },
+          "stats": {
+            "OTLosses": "2",
+            "OTWins": "7",
+            "avgPointsAgainst": "4.5",
+            "avgPointsFor": "4.6",
+            "differential": "+0.1",
+            "divisionWinPercent": "0.538",
+            "gamesBehind": "11.5",
+            "gamesPlayed": "90",
+            "leagueWinPercent": "0.544",
+            "losses": "43",
+            "playoffSeed": "7",
+            "pointDifferential": "+3",
+            "points": "2.0",
+            "pointsAgainst": "408",
+            "pointsFor": "411",
+            "streak": "L4",
+            "home": "23-24",
+            "away": "24-19",
+            "div": "14-12",
+            "conf": "31-26",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "23",
+            "name": "Pittsburgh Pirates",
+            "abbr": "PIT",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/pit.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/pit.png"
+          },
+          "stats": {
+            "OTLosses": "6",
+            "OTWins": "3",
+            "avgPointsAgainst": "4.8",
+            "avgPointsFor": "5.3",
+            "differential": "+0.5",
+            "divisionWinPercent": "0.538",
+            "gamesBehind": "12.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.456",
+            "losses": "45",
+            "playoffSeed": "8",
+            "pointDifferential": "+41",
+            "points": "1.0",
+            "pointsAgainst": "446",
+            "pointsFor": "487",
+            "streak": "W3",
+            "home": "24-22",
+            "away": "23-23",
+            "div": "14-12",
+            "conf": "31-37",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "20",
+            "name": "Washington Nationals",
+            "abbr": "WSH",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/wsh.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/wsh.png"
+          },
+          "stats": {
+            "OTLosses": "5",
+            "OTWins": "5",
+            "avgPointsAgainst": "5.3",
+            "avgPointsFor": "5.4",
+            "differential": "+0.1",
+            "divisionWinPercent": "0.370",
+            "gamesBehind": "13",
+            "gamesPlayed": "93",
+            "leagueWinPercent": "0.453",
+            "losses": "46",
+            "playoffSeed": "9",
+            "pointDifferential": "+7",
+            "points": "0.5",
+            "pointsAgainst": "493",
+            "pointsFor": "500",
+            "streak": "L1",
+            "home": "19-28",
+            "away": "28-18",
+            "div": "10-17",
+            "conf": "29-35",
+            "l10": "6-4"
+          }
+        },
+        {
+          "team": {
+            "id": "29",
+            "name": "Arizona Diamondbacks",
+            "abbr": "ARI",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/ari.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/ari.png"
+          },
+          "stats": {
+            "OTLosses": "5",
+            "OTWins": "2",
+            "avgPointsAgainst": "4.5",
+            "avgPointsFor": "4.2",
+            "differential": "-0.3",
+            "divisionWinPercent": "0.630",
+            "gamesBehind": "14",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.516",
+            "losses": "46",
+            "playoffSeed": "10",
+            "pointDifferential": "-24",
+            "points": "-0.5",
+            "pointsAgainst": "410",
+            "pointsFor": "386",
+            "streak": "L1",
+            "home": "27-20",
+            "away": "18-26",
+            "div": "17-10",
+            "conf": "33-31",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "25",
+            "name": "San Diego Padres",
+            "abbr": "SD",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/sd.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sd.png"
+          },
+          "stats": {
+            "OTLosses": "1",
+            "OTWins": "4",
+            "avgPointsAgainst": "4.4",
+            "avgPointsFor": "3.9",
+            "differential": "-0.5",
+            "divisionWinPercent": "0.519",
+            "gamesBehind": "14",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.438",
+            "losses": "46",
+            "playoffSeed": "11",
+            "pointDifferential": "-47",
+            "points": "-0.5",
+            "pointsAgainst": "399",
+            "pointsFor": "352",
+            "streak": "W1",
+            "home": "24-22",
+            "away": "21-24",
+            "div": "14-13",
+            "conf": "28-36",
+            "l10": "2-8"
+          }
+        },
+        {
+          "team": {
+            "id": "17",
+            "name": "Cincinnati Reds",
+            "abbr": "CIN",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/cin.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/cin.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "6",
+            "avgPointsAgainst": "4.8",
+            "avgPointsFor": "4.1",
+            "differential": "-0.7",
+            "divisionWinPercent": "0.200",
+            "gamesBehind": "17.5",
+            "gamesPlayed": "90",
+            "leagueWinPercent": "0.368",
+            "losses": "49",
+            "playoffSeed": "12",
+            "pointDifferential": "-63",
+            "points": "-4.0",
+            "pointsAgainst": "436",
+            "pointsFor": "373",
+            "streak": "L1",
+            "home": "20-25",
+            "away": "21-24",
+            "div": "5-20",
+            "conf": "21-36",
+            "l10": "3-7"
+          }
+        },
+        {
+          "team": {
+            "id": "26",
+            "name": "San Francisco Giants",
+            "abbr": "SF",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/sf.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/sf.png"
+          },
+          "stats": {
+            "OTLosses": "3",
+            "OTWins": "3",
+            "avgPointsAgainst": "4.8",
+            "avgPointsFor": "4.1",
+            "differential": "-0.7",
+            "divisionWinPercent": "0.357",
+            "gamesBehind": "21",
+            "gamesPlayed": "91",
+            "leagueWinPercent": "0.423",
+            "losses": "53",
+            "playoffSeed": "13",
+            "pointDifferential": "-63",
+            "points": "-7.5",
+            "pointsAgainst": "440",
+            "pointsFor": "377",
+            "streak": "L1",
+            "home": "19-23",
+            "away": "19-30",
+            "div": "10-18",
+            "conf": "30-41",
+            "l10": "5-5"
+          }
+        },
+        {
+          "team": {
+            "id": "21",
+            "name": "New York Mets",
+            "abbr": "NYM",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/nym.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/nym.png"
+          },
+          "stats": {
+            "OTLosses": "6",
+            "OTWins": "8",
+            "avgPointsAgainst": "4.8",
+            "avgPointsFor": "4.1",
+            "differential": "-0.7",
+            "divisionWinPercent": "0.462",
+            "gamesBehind": "21.5",
+            "gamesPlayed": "92",
+            "leagueWinPercent": "0.386",
+            "losses": "54",
+            "playoffSeed": "14",
+            "pointDifferential": "-64",
+            "points": "-8.0",
+            "pointsAgainst": "445",
+            "pointsFor": "381",
+            "streak": "L1",
+            "home": "19-25",
+            "away": "19-29",
+            "div": "12-14",
+            "conf": "27-43",
+            "l10": "4-6"
+          }
+        },
+        {
+          "team": {
+            "id": "27",
+            "name": "Colorado Rockies",
+            "abbr": "COL",
+            "logo": "https://a.espncdn.com/i/teamlogos/mlb/500/col.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/mlb/500-dark/scoreboard/col.png"
+          },
+          "stats": {
+            "OTLosses": "4",
+            "OTWins": "2",
+            "avgPointsAgainst": "5.7",
+            "avgPointsFor": "4.9",
+            "differential": "-0.8",
+            "divisionWinPercent": "0.345",
+            "gamesBehind": "22",
+            "gamesPlayed": "93",
+            "leagueWinPercent": "0.362",
+            "losses": "55",
+            "playoffSeed": "15",
+            "pointDifferential": "-79",
+            "points": "-8.5",
+            "pointsAgainst": "533",
+            "pointsFor": "454",
+            "streak": "W1",
+            "home": "22-25",
+            "away": "16-30",
+            "div": "10-19",
+            "conf": "25-44",
+            "l10": "5-5"
+          }
+        }
+      ]
+    }
+  ]
+}

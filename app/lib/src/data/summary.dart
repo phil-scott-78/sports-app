@@ -482,6 +482,77 @@ Map<String, dynamic>? _buildWinProbability(Map raw) {
   return pickT({'home': home, 'away': away, 'tie': tie != 0 ? tie : null}, ['home', 'away', 'tie']);
 }
 
+// ---- CORE situation (detail-open enrichment; faithful port of summary.js) -----
+// The CORE events/{id}/competitions/{id}/situation carries the live state /summary
+// can't (football down/distance/yardLine/isRedZone, basketball bonus + timeouts,
+// hockey powerPlay/emptyNet). Pure map->Situation-delta; api.dart fetches it on the
+// detail poll and MERGES it over the scoreboard situation. [lastPlayText] is the
+// caller-resolved situation.lastPlay.$ref text (best-effort; omitted when unresolved).
+Map<String, dynamic>? buildCoreSituation(dynamic raw, [String? lastPlayText]) {
+  if (raw is! Map) return null;
+  final s = <String, dynamic>{};
+  for (final k in ['balls', 'strikes', 'outs', 'down', 'distance', 'yardLine']) {
+    final v = raw[k];
+    if (v is num && v is! bool) {
+      s[k] = v is int ? v : v.toInt();
+    } else if (v is String && RegExp(r'^\d+$').hasMatch(v)) {
+      s[k] = int.parse(v);
+    }
+  }
+  for (final k in ['onFirst', 'onSecond', 'onThird', 'isRedZone', 'powerPlay', 'emptyNet']) {
+    if (raw[k] != null) s[k] = truthy(raw[k]);
+  }
+  // timeouts: object {timeoutsRemainingCurrent} (basketball) OR a bare number.
+  int? toN(dynamic v) {
+    if (v is num && v is! bool) return v.toInt();
+    if (v is Map) {
+      final n = v['timeoutsRemainingCurrent'] ?? v['timeoutsCurrent'];
+      if (n is num && n is! bool) return n.toInt();
+    }
+    return null;
+  }
+
+  final ht = toN(raw['homeTimeouts']);
+  if (ht != null) s['homeTimeouts'] = ht;
+  final at = toN(raw['awayTimeouts']);
+  if (at != null) s['awayTimeouts'] = at;
+  final hb = field(raw['homeFouls'], 'bonusState');
+  if (hb is String && hb.isNotEmpty) s['homeBonus'] = hb;
+  final ab = field(raw['awayFouls'], 'bonusState');
+  if (ab is String && ab.isNotEmpty) s['awayBonus'] = ab;
+  if (lastPlayText != null && lastPlayText.trim().isNotEmpty) {
+    s['lastPlay'] = lastPlayText.trim();
+  }
+  return s.isNotEmpty ? s : null;
+}
+
+// ---- win probability from the CORE predictor (winprobability[] fallback) -------
+// Faithful port of summary.js winProbabilityFromPredictor: each side's
+// `gameProjection` stat is that side's win %; keep only the single current number in
+// the canonical WinProbability shape. VERIFIED baseball/basketball/football only.
+double? _projectionOf(dynamic team) {
+  final stats = field(team, 'statistics');
+  if (stats is! List) return null;
+  for (final st in stats) {
+    if (field(st, 'name') == 'gameProjection') {
+      final v = field(st, 'value');
+      if (v is num && v is! bool) return v.toDouble();
+      final dv = field(st, 'displayValue');
+      if (dv is String && dv.isNotEmpty) return double.tryParse(dv);
+    }
+  }
+  return null;
+}
+
+Map<String, dynamic>? winProbabilityFromPredictor(dynamic pred) {
+  if (pred is! Map) return null;
+  final h = _projectionOf(pred['homeTeam']);
+  final a = _projectionOf(pred['awayTeam']);
+  final home = h != null ? h.round() : (a != null ? 100 - a.round() : null);
+  if (home == null) return null;
+  return {'home': home, 'away': 100 - home};
+}
+
 // ---- gridiron drives --------------------------------------------------------
 List _drivesList(Map raw) {
   final d = raw['drives'];

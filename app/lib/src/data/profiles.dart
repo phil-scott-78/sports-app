@@ -92,7 +92,8 @@ Map<String, dynamic> resolve(Registry reg, String key, [Set<String>? seen]) {
 /// like everything else. OMIT-MEANS-FALSE: a missing object or missing flag
 /// means the sport does not serve that datum — hide the element cleanly.
 /// Flags: hasSummaryTier, hasSituation, hasWinProb, hasScoringPlaysArray,
-/// hasPlaysFeed, hasCommentary, hasForm, hasPowerPlay, hasSeeds, hasWeather.
+/// hasPlaysFeed, hasCommentary, hasForm, hasPowerPlay, hasSeeds, hasWeather,
+/// hasOdds.
 /// (hasLineScores and rankingsFeed predate this object and stay top-level keys.)
 bool hasCapability(Map<String, dynamic> profile, String flag) {
   final caps = profile['capabilities'];

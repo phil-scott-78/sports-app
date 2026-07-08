@@ -79,6 +79,7 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
   Widget build(BuildContext context) {
     ref.listen(teamCardProvider(_key), (_, __) => repace());
     final detail = ref.watch(teamDetailProvider(_key));
+    final leaders = ref.watch(teamLeadersProvider(_key)).valueOrNull;
     final card = ref.watch(teamCardProvider(_key)).valueOrNull;
     final title =
         detail.valueOrNull?.team.displayName ?? widget.name ?? widget.teamId;
@@ -86,7 +87,7 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
     return Scaffold(
       appBar: subpageBar(context, title),
       body: switch (detail) {
-        AsyncData(:final value) => _body(value, card),
+        AsyncData(:final value) => _body(value, card, leaders),
         AsyncError() => const Padding(
             padding: EdgeInsets.all(T.pageMargin),
             child: HintCard('Couldn’t load this team.'),
@@ -99,7 +100,7 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
     );
   }
 
-  Widget _body(TeamDetail d, TeamCard? card) {
+  Widget _body(TeamDetail d, TeamCard? card, TeamSeasonLeaders? leaders) {
     return ListView(
       padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
@@ -124,6 +125,17 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
               rows: d.standing!.rows,
               columns: d.standing!.columns,
               highlightIds: {widget.teamId},
+            ),
+          ),
+        ],
+        if (leaders != null && leaders.categories.isNotEmpty) ...[
+          const _SectionLabel('Team leaders'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
+            child: _LeadersCard(
+              league: widget.league,
+              categories: leaders.categories,
+              color: teamColorOf(d.team.color ?? widget.color),
             ),
           ),
         ],
@@ -350,6 +362,71 @@ class _StatsCard extends StatelessWidget {
         rankChip: s.rank != null
             ? SemanticRankChip(label: '#${s.rank}', rank: s.rank!, total: 30)
             : null,
+      );
+}
+
+/// §2.6 TEAM LEADERS: a card of per-category season leaders. Each row is a §6
+/// team-tinted avatar + the player's name over the category label, with the value
+/// right-aligned in the Barlow scoreboard voice. Data-presence gated by the caller.
+class _LeadersCard extends StatelessWidget {
+  final String league;
+  final List<TeamLeader> categories;
+  final Color color;
+  const _LeadersCard({
+    required this.league,
+    required this.categories,
+    required this.color,
+  });
+
+  static String _initials(String name) {
+    final parts = name.trim().split(RegExp(r'\s+')).where((s) => s.isNotEmpty).toList();
+    if (parts.isEmpty) return '?';
+    if (parts.length == 1) return parts.first.substring(0, 1).toUpperCase();
+    return (parts.first.substring(0, 1) + parts.last.substring(0, 1)).toUpperCase();
+  }
+
+  @override
+  Widget build(BuildContext context) => V2Card(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+        child: Column(children: [
+          for (var i = 0; i < categories.length; i++) _row(categories[i], divider: i > 0),
+        ]),
+      );
+
+  Widget _row(TeamLeader c, {required bool divider}) => Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: divider
+            ? const BoxDecoration(border: Border(top: BorderSide(color: T.divider)))
+            : null,
+        child: Row(children: [
+          TintedAvatar(_initials(c.athlete), color, size: 34),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(c.athlete,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.listText.copyWith(fontWeight: FontWeight.w600)),
+                  const SizedBox(height: 1),
+                  Text(
+                    c.position != null && c.position!.isNotEmpty
+                        ? '${c.label.toUpperCase()}  ·  ${c.position}'
+                        : c.label.toUpperCase(),
+                    style: T.captionFaint,
+                  ),
+                ]),
+          ),
+          const SizedBox(width: 10),
+          Text(c.displayValue,
+              style: const TextStyle(
+                  fontFamily: 'BarlowCondensed',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  height: 1.0,
+                  color: T.text)),
+        ]),
       );
 }
 

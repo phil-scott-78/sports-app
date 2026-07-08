@@ -13,8 +13,9 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   fetchTeamSchedule, fetchTeamRoster, fetchTeamStatistics, fetchStandings,
-  fetchCoreEvent, fetchCoreRef,
+  fetchCoreEvent, fetchCoreRef, fetchScoreboard,
 } from '../src/espn.js';
+import { athleteIdFromRef } from '../src/teamleaders.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, '..', 'mock', 'fixtures', '_extra.json');
@@ -26,6 +27,19 @@ const TEAM_CASES = [
   { key: 'soccer/fifa.world', teamId: '624' },
 ];
 const MMA_CASES = [{ key: 'mma/ufc', eventId: '600058854' }];
+// Venue facts (§2.9): the CORE venues/{id} resource behind the Venue tab — photo,
+// grass→surface, indoor→roof, address. Pinned to STABLE, evergreen venue ids (a
+// stadium resource doesn't move) so the golden never drifts, NOT discovered from
+// today's slate. Coverage spans the presence gradient: Oracle Park (grass+images+
+// address), Coca-Cola Coliseum (indoor, no image), Emirates (no grass/indoor bool
+// — the sparse soccer path), and the Spa racing venue (length/turns — the non-F1
+// degrade path, no grass/indoor).
+const VENUE_CASES = [
+  { key: 'baseball/mlb', venueId: '43' },     // Oracle Park — grass, day image, city/state
+  { key: 'basketball/wnba', venueId: '7546' },// Coca-Cola Coliseum — indoor, no image
+  { key: 'soccer/eng.1', venueId: '2267' },   // Emirates — sparse (no surface/roof bool)
+  { key: 'racing/f1', venueId: '257' },        // Spa track venue — length/turns degrade path
+];
 // racing: the site /summary 404s, so the rich detail (circuit dossier + the
 // dark-SVG track MAP) is core-only — event → circuit.$ref → the circuit doc, which
 // the cheap scoreboard's {id,fullName,address} circuit block does NOT carry. Spa
@@ -43,6 +57,192 @@ const FUTURES_CASES = [
 // Player salary/cap: athletes/{id}/contracts → items are per-season $ref stubs;
 // resolving one yields salary + Bird status, trade kicker, cap exceptions, etc.
 const CONTRACT_CASES = [{ key: 'basketball/nba', teamId: '1' }];
+// Pre-game betting line via the CORE competition-odds list (the per-team moneyline
+// the inline scoreboard odds[] lacks — hML/aML, + soccer's draw line). Fetched on
+// detail open for a SCHEDULED event when inline odds are absent. The scheduled
+// event id is discovered from today's scoreboard (network; recapture is rare and
+// picks whatever game is next), so the golden regenerates from a real ESPN shape.
+// mlb = US moneyline; eng.1 = soccer draw line; wnba = basketball total.
+const ODDS_CASES = [
+  { key: 'baseball/mlb' },
+  { key: 'soccer/eng.1' },
+  { key: 'basketball/wnba' },
+];
+// Detail-open CORE situation + predictor (the live gridiron down/distance,
+// basketball bonus/timeouts, hockey power play, and the win-prob fallback). Both
+// are LIVE-only: real ESPN 404s them for a scheduled/final game, so a capture needs
+// a game actually in progress at run time. In-season now (2026-07): MLB (baseball
+// core situation = balls/strikes/outs) + WNBA (basketball bonus/timeouts). Football/
+// NBA/NHL are offseason → captureSituation returns raw:null and gen-goldens emits
+// nothing for them (the normalizer stays covered by the guide-shaped unit tests).
+const SITUATION_CASES = [
+  { key: 'baseball/mlb' },
+  { key: 'basketball/wnba' },
+  { key: 'football/college-football' },
+  { key: 'basketball/nba' },
+  { key: 'hockey/nhl' },
+];
+
+// Athlete/player profile (§2.6 "Player rows"): identity + season stats + a last-N
+// game log — every piece CORE-tier + fanned-out ($ref resolves), exactly what
+// api.dart's athleteProfile() assembles at runtime. Two identity paths are covered:
+//   • roster-row  (MLB) — the denser single-call identity when arriving from a team
+//   • core-athlete (WNBA) — the athletes/{id} doc fallback (+ its team.$ref)
+// The player is discovered from the team roster (network; recapture is rare → picks
+// whatever the roster's first row is), so the golden regenerates from real shapes.
+const ATHLETE_CASES = [
+  { key: 'baseball/mlb', teamId: '19', useRosterIdentity: true },   // Dodgers
+  { key: 'basketball/wnba', teamId: '3', useRosterIdentity: false },// Wings
+];
+const ATHLETE_GAME_CAP = 5; // matches api.dart's _athleteGameCap (most-recent N)
+
+// Team SEASON leaders (§2.6 TEAM LEADERS row): the CORE .../types/2/teams/{id}/leaders
+// doc + each category's top-leader athlete.$ref resolved, exactly what api.dart's
+// teamLeaders() assembles. Season year rides the team schedule; type 2 (regular).
+// In-season now (2026-07): MLB + WNBA carry season leaders.
+const LEADERS_CASES = [
+  { key: 'baseball/mlb', teamId: '19' },    // Dodgers
+  { key: 'basketball/wnba', teamId: '3' },  // Wings
+];
+const LEADERS_CATEGORY_CAP = 6; // matches api.dart's _leaderCategoryCap
+// Standings sub-records (§2.8 L10/DIV/CONF): discover season year + each group's
+// id/seasonType/standingsId off the SITE standings, then pull the CORE group
+// standings-id docs (standings[].records[]). Exactly what api.dart's
+// _fetchStandingsRecords() does. MLB + WNBA standings are live now.
+const STANDINGS_RECORD_CASES = [
+  { key: 'baseball/mlb' },
+  { key: 'basketball/wnba' },
+];
+
+// Flatten a roster (grouped OR flat) to its athlete rows — mirrors teamdetail.js.
+function rosterRows(roster) {
+  const athletes = roster?.athletes;
+  if (!Array.isArray(athletes)) return [];
+  const grouped = athletes.some((e) => Array.isArray(e?.items));
+  return grouped ? athletes.flatMap((g) => (Array.isArray(g?.items) ? g.items : [])) : athletes;
+}
+
+// A resolved eventlog event carries a 70+-field competitions[] the profile
+// normalizer never reads (it wants only date/name/shortName). Trim to the metadata
+// scalars so the committed fixture stays small — this is a REAL capture, just
+// size-trimmed to the fields under test. Nothing fabricated.
+function trimEvent(ev) {
+  if (!ev || typeof ev !== 'object') return ev;
+  const keep = ['$ref', 'id', 'date', 'name', 'shortName', 'season', 'seasonType', 'week'];
+  return Object.fromEntries(keep.filter((k) => ev[k] !== undefined).map((k) => [k, ev[k]]));
+}
+
+async function captureAthlete({ key, teamId, useRosterIdentity }) {
+  const roster = await fetchTeamRoster(key, teamId).catch(() => null);
+  const row = rosterRows(roster)[0];
+  const aid = row?.id;
+  if (!aid) return { key, athleteId: null, teamId, identity: null, team: null, statistics: null, games: [] };
+  const base = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/athletes/${aid}`;
+  const coreAthlete = await fetchCoreRef(`${base}?lang=en&region=us`).catch(() => null);
+  const identity = useRosterIdentity ? row : (coreAthlete || row);
+  // team (name+color+logo): the core athlete's team.$ref, else built from teamId.
+  let team = null;
+  const teamRef = coreAthlete?.team?.$ref;
+  if (teamRef) team = await fetchCoreRef(teamRef).catch(() => null);
+  if (!team && teamId) {
+    team = await fetchCoreRef(`https://sports.core.api.espn.com/v2/sports/${corePath(key)}/teams/${teamId}?lang=en&region=us`).catch(() => null);
+  }
+  const statistics = await fetchCoreRef(`${base}/statistics?lang=en&region=us`).catch(() => null);
+  // last-N game log: eventlog items (oldest→newest within the page) → take the most
+  // recent PLAYED N, resolve each row's event.$ref (trimmed) + statistics.$ref.
+  const el = await fetchCoreRef(`${base}/eventlog?lang=en&region=us`).catch(() => null);
+  const items = Array.isArray(el?.events?.items) ? el.events.items : [];
+  const played = items.filter((e) => e?.played === true);
+  const recent = (played.length > ATHLETE_GAME_CAP ? played.slice(-ATHLETE_GAME_CAP) : played).reverse();
+  const games = [];
+  for (const it of recent) {
+    const g = {};
+    const evRef = it?.event?.$ref;
+    if (evRef) {
+      const id = /\/events\/(\d+)/.exec(evRef)?.[1];
+      if (id) g.eventId = id;
+      const ev = await fetchCoreRef(evRef).catch(() => null);
+      if (ev) g.event = trimEvent(ev);
+    }
+    if (it?.teamId != null) g.teamId = String(it.teamId);
+    const stRef = it?.statistics?.$ref;
+    if (stRef) { const s = await fetchCoreRef(stRef).catch(() => null); if (s) g.statistics = s; }
+    if (g.eventId) games.push(g);
+  }
+  return { key, athleteId: String(aid), teamId, identity, team, statistics, games };
+}
+
+// Trim a resolved athlete doc to the fields the leaders normalizer reads (mirrors
+// trimEvent: a REAL capture, size-trimmed to the fields under test — nothing faked).
+function trimAthlete(a) {
+  if (!a || typeof a !== 'object') return a;
+  const out = {};
+  for (const k of ['id', 'displayName', 'fullName', 'shortName']) if (a[k] !== undefined) out[k] = a[k];
+  if (a.headshot) out.headshot = a.headshot.href ? { href: a.headshot.href } : a.headshot;
+  if (a.position && typeof a.position === 'object') {
+    out.position = {};
+    for (const k of ['abbreviation', 'displayName']) if (a.position[k] !== undefined) out.position[k] = a.position[k];
+  }
+  return out;
+}
+
+async function captureLeaders({ key, teamId }) {
+  const sched = await fetchTeamSchedule(key, teamId).catch(() => null);
+  const year = sched?.season?.year || sched?.requestedSeason?.year || new Date().getFullYear();
+  const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/seasons/${year}/types/2/teams/${teamId}/leaders?lang=en&region=us`;
+  const raw = await fetchCoreRef(url).catch(() => null);
+  const cats = Array.isArray(raw?.categories) ? raw.categories.slice(0, LEADERS_CATEGORY_CAP) : [];
+  // Resolve each UNIQUE top-leader athlete.$ref once (dedupe by id), like api.dart.
+  const refs = {};
+  for (const c of cats) {
+    const ref = c?.leaders?.[0]?.athlete?.$ref;
+    const id = athleteIdFromRef(ref);
+    if (id && ref && !refs[id]) refs[id] = ref;
+  }
+  const athletes = {};
+  for (const [id, ref] of Object.entries(refs)) {
+    const a = await fetchCoreRef(ref).catch(() => null);
+    if (a) athletes[id] = trimAthlete(a);
+  }
+  return { key, teamId, year, raw, athletes };
+}
+
+// Trim a CORE group standings-id doc to what extractGroupRecords reads.
+function trimRecordDoc(doc) {
+  const standings = Array.isArray(doc?.standings) ? doc.standings : [];
+  return {
+    standings: standings.map((s) => ({
+      team: { $ref: s?.team?.$ref },
+      records: (Array.isArray(s?.records) ? s.records : []).map((r) => ({ type: r?.type, summary: r?.summary })),
+    })),
+  };
+}
+
+async function captureStandingsRecords({ key }) {
+  const raw = await fetchStandings(key).catch(() => null);
+  const year = raw?.season?.year;
+  const groups = [];
+  const seen = new Set();
+  const walk = (node) => {
+    const s = node?.standings;
+    const entries = s?.entries;
+    const gid = node?.id;
+    if (s && Array.isArray(entries) && entries.length && gid != null && !seen.has(String(gid))) {
+      seen.add(String(gid));
+      groups.push({ g: String(gid), t: s.seasonType, s: String(s.id ?? '0'), y: s.season ?? year });
+    }
+    for (const c of node?.children || []) walk(c);
+  };
+  walk(raw);
+  const recordDocs = [];
+  for (const g of groups.slice(0, 12)) {
+    if (g.y == null || g.t == null) continue;
+    const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/seasons/${g.y}/types/${g.t}/groups/${g.g}/standings/${g.s}?lang=en&region=us`;
+    const doc = await fetchCoreRef(url).catch(() => null);
+    if (doc) recordDocs.push(trimRecordDoc(doc));
+  }
+  return { key, recordDocs };
+}
 
 async function captureTeam({ key, teamId }) {
   const [schedule, roster, stats, standingsRaw] = await Promise.all([
@@ -104,6 +304,52 @@ async function captureRacing({ key, eventId }) {
 
 function corePath(key) { return key.replace('/', '/leagues/'); } // baseball/mlb → baseball/leagues/mlb
 
+// Pull one CORE venues/{id} doc (stable resource → an evergreen fixture). Best-effort.
+async function captureVenue({ key, venueId }) {
+  const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/venues/${venueId}?lang=en&region=us`;
+  const venue = await fetchCoreRef(url).catch(() => null);
+  return { key, venueId, venue };
+}
+
+// Discover the next SCHEDULED event on today's scoreboard and pull its CORE
+// competition-odds list (the lazy detail-open fetch, mirrored). Best-effort.
+async function captureOdds({ key }) {
+  const sb = await fetchScoreboard(key).catch(() => null);
+  const events = Array.isArray(sb?.events) ? sb.events : [];
+  let eid = null, cid = null, shortName = null;
+  for (const e of events) {
+    const c = (e.competitions || [])[0];
+    if (c?.status?.type?.name === 'STATUS_SCHEDULED') {
+      eid = String(e.id); cid = String(c.id); shortName = e.shortName; break;
+    }
+  }
+  if (!eid) return { key, eventId: null, competitionId: null, shortName: null, raw: null };
+  const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/events/${eid}/competitions/${cid}/odds?lang=en&region=us`;
+  const raw = await fetchCoreRef(url).catch(() => null);
+  return { key, eventId: eid, competitionId: cid, shortName, raw };
+}
+
+// Discover a LIVE event on today's scoreboard and pull its CORE situation +
+// predictor (both 404 unless the game is in progress). Mirrors the app's
+// _enrichLiveDetail: situation.lastPlay.$ref is resolved to its text too. Best-effort.
+async function captureSituation({ key }) {
+  const sb = await fetchScoreboard(key).catch(() => null);
+  const events = Array.isArray(sb?.events) ? sb.events : [];
+  let eid = null, cid = null, shortName = null;
+  for (const e of events) {
+    const c = (e.competitions || [])[0];
+    if (c?.status?.type?.state === 'in') { eid = String(e.id); cid = String(c.id); shortName = e.shortName; break; }
+  }
+  if (!eid) return { key, eventId: null, competitionId: null, shortName: null, situation: null, lastPlayText: null, predictor: null };
+  const base = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/events/${eid}/competitions/${cid}`;
+  const situation = await fetchCoreRef(`${base}/situation?lang=en&region=us`).catch(() => null);
+  let lastPlayText = null;
+  const lpRef = situation?.lastPlay?.$ref;
+  if (lpRef) { const play = await fetchCoreRef(lpRef).catch(() => null); lastPlayText = typeof play?.text === 'string' ? play.text : null; }
+  const predictor = await fetchCoreRef(`${base}/predictor?lang=en&region=us`).catch(() => null);
+  return { key, eventId: eid, competitionId: cid, shortName, situation, lastPlayText, predictor };
+}
+
 async function captureFutures({ key, season }) {
   const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/seasons/${season}/futures?lang=en&region=us`;
   let futures = null;
@@ -138,8 +384,14 @@ out.capturedAt = new Date().toISOString();
 out.teams ||= [];
 out.mma ||= [];
 out.racing ||= [];
+out.venues ||= [];
 out.futures ||= [];
 out.contracts ||= [];
+out.odds ||= [];
+out.situation ||= [];
+out.athletes ||= [];
+out.leaders ||= [];
+out.standingsRecords ||= [];
 
 if (want('teams')) {
   out.teams = [];
@@ -164,6 +416,16 @@ if (want('racing')) {
       + `diagrams: ${last.circuit?.diagrams?.length ?? 0}, sessions: ${last.coreEvent?.competitions?.length ?? 0}`);
   }
 }
+if (want('venues')) {
+  out.venues = [];
+  for (const v of VENUE_CASES) {
+    out.venues.push(await captureVenue(v));
+    const last = out.venues[out.venues.length - 1];
+    console.log(`✓ venue ${v.key}/${v.venueId} — ${last.venue?.fullName ?? '(none)'}: `
+      + `grass ${last.venue?.grass ?? '—'}, indoor ${last.venue?.indoor ?? '—'}, `
+      + `images ${last.venue?.images?.length ?? 0}, length ${last.venue?.length ?? '—'}`);
+  }
+}
 if (want('futures')) {
   out.futures = [];
   for (const f of FUTURES_CASES) {
@@ -178,6 +440,51 @@ if (want('contracts')) {
     const last = out.contracts[out.contracts.length - 1];
     console.log(`✓ contracts ${c.key} — ${last.athlete?.displayName ?? '?'}: ${last.contracts.length} seasons, `
       + `latest salary ${last.contracts[0]?.salary ?? '?'}`);
+  }
+}
+if (want('odds')) {
+  out.odds = [];
+  for (const o of ODDS_CASES) {
+    out.odds.push(await captureOdds(o));
+    const last = out.odds[out.odds.length - 1];
+    console.log(`✓ odds ${o.key} — ${last.shortName ?? '(no scheduled game)'}: ${last.raw?.items?.length ?? 0} providers`);
+  }
+}
+if (want('situation')) {
+  out.situation = [];
+  for (const s of SITUATION_CASES) {
+    out.situation.push(await captureSituation(s));
+    const last = out.situation[out.situation.length - 1];
+    console.log(`✓ situation ${s.key} — ${last.shortName ?? '(no live game)'}: `
+      + `situation ${last.situation ? 'ok' : '—'}, predictor ${last.predictor ? 'ok' : '—'}`);
+  }
+}
+if (want('athletes')) {
+  out.athletes = [];
+  for (const a of ATHLETE_CASES) {
+    out.athletes.push(await captureAthlete(a));
+    const last = out.athletes[out.athletes.length - 1];
+    console.log(`✓ athlete ${a.key}/${last.athleteId ?? '(none)'} — ${last.identity?.displayName ?? '?'}: `
+      + `team ${last.team?.displayName ?? '—'}, statCats ${last.statistics?.splits?.categories?.length ?? 0}, `
+      + `games ${last.games.length}`);
+  }
+}
+if (want('leaders')) {
+  out.leaders = [];
+  for (const l of LEADERS_CASES) {
+    out.leaders.push(await captureLeaders(l));
+    const last = out.leaders[out.leaders.length - 1];
+    console.log(`✓ leaders ${l.key}/${l.teamId} — ${last.raw?.categories?.length ?? 0} categories, `
+      + `${Object.keys(last.athletes).length} athletes resolved`);
+  }
+}
+if (want('standingsRecords')) {
+  out.standingsRecords = [];
+  for (const s of STANDINGS_RECORD_CASES) {
+    out.standingsRecords.push(await captureStandingsRecords(s));
+    const last = out.standingsRecords[out.standingsRecords.length - 1];
+    const teams = last.recordDocs.reduce((n, d) => n + (d.standings?.length ?? 0), 0);
+    console.log(`✓ standingsRecords ${s.key} — ${last.recordDocs.length} group docs, ${teams} team records`);
   }
 }
 writeFileSync(OUT, JSON.stringify(out));

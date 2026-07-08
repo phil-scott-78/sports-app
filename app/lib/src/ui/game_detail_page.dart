@@ -482,7 +482,15 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         final tennisContext =
             tennis != null && tennis.hasContext ? _TennisContextCard(tennis) : null;
         if (s.live) {
-          final situation = situationCardFor(comp);
+          // Fold the detail-open CORE situation (gridiron down/distance, basketball
+          // bonus/timeouts, hockey power play — merged into the summary payload by
+          // api.dart) over the cheap scoreboard situation, so the card upgrades in
+          // place. Null-safe: no summary/core situation → the scoreboard one stands.
+          final liveComp = summary?.situation != null
+              ? comp.withSituation(
+                  (comp.situation ?? summary!.situation!).mergedWith(summary!.situation))
+              : comp;
+          final situation = situationCardFor(liveComp);
           final cheap = _cheapPanelFor(comp);
           final leadPlays = _leadPlays(summary);
           final crease = (summary?.cricketInnings.isNotEmpty ?? false)
@@ -523,8 +531,8 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
               _WinProbCard(comp: comp, wp: summary!.winProbability!),
             // The one loud moment (§7): the core last-play text, or — for
             // soccer/rugby, which carry no core situation — the freshest event.
-            if (comp.situation?.lastPlay != null)
-              InvertedCard(label: 'Last play', text: comp.situation!.lastPlay!)
+            if (liveComp.situation?.lastPlay != null)
+              InvertedCard(label: 'Last play', text: liveComp.situation!.lastPlay!)
             else if (lastEventLine(comp) != null)
               InvertedCard(label: 'Last event', text: lastEventLine(comp)!),
             // Match-stats pulse: hockey's §8 shots-pressure card when the summary
@@ -544,10 +552,26 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           ].whereType<Widget>().toList();
         }
         if (s.isScheduled) {
+          // Pre-game betting line (§6): the cheap inline scoreboard line if ESPN
+          // sent one, else a lazy core competition-odds fetch (per-team moneyline).
+          // Gate the fetch to head-to-head team games (odds are priced for
+          // baseball/basketball/football/soccer — enforced capability-side in
+          // api.dart, which no-ops other sports without a network call).
+          final odds = comp.odds ??
+              (comp.competitorKind == 'team' && !comp.isField
+                  ? ref
+                      .watch(oddsProvider((
+                        league: widget.league,
+                        eventId: event.id,
+                        compId: comp.id,
+                      )))
+                      .valueOrNull
+                  : null);
           return [
             if (tennisContext != null) tennisContext,
             if (comp.competitors.any((c) => c.probables.isNotEmpty))
               _ProbablesCard(comp),
+            if (odds != null) _OddsCard(comp: comp, odds: odds),
             if (summary != null && summary.lineups.isNotEmpty)
               _LineupsCard(summary.lineups),
             if (summary != null && summary.recentForm.isNotEmpty)
@@ -907,7 +931,10 @@ class _ExpandedBlock extends StatelessWidget {
         comp.meta!.round!
       else if (event.venue != null)
         event.venue!.name,
-    ].join();
+      // Cheap TV/stream label — the terse "where to watch" glance (§6). One dim
+      // segment; drops in silently when ESPN sends no broadcast.
+      if (comp.broadcast != null) comp.broadcast!,
+    ].join(' · ');
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(T.pageMargin, 6, T.pageMargin, 0),
@@ -2503,6 +2530,96 @@ class _SeasonSeriesCard extends StatelessWidget {
       );
 }
 
+/// Pre-game betting line (§6) — the quiet PRE-GAME block: spread/total from the
+/// cheap scoreboard line, per-team moneyline when the core enrichment lands.
+/// Renders only what ESPN served; the whole card is hidden when odds are absent.
+class _OddsCard extends StatelessWidget {
+  final Competition comp;
+  final Odds odds;
+  const _OddsCard({required this.comp, required this.odds});
+
+  static String _trim(num n) =>
+      n == n.roundToDouble() ? n.toInt().toString() : n.toString();
+
+  static Widget _stat(String label, String value) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(label.toUpperCase(), style: T.cardLabelFaint),
+          const SizedBox(height: 3),
+          Text(value, style: T.statCallout),
+        ],
+      );
+
+  static Widget _mlChip(String team, String american) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+        decoration: BoxDecoration(
+            color: T.track, borderRadius: BorderRadius.circular(8)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Text(team, style: T.captionFaint),
+          const SizedBox(width: 7),
+          Text(american, style: T.statLine),
+        ]),
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    final away = comp.away ??
+        (comp.competitors.isNotEmpty ? comp.competitors.first : null);
+    final home = comp.home ??
+        (comp.competitors.length > 1 ? comp.competitors[1] : null);
+
+    // The favorite+line summary (e.g. 'SEA -3.5'); fall back to the bare spread.
+    final line = odds.details ??
+        (odds.spread != null
+            ? (odds.spread! > 0 ? '+${_trim(odds.spread!)}' : _trim(odds.spread!))
+            : null);
+
+    final top = <Widget>[
+      if (line != null) _stat('Line', line),
+      if (odds.overUnder != null) _stat('Total', _trim(odds.overUnder!)),
+    ];
+
+    final ml = <Widget>[];
+    void chip(String? team, num? v) {
+      final m = Odds.moneyline(v);
+      if (team != null && m != null) ml.add(_mlChip(team, m));
+    }
+
+    chip(away?.label, odds.awayMoneyline);
+    if (odds.drawMoneyline != null) chip('Draw', odds.drawMoneyline);
+    chip(home?.label, odds.homeMoneyline);
+
+    if (top.isEmpty && ml.isEmpty) return const SizedBox.shrink();
+    return V2Card(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const CardLabel('Pre-game'),
+        if (top.isNotEmpty) ...[
+          const SizedBox(height: 10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (var i = 0; i < top.length; i++)
+                Padding(
+                  padding: EdgeInsets.only(right: i < top.length - 1 ? 32 : 0),
+                  child: top[i],
+                ),
+            ],
+          ),
+        ],
+        if (ml.isNotEmpty) ...[
+          const SizedBox(height: 14),
+          Wrap(spacing: 8, runSpacing: 8, children: ml),
+        ],
+        if (odds.provider != null) ...[
+          const SizedBox(height: 10),
+          Text('via ${odds.provider}', style: T.captionFaint),
+        ],
+      ]),
+    );
+  }
+}
+
 class _VenueCard extends StatelessWidget {
   final SportEvent event;
   final Competition? comp;
@@ -2539,7 +2656,12 @@ class _VenueCard extends StatelessWidget {
         event.weather!.summary,
       if (attendance != null) 'Attendance ${_thousands(attendance)}',
       if (officials != null) officials,
-      if (event.broadcasts.isNotEmpty) event.broadcasts.join(' · '),
+      // Prefer the cheap single broadcast label; fall back to the flattened
+      // network-name list when the competition didn't carry one.
+      if (comp?.broadcast != null)
+        comp!.broadcast!
+      else if (event.broadcasts.isNotEmpty)
+        event.broadcasts.join(' · '),
     ];
     if (bits.isEmpty) return const SizedBox.shrink();
     return V2Card(
@@ -2892,7 +3014,7 @@ class _DrivesFeedState extends State<_DrivesFeed> {
   Widget _scoreChip(DriveSummary d) {
     final c = _sideColor(d);
     return Container(
-      width: 36,
+      width: 34,
       height: 24,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -2909,7 +3031,7 @@ class _DrivesFeedState extends State<_DrivesFeed> {
   }
 
   Widget _resultLabel(DriveSummary d) => SizedBox(
-        width: 36,
+        width: 34,
         child: Text(_chipLabel(d.result),
             textAlign: TextAlign.center,
             style: T.statLine.copyWith(fontSize: 12, color: T.textFaint)),
