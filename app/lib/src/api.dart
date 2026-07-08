@@ -12,6 +12,7 @@ import 'data/overview.dart' as ov;
 import 'data/venue.dart' as vn;
 import 'data/athlete.dart' as ath;
 import 'data/teamleaders.dart' as tl;
+import 'data/tournament.dart' as tn;
 import 'models.dart';
 
 export 'data/espn_client.dart' show ApiException;
@@ -541,6 +542,45 @@ class Api {
     final athletes = {for (final e in resolved) if (e.value != null) e.key: e.value};
     return TeamSeasonLeaders.fromJson(
         tl.normalizeTeamLeaders(league, teamId, raw, athletes));
+  }
+
+  // ---- tournament (§2.7 — groups / draw / bracket / pools+series) -------------
+  /// One canonical [TournamentResponse] for a tournament page — a PUSHED-PAGE
+  /// fetch, never the scores poll. One (range) scoreboard is the structure
+  /// source: [window] is a 'YYYYMMDD[-YYYYMMDD]' override; absent, the profile's
+  /// `tournamentWindowDays` hint (soccer.knockout, college-baseball) widens
+  /// today to a ±days range that spans the whole competition from any date
+  /// inside it — no hint → the plain (today) scoreboard, which for tennis
+  /// already carries the ENTIRE draw (verified 2026-07). When the profile says
+  /// group tables exist (`tournamentGroups`) the standings ride along
+  /// (best-effort). [grouping]/[eventId] select a tennis draw (default: the
+  /// major event, first grouping). Both fetches are cached in [EspnClient].
+  Future<TournamentResponse> tournament(String league,
+      {String? window, String? grouping, String? eventId}) async {
+    final prof = resolve(_reg, league);
+    var range = window;
+    final days = prof['tournamentWindowDays'];
+    if (range == null && days is num && days > 0) {
+      String ymd(DateTime d) => '${d.year}'
+          '${d.month.toString().padLeft(2, '0')}'
+          '${d.day.toString().padLeft(2, '0')}';
+      final now = DateTime.now();
+      final span = Duration(days: days.toInt());
+      range = '${ymd(now.subtract(span))}-${ymd(now.add(span))}';
+    }
+    final sb = await _c.scoreboard(league, date: range, ttl: 120);
+    dynamic standingsRaw;
+    if (prof['tournamentGroups'] == true) {
+      try {
+        standingsRaw = await _c.standings(league);
+      } catch (_) {/* group tables optional — knockout still renders */}
+    }
+    return TournamentResponse.fromJson(tn.normalizeTournament(_reg, league, {
+      'scoreboards': [sb],
+      if (standingsRaw != null) 'standings': standingsRaw,
+      if (grouping != null) 'grouping': grouping,
+      if (eventId != null) 'eventId': eventId,
+    }));
   }
 
   // ---- rankings --------------------------------------------------------------

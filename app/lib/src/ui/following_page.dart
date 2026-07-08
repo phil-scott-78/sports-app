@@ -4,6 +4,7 @@ import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../util.dart';
+import 'explore_page.dart';
 import 'league_page.dart';
 import 'team_page.dart';
 import 'widgets.dart';
@@ -26,9 +27,16 @@ class FollowingPage extends ConsumerWidget {
     return ListView(
       padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(T.pageMargin, 14, T.pageMargin, 0),
-          child: Text('FOLLOWING', style: T.pageTitle),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(T.pageMargin, 14, T.pageMargin, 0),
+          child: Row(children: [
+            const Expanded(child: Text('FOLLOWING', style: T.pageTitle)),
+            // Long-press-anywhere stays the primary grammar; this is the one
+            // discoverable entry — it opens the browse surface (Explore), which
+            // is where teams/leagues are added.
+            _AddButton(onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const ExplorePage()))),
+          ]),
         ),
         const Padding(
           padding: EdgeInsets.fromLTRB(T.pageMargin, 6, T.pageMargin, 0),
@@ -130,6 +138,24 @@ class FollowingPage extends ConsumerWidget {
     }
     return key.split('/').last.toUpperCase();
   }
+}
+
+/// The one add affordance in the Following header — a 36px circle '+' that opens
+/// the Explore browse surface (matching the Scores header's circle buttons).
+class _AddButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _AddButton({required this.onTap});
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 36,
+          height: 36,
+          decoration:
+              const BoxDecoration(color: T.surface, shape: BoxShape.circle),
+          child: const Icon(Icons.add_rounded, size: 20, color: T.textDim),
+        ),
+      );
 }
 
 class _FollowRow extends StatelessWidget {

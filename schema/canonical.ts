@@ -336,6 +336,11 @@ export interface Situation {
   strengthTeam?: string; // competitor id of the side on the man advantage (situation.lastPlay.team.id)
   // any sport
   lastPlay?: string;  // human-readable last play text
+  // CHEAP win probability — BASKETBALL ONLY (~14%, VERIFIED scoreboard.md):
+  // situation.lastPlay.probability.homeWinPercentage (0-1) → 0-100 rounded int.
+  // Absent for every other sport, so a consumer can render a win-prob bar keyed
+  // purely on presence (data-driven, not sport-name).
+  homeWinPct?: number;
 }
 
 export interface Status {
@@ -1186,6 +1191,11 @@ export interface StandingsRow {
   // asks for them), the extra keys are MERGED IN under 'l10'/'div'/'conf'/'home'/
   // 'away' (see extractGroupRecords in standings.js). Absent otherwise.
   stats: Record<string, string>;
+  // Qualification band — the coloured cut-line + tag ('Champions League',
+  // 'Relegation', 'Eliminated'). VERIFIED soccer-only (~12%, from
+  // children[].standings.entries[].note; schema/espn-guide/standings.md).
+  // Absent for every other sport. `color` is an ESPN hex ('#81D6AC').
+  note?: { color?: string; description?: string };
 }
 
 // =============================================================================
@@ -1276,6 +1286,139 @@ export interface ScorecardHole {
   strokes?: number;        // raw value
   scoreType?: string;      // 'EAGLE' | 'BIRDIE' | 'PAR' | 'BOGEY' | 'DOUBLE_BOGEY' …
                            // (scoreType.name; displayValue is the +/- delta)
+}
+
+// =============================================================================
+// Tournament — one canonical shape for the four tournament grammars (spec §2.7):
+// World Cup group tables + knockout scroller, a Wimbledon draw, a March-Madness
+// region bracket, and the CWS double-elim pools + championship series. Built
+// ENTIRELY from already-fetchable tiers: one (range) scoreboard — the structure
+// source — plus the league standings when the profile says group tables exist
+// (`tournamentGroups`, soccer.knockout). Pure map→map; normalizer pair =
+// worker/src/tournament.js (oracle) / app/lib/src/data/tournament.dart.
+// Everything below title is OPTIONAL-BY-DEFAULT: a tournament may have only
+// groups, only rounds, or pools+series — the UI renders what is present.
+//
+// Round labels come from THREE observed sources, first classifiable wins:
+//   1. tennis  competitions[].round.displayName ('Round 4', 'Quarterfinal')
+//      — VERIFIED 2026-07: ONE day-scoped fetch returns the ENTIRE Wimbledon
+//      draw (all rounds, future matches pre-created), events[].major==true.
+//   2. basketball/baseball/… notes[].headline ('East 1st Round - Game 6',
+//      "Men's College World Series - Elimination Game")
+//   3. soccer competitions[].altGameNote ('FIFA World Cup, Round of 16' —
+//      VERIFIED live 2026-07, groups + every knockout round)
+// Unknown labels pass through as a bucket with key null — never a crash.
+// =============================================================================
+
+export interface TournamentResponse {
+  league: string;              // registry key ('soccer/fifa.world')
+  title: string;               // tennis: the event name ('Wimbledon'); else the
+                               // common headline prefix when ≥2 events share one
+                               // ("Men's College World Series"); else league name
+  subtitle?: string;           // tennis: the grouping ("Men's Singles"); else absent
+  groups?: TournamentGroup[];  // round-robin stage tables (standings-derived)
+  rounds?: TournamentRound[];  // elimination rounds, chronological
+  pools?: TournamentPool[];    // CWS-style double-elim pools (RECONSTRUCTED —
+                               // no ESPN standings doc exists for these)
+  series?: TournamentSeries;   // championship best-of-N (scoreboard `series`)
+}
+
+// One group table — rows are EXACTLY the shape the standings renderer already
+// consumes (StandingsRow, incl. its soccer-only qualification `note` — VERIFIED:
+// entries[].note {color:'#81D6AC', description:'Advance to Round of 32'}).
+export interface TournamentGroup {
+  label: string;               // 'Group A' (children[].name; 2026 WC serves A–L —
+                               // enumerate, never hardcode a count)
+  rows: StandingsRow[];
+}
+
+export interface TournamentRound {
+  // Canonical round key: 'qualifying' | 'group' | 'roundOf128' | 'roundOf64' |
+  // 'roundOf32' | 'roundOf16' | 'quarterfinal' | 'semifinal' | 'thirdPlace' |
+  // 'final' — or null for an unrecognized label (pass-through bucket). Ordinal
+  // labels ('Round 2') are refined to roundOfN by bucket size ONLY when sourced
+  // from round.displayName (tennis pre-creates the COMPLETE draw, so size is
+  // trustworthy) and every pairing is unique; a headline-sourced ordinal
+  // ('1st Round', possibly a partial slate) stays null with its label intact.
+  round: string | null;
+  label: string;               // observed display label ('Quarterfinals', 'Round 4')
+  matchups: TournamentMatchup[];
+}
+export interface TournamentMatchup {
+  eventId: string;
+  competitionId?: string;      // only when != eventId (tennis: match id under the
+                               // tournament event)
+  date?: string;               // ISO kickoff (competition date, else event date)
+  phase: Phase;                // from statusToPhase — same rules as everywhere
+  live?: boolean;
+  note?: string;               // notes[].headline when it wasn't the round label
+                               // ('Switzerland advance 4-3 on penalties')
+  gameNumber?: number;         // parsed from '… - Game 6'
+  bracket?: string;            // region / group tag parsed from the label ('East',
+                               // 'Group A') — March-Madness region chips
+  // The next matchup this winner feeds, when DERIVABLE from cheap data (the
+  // decided winner's id appears in a later-round matchup). winnerAdvancesTo is
+  // core-only (tournamentMatchup), so an undecided slot has NO forward link —
+  // the 'Winner E1/F2' placeholder is a spec §2.7 gap, composed by the UI only
+  // where this field allows it. Absent otherwise.
+  advancesTo?: string;         // that matchup's eventId (its competitionId when set)
+  competitors: TournamentSide[];
+}
+export interface TournamentSide {
+  id: string;                  // team/athlete competitor id ('' / negative ids =
+                               // ESPN's TBD placeholder slots in a pre-created draw)
+  name: string;
+  shortName?: string;          // 'C. Alcaraz' / team shortDisplayName
+  abbr?: string;
+  homeAway?: string;
+  // Seed: ONLY where curatedRank IS the seed — competitorKind 'athlete' (tennis;
+  // spec §2.7 exception, 99 = unseeded → omitted). For team sports curatedRank is
+  // the AP/coaches poll, NOT the seed: basketball seeds live on the per-event CORE
+  // tournamentMatchup (.seed/.position) — a documented hook, never fanned out here.
+  seed?: number;
+  winner?: boolean;            // true only (absent for loser/draw/undecided)
+  score?: string;              // display score — omitted while phase=='scheduled'
+                               // (ESPN serves placeholder '0's pre-kickoff)
+  shootout?: number;           // soccer shootoutScore (VERIFIED: rides the cheap
+                               // scoreboard on STATUS_FINAL_PEN)
+  sets?: { value?: number; tiebreak?: number; winner?: boolean }[]; // tennis
+                               // linescores — per-set games won (+tiebreak points)
+}
+
+// CWS double-elim pool — RECONSTRUCTED (spec §2.7): ESPN serves NO standings doc
+// for it. Teams are split into pools by game connectivity over the non-series
+// events; W–L counts pool games only; status: 2 pool losses → 'eliminated',
+// championship-series participant / 'advances to Championship' headline winner →
+// 'advances', else 'alive'. Pool labels are positional ('Bracket 1'/'Bracket 2',
+// by earliest game) — ESPN carries no pool names.
+export interface TournamentPool {
+  label: string;
+  rows: {
+    team: { id: string; name: string; abbr?: string };
+    w: number;
+    l: number;
+    status: 'advances' | 'eliminated' | 'alive';
+  }[];
+}
+
+// Championship best-of-N — from the cheap scoreboard `series` block (VERIFIED:
+// title/totalCompetitions/completed/competitors[].wins ride every CWS finals
+// event; the LATEST game's block is the current state). games[] gives the
+// per-game strip (GAME 1 · TENN 6–2); an uncompleted series with a scheduled
+// game is the UI's 'Game 3 Tonight'.
+export interface TournamentSeries {
+  title?: string;              // common game-label prefix ('Championship Final')
+                               // else ESPN's series.title ('Playoff Series')
+  total?: number;              // best-of-N (totalCompetitions)
+  completed?: boolean;
+  competitors: { id: string; name?: string; abbr?: string; wins: number }[];
+  games: {
+    eventId: string;
+    date?: string;
+    phase: Phase;
+    gameNumber?: number;
+    sides: { id: string; abbr?: string; score?: string; winner?: boolean }[];
+  }[];
 }
 
 // =============================================================================

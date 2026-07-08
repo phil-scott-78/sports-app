@@ -150,9 +150,107 @@ Widget _app(SharedPreferences p, ScoresResponse scores, Widget home) =>
         // The rich core-competition enrichment is best-effort and lazy; stub it
         // to null so widget tests never reach the network.
         tennisMatchProvider.overrideWith((ref, key) async => null),
+        // The tournament screen now consumes the canonical TournamentResponse
+        // from the data layer (§2.7) rather than the raw slate — feed it the
+        // draw that mirrors the tennisScores() fixture so no network is hit.
+        tournamentProvider.overrideWith((ref, key) async => _tennisDraw()),
       ],
       child: MaterialApp(theme: buildV2Theme(), home: home),
     );
+
+/// The canonical draw matching [tennisScores()] — the shape [TournamentPage]
+/// now renders. Match `competitionId`s line up with the fixture's match ids so
+/// a matchup card taps into that match's set-grid detail.
+Map<String, dynamic> _tside(String name,
+        {bool winner = false, List<Map<String, dynamic>> sets = const []}) =>
+    {'id': name, 'name': name, if (winner) 'winner': true, 'sets': sets};
+
+TournamentResponse _tennisDraw() => TournamentResponse.fromJson({
+      'league': 'tennis/atp',
+      'title': 'Terra Wortmann Open',
+      'subtitle': "Men's Singles",
+      'rounds': [
+        {
+          'round': 'quarterfinal',
+          'label': 'Quarterfinals',
+          'matchups': [
+            {
+              'eventId': 'T1',
+              'competitionId': 'm-qf1',
+              'phase': 'final',
+              'competitors': [
+                _tside('Daniil Medvedev', winner: true, sets: [
+                  {'value': 6, 'winner': true},
+                  {'value': 6, 'winner': true}
+                ]),
+                _tside('Tommy Paul', sets: [
+                  {'value': 3},
+                  {'value': 4}
+                ]),
+              ],
+            },
+          ],
+        },
+        {
+          'round': 'semifinal',
+          'label': 'Semifinals',
+          'matchups': [
+            {
+              'eventId': 'T1',
+              'competitionId': 'm-sf1',
+              'phase': 'final',
+              'competitors': [
+                _tside('Carlos Alcaraz', winner: true, sets: [
+                  {'value': 6, 'winner': true},
+                  {'value': 6, 'winner': true}
+                ]),
+                _tside('Alexander Zverev', sets: [
+                  {'value': 4},
+                  {'value': 4}
+                ]),
+              ],
+            },
+            {
+              'eventId': 'T1',
+              'competitionId': 'm-sf2',
+              'phase': 'final',
+              'competitors': [
+                _tside('Jannik Sinner', winner: true, sets: [
+                  {'value': 7, 'winner': true},
+                  {'value': 6, 'winner': true}
+                ]),
+                _tside('Holger Rune', sets: [
+                  {'value': 6},
+                  {'value': 4}
+                ]),
+              ],
+            },
+          ],
+        },
+        {
+          'round': 'final',
+          'label': 'Final',
+          'matchups': [
+            {
+              'eventId': 'T1',
+              'competitionId': 'm-final',
+              'phase': 'live',
+              'live': true,
+              'competitors': [
+                _tside('Carlos Alcaraz', sets: [
+                  {'value': 6, 'winner': true},
+                  {'value': 4}
+                ]),
+                _tside('Jannik Sinner', sets: [
+                  {'value': 4},
+                  {'value': 6, 'winner': true}
+                ]),
+              ],
+            },
+          ],
+        },
+      ],
+    });
 
 void main() {
   test('isTournamentOfMatches: tennis tournament yes; MMA card + single match no',
@@ -207,14 +305,15 @@ void main() {
     expect(find.text('1 live'), findsOneWidget);
     expect(find.text('Fight card'), findsNothing);
 
-    // Tapping the row opens the tournament page (round sections appear).
+    // Tapping the row opens the tournament screen — the draw's round columns
+    // (12b) appear, headed by their round labels.
     await tester.tap(find.text('Terra Wortmann Open'));
     await tester.pumpAndSettle();
-    expect(find.text('SEMIFINALS'), findsOneWidget);
+    expect(find.text('TERRA WORTMANN OPEN'), findsOneWidget);
     expect(find.text('QUARTERFINALS'), findsOneWidget);
-    // Singles + doubles finals are separated even though both are "Final".
+    expect(find.text('SEMIFINALS'), findsOneWidget);
     expect(find.text('FINAL'), findsOneWidget);
-    expect(find.text('FINAL · DOUBLES'), findsOneWidget);
+    expect(find.text('Fight card'), findsNothing);
   });
 
   testWidgets('Tournament page opens a match into the set-grid detail (no fight card)',
@@ -228,14 +327,15 @@ void main() {
       scores,
       TournamentPage(league: 'tennis/atp', initialEvent: tourney),
     ));
-    await tester.pump();
+    await tester.pumpAndSettle();
 
-    // Matches are listed by their players.
+    // Matchup cards carry their players across the draw columns.
     expect(find.text('Daniil Medvedev'), findsOneWidget);
     expect(find.text('Holger Rune'), findsOneWidget);
 
-    // Open the live Final (the first "Carlos Alcaraz" row sits in the Final).
-    await tester.tap(find.text('Carlos Alcaraz').first);
+    // Open the live Final (its "Carlos Alcaraz" is the last in the tree — the
+    // Final column sits after the Semifinal one).
+    await tester.tap(find.text('Carlos Alcaraz').last);
     await tester.pumpAndSettle();
 
     // The set grid — uppercased block names — renders; no MMA fight card.

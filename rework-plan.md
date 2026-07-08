@@ -85,6 +85,18 @@ fake: capacity/opened/wind, xG, tennis live points…), final verification sweep
 CLAUDE.md updates.
 
 ## Status log
+- 2026-07-08: Phase 5b COMPLETE + committed (2fd5856), gate green first pass
+  (391 tests). Standings Division|WildCard|League views + PLAYOFF LINE (honest:
+  ESPN groups by conference, wildcard derived, cut default 3), follow sheet 8b,
+  following manage 8c (reorder persists to feed order), home-feed hero bodies
+  (live/final/scheduled) + series pips + See-all-N headers.
+- 2026-07-08: Phase 5c workflow launched (phase5c-tournaments-leftovers):
+  tournament data layer (TournamentResponse: groups/rounds/pools/series;
+  captures of LIVE WC2026 knockout + Wimbledon + CWS June window) → tournament
+  screen (12a–12d grammars) ∥ leftovers (cheap basketball win-prob lockstep,
+  league-row GAME N/can-clinch, soccer standings note bands, add-team entry).
+  Tournaments.dc.html mirrored (design mirror now has all screens except
+  LiveGame/EventList/BoxScore, whose specs live in polish-plan/DESIGN.md).
 - 2026-07-08: Phase 5a COMPLETE + committed (ee2b8f3), gate green (390 tests +
   full worker live suites). Team page 11a–11d grammar, player page 11e,
   standalone rankings page, venue/circuit tab 14a/13a, lockstep join ids

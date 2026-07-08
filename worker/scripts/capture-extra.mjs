@@ -113,6 +113,111 @@ const STANDINGS_RECORD_CASES = [
   { key: 'baseball/mlb' },
   { key: 'basketball/wnba' },
 ];
+// Standings qualification bands (§2.7/2.8): the SITE standings entries[].note
+// {color, description} — the coloured cut-line + tag. VERIFIED soccer-only (~12%,
+// schema/espn-guide/standings.md). The committed per-league soccer fixtures were
+// captured without bands (offseason), so pull a fresh doc that serves them: eng.1
+// (Champions League / Europa / Relegation), uefa.champions (round-of-16 seeding),
+// and fifa.world (Advance / Eliminated — knockouts live now, 2026-07).
+const STANDINGS_NOTES_CASES = [
+  { key: 'soccer/eng.1' },
+  { key: 'soccer/uefa.champions' },
+  { key: 'soccer/fifa.world' },
+];
+// Tournaments (§2.7): RAW date-range scoreboards (+ standings where the profile
+// has group tables) → the inputs of the tournament normalizer pair
+// (worker/src/tournament.js oracle / app/lib/src/data/tournament.dart). Windows
+// are the REAL 2026 calendar (captured 2026-07 — WC knockout + Wimbledon LIVE,
+// CWS just finished):
+//   • soccer/fifa.world     — Jun 11–Jul 19 range: 72 group games + R32/R16
+//     (altGameNote rounds, pens headlines, shootoutScore) + scheduled QFs, plus
+//     the 12-group standings with note{color,description}.
+//   • tennis/atp Wimbledon  — VERIFIED 2026-07: ONE day-scoped fetch returns the
+//     ENTIRE draw (all rounds incl. pre-created future matches); the slam is the
+//     events[].major==true event. No range needed.
+//   • baseball/college-baseball CWS — Jun 13–24 range: double-elim pool games
+//     ('Double Elimination Round'/'Elimination Game' headlines) + the best-of-3
+//     championship (series block).
+// REAL captures, size-trimmed to the normalizer's read-set (a 39-day WC
+// scoreboard is ~1 MB raw) — nothing fabricated. See trimTournamentSb.
+const TOURNAMENT_CASES = [
+  { key: 'soccer/fifa.world', window: '20260611-20260719', standings: true },
+  { key: 'tennis/atp', window: '20260708', grouping: 'mens-singles', pickMajor: true },
+  { key: 'baseball/college-baseball', window: '20260613-20260624' },
+];
+
+// ---- tournament scoreboard trim (read-set of worker/src/tournament.js) --------
+const keepKeys = (o, keys) => {
+  if (!o || typeof o !== 'object') return undefined;
+  const out = Object.fromEntries(keys.filter((k) => o[k] !== undefined).map((k) => [k, o[k]]));
+  return Object.keys(out).length ? out : undefined;
+};
+const compact = (o) => {
+  for (const k of Object.keys(o)) if (o[k] === undefined) delete o[k];
+  return o;
+};
+function trimTournamentSide(c) {
+  return compact({
+    id: c?.id, homeAway: c?.homeAway, winner: c?.winner, order: c?.order,
+    score: c?.score, shootoutScore: c?.shootoutScore,
+    curatedRank: keepKeys(c?.curatedRank, ['current']),
+    linescores: Array.isArray(c?.linescores)
+      ? c.linescores.map((ls) => keepKeys(ls, ['value', 'tiebreak', 'winner']) ?? {})
+      : undefined,
+    team: keepKeys(c?.team, ['id', 'abbreviation', 'displayName', 'shortDisplayName', 'name']),
+    athlete: keepKeys(c?.athlete, ['id', 'displayName', 'shortName']),
+    roster: keepKeys(c?.roster, ['displayName', 'shortDisplayName']),
+  });
+}
+function trimTournamentComp(rc) {
+  return compact({
+    id: rc?.id, date: rc?.date, altGameNote: rc?.altGameNote,
+    notes: Array.isArray(rc?.notes) ? rc.notes.map((n) => keepKeys(n, ['headline', 'type']) ?? {}) : undefined,
+    round: keepKeys(rc?.round, ['displayName']),
+    series: rc?.series ? compact({
+      title: rc.series.title, totalCompetitions: rc.series.totalCompetitions,
+      completed: rc.series.completed,
+      competitors: Array.isArray(rc.series.competitors)
+        ? rc.series.competitors.map((x) => keepKeys(x, ['id', 'wins']) ?? {}) : undefined,
+    }) : undefined,
+    status: rc?.status ? compact({
+      type: keepKeys(rc.status.type, ['name', 'state', 'completed', 'detail', 'shortDetail', 'description']),
+    }) : undefined,
+    competitors: Array.isArray(rc?.competitors) ? rc.competitors.map(trimTournamentSide) : undefined,
+  });
+}
+function trimTournamentSb(sb) {
+  if (!sb || typeof sb !== 'object') return sb;
+  return compact({
+    leagues: Array.isArray(sb.leagues)
+      ? sb.leagues.slice(0, 1).map((l) => keepKeys(l, ['id', 'name', 'slug']) ?? {}) : undefined,
+    day: sb.day,
+    events: (sb.events || []).map((e) => compact({
+      id: e?.id, date: e?.date, name: e?.name, shortName: e?.shortName, major: e?.major,
+      season: keepKeys(e?.season, ['type', 'slug', 'year']),
+      competitions: Array.isArray(e?.competitions) ? e.competitions.map(trimTournamentComp) : undefined,
+      groupings: Array.isArray(e?.groupings) ? e.groupings.map((g) => compact({
+        grouping: keepKeys(g?.grouping, ['slug', 'displayName']),
+        competitions: Array.isArray(g?.competitions) ? g.competitions.map(trimTournamentComp) : undefined,
+      })) : undefined,
+    })),
+  });
+}
+
+async function captureTournament({ key, window, grouping, standings, pickMajor }) {
+  const sb = await fetchScoreboard(key, window).catch(() => null);
+  const out = { key, window };
+  if (grouping) out.grouping = grouping;
+  if (sb && pickMajor) {
+    const major = (sb.events || []).find((e) => e?.major === true && Array.isArray(e.groupings));
+    if (major) out.eventId = String(major.id);
+  }
+  out.scoreboards = sb ? [trimTournamentSb(sb)] : [];
+  // group tables ride the SAME trimmed standings shape the standingsNotes capture
+  // uses (trimStandingsNode keeps team/stats/note — the normalizer's read-set).
+  out.standings = standings ? trimStandingsNode(await fetchStandings(key).catch(() => null)) : null;
+  return out;
+}
 
 // Flatten a roster (grouped OR flat) to its athlete rows — mirrors teamdetail.js.
 function rosterRows(roster) {
@@ -242,6 +347,48 @@ async function captureStandingsRecords({ key }) {
     if (doc) recordDocs.push(trimRecordDoc(doc));
   }
   return { key, recordDocs };
+}
+
+// Trim a SITE standings doc to what normalizeStandings reads (mirrors trimEvent:
+// a REAL capture, size-trimmed to the fields under test — nothing fabricated).
+// Keeps the group tree (name/children), each entry's team/athlete identity +
+// stats + the qualification note {color, description, rank}.
+function trimStandingsEntry(en) {
+  const out = {};
+  const who = en?.team || en?.athlete;
+  if (who && typeof who === 'object') {
+    const w = {};
+    for (const k of ['id', 'displayName', 'name', 'shortDisplayName', 'abbreviation']) if (who[k] !== undefined) w[k] = who[k];
+    if (Array.isArray(who.logos)) w.logos = who.logos.map((l) => ({ href: l?.href, rel: l?.rel }));
+    out[en.team ? 'team' : 'athlete'] = w;
+  }
+  if (Array.isArray(en?.stats)) {
+    out.stats = en.stats.map((s) => {
+      const o = {};
+      for (const k of ['name', 'type', 'displayValue', 'value']) if (s?.[k] !== undefined) o[k] = s[k];
+      return o;
+    });
+  }
+  if (en?.note && typeof en.note === 'object') {
+    const n = {};
+    for (const k of ['color', 'description', 'rank']) if (en.note[k] !== undefined) n[k] = en.note[k];
+    out.note = n;
+  }
+  return out;
+}
+function trimStandingsNode(node) {
+  if (!node || typeof node !== 'object') return node;
+  const out = {};
+  for (const k of ['name', 'abbreviation', 'displayName', 'id']) if (node[k] !== undefined) out[k] = node[k];
+  const entries = node.standings?.entries;
+  if (Array.isArray(entries)) out.standings = { entries: entries.map(trimStandingsEntry) };
+  if (Array.isArray(node.children)) out.children = node.children.map(trimStandingsNode);
+  return out;
+}
+
+async function captureStandingsNotes({ key }) {
+  const raw = await fetchStandings(key).catch(() => null);
+  return { key, standings: raw ? trimStandingsNode(raw) : null };
 }
 
 async function captureTeam({ key, teamId }) {
@@ -392,6 +539,8 @@ out.situation ||= [];
 out.athletes ||= [];
 out.leaders ||= [];
 out.standingsRecords ||= [];
+out.standingsNotes ||= [];
+out.tournaments ||= [];
 
 if (want('teams')) {
   out.teams = [];
@@ -485,6 +634,30 @@ if (want('standingsRecords')) {
     const last = out.standingsRecords[out.standingsRecords.length - 1];
     const teams = last.recordDocs.reduce((n, d) => n + (d.standings?.length ?? 0), 0);
     console.log(`✓ standingsRecords ${s.key} — ${last.recordDocs.length} group docs, ${teams} team records`);
+  }
+}
+if (want('standingsNotes')) {
+  out.standingsNotes = [];
+  for (const s of STANDINGS_NOTES_CASES) {
+    out.standingsNotes.push(await captureStandingsNotes(s));
+    const last = out.standingsNotes[out.standingsNotes.length - 1];
+    let entries = 0, withNote = 0;
+    const walk = (n) => { const es = n?.standings?.entries; if (Array.isArray(es)) for (const e of es) { entries++; if (e.note) withNote++; } for (const c of n?.children || []) walk(c); };
+    walk(last.standings);
+    console.log(`✓ standingsNotes ${s.key} — ${entries} entries, ${withNote} with a band`);
+  }
+}
+if (want('tournaments')) {
+  out.tournaments = [];
+  for (const t of TOURNAMENT_CASES) {
+    out.tournaments.push(await captureTournament(t));
+    const last = out.tournaments[out.tournaments.length - 1];
+    const evs = last.scoreboards[0]?.events?.length ?? 0;
+    let groupsN = 0;
+    const walk = (n) => { if (n?.standings?.entries?.length) groupsN++; for (const c of n?.children || []) walk(c); };
+    walk(last.standings);
+    console.log(`✓ tournament ${t.key} ${t.window} — ${evs} events, `
+      + `${groupsN} standings groups${last.eventId ? `, event ${last.eventId}` : ''}`);
   }
 }
 writeFileSync(OUT, JSON.stringify(out));

@@ -7,6 +7,7 @@ import '../theme.dart';
 import 'league_card.dart';
 import 'poll.dart';
 import 'rankings_page.dart';
+import 'tournament_page.dart';
 import 'widgets.dart';
 
 void openLeaguePage(BuildContext context, String league, {String? name}) {
@@ -103,6 +104,7 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
                       overflow: TextOverflow.ellipsis,
                       style: T.pageTitle.copyWith(fontSize: 24)),
                 ),
+                _BracketButton(widget.league, name: title),
                 const SizedBox(width: 10),
                 _FollowPill(
                   following: followed,
@@ -189,6 +191,46 @@ class _RankingsSection extends ConsumerWidget {
         ),
       ),
     ]);
+  }
+}
+
+/// The header "Bracket" affordance — shown only for leagues that both look like
+/// a tournament (cheap profile gate) AND whose tournament data resolves
+/// non-empty. Opens the [TournamentPage] for the whole league. Data-gated so it
+/// never appears for a plain-table league or an out-of-season cup.
+class _BracketButton extends ConsumerWidget {
+  final String league;
+  final String? name;
+  const _BracketButton(this.league, {this.name});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (!leagueHasTournamentView(league)) return const SizedBox.shrink();
+    final key = (league: league, window: null, grouping: null, eventId: null);
+    final t = ref.watch(tournamentProvider(key)).valueOrNull;
+    if (t == null || t.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: GestureDetector(
+        onTap: () => openLeagueTournamentPage(context, league, name: name),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            border: Border.all(color: T.border, width: 1.5),
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: const Row(mainAxisSize: MainAxisSize.min, children: [
+            Icon(Icons.account_tree_outlined, size: 14, color: T.textDim),
+            SizedBox(width: 5),
+            Text('Bracket',
+                style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w600,
+                    color: T.textDim)),
+          ]),
+        ),
+      ),
+    );
   }
 }
 

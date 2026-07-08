@@ -307,6 +307,12 @@ function buildSituation(rc) {
   const lp = sit.lastPlay;
   const lpText = lp && (lp.type?.alternativeText || lp.text || lp.type?.text);
   if (lpText) s.lastPlay = lpText;
+  // CHEAP win probability — the basketball scoreboard carries it on lastPlay
+  // (VERIFIED basketball-only, ~14%; schema/espn-guide/scoreboard.md). Store the
+  // HOME side's win % as a 0-100 rounded int; absent for every other sport, so a
+  // win-prob bar can render on presence alone (data-driven, not by sport name).
+  const hwp = lp?.probability?.homeWinPercentage;
+  if (typeof hwp === 'number') s.homeWinPct = Math.round(hwp * 100);
   // Hockey strength: the scoreboard's lastPlay carries the on-ice strength +
   // the team it's attributed to. 'power-play'|'short-handed'|'even-strength'|
   // 'empty-net' (VERIFIED: NHL strength ids 701/702/703/903).

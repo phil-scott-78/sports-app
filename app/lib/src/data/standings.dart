@@ -68,6 +68,17 @@ List<Map<String, dynamic>> normalizeStandings(dynamic raw, [Map? records]) {
               stats[e.key] = e.value;
             }
           }
+          // Qualification band (§2.7/2.8): soccer carries entries[].note {color,
+          // description} — the coloured cut-line band + tag. Kept tolerantly;
+          // absent for every other sport (VERIFIED soccer-only, standings.md).
+          final nt = field(en, 'note');
+          Map<String, dynamic>? note;
+          if (nt is Map) {
+            final n = <String, dynamic>{};
+            if (nt['color'] is String) n['color'] = nt['color'];
+            if (nt['description'] is String) n['description'] = nt['description'];
+            if (n.isNotEmpty) note = n;
+          }
           return pickNN({
             'team': pickNN({
               'id': id,
@@ -78,7 +89,8 @@ List<Map<String, dynamic>> normalizeStandings(dynamic raw, [Map? records]) {
             }, ['id', 'name', 'abbr', 'logo', 'logoDark']),
             'rank': stats['rank'] != null ? num.tryParse(jsStr(stats['rank'])) : null,
             'stats': stats,
-          }, ['team', 'rank', 'stats']);
+            'note': note,
+          }, ['team', 'rank', 'stats', 'note']);
         }).toList(),
       });
     }

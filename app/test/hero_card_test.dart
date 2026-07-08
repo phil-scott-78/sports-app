@@ -116,7 +116,82 @@ TeamCard seriesLiveCard() => TeamCard.fromJson({
       'anyLive': true,
     });
 
+/// A live NBA card carrying a cheap scoreboard win probability (no series) —
+/// drives the hero-footer win-prob micro-bar (basketball-only, by data presence).
+TeamCard winProbLiveCard() => TeamCard.fromJson({
+      'league': 'basketball/nba',
+      'sport': 'basketball',
+      'leagueName': 'NBA',
+      'team': {'id': 'okc', 'displayName': 'Thunder', 'abbreviation': 'OKC'},
+      'live': {
+        'id': 'e2',
+        'name': 'Pacers at Thunder',
+        'shortName': 'IND @ OKC',
+        'start': '2026-06-01T00:00Z',
+        'competitions': [
+          {
+            'id': 'e2',
+            'layout': 'headToHead',
+            'scoreKind': 'numeric',
+            'competitorKind': 'team',
+            'status': {
+              'phase': 'live',
+              'live': true,
+              'ended': false,
+              'period': 4,
+              'periodLabel': 'Q4',
+              'detail': 'Q4 3:00',
+              'shortDetail': 'Q4 3:00',
+              'espnName': 'STATUS_IN_PROGRESS',
+            },
+            'periods': {
+              'unit': 'quarter',
+              'regulation': 4,
+              'played': 4,
+              'isOvertime': false,
+            },
+            'competitors': [
+              {
+                'kind': 'team',
+                'id': 'okc',
+                'displayName': 'Thunder',
+                'abbreviation': 'OKC',
+                'homeAway': 'home',
+                'color': '007ac1',
+                'score': {'display': '92', 'value': 92},
+              },
+              {
+                'kind': 'team',
+                'id': 'ind',
+                'displayName': 'Pacers',
+                'abbreviation': 'IND',
+                'homeAway': 'away',
+                'color': '002d62',
+                'score': {'display': '88', 'value': 88},
+              },
+            ],
+            'situation': {'lastPlay': 'Jump shot good', 'homeWinPct': 62},
+          },
+        ],
+      },
+      'anyLive': true,
+    });
+
 void main() {
+  testWidgets('live hero footer lights the win-prob bar when homeWinPct present',
+      (tester) async {
+    final p = await prefs();
+    final card = winProbLiveCard();
+    await tester.pumpWidget(
+        wrap(FavoriteHeroCard(feedFor(card)), navOverrides(p, card)));
+    await tester.pump();
+
+    // favored side (home 62%) percentage in the footer micro-bar
+    expect(find.text('62%'), findsOneWidget);
+    expect(find.byType(SeriesPips), findsNothing);
+    await tester.pumpWidget(const SizedBox());
+  });
+
   testWidgets('final hero card: score rows + Final, winner bright, taps to detail',
       (tester) async {
     final p = await prefs();

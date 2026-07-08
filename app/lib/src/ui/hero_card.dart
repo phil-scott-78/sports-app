@@ -116,7 +116,10 @@ class _HeroFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     final series = comp.meta?.series;
     final pips = series != null && series.isPlayoff;
-    if (left.isEmpty && !pips) return const SizedBox.shrink();
+    // Cheap win-prob (basketball only, by DATA presence — never sport name). Give
+    // series pips priority; show the win-prob micro-bar only when there are none.
+    final winPct = pips ? null : comp.situation?.homeWinPct;
+    if (left.isEmpty && !pips && winPct == null) return const SizedBox.shrink();
     return Container(
       margin: const EdgeInsets.only(top: 12),
       padding: const EdgeInsets.only(top: 12),
@@ -127,9 +130,58 @@ class _HeroFooter extends StatelessWidget {
           child: Text(left,
               maxLines: 1, overflow: TextOverflow.ellipsis, style: T.caption),
         ),
-        if (pips) SeriesPips(series: series, comp: comp),
+        if (pips)
+          SeriesPips(series: series, comp: comp)
+        else if (winPct != null)
+          _WinProbBar(comp: comp, homePct: winPct),
       ]),
     );
+  }
+}
+
+/// The hero-card footer win-probability micro-bar (DESIGN §7 home feed: 64×5 two
+/// team colors) + a Barlow percentage for the favored side. Rendered only when
+/// the cheap scoreboard carries [homePct] (basketball) — so it's basketball-only
+/// by data, not by a sport-name branch.
+class _WinProbBar extends StatelessWidget {
+  final Competition comp;
+  final int homePct;
+  const _WinProbBar({required this.comp, required this.homePct});
+
+  @override
+  Widget build(BuildContext context) {
+    final home = comp.home, away = comp.away;
+    final pct = homePct.clamp(0, 100);
+    final homeColor = home != null ? teamColor(home) : T.textDim;
+    final awayColor = away != null ? teamColor(away) : T.outline;
+    final favHome = pct >= 50;
+    final favColor = favHome ? homeColor : awayColor;
+    final favPct = favHome ? pct : 100 - pct;
+    // Expanded flex must stay ≥ 1 even at a 0/100 shutout.
+    final homeFlex = pct < 1 ? 1 : pct;
+    final awayFlex = pct > 99 ? 1 : 100 - pct;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      ClipRRect(
+        borderRadius: BorderRadius.circular(2.5),
+        child: SizedBox(
+          width: 64,
+          height: 5,
+          child: Row(children: [
+            Expanded(flex: homeFlex, child: ColoredBox(color: homeColor)),
+            const SizedBox(width: 2),
+            Expanded(flex: awayFlex, child: ColoredBox(color: awayColor)),
+          ]),
+        ),
+      ),
+      const SizedBox(width: 8),
+      Text('$favPct%',
+          style: TextStyle(
+              fontFamily: 'BarlowCondensed',
+              fontWeight: FontWeight.w700,
+              fontSize: 13,
+              color: favColor,
+              fontFeatures: const [FontFeature.tabularFigures()])),
+    ]);
   }
 }
 

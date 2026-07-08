@@ -774,6 +774,8 @@ class Situation {
   final String? strengthTeam; // competitor id of the side on the man advantage
   // any sport
   final String? lastPlay;
+  // basketball CHEAP win prob (0-100 int) — home side; absent for other sports.
+  final int? homeWinPct;
   Situation({
     this.balls,
     this.strikes,
@@ -801,6 +803,7 @@ class Situation {
     this.strength,
     this.strengthTeam,
     this.lastPlay,
+    this.homeWinPct,
   });
   factory Situation.fromJson(Map<String, dynamic> j) => Situation(
         balls: _int(j['balls']),
@@ -829,6 +832,7 @@ class Situation {
         strength: _strOrNull(j['strength']),
         strengthTeam: _strOrNull(j['strengthTeam']),
         lastPlay: _strOrNull(j['lastPlay']),
+        homeWinPct: _int(j['homeWinPct']),
       );
 
   /// Overlay a [core] situation (from the detail-open core fetch) onto this
@@ -865,6 +869,7 @@ class Situation {
       strength: core.strength ?? strength,
       strengthTeam: core.strengthTeam ?? strengthTeam,
       lastPlay: core.lastPlay ?? lastPlay,
+      homeWinPct: core.homeWinPct ?? homeWinPct,
     );
   }
 
@@ -1336,13 +1341,27 @@ class SeriesInfo {
     return 0;
   }
 
-  /// Games needed to clinch — ceil(total/2) for a best-of-N, else the max wins seen.
+  /// Games needed to clinch — the majority floor(total/2)+1 of a best-of-N, else
+  /// the max wins seen. (For odd totals floor(total/2)+1 == ceil(total/2).)
   int get gamesToWin {
     if (total != null && total! > 0) return (total! ~/ 2) + 1;
-    final maxWins =
-        competitors.fold<int>(0, (m, c) => c.wins > m ? c.wins : m);
     return maxWins == 0 ? 1 : maxWins;
   }
+
+  int get maxWins => competitors.fold<int>(0, (m, c) => c.wins > m ? c.wins : m);
+
+  /// Total games decided so far (sum of both sides' wins).
+  int get gamesPlayed => competitors.fold<int>(0, (s, c) => s + c.wins);
+
+  /// Derived series game number (§Part I.6): sum(wins)+1 — only while the series
+  /// is unfinished; null once a side has clinched.
+  int? get gameNumber => completed ? null : gamesPlayed + 1;
+
+  /// The leader can win the series with a win in this game (§Part I.6): one win
+  /// short of the majority, and the series isn't already decided. In a scores row
+  /// the two competitors ARE the series teams, so "leader plays today" holds.
+  bool get canClinch =>
+      !completed && total != null && total! > 0 && maxWins + 1 == gamesToWin;
 
   bool get isPlayoff => type == 'playoff' && competitors.length >= 2;
 }
@@ -1476,11 +1495,28 @@ class StandingsRow {
   final StandingsTeam team;
   final int? rank;
   final Map<String, String> stats;
-  StandingsRow({required this.team, this.rank, required this.stats});
+
+  /// Qualification band (soccer only): the coloured cut-line + tag. Null when
+  /// ESPN carries no note for this row.
+  final StandingsNote? note;
+  StandingsRow({required this.team, this.rank, required this.stats, this.note});
   factory StandingsRow.fromJson(Map<String, dynamic> j) => StandingsRow(
         team: StandingsTeam.fromJson(_map(j['team'])),
         rank: _int(j['rank']),
         stats: _map(j['stats']).map((k, v) => MapEntry(k, _str(v))),
+        note: j['note'] == null ? null : StandingsNote.fromJson(_map(j['note'])),
+      );
+}
+
+/// A soccer qualification band on a standings row: an ESPN hex [color] cut-line
+/// swatch + a [description] tag ('Champions League' / 'Relegation'). Both
+/// tolerant — either may be absent.
+class StandingsNote {
+  final String? color, description;
+  StandingsNote({this.color, this.description});
+  factory StandingsNote.fromJson(Map<String, dynamic> j) => StandingsNote(
+        color: _strOrNull(j['color']),
+        description: _strOrNull(j['description']),
       );
 }
 
@@ -2867,5 +2903,287 @@ class HealthInfo {
         ok: _bool(j['ok']),
         leagues: _int(j['leagues']) ?? 0,
         client: j['client'] is Map ? ClientGate.fromJson(_map(j['client'])) : null,
+      );
+}
+
+// ---- tournament (§2.7) --------------------------------------------------------
+/// One canonical shape for the four tournament grammars (canonical.ts
+/// §Tournament): group tables + knockout scroller (World Cup), a full
+/// single-elim draw (Wimbledon), a seeded region bracket (March Madness), and
+/// double-elim pools + a championship series (CWS). Everything below [title] is
+/// optional-by-default — render what is present.
+class TournamentResponse {
+  final String league, title;
+  final String? subtitle;
+  final List<TournamentGroup> groups;
+  final List<TournamentRound> rounds;
+  final List<TournamentPool> pools;
+  final TournamentSeries? series;
+  TournamentResponse({
+    required this.league,
+    required this.title,
+    this.subtitle,
+    this.groups = const [],
+    this.rounds = const [],
+    this.pools = const [],
+    this.series,
+  });
+  factory TournamentResponse.fromJson(Map<String, dynamic> j) => TournamentResponse(
+        league: _str(j['league']),
+        title: _str(j['title']),
+        subtitle: _strOrNull(j['subtitle']),
+        groups: _list(j['groups'])
+            .map((g) => TournamentGroup.fromJson(_map(g)))
+            .toList(growable: false),
+        rounds: _list(j['rounds'])
+            .map((r) => TournamentRound.fromJson(_map(r)))
+            .toList(growable: false),
+        pools: _list(j['pools'])
+            .map((p) => TournamentPool.fromJson(_map(p)))
+            .toList(growable: false),
+        series: j['series'] is Map ? TournamentSeries.fromJson(_map(j['series'])) : null,
+      );
+
+  bool get isEmpty =>
+      groups.isEmpty && rounds.isEmpty && pools.isEmpty && series == null;
+}
+
+/// A round-robin group table — rows are EXACTLY [StandingsRow] (incl. the soccer
+/// qualification [StandingsRow.note]), so the standings renderer draws them.
+class TournamentGroup {
+  final String label;
+  final List<StandingsRow> rows;
+  TournamentGroup({required this.label, required this.rows});
+  factory TournamentGroup.fromJson(Map<String, dynamic> j) => TournamentGroup(
+        label: _str(j['label']),
+        rows: _list(j['rows'])
+            .map((r) => StandingsRow.fromJson(_map(r)))
+            .toList(growable: false),
+      );
+}
+
+/// One elimination round. [round] is the canonical key ('roundOf16' |
+/// 'quarterfinal' | 'semifinal' | 'thirdPlace' | 'final' | 'group' |
+/// 'qualifying' | ...) or null for an unrecognized pass-through label.
+class TournamentRound {
+  final String? round;
+  final String label;
+  final List<TournamentMatchup> matchups;
+  TournamentRound({this.round, required this.label, required this.matchups});
+  factory TournamentRound.fromJson(Map<String, dynamic> j) => TournamentRound(
+        round: _strOrNull(j['round']),
+        label: _str(j['label']),
+        matchups: _list(j['matchups'])
+            .map((m) => TournamentMatchup.fromJson(_map(m)))
+            .toList(growable: false),
+      );
+}
+
+class TournamentMatchup {
+  final String eventId;
+  final String? competitionId; // tennis: match id under the tournament event
+  final DateTime? date;
+  final String phase;
+  final bool live;
+  final String? note; // 'Switzerland advance 4-3 on penalties'
+  final int? gameNumber;
+  final String? bracket; // region / group tag ('East', 'Group A')
+  final String? advancesTo; // forward link when derivable (spec §2.7 gap otherwise)
+  final List<TournamentSide> competitors;
+  TournamentMatchup({
+    required this.eventId,
+    this.competitionId,
+    this.date,
+    required this.phase,
+    this.live = false,
+    this.note,
+    this.gameNumber,
+    this.bracket,
+    this.advancesTo,
+    required this.competitors,
+  });
+  factory TournamentMatchup.fromJson(Map<String, dynamic> j) => TournamentMatchup(
+        eventId: _str(j['eventId']),
+        competitionId: _strOrNull(j['competitionId']),
+        date: DateTime.tryParse(_str(j['date']))?.toLocal(),
+        phase: _str(j['phase']),
+        live: _bool(j['live']),
+        note: _strOrNull(j['note']),
+        gameNumber: _int(j['gameNumber']),
+        bracket: _strOrNull(j['bracket']),
+        advancesTo: _strOrNull(j['advancesTo']),
+        competitors: _list(j['competitors'])
+            .map((c) => TournamentSide.fromJson(_map(c)))
+            .toList(growable: false),
+      );
+
+  /// The id [advancesTo] points at (competitionId when set, else eventId).
+  String get ref => competitionId ?? eventId;
+}
+
+class TournamentSide {
+  final String id, name;
+  final String? shortName, abbr, homeAway;
+  final int? seed; // tennis only (curatedRank IS the seed there; 99 omitted)
+  final bool winner;
+  final String? score; // display score; absent while scheduled
+  final int? shootout; // soccer pens
+  final List<TournamentSet> sets; // tennis per-set games won
+  TournamentSide({
+    required this.id,
+    required this.name,
+    this.shortName,
+    this.abbr,
+    this.homeAway,
+    this.seed,
+    this.winner = false,
+    this.score,
+    this.shootout,
+    this.sets = const [],
+  });
+  factory TournamentSide.fromJson(Map<String, dynamic> j) => TournamentSide(
+        id: _str(j['id']),
+        name: _str(j['name']),
+        shortName: _strOrNull(j['shortName']),
+        abbr: _strOrNull(j['abbr']),
+        homeAway: _strOrNull(j['homeAway']),
+        seed: _int(j['seed']),
+        winner: _bool(j['winner']),
+        score: _strOrNull(j['score']),
+        shootout: _int(j['shootout']),
+        sets: _list(j['sets'])
+            .map((s) => TournamentSet.fromJson(_map(s)))
+            .toList(growable: false),
+      );
+
+  /// A pre-created draw slot ESPN hasn't filled yet (negative/empty id).
+  bool get isTbd => id.isEmpty || id.startsWith('-');
+}
+
+class TournamentSet {
+  final int? value, tiebreak;
+  final bool? winner;
+  TournamentSet({this.value, this.tiebreak, this.winner});
+  factory TournamentSet.fromJson(Map<String, dynamic> j) => TournamentSet(
+        value: _int(j['value']),
+        tiebreak: _int(j['tiebreak']),
+        winner: j['winner'] is bool ? j['winner'] as bool : null,
+      );
+}
+
+/// A double-elim pool table (CWS) — reconstructed, see canonical.ts.
+class TournamentPool {
+  final String label;
+  final List<TournamentPoolRow> rows;
+  TournamentPool({required this.label, required this.rows});
+  factory TournamentPool.fromJson(Map<String, dynamic> j) => TournamentPool(
+        label: _str(j['label']),
+        rows: _list(j['rows'])
+            .map((r) => TournamentPoolRow.fromJson(_map(r)))
+            .toList(growable: false),
+      );
+}
+
+class TournamentPoolRow {
+  final String teamId, teamName;
+  final String? teamAbbr;
+  final int w, l;
+  final String status; // 'advances' | 'eliminated' | 'alive'
+  TournamentPoolRow({
+    required this.teamId,
+    required this.teamName,
+    this.teamAbbr,
+    required this.w,
+    required this.l,
+    required this.status,
+  });
+  factory TournamentPoolRow.fromJson(Map<String, dynamic> j) {
+    final t = _map(j['team']);
+    return TournamentPoolRow(
+      teamId: _str(t['id']),
+      teamName: _str(t['name']),
+      teamAbbr: _strOrNull(t['abbr']),
+      w: _int(j['w']) ?? 0,
+      l: _int(j['l']) ?? 0,
+      status: _str(j['status']),
+    );
+  }
+}
+
+/// Championship best-of-N (scoreboard `series` block; latest game's state).
+class TournamentSeries {
+  final String? title;
+  final int? total;
+  final bool completed;
+  final List<TournamentSeriesSide> competitors;
+  final List<TournamentSeriesGame> games;
+  TournamentSeries({
+    this.title,
+    this.total,
+    this.completed = false,
+    this.competitors = const [],
+    this.games = const [],
+  });
+  factory TournamentSeries.fromJson(Map<String, dynamic> j) => TournamentSeries(
+        title: _strOrNull(j['title']),
+        total: _int(j['total']),
+        completed: _bool(j['completed']),
+        competitors: _list(j['competitors'])
+            .map((c) => TournamentSeriesSide.fromJson(_map(c)))
+            .toList(growable: false),
+        games: _list(j['games'])
+            .map((g) => TournamentSeriesGame.fromJson(_map(g)))
+            .toList(growable: false),
+      );
+}
+
+class TournamentSeriesSide {
+  final String id;
+  final String? name, abbr;
+  final int wins;
+  TournamentSeriesSide({required this.id, this.name, this.abbr, this.wins = 0});
+  factory TournamentSeriesSide.fromJson(Map<String, dynamic> j) => TournamentSeriesSide(
+        id: _str(j['id']),
+        name: _strOrNull(j['name']),
+        abbr: _strOrNull(j['abbr']),
+        wins: _int(j['wins']) ?? 0,
+      );
+}
+
+class TournamentSeriesGame {
+  final String eventId;
+  final DateTime? date;
+  final String phase;
+  final int? gameNumber;
+  final List<TournamentSeriesGameSide> sides;
+  TournamentSeriesGame({
+    required this.eventId,
+    this.date,
+    required this.phase,
+    this.gameNumber,
+    this.sides = const [],
+  });
+  factory TournamentSeriesGame.fromJson(Map<String, dynamic> j) => TournamentSeriesGame(
+        eventId: _str(j['eventId']),
+        date: DateTime.tryParse(_str(j['date']))?.toLocal(),
+        phase: _str(j['phase']),
+        gameNumber: _int(j['gameNumber']),
+        sides: _list(j['sides'])
+            .map((s) => TournamentSeriesGameSide.fromJson(_map(s)))
+            .toList(growable: false),
+      );
+}
+
+class TournamentSeriesGameSide {
+  final String id;
+  final String? abbr, score;
+  final bool winner;
+  TournamentSeriesGameSide({required this.id, this.abbr, this.score, this.winner = false});
+  factory TournamentSeriesGameSide.fromJson(Map<String, dynamic> j) =>
+      TournamentSeriesGameSide(
+        id: _str(j['id']),
+        abbr: _strOrNull(j['abbr']),
+        score: _strOrNull(j['score']),
+        winner: _bool(j['winner']),
       );
 }

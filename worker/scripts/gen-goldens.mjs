@@ -34,6 +34,7 @@ import { normalizeCompetitionOdds } from '../src/normalize.js';
 import { classifyLeague } from '../src/overview.js';
 import { normalizeVenueFacts, normalizeCircuitFacts } from '../src/venue.js';
 import { normalizeAthleteProfile } from '../src/athlete.js';
+import { normalizeTournament } from '../src/tournament.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 import { buildCatalog } from '../src/catalog.js';
 
@@ -68,7 +69,7 @@ function write(endpoint, name, args, output) {
 try { rmSync(OUT_DIR, { recursive: true, force: true }); } catch { /* first run */ }
 
 const fixtures = loadFixtures();
-const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, teamCard: 0, teamDetail: 0, mma: 0, odds: 0, situationCore: 0, winprob: 0, venue: 0, circuit: 0, athlete: 0, teamLeaders: 0, standingsRecords: 0 };
+const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, teamCard: 0, teamDetail: 0, mma: 0, odds: 0, situationCore: 0, winprob: 0, venue: 0, circuit: 0, athlete: 0, teamLeaders: 0, standingsRecords: 0, tournament: 0 };
 const index = []; // manifest of every golden, for the Dart test to enumerate
 
 for (const [key, fx] of fixtures) {
@@ -253,6 +254,34 @@ for (const [key, fx] of fixtures) {
     write('standingsRecords', fileKey(key), { key, raw: fx.standings, recordDocs }, output);
     index.push({ endpoint: 'standingsRecords', file: `standingsRecords/${fileKey(key)}.json`, key });
     counts.standingsRecords++;
+  }
+  // Standings qualification bands (§2.7/2.8): a FRESH soccer standings capture
+  // that serves entries[].note {color, description} (the committed per-league
+  // fixtures were captured band-less). Emitted onto the `standings` endpoint with
+  // a `__notes` suffix so the existing standings parity test covers it for free.
+  for (const s of (extra?.standingsNotes || [])) {
+    if (!s || !s.key || !s.standings) continue;
+    const output = normalizeStandings(s.standings);
+    const name = `${fileKey(s.key)}__notes`;
+    write('standings', name, { key: s.key, raw: s.standings }, output);
+    index.push({ endpoint: 'standings', file: `standings/${name}.json`, key: `${s.key} (notes)` });
+    counts.standings++;
+  }
+  // Tournaments (§2.7): the captured RAW range scoreboards (+ standings where the
+  // profile has group tables) → canonical TournamentResponse. Three real 2026
+  // tournaments cover all four grammars: WC groups+knockout (altGameNote rounds,
+  // pens, shootout), the full Wimbledon draw (round.displayName, seeds, sets,
+  // TBD placeholders), and the CWS pools + best-of-3 championship series.
+  for (const t of (extra?.tournaments || [])) {
+    if (!t || !t.key || !t.scoreboards?.length) continue;
+    const args = { key: t.key, scoreboards: t.scoreboards };
+    if (t.standings) args.standings = t.standings;
+    if (t.grouping) args.grouping = t.grouping;
+    if (t.eventId) args.eventId = t.eventId;
+    const output = normalizeTournament(registry, t.key, args);
+    write('tournament', fileKey(t.key), args, output);
+    index.push({ endpoint: 'tournament', file: `tournament/${fileKey(t.key)}.json`, key: t.key });
+    counts.tournament++;
   }
   // core situation + predictor → the detail-open enrichments. LIVE-only, so a golden
   // exists ONLY when a game was in progress at capture time (offseason leagues emit

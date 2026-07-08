@@ -93,7 +93,7 @@ export function normalizeStandings(raw, records) {
           const who = en.team || en.athlete; // racing: driver championships are athlete-shaped
           const id = String(who?.id ?? '');
           if (recs && recs[id]) for (const [k, v] of Object.entries(recs[id])) stats[k] = v;
-          return {
+          const row = {
             team: {
               id,
               name: who?.displayName || who?.name || who?.shortDisplayName || '',
@@ -104,6 +104,18 @@ export function normalizeStandings(raw, records) {
             rank: stats.rank != null ? Number(stats.rank) : undefined,
             stats,
           };
+          // Qualification band (§2.7/2.8): soccer tables carry entries[].note
+          // {color, description} — the coloured cut-line band + tag ('Champions
+          // League' / 'Relegation' / 'Eliminated'). VERIFIED soccer-only (~12%,
+          // schema/espn-guide/standings.md). Kept tolerantly; absent otherwise.
+          const nt = en.note;
+          if (nt && typeof nt === 'object') {
+            const note = {};
+            if (typeof nt.color === 'string') note.color = nt.color;
+            if (typeof nt.description === 'string') note.description = nt.description;
+            if (Object.keys(note).length) row.note = note;
+          }
+          return row;
         }),
       });
     }

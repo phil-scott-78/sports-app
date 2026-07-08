@@ -11,6 +11,7 @@ import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeTeamCard, applyScoreboardFallback } from '../src/team.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
 import { normalizeAthleteProfile } from '../src/athlete.js';
+import { normalizeTournament, classifyRound, ordinalRound, commonLabelPrefix } from '../src/tournament.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 
 let pass = 0, fail = 0;
@@ -670,6 +671,7 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   ok(hs.emptyNet === false, 'hockey: situation.emptyNet surfaces');
   ok(hs.strength === 'power-play', `hockey: situation.strength from lastPlay.strength (${hs.strength})`);
   ok(hs.strengthTeam === '17', `hockey: strengthTeam from lastPlay.team.id (${hs.strengthTeam})`);
+  ok(hs.homeWinPct === undefined, 'hockey: no lastPlay.probability → homeWinPct absent (basketball-only)');
 
   // tennis: the serving competitor is flagged by a bare `possession` boolean.
   const tennisSb = {
@@ -687,6 +689,30 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   const tcs = normalizeScoreboard(registry, 'tennis/atp', tennisSb).events[0].competitions[0].competitors;
   ok(tcs[0].serving === true, 'tennis: competitor.possession → serving');
   ok(tcs[1].serving === undefined, 'tennis: non-serving competitor carries no serving flag');
+}
+
+// ---- Track B: cheap basketball win probability (scoreboard lastPlay) ---------
+// schema/espn-guide/scoreboard.md — situation.lastPlay.probability is basketball-
+// only (~14%). No LIVE basketball game is capturable now (NBA offseason, WNBA had
+// no live slate at capture time), so this guide-shaped input pins the normalizer;
+// the Dart port asserts the same in app/test/win_prob_test.dart.
+{
+  const nbaSb = {
+    leagues: [{ id: '46', slug: 'nba', name: '', season: {} }],
+    events: [{ id: '1', date: '2026-06-01T00:00Z', name: 'A v B', shortName: 'A v B',
+      competitions: [{ id: '1',
+        status: { type: { name: 'STATUS_IN_PROGRESS', state: 'in', completed: false }, period: 3, displayClock: '5:00' },
+        competitors: [
+          { id: '1', homeAway: 'home', team: { id: '1', abbreviation: 'OKC', displayName: 'Thunder', color: '007ac1' }, score: '78' },
+          { id: '2', homeAway: 'away', team: { id: '2', abbreviation: 'IND', displayName: 'Pacers', color: '002d62' }, score: '74' },
+        ],
+        situation: { lastPlay: { text: 'Jump shot', probability: { homeWinPercentage: 0.696, awayWinPercentage: 0.304, tiePercentage: 0 } } },
+      }],
+    }],
+  };
+  const bs = normalizeScoreboard(registry, 'basketball/nba', nbaSb).events[0].competitions[0].situation || {};
+  ok(bs.homeWinPct === 70, `basketball: homeWinPct = round(homeWinPercentage*100) (${bs.homeWinPct})`);
+  ok(bs.lastPlay === 'Jump shot', 'basketball: lastPlay text still surfaces alongside win prob');
 }
 
 // ---- CORE situation → canonical Situation delta (guide-shaped inputs) --------
@@ -810,6 +836,59 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   // Missing id falls back to the passed athleteId; empty identity still returns.
   const p4 = normalizeAthleteProfile('basketball/wnba', '123', { identity: {} });
   ok(p4.id === '123' && p4.name === '' && p4.league === 'basketball/wnba', 'athlete: empty identity → id fallback + empty name');
+}
+
+// ---- tournament (§2.7): round grammar + the March-Madness label shape ---------
+// The WC/Wimbledon/CWS grammars are pinned by REAL goldens (gen-goldens
+// `tournament`). March Madness is off-season → uncapturable, so its
+// notes[].headline grammar ('East 1st Round - Game 6', per the guide's pooled
+// observed values) is pinned here with a guide-shaped synthetic input.
+{
+  // classifyRound: specificity order + pass-through
+  ok(classifyRound('Qualifying Final') === 'qualifying', 'tournament: Qualifying Final → qualifying (not final)');
+  ok(classifyRound('FIFA World Cup, Round of 16') === 'roundOf16', 'tournament: altGameNote round-of-N classifies without prefix strip');
+  ok(classifyRound('Sweet 16') === 'roundOf16' && classifyRound('Elite Eight') === 'quarterfinal'
+    && classifyRound('Final Four') === 'semifinal', 'tournament: NCAA nicknames map to canonical keys');
+  ok(classifyRound('Double Elimination Round') === 'pool' && classifyRound('Oklahoma advances to Championship Series') === 'pool',
+    'tournament: CWS pool markers classify as pool');
+  ok(classifyRound('Some Weird Stage') === null, 'tournament: unknown label → null (pass-through, no crash)');
+  ok(ordinalRound('East 1st Round')?.n === 1 && ordinalRound('East 1st Round')?.rest === 'East',
+    'tournament: inline region splits off the ordinal round');
+  ok(commonLabelPrefix(["Men's College World Series - Game 1", "Men's College World Series Championship"]) === "Men's College World Series",
+    'tournament: common headline prefix cut at a word boundary');
+
+  // March-Madness-shaped scoreboard: region+round+game ride notes[].headline.
+  // A headline-sourced ordinal bucket may be a PARTIAL slate, so it must stay a
+  // pass-through (round: null, label kept) — refinement-by-size is reserved for
+  // round.displayName draws (tennis, complete by construction). Region tags,
+  // game numbers, the no-seed rule, and forward linkage are pinned here.
+  const mmEvent = (id, date, headline, aWin) => ({
+    id, date, name: 'A vs B', shortName: 'A v B',
+    competitions: [{ id, date, notes: [{ type: 'event', headline }],
+      status: { type: { name: 'STATUS_FINAL', state: 'post', completed: true } },
+      competitors: [
+        { id: '1', winner: aWin, score: '78', team: { id: '1', abbreviation: 'HOU', displayName: 'Houston Cougars' }, curatedRank: { current: 1 } },
+        { id: String(2 + +id), winner: !aWin, score: '55', team: { id: String(2 + +id), abbreviation: 'T' + id, displayName: 'Team ' + id } },
+      ] }],
+  });
+  const sb = { leagues: [{ id: '41', name: "NCAA Men's Basketball", slug: 'mens-college-basketball' }],
+    events: [
+      mmEvent('901', '2026-03-20T00:00Z', "Men's Basketball Championship - East 1st Round - Game 6", true),
+      mmEvent('902', '2026-03-20T02:00Z', "Men's Basketball Championship - West 1st Round - Game 8", true),
+      // Houston ('1') appears again two days later → the 901 winner links forward
+      mmEvent('903', '2026-03-22T00:00Z', "Men's Basketball Championship - East 2nd Round - Game 3", true),
+    ] };
+  const t = normalizeTournament(registry, 'basketball/mens-college-basketball', { scoreboards: [sb] });
+  ok(t.title === "Men's Basketball Championship", `tournament: MM title from the common headline prefix (${t.title})`);
+  const r1 = t.rounds.find(r => r.label === '1st Round');
+  ok(r1 && r1.matchups.length === 2, 'tournament: 1st Round bucket holds both regions');
+  ok(r1.round === null, 'tournament: headline-sourced ordinal stays a pass-through (never size-refined)');
+  ok(r1.matchups[0].bracket === 'East' && r1.matchups[1].bracket === 'West', 'tournament: region tag parsed into matchup.bracket');
+  ok(r1.matchups[0].gameNumber === 6, 'tournament: Game N lifted into gameNumber');
+  ok(r1.matchups[0].competitors[0].seed === undefined, 'tournament: team curatedRank is a poll, NEVER a seed (core-only hook)');
+  ok(r1.matchups[0].advancesTo === '903', 'tournament: decided winner links to its next-round matchup');
+  const r2 = t.rounds.find(r => r.label === '2nd Round');
+  ok(r2 && r2.round === null, 'tournament: partial ordinal bucket stays a pass-through (no bogus roundOf size)');
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

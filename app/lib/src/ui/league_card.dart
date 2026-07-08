@@ -88,26 +88,7 @@ class LeagueEventRow extends StatelessWidget {
             child: body,
           ),
           if (series != null && series.isPlayoff)
-            Container(
-              padding: const EdgeInsets.fromLTRB(12, 9, 12, 14),
-              decoration: const BoxDecoration(
-                  border: Border(top: BorderSide(color: T.divider))),
-              child: Row(children: [
-                if (comp.meta?.round != null) ...[
-                  Text(comp.meta!.round!.toUpperCase(),
-                      style: T.cardLabelFaint.copyWith(fontSize: 11)),
-                  const SizedBox(width: 8),
-                ],
-                SeriesPips(series: series, comp: comp),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(comp.meta?.seriesSummary ?? '',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: T.captionFaint),
-                ),
-              ]),
-            ),
+            _SeriesStrip(comp: comp, series: series),
         ]),
       ),
     );
@@ -244,6 +225,50 @@ class LeagueEventRow extends StatelessWidget {
       const SizedBox(width: 10),
       _StatusColumn(event: event, comp: comp),
     ]);
+  }
+}
+
+/// The playoff-series footer strip under a league row: a derived `GAME N` label
+/// (§Part I.6: sum(wins)+1 while the series is live), the win-order pips, and a
+/// lead caption — `OKC leads 3-2 · can clinch` — where "can clinch" is derived
+/// (leader one win from the majority floor(total/2)+1). No ESPN field carries N
+/// or clinch; both fall out of the cheap series win counts.
+class _SeriesStrip extends StatelessWidget {
+  final Competition comp;
+  final SeriesInfo series;
+  const _SeriesStrip({required this.comp, required this.series});
+
+  @override
+  Widget build(BuildContext context) {
+    final gameNo = series.gameNumber;
+    // GAME N while unfinished; fall back to the round note once decided.
+    final label = gameNo != null ? 'GAME $gameNo' : comp.meta?.round;
+    final summary = comp.meta?.seriesSummary ?? '';
+    final caption = series.canClinch
+        ? (summary.isEmpty ? 'Can clinch' : '$summary · can clinch')
+        : summary;
+    return Container(
+      padding: const EdgeInsets.fromLTRB(12, 9, 12, 14),
+      decoration: const BoxDecoration(
+          border: Border(top: BorderSide(color: T.divider))),
+      child: Row(children: [
+        if (label != null && label.isNotEmpty) ...[
+          Text(label.toUpperCase(),
+              style: T.cardLabelFaint.copyWith(fontSize: 11)),
+          const SizedBox(width: 8),
+        ],
+        SeriesPips(series: series, comp: comp),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(caption,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              // "can clinch" is the live stakes — let the whole caption read a
+              // touch brighter when it's on the line.
+              style: series.canClinch ? T.caption : T.captionFaint),
+        ),
+      ]),
+    );
   }
 }
 

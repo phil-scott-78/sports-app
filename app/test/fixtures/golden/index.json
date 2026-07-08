@@ -1511,5 +1511,35 @@
     "endpoint": "standingsRecords",
     "file": "standingsRecords/basketball__wnba.json",
     "key": "basketball/wnba"
+  },
+  {
+    "endpoint": "standings",
+    "file": "standings/soccer__eng.1__notes.json",
+    "key": "soccer/eng.1 (notes)"
+  },
+  {
+    "endpoint": "standings",
+    "file": "standings/soccer__uefa.champions__notes.json",
+    "key": "soccer/uefa.champions (notes)"
+  },
+  {
+    "endpoint": "standings",
+    "file": "standings/soccer__fifa.world__notes.json",
+    "key": "soccer/fifa.world (notes)"
+  },
+  {
+    "endpoint": "tournament",
+    "file": "tournament/soccer__fifa.world.json",
+    "key": "soccer/fifa.world"
+  },
+  {
+    "endpoint": "tournament",
+    "file": "tournament/tennis__atp.json",
+    "key": "tennis/atp"
+  },
+  {
+    "endpoint": "tournament",
+    "file": "tournament/baseball__college-baseball.json",
+    "key": "baseball/college-baseball"
   }
 ]

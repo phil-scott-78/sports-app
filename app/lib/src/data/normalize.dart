@@ -428,6 +428,10 @@ Map<String, dynamic>? _buildSituation(Map rc) {
   final lp = sit['lastPlay'];
   final lpText = lp != null ? (field(field(lp, 'type'), 'alternativeText') ?? field(lp, 'text') ?? field(field(lp, 'type'), 'text')) : null;
   if (lpText != null) s['lastPlay'] = lpText;
+  // CHEAP win probability — basketball scoreboard only (~14%; scoreboard.md).
+  // HOME win % as a 0-100 rounded int; absent for every other sport.
+  final hwp = field(field(lp, 'probability'), 'homeWinPercentage');
+  if (hwp is num) s['homeWinPct'] = (hwp * 100).round();
   final strength = field(field(lp, 'strength'), 'abbreviation') ?? field(field(lp, 'strength'), 'type');
   if (strength != null) s['strength'] = jsStr(strength).toLowerCase();
   final strengthTeam = field(field(lp, 'team'), 'id') ?? field(lp, 'team');

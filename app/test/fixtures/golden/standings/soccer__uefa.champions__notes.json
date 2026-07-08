@@ -1,0 +1,4997 @@
+{
+  "endpoint": "standings",
+  "args": {
+    "key": "soccer/uefa.champions",
+    "raw": {
+      "name": "UEFA Champions League",
+      "abbreviation": "UEFA Champions League",
+      "id": "2",
+      "children": [
+        {
+          "name": "League Phase",
+          "abbreviation": "2025-26",
+          "id": "1",
+          "standings": {
+            "entries": [
+              {
+                "team": {
+                  "id": "359",
+                  "displayName": "Arsenal",
+                  "name": "Arsenal",
+                  "shortDisplayName": "Arsenal",
+                  "abbreviation": "ARS",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+19",
+                    "value": 19
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "24",
+                    "value": 24
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "23",
+                    "value": 23
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "8-0-0"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 1
+                }
+              },
+              {
+                "team": {
+                  "id": "132",
+                  "displayName": "Bayern Munich",
+                  "name": "Bayern Munich",
+                  "shortDisplayName": "Bayern",
+                  "abbreviation": "MUN",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+14",
+                    "value": 14
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "7-0-1"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 2
+                }
+              },
+              {
+                "team": {
+                  "id": "364",
+                  "displayName": "Liverpool",
+                  "name": "Liverpool",
+                  "shortDisplayName": "Liverpool",
+                  "abbreviation": "LIV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+12",
+                    "value": 12
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "6-0-2"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 3
+                }
+              },
+              {
+                "team": {
+                  "id": "367",
+                  "displayName": "Tottenham Hotspur",
+                  "name": "Tottenham Hotspur",
+                  "shortDisplayName": "Spurs",
+                  "abbreviation": "TOT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+10",
+                    "value": 10
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-2-1"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 4
+                }
+              },
+              {
+                "team": {
+                  "id": "83",
+                  "displayName": "Barcelona",
+                  "name": "Barcelona",
+                  "shortDisplayName": "Barcelona",
+                  "abbreviation": "BAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+8",
+                    "value": 8
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-1-2"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 5
+                }
+              },
+              {
+                "team": {
+                  "id": "363",
+                  "displayName": "Chelsea",
+                  "name": "Chelsea",
+                  "shortDisplayName": "Chelsea",
+                  "abbreviation": "CHE",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+7",
+                    "value": 7
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-1-2"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 6
+                }
+              },
+              {
+                "team": {
+                  "id": "2250",
+                  "displayName": "Sporting CP",
+                  "name": "Sporting CP",
+                  "shortDisplayName": "Sporting",
+                  "abbreviation": "SCP",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2250.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+6",
+                    "value": 6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-1-2"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 7
+                }
+              },
+              {
+                "team": {
+                  "id": "382",
+                  "displayName": "Manchester City",
+                  "name": "Manchester City",
+                  "shortDisplayName": "Man City",
+                  "abbreviation": "MNC",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+6",
+                    "value": 6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-1-2"
+                  }
+                ],
+                "note": {
+                  "color": "#81D6AC",
+                  "description": "Qualifies for round of 16",
+                  "rank": 8
+                }
+              },
+              {
+                "team": {
+                  "id": "86",
+                  "displayName": "Real Madrid",
+                  "name": "Real Madrid",
+                  "shortDisplayName": "Real Madrid",
+                  "abbreviation": "RMA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+9",
+                    "value": 9
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-0-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 9
+                }
+              },
+              {
+                "team": {
+                  "id": "110",
+                  "displayName": "Internazionale",
+                  "name": "Internazionale",
+                  "shortDisplayName": "Inter Milan",
+                  "abbreviation": "INT",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+8",
+                    "value": 8
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "5-0-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 10
+                }
+              },
+              {
+                "team": {
+                  "id": "160",
+                  "displayName": "Paris Saint-Germain",
+                  "name": "Paris Saint-Germain",
+                  "shortDisplayName": "PSG",
+                  "abbreviation": "PSG",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+10",
+                    "value": 10
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "4-2-2"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 11
+                }
+              },
+              {
+                "team": {
+                  "id": "361",
+                  "displayName": "Newcastle United",
+                  "name": "Newcastle United",
+                  "shortDisplayName": "Newcastle",
+                  "abbreviation": "NEW",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+10",
+                    "value": 10
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "4-2-2"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 12
+                }
+              },
+              {
+                "team": {
+                  "id": "111",
+                  "displayName": "Juventus",
+                  "name": "Juventus",
+                  "shortDisplayName": "Juventus",
+                  "abbreviation": "JUV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+4",
+                    "value": 4
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-4-1"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 13
+                }
+              },
+              {
+                "team": {
+                  "id": "1068",
+                  "displayName": "Atlético Madrid",
+                  "name": "Atlético Madrid",
+                  "shortDisplayName": "Atlético",
+                  "abbreviation": "ATM",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+2",
+                    "value": 2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "4-1-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 14
+                }
+              },
+              {
+                "team": {
+                  "id": "105",
+                  "displayName": "Atalanta",
+                  "name": "Atalanta",
+                  "shortDisplayName": "Atalanta",
+                  "abbreviation": "ATA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "4-1-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 15
+                }
+              },
+              {
+                "team": {
+                  "id": "131",
+                  "displayName": "Bayer Leverkusen",
+                  "name": "Bayer Leverkusen",
+                  "shortDisplayName": "Leverkusen",
+                  "abbreviation": "B04",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-1",
+                    "value": -1
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-3-2"
+                  }
+                ],
+                "note": {
+                  "color": "#B5E7CE",
+                  "description": "Knockout phase playoffs - seeded",
+                  "rank": 16
+                }
+              },
+              {
+                "team": {
+                  "id": "124",
+                  "displayName": "Borussia Dortmund",
+                  "name": "Borussia Dortmund",
+                  "shortDisplayName": "Dortmund",
+                  "abbreviation": "DOR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "+2",
+                    "value": 2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-2-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 17
+                }
+              },
+              {
+                "team": {
+                  "id": "435",
+                  "displayName": "Olympiacos",
+                  "name": "Olympiacos",
+                  "shortDisplayName": "Olympiacos",
+                  "abbreviation": "OLY",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/435.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-4",
+                    "value": -4
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-2-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 18
+                }
+              },
+              {
+                "team": {
+                  "id": "570",
+                  "displayName": "Club Brugge",
+                  "name": "Club Brugge",
+                  "shortDisplayName": "Club Brugge",
+                  "abbreviation": "BRU",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-1-4"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 19
+                }
+              },
+              {
+                "team": {
+                  "id": "432",
+                  "displayName": "Galatasaray",
+                  "name": "Galatasaray",
+                  "shortDisplayName": "Galatasaray",
+                  "abbreviation": "GAL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "20",
+                    "value": 20
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-1-4"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 20
+                }
+              },
+              {
+                "team": {
+                  "id": "174",
+                  "displayName": "AS Monaco",
+                  "name": "AS Monaco",
+                  "shortDisplayName": "Monaco",
+                  "abbreviation": "MON",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-6",
+                    "value": -6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-4-2"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 21
+                }
+              },
+              {
+                "team": {
+                  "id": "10414",
+                  "displayName": "FK Qarabag",
+                  "name": "FK Qarabag",
+                  "shortDisplayName": "FK Qarabag",
+                  "abbreviation": "QAR",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/10414.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-8",
+                    "value": -8
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "13",
+                    "value": 13
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-1-4"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 22
+                }
+              },
+              {
+                "team": {
+                  "id": "2980",
+                  "displayName": "Bodo/Glimt",
+                  "name": "Bodo/Glimt",
+                  "shortDisplayName": "Bodo/Glimt",
+                  "abbreviation": "BODO",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-1",
+                    "value": -1
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "23",
+                    "value": 23
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-3-3"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 23
+                }
+              },
+              {
+                "team": {
+                  "id": "1929",
+                  "displayName": "Benfica",
+                  "name": "Benfica",
+                  "shortDisplayName": "Benfica",
+                  "abbreviation": "SLB",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-2",
+                    "value": -2
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "24",
+                    "value": 24
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-0-5"
+                  }
+                ],
+                "note": {
+                  "color": "#B2BFD0",
+                  "description": "Knockout phase playoffs - unseeded",
+                  "rank": 24
+                }
+              },
+              {
+                "team": {
+                  "id": "176",
+                  "displayName": "Marseille",
+                  "name": "Marseille",
+                  "shortDisplayName": "Marseille",
+                  "abbreviation": "OLM",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-3",
+                    "value": -3
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "25",
+                    "value": 25
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-0-5"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 25
+                }
+              },
+              {
+                "team": {
+                  "id": "22281",
+                  "displayName": "Pafos",
+                  "name": "Pafos",
+                  "shortDisplayName": "Pafos",
+                  "abbreviation": "PAF",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/22281.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-3",
+                    "value": -3
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "11",
+                    "value": 11
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "26",
+                    "value": 26
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-3-3"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 26
+                }
+              },
+              {
+                "team": {
+                  "id": "5807",
+                  "displayName": "Union St.-Gilloise",
+                  "name": "Union St.-Gilloise",
+                  "shortDisplayName": "Union SG",
+                  "abbreviation": "USG",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-9",
+                    "value": -9
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "17",
+                    "value": 17
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "27",
+                    "value": 27
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "3-0-5"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 27
+                }
+              },
+              {
+                "team": {
+                  "id": "148",
+                  "displayName": "PSV Eindhoven",
+                  "name": "PSV Eindhoven",
+                  "shortDisplayName": "PSV",
+                  "abbreviation": "PSV",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "16",
+                    "value": 16
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "28",
+                    "value": 28
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-2-4"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 28
+                }
+              },
+              {
+                "team": {
+                  "id": "93",
+                  "displayName": "Athletic Club",
+                  "name": "Athletic Club",
+                  "shortDisplayName": "Athletic",
+                  "abbreviation": "ATH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-5",
+                    "value": -5
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "14",
+                    "value": 14
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "29",
+                    "value": 29
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-2-4"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 29
+                }
+              },
+              {
+                "team": {
+                  "id": "114",
+                  "displayName": "Napoli",
+                  "name": "Napoli",
+                  "shortDisplayName": "Napoli",
+                  "abbreviation": "NAP",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-6",
+                    "value": -6
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "15",
+                    "value": 15
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "9",
+                    "value": 9
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "30",
+                    "value": 30
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-2-4"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 30
+                }
+              },
+              {
+                "team": {
+                  "id": "909",
+                  "displayName": "F.C. København",
+                  "name": "F.C. København",
+                  "shortDisplayName": "København",
+                  "abbreviation": "KBH",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/909.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-9",
+                    "value": -9
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "12",
+                    "value": 12
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "31",
+                    "value": 31
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-2-4"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 31
+                }
+              },
+              {
+                "team": {
+                  "id": "139",
+                  "displayName": "Ajax Amsterdam",
+                  "name": "Ajax Amsterdam",
+                  "shortDisplayName": "Ajax",
+                  "abbreviation": "AJA",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/139.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-13",
+                    "value": -13
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "2",
+                    "value": 2
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "32",
+                    "value": 32
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "2-0-6"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 32
+                }
+              },
+              {
+                "team": {
+                  "id": "125",
+                  "displayName": "Eintracht Frankfurt",
+                  "name": "Eintracht Frankfurt",
+                  "shortDisplayName": "Frankfurt",
+                  "abbreviation": "SGE",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "6",
+                    "value": 6
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-11",
+                    "value": -11
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "4",
+                    "value": 4
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "21",
+                    "value": 21
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "10",
+                    "value": 10
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "33",
+                    "value": 33
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "1-1-6"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 33
+                }
+              },
+              {
+                "team": {
+                  "id": "494",
+                  "displayName": "Slavia Prague",
+                  "name": "Slavia Prague",
+                  "shortDisplayName": "Slavia Prague",
+                  "abbreviation": "SLP",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-14",
+                    "value": -14
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "19",
+                    "value": 19
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "3",
+                    "value": 3
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "34",
+                    "value": 34
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-3-5"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 34
+                }
+              },
+              {
+                "team": {
+                  "id": "102",
+                  "displayName": "Villarreal",
+                  "name": "Villarreal",
+                  "shortDisplayName": "Villarreal",
+                  "abbreviation": "VIL",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-13",
+                    "value": -13
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "18",
+                    "value": 18
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "5",
+                    "value": 5
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "35",
+                    "value": 35
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-1-7"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 35
+                }
+              },
+              {
+                "team": {
+                  "id": "2528",
+                  "displayName": "Kairat Almaty",
+                  "name": "Kairat Almaty",
+                  "shortDisplayName": "Kairat Almaty",
+                  "abbreviation": "KAI",
+                  "logos": [
+                    {
+                      "href": "https://a.espncdn.com/i/teamlogos/soccer/500/2528.png",
+                      "rel": [
+                        "full",
+                        "default"
+                      ]
+                    }
+                  ]
+                },
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "type": "gamesplayed",
+                    "displayValue": "8",
+                    "value": 8
+                  },
+                  {
+                    "name": "losses",
+                    "type": "losses",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "type": "pointdifferential",
+                    "displayValue": "-15",
+                    "value": -15
+                  },
+                  {
+                    "name": "points",
+                    "type": "points",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "pointsAgainst",
+                    "type": "pointsagainst",
+                    "displayValue": "22",
+                    "value": 22
+                  },
+                  {
+                    "name": "pointsFor",
+                    "type": "pointsfor",
+                    "displayValue": "7",
+                    "value": 7
+                  },
+                  {
+                    "name": "ties",
+                    "type": "ties",
+                    "displayValue": "1",
+                    "value": 1
+                  },
+                  {
+                    "name": "wins",
+                    "type": "wins",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "advanced",
+                    "type": "advanced",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "deductions",
+                    "type": "deductions",
+                    "displayValue": "",
+                    "value": 0
+                  },
+                  {
+                    "name": "ppg",
+                    "type": "ppg",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "rank",
+                    "type": "rank",
+                    "displayValue": "36",
+                    "value": 36
+                  },
+                  {
+                    "name": "rankChange",
+                    "type": "rankchange",
+                    "displayValue": "0",
+                    "value": 0
+                  },
+                  {
+                    "name": "overall",
+                    "type": "total",
+                    "displayValue": "0-1-7"
+                  }
+                ],
+                "note": {
+                  "color": "#FF7F84",
+                  "description": "Eliminated",
+                  "rank": 36
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "output": [
+    {
+      "name": "League Phase",
+      "rows": [
+        {
+          "team": {
+            "id": "359",
+            "name": "Arsenal",
+            "abbr": "ARS",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/359.png"
+          },
+          "rank": 1,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "0",
+            "pointDifferential": "+19",
+            "points": "24",
+            "pointsAgainst": "4",
+            "pointsFor": "23",
+            "ties": "0",
+            "wins": "8",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "1",
+            "rankChange": "0",
+            "overall": "8-0-0"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "132",
+            "name": "Bayern Munich",
+            "abbr": "MUN",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/132.png"
+          },
+          "rank": 2,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "1",
+            "pointDifferential": "+14",
+            "points": "21",
+            "pointsAgainst": "8",
+            "pointsFor": "22",
+            "ties": "0",
+            "wins": "7",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "2",
+            "rankChange": "0",
+            "overall": "7-0-1"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "364",
+            "name": "Liverpool",
+            "abbr": "LIV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/364.png"
+          },
+          "rank": 3,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+12",
+            "points": "18",
+            "pointsAgainst": "8",
+            "pointsFor": "20",
+            "ties": "0",
+            "wins": "6",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "3",
+            "rankChange": "0",
+            "overall": "6-0-2"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "367",
+            "name": "Tottenham Hotspur",
+            "abbr": "TOT",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/367.png"
+          },
+          "rank": 4,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "1",
+            "pointDifferential": "+10",
+            "points": "17",
+            "pointsAgainst": "7",
+            "pointsFor": "17",
+            "ties": "2",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "4",
+            "rankChange": "0",
+            "overall": "5-2-1"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "83",
+            "name": "Barcelona",
+            "abbr": "BAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/83.png"
+          },
+          "rank": 5,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+8",
+            "points": "16",
+            "pointsAgainst": "14",
+            "pointsFor": "22",
+            "ties": "1",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "5",
+            "rankChange": "0",
+            "overall": "5-1-2"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "363",
+            "name": "Chelsea",
+            "abbr": "CHE",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/363.png"
+          },
+          "rank": 6,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+7",
+            "points": "16",
+            "pointsAgainst": "10",
+            "pointsFor": "17",
+            "ties": "1",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "6",
+            "rankChange": "0",
+            "overall": "5-1-2"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "2250",
+            "name": "Sporting CP",
+            "abbr": "SCP",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2250.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2250.png"
+          },
+          "rank": 7,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+6",
+            "points": "16",
+            "pointsAgainst": "11",
+            "pointsFor": "17",
+            "ties": "1",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "7",
+            "rankChange": "0",
+            "overall": "5-1-2"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "382",
+            "name": "Manchester City",
+            "abbr": "MNC",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/382.png"
+          },
+          "rank": 8,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+6",
+            "points": "16",
+            "pointsAgainst": "9",
+            "pointsFor": "15",
+            "ties": "1",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "8",
+            "rankChange": "0",
+            "overall": "5-1-2"
+          },
+          "note": {
+            "color": "#81D6AC",
+            "description": "Qualifies for round of 16"
+          }
+        },
+        {
+          "team": {
+            "id": "86",
+            "name": "Real Madrid",
+            "abbr": "RMA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/86.png"
+          },
+          "rank": 9,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "+9",
+            "points": "15",
+            "pointsAgainst": "12",
+            "pointsFor": "21",
+            "ties": "0",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "9",
+            "rankChange": "0",
+            "overall": "5-0-3"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "110",
+            "name": "Internazionale",
+            "abbr": "INT",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/110.png"
+          },
+          "rank": 10,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "+8",
+            "points": "15",
+            "pointsAgainst": "7",
+            "pointsFor": "15",
+            "ties": "0",
+            "wins": "5",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "10",
+            "rankChange": "0",
+            "overall": "5-0-3"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "160",
+            "name": "Paris Saint-Germain",
+            "abbr": "PSG",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/160.png"
+          },
+          "rank": 11,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+10",
+            "points": "14",
+            "pointsAgainst": "11",
+            "pointsFor": "21",
+            "ties": "2",
+            "wins": "4",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "11",
+            "rankChange": "0",
+            "overall": "4-2-2"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "361",
+            "name": "Newcastle United",
+            "abbr": "NEW",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/361.png"
+          },
+          "rank": 12,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "+10",
+            "points": "14",
+            "pointsAgainst": "7",
+            "pointsFor": "17",
+            "ties": "2",
+            "wins": "4",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "12",
+            "rankChange": "0",
+            "overall": "4-2-2"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "111",
+            "name": "Juventus",
+            "abbr": "JUV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/111.png"
+          },
+          "rank": 13,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "1",
+            "pointDifferential": "+4",
+            "points": "13",
+            "pointsAgainst": "10",
+            "pointsFor": "14",
+            "ties": "4",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "13",
+            "rankChange": "0",
+            "overall": "3-4-1"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "1068",
+            "name": "Atlético Madrid",
+            "abbr": "ATM",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/1068.png"
+          },
+          "rank": 14,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "+2",
+            "points": "13",
+            "pointsAgainst": "15",
+            "pointsFor": "17",
+            "ties": "1",
+            "wins": "4",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "14",
+            "rankChange": "0",
+            "overall": "4-1-3"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "105",
+            "name": "Atalanta",
+            "abbr": "ATA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/105.png"
+          },
+          "rank": 15,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "0",
+            "points": "13",
+            "pointsAgainst": "10",
+            "pointsFor": "10",
+            "ties": "1",
+            "wins": "4",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "15",
+            "rankChange": "0",
+            "overall": "4-1-3"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "131",
+            "name": "Bayer Leverkusen",
+            "abbr": "B04",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/131.png"
+          },
+          "rank": 16,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "-1",
+            "points": "12",
+            "pointsAgainst": "14",
+            "pointsFor": "13",
+            "ties": "3",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "16",
+            "rankChange": "0",
+            "overall": "3-3-2"
+          },
+          "note": {
+            "color": "#B5E7CE",
+            "description": "Knockout phase playoffs - seeded"
+          }
+        },
+        {
+          "team": {
+            "id": "124",
+            "name": "Borussia Dortmund",
+            "abbr": "DOR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/124.png"
+          },
+          "rank": 17,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "+2",
+            "points": "11",
+            "pointsAgainst": "17",
+            "pointsFor": "19",
+            "ties": "2",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "17",
+            "rankChange": "0",
+            "overall": "3-2-3"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "435",
+            "name": "Olympiacos",
+            "abbr": "OLY",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/435.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/435.png"
+          },
+          "rank": 18,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "-4",
+            "points": "11",
+            "pointsAgainst": "14",
+            "pointsFor": "10",
+            "ties": "2",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "18",
+            "rankChange": "0",
+            "overall": "3-2-3"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "570",
+            "name": "Club Brugge",
+            "abbr": "BRU",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/570.png"
+          },
+          "rank": 19,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-2",
+            "points": "10",
+            "pointsAgainst": "17",
+            "pointsFor": "15",
+            "ties": "1",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "19",
+            "rankChange": "0",
+            "overall": "3-1-4"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "432",
+            "name": "Galatasaray",
+            "abbr": "GAL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/432.png"
+          },
+          "rank": 20,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-2",
+            "points": "10",
+            "pointsAgainst": "11",
+            "pointsFor": "9",
+            "ties": "1",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "20",
+            "rankChange": "0",
+            "overall": "3-1-4"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "174",
+            "name": "AS Monaco",
+            "abbr": "MON",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/174.png"
+          },
+          "rank": 21,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "2",
+            "pointDifferential": "-6",
+            "points": "10",
+            "pointsAgainst": "14",
+            "pointsFor": "8",
+            "ties": "4",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "21",
+            "rankChange": "0",
+            "overall": "2-4-2"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "10414",
+            "name": "FK Qarabag",
+            "abbr": "QAR",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10414.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/10414.png"
+          },
+          "rank": 22,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-8",
+            "points": "10",
+            "pointsAgainst": "21",
+            "pointsFor": "13",
+            "ties": "1",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "22",
+            "rankChange": "0",
+            "overall": "3-1-4"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "2980",
+            "name": "Bodo/Glimt",
+            "abbr": "BODO",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2980.png"
+          },
+          "rank": 23,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "-1",
+            "points": "9",
+            "pointsAgainst": "15",
+            "pointsFor": "14",
+            "ties": "3",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "23",
+            "rankChange": "0",
+            "overall": "2-3-3"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "1929",
+            "name": "Benfica",
+            "abbr": "SLB",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/1929.png"
+          },
+          "rank": 24,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "5",
+            "pointDifferential": "-2",
+            "points": "9",
+            "pointsAgainst": "12",
+            "pointsFor": "10",
+            "ties": "0",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "24",
+            "rankChange": "0",
+            "overall": "3-0-5"
+          },
+          "note": {
+            "color": "#B2BFD0",
+            "description": "Knockout phase playoffs - unseeded"
+          }
+        },
+        {
+          "team": {
+            "id": "176",
+            "name": "Marseille",
+            "abbr": "OLM",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/176.png"
+          },
+          "rank": 25,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "5",
+            "pointDifferential": "-3",
+            "points": "9",
+            "pointsAgainst": "14",
+            "pointsFor": "11",
+            "ties": "0",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "25",
+            "rankChange": "0",
+            "overall": "3-0-5"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "22281",
+            "name": "Pafos",
+            "abbr": "PAF",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22281.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/22281.png"
+          },
+          "rank": 26,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "3",
+            "pointDifferential": "-3",
+            "points": "9",
+            "pointsAgainst": "11",
+            "pointsFor": "8",
+            "ties": "3",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "26",
+            "rankChange": "0",
+            "overall": "2-3-3"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "5807",
+            "name": "Union St.-Gilloise",
+            "abbr": "USG",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/5807.png"
+          },
+          "rank": 27,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "5",
+            "pointDifferential": "-9",
+            "points": "9",
+            "pointsAgainst": "17",
+            "pointsFor": "8",
+            "ties": "0",
+            "wins": "3",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "27",
+            "rankChange": "0",
+            "overall": "3-0-5"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "148",
+            "name": "PSV Eindhoven",
+            "abbr": "PSV",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/148.png"
+          },
+          "rank": 28,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "0",
+            "points": "8",
+            "pointsAgainst": "16",
+            "pointsFor": "16",
+            "ties": "2",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "28",
+            "rankChange": "0",
+            "overall": "2-2-4"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "93",
+            "name": "Athletic Club",
+            "abbr": "ATH",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/93.png"
+          },
+          "rank": 29,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-5",
+            "points": "8",
+            "pointsAgainst": "14",
+            "pointsFor": "9",
+            "ties": "2",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "29",
+            "rankChange": "0",
+            "overall": "2-2-4"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "114",
+            "name": "Napoli",
+            "abbr": "NAP",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/114.png"
+          },
+          "rank": 30,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-6",
+            "points": "8",
+            "pointsAgainst": "15",
+            "pointsFor": "9",
+            "ties": "2",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "30",
+            "rankChange": "0",
+            "overall": "2-2-4"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "909",
+            "name": "F.C. København",
+            "abbr": "KBH",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/909.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/909.png"
+          },
+          "rank": 31,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "4",
+            "pointDifferential": "-9",
+            "points": "8",
+            "pointsAgainst": "21",
+            "pointsFor": "12",
+            "ties": "2",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "31",
+            "rankChange": "0",
+            "overall": "2-2-4"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "139",
+            "name": "Ajax Amsterdam",
+            "abbr": "AJA",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/139.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/139.png"
+          },
+          "rank": 32,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "6",
+            "pointDifferential": "-13",
+            "points": "6",
+            "pointsAgainst": "21",
+            "pointsFor": "8",
+            "ties": "0",
+            "wins": "2",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "32",
+            "rankChange": "0",
+            "overall": "2-0-6"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "125",
+            "name": "Eintracht Frankfurt",
+            "abbr": "SGE",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/125.png"
+          },
+          "rank": 33,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "6",
+            "pointDifferential": "-11",
+            "points": "4",
+            "pointsAgainst": "21",
+            "pointsFor": "10",
+            "ties": "1",
+            "wins": "1",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "33",
+            "rankChange": "0",
+            "overall": "1-1-6"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "494",
+            "name": "Slavia Prague",
+            "abbr": "SLP",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/494.png"
+          },
+          "rank": 34,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "5",
+            "pointDifferential": "-14",
+            "points": "3",
+            "pointsAgainst": "19",
+            "pointsFor": "5",
+            "ties": "3",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "34",
+            "rankChange": "0",
+            "overall": "0-3-5"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "102",
+            "name": "Villarreal",
+            "abbr": "VIL",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/102.png"
+          },
+          "rank": 35,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "7",
+            "pointDifferential": "-13",
+            "points": "1",
+            "pointsAgainst": "18",
+            "pointsFor": "5",
+            "ties": "1",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "35",
+            "rankChange": "0",
+            "overall": "0-1-7"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        },
+        {
+          "team": {
+            "id": "2528",
+            "name": "Kairat Almaty",
+            "abbr": "KAI",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2528.png",
+            "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/2528.png"
+          },
+          "rank": 36,
+          "stats": {
+            "gamesPlayed": "8",
+            "losses": "7",
+            "pointDifferential": "-15",
+            "points": "1",
+            "pointsAgainst": "22",
+            "pointsFor": "7",
+            "ties": "1",
+            "wins": "0",
+            "advanced": "0",
+            "deductions": "",
+            "ppg": "0",
+            "rank": "36",
+            "rankChange": "0",
+            "overall": "0-1-7"
+          },
+          "note": {
+            "color": "#FF7F84",
+            "description": "Eliminated"
+          }
+        }
+      ]
+    }
+  ]
+}

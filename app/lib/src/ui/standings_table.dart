@@ -58,7 +58,65 @@ class StandingsGroupCard extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         for (final row in _ranked(rows)) _row(row, cols, keyCol),
+        _legend(rows),
       ]),
+    );
+  }
+
+  /// Parse an ESPN band hex ('#81D6AC') to a Color; tolerant of the odd
+  /// double-hash ('##c6d1e0' → c6d1e0). Null when not a 6-digit hex.
+  static Color? _bandColor(String? s) {
+    if (s == null) return null;
+    final h = s.replaceAll('#', '').trim();
+    if (h.length != 6) return null;
+    final v = int.tryParse(h, radix: 16);
+    return v == null ? null : Color(0xFF000000 | v);
+  }
+
+  /// A 3px left color band (§2.7/2.8 cut-line) flush to the card edge, drawn over
+  /// the row without shifting its content. No-op when the row has no band.
+  Widget _withBand(StandingsRow row, Widget child) {
+    final c = _bandColor(row.note?.color);
+    if (c == null) return child;
+    return Stack(children: [
+      child,
+      Positioned(
+          left: 0, top: 0, bottom: 0, child: Container(width: 3, color: c)),
+    ]);
+  }
+
+  /// The qualification legend under the table: one entry per DISTINCT band
+  /// description (in row order), a color swatch + its tag ('Champions League' /
+  /// 'Relegation'). Empty (shrinks away) when no row carries a band.
+  Widget _legend(List<StandingsRow> rows) {
+    final seen = <String>{};
+    final items = <({Color color, String label})>[];
+    for (final r in rows) {
+      final d = r.note?.description;
+      final c = _bandColor(r.note?.color);
+      if (d == null || d.isEmpty || c == null || !seen.add(d)) continue;
+      items.add((color: c, label: d));
+    }
+    if (items.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 0),
+      child: Wrap(
+        spacing: 14,
+        runSpacing: 6,
+        children: [
+          for (final it in items)
+            Row(mainAxisSize: MainAxisSize.min, children: [
+              Container(
+                width: 3,
+                height: 12,
+                decoration: BoxDecoration(
+                    color: it.color, borderRadius: BorderRadius.circular(1.5)),
+              ),
+              const SizedBox(width: 6),
+              Text(it.label, style: T.captionFaint),
+            ]),
+        ],
+      ),
     );
   }
 
@@ -154,17 +212,20 @@ class StandingsGroupCard extends StatelessWidget {
           ),
       ]),
     );
-    final body = hi
-        ? DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-                T.gold.withValues(alpha: 0.08),
-                T.gold.withValues(alpha: 0.0),
-              ]),
-            ),
-            child: content,
-          )
-        : content;
+    final body = _withBand(
+      row,
+      hi
+          ? DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  T.gold.withValues(alpha: 0.08),
+                  T.gold.withValues(alpha: 0.0),
+                ]),
+              ),
+              child: content,
+            )
+          : content,
+    );
     if (onRowTap == null) return body;
     return InkWell(onTap: () => onRowTap!(row), child: body);
   }

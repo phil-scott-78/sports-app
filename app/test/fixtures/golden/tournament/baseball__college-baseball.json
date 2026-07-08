@@ -1,0 +1,1850 @@
+{
+  "endpoint": "tournament",
+  "args": {
+    "key": "baseball/college-baseball",
+    "scoreboards": [
+      {
+        "leagues": [
+          {
+            "id": "14",
+            "name": "NCAA Baseball",
+            "slug": "college-baseball"
+          }
+        ],
+        "events": [
+          {
+            "id": "401874400",
+            "date": "2026-06-14T00:45Z",
+            "name": "Texas Longhorns at Georgia Bulldogs",
+            "shortName": "TEX @ UGA",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874400",
+                "date": "2026-06-14T00:45Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Double Elimination Round",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "78",
+                    "homeAway": "home",
+                    "winner": true,
+                    "order": 0,
+                    "score": "7",
+                    "curatedRank": {
+                      "current": 3
+                    },
+                    "linescores": [
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "78",
+                      "abbreviation": "UGA",
+                      "displayName": "Georgia Bulldogs",
+                      "shortDisplayName": "Georgia",
+                      "name": "Bulldogs"
+                    }
+                  },
+                  {
+                    "id": "126",
+                    "homeAway": "away",
+                    "winner": false,
+                    "order": 1,
+                    "score": "1",
+                    "curatedRank": {
+                      "current": 6
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "126",
+                      "abbreviation": "TEX",
+                      "displayName": "Texas Longhorns",
+                      "shortDisplayName": "Texas",
+                      "name": "Longhorns"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874399",
+            "date": "2026-06-13T19:00Z",
+            "name": "Oklahoma Sooners at Alabama Crimson Tide",
+            "shortName": "OU @ ALA",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874399",
+                "date": "2026-06-13T19:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Double Elimination Round",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "148",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "0",
+                    "curatedRank": {
+                      "current": 7
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "148",
+                      "abbreviation": "ALA",
+                      "displayName": "Alabama Crimson Tide",
+                      "shortDisplayName": "Alabama",
+                      "name": "Crimson Tide"
+                    }
+                  },
+                  {
+                    "id": "112",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "9",
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874442",
+            "date": "2026-06-14T23:12Z",
+            "name": "West Virginia Mountaineers at North Carolina Tar Heels",
+            "shortName": "WVU @ UNC",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874442",
+                "date": "2026-06-14T23:12Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Double Elimination Round",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "96",
+                    "homeAway": "home",
+                    "winner": true,
+                    "order": 0,
+                    "score": "5",
+                    "curatedRank": {
+                      "current": 5
+                    },
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "96",
+                      "abbreviation": "UNC",
+                      "displayName": "North Carolina Tar Heels",
+                      "shortDisplayName": "North Carolina",
+                      "name": "Tar Heels"
+                    }
+                  },
+                  {
+                    "id": "136",
+                    "homeAway": "away",
+                    "winner": false,
+                    "order": 1,
+                    "score": "2",
+                    "curatedRank": {
+                      "current": 16
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "136",
+                      "abbreviation": "WVU",
+                      "displayName": "West Virginia Mountaineers",
+                      "shortDisplayName": "West Virginia",
+                      "name": "Mountaineers"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874401",
+            "date": "2026-06-14T18:00Z",
+            "name": "Troy Trojans at Ole Miss Rebels",
+            "shortName": "TROY @ MISS",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874401",
+                "date": "2026-06-14T18:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Elimination Game",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "92",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "8",
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "92",
+                      "abbreviation": "MISS",
+                      "displayName": "Ole Miss Rebels",
+                      "shortDisplayName": "Ole Miss",
+                      "name": "Rebels"
+                    }
+                  },
+                  {
+                    "id": "269",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "12",
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "269",
+                      "abbreviation": "TROY",
+                      "displayName": "Troy Trojans",
+                      "shortDisplayName": "Troy",
+                      "name": "Trojans"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874444",
+            "date": "2026-06-15T23:00Z",
+            "name": "Georgia Bulldogs at Oklahoma Sooners",
+            "shortName": "UGA @ OU",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874444",
+                "date": "2026-06-15T23:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Double Elimination Round",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "112",
+                    "homeAway": "home",
+                    "winner": true,
+                    "order": 0,
+                    "score": "4",
+                    "linescores": [
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  },
+                  {
+                    "id": "78",
+                    "homeAway": "away",
+                    "winner": false,
+                    "order": 1,
+                    "score": "3",
+                    "curatedRank": {
+                      "current": 3
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "78",
+                      "abbreviation": "UGA",
+                      "displayName": "Georgia Bulldogs",
+                      "shortDisplayName": "Georgia",
+                      "name": "Bulldogs"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874443",
+            "date": "2026-06-15T18:00Z",
+            "name": "Alabama Crimson Tide at Texas Longhorns",
+            "shortName": "ALA @ TEX",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874443",
+                "date": "2026-06-15T18:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Elimination Game",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "126",
+                    "homeAway": "home",
+                    "winner": true,
+                    "order": 0,
+                    "score": "14",
+                    "curatedRank": {
+                      "current": 6
+                    },
+                    "linescores": [
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      }
+                    ],
+                    "team": {
+                      "id": "126",
+                      "abbreviation": "TEX",
+                      "displayName": "Texas Longhorns",
+                      "shortDisplayName": "Texas",
+                      "name": "Longhorns"
+                    }
+                  },
+                  {
+                    "id": "148",
+                    "homeAway": "away",
+                    "winner": false,
+                    "order": 1,
+                    "score": "2",
+                    "curatedRank": {
+                      "current": 7
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "148",
+                      "abbreviation": "ALA",
+                      "displayName": "Alabama Crimson Tide",
+                      "shortDisplayName": "Alabama",
+                      "name": "Crimson Tide"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874446",
+            "date": "2026-06-17T00:00Z",
+            "name": "Georgia Bulldogs at Texas Longhorns",
+            "shortName": "UGA @ TEX",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874446",
+                "date": "2026-06-17T00:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Elimination Game",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "126",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "0",
+                    "curatedRank": {
+                      "current": 6
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "126",
+                      "abbreviation": "TEX",
+                      "displayName": "Texas Longhorns",
+                      "shortDisplayName": "Texas",
+                      "name": "Longhorns"
+                    }
+                  },
+                  {
+                    "id": "78",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "2",
+                    "curatedRank": {
+                      "current": 3
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "78",
+                      "abbreviation": "UGA",
+                      "displayName": "Georgia Bulldogs",
+                      "shortDisplayName": "Georgia",
+                      "name": "Bulldogs"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874445",
+            "date": "2026-06-16T18:00Z",
+            "name": "West Virginia Mountaineers at Troy Trojans",
+            "shortName": "WVU @ TROY",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874445",
+                "date": "2026-06-16T18:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Elimination Game",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "269",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "0",
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "269",
+                      "abbreviation": "TROY",
+                      "displayName": "Troy Trojans",
+                      "shortDisplayName": "Troy",
+                      "name": "Trojans"
+                    }
+                  },
+                  {
+                    "id": "136",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "12",
+                    "curatedRank": {
+                      "current": 16
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 5
+                      }
+                    ],
+                    "team": {
+                      "id": "136",
+                      "abbreviation": "WVU",
+                      "displayName": "West Virginia Mountaineers",
+                      "shortDisplayName": "West Virginia",
+                      "name": "Mountaineers"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874448",
+            "date": "2026-06-17T23:00Z",
+            "name": "Oklahoma Sooners at Georgia Bulldogs",
+            "shortName": "OU @ UGA",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874448",
+                "date": "2026-06-17T23:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - Oklahoma advances to Championship Series",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "78",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "4",
+                    "curatedRank": {
+                      "current": 3
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      }
+                    ],
+                    "team": {
+                      "id": "78",
+                      "abbreviation": "UGA",
+                      "displayName": "Georgia Bulldogs",
+                      "shortDisplayName": "Georgia",
+                      "name": "Bulldogs"
+                    }
+                  },
+                  {
+                    "id": "112",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "11",
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 2
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874447",
+            "date": "2026-06-17T18:00Z",
+            "name": "North Carolina Tar Heels at West Virginia Mountaineers",
+            "shortName": "UNC @ WVU",
+            "season": {
+              "type": 5,
+              "slug": "world-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874447",
+                "date": "2026-06-17T18:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series - North Carolina advances to Championship Series",
+                    "type": "event"
+                  }
+                ],
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "136",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "7",
+                    "curatedRank": {
+                      "current": 16
+                    },
+                    "linescores": [
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 5
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "136",
+                      "abbreviation": "WVU",
+                      "displayName": "West Virginia Mountaineers",
+                      "shortDisplayName": "West Virginia",
+                      "name": "Mountaineers"
+                    }
+                  },
+                  {
+                    "id": "96",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "12",
+                    "curatedRank": {
+                      "current": 5
+                    },
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "96",
+                      "abbreviation": "UNC",
+                      "displayName": "North Carolina Tar Heels",
+                      "shortDisplayName": "North Carolina",
+                      "name": "Tar Heels"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874451",
+            "date": "2026-06-20T19:00Z",
+            "name": "Oklahoma Sooners at North Carolina Tar Heels",
+            "shortName": "OU @ UNC",
+            "season": {
+              "type": 6,
+              "slug": "championship-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874451",
+                "date": "2026-06-20T19:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series Championship Final - Game 1",
+                    "type": "event"
+                  }
+                ],
+                "series": {
+                  "title": "Playoff Series",
+                  "totalCompetitions": 3,
+                  "completed": false,
+                  "competitors": [
+                    {
+                      "id": "96",
+                      "wins": 0
+                    },
+                    {
+                      "id": "112",
+                      "wins": 1
+                    }
+                  ]
+                },
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "96",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "3",
+                    "curatedRank": {
+                      "current": 5
+                    },
+                    "linescores": [
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "96",
+                      "abbreviation": "UNC",
+                      "displayName": "North Carolina Tar Heels",
+                      "shortDisplayName": "North Carolina",
+                      "name": "Tar Heels"
+                    }
+                  },
+                  {
+                    "id": "112",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "9",
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874452",
+            "date": "2026-06-21T18:30Z",
+            "name": "North Carolina Tar Heels at Oklahoma Sooners",
+            "shortName": "UNC @ OU",
+            "season": {
+              "type": 6,
+              "slug": "championship-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874452",
+                "date": "2026-06-21T18:30Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series Championship Final - Game 2",
+                    "type": "event"
+                  }
+                ],
+                "series": {
+                  "title": "Playoff Series",
+                  "totalCompetitions": 3,
+                  "completed": false,
+                  "competitors": [
+                    {
+                      "id": "96",
+                      "wins": 1
+                    },
+                    {
+                      "id": "112",
+                      "wins": 1
+                    }
+                  ]
+                },
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "112",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "2",
+                    "linescores": [
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  },
+                  {
+                    "id": "96",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "6",
+                    "curatedRank": {
+                      "current": 5
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "96",
+                      "abbreviation": "UNC",
+                      "displayName": "North Carolina Tar Heels",
+                      "shortDisplayName": "North Carolina",
+                      "name": "Tar Heels"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "401874453",
+            "date": "2026-06-22T23:00Z",
+            "name": "Oklahoma Sooners at North Carolina Tar Heels",
+            "shortName": "OU @ UNC",
+            "season": {
+              "type": 6,
+              "slug": "championship-series",
+              "year": 2026
+            },
+            "competitions": [
+              {
+                "id": "401874453",
+                "date": "2026-06-22T23:00Z",
+                "notes": [
+                  {
+                    "headline": "Men's College World Series Championship Final - Game 3",
+                    "type": "event"
+                  }
+                ],
+                "series": {
+                  "title": "Playoff Series",
+                  "totalCompetitions": 3,
+                  "completed": true,
+                  "competitors": [
+                    {
+                      "id": "96",
+                      "wins": 1
+                    },
+                    {
+                      "id": "112",
+                      "wins": 2
+                    }
+                  ]
+                },
+                "status": {
+                  "type": {
+                    "name": "STATUS_FINAL",
+                    "state": "post",
+                    "completed": true,
+                    "detail": "Final",
+                    "shortDetail": "Final",
+                    "description": "Final"
+                  }
+                },
+                "competitors": [
+                  {
+                    "id": "96",
+                    "homeAway": "home",
+                    "winner": false,
+                    "order": 0,
+                    "score": "2",
+                    "curatedRank": {
+                      "current": 5
+                    },
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "96",
+                      "abbreviation": "UNC",
+                      "displayName": "North Carolina Tar Heels",
+                      "shortDisplayName": "North Carolina",
+                      "name": "Tar Heels"
+                    }
+                  },
+                  {
+                    "id": "112",
+                    "homeAway": "away",
+                    "winner": true,
+                    "order": 1,
+                    "score": "13",
+                    "linescores": [
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 3
+                      },
+                      {
+                        "value": 1
+                      },
+                      {
+                        "value": 2
+                      },
+                      {
+                        "value": 0
+                      },
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": 0
+                      }
+                    ],
+                    "team": {
+                      "id": "112",
+                      "abbreviation": "OU",
+                      "displayName": "Oklahoma Sooners",
+                      "shortDisplayName": "Oklahoma",
+                      "name": "Sooners"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "output": {
+    "league": "baseball/college-baseball",
+    "title": "Men's College World Series",
+    "pools": [
+      {
+        "label": "Bracket 1",
+        "rows": [
+          {
+            "team": {
+              "id": "112",
+              "name": "Oklahoma Sooners",
+              "abbr": "OU"
+            },
+            "w": 3,
+            "l": 0,
+            "status": "advances"
+          },
+          {
+            "team": {
+              "id": "78",
+              "name": "Georgia Bulldogs",
+              "abbr": "UGA"
+            },
+            "w": 2,
+            "l": 2,
+            "status": "eliminated"
+          },
+          {
+            "team": {
+              "id": "126",
+              "name": "Texas Longhorns",
+              "abbr": "TEX"
+            },
+            "w": 1,
+            "l": 2,
+            "status": "eliminated"
+          },
+          {
+            "team": {
+              "id": "148",
+              "name": "Alabama Crimson Tide",
+              "abbr": "ALA"
+            },
+            "w": 0,
+            "l": 2,
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "label": "Bracket 2",
+        "rows": [
+          {
+            "team": {
+              "id": "96",
+              "name": "North Carolina Tar Heels",
+              "abbr": "UNC"
+            },
+            "w": 2,
+            "l": 0,
+            "status": "advances"
+          },
+          {
+            "team": {
+              "id": "269",
+              "name": "Troy Trojans",
+              "abbr": "TROY"
+            },
+            "w": 1,
+            "l": 1,
+            "status": "alive"
+          },
+          {
+            "team": {
+              "id": "92",
+              "name": "Ole Miss Rebels",
+              "abbr": "MISS"
+            },
+            "w": 0,
+            "l": 1,
+            "status": "alive"
+          },
+          {
+            "team": {
+              "id": "136",
+              "name": "West Virginia Mountaineers",
+              "abbr": "WVU"
+            },
+            "w": 1,
+            "l": 2,
+            "status": "eliminated"
+          }
+        ]
+      }
+    ],
+    "series": {
+      "title": "Championship Final",
+      "total": 3,
+      "completed": true,
+      "competitors": [
+        {
+          "id": "96",
+          "name": "North Carolina Tar Heels",
+          "abbr": "UNC",
+          "wins": 1
+        },
+        {
+          "id": "112",
+          "name": "Oklahoma Sooners",
+          "abbr": "OU",
+          "wins": 2
+        }
+      ],
+      "games": [
+        {
+          "eventId": "401874451",
+          "date": "2026-06-20T19:00Z",
+          "phase": "final",
+          "gameNumber": 1,
+          "sides": [
+            {
+              "id": "96",
+              "abbr": "UNC",
+              "score": "3"
+            },
+            {
+              "id": "112",
+              "abbr": "OU",
+              "score": "9",
+              "winner": true
+            }
+          ]
+        },
+        {
+          "eventId": "401874452",
+          "date": "2026-06-21T18:30Z",
+          "phase": "final",
+          "gameNumber": 2,
+          "sides": [
+            {
+              "id": "112",
+              "abbr": "OU",
+              "score": "2"
+            },
+            {
+              "id": "96",
+              "abbr": "UNC",
+              "score": "6",
+              "winner": true
+            }
+          ]
+        },
+        {
+          "eventId": "401874453",
+          "date": "2026-06-22T23:00Z",
+          "phase": "final",
+          "gameNumber": 3,
+          "sides": [
+            {
+              "id": "96",
+              "abbr": "UNC",
+              "score": "2"
+            },
+            {
+              "id": "112",
+              "abbr": "OU",
+              "score": "13",
+              "winner": true
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

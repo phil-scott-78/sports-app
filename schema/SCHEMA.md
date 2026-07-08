@@ -643,6 +643,84 @@ the cheap scoreboard poll.
 
 ---
 
+## 10f. Cheap win-prob + soccer standings bands (§2.7/2.8)
+
+Two additive fields, both surfaced purely by DATA PRESENCE (no sport-name branch):
+
+- **`Situation.homeWinPct`** (`normalize.js`/`.dart` `buildSituation`) — the CHEAP
+  scoreboard win probability. Source: `competitions[].situation.lastPlay.probability.
+  homeWinPercentage` (0-1), stored as a **0-100 rounded int** for the HOME side.
+  **VERIFIED basketball-only (~14%, `schema/espn-guide/scoreboard.md`)** — absent for
+  every other sport, so the hero-card footer's two-colour win-prob micro-bar renders on
+  presence alone. Distinct from the rich `summary.winprobability[]` timeline and the
+  CORE `predictor` fallback (both detail-open). No LIVE basketball game was capturable
+  at build time (NBA offseason / no live WNBA slate 2026-07), so the normalizer is
+  pinned by guide-shaped unit tests (`worker/test/units.test.mjs` + `app/test/
+  win_prob_test.dart`), not a fixture golden — no committed scoreboard fixture carries
+  the field, so every existing golden is unchanged.
+- **`StandingsRow.note` `{color?, description?}`** (`standings.js`/`.dart`) — the
+  qualification BAND: an ESPN hex `color` cut-line swatch + a `description` tag
+  ('Champions League' / 'Relegation' / 'Advance to Round of 32' / 'Eliminated').
+  Source: `children[].standings.entries[].note`. **VERIFIED soccer-only (~12%,
+  `schema/espn-guide/standings.md`)**; kept tolerantly, absent otherwise (`rank` is
+  dropped — redundant with the row rank). The client draws a 3px left colour band on
+  the row + a legend grouping identical descriptions under the group card.
+  - **Goldens:** the committed per-league soccer fixtures were captured band-less, so a
+    FRESH capture (`capture-extra.mjs --only standingsNotes`: eng.1 / uefa.champions /
+    fifa.world, trimmed) feeds `app/test/fixtures/golden/standings/*__notes.json`,
+    covered for free by the existing `standings` parity loop in `port_endpoints_test.dart`.
+    (The fifa.world team-detail golden also gained real group bands — the same
+    `normalizeStandings` shield behind the team page.)
+
+---
+
+## 10g. Tournament layer (§2.7 — groups · draw · bracket · pools+series)
+
+**`TournamentResponse`** (`canonical.ts`; oracle `worker/src/tournament.js`, port
+`app/lib/src/data/tournament.dart`, parity `port_tournament_test.dart`) — ONE
+canonical shape for the four tournament grammars, built ENTIRELY from
+already-fetchable tiers: a `?dates=` **range scoreboard** (the structure source)
+plus the league **standings** when the profile says group tables exist. Everything
+below `title` is optional-by-default; the UI renders what is present.
+
+- **Round labels** — three observed sources, first classifiable wins: tennis
+  `round.displayName` (ONE day fetch returns the ENTIRE pre-created Wimbledon
+  draw, VERIFIED 2026-07), `notes[].headline` (`'East 1st Round - Game 6'`, CWS),
+  soccer `altGameNote` (`'FIFA World Cup, Round of 16'`, VERIFIED live 2026-07).
+  All normalize onto one canonical round key (`roundOf128…final`); unknown labels
+  pass through as a `round: null` bucket — never a crash. Ordinal labels
+  (`'Round 4'`) refine to `roundOfN` by bucket size ONLY when sourced from
+  `round.displayName` (a complete draw); headline-sourced ordinals may be a
+  partial slate → they stay `null` with the label intact.
+- **Seeds** — ONLY where `curatedRank` IS the seed: `competitorKind == 'athlete'`
+  (tennis; 99 = unseeded → omitted). Team `curatedRank` is a poll rank; NCAA
+  seeds are the per-event CORE `tournamentMatchup` — a documented hook, never
+  fanned out in the normalizer.
+- **Bracket linkage** — `winnerAdvancesTo` is core-only, so `advancesTo` is
+  derived on the cheap path: a DECIDED matchup links to the earliest later
+  matchup **in a different round** containing its winner (real ids only).
+  Undecided slots have no forward link — the `'Winner E1/F2'` placeholder is a
+  spec §2.7 gap the UI composes only where this field allows.
+- **CWS pools** — RECONSTRUCTED (no ESPN standings doc): pool membership by game
+  connectivity, W–L from pool games, status `eliminated` (2 pool losses) /
+  `advances` (series participant or `'advances to Championship'` headline winner)
+  / `alive`. Championship = the cheap scoreboard `series` block (best-of-N).
+- **Registry hints** (profile-level, §2.7): `tournamentGroups` (soccer.knockout —
+  also fetch standings for group tables + qualification bands) and
+  `tournamentWindowDays` (soccer.knockout ±45, college-baseball ±14 — the ±days
+  range that spans the competition from any date inside it).
+- **Goldens** — REAL captures (`capture-extra.mjs --only tournaments`, 2026-07-08):
+  the 2026 World Cup (12 groups + knockout incl. the live QF window), the full
+  2026 Wimbledon draw (qualifying→final, seeds/sets/TBD slots), and the 2026 CWS
+  (two pools + best-of-3 series). March Madness is off-season/uncapturable → its
+  headline grammar is pinned by guide-shaped unit tests (`units.test.mjs`).
+
+`api.dart tournament(league, {window, grouping, eventId})` is a **pushed-page
+fetch, never the poll**: one cached range scoreboard (window from the hint or the
+override) + best-effort standings, fed to the normalizer.
+
+---
+
 ## 11. Versioning, backward-compatibility & app updates
 
 The contract is versioned as a **discipline, not a protocol**. The Flutter client
