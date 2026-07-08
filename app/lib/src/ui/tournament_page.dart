@@ -845,10 +845,19 @@ class _MatchupCard extends StatelessWidget {
   bool get _seeded => matchup.competitors.any((c) => c.seed != null);
   bool get _hasSets => matchup.competitors.any((c) => c.sets.isNotEmpty);
 
+  /// Bar colors aligned to [cs], cache-preferred with the two-sided a11y guard.
+  List<Color> _barColors(List<TournamentSide> cs) {
+    final raw = [
+      for (final s in cs) _sideColor(s.id, s.abbr ?? s.shortName ?? s.name),
+    ];
+    return cs.length == 2 ? _pairBars(raw[0], raw[1]) : raw;
+  }
+
   @override
   Widget build(BuildContext context) {
     final cs = matchup.competitors;
     final winner = _winnerOf(cs);
+    final barColors = _barColors(cs);
     final card = Container(
       decoration: BoxDecoration(
         color: T.surface,
@@ -866,7 +875,7 @@ class _MatchupCard extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 2),
               color: T.track,
             ),
-          _sideRow(cs[i], winner),
+          _sideRow(cs[i], winner, barColors[i]),
         ],
       ]),
     );
@@ -880,7 +889,7 @@ class _MatchupCard extends StatelessWidget {
     );
   }
 
-  Widget _sideRow(TournamentSide s, TournamentSide? winner) {
+  Widget _sideRow(TournamentSide s, TournamentSide? winner, Color barColor) {
     final win = s.winner;
     final dim = winner != null && !win;
     final nameColor = win ? T.text : (dim ? T.textFaint : T.text);
@@ -920,8 +929,7 @@ class _MatchupCard extends StatelessWidget {
                     color: win ? T.textDim : T.textFaint)),
           )
         else ...[
-          ColorBar(_idColor(s.id.isNotEmpty ? s.id : label),
-              width: 5, height: 14),
+          ColorBar(barColor, width: 5, height: 14),
           const SizedBox(width: 8),
         ],
         Flexible(
@@ -1038,8 +1046,7 @@ class _PoolCard extends StatelessWidget {
           : null,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(children: [
-        ColorBar(_idColor(r.teamId.isNotEmpty ? r.teamId : r.teamName),
-            width: 5, height: 16),
+        ColorBar(_sideColor(r.teamId, r.teamName), width: 5, height: 16),
         const SizedBox(width: 8),
         Expanded(
           child: Text(r.teamName,
@@ -1117,8 +1124,12 @@ class _SeriesCard extends StatelessWidget {
 
   Widget _matchup(TournamentSeriesSide a, TournamentSeriesSide b) {
     final aWin = a.wins >= b.wins;
+    final bars = _pairBars(
+      _sideColor(a.id, a.abbr ?? a.name ?? ''),
+      _sideColor(b.id, b.abbr ?? b.name ?? ''),
+    );
     return Row(children: [
-      ColorBar(_idColor(a.id), width: 8, height: 24, radius: 2),
+      ColorBar(bars[0], width: 8, height: 24, radius: 2),
       const SizedBox(width: 9),
       Text((a.abbr ?? a.name ?? '').toUpperCase(),
           style: T.heroName.copyWith(
@@ -1131,7 +1142,7 @@ class _SeriesCard extends StatelessWidget {
           style: T.heroName.copyWith(
               fontSize: 20, color: !aWin ? T.text : T.textDim)),
       const SizedBox(width: 9),
-      ColorBar(_idColor(b.id), width: 8, height: 24, radius: 2),
+      ColorBar(bars[1], width: 8, height: 24, radius: 2),
     ]);
   }
 
@@ -1212,6 +1223,20 @@ Color _idColor(String seed) {
   }
   return palette[h % palette.length];
 }
+
+/// The bar color for a tournament side (§3.1): prefer the REAL identity color
+/// from the assets cache when the side carries a team id, else the stable
+/// presentational hash. Tournament payloads carry no colors, so this is how a
+/// bracket bar gets a team's actual color when we've seen it on a scoreboard.
+Color _sideColor(String id, String fallbackSeed) =>
+    cachedTeamColor(id) ?? _idColor(id.isNotEmpty ? id : fallbackSeed);
+
+/// Two side-bar colors with the §3.1 a11y guard: when the pair would read as one
+/// identity (indistinguishable real colors, or a hash collision), BOTH fall back
+/// to a neutral rail so the tricode label carries the distinction — never two
+/// same-looking bars.
+List<Color> _pairBars(Color a, Color b) =>
+    colorsTooClose(a, b) ? const [T.outline, T.outline] : [a, b];
 
 /// Up to three uppercase initials from a title ("FIFA World Cup" → "FWC").
 String _initials(String title) {

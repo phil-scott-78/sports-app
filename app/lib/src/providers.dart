@@ -165,6 +165,19 @@ final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
   }));
 });
 
+/// The home feed's freshness (see [Api.feedFreshness]) — recomputed each time the
+/// feed rebuilds, i.e. after every poll round. Drives the Scores header's dim
+/// "Updated …" line, which shows ONLY when a poll failed and the slate is being
+/// served from cache. During normal operation `stale` is false and the line stays
+/// hidden.
+final feedFreshnessProvider = Provider<FeedFreshness>((ref) {
+  ref.watch(feedProvider); // recompute after each feed round settles
+  final api = ref.watch(apiProvider);
+  final leagues = ref.watch(followedProvider);
+  final date = ref.watch(homeDateProvider);
+  return api.feedFreshness(leagues, date: date);
+});
+
 /// Which days in the date-strip window carry games across the followed leagues —
 /// the strip's per-day has-games dots. ONE wide `?dates=` range scoreboard scan
 /// per followed league (cheap tier), fetched ONCE per window and cached in

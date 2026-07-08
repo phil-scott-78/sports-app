@@ -85,6 +85,17 @@ fake: capacity/opened/wind, xG, tennis live points…), final verification sweep
 CLAUDE.md updates.
 
 ## Status log
+- 2026-07-08: Phase 5c COMPLETE + committed (ddb59a7) after a mid-run session
+  restart (resumed via workflow cache). Tournament data layer + screen (all 4
+  grammars, real WC2026/Wimbledon/CWS goldens 24/236/0 links), leftovers all
+  landed (homeWinPct lockstep unit-pinned, GAME N/can-clinch, standings note
+  bands w/ fresh live captures, add-entry + AddTeamPage deleted). Gate:
+  421/421 Dart, worker units 180/180. Task #5 (new screens) CLOSED.
+- 2026-07-08: Phase 6 closeout workflow launched: degraded-state matrix (3.6),
+  team-identity asset cache + logoDark (3.1) wired into standings/tournament
+  bars, docs sync (DESIGN.md patterns, CLAUDE.md drift, deferred ledger,
+  SCHEMA.md §9), and an end-to-end Playwright walk of the app against
+  npm run mock:megaweek with screenshot evidence.
 - 2026-07-08: Phase 5b COMPLETE + committed (2fd5856), gate green first pass
   (391 tests). Standings Division|WildCard|League views + PLAYOFF LINE (honest:
   ESPN groups by conference, wildcard derived, cut default 3), follow sheet 8b,
@@ -171,3 +182,23 @@ CLAUDE.md updates.
   RE-RUN the situation capture when a gridiron/basketball/hockey game is LIVE (and an
   MLB/WNBA game in-progress in the evening) to land real byte-parity goldens; the
   capture + gen-goldens + port-test loop is already wired to pick them up.
+
+## Deferred ledger (post-rework)
+
+Every item below is code-complete (the normalizer/UI path is landed and unit- or
+guide-shape-tested) but blocked on a **live capture window** or a **product
+decision** that a coding session can't resolve alone. Consolidated from the
+Status log above so there's one list to work off instead of five scattered
+DEFERRED/TODO/KNOWN-GAPS notes. Each entry names the concrete unblock.
+
+| Item | Blocked on | WHEN |
+|---|---|---|
+| NBA/NHL full-plays fixture re-capture (`worker/scripts/capture-extra.mjs` team fixtures; also feeds `worker/mock/fixtures/`) | offseason — no live NBA/NHL games to capture from, re-capture was judged too risky against stale shapes | in-season, **Oct 2026** (both leagues open) |
+| `situationCore`/`winprob` goldens (0 today — core `situation`/`predictor` normalizer parity is guide-shape-tested only, `worker/test/units.test.mjs` + `port_situation_core_test.dart`) | needs a LIVE gridiron/basketball/hockey game for `situationCore`, and a live MLB/WNBA game (evening) for `winprob`; `capture-extra.mjs --only situation` is already wired to pick them up | capture during a **live MLB/WNBA game — any evening this week** (basketball/hockey/football wait for their own season) |
+| Basketball cheap win-prob golden (`comp.situation.homeWinPct`, `normalize.dart`/`normalize.js`, feeds the hero-card win-prob micro-bar §8) | needs a live, close NBA/WNBA game to capture the scoreboard's `situation.homeWinPercentage` shape and verify parity byte-for-byte, not just unit-shape | next **live close basketball game** (WNBA is in-season now — good near-term window) |
+| March Madness structured seeds/regions (bracket 12b/12c region chips + seed column; `capabilities.hasSeeds` already resolves via core `tournamentMatchup.seed` for NCAAM/NCAAW) | the tournament data layer has the hook but no captured shape with real seeds/regions populated (basketball is offseason) | **March 2027** — capture an NCAAM/NCAAW tournament round live, wire regions into `tournament.dart`/`tournament.js` |
+| Player game-log W/L column (`player_page.dart` `_GameLogCard`) | needs N extra per-event resolves (one fetch per game row) to know each game's result — a real cost/latency tradeoff, not a bug | **product decision**: is the extra fan-out worth it, or does the log stay result-less |
+| Soccer box-group athlete ids (summary `boxGroups` rows aren't individually tappable to a player page) | soccer box score doesn't carry a clean per-row athlete id the way other sports' box tables do | **meanwhile**: tap into the Lineups tab instead, which does carry athlete ids; revisit if ESPN's box shape changes |
+| True division wild-card (Wild Card view is *conference*-flat today — §8a "the default feed carries no division membership") | needs a registry `playoffCutCount` per division (not just per conference) + a core `groups` children fetch to get real division membership | when a **division-accurate cut** is prioritized — registry key + one more core fetch, no data-layer redesign |
+| Athlete follow + golf "· following" tag (`_FavStar`-equivalent for a player, plus the golf leaderboard's followed-player wash) | `favoriteTeamsProvider` models favorites as *teams*; following an individual athlete is a new favorites shape | **product decision**: is athlete-level following in scope, or do favorites stay team-only |
+| `tournamentProvider` location (`app/lib/src/ui/tournament_page.dart:56`, co-located with the screen instead of `providers.dart`) | every other provider lives in `providers.dart` per the state-management convention (CLAUDE.md §5); this one was left local when the tournament screen landed | low-cost cleanup — **any time**, move it during a future tournament-screen touch |

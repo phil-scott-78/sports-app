@@ -1,7 +1,42 @@
 import 'package:flutter/material.dart';
+import '../data/identity_cache.dart';
 import '../models.dart';
 import '../theme.dart';
 import '../util.dart';
+
+// ═══════════════════════════ identity-cache joins (§3.1) ═══════════════════
+/// The identity-cache-joined team color for a team id, made legible on the dark
+/// background — null when the cache has no color for this team yet. The one
+/// primitive color-less screens (standings rows, bracket sides) call to paint a
+/// color bar; a null result is the a11y signal to fall back to a neutral rail.
+Color? cachedTeamColor(String? id) {
+  final ident = IdentityCache.instance[id];
+  if (ident == null || !ident.hasColor) return null;
+  return teamColorOf(ident.color, ident.altColor);
+}
+
+/// The identity-cache dark-surface logo for a team id (falls back to the light
+/// logo), or null when unknown — the join for screens that hold only an id.
+String? cachedTeamLogo(String? id) {
+  final ident = IdentityCache.instance[id];
+  if (ident == null) return null;
+  final dark = ident.logoDark;
+  if (dark != null && dark.isNotEmpty) return dark;
+  return (ident.logo != null && ident.logo!.isNotEmpty) ? ident.logo : null;
+}
+
+/// Whether two team colors are visually indistinguishable (§3.1 a11y): a cheap
+/// per-channel Manhattan distance below a small threshold. When true, two
+/// matchup bars would read as one identity, so the caller should fall back to a
+/// neutral rail + the tricode label instead of two same-looking bars.
+bool colorsTooClose(Color a, Color b) {
+  final x = a.toARGB32(), y = b.toARGB32();
+  int ch(int v, int shift) => (v >> shift) & 0xFF;
+  final d = (ch(x, 16) - ch(y, 16)).abs() +
+      (ch(x, 8) - ch(y, 8)).abs() +
+      (ch(x, 0) - ch(y, 0)).abs();
+  return d < 60;
+}
 
 // ═══════════════════════════ containers ═══════════════════════════
 
@@ -234,21 +269,26 @@ class _Chip extends StatelessWidget {
   const _Chip({required this.label, required this.selected, required this.onTap});
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          padding: T.chipPad,
-          decoration: BoxDecoration(
-            color: selected ? T.invertedBg : null,
-            border: selected ? null : Border.all(color: T.border, width: 1.5),
-            borderRadius: BorderRadius.circular(100),
+  Widget build(BuildContext context) => Semantics(
+        button: true,
+        selected: selected,
+        label: label,
+        child: GestureDetector(
+          onTap: onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            padding: T.chipPad,
+            decoration: BoxDecoration(
+              color: selected ? T.invertedBg : null,
+              border: selected ? null : Border.all(color: T.border, width: 1.5),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: Text(label,
+                style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+                    color: selected ? T.invertedText : T.textDim)),
           ),
-          child: Text(label,
-              style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-                  color: selected ? T.invertedText : T.textDim)),
         ),
       );
 }
@@ -808,26 +848,34 @@ class TintedAvatar extends StatelessWidget {
   final Color color;
   final double size;
   final bool ring;
+
+  /// When set, the identity cache's team color (§3.1) wins over [color] — so a
+  /// caller that only has a neutral fallback still tints the avatar once the
+  /// cache knows the team.
+  final String? teamId;
   const TintedAvatar(this.text, this.color,
-      {super.key, this.size = 38, this.ring = false});
+      {super.key, this.size = 38, this.ring = false, this.teamId});
 
   @override
-  Widget build(BuildContext context) => Container(
-        width: size,
-        height: size,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Color.alphaBlend(color.withValues(alpha: 0.18), T.surface),
-          border: ring ? Border.all(color: color, width: 2) : null,
-        ),
-        alignment: Alignment.center,
-        child: Text(text.toUpperCase(),
-            style: TextStyle(
-                fontFamily: 'BarlowCondensed',
-                fontWeight: FontWeight.w700,
-                fontSize: size * 0.34,
-                color: paleOf(color))),
-      );
+  Widget build(BuildContext context) {
+    final c = cachedTeamColor(teamId) ?? color;
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color.alphaBlend(c.withValues(alpha: 0.18), T.surface),
+        border: ring ? Border.all(color: c, width: 2) : null,
+      ),
+      alignment: Alignment.center,
+      child: Text(text.toUpperCase(),
+          style: TextStyle(
+              fontFamily: 'BarlowCondensed',
+              fontWeight: FontWeight.w700,
+              fontSize: size * 0.34,
+              color: paleOf(c))),
+    );
+  }
 }
 
 // ═══════════════════════════ §6 pills, chips, toggles ═══════════════════════

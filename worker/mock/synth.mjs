@@ -269,11 +269,59 @@ export function synthCoreSituation(profile, eventId) {
   return {};
 }
 
+// Approximate points that make up one commanding single-score swing, per sport —
+// used ONLY to scale the fabricated win prob so a 2-goal soccer lead and a 12-point
+// basketball lead read as comparably decisive. Mock realism, not a real model.
+const SCORE_UNIT = { basketball: 10, football: 10, hockey: 2, baseball: 3, soccer: 1 };
+
+// Read one event's live score + phase back out of the SAME deterministic scoreboard
+// the app is showing, so a fabricated win prob never contradicts the visible score.
+// Single-comp sports only (predictor is football/basketball/hockey). Null when the
+// event isn't in the current slate.
+export function synthCompetitionState(registry, key, fixture, eventId, opts = {}) {
+  const sb = synthScoreboard(registry, key, fixture, opts);
+  const want = String(eventId);
+  for (const ev of sb.events || []) {
+    for (const comp of ev.competitions || []) {
+      if (String(comp.id) !== want && String(ev.id) !== want) continue;
+      const cs = comp.competitors || [];
+      const home = cs.find((c) => c.homeAway === 'home') || cs[0];
+      const away = cs.find((c) => c.homeAway === 'away') || cs[1];
+      return {
+        homeScore: numScore(home || {}) ?? 0,
+        awayScore: numScore(away || {}) ?? 0,
+        state: comp.status?.type?.state || 'pre',
+        period: comp.status?.period || 0,
+      };
+    }
+  }
+  return null;
+}
+
 // Per-side gameProjection win % (sums to 100), the predictor shape the app's
-// winProbabilityFromPredictor reads. Deterministic by event id.
-export function synthCorePredictor(eventId) {
+// winProbabilityFromPredictor reads. When [state] (from synthCompetitionState) is
+// given, the number is CONSISTENT with the synthesized score/phase — a leader
+// scales 50→95% with lead size and lateness, a tied/scoreless game stays 40–60%,
+// a pre game reads near-even — so no more "100% while tied" artifact. Deterministic
+// by event id (the tied/pre jitter is id-seeded; the leader value is derived from
+// the id+time-seeded score). Falls back to the near-even shape with no state.
+export function synthCorePredictor(eventId, profile = null, state = null) {
   const r = mulberry(hashStr(eventId + ':core-pred'));
-  const home = 20 + Math.floor(r() * 60); // 20..79
+  let home; // home-team win %
+  if (!state || state.state === 'pre') {
+    home = 45 + Math.floor(r() * 11); // 45..55, near-even before tip
+  } else if (state.homeScore === state.awayScore) {
+    home = 40 + Math.floor(r() * 21); // 40..60, coin-flip while tied/scoreless
+  } else {
+    const lead = Math.abs(state.homeScore - state.awayScore);
+    const unit = SCORE_UNIT[profile?.espnSport] || 5;
+    const reg = profile?.regulationPeriods || 4;
+    const lateness = state.state === 'post' ? 1 : Math.min(1, (state.period || 1) / reg);
+    const edge = (lead / unit) * (0.35 + 0.65 * lateness) * 0.6;
+    const p = Math.min(0.95, Math.max(0.5, 0.5 + 0.45 * Math.tanh(edge)));
+    const leader = Math.round(p * 100);
+    home = state.homeScore > state.awayScore ? leader : 100 - leader;
+  }
   const stat = (v) => [{ name: 'gameProjection', displayName: 'WIN PROB', value: v, displayValue: String(v) }];
   return { homeTeam: { statistics: stat(home) }, awayTeam: { statistics: stat(100 - home) } };
 }
@@ -287,6 +335,27 @@ export function synthCorePlayText(eventId, sport) {
   };
   const arr = byS[sport] || ['Play under review'];
   return arr[hashStr(eventId + ':coreplay') % arr.length];
+}
+
+// A minimal, believable core-athlete identity doc for an id we never captured, so a
+// tapped player renders an identity header offline instead of 404ing the profile.
+// Deterministic by id (name/number from small pools) — no team.$ref (the player
+// page reads the tap's teamId for colour when it has one).
+const _ATH_FIRST = ['Alex', 'Jordan', 'Chris', 'Taylor', 'Sam', 'Jamie', 'Casey', 'Morgan', 'Drew', 'Riley', 'Cameron', 'Quinn'];
+const _ATH_LAST = ['Rivera', 'Chen', 'Okafor', 'Nguyen', 'Sullivan', 'Brooks', 'Delgado', 'Foster', 'Hayes', 'Ibrahim', 'Novak', 'Park'];
+export function synthAthleteIdentity(athleteId) {
+  const r = mulberry(hashStr('ath:' + athleteId));
+  const first = _ATH_FIRST[Math.floor(r() * _ATH_FIRST.length)];
+  const last = _ATH_LAST[Math.floor(r() * _ATH_LAST.length)];
+  return {
+    id: String(athleteId),
+    firstName: first,
+    lastName: last,
+    fullName: `${first} ${last}`,
+    displayName: `${first} ${last}`,
+    shortName: `${first[0]}. ${last}`,
+    jersey: String(1 + Math.floor(r() * 98)),
+  };
 }
 
 // Apply a phase to a whole event. Multi-competition events (MMA cards, F1
@@ -455,19 +524,65 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
   return out;
 }
 
+// The team-identity strings a box-score / roster header shows. Rewriting just these
+// (leaving player names + stats alone) relabels a BORROWED summary's tables to the
+// requested event's two teams — so a NYY@TB detail no longer opens to an ATH/DET box.
+const TEAM_ID_KEYS = ['id', 'uid', 'guid', 'abbreviation', 'displayName', 'shortDisplayName', 'name', 'nickname', 'location', 'color', 'alternateColor'];
+function applyTeamIdentity(dst, src) {
+  if (!dst || !src) return;
+  for (const k of TEAM_ID_KEYS) if (src[k] !== undefined) dst[k] = src[k];
+  // Logo travels with identity: adopt the requested team's, or drop the donor's so a
+  // relabeled header never shows the wrong crest.
+  if (src.logo !== undefined) dst.logo = src.logo; else delete dst.logo;
+  if (src.logos !== undefined) dst.logos = src.logos; else delete dst.logos;
+}
+// Relabel each box/roster entry's `.team` to the requested event's team — matched by
+// homeAway when both sides carry it, else by index. `teams` is a synthEventTeams()
+// result ({ byHomeAway, list }); a null/empty one is a no-op.
+function relabelBorrowedTeams(entries, teams) {
+  if (!Array.isArray(entries) || !teams) return;
+  entries.forEach((e, i) => {
+    const src = (e?.homeAway && teams.byHomeAway[e.homeAway]) || teams.list[i] || null;
+    if (e?.team && src) applyTeamIdentity(e.team, src);
+  });
+}
+
+// The two team-identity objects of one event, read out of the synthesized scoreboard,
+// keyed by homeAway (+ an ordered list fallback). Used to relabel a borrowed summary.
+export function synthEventTeams(registry, key, fixture, eventId, opts = {}) {
+  const sb = synthScoreboard(registry, key, fixture, opts);
+  const want = String(eventId);
+  for (const ev of sb.events || []) {
+    for (const comp of ev.competitions || []) {
+      if (String(comp.id) !== want && String(ev.id) !== want) continue;
+      const byHomeAway = {}; const list = [];
+      for (const c of comp.competitors || []) {
+        if (!c.team) continue;
+        list.push(c.team);
+        if (c.homeAway) byHomeAway[c.homeAway] = c.team;
+      }
+      return { byHomeAway, list };
+    }
+  }
+  return null;
+}
+
 // A borrowed summary's header still carries its CAPTURE-time date/status (often a
 // months-old Final) — dropped verbatim onto a "now"-rebased slate it reads as
 // stale/inconsistent (e.g. a "live" scoreboard event opening to a June Final). Patch
-// just the header identity + date/status — deterministic by event id (stable across
-// polls, same "never on `now` alone" rule every other synth transform follows) — and
-// leave the borrowed box score/plays/rosters untouched (§8.2: the mock's job is to
-// walk rich-detail rendering, not data fidelity).
-function rebaseBorrowedSummary(raw, eventId, now) {
+// the header id + date/status — deterministic by event id (stable across polls, same
+// "never on `now` alone" rule every other synth transform follows) — and, when the
+// requested event's [teams] are known, relabel the box-score/roster team HEADERS to
+// them (player names/stats stay the donor's — §8.2: the mock walks rich-detail
+// RENDERING, not data fidelity; mislabeled team headers were the one confusing part).
+function rebaseBorrowedSummary(raw, eventId, now, teams) {
   const out = clone(raw);
   const header = out.header || (out.header = {});
   header.id = String(eventId);
   const comp = (header.competitions ||= [{}])[0] ||= {};
   comp.id = String(eventId);
+  relabelBorrowedTeams(out.boxscore?.teams, teams);
+  relabelBorrowedTeams(out.rosters, teams);
   const roll = hashStr(`${eventId}:sumphase`) % 3; // 0 final · 1 live · 2 scheduled
   if (roll === 2) { // scheduled: a plausible upcoming kickoff
     const startMs = now + (30 + (hashStr(`${eventId}:sumsched`) % 300)) * MIN;
@@ -490,7 +605,7 @@ function rebaseBorrowedSummary(raw, eventId, now) {
  * we have one (best fidelity — real box scores), else a minimal valid envelope so
  * normalizeSummary yields empty tables and the detail page degrades to cheap-tier.
  */
-export function synthSummary(fixture, eventId, { now = Date.now() } = {}) {
+export function synthSummary(fixture, eventId, { now = Date.now(), teams = null } = {}) {
   const base = String(eventId).split('-c')[0].split(':')[0]; // strip clone/comp suffixes
   const raw = fixture.summaries?.[eventId] || fixture.summaries?.[base];
   if (raw) return raw;
@@ -498,16 +613,53 @@ export function synthSummary(fixture, eventId, { now = Date.now() } = {}) {
   // summaries (deterministic by id, same calendar-proof fix as the scoreboard's own
   // pool-borrowing) so far more scoreboard events open a RICH detail offline instead
   // of the degraded empty envelope, then rebase its date/status so it doesn't read
-  // stale. The borrowed box-score teams won't match the synthesized score block —
-  // but the mock's job is to walk the rich-detail rendering (feeds, box tables,
-  // scoring), not data fidelity.
+  // stale, and relabel the box-score/roster team headers to the requested event's
+  // teams (when known) so it doesn't read as a data bug.
   const captured = fixture.summaries ? Object.values(fixture.summaries) : [];
-  if (captured.length) return rebaseBorrowedSummary(captured[hashStr(String(eventId)) % captured.length], eventId, now);
+  if (captured.length) return rebaseBorrowedSummary(captured[hashStr(String(eventId)) % captured.length], eventId, now, teams);
   return { header: { id: String(eventId), competitions: [{ id: String(eventId), competitors: [], status: { type: { state: 'post', completed: true } } }] }, boxscore: { teams: [], players: [] }, plays: [], scoringPlays: [], keyEvents: [], rosters: [] };
 }
 
 export const synthTeams = (fixture) => fixture.teams || { sports: [{ leagues: [{ teams: [] }] }] };
-export const synthStandings = (fixture) => fixture.standings || {};
+
+// A US W/L standings table needs `wins` + `winPercent` to fill its W and PCT
+// columns, but some captured standings ship only losses + gamesPlayed (e.g. the
+// partial MLB capture, which has no top-level wins/winPercent). Derive the gap
+// deterministically from what's present — generic, no sport branch: wins =
+// gamesPlayed − losses − ties; winPercent = wins/(wins+losses). Only fills a
+// MISSING stat, never overwrites a captured one, so complete fixtures (NBA/NFL/…)
+// and every golden pass through byte-identical.
+function repairStandingStats(stats) {
+  if (!Array.isArray(stats)) return stats;
+  const by = {};
+  for (const s of stats) { const k = s?.name || s?.type; if (k && by[k] === undefined) by[k] = s; }
+  const num = (k) => {
+    const s = by[k]; if (!s) return undefined;
+    const v = s.value != null ? Number(s.value) : Number(s.displayValue);
+    return Number.isFinite(v) ? v : undefined;
+  };
+  const out = stats.slice();
+  const gp = num('gamesPlayed'), losses = num('losses'), ties = num('ties') ?? 0;
+  let wins = num('wins');
+  if (wins === undefined && gp !== undefined && losses !== undefined) {
+    wins = gp - losses - ties;
+    out.push({ name: 'wins', type: 'wins', displayValue: String(wins), value: wins });
+  }
+  if (num('winPercent') === undefined && wins !== undefined && losses !== undefined && wins + losses > 0) {
+    const pct = wins / (wins + losses);
+    out.push({ name: 'winPercent', type: 'winpercent', displayValue: pct.toFixed(3), value: pct });
+  }
+  return out;
+}
+function repairStandingsNode(node) {
+  if (!node || typeof node !== 'object') return node;
+  const entries = node.standings?.entries;
+  if (Array.isArray(entries)) for (const en of entries) if (en?.stats) en.stats = repairStandingStats(en.stats);
+  for (const c of node.children || []) repairStandingsNode(c);
+  return node;
+}
+export const synthStandings = (fixture) =>
+  fixture.standings ? repairStandingsNode(structuredClone(fixture.standings)) : {};
 // Rankings ride a captured raw payload verbatim (polls/tours/divisions are
 // season-stable); leagues without a capture get an empty list.
 export const synthRankings = (fixture) => fixture.rankings || { rankings: [] };

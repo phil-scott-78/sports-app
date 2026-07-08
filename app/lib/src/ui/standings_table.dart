@@ -33,6 +33,11 @@ class StandingsGroupCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final cols = _effectiveColumns();
     final keyCol = _keyColumn(cols);
+    // §3.1: paint a team-color rail when the identity cache knows any team in
+    // this group (color-less standings joins the scoreboard's colors by id).
+    // All-unknown tables (e.g. unwarmed athlete standings) keep the rail-free
+    // layout rather than a column of identical neutral bars.
+    final showRail = rows.any((r) => cachedTeamColor(r.team.id) != null);
     return V2Card(
       // §10 data table = T.padTable (14×16), split so the row hairlines + gold
       // wash bleed to the card edge: the card owns the 16 vertical, the header
@@ -57,7 +62,7 @@ class StandingsGroupCard extends StatelessWidget {
           ]),
         ),
         const SizedBox(height: 10),
-        for (final row in _ranked(rows)) _row(row, cols, keyCol),
+        for (final row in _ranked(rows)) _row(row, cols, keyCol, showRail),
         _legend(rows),
       ]),
     );
@@ -162,7 +167,7 @@ class StandingsGroupCard extends StatelessWidget {
   double _colWidth(String label) => label.length >= 4 ? 44 : 38;
 
   Widget _row(StandingsRow row, List<StandingColumn> cols,
-      StandingColumn? keyCol) {
+      StandingColumn? keyCol, bool showRail) {
     final hi = highlightIds.contains(row.team.id);
     final content = Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: T.rowVPad),
@@ -182,6 +187,11 @@ class StandingsGroupCard extends StatelessWidget {
                         color: T.textDim)),
               ),
               const SizedBox(width: 4),
+            ],
+            if (showRail) ...[
+              ColorBar(cachedTeamColor(row.team.id) ?? T.border,
+                  width: 4, height: 15),
+              const SizedBox(width: 9),
             ],
             Flexible(
               child: Text(row.team.name,
@@ -376,7 +386,14 @@ class WildCardCard extends StatelessWidget {
                   color: T.textDim)),
         ),
         const SizedBox(width: 9),
-        ColorBar(barColors[row.team.id] ?? T.border, width: 5, height: 16),
+        // Favorite color (explicit) wins; else the identity cache (§3.1); else a
+        // neutral rail.
+        ColorBar(
+            barColors[row.team.id] ??
+                cachedTeamColor(row.team.id) ??
+                T.border,
+            width: 5,
+            height: 16),
         const SizedBox(width: 9),
         Flexible(
           child: Text(row.team.name,

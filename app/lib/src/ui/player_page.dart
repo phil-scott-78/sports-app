@@ -65,19 +65,32 @@ class PlayerPage extends ConsumerWidget {
             padding: EdgeInsets.only(top: 100),
             child: Center(child: CircularProgressIndicator(color: T.gold)),
           ),
-        _ => _body(profile, seedColor),
+        // A seeded identity (tapped from a box/leaders row) paints even when the
+        // profile fetch fails — but flag the failure so the body appends a terse
+        // "no stats" hint rather than leaving a bare identity that reads as broken.
+        _ => _body(profile, seedColor, failed: async is AsyncError && profile == null),
       },
     );
   }
 
-  Widget _body(AthleteProfile? p, Color color) {
+  Widget _body(AthleteProfile? p, Color color, {bool failed = false}) {
     final displayName = p?.name ?? name ?? athleteId;
     final season = _selectStats(p?.stats ?? const [], _seasonPriority, 8);
     final games = p?.lastGames ?? const [];
+    // Only when the fetch actually ERRORED and there's nothing else to show — a
+    // successful identity-only profile (real player, no stats served) stays clean.
+    final showFailedHint = failed && season.isEmpty && games.isEmpty;
     return ListView(
       padding: const EdgeInsets.only(bottom: T.scrollBottom),
       children: [
         _Identity(profile: p, displayName: displayName, color: color),
+        if (showFailedHint) ...[
+          const SizedBox(height: T.gapCard),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
+            child: HintCard('Couldn’t load this player’s stats.'),
+          ),
+        ],
         if (season.isNotEmpty) ...[
           const SizedBox(height: 6),
           Padding(
@@ -140,7 +153,11 @@ class _Identity extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(T.pageMargin, 8, T.pageMargin, 12),
       child: Row(children: [
         LogoAvatar(
-            url: p?.headshot, initials: initialsOf(displayName), color: color, size: 92),
+            url: p?.headshot,
+            initials: initialsOf(displayName),
+            color: color,
+            teamId: p?.team?.id,
+            size: 92),
         const SizedBox(width: 16),
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -355,17 +372,22 @@ class LogoAvatar extends StatelessWidget {
   final String initials;
   final Color color;
   final double size;
+
+  /// When set, the fallback [TintedAvatar]'s tint prefers the identity cache's
+  /// team color (§3.1) over [color].
+  final String? teamId;
   const LogoAvatar({
     super.key,
     required this.url,
     required this.initials,
     required this.color,
     this.size = 80,
+    this.teamId,
   });
 
   @override
   Widget build(BuildContext context) {
-    final avatar = TintedAvatar(initials, color, size: size);
+    final avatar = TintedAvatar(initials, color, size: size, teamId: teamId);
     if (url == null || url!.isEmpty) return ClipOval(child: avatar);
     return ClipOval(
       child: SizedBox(

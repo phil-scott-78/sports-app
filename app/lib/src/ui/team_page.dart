@@ -321,9 +321,12 @@ class _IdentityHeader extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(T.pageMargin, 8, T.pageMargin, 6),
       child: Row(children: [
         LogoAvatar(
-            url: team.logoDark ?? team.logo,
+            // Dark-surface logo first (§3.1); cache-join fills it when the team
+            // payload shipped no logo but a scoreboard already did.
+            url: team.logoDark ?? team.logo ?? cachedTeamLogo(team.id),
             initials: initialsOf(team.displayName),
             color: color,
+            teamId: team.id,
             size: 80),
         const SizedBox(width: 16),
         Expanded(
@@ -487,7 +490,11 @@ class _NextGameCard extends StatelessWidget {
       out.add(odds.details ?? 'O/U ${odds.overUnder}');
     } else if (event.weather != null && event.weather!.summary.isNotEmpty) {
       out.add(event.weather!.summary);
-    } else {
+    } else if (comp.status.live) {
+      // A note/headline can be a RESULT RECAP ("Seymore strikes out 12…") that
+      // rides along a scheduled event (borrowed offline, or a stale ESPN blurb).
+      // A pre/final game must never show it here — only a genuinely live game
+      // gets the narrative chip; scheduled games stay on venue/odds/weather.
       final note = event.notes.isNotEmpty
           ? event.notes.first
           : (comp.headline != null && comp.headline!.isNotEmpty
@@ -820,6 +827,7 @@ class _LeadersCard extends StatelessWidget {
                 url: c.headshot,
                 initials: initialsOf(c.athlete),
                 color: color,
+                teamId: teamId,
                 size: 34),
             const SizedBox(width: 12),
             Expanded(

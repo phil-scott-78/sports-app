@@ -12,6 +12,7 @@ import {
   synthScoreboard, synthSummary, synthTeamScoreboard, synthTeams,
   synthRankings, synthGolfExtras, synthGolfScorecard, synthMmaCore,
   synthTeamDetailParts, synthCoreSituation, synthCorePredictor, synthCorePlayText,
+  synthStandings, synthAthleteIdentity,
 } from '../mock/synth.mjs';
 import { getScenario } from '../mock/scenarios.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
@@ -19,6 +20,8 @@ import { normalizeSummary, normalizeMmaSummary, buildCoreSituation, winProbabili
 import { normalizeGolfScorecard } from '../src/scorecard.js';
 import { normalizeRankings } from '../src/rankings.js';
 import { normalizeTeamDetail } from '../src/teamdetail.js';
+import { normalizeStandings } from '../src/standings.js';
+import { normalizeAthleteProfile } from '../src/athlete.js';
 
 let pass = 0, fail = 0; const fails = [];
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; fails.push(msg); } };
@@ -132,7 +135,18 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
         { id: '24', homeAway: 'away', team: { id: '24', abbreviation: 'STL' }, score: '3' },
       ],
     }] },
-    boxscore: { teams: [], players: [] }, plays: [], scoringPlays: [], keyEvents: [], rosters: [],
+    boxscore: {
+      teams: [
+        { homeAway: 'home', team: { id: '9', abbreviation: 'MIN', displayName: 'Minnesota Twins', logo: 'min.png' }, statistics: [] },
+        { homeAway: 'away', team: { id: '24', abbreviation: 'STL', displayName: 'St. Louis Cardinals', logo: 'stl.png' }, statistics: [] },
+      ],
+      players: [],
+    },
+    plays: [], scoringPlays: [], keyEvents: [],
+    rosters: [
+      { homeAway: 'home', team: { id: '9', abbreviation: 'MIN', displayName: 'Minnesota Twins' }, roster: [{ athlete: { displayName: 'Donor Player' } }] },
+      { homeAway: 'away', team: { id: '24', abbreviation: 'STL', displayName: 'St. Louis Cardinals' }, roster: [] },
+    ],
   };
   const fx = { ...mlbFixture, summaries: { 999: oldRaw } };
   const eventId = 'zzz-uncaptured-1'; // no exact/base match → must borrow
@@ -143,6 +157,21 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
   ok(['pre', 'in', 'post'].includes(c.status.type.state), `borrowed summary: valid status state (${c.status.type.state})`);
   ok(c.date !== '2025-01-01T00:00:00Z', 'borrowed summary: stale capture-time date replaced');
   ok(c.competitors.map((x) => x.score).join(',') === '5,3', 'borrowed summary: donor box score/scoreline left untouched');
+
+  // Team relabel (§8.2): with the requested event's teams, the borrowed box/roster
+  // HEADERS become the requested teams (player names stay the donor's).
+  const reqTeams = { byHomeAway: {
+    home: { id: '101', abbreviation: 'TB', displayName: 'Tampa Bay Rays', logo: 'tb.png' },
+    away: { id: '102', abbreviation: 'NYY', displayName: 'New York Yankees', logo: 'nyy.png' },
+  }, list: [] };
+  const relabeled = synthSummary(fx, 'zzz-uncaptured-2', { now: NOW, teams: reqTeams });
+  const bt = relabeled.boxscore.teams;
+  ok(bt[0].team.abbreviation === 'TB' && bt[1].team.abbreviation === 'NYY', `borrowed summary: box team headers relabeled to requested (${bt.map((t) => t.team.abbreviation).join(',')})`);
+  ok(bt[0].team.displayName === 'Tampa Bay Rays' && bt[0].team.logo === 'tb.png', 'borrowed summary: relabel carries displayName + logo');
+  ok(relabeled.rosters[0].team.abbreviation === 'TB', 'borrowed summary: roster team header relabeled too');
+  ok(relabeled.rosters[0].roster[0].athlete.displayName === 'Donor Player', 'borrowed summary: donor PLAYER names left untouched');
+  // No teams passed → donor headers untouched (back-compat).
+  ok(borrowed.boxscore.teams[0].team.abbreviation === 'MIN', 'borrowed summary: no teams arg ⇒ donor headers untouched');
 
   // deterministic per (eventId, now)
   const again = synthSummary(fx, eventId, { now: NOW });
@@ -336,12 +365,65 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
     ok(JSON.stringify(wp) === JSON.stringify(again), 'predictor: deterministic per event id');
     ok(winProbabilityFromPredictor({}) === undefined, 'predictor: empty → undefined (fallback stays off)');
   }
+  // Predictor CONSISTENT with score/phase (no "100% while tied" artifact).
+  {
+    const prof = { espnSport: 'basketball', regulationPeriods: 4 };
+    const wpTied = winProbabilityFromPredictor(
+      synthCorePredictor('nba-tie', prof, { homeScore: 88, awayScore: 88, state: 'in', period: 4 }));
+    ok(wpTied.home >= 40 && wpTied.home <= 60, `predictor: tied game is a coin flip 40–60 (${wpTied.home})`);
+    const wpLead = winProbabilityFromPredictor(
+      synthCorePredictor('nba-lead', prof, { homeScore: 104, awayScore: 88, state: 'in', period: 4 }));
+    ok(wpLead.home > 60 && wpLead.home <= 95, `predictor: late 16-pt leader is favored 60–95 (${wpLead.home})`);
+    // lead grows late → prob never shrinks; away leader mirrors to the away side.
+    const wpSmall = winProbabilityFromPredictor(
+      synthCorePredictor('nba-lead', prof, { homeScore: 92, awayScore: 88, state: 'in', period: 2 }));
+    ok(wpLead.home >= wpSmall.home, `predictor: bigger/later lead ⇒ higher win prob (${wpSmall.home}→${wpLead.home})`);
+    const wpAway = winProbabilityFromPredictor(
+      synthCorePredictor('nba-lead', prof, { homeScore: 88, awayScore: 104, state: 'in', period: 4 }));
+    ok(wpAway.away > 60 && wpAway.away <= 95, `predictor: away leader favored on the away side (${wpAway.away})`);
+    const pre = winProbabilityFromPredictor(synthCorePredictor('nba-pre', prof, { homeScore: 0, awayScore: 0, state: 'pre', period: 0 }));
+    ok(pre.home >= 40 && pre.home <= 60, `predictor: pre-game near even (${pre.home})`);
+  }
   // Deterministic situation per event id (no flicker on poll).
   {
     const a = synthCoreSituation({ espnSport: 'football' }, 'cfb-9');
     const b = synthCoreSituation({ espnSport: 'football' }, 'cfb-9');
     ok(JSON.stringify(a) === JSON.stringify(b), 'core-sit: deterministic per event id');
   }
+}
+
+// ---- 16. standings repair: a partial capture still fills W / L / PCT ----------
+// (A US W/L table needs wins + winPercent; some captures ship only losses +
+// gamesPlayed. synthStandings derives the gap so the Division view renders.)
+{
+  const stat = (name, dv, v) => ({ name, type: name.toLowerCase(), displayValue: dv, value: v });
+  const fx = { standings: { name: 'MLB', children: [{ name: 'AL East', standings: { entries: [
+    // partial: losses + gamesPlayed, NO wins/winPercent (the observed defect)
+    { team: { id: '30', displayName: 'Tampa Bay Rays', abbreviation: 'TB' }, stats: [stat('gamesPlayed', '89', 89), stat('losses', '36', 36), stat('gamesBehind', '-', 0)] },
+    // complete: already has wins + winPercent — must pass through untouched
+    { team: { id: '10', displayName: 'New York Yankees', abbreviation: 'NYY' }, stats: [stat('gamesPlayed', '90', 90), stat('wins', '55', 55), stat('losses', '35', 35), stat('winPercent', '0.611', 0.611)] },
+  ] } }] } };
+  const groups = normalizeStandings(synthStandings(fx));
+  const rows = groups[0].rows;
+  const tb = rows.find((r) => r.team.id === '30').stats;
+  ok(tb.wins === '53', `standings repair: wins derived = gamesPlayed − losses (${tb.wins})`);
+  ok(tb.winPercent === '0.596', `standings repair: winPercent derived from W/L (${tb.winPercent})`);
+  ok(tb.losses === '36' && tb.gamesBehind === '-', 'standings repair: existing stats preserved');
+  const nyy = rows.find((r) => r.team.id === '10').stats;
+  ok(nyy.wins === '55' && nyy.winPercent === '0.611', 'standings repair: complete entry passes through untouched');
+  ok(synthStandings({}) && Object.keys(synthStandings({})).length === 0, 'standings repair: no standings ⇒ {} (safe)');
+}
+
+// ---- 17. mock athlete route: identity synth so a tapped player never 404s ------
+{
+  const id = synthAthleteIdentity('7654321');
+  ok(id.id === '7654321' && typeof id.displayName === 'string' && id.displayName.length > 0, `athlete synth: minimal identity has a display name (${id.displayName})`);
+  const again = synthAthleteIdentity('7654321');
+  ok(id.displayName === again.displayName && id.jersey === again.jersey, 'athlete synth: deterministic per id');
+  // The app returns null (→ "couldn't load this player") only when identity is null;
+  // a synthesized identity yields a non-empty name so the profile renders.
+  const prof = normalizeAthleteProfile('baseball/mlb', '7654321', { identity: id });
+  ok(prof.name && prof.name.length > 0, `athlete synth: normalizes to a non-empty profile name (${prof.name})`);
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

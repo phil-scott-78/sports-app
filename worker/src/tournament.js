@@ -49,6 +49,14 @@ function roundOfKey(n) {
   return null;
 }
 
+// Canonical knockout progression (group first → final last). Rounds sort by this
+// rank when BOTH keys are known, so the bracket reads earliest→latest L→R even when
+// scoreboard dates are non-monotonic (a rebased/mock calendar can stage a later
+// round on an earlier day). Unknown-keyed partial slates (round: null) fall back to
+// date order, unchanged.
+const ROUND_RANK = { group: 0, roundOf128: 1, roundOf64: 2, roundOf32: 3, roundOf16: 4, quarterfinal: 5, semifinal: 6, final: 7 };
+const roundRank = r => (r.round != null && ROUND_RANK[r.round] != null ? ROUND_RANK[r.round] : null);
+
 // Ordinal round number in a segment ('1st Round', 'Round 2', 'First Round') →
 // { n, rest } where rest is the segment minus the round words (a region/bracket
 // tag like 'East'), or null when the segment carries no ordinal round.
@@ -440,8 +448,22 @@ export function normalizeTournament(reg, key, input = {}) {
   }
   const rounds = [...buckets.values()].map(b => {
     b.matchups.sort(byDate);
-    return { round: b.key ?? null, label: b.label, matchups: b.matchups };
+    // De-dup by matchup ref (competitionId ?? eventId — a tennis draw is many
+    // matches under ONE tournament event id, so eventId alone would collapse a whole
+    // round), keeping the earliest-dated instance: a range merge or a rebased mock
+    // calendar can surface the same match twice into one bucket.
+    const seen = new Set();
+    const matchups = b.matchups.filter(m => {
+      const id = matchupRef(m);
+      if (id == null) return true;
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
+    return { round: b.key ?? null, label: b.label, matchups };
   }).sort((a, b) => {
+    const ar = roundRank(a), br = roundRank(b);
+    if (ar != null && br != null && ar !== br) return ar - br;
     const am = a.matchups.length ? dateMs(a.matchups[0]) : Infinity;
     const bm = b.matchups.length ? dateMs(b.matchups[0]) : Infinity;
     return am - bm || (a.label < b.label ? -1 : a.label > b.label ? 1 : 0);

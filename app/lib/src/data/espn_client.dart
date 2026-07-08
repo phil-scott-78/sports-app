@@ -56,19 +56,44 @@ const _golfPlayerSummary =
 class _CacheEntry {
   final dynamic json;
   final int expiresMs;
-  _CacheEntry(this.json, this.expiresMs);
+
+  /// When this body was actually fetched from the network (epoch ms). Survives
+  /// past [expiresMs] so a stale-while-revalidate serve can report "Updated …".
+  final int fetchedAtMs;
+  _CacheEntry(this.json, this.expiresMs, this.fetchedAtMs);
 }
+
+/// The freshness of a returned body — surfaced only for scoreboards, to drive
+/// the Scores header's dim "Updated …" line. [stale] is true when a refetch
+/// failed and the last-good body was served from cache instead.
+typedef Freshness = ({int fetchedAtMs, bool stale});
 
 class EspnClient {
   /// Optional origin override (the offline mock). Empty → ESPN direct.
   final String baseOverride;
-  EspnClient([this.baseOverride = '']);
 
   // One reused client → connection pooling/keep-alive (a fresh client per request
-  // means a new TLS handshake every call and leaked sockets).
-  final http.Client _http = http.Client();
+  // means a new TLS handshake every call and leaked sockets). Injectable for tests.
+  final http.Client _http;
+  EspnClient([this.baseOverride = '', http.Client? client])
+      : _http = client ?? http.Client();
+
   final Map<String, _CacheEntry> _cache = {};
   final Map<String, Future<dynamic>> _inflight = {};
+
+  /// URLs currently being served from an expired cache after a failed refetch
+  /// (stale-while-revalidate). A successful refetch clears the flag.
+  final Set<String> _staleUrls = {};
+
+  /// Per-(league,date) freshness of the last [scoreboard] fetch — the stale
+  /// banner's only input. Keyed so a dated slate's freshness never masks today's.
+  final Map<String, Freshness> _scoreboardFresh = {};
+  static String _fk(String key, String? date) => '$key|${date ?? ''}';
+
+  /// Freshness of the last [scoreboard] call for (key,date), or null until it has
+  /// been fetched at least once this session. Read by [Api.feedFreshness].
+  Freshness? scoreboardFreshness(String key, {String? date}) =>
+      _scoreboardFresh[_fk(key, date)];
 
   void dispose() => _http.close();
 
@@ -84,14 +109,28 @@ class EspnClient {
   }
 
   /// GET + decode, with a [ttl]-second reuse window and in-flight coalescing.
+  ///
+  /// Stale-while-revalidate: when the refetch fails (offline / 5xx / timeout) but
+  /// a body was cached before — even one past its TTL — the last-good body is
+  /// served flagged stale rather than blanking an already-rendered slate. A cold
+  /// failure (nothing cached) still throws. The poll loop is the retry-with-
+  /// backoff: the next tick refetches and, on success, clears the stale flag.
   Future<dynamic> _get(String url, {int ttl = 10}) {
     final hit = _cache[url];
     if (hit != null && hit.expiresMs > _now) return Future.value(hit.json);
     final pending = _inflight[url];
     if (pending != null) return pending;
     final fut = _fetch(url).then((json) {
-      _cache[url] = _CacheEntry(json, _now + ttl * 1000);
+      _cache[url] = _CacheEntry(json, _now + ttl * 1000, _now);
+      _staleUrls.remove(url); // fresh again
       return json;
+    }).catchError((Object e) {
+      final cached = _cache[url];
+      if (cached != null) {
+        _staleUrls.add(url);
+        return cached.json; // serve last-good, flagged stale
+      }
+      throw e; // cold failure — nothing to fall back to
     // NOTE the block body: `Map.remove` returns the removed value (this very
     // future), and whenComplete AWAITS a returned Future — an expression body
     // would deadlock the future on itself. Keep this returning void.
@@ -120,7 +159,7 @@ class EspnClient {
   static String _q(Map<String, String> qs) => qs.entries.map((e) => '${e.key}=${Uri.encodeQueryComponent(e.value)}').join('&');
   static String _corePath(String key) => key.replaceFirst('/', '/leagues/');
 
-  Future<dynamic> scoreboard(String key, {String? date, int ttl = 15}) {
+  Future<dynamic> scoreboard(String key, {String? date, int ttl = 15}) async {
     var url = _scoreboard.replaceFirst('{p}', key);
     final qs = <String, String>{};
     if (date != null) qs['dates'] = date;
@@ -130,7 +169,11 @@ class EspnClient {
       if (key.contains('football')) qs['groups'] = '80';
     }
     if (qs.isNotEmpty) url += '?${_q(qs)}';
-    return _get(url, ttl: ttl);
+    final json = await _get(url, ttl: ttl);
+    // Record freshness for the stale banner (see [Api.feedFreshness]).
+    _scoreboardFresh[_fk(key, date)] =
+        (fetchedAtMs: _cache[url]?.fetchedAtMs ?? _now, stale: _staleUrls.contains(url));
+    return json;
   }
 
   Future<dynamic> summary(String key, String eventId, {int ttl = 20}) =>

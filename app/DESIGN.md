@@ -261,6 +261,57 @@ Top to bottom — this order is fixed:
 phase caption, live dot — with the chip nav pinned beneath (condensed chips).
 `bg` background, 1px `divider` bottom border.
 
+### Venue / Circuit tab
+
+A data-gated chip appended to game detail's chip nav (`venueTabKind`, §2.9): a
+stadium event with a venue join id gets **Venue**, a circuit-joined racing
+event gets **Circuit**; neither → no chip added. Two shapes, same skeleton —
+photo/map card → fact grid → a lifted `sheet` summary card:
+
+- **Venue** (design 14a): 210px photo (or media-well placeholder) in a
+  `divider`-bordered `surface` card, address caption below; fact grid of
+  served cells only (Surface `GRASS`/`TURF`, Roof `INDOOR`/`OPEN AIR`,
+  Attendance, Weather — the cheap fields render instantly, Surface/Roof
+  upgrade from the lazy core venue-facts fetch); a `sheet` r20 **TONIGHT**
+  card (weather line + Barlow 32 attendance figure) only when either exists.
+- **Circuit** (design 13a): 180px track-diagram card with a
+  direction/established footer; fact grid (Circuit length, Race distance,
+  Laps, Turns) entirely from the lazy circuit-facts core fetch (F1 only —
+  other racing has no such resource, so the tab is placeholders); a `sheet`
+  r20 **LAP RECORD** card (headshot + Barlow 32 time + driver/year) only when
+  a fastest lap is served.
+
+Every cell/card that ESPN doesn't serve is omitted, never rendered empty
+(§11.8).
+
+### Team & player overview
+
+The shared overview grammar (design 11a–11e) behind both the team page and
+the player page — identity header, one contextual card, then data-gated
+modules:
+
+- **Identity header**: 80px (team) / 92px (player) logo avatar (dark logo,
+  falling back to color-tinted initials) + Barlow 34/30 stacked name (2 lines
+  max) + a `color` dot + middot-joined caption (record · standing, or
+  jersey · position · team). A trailing gold star toggles favorite (team page
+  only).
+- **NEXT GAME / NEXT FIXTURE card**: label + kickoff time, a bar-vs-bar
+  matchup row (8×26 bars, Barlow 22, trailing side dim), then a venue chip +
+  exactly ONE contextual chip (odds → weather → note headline, in that
+  order — never more than one).
+- **FORM / LAST 5 card**: up to five `green`/`live`/dim W-L(-D) pills over a
+  caption (`Won 4 of 5` for win-only sports, `10 pts / 5` for draws-capable) —
+  sourced from the competitor's served `form` string when present, else
+  derived from the last five completed results.
+- **Team leaders card**: per-category season leaders, tappable rows → the
+  athlete's player page.
+- **Per-game stat grid** (player, 11e): 4-column grid, Barlow 26 values over
+  faint letterspaced labels — the stat set is a cross-sport priority list,
+  never a per-sport branch.
+
+An identity-only profile (stats/games not yet resolved) renders the header
+and nothing else — never a placeholder card.
+
 ### Home feed (TODAY)
 
 1. Header: `pageTitle` "TODAY" + date caption; two 36px circle icon buttons right.
@@ -291,13 +342,29 @@ line: dashed rule label row (§7). Racing championships and golf leaderboards
 reuse this table pattern with rank + athlete rows. The full dense-table grammar
 (key-stat column, section rows, semantic cells) lives in §10.
 
+Conference leagues add a **Division / Wild Card / League** underlined-tab
+toggle (§8a) above the tables — same underline style as the sub-tabs above,
+gold active / dim inactive. **Division** (default) is the group-table view
+above; **Wild Card** re-ranks one conference flat in standing order with a
+single dashed-`live` **PLAYOFF LINE** divider drawn after the cut and a
+games-from-the-line GB column (`+N` `green` above the line, `N` dim below,
+the last team in reads an em-dash); **League** flattens every group into one
+ranked table. The toggle appears only when a league's standings carry a
+conference structure — single-table leagues (soccer) never show it.
+
 ### Following / management lists
 
-Radius-16 row cards, 8 gap. Row: minus circle (22px, `track` bg, `live` glyph) +
-team bar + name/league + trailing drag handle (three 16×2 lines, `outline`;
-`textDim` when active). Drop target = 1.5px dashed `border` empty slot. Dragged
-row = `dragSurface`, shadow, slight rotation. Footer hint card = dashed border,
-centered faint caption ("Long-press any team or league in the app to add it here").
+Header: `pageTitle` "FOLLOWING" + a 36px circle **+** button (opens Explore —
+the one discoverable add affordance) + a faint "Drag to set the order of your
+home feed" caption. **Long-press-anywhere stays the primary add grammar** —
+there is no per-row add button. Two sections, **Teams** then **Leagues**
+(`cardLabel` header each, shown only when non-empty) — the stored order IS
+the home feed's section order. Radius-16 row cards, 8 gap. Row: minus circle
+(22px, `border` bg, `live` glyph) + team bar + name/league + trailing drag
+handle (three 16×2 lines, `outline`; `textDim` when active). Drop target =
+1.5px dashed `border` empty slot. Dragged row = `dragSurface`, shadow, slight
+rotation. Footer hint card = dashed border, centered faint caption
+("Long-press any team or league in the app to add it here").
 
 ### Bottom sheet (long-press follow)
 
@@ -314,6 +381,31 @@ no collapse) → chip nav → optional filter control → the feed. The feed's s
 is **chosen per sport by the event-feed framework in §9**: four archetypes
 (sparse timeline / grouped episodes / scoring episodes / dense play-by-play)
 selected by event density, container structure, and the sport's signal event.
+
+### Tournament shell + bracket grammars
+
+One constant shell — crest + title + chip strip — whose body swaps between
+four grammars purely on DATA PRESENCE, never tournament name:
+
+- **12a — groups + knockout scroller**: a table per group (rank, P, GD, PTS)
+  with a **dashed green cut-line** drawn after the qualifying rank — distinct
+  from §7's dashed-`live` cut line: this one marks advancement, not
+  elimination, and carries no label — plus a legend of distinct qualification
+  bands below the table (the note-band pattern, §10); a horizontal knockout
+  scroller beneath, one column per round, each a stack of matchup cards, the
+  final round's label picked out in `gold`.
+- **12b / 12c — single-elim draw / seeded region bracket**: the same
+  round-column scroller, with a region-chip strip (12c) filtering to one
+  bracket when the field has named regions — a seed column and region tag
+  render only when the data carries seeds/regions.
+- **12d — pools + championship series**: a `W–L` + `STATUS` table per pool
+  (`ADVANCES` green / `OUT` `live` / `ALIVE` dim), plus a gold-outlined
+  championship SERIES card — bar-vs-bar matchup, win count, and a row of
+  per-game result chips (scoreline or date, the winner's abbr picked out).
+
+The matchup card is the shared unit across 12a–12c: two competitor rows, a
+seed column when seeds exist, set/game scores when sets exist, else a plain
+score or start date.
 
 ---
 
@@ -390,6 +482,27 @@ name (`situation.hasBaseball` → diamond, `hasGridiron` → drive field,
 `competition.events` → timeline, cricket target → chase, `layout == 'field'` →
 leaderboard). Reuse these; when a new sport appears, compose a new one from the
 same vocabulary (§11 checklist).
+
+### Home-feed hero card — the three-body rule
+
+Every favorite's stacked hero card (§5 Home feed) picks exactly one of three
+bodies by game state — never a fourth: **Live** (status line + live dot →
+two score rows, 8×26 bars, Barlow 24 name / 32 score, trailing side dim →
+a footer glance line), **Final** (the same score rows, no live dot, a
+`Final` status caption), **Scheduled** (compact: one row, mini 6×18 bars,
+`vs`/`@` between abbrs, start time + at most one broadcast line — no sport
+glyph). Detail scales down with certainty: Live carries the full treatment
+(sport glyph, badges, footer), Scheduled carries almost none.
+
+The footer (Live/Final only) hangs one of two mutually exclusive glances,
+series pips taking priority: **series pips** (below, "Playoff series") when
+the competition is a live/decided series, else a **win-probability
+micro-bar** — a 64×5 two-team-color bar (the §5 game-detail win-prob card's
+recipe, hero-scaled down) + a Barlow 13 percentage for the favored side,
+shown only when the cheap scoreboard carries a win pct (basketball, by data
+presence — never a sport-name check). A man-advantage badge (gold `PP` chip,
+or a `live`-red `10 MEN`/`N MEN` chip) rides inline after a side's name in
+the Live body — the §6 tinted-badge recipe at hero-card scale.
 
 ### Baseball — the diamond
 - **Situation card**: SVG diamond left (viewBox `0 0 128 112`; basepaths 3px
@@ -823,6 +936,19 @@ Numbers carry meaning through color, sparingly:
 - **Live here**: the current inning cell is a `track` r4 chip holding a `•`;
   the active pitcher gets the NOW pill (§6). Quieter than a wash — tables are
   too dense for washes.
+
+### Qualification note-bands + legend
+
+Rows that carry an ESPN qualification note (Champions League, Relegation,
+knockout-advance…) get a 3px left color band — parsed from the note's hex,
+flush to the card edge, content unshifted — instead of a text label on every
+row. A single **legend** renders once below the table: a 3×12 swatch + the
+note's description, one entry per distinct band in row order, so the color
+coding is decoded once per card, not repeated per row. Shrinks away entirely
+when no row carries a note. Used by soccer/tournament group standings; the
+tournament group's dashed cut-line (§5 Tournament shell, §7 the cut line) is
+the same idea taken one step further — a rule instead of a swatch, for the
+one boundary that matters most.
 
 ### Scope controls
 

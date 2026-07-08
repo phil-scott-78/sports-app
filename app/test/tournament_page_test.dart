@@ -44,6 +44,15 @@ void main() {
     expect(find.text('GROUP A'), findsOneWidget); // group table header
     expect(find.text('KNOCKOUT BRACKET'), findsOneWidget);
     expect(find.text('Mexico'), findsWidgets);
+
+    // Regression (Phase-6 walk): knockout round columns must read earliest →
+    // latest LEFT → RIGHT (they had rendered reversed, R16 left of R32). The
+    // scroller renders all columns in one Row, so their dx pins the order.
+    final r32 = tester.getTopLeft(find.text('ROUND OF 32')).dx;
+    final r16 = tester.getTopLeft(find.text('ROUND OF 16')).dx;
+    final qf = tester.getTopLeft(find.text('QUARTERFINALS')).dx;
+    expect(r32 < r16 && r16 < qf, isTrue,
+        reason: 'columns L→R must be R32 ($r32) < R16 ($r16) < QF ($qf)');
   });
 
   testWidgets('12b draw columns with set scores (Wimbledon)', (tester) async {

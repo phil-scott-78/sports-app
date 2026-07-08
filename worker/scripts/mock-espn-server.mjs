@@ -22,7 +22,8 @@ import { resolve } from '../../schema/tools/resolve.mjs';
 import {
   synthScoreboard, synthSummary, synthTeams, synthStandings, synthRankings,
   synthGolfExtras, synthGolfScorecard, synthMmaCore, synthTeamDetailParts,
-  synthCoreSituation, synthCorePredictor, synthCorePlayText,
+  synthCoreSituation, synthCorePredictor, synthCorePlayText, synthCompetitionState,
+  synthAthleteIdentity, synthEventTeams,
 } from '../mock/synth.mjs';
 import { getScenario } from '../mock/scenarios.mjs';
 
@@ -52,6 +53,19 @@ function loadFixtures() {
 }
 const emptyFixture = (key) => ({ key, events: [], teams: null, standings: null, summaries: {} });
 const fxFor = (key) => fixtures.get(key) || emptyFixture(key);
+
+// Captured athlete profiles (identity + season statistics) live in _extra.json — a
+// `_`-prefixed file loadFixtures() deliberately skips. Index them by athlete id so
+// the core-athlete route can serve a real profile, and any unknown id falls back to
+// a synthesized identity (no 404 on a tapped player). games/eventlog stay empty
+// offline (resolving a raw eventlog's $ref fan-out isn't worth reproducing).
+const athleteExtra = new Map(); // athleteId → { identity, statistics }
+function loadExtra() {
+  try {
+    const ex = JSON.parse(readFileSync(join(FIX_DIR, '_extra.json'), 'utf8'));
+    for (const a of ex.athletes || []) if (a?.athleteId != null) athleteExtra.set(String(a.athleteId), a);
+  } catch { /* no _extra.json — synthesized identities still serve */ }
+}
 
 const CORS = {
   'access-control-allow-origin': '*',
@@ -110,7 +124,10 @@ function handle(req, res) {
       // Fabricated deterministically so live gridiron/basketball/hockey detail is
       // walkable offline through the app's real core-fetch path.
       if (seg[7] === 'competitions' && seg[9] === 'predictor') {
-        return send(res, { $ref: `${REF_HOST}${url.pathname}`, ...synthCorePredictor(eventId) });
+        // Read the event's live score/phase back out of the synthesized scoreboard so
+        // the win prob is consistent with what's on screen (no "100% while tied").
+        const state = synthCompetitionState(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
+        return send(res, { $ref: `${REF_HOST}${url.pathname}`, ...synthCorePredictor(eventId, prof, state) });
       }
       if (seg[7] === 'competitions' && seg[9] === 'situation') {
         const sit = synthCoreSituation(prof, eventId);
@@ -133,6 +150,17 @@ function handle(req, res) {
       return send(res, { id: String(eventId), tournament: { $ref: `${REF_HOST}/mock/golf-tourn/${key}/${eventId}` } });
     }
 
+    // ---- core athlete: /v2/sports/{sport}/leagues/{league}/athletes/{id}[/statistics|/eventlog]
+    // The player page's identity source when there's no roster row. Serve the captured
+    // profile when we have it, else a synthesized identity so ANY tapped player renders.
+    if (seg[0] === 'v2' && seg[1] === 'sports' && seg[3] === 'leagues' && seg[5] === 'athletes') {
+      const athleteId = seg[6], sub = seg[7];
+      const ex = athleteExtra.get(String(athleteId));
+      if (sub === 'statistics') return send(res, (ex && ex.statistics) || {});
+      if (sub === 'eventlog') return send(res, { events: { items: [] } });
+      return send(res, (ex && ex.identity) || synthAthleteIdentity(athleteId));
+    }
+
     // ---- site v2: /apis/site/v2/sports/{sport}/{league}/{resource}[/...] -----
     // (golf hole-by-hole rides this too: resource 'leaderboard' + 'playersummary')
     if (seg[0] === 'apis' && seg[1] === 'site' && seg[2] === 'v2' && seg[3] === 'sports') {
@@ -144,7 +172,11 @@ function handle(req, res) {
         return send(res, synthScoreboard(registry, key, fx, { now, date: q.get('dates') || null, scenario: SCENARIO }));
       }
       if (resource === 'summary') {
-        return send(res, synthSummary(fx, q.get('event')));
+        // Relabel a borrowed summary's box/roster team headers to the tapped event's
+        // two teams (read from the synthesized scoreboard) so it doesn't read as a bug.
+        const evId = q.get('event');
+        const teams = synthEventTeams(registry, key, fx, evId, { now, scenario: SCENARIO });
+        return send(res, synthSummary(fx, evId, { now, teams }));
       }
       if (resource === 'teams' && !seg[7]) {
         return send(res, synthTeams(fx));
@@ -179,6 +211,7 @@ function handle(req, res) {
 }
 
 loadFixtures();
+loadExtra();
 if (!fixtures.size) console.warn('⚠  No fixtures in mock/fixtures/. Run: node scripts/capture-fixtures.mjs\n');
 http.createServer(handle).listen(PORT, '0.0.0.0', () => {
   const withEvents = [...fixtures.values()].filter((f) => f.events?.length).length;

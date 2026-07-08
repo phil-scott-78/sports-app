@@ -139,10 +139,17 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
                     ),
                   ],
                 ],
-              AsyncError() => const [
+              // Only reached on a COLD failure — a transient poll error is served
+              // from cache (stale-while-revalidate) and keeps the last good slate.
+              // So this is the "no cached frame" case: a quiet tap-to-retry.
+              AsyncError() => [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: T.pageMargin),
-                    child: HintCard('Couldn’t load this league.'),
+                    padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
+                    child: GestureDetector(
+                      onTap: () => ref.invalidate(leagueScoresProvider(_key)),
+                      child: const HintCard(
+                          'Couldn’t load this league — tap to retry.'),
+                    ),
                   ),
                 ],
               _ => const [

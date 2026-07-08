@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../config.dart';
 import '../models.dart';
 import '../providers.dart';
@@ -75,6 +76,7 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
     final dated = date != null;
     final feeds = ref.watch(feedProvider);
     final favs = ref.watch(favoritesFeedProvider);
+    final fresh = ref.watch(feedFreshnessProvider);
 
     return RefreshIndicator(
       color: T.gold,
@@ -96,6 +98,10 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
               setState(() => _showStrip = false);
             },
           ),
+          // The dim "Updated …" line — shown ONLY when a poll failed and the
+          // slate is being served from cache (stale-while-revalidate), never
+          // during normal operation.
+          if (fresh.stale) _StaleLine(lastUpdated: fresh.lastUpdated),
           // The favorite hero cards are now-anchored (live/last/next), so they'd
           // be misleading on a past/future slate — hide them when a day is picked.
           if (!dated)
@@ -127,6 +133,10 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
     );
   }
 
+  /// The followed-league sections. An empty slate is a VALID offseason/no-games
+  /// state, not an error: the section header stays (with a terse "No games"), so
+  /// the feed never silently drops a league you follow. When the whole day is
+  /// empty, an [_EmptyDayHint] offers the nearest day with games.
   List<Widget> _leagueSections(List<LeagueFeed> feeds, String? date) {
     final out = <Widget>[];
     for (final f in feeds) {
@@ -135,21 +145,20 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
         out.add(_leagueErrorSection(f));
         continue;
       }
-      if (scores.events.isEmpty) continue;
+      // Header always renders (empty leagues keep their place; the header shows
+      // "No games" instead of "See all N").
       out.add(_SectionHeader(league: f.key, scores: scores));
-      out.add(Padding(
-        padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
-        child: LeagueEventsCard(league: f.key, scores: scores, date: date),
-      ));
+      if (scores.events.isNotEmpty) {
+        out.add(Padding(
+          padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
+          child: LeagueEventsCard(league: f.key, scores: scores, date: date),
+        ));
+      }
     }
-    if (out.isEmpty) {
-      out.add(Padding(
-        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
-        child: HintCard(date != null
-            ? 'No games on this day in your leagues.'
-            : 'No games today in your leagues.\nManage what you follow in the Following tab.'),
-      ));
-    }
+    final anyGames = feeds.any((f) => f.scores?.events.isNotEmpty ?? false);
+    final anyError = feeds.any((f) => f.scores == null);
+    // A wholly empty day (no games, nothing errored) gets the nearest-day hint.
+    if (!anyGames && !anyError) out.add(_EmptyDayHint(date: date));
     return out;
   }
 
@@ -166,6 +175,114 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
   Widget _feedError(String message) => Padding(
         padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
         child: HintCard(message),
+      );
+}
+
+/// The dim "Updated 5:04 PM" line under the header — the stale/offline marker.
+/// Rendered only when the feed is being served from cache after a failed poll.
+class _StaleLine extends StatelessWidget {
+  final DateTime? lastUpdated;
+  const _StaleLine({required this.lastUpdated});
+
+  @override
+  Widget build(BuildContext context) {
+    final when =
+        lastUpdated == null ? '' : ' · Updated ${DateFormat.jm().format(lastUpdated!)}';
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(T.pageMargin, 8, T.pageMargin, 0),
+      child: Row(children: [
+        const Icon(Icons.cloud_off_rounded, size: 13, color: T.textFaint),
+        const SizedBox(width: 6),
+        Text('Offline$when', style: T.captionFaint),
+      ]),
+    );
+  }
+}
+
+/// The whole-day-empty footer. When the coverage scan (or the cheap
+/// `calendarDays` hint) knows a nearby day with games it offers a tappable
+/// "Next games <weekday>" that moves the date strip to that day; otherwise the
+/// calm generic copy.
+class _EmptyDayHint extends ConsumerWidget {
+  final String? date;
+  const _EmptyDayHint({required this.date});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final days = <String>{...?ref.watch(homeCoverageProvider).valueOrNull};
+    for (final f in ref.watch(feedProvider).valueOrNull ?? const <LeagueFeed>[]) {
+      days.addAll(f.scores?.calendarDays ?? const []);
+    }
+    final from = parseYmd(date) ?? DateTime.now();
+    final nearest = _nearestGameDay(days, from);
+    if (nearest != null) {
+      final d = parseYmd(nearest)!;
+      final f0 = DateTime(from.year, from.month, from.day);
+      final future = !DateTime(d.year, d.month, d.day).isBefore(f0);
+      final label =
+          '${future ? 'Next games' : 'Last games'} ${DateFormat.E().format(d)}';
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
+        child: _NextGamesHint(
+          label: label,
+          onTap: () => ref.read(homeDateProvider.notifier).state = nearest,
+        ),
+      );
+    }
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
+      child: HintCard(date != null
+          ? 'No games on this day in your leagues.'
+          : 'No games today in your leagues.\nManage what you follow in the Following tab.'),
+    );
+  }
+}
+
+/// The nearest 'YYYYMMDD' in [days] other than [from], preferring the soonest
+/// future day, else the most-recent past day. Null when [days] is empty.
+String? _nearestGameDay(Set<String> days, DateTime from) {
+  final f0 = DateTime(from.year, from.month, from.day);
+  DateTime? best;
+  var bestRank = 1 << 30;
+  for (final s in days) {
+    final d = parseYmd(s);
+    if (d == null) continue;
+    final delta = DateTime(d.year, d.month, d.day).difference(f0).inDays;
+    if (delta == 0) continue;
+    // Future days rank 1..; past days rank higher (further = larger), so any
+    // future day beats any past day and the nearest within each side wins.
+    final rank = delta > 0 ? delta : 1000 - delta;
+    if (rank < bestRank) {
+      bestRank = rank;
+      best = d;
+    }
+  }
+  return best == null ? null : ymd(best);
+}
+
+/// The tappable "Next games <weekday>" pill — gold to read as an action, dashed
+/// to read as "nothing here yet, go there".
+class _NextGamesHint extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+  const _NextGamesHint({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: DashedBox(
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(14),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(label,
+                  style: const TextStyle(
+                      fontSize: 13, fontWeight: FontWeight.w600, color: T.gold)),
+              const SizedBox(width: 5),
+              const Icon(Icons.chevron_right_rounded, size: 16, color: T.gold),
+            ]),
+          ),
+        ),
       );
 }
 
@@ -456,6 +573,7 @@ class _SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final empty = scores.events.isEmpty;
     var title = scores.leagueName.toUpperCase();
     // Tack the round onto tournament headers ('WORLD CUP · ROUND OF 16').
     final rounds = scores.events
@@ -464,7 +582,8 @@ class _SectionHeader extends StatelessWidget {
         .toSet();
     if (rounds.length == 1) title = '$title · ${rounds.first.toUpperCase()}';
     return InkWell(
-      // The header taps through to the full league page.
+      // The header taps through to the full league page (standings/schedule are
+      // still worth a look even on an empty day).
       onTap: () =>
           openLeaguePage(context, league, name: scores.leagueName),
       child: Padding(
@@ -479,10 +598,16 @@ class _SectionHeader extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: T.sectionTitle),
             ),
-            Text('See all ${scores.events.length}', style: T.captionFaint),
-            const SizedBox(width: 4),
-            const Icon(Icons.chevron_right_rounded,
-                size: 16, color: T.textFaint),
+            // Empty slate → a terse "No games" instead of "See all N"; the header
+            // stays so a followed league never silently vanishes.
+            if (empty)
+              const Text('No games', style: T.captionFaint)
+            else ...[
+              Text('See all ${scores.events.length}', style: T.captionFaint),
+              const SizedBox(width: 4),
+              const Icon(Icons.chevron_right_rounded,
+                  size: 16, color: T.textFaint),
+            ],
           ],
         ),
       ),

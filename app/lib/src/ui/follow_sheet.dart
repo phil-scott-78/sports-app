@@ -222,7 +222,10 @@ class _SheetRow extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => InkWell(
+  Widget build(BuildContext context) => Semantics(
+        button: true,
+        label: subtitle != null ? '$title, $subtitle' : title,
+        child: InkWell(
         onTap: () {
           onTap();
           if (closeOnTap) Navigator.of(context).pop();
@@ -251,6 +254,7 @@ class _SheetRow extends StatelessWidget {
               ),
             ),
           ]),
+        ),
         ),
       );
 }

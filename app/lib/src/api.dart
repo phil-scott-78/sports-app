@@ -1,4 +1,5 @@
 import 'data/espn_client.dart';
+import 'data/identity_cache.dart';
 import 'data/profiles.dart';
 import 'data/normalize.dart';
 import 'data/calendar.dart' as cal;
@@ -17,6 +18,16 @@ import 'models.dart';
 
 export 'data/espn_client.dart' show ApiException;
 
+/// Aggregate freshness of a set of scoreboards — the input to the Scores
+/// header's dim "Updated …" line. [stale] is true when the slate is being served
+/// from cache after a failed refetch (offline / 5xx / timeout); [lastUpdated] is
+/// the most recent successful scoreboard fetch among the leagues.
+class FeedFreshness {
+  final bool stale;
+  final DateTime? lastUpdated;
+  const FeedFreshness({required this.stale, this.lastUpdated});
+}
+
 /// The app's data layer. Formerly a thin HTTP client to the Cloudflare worker;
 /// now it talks to ESPN directly (via [EspnClient]) and runs the SAME canonical
 /// normalizers the worker used to run — ported to Dart under lib/src/data/. The
@@ -30,7 +41,9 @@ class Api {
   final String baseUrl;
   final EspnClient _c;
 
-  Api(this.baseUrl) : _c = EspnClient(baseUrl);
+  /// [client] is injectable for tests (offline mock / stale-while-revalidate
+  /// checks); production always builds one from [baseUrl].
+  Api(this.baseUrl, [EspnClient? client]) : _c = client ?? EspnClient(baseUrl);
 
   /// Direct-to-ESPN needs no configuration, so the app is always "configured".
   bool get configured => true;
@@ -47,7 +60,32 @@ class Api {
   Future<ScoresResponse> scores(String league, {String? date}) async {
     final sb = await _c.scoreboard(league, date: date) as Map;
     final extras = await _golfExtras(league, sb);
-    return ScoresResponse.fromJson(normalizeScoreboard(_reg, league, sb, extras));
+    final norm = normalizeScoreboard(_reg, league, sb, extras);
+    // Warm the identity cache off every scoreboard (the color/logo source
+    // color-less screens — standings, brackets — join against). §3.1.
+    IdentityCache.instance.warmScoreboard(norm);
+    return ScoresResponse.fromJson(norm);
+  }
+
+  /// Aggregate freshness of [leagues]' scoreboards at [date] — drives the Scores
+  /// header's stale line. Reads the freshness [EspnClient] recorded for each
+  /// league's last scoreboard fetch; a league not yet fetched contributes
+  /// nothing. `stale` is true when ANY of them is being served from an expired
+  /// cache; `lastUpdated` is the newest successful fetch among them.
+  FeedFreshness feedFreshness(List<String> leagues, {String? date}) {
+    var stale = false;
+    int? newest;
+    for (final key in leagues) {
+      final f = _c.scoreboardFreshness(key, date: date);
+      if (f == null) continue;
+      if (f.stale) stale = true;
+      if (newest == null || f.fetchedAtMs > newest) newest = f.fetchedAtMs;
+    }
+    return FeedFreshness(
+      stale: stale,
+      lastUpdated:
+          newest == null ? null : DateTime.fromMillisecondsSinceEpoch(newest),
+    );
   }
 
   /// Golf meta (cut/major/rounds → meta.golf) rides the CORE tournament resource,
@@ -603,9 +641,9 @@ class Api {
   // ---- teams -----------------------------------------------------------------
   Future<List<TeamRef>> teams(String league) async {
     final raw = await _c.teams(league);
-    return tm.normalizeTeams(_reg, league, raw)
-        .map((t) => TeamRef.fromJson(t))
-        .toList(growable: false);
+    final norm = tm.normalizeTeams(_reg, league, raw);
+    IdentityCache.instance.warmTeams(norm); // §3.1 identity warm-up
+    return norm.map((t) => TeamRef.fromJson(t)).toList(growable: false);
   }
 
   // ---- team card -------------------------------------------------------------
@@ -618,7 +656,21 @@ class Api {
         card = tm.applyScoreboardFallback(_reg, league, teamId, card, sb);
       } catch (_) {/* scoreboard optional — keep schedule-only card */}
     }
+    _warmTeamBlock(card['team']);
     return TeamCard.fromJson(card);
+  }
+
+  /// Warm the identity cache with a normalized `team` block (teamCard/teamDetail
+  /// carry the followed team's id + color + logo/logoDark — §3.1).
+  void _warmTeamBlock(dynamic team) {
+    if (team is! Map) return;
+    IdentityCache.instance.put(
+      team['id']?.toString(),
+      logo: team['logo']?.toString(),
+      logoDark: team['logoDark']?.toString(),
+      color: team['color']?.toString(),
+      abbreviation: team['abbreviation']?.toString(),
+    );
   }
 
   // ---- team detail -----------------------------------------------------------
@@ -635,6 +687,10 @@ class Api {
       'stats': rest[1],
       'standingsRaw': rest[2],
     });
+    _warmTeamBlock(data['team']);
+    // The schedule carries every opponent's competitors (color/logo) — warm them
+    // too so this team's standings group can paint each rival's rail (§3.1).
+    IdentityCache.instance.warmScoreboard({'events': data['schedule']});
     return TeamDetail.fromJson(data);
   }
 

@@ -42,6 +42,23 @@ String? _roundOfKey(int n) {
   return null;
 }
 
+// Canonical knockout progression (group first → final last). Rounds sort by this
+// rank when BOTH keys are known, so the bracket reads earliest→latest L→R even when
+// scoreboard dates are non-monotonic (a rebased/mock calendar can stage a later
+// round on an earlier day). Unknown-keyed partial slates (round: null) fall back to
+// date order, unchanged.
+const _roundRankByKey = {
+  'group': 0,
+  'roundOf128': 1,
+  'roundOf64': 2,
+  'roundOf32': 3,
+  'roundOf16': 4,
+  'quarterfinal': 5,
+  'semifinal': 6,
+  'final': 7,
+};
+int? _roundRank(Map<String, dynamic> r) => _roundRankByKey[r['round']];
+
 const _wordOrdinals = {
   'first': 1, 'second': 2, 'third': 3, 'fourth': 4, 'fifth': 5, 'sixth': 6,
 };
@@ -713,9 +730,27 @@ Map<String, dynamic> normalizeTournament(Registry reg, String key, Map input) {
   }
   final rounds = buckets.values.map((b) {
     final ms = (b['matchups'] as List).cast<Map<String, dynamic>>()..sort(_byDate);
-    return <String, dynamic>{'round': b['key'], 'label': b['label'], 'matchups': ms};
+    // De-dup by matchup ref (competitionId ?? eventId — a tennis draw is many
+    // matches under ONE tournament event id, so eventId alone would collapse a whole
+    // round), keeping the earliest-dated instance: a range merge or a rebased mock
+    // calendar can surface the same match twice into one bucket.
+    final seen = <String>{};
+    final matchups = <Map<String, dynamic>>[];
+    for (final m in ms) {
+      final id = _matchupRef(m);
+      if (id.isNotEmpty && !seen.add(id)) continue;
+      matchups.add(m);
+    }
+    return <String, dynamic>{
+      'round': b['key'],
+      'label': b['label'],
+      'matchups': matchups
+    };
   }).toList()
     ..sort((a, b) {
+      final ar = _roundRank(a);
+      final br = _roundRank(b);
+      if (ar != null && br != null && ar != br) return ar - br;
       final ams = a['matchups'] as List;
       final bms = b['matchups'] as List;
       final am = ams.isNotEmpty ? _dateMs(ams[0] as Map) : double.infinity;

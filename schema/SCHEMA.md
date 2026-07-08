@@ -389,6 +389,17 @@ against the live API. Outstanding before relying on them:
   `common/v3 .../statistics` 404s.
 - **Known-unsupported:** boxing (no ESPN sport — source elsewhere); tennis match
   stats (every summary/statistics endpoint 400s — VERIFIED 2026-07, see §6).
+- **In-season re-captures pending** (code-complete, guide/unit-shape-tested
+  only — no live-shape golden yet; see `rework-plan.md`'s Deferred ledger for
+  the app-side detail): NBA/NHL full-plays fixture re-capture (offseason
+  now — re-run `capture-extra.mjs` in-season, Oct 2026); `situationCore` /
+  `winprob` core-fetch goldens (0 today — capture during a live MLB/WNBA game,
+  any evening this week; gridiron/basketball/hockey wait for their own
+  season); the basketball cheap win-prob field (`situation.homeWinPercentage`)
+  needs a live close NBA/WNBA game to verify byte-for-byte, not just
+  unit-shape; March Madness structured seeds/regions (`capabilities.hasSeeds`
+  resolves via core `tournamentMatchup.seed` for NCAAM/NCAAW, but no captured
+  shape has real seeds/regions populated — capture March 2027).
 
 These are *data* gaps, not *design* gaps — the contract already models all of
 them; the registry just needs the confirmed values filled in.
