@@ -13,6 +13,7 @@ import {
   synthRankings, synthGolfExtras, synthGolfScorecard, synthMmaCore,
   synthTeamDetailParts,
 } from '../mock/synth.mjs';
+import { getScenario } from '../mock/scenarios.mjs';
 import { normalizeScoreboard } from '../src/normalize.js';
 import { normalizeSummary, normalizeMmaSummary } from '../src/summary.js';
 import { normalizeGolfScorecard } from '../src/scorecard.js';
@@ -220,6 +221,41 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
   // deterministic per (team, now) so polling never flickers
   const again = normalizeTeamDetail(registry, 'baseball/mlb', '9', synthTeamDetailParts(registry, 'baseball/mlb', mlbFixture, '9', { now: NOW }));
   ok(JSON.stringify(d) === JSON.stringify(again), 'teamdetail mock: deterministic per (team, now)');
+}
+
+// ---- 14. scenario "megaweek": max-live today + one championship on the champ day ----
+{
+  const sc = getScenario('megaweek');
+  ok(sc && sc.name === 'megaweek', 'megaweek: scenario resolves by name');
+  ok(getScenario('nope') === null && getScenario(null) === null, 'megaweek: unknown/empty scenario → null');
+
+  // today → mostly live, but still ≥1 final + ≥1 scheduled (every UI state reachable)
+  const ph = phasesOf(normalizeScoreboard(registry, 'baseball/mlb', synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW, scenario: sc })));
+  ok((ph.live || 0) >= (ph.final || 0) + (ph.scheduled || 0), `megaweek today: live dominates the slate (${JSON.stringify(ph)})`);
+  ok((ph.final || 0) > 0 && (ph.scheduled || 0) > 0, 'megaweek today: still keeps a final + a scheduled');
+
+  // deterministic on (fixture, now) so polling never flickers
+  const a = synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW, scenario: sc });
+  const b = synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW, scenario: sc });
+  ok(JSON.stringify(a) === JSON.stringify(b), 'megaweek: deterministic per (fixture, now)');
+
+  // exactly one "Championship" hero across the week, and never today; ≤1 on any day
+  const champDays = [];
+  for (let d = 1; d <= 6; d++) {
+    const ymd = new Date(NOW + d * 86400000).toISOString().slice(0, 10).replace(/-/g, '');
+    const nrm = normalizeScoreboard(registry, 'baseball/mlb', synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW, date: ymd, scenario: sc }));
+    const champs = nrm.events.filter((e) => e.competitions.some((c) => c.meta?.round === 'Championship'));
+    ok(champs.length <= 1, `megaweek day +${d}: at most one championship hero (${champs.length})`);
+    if (champs.length) champDays.push(d);
+  }
+  ok(champDays.length === 1, `megaweek: exactly one champ day this week (got days ${JSON.stringify(champDays)})`);
+  const todayChamp = normalizeScoreboard(registry, 'baseball/mlb', synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW, scenario: sc }))
+    .events.some((e) => e.competitions.some((c) => c.meta?.round === 'Championship'));
+  ok(!todayChamp, 'megaweek: today is live spectacle, no championship badge');
+
+  // regression: no scenario → the normal mixed 3-state slate, unchanged
+  const plain = phasesOf(normalizeScoreboard(registry, 'baseball/mlb', synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW })));
+  ok((plain.live || 0) > 0 && (plain.final || 0) > 0 && (plain.scheduled || 0) > 0, 'no scenario → normal 3-state mix preserved');
 }
 
 console.log(`\n${'='.repeat(48)}\n${pass} passed · ${fail} failed`);

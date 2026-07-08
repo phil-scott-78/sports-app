@@ -36,10 +36,22 @@ class ActionFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final items = _buildItems();
+    if (items.isEmpty) return scoringOnly ? const SizedBox.shrink() : _empty();
+    return _card([for (final it in items) _buildItemWidget(it)]);
+  }
+
+  /// Flatten the feed into an indexable, render-ready item list — the label, then
+  /// each period's rule-label header and its rows (newest period first, newest
+  /// row first). Pure data work: filter, sort, tally the running score, flag lead
+  /// changes, bucket by period. Runs once per (infrequent) rebuild; the sliver
+  /// path ([ActionFeedSliver]) then builds only the *visible* rows lazily instead
+  /// of materializing a whole game's ~800 plays as one Column every poll.
+  List<_FeedItem> _buildItems() {
     final list = events
         .where((e) => scoringOnly ? e.isScoring : e.kind != 'other')
         .toList();
-    if (list.isEmpty) return scoringOnly ? const SizedBox.shrink() : _empty();
+    if (list.isEmpty) return const [];
 
     // Chronological: by period, then minute when known (soccer), else feed order.
     final keyed = [for (var i = 0; i < list.length; i++) (list[i], i)];
@@ -61,6 +73,7 @@ class ActionFeed extends StatelessWidget {
     for (final (e, _) in keyed) {
       final p = _period(e);
       final row = _Row(e);
+      row.isTimeout = !e.isScoring && _isTimeout(e.text);
       if (e.isScoring) {
         num? a, h;
         if (e.scoreAway != null && e.scoreHome != null) {
@@ -94,12 +107,8 @@ class ActionFeed extends StatelessWidget {
     lastScore?.bright = true;
 
     // Newest period first; newest event first within each.
-    final rows = <Widget>[];
-    if (label != null) {
-      rows.add(Padding(
-          padding: const EdgeInsets.fromLTRB(18, 12, 18, 0),
-          child: CardLabel(label!)));
-    }
+    final items = <_FeedItem>[];
+    if (label != null) items.add(_FeedLabelItem(label!));
     for (final p in order.reversed) {
       final bucket = byPeriod[p]!;
       // the container's running score at the break (§9: 'HALF TIME · 1–1').
@@ -110,12 +119,34 @@ class ActionFeed extends StatelessWidget {
           break;
         }
       }
-      rows.add(_periodHeader(bucket.first.e, p, trailing));
+      items.add(_FeedHeaderItem(bucket.first.e, p, trailing));
       for (final r in bucket.reversed) {
-        rows.add(_eventRow(r));
+        items.add(_FeedRowItem(r));
       }
     }
-    return _card(rows);
+    return items;
+  }
+
+  Widget _buildItemWidget(_FeedItem item) => switch (item) {
+        _FeedLabelItem(:final text) => Padding(
+            padding: const EdgeInsets.fromLTRB(18, 12, 18, 0),
+            child: CardLabel(text)),
+        _FeedHeaderItem(:final first, :final period, :final score) =>
+          _periodHeader(first, period, score),
+        _FeedRowItem(:final row) =>
+          row.isTimeout ? _timeoutDivider(row) : _eventRow(row),
+      };
+
+  /// A stoppage as the §7.4/§9 rule-label divider inside the feed, carrying the
+  /// timeout's own text + clock ('LAKERS TIMEOUT · 4:01') — a row, not a card.
+  Widget _timeoutDivider(_Row r) {
+    final label = [r.e.text?.toUpperCase(), r.e.clock]
+        .where((s) => s != null && s.isNotEmpty)
+        .join(' · ');
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 10, 18, 10),
+      child: RuleLabelDivider(label),
+    );
   }
 
   // ---- structure -----------------------------------------------------------
@@ -185,15 +216,7 @@ class ActionFeed extends StatelessWidget {
                 ScoreTypeChip(_scoreType(e)!, color: color),
                 const SizedBox(width: 8),
               ],
-              Flexible(
-                child: Text(_headline(e),
-                    style: TextStyle(
-                        fontSize: 13.5,
-                        height: 1.3,
-                        fontWeight:
-                            scoring ? FontWeight.w700 : FontWeight.w500,
-                        color: T.text)),
-              ),
+              Flexible(child: _headlineWidget(e, scoring)),
               // the lead-change signal (§9 D): the LEAD badge, team-tinted.
               if (r.leadChange) ...[
                 const SizedBox(width: 6),
@@ -296,6 +319,43 @@ class ActionFeed extends StatelessWidget {
             decoration:
                 const BoxDecoration(color: T.textFaint, shape: BoxShape.circle));
     }
+  }
+
+  /// The row headline. Generic play-by-play with a resolved actor (§4b basketball)
+  /// leads with the bold actor and dims the action; the short actor name ('N.
+  /// Jokić') is aligned against the play text's full name by its surname. Rows
+  /// with no actor (or a name that doesn't appear in the text) render as-is.
+  Widget _headlineWidget(MatchEvent e, bool scoring) {
+    final actor = e.athlete;
+    if (actor != null && (e.kind == 'play' || e.kind == 'score')) {
+      final text = e.text ?? '';
+      final surname = actor.split(' ').last;
+      final idx = surname.isEmpty ? -1 : text.indexOf(surname);
+      if (idx >= 0) {
+        final action = text.substring(idx + surname.length).trim();
+        return Text.rich(
+          TextSpan(children: [
+            TextSpan(
+                text: actor,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w700, color: T.text)),
+            if (action.isNotEmpty)
+              TextSpan(
+                  text: ' $action',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      color: scoring ? T.text : T.textDim)),
+          ]),
+          style: const TextStyle(fontSize: 13.5, height: 1.3),
+        );
+      }
+    }
+    return Text(_headline(e),
+        style: TextStyle(
+            fontSize: 13.5,
+            height: 1.3,
+            fontWeight: scoring ? FontWeight.w700 : FontWeight.w500,
+            color: T.text));
   }
 
   String _headline(MatchEvent e) {
@@ -411,5 +471,91 @@ class _Row {
   String? score;
   bool bright = false;
   bool leadChange = false; // the scoring event that flipped the lead (§9 signal)
+  bool isTimeout = false; // a stoppage → renders as a rule-label divider (§4b)
   _Row(this.e);
+}
+
+// A stoppage play (§4b): its text names the timeout — rendered as a divider, not
+// a row (the rule-label divider carries the game state at the break, §9).
+final _timeoutRe = RegExp(r'\btimeout\b', caseSensitive: false);
+// …but a coach's challenge / replay review only *mentions* a timeout as an aside
+// ("COACH'S CHALLENGE (CALL OVERTURNED) [Spurs] retain their timeout") — it's a
+// full sentence, not a stoppage. Collapsing it into a one-line divider both reads
+// wrong and overflows the rule-label; keep those as regular (wrapping) rows.
+final _notTimeoutRe = RegExp(r'challenge|review', caseSensitive: false);
+bool _isTimeout(String? text) {
+  final t = text ?? '';
+  return _timeoutRe.hasMatch(t) && !_notTimeoutRe.hasMatch(t);
+}
+
+/// One render-ready feed entry — the output of [ActionFeed._buildItems], made
+/// indexable so [ActionFeedSliver] can build rows lazily.
+sealed class _FeedItem {
+  const _FeedItem();
+}
+
+class _FeedLabelItem extends _FeedItem {
+  final String text;
+  const _FeedLabelItem(this.text);
+}
+
+class _FeedHeaderItem extends _FeedItem {
+  final MatchEvent first;
+  final int period;
+  final String? score;
+  const _FeedHeaderItem(this.first, this.period, this.score);
+}
+
+class _FeedRowItem extends _FeedItem {
+  final _Row row;
+  const _FeedRowItem(this.row);
+}
+
+/// The virtualized form of [ActionFeed] for the long play-by-play tabs (Plays /
+/// Timeline): the SAME grammar, but the flattened rows go through a
+/// [SliverList.builder] so only the visible handful are built. A basketball
+/// game's ~800 plays no longer materialize (and re-materialize each ~20s poll)
+/// as one giant Column. Returns a *sliver* — use it inside the page's
+/// CustomScrollView. The card surface + rounded corners come from a
+/// [DecoratedSliver] behind the list.
+class ActionFeedSliver extends StatelessWidget {
+  final Competition comp;
+  final List<MatchEvent> events;
+  final bool scoringOnly;
+  final bool tallyScore;
+  final String? label;
+  const ActionFeedSliver(
+    this.events,
+    this.comp, {
+    super.key,
+    this.scoringOnly = false,
+    this.tallyScore = false,
+    this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // A throwaway [ActionFeed] carries the shared flatten + per-item rendering;
+    // it is never mounted — its item methods are pure given (events, comp).
+    final feed = ActionFeed(events, comp,
+        scoringOnly: scoringOnly, tallyScore: tallyScore, label: label);
+    final items = feed._buildItems();
+    if (items.isEmpty) {
+      return SliverToBoxAdapter(
+          child: scoringOnly ? const SizedBox.shrink() : feed._empty());
+    }
+    return DecoratedSliver(
+      decoration: BoxDecoration(
+        color: T.surface,
+        borderRadius: BorderRadius.circular(T.cardRadius),
+      ),
+      sliver: SliverPadding(
+        padding: const EdgeInsets.only(bottom: 4),
+        sliver: SliverList.builder(
+          itemCount: items.length,
+          itemBuilder: (context, i) => feed._buildItemWidget(items[i]),
+        ),
+      ),
+    );
+  }
 }

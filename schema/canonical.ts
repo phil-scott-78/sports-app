@@ -519,6 +519,46 @@ export interface GameSummary {
                               // (goals/cards/subs/VAR) for the Timeline tab, scorer
                               // & assist split out of participants[]. When present,
                               // `plays` (commentary) is NOT shipped. See MatchEvent.
+  atBats?: AtBat[];           // BASEBALL ONLY (raw.plays grouped by atBatId): one
+                              // entry per at-bat with its pitch sequence, for the
+                              // §3e All-plays disclosure. VERIFIED 2026-07: MLB ships
+                              // summaryType 'A'(header)/'P'(pitch)/'N'|'S'(result) +
+                              // atBatId. Built ONLY when pitch rows are present (a
+                              // scoring-only college capture has none → keeps the flat
+                              // scoring feed). When present, the flat ~500-row plays[]
+                              // is SUPPRESSED (it's the same feed, unfolded to noise).
+}
+
+/** One baseball at-bat (raw.plays grouped by atBatId) — a condensed row in the
+ *  §3e/9e All-plays view that expands to its pitch sequence. `text` is the batting
+ *  result (empty while the at-bat is live); `batter` (resolved short name) is
+ *  carried ONLY for the live, pre-expanded at-bat (a finished row's text already
+ *  leads with the last name). `outs`/`away`/`home` are the state AFTER the at-bat.
+ *  The pitching-change ('C') rows are not at-bats and are dropped. */
+export interface AtBat {
+  period?: number;        // inning number
+  half?: 'top' | 'bottom';
+  side?: 'home' | 'away'; // the BATTING side (spine color) — never the pitcher's team
+  teamAbbr?: string;
+  batter?: string;        // live only: who's up (resolved via the boxscore)
+  text: string;           // the batting result ('Altuve struck out looking.'); '' live
+  scoring?: boolean;      // the result scored a run (summaryType 'S')
+  outs?: number;          // outs after the at-bat (container 'N OUT' when live)
+  away?: number;          // running score after (scoring team leads in the UI)
+  home?: number;
+  live?: boolean;         // in progress — no terminal result yet (pre-expanded)
+  balls?: number;         // live only: current count
+  strikes?: number;
+  pitches: Pitch[];       // the at-bat's pitch-by-pitch sequence (may be empty)
+}
+
+/** One pitch inside an at-bat. `r` classifies the result for the §2 muted glyph
+ *  dot (ball green / strike red / foul tan / inplay neutral); `text` is the pitch
+ *  outcome with the 'Pitch N :' prefix stripped ('Strike 1 Swinging'). */
+export interface Pitch {
+  r: 'ball' | 'strike' | 'foul' | 'inplay' | 'other';
+  text: string;
+  velo?: number;          // pitch velocity (MPH)
 }
 
 /** One soccer match event (worker `timeline`, from ESPN keyEvents[]). VERIFIED
@@ -558,6 +598,22 @@ export interface DriveSummary {
   isScore?: boolean;
   yards?: number;
   playCount?: number;    // offensivePlays
+  period?: number;       // the drive's quarter (its first play's period) — the §5b
+                         // feed groups drives into per-quarter cards (design 9c).
+  timeElapsed?: string;  // the drive clock '2:44' (raw field, else parsed from the
+                         // description tail) — the drive stat strip.
+  awayScore?: number;    // running score after the drive (its last play) — the
+  homeScore?: number;    //   design-9c running score at the row's right edge.
+  plays?: DrivePlay[];   // slim per-drive plays for the All-view tap-to-expand.
+}
+
+/** One play inside a drive (raw.drives.previous[].plays[]) — the disclosure rows
+ *  behind a drive in the §5b All view. The flat top-level `plays` feed carries the
+ *  same plays chronologically; this keeps them grouped by drive. */
+export interface DrivePlay {
+  text: string;
+  clock?: string;
+  scoring?: boolean;
 }
 
 /** One innings of a cricket scorecard (raw.matchcards, typeID-tagged cards merged
@@ -666,15 +722,27 @@ export interface BoxRow {
   name: string;        // short athlete name
   pos?: string;
   stats: string[];     // aligned 1:1 with BoxGroup.columns
+  starter?: boolean;   // VERIFIED: baseball ships boxscore athlete `starter`. Only
+                       // present where ESPN provides it (baseball); a false value
+                       // marks a substitute → the app indents the row (§3d / §10).
+  note?: string;       // the athlete's LINEUP note ('a-walked for Thomas in the
+                       // 7th') — the substitution footnote; excludes pitchingDecision.
 }
 
 /** A scoring play (or soccer key event) for the timeline feed. */
 export interface SummaryPlay {
   period?: number;
+  half?: 'top' | 'bottom'; // VERIFIED: baseball ships period.type='Top'|'Bottom'.
+                           // Lets the feed key containers on (period, half) so a
+                           // 4-run bottom doesn't merge into the top of the same
+                           // inning (§3c). Absent for every other sport.
   periodLabel?: string;  // '3rd Inning', '2nd', "67'"
   clock?: string;
   side?: 'home' | 'away';
   teamAbbr?: string;
+  actor?: string;        // the play's first participant (basketball), resolved to a
+                         // name via the boxscore — the app bolds it (§4b). Absent
+                         // when there's no participant or the id isn't in the box.
   text: string;
   away?: number;         // running score after the play
   home?: number;

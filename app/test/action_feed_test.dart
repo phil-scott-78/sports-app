@@ -10,6 +10,8 @@ import 'package:scores/src/models.dart';
 import 'package:scores/src/providers.dart';
 import 'package:scores/src/theme.dart';
 import 'package:scores/src/ui/game_detail_page.dart';
+import 'package:scores/src/ui/match_events.dart';
+import 'package:scores/src/ui/widgets.dart';
 
 Future<SharedPreferences> prefs() async {
   SharedPreferences.setMockInitialValues({});
@@ -95,5 +97,75 @@ void main() {
     // Carried running score is lifted onto the scoring plays (away–home).
     expect(find.text('3–0'), findsOneWidget);
     expect(find.text('3–2'), findsOneWidget);
+  });
+
+  // Regression: an NBA coach's challenge whose text merely *mentions* a timeout
+  // ("...retain their timeout") must NOT collapse into a one-line timeout divider
+  // (a divider uppercases the whole text and can't wrap → it overflowed the row on
+  // a phone). A genuine "Full timeout" still becomes a divider.
+  testWidgets('challenge that mentions a timeout stays a wrapping row (not a divider)',
+      (tester) async {
+    tester.view.physicalSize = const Size(360, 720);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final comp = Competition.fromJson({
+      'id': 'C1', 'layout': 'headToHead', 'scoreKind': 'numeric', 'competitorKind': 'team',
+      'status': {'phase': 'final', 'live': false, 'ended': true, 'period': 4, 'detail': 'Final'},
+      'periods': {'unit': 'quarter', 'regulation': 4, 'played': 4},
+      'competitors': [
+        {'kind': 'team', 'id': '24', 'displayName': 'Spurs', 'abbreviation': 'SA', 'homeAway': 'away', 'color': '000000', 'score': {'display': '82', 'value': 82}},
+        {'kind': 'team', 'id': '18', 'displayName': 'Knicks', 'abbreviation': 'NY', 'homeAway': 'home', 'color': '006BB6', 'score': {'display': '99', 'value': 99}},
+      ],
+    });
+    const challengeText =
+        "(04:42) [Spurs] COACH'S CHALLENGE (CALL OVERTURNED) [Spurs] retain their timeout";
+    final events = [
+      MatchEvent.fromSummaryPlay(SummaryPlay.fromJson(const {
+        'period': 4, 'clock': '4:42', 'side': 'away', 'teamAbbr': 'SA',
+        'text': challengeText, 'scoring': false,
+      })),
+      MatchEvent.fromSummaryPlay(SummaryPlay.fromJson(const {
+        'period': 4, 'clock': '4:01', 'side': 'home', 'teamAbbr': 'NY',
+        'text': 'New York Knicks Full timeout', 'scoring': false,
+      })),
+    ];
+
+    await tester.pumpWidget(MaterialApp(
+      theme: buildV2Theme(),
+      home: Scaffold(body: SingleChildScrollView(child: ActionFeed(events, comp))),
+    ));
+    await tester.pump();
+
+    expect(tester.takeException(), isNull);
+    // The challenge shows as a normal row → its text keeps original case.
+    expect(find.textContaining('retain their timeout'), findsOneWidget);
+    // …and is NOT uppercased into a divider label.
+    expect(find.textContaining('RETAIN THEIR TIMEOUT'), findsNothing);
+    // The genuine timeout DID collapse into a rule-label divider ('...TIMEOUT · 4:01').
+    expect(find.textContaining('FULL TIMEOUT'), findsOneWidget);
+  });
+
+  testWidgets('RuleLabelDivider ellipsizes an over-long label instead of overflowing',
+      (tester) async {
+    tester.view.physicalSize = const Size(320, 200);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await tester.pumpWidget(const MaterialApp(
+      home: Scaffold(
+        body: Column(children: [
+          RuleLabelDivider(
+              "(04:42) [SPURS] COACH'S CHALLENGE (CALL OVERTURNED) [SPURS] RETAIN THEIR TIMEOUT · 4:42"),
+          RuleLabelDivider('3RD QUARTER · 68–61'),
+        ]),
+      ),
+    ));
+    await tester.pump();
+    expect(tester.takeException(), isNull);
+    // A short label is untouched (renders in full).
+    expect(find.text('3RD QUARTER · 68–61'), findsOneWidget);
   });
 }

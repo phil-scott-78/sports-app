@@ -6135,7 +6135,8 @@
                   ".436",
                   ".519",
                   ".934"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "M. Davis",
@@ -6153,7 +6154,8 @@
                   ".433",
                   ".489",
                   ".678"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "L. Allred",
@@ -6171,7 +6173,8 @@
                   ".384",
                   ".508",
                   ".699"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Lis",
@@ -6189,7 +6192,8 @@
                   ".424",
                   ".541",
                   ".890"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "T. Pannell",
@@ -6207,7 +6211,8 @@
                   ".353",
                   ".417",
                   ".591"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "K. Terry",
@@ -6225,7 +6230,8 @@
                   ".433",
                   ".529",
                   ".701"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Burns",
@@ -6243,7 +6249,8 @@
                   ".350",
                   ".446",
                   ".738"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "D. Spearman",
@@ -6261,7 +6268,8 @@
                   ".322",
                   ".458",
                   ".729"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "L. Halleman",
@@ -6279,7 +6287,8 @@
                   ".346",
                   ".452",
                   ".346"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "L. Quiroga",
@@ -6297,7 +6306,9 @@
                   ".329",
                   ".477",
                   ".835"
-                ]
+                ],
+                "starter": false,
+                "note": "a-fouled out to first for L. Halleman in the 7th"
               },
               {
                 "name": "H. Toney",
@@ -6315,7 +6326,8 @@
                   ".303",
                   ".390",
                   ".487"
-                ]
+                ],
+                "starter": true
               }
             ]
           },
@@ -6339,7 +6351,8 @@
                   ".404",
                   ".481",
                   ".639"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "K. Stewart",
@@ -6357,7 +6370,8 @@
                   ".430",
                   ".556",
                   "1.000"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "V. Martinez",
@@ -6375,7 +6389,8 @@
                   ".387",
                   ".447",
                   ".538"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "R. Atwood",
@@ -6393,7 +6408,8 @@
                   ".324",
                   ".418",
                   ".681"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "L. Goode",
@@ -6411,7 +6427,8 @@
                   ".327",
                   ".432",
                   ".600"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "H. Wells",
@@ -6429,7 +6446,8 @@
                   ".297",
                   ".356",
                   ".648"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "K. Altmeyer",
@@ -6447,7 +6465,8 @@
                   ".299",
                   ".413",
                   ".402"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "A. Maloney",
@@ -6465,7 +6484,8 @@
                   ".294",
                   ".382",
                   ".380"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "A. Sneed",
@@ -6483,7 +6503,9 @@
                   ".250",
                   ".333",
                   ".375"
-                ]
+                ],
+                "starter": false,
+                "note": "a-reached on infield single to shortstop for A. Maloney in the 6th"
               },
               {
                 "name": "J. Nichols",
@@ -6501,7 +6523,8 @@
                   ".326",
                   ".395",
                   ".376"
-                ]
+                ],
+                "starter": true
               }
             ]
           }
@@ -6540,7 +6563,8 @@
                   "20-12",
                   "1.97",
                   "20"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "N. Canady",
@@ -6556,7 +6580,8 @@
                   "23-14",
                   "1.87",
                   "23"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "S. Lincoln",
@@ -6572,7 +6597,8 @@
                   "66-37",
                   "3.47",
                   "66"
-                ]
+                ],
+                "starter": false
               }
             ]
           },
@@ -6594,7 +6620,8 @@
                   "115-72",
                   "2.35",
                   "115"
-                ]
+                ],
+                "starter": true
               }
             ]
           }
@@ -6604,9 +6631,11 @@
     "scoringPlays": [
       {
         "period": 1,
+        "half": "top",
         "periodLabel": "1st Inning",
         "side": "away",
         "teamAbbr": "TTU",
+        "actor": "T. Kavan",
         "text": "M. Davis homered to left. ",
         "away": 1,
         "home": 0,
@@ -6615,9 +6644,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "K. Terry",
         "text": "K. Stewart homered to center, K. Henry scored. ",
         "away": 1,
         "home": 2,
@@ -6626,9 +6657,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "N. Canady",
         "text": "K. Altmeyer reached on infield single to first, R. Atwood scored, H. Wells to second. ",
         "away": 1,
         "home": 3,
@@ -6637,9 +6670,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "N. Canady",
         "text": "A. Maloney tripled to left, H. Wells and K. Altmeyer scored. ",
         "away": 1,
         "home": 5,
@@ -6648,9 +6683,11 @@
       },
       {
         "period": 4,
+        "half": "bottom",
         "periodLabel": "4th Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "S. Lincoln",
         "text": "V. Martinez reached on infield single to second, J. Nichols scored, K. Stewart to second. ",
         "away": 1,
         "home": 6,
@@ -6659,9 +6696,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TTU",
+        "actor": "T. Kavan",
         "text": "M. Williams homered to center, J. Burns scored. ",
         "away": 3,
         "home": 6,
@@ -6670,9 +6709,11 @@
       },
       {
         "period": 6,
+        "half": "bottom",
         "periodLabel": "6th Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "K. Terry",
         "text": "V. Martinez hit sacrifice fly to center, J. Nichols scored, K. Henry to third. ",
         "away": 3,
         "home": 7,
@@ -6827,9 +6868,11 @@
     "plays": [
       {
         "period": 1,
+        "half": "top",
         "periodLabel": "1st Inning",
         "side": "away",
         "teamAbbr": "TTU",
+        "actor": "T. Kavan",
         "text": "M. Davis homered to left. ",
         "away": 1,
         "home": 0,
@@ -6838,9 +6881,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "K. Terry",
         "text": "K. Stewart homered to center, K. Henry scored. ",
         "away": 1,
         "home": 2,
@@ -6849,9 +6894,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "N. Canady",
         "text": "K. Altmeyer reached on infield single to first, R. Atwood scored, H. Wells to second. ",
         "away": 1,
         "home": 3,
@@ -6860,9 +6907,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "N. Canady",
         "text": "A. Maloney tripled to left, H. Wells and K. Altmeyer scored. ",
         "away": 1,
         "home": 5,
@@ -6871,9 +6920,11 @@
       },
       {
         "period": 4,
+        "half": "bottom",
         "periodLabel": "4th Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "S. Lincoln",
         "text": "V. Martinez reached on infield single to second, J. Nichols scored, K. Stewart to second. ",
         "away": 1,
         "home": 6,
@@ -6882,9 +6933,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TTU",
+        "actor": "T. Kavan",
         "text": "M. Williams homered to center, J. Burns scored. ",
         "away": 3,
         "home": 6,
@@ -6893,9 +6946,11 @@
       },
       {
         "period": 6,
+        "half": "bottom",
         "periodLabel": "6th Inning",
         "side": "home",
         "teamAbbr": "TEX",
+        "actor": "K. Terry",
         "text": "V. Martinez hit sacrifice fly to center, J. Nichols scored, K. Henry to third. ",
         "away": 3,
         "home": 7,

@@ -115,6 +115,12 @@ void main() {
 
   testWidgets('Timeline tab: rich event feed — goals+assist, subs, cards, half dividers',
       (tester) async {
+    // The Plays/Timeline feed virtualizes (SliverList.builder) — give the test a
+    // tall viewport so every row builds and can be found by text.
+    tester.view.physicalSize = const Size(1200, 4000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     await _pump(tester, endedScores(), _summary({
       'timeline': [
         {'t': 13, 'clock': "13'", 'period': 1, 'kind': 'goal', 'side': 'away', 'teamAbbr': 'ARS', 'athlete': 'Saka', 'assist': 'Ødegaard', 'scoring': true},
@@ -145,6 +151,12 @@ void main() {
 
   testWidgets('no cheap timeline → grouped Plays list (whole feed, no 40-cap)',
       (tester) async {
+    // The Plays feed virtualizes — a tall viewport so all 50 rows build and the
+    // first/last survive-the-cap assertions can find them.
+    tester.view.physicalSize = const Size(1200, 4000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
     // A live match with no competition.events: falls back to the grouped Plays
     // card sourced from the commentary feed.
     final live = {'phase': 'live', 'live': true, 'ended': false, 'period': 2, 'detail': "70'"};

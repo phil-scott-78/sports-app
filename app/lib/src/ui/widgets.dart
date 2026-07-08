@@ -348,16 +348,28 @@ class Scorebug extends StatelessWidget {
       return Row(mainAxisSize: MainAxisSize.min, children: [
         ColorBar(teamColor(c), width: 8, height: 22),
         const SizedBox(width: 7),
-        Text('${c.label} $score'.trim(),
-            style: T.bugScore.copyWith(color: dim ? T.textDim : T.text)),
+        // Flexible + ellipsis so a narrow phone truncates the label instead of
+        // overflowing the scorebug row (the score/status stay legible).
+        Flexible(
+          child: Text('${c.label} $score'.trim(),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: T.bugScore.copyWith(color: dim ? T.textDim : T.text)),
+        ),
       ]);
     }
 
+    // The two team sides share the free width (shrinking only when they must)
+    // while the status + live dot stay pinned to the right and always readable.
     return Row(children: [
-      side(away),
+      Expanded(
+        child: Row(children: [
+          Flexible(child: side(away)),
+          const SizedBox(width: 12),
+          Flexible(child: side(home)),
+        ]),
+      ),
       const SizedBox(width: 12),
-      side(home),
-      const Spacer(),
       Text(comp.status.shortDetail ?? comp.status.detail, style: T.caption),
       if (comp.status.live) ...[
         const SizedBox(width: 8),
@@ -1016,22 +1028,30 @@ class RuleLabelDivider extends StatelessWidget {
             painter: _DashedLinePainter(color: lineColor, strokeWidth: w)));
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(children: [
+      // Centered so a short label keeps its side rules balanced; the label is
+      // Flexible + ellipsis so an over-long one can never overflow the row.
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         line(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Row(mainAxisSize: MainAxisSize.min, children: [
-            if (swatch != null) ...[
-              Container(width: 8, height: 8, color: swatch),
-              const SizedBox(width: 6),
-            ],
-            Text(label.toUpperCase(),
-                style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.0,
-                    color: alarm ? T.live : T.textFaint)),
-          ]),
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              if (swatch != null) ...[
+                Container(width: 8, height: 8, color: swatch),
+                const SizedBox(width: 6),
+              ],
+              Flexible(
+                child: Text(label.toUpperCase(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.0,
+                        color: alarm ? T.live : T.textFaint)),
+              ),
+            ]),
+          ),
         ),
         line(),
       ]),

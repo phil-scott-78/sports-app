@@ -40,6 +40,29 @@ Every followed league now shows a mix of **final + live + scheduled** games; the
 Leagues list lights up "Live now"; favorites show live/last/next cards; game
 detail has real box scores and scoring feeds; standings/teams pickers populate.
 
+## Scenario mode — the "biggest week in sports history" demo
+
+For a screenshot/demo build where you want the app to look maximal — every league
+lit up **live right now**, championships stacked across the coming week — run the
+mock with the `megaweek` scenario:
+
+```bash
+cd worker
+npm run mock:megaweek          # same :8787, scenario ON (normal `npm run mock` is untouched)
+```
+
+Then point the app at it exactly as above. Today becomes wall-to-wall live across
+every sport; browse the schedule forward and each league stages a **Championship**
+on its own day (marquee `v1` leagues cluster toward tomorrow, the long tail fans
+out across the week). It's still the same real teams/box scores and the same pure
+synth — a scenario is only a thin, deterministic policy overlay
+(`mock/scenarios.mjs`) that answers "what phase should each game take, and which
+one is the champion" per league. Framing is deliberately light (real matchups and
+names kept; a "Championship" badge + postseason flag added) — flip `FLAVOR` in
+`scenarios.mjs` for real championship names (Super Bowl, NBA Finals, …). Add your
+own scenario by exporting one more policy object from that file. `npm test` covers
+both the scenario and that the default path is unchanged.
+
 ## Refresh the fixtures
 
 The data is captured ESPN snapshots, so it ages (rosters, recent results). Re-grab

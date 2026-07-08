@@ -1,37 +1,44 @@
-// The stat language: what kind of number a stat is, and therefore how it's
-// drawn. The user-facing rule this encodes: a PERCENTAGE is a gauge against
-// 0–100 (each side fills its own half toward the centre), a COUNT is a share
-// of the game's total (one split bar), a RATIO ("4-16" third downs) is a
-// conversion gauge, and a CLOCK ("33:11" possession) is a share of real time.
-// One renderer ([StatCompareRow]) speaks all four — both the cheap-scoreboard
+// The stat language: what kind of number a stat is (how to parse and format its
+// value), and — separately — whether it is a SHARE of one whole.
+//
+// The user-facing rule (DESIGN §8/§10): a bar compares two sides of ONE whole —
+// a share (possession, time of possession) — and draws as a single full-width
+// split bar of two team-color segments. Independent per-team values — counts,
+// averages, and percents like FG%/SV% — render as number rows (leader white,
+// faint centred label, trailer dim), never as bars. The mirrored center-spine
+// bars are the §10 gridiron team-stats card only; this renderer never gauges.
+// One renderer ([StatCompareRow]) speaks all of it — both the cheap-scoreboard
 // panels and the rich /summary team stats delegate here so the two tiers can
 // never drift apart.
 //
-// Ported from the v1 client verbatim except [StatCompareRow], which is redrawn
-// in the v2 "broadcast dark" tokens (T.*, Barlow-condensed tabular numbers).
+// Ported from the v1 client, redrawn in the v2 "broadcast dark" tokens
+// (T.*, Barlow-condensed tabular numbers).
 
 import 'package:flutter/material.dart';
 import '../models.dart';
 import '../theme.dart';
 
-/// How a stat value should be read — and therefore drawn.
+/// How a stat value should be READ (parsed and formatted). How it's DRAWN — a
+/// split bar vs a plain number row — is decided separately by [StatSpec.share].
 enum StatKind {
-  /// A counting stat (shots, rebounds): one bar split by share of the total.
+  /// A counting stat (shots, rebounds, xG "1.8"): a plain number row.
   count,
 
-  /// A percentage (possession 52.4, FG% 38.4, SV% .909): mirrored gauges,
-  /// each side filled to its own value of a 0–100 scale. Values ≤ 1 are read
-  /// as fractions (ESPN ships goalie save % as ".909").
+  /// A percentage (possession 52.4, FG% 38.4, SV% .909). Values ≤ 1 are read as
+  /// fractions (ESPN ships goalie save % as ".909"). Independent percents
+  /// (FG%/SV%) are number rows; only a [StatSpec.share] percent (possession)
+  /// draws the split bar.
   percent,
 
   /// A 0–1 fraction that *displays* as a percent (rugby possession "0.440"
-  /// → shown "44%"). Same gauge as [percent].
+  /// → shown "44%"). A share when it is possession/territory.
   fraction01,
 
-  /// A made-of-attempts ratio ("4-16", "19/38"): gauge filled to made/att.
+  /// A made-of-attempts ratio ("4-16", "19/38"): shown raw; magnitude = made/att.
   ratio,
 
-  /// A mm:ss time (possession "33:11"): share-of-total on parsed seconds.
+  /// A mm:ss time (time of possession "33:11"): a share, parsed to seconds for
+  /// the split-bar widths.
   clock,
 }
 
@@ -43,8 +50,14 @@ class StatSpec {
   final String label;
   final StatKind kind;
   final bool invert;
+
+  /// True when the two sides sum to one whole — possession %, time of
+  /// possession, rugby possession/territory. Drawn as a single full-width split
+  /// bar. Everything else is an independent per-team value → a number row, no
+  /// bar (DESIGN §8/§10).
+  final bool share;
   const StatSpec(this.key, this.label,
-      {this.kind = StatKind.count, this.invert = false});
+      {this.kind = StatKind.count, this.invert = false, this.share = false});
 }
 
 /// A sport's curated cheap-tier stat panel: the section title a fan of that
@@ -63,7 +76,7 @@ class CheapStatPanel {
 /// we key by ESPN's unambiguous `name`.
 const Map<String, CheapStatPanel> cheapStatPanels = {
   'soccer': CheapStatPanel('Match stats', [
-    StatSpec('PP', 'Possession', kind: StatKind.percent),
+    StatSpec('PP', 'Possession', kind: StatKind.percent, share: true),
     StatSpec('SHOT', 'Shots'),
     StatSpec('SOG', 'On target'),
     StatSpec('CW', 'Corners'),
@@ -81,15 +94,15 @@ const Map<String, CheapStatPanel> cheapStatPanels = {
     StatSpec('SV', 'Saves'),
   ]),
   'rugby': CheapStatPanel('Match stats', [
-    StatSpec('possession', 'Possession', kind: StatKind.fraction01),
-    StatSpec('territory', 'Territory', kind: StatKind.fraction01),
+    StatSpec('possession', 'Possession', kind: StatKind.fraction01, share: true),
+    StatSpec('territory', 'Territory', kind: StatKind.fraction01, share: true),
     StatSpec('metres', 'Metres gained'),
     StatSpec('cleanBreaks', 'Clean breaks'),
     StatSpec('tackles', 'Tackles'),
     StatSpec('penaltiesConceded', 'Penalties conceded', invert: true),
   ]),
   'rugby-league': CheapStatPanel('Match stats', [
-    StatSpec('possession', 'Possession', kind: StatKind.fraction01),
+    StatSpec('possession', 'Possession', kind: StatKind.fraction01, share: true),
     StatSpec('metres', 'Metres gained'),
     StatSpec('cleanBreaks', 'Clean breaks'),
     StatSpec('tackles', 'Tackles'),
@@ -122,7 +135,10 @@ double? clockSeconds(String? s) {
   return (made: double.parse(m.group(1)!), att: double.parse(m.group(2)!));
 }
 
-/// Gauge fill (0–1) for one side of a row, by kind. Null when unparseable.
+/// Fill fraction (0–1) of a value against its own 0–100 (or made/att) scale.
+/// Retained as a parsing helper (and for the §10 gridiron center-spine card);
+/// the general [StatCompareRow] no longer gauges — see the file header.
+/// Null when unparseable.
 double? gaugeFraction(StatKind kind, String? raw) {
   switch (kind) {
     case StatKind.percent:
@@ -199,9 +215,10 @@ bool _invertLabel(String l) =>
     l.contains('conceded') ||
     l.contains('giveaway');
 
-/// Infer how to draw a rich /summary team-stat row from its label + a sample
-/// value: clock times share, percents gauge, conversion ratios gauge, counts
-/// split — so "3rd down efficiency 4-16" stops rendering like "Shots 13".
+/// Infer how to READ a rich /summary team-stat row from its label + a sample
+/// value — clock, percent, conversion ratio, or count — and whether it's a
+/// SHARE of one whole (possession / time of possession / territory → the split
+/// bar). Everything else is an independent per-team number row.
 StatSpec classifyRichRow(TeamStatRow r) {
   final l = r.label.toLowerCase();
   final sample = (r.away?.isNotEmpty == true ? r.away : r.home) ?? '';
@@ -216,7 +233,13 @@ StatSpec classifyRichRow(TeamStatRow r) {
   } else if (_ratioLabel(l) && ratioParts(sample) != null) {
     kind = StatKind.ratio;
   }
-  return StatSpec(r.label, r.label, kind: kind, invert: _invertLabel(l));
+  // Time of possession (a clock) and possession/territory shares split one
+  // whole between the sides — the one bar. All other rows are number rows.
+  final share = kind == StatKind.clock ||
+      l.contains('possession') ||
+      l.contains('territory');
+  return StatSpec(r.label, r.label,
+      kind: kind, invert: _invertLabel(l), share: share);
 }
 
 /// Per-sport "lead stats" for the rich team-stat panel — the rows a fan of that
@@ -305,11 +328,14 @@ TextStyle _numStyle(bool strong, Color color) => TextStyle(
       color: color,
     );
 
-/// One mirrored away-vs-home stat row: value · centred label · value over a
-/// kind-aware bar. Counts and clocks split one bar by share; percentages and
-/// conversion ratios render as mirrored gauges filling from the centre out, so
-/// 52% possession no longer draws identically to 5 corners. The leading side
-/// (lower when [StatSpec.invert]) carries the bold number and the solid bar.
+/// One away-vs-home stat row: value · centred faint label · value. A SHARE stat
+/// ([StatSpec.share] — possession, time of possession, territory) also draws a
+/// single full-width split bar in the two team colors beneath; every other stat
+/// (counts, and independent percents like FG%/SV%) renders as the number row
+/// alone — no bar. The leading side (lower when [StatSpec.invert]) carries the
+/// bold white number; the trailer stays dim. That asymmetry, not color, is the
+/// read. The §10 gridiron center-spine mirrored bars are a separate card — this
+/// renderer never gauges.
 class StatCompareRow extends StatelessWidget {
   final StatSpec spec;
   final String? away, home;
@@ -350,11 +376,11 @@ class StatCompareRow extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: num(aText, awayLeads))),
         Expanded(
-          child: Text(spec.label,
+          child: Text(spec.label.toUpperCase(),
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 12, color: T.textDim)),
+              style: T.cardLabelFaint),
         ),
         SizedBox(
             width: 52,
@@ -362,65 +388,30 @@ class StatCompareRow extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: num(hText, homeLeads))),
       ]),
-      const SizedBox(height: 4),
-      _bar(a, h, awayLeads, homeLeads),
+      // A share draws the single split bar; independent values are the row alone.
+      if (spec.share) ...[
+        const SizedBox(height: 6),
+        _shareBar(a, h),
+      ],
     ]);
   }
 
-  Widget _bar(double? a, double? h, bool awayLeads, bool homeLeads) {
-    // The leader's team color reads full; the trailer's is the same hue, softened
-    // — team-color mirrored bars per §8/§10 (never gray, never color-coded text).
-    Color fill(Color c, bool leads) =>
-        leads ? c : c.withValues(alpha: 0.4);
-
-    final aFrac = gaugeFraction(spec.kind, away);
-    final hFrac = gaugeFraction(spec.kind, home);
-    if (aFrac != null || hFrac != null) {
-      // Mirrored gauges: each side fills from the centre toward its own edge,
-      // scaled to its absolute value — 50/50 possession reads symmetric, a .909
-      // save night fills nine tenths of its half.
-      Widget half(double? frac, Color color, bool leads, bool alignRight) =>
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(3),
-              child: Stack(children: [
-                Container(height: 5, color: T.track),
-                Align(
-                  alignment: alignRight
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: FractionallySizedBox(
-                    widthFactor: (frac ?? 0).clamp(0.0, 1.0),
-                    child: Container(height: 5, color: fill(color, leads)),
-                  ),
-                ),
-              ]),
-            ),
-          );
-      return Row(children: [
-        half(aFrac, awayColor, awayLeads, true),
-        const SizedBox(width: 3),
-        half(hFrac, homeColor, homeLeads, false),
-      ]);
-    }
-
-    // Share-of-total split (counts, possession clocks).
+  /// The one bar in this renderer: a full-width split of two team-color segments
+  /// (2px gap, r4, 8px tall) whose widths are each side's share of the whole —
+  /// possession's 55/45, time of possession's clock split. Both segments read
+  /// full color; the leader/trailer asymmetry lives in the numbers above.
+  Widget _shareBar(double? a, double? h) {
     final av = a ?? 0, hv = h ?? 0;
     final total = av + hv;
     final aFlex = total <= 0 ? 500 : (av / total * 1000).round().clamp(1, 999);
     final hFlex = total <= 0 ? 500 : (1000 - aFlex).clamp(1, 999);
     return ClipRRect(
-      borderRadius: BorderRadius.circular(3),
+      key: const ValueKey('statShareBar'),
+      borderRadius: BorderRadius.circular(4),
       child: Row(children: [
-        Expanded(
-            flex: aFlex,
-            child:
-                Container(height: 5, color: fill(awayColor, awayLeads))),
-        const SizedBox(width: 3),
-        Expanded(
-            flex: hFlex,
-            child:
-                Container(height: 5, color: fill(homeColor, homeLeads))),
+        Expanded(flex: aFlex, child: Container(height: 8, color: awayColor)),
+        const SizedBox(width: 2),
+        Expanded(flex: hFlex, child: Container(height: 8, color: homeColor)),
       ]),
     );
   }

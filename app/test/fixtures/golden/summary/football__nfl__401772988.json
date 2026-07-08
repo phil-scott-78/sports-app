@@ -12243,7 +12243,54 @@
         "result": "Field Goal",
         "isScore": true,
         "yards": 51,
-        "playCount": 8
+        "playCount": 8,
+        "period": 1,
+        "timeElapsed": "3:02",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "A.Borregales kicks 65 yards from NE 35 to end zone, Touchback to the SEA 35.",
+            "clock": "15:00"
+          },
+          {
+            "text": "K.Walker left end pushed ob at SEA 45 for 10 yards (C.Davis).",
+            "clock": "15:00"
+          },
+          {
+            "text": "K.Walker right tackle to SEA 45 for no gain (C.Barmore).",
+            "clock": "14:29"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short left to A.Barner to NE 40 for 15 yards (C.Woodson).",
+            "clock": "13:50"
+          },
+          {
+            "text": "(No Huddle) S.Darnold pass deep left to C.Kupp pushed ob at NE 17 for 23 yards (M.Jones).",
+            "clock": "13:25"
+          },
+          {
+            "text": "(No Huddle, Shotgun) S.Darnold pass incomplete deep left.",
+            "clock": "12:58"
+          },
+          {
+            "text": "K.Walker right tackle to NE 14 for 3 yards (A.Jennings).",
+            "clock": "12:51"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short left to R.Shaheed.",
+            "clock": "12:06"
+          },
+          {
+            "text": "J.Myers 33 yard field goal is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "11:58",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 11:58.",
+            "clock": "11:58"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12251,7 +12298,57 @@
         "description": "8 plays, 28 yards, 4:47",
         "result": "Punt",
         "yards": 28,
-        "playCount": 8
+        "playCount": 8,
+        "period": 1,
+        "timeElapsed": "4:47",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "J.Myers kicks 65 yards from SEA 35 to NE 0. D.Johnson to NE 28 for 28 yards (D.Young).",
+            "clock": "11:58"
+          },
+          {
+            "text": "R.Stevenson up the middle to NE 34 for 6 yards (E.Jones).",
+            "clock": "11:52"
+          },
+          {
+            "text": "R.Stevenson up the middle to NE 36 for 2 yards (E.Jones; D.Thomas).",
+            "clock": "11:21"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to R.Stevenson ran ob at NE 43 for 7 yards (D.Thomas) [U.Nwosu].",
+            "clock": "10:40"
+          },
+          {
+            "text": "D.Maye pass short left to D.Douglas to SEA 49 for 8 yards (E.Jones).",
+            "clock": "10:04"
+          },
+          {
+            "text": "R.Stevenson right tackle to SEA 45 for 4 yards (C.Bryant).",
+            "clock": "9:28"
+          },
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 45 for -10 yards (D.Hall).",
+            "clock": "8:51"
+          },
+          {
+            "text": "(Shotgun) D.Maye scrambles right tackle to SEA 44 for 11 yards (N.Emmanwori).",
+            "clock": "8:09"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete deep right [D.Witherspoon].",
+            "clock": "7:23"
+          },
+          {
+            "text": "B.Baringer punts 34 yards to SEA 10, Center-J.Ashby, fair catch by R.Shaheed.",
+            "clock": "7:18"
+          },
+          {
+            "text": "Official Timeout at 07:11.",
+            "clock": "7:11"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12259,7 +12356,33 @@
         "description": "3 plays, 4 yards, 1:04",
         "result": "Punt",
         "yards": 4,
-        "playCount": 3
+        "playCount": 3,
+        "period": 1,
+        "timeElapsed": "1:04",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short left to J.Smith-Njigba (C.Woodson) [A.Jennings].",
+            "clock": "7:11"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short left to J.Smith-Njigba to SEA 14 for 4 yards (C.Davis).",
+            "clock": "7:06"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete deep left to J.Smith-Njigba [J.Hawkins].",
+            "clock": "6:22"
+          },
+          {
+            "text": "M.Dickson punts 50 yards to NE 36, Center-C.Stoll, fair catch by M.Jones.",
+            "clock": "6:15"
+          },
+          {
+            "text": "Official Timeout at 06:07.",
+            "clock": "6:07"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12267,7 +12390,37 @@
         "description": "4 plays, 6 yards, 2:38",
         "result": "Punt",
         "yards": 6,
-        "playCount": 4
+        "playCount": 4,
+        "period": 1,
+        "timeElapsed": "2:38",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "T.Munford reported in as eligible.  D.Maye pass deep left to K.Boutte to SEA 43 for 21 yards (J.Love).",
+            "clock": "6:07"
+          },
+          {
+            "text": "(Shotgun) T.Henderson up the middle to SEA 46 for -3 yards (E.Jones).",
+            "clock": "5:33"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to T.Henderson to SEA 48 for -2 yards (J.Jobe).",
+            "clock": "4:53"
+          },
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 42 for -10 yards (D.Witherspoon).",
+            "clock": "4:15"
+          },
+          {
+            "text": "B.Baringer punts 51 yards to SEA 7, Center-J.Ashby. R.Shaheed to SEA 13 for 6 yards (D.Pettus).",
+            "clock": "3:39"
+          },
+          {
+            "text": "Official Timeout at 03:29.",
+            "clock": "3:29"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12275,7 +12428,41 @@
         "description": "6 plays, 10 yards, 3:10",
         "result": "Punt",
         "yards": 10,
-        "playCount": 6
+        "playCount": 6,
+        "period": 1,
+        "timeElapsed": "3:10",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "K.Walker right tackle to SEA 15 for 2 yards (C.Barmore; J.Gibbens).",
+            "clock": "3:29"
+          },
+          {
+            "text": "K.Walker left tackle to SEA 16 for 1 yard (C.Barmore).",
+            "clock": "2:51"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short right to A.Barner to SEA 28 for 12 yards (M.Jones).",
+            "clock": "2:07"
+          },
+          {
+            "text": "R.Shaheed left end to SEA 23 for -5 yards (C.Woodson).",
+            "clock": "1:25"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short left to J.Smith-Njigba (A.Jennings).",
+            "clock": "0:40"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete deep left to J.Smith-Njigba.",
+            "clock": "0:37"
+          },
+          {
+            "text": "M.Dickson punts 45 yards to NE 32, Center-C.Stoll. M.Jones to NE 32 for no gain (D.Thomas).",
+            "clock": "0:32"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12283,7 +12470,33 @@
         "description": "3 plays, 5 yards, 1:09",
         "result": "Punt",
         "yards": 5,
-        "playCount": 3
+        "playCount": 3,
+        "period": 1,
+        "timeElapsed": "1:09",
+        "awayScore": 3,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "R.Stevenson right tackle to NE 37 for 5 yards (J.Reed; D.Thomas).",
+            "clock": "0:19"
+          },
+          {
+            "text": "END QUARTER 1",
+            "clock": "0:00"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete short middle to H.Henry.",
+            "clock": "15:00"
+          },
+          {
+            "text": "(Shotgun) R.Stevenson up the middle to NE 37 for no gain (J.Reed; L.Williams).",
+            "clock": "14:55"
+          },
+          {
+            "text": "B.Baringer punts 39 yards to SEA 24, Center-J.Ashby, fair catch by R.Shaheed.",
+            "clock": "14:18"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12292,7 +12505,50 @@
         "result": "Field Goal",
         "isScore": true,
         "yards": 55,
-        "playCount": 8
+        "playCount": 8,
+        "period": 2,
+        "timeElapsed": "2:54",
+        "awayScore": 6,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete deep middle to R.Shaheed (C.Gonzalez).",
+            "clock": "14:10"
+          },
+          {
+            "text": "(Shotgun) K.Walker left end pushed ob at NE 46 for 30 yards (M.Jones).",
+            "clock": "14:04"
+          },
+          {
+            "text": "(No Huddle, Shotgun) S.Darnold pass incomplete short middle to J.Smith-Njigba (M.Williams).",
+            "clock": "13:37"
+          },
+          {
+            "text": "K.Walker right guard pushed ob at NE 17 for 29 yards (C.Gonzalez).",
+            "clock": "13:34"
+          },
+          {
+            "text": "K.Walker right end to NE 19 for -2 yards (C.Woodson).",
+            "clock": "12:52"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short middle to C.Kupp [K.Chaisson].",
+            "clock": "12:09"
+          },
+          {
+            "text": "(Shotgun) K.Walker left end to NE 21 for -2 yards (C.Woodson).",
+            "clock": "12:04"
+          },
+          {
+            "text": "J.Myers 39 yard field goal is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "11:16",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 11:16.",
+            "clock": "11:16"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12300,7 +12556,37 @@
         "description": "3 plays, -2 yards, 2:00",
         "result": "Punt",
         "yards": -2,
-        "playCount": 3
+        "playCount": 3,
+        "period": 2,
+        "timeElapsed": "2:00",
+        "awayScore": 6,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "J.Myers kicks 65 yards from SEA 35 to end zone, Touchback to the NE 35. ** Injury Update: SEA-T.Okada has returned to the game.",
+            "clock": "11:16"
+          },
+          {
+            "text": "T.Henderson right tackle to NE 38 for 3 yards (E.Jones).",
+            "clock": "11:16"
+          },
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 28 for -10 yards (R.Mills).",
+            "clock": "10:44"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to S.Diggs pushed ob at NE 33 for 5 yards (T.Woolen).",
+            "clock": "10:03"
+          },
+          {
+            "text": "B.Baringer punts -12 yards to SEA 29, Center-J.Ashby, fair catch by R.Shaheed. ** Injury Update: NE-J.Tavai has returned to the game.",
+            "clock": "9:23"
+          },
+          {
+            "text": "Official Timeout at 09:16.",
+            "clock": "9:16"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12308,7 +12594,53 @@
         "description": "8 plays, 29 yards, 4:18",
         "result": "Punt",
         "yards": 29,
-        "playCount": 8
+        "playCount": 8,
+        "period": 2,
+        "timeElapsed": "4:18",
+        "awayScore": 6,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "K.Walker right end pushed ob at SEA 38 for 9 yards (C.Gonzalez).",
+            "clock": "9:16"
+          },
+          {
+            "text": "K.Walker right guard to SEA 40 for 2 yards (J.Gibbens).",
+            "clock": "8:41"
+          },
+          {
+            "text": "S.Darnold pass incomplete short left to K.Walker.",
+            "clock": "7:56"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short right to C.Kupp to SEA 47 for 7 yards (M.Jones).",
+            "clock": "7:51"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short right to K.Walker to NE 47 for 6 yards (C.Davis; D.Pettus).",
+            "clock": "7:12"
+          },
+          {
+            "text": "K.Walker up the middle to NE 43 for 4 yards (C.Elliss; R.Spillane).",
+            "clock": "6:29"
+          },
+          {
+            "text": "G.Holani right tackle to NE 42 for 1 yard (A.Jennings; C.Durden).",
+            "clock": "5:50"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short left to K.Walker.",
+            "clock": "5:09"
+          },
+          {
+            "text": "M.Dickson punts 40 yards to NE 2, Center-C.Stoll, downed by SEA-V.Jones.",
+            "clock": "5:05"
+          },
+          {
+            "text": "Official Timeout at 04:58.",
+            "clock": "4:58"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12316,7 +12648,53 @@
         "description": "6 plays, 10 yards, 2:08",
         "result": "Punt",
         "yards": 10,
-        "playCount": 6
+        "playCount": 6,
+        "period": 2,
+        "timeElapsed": "2:08",
+        "awayScore": 6,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "R.Stevenson right end to NE 5 for 3 yards (J.Jobe).",
+            "clock": "4:58"
+          },
+          {
+            "text": "Timeout #1 by SEA at 04:21.",
+            "clock": "4:21"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete short middle to M.Hollins.",
+            "clock": "4:21"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short right to D.Douglas to NE 14 for 9 yards (J.Jobe).",
+            "clock": "4:19"
+          },
+          {
+            "text": "R.Stevenson right end pushed ob at NE 17 for 3 yards (J.Jobe).",
+            "clock": "3:46"
+          },
+          {
+            "text": "D.Maye pass incomplete short right.",
+            "clock": "3:14"
+          },
+          {
+            "text": "(Shotgun) PENALTY on NE-W.Campbell, False Start, 5 yards, enforced at NE 17 - No Play.",
+            "clock": "3:09"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete deep right to M.Hollins.",
+            "clock": "3:09"
+          },
+          {
+            "text": "B.Baringer punts 55 yards to SEA 33, Center-J.Ashby. R.Shaheed to SEA 43 for 10 yards (E.Ponder).",
+            "clock": "3:03"
+          },
+          {
+            "text": "Official Timeout at 02:50.",
+            "clock": "2:50"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12325,7 +12703,66 @@
         "result": "Field Goal",
         "isScore": true,
         "yards": 34,
-        "playCount": 9
+        "playCount": 9,
+        "period": 2,
+        "timeElapsed": "2:39",
+        "awayScore": 9,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "S.Darnold pass short middle to C.Kupp to 50 for 7 yards (J.Hawkins) [H.Landry].",
+            "clock": "2:50"
+          },
+          {
+            "text": "K.Walker right tackle to NE 43 for 7 yards (R.Spillane; C.Woodson).",
+            "clock": "2:11"
+          },
+          {
+            "text": "Two-Minute Warning",
+            "clock": "2:00"
+          },
+          {
+            "text": "(Shotgun) K.Walker left end to NE 42 for 1 yard (C.Woodson).",
+            "clock": "2:00"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short middle to G.Holani to NE 35 for 7 yards (C.Elliss).",
+            "clock": "1:17"
+          },
+          {
+            "text": "(Shotgun) G.Holani left guard to NE 30 for 5 yards (C.Woodson).",
+            "clock": "0:39"
+          },
+          {
+            "text": "Timeout #2 by SEA at 00:32.",
+            "clock": "0:32"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short right to C.Kupp to NE 23 for 7 yards (C.Davis).",
+            "clock": "0:32"
+          },
+          {
+            "text": "Timeout #3 by SEA at 00:23.",
+            "clock": "0:23"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short right to C.Kupp.The Replay Official reviewed the incomplete pass ruling, and the play was Upheld. The ruling on the field stands.",
+            "clock": "0:23"
+          },
+          {
+            "text": "Timeout #1 by NE at 00:20.",
+            "clock": "0:20"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete deep middle to J.Smith-Njigba (C.Gonzalez).",
+            "clock": "0:20"
+          },
+          {
+            "text": "J.Myers 41 yard field goal is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "0:11",
+            "scoring": true
+          }
+        ]
       },
       {
         "side": "home",
@@ -12333,7 +12770,25 @@
         "description": "1 play, -1 yard, 0:11",
         "result": "End of Half",
         "yards": -1,
-        "playCount": 1
+        "playCount": 1,
+        "period": 2,
+        "timeElapsed": "0:11",
+        "awayScore": 9,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "J.Myers kicks 61 yards from SEA 35 to NE 4. D.Johnson to NE 29 for 25 yards (B.Russell; P.O'Connell).",
+            "clock": "0:11"
+          },
+          {
+            "text": "D.Maye kneels to NE 28 for -1 yards.",
+            "clock": "0:06"
+          },
+          {
+            "text": "END QUARTER 2",
+            "clock": "0:00"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12341,7 +12796,33 @@
         "description": "3 plays, 7 yards, 0:58",
         "result": "Punt",
         "yards": 7,
-        "playCount": 3
+        "playCount": 3,
+        "period": 3,
+        "timeElapsed": "0:58",
+        "awayScore": 9,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "J.Myers kicks 55 yards from SEA 35 to NE 10. D.Johnson to NE 32 for 22 yards (B.Russell; J.Bobo).",
+            "clock": "15:00"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete deep left to D.Douglas.",
+            "clock": "14:54"
+          },
+          {
+            "text": "(Shotgun) T.Henderson left end ran ob at NE 39 for 7 yards (C.Bryant).",
+            "clock": "14:49"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete short left to K.Boutte (J.Jobe).",
+            "clock": "14:13"
+          },
+          {
+            "text": "B.Baringer punts 52 yards to SEA 9, Center-J.Ashby, fair catch by R.Shaheed.",
+            "clock": "14:08"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12350,7 +12831,62 @@
         "result": "Field Goal",
         "isScore": true,
         "yards": 69,
-        "playCount": 10
+        "playCount": 10,
+        "period": 3,
+        "timeElapsed": "4:50",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "K.Walker right end to SEA 11 for 2 yards (J.Gibbens).",
+            "clock": "14:02"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short middle to R.Shaheed to SEA 27 for 16 yards (C.Davis) [C.Elliss].",
+            "clock": "13:21"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short middle to J.Smith-Njigba to SEA 43 for 16 yards (J.Hawkins).",
+            "clock": "12:37"
+          },
+          {
+            "text": "(No Huddle) S.Darnold scrambles right tackle to NE 46 for 11 yards (R.Spillane).",
+            "clock": "12:11"
+          },
+          {
+            "text": "K.Walker right tackle to NE 43 for 3 yards (C.Woodson; R.Spillane).",
+            "clock": "11:30"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short right to K.Walker pushed ob at NE 23 for 20 yards (M.Jones).",
+            "clock": "10:47"
+          },
+          {
+            "text": "K.Walker right end pushed ob at NE 22 for 1 yard (C.Woodson).",
+            "clock": "10:05"
+          },
+          {
+            "text": "Timeout #1 by SEA at 09:23.",
+            "clock": "9:23"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short right to C.Kupp.",
+            "clock": "9:23"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short right to C.Kupp.",
+            "clock": "9:20"
+          },
+          {
+            "text": " J.Myers 41 yard field goal is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "9:12",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 09:12.",
+            "clock": "9:12"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12358,7 +12894,37 @@
         "description": "3 plays, 9 yards, 1:38",
         "result": "Punt",
         "yards": 9,
-        "playCount": 3
+        "playCount": 3,
+        "period": 3,
+        "timeElapsed": "1:38",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "J.Myers kicks 61 yards from SEA 35 to NE 4. D.Johnson to NE 32 for 28 yards (T.Knight).",
+            "clock": "9:12"
+          },
+          {
+            "text": "T.Henderson left end to NE 41 for 9 yards (C.Bryant; J.Love).",
+            "clock": "9:07"
+          },
+          {
+            "text": "T.Henderson up the middle to NE 41 for no gain (D.Thomas; D.Lawrence).",
+            "clock": "8:30"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete deep left to D.Douglas.",
+            "clock": "7:46"
+          },
+          {
+            "text": "B.Baringer punts 41 yards to SEA 18, Center-J.Ashby, fair catch by R.Shaheed.",
+            "clock": "7:41"
+          },
+          {
+            "text": "Official Timeout at 07:34.",
+            "clock": "7:34"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12366,7 +12932,33 @@
         "description": "3 plays, 2 yards, 2:24",
         "result": "Punt",
         "yards": 2,
-        "playCount": 3
+        "playCount": 3,
+        "period": 3,
+        "timeElapsed": "2:24",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "S.Darnold sacked at SEA 10 for -8 yards (M.Williams).",
+            "clock": "7:34"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short left to J.Smith-Njigba to SEA 14 for 4 yards (M.Jones).",
+            "clock": "6:50"
+          },
+          {
+            "text": "(Shotgun) K.Walker right guard to SEA 20 for 6 yards (J.Tavai; C.Elliss).",
+            "clock": "6:06"
+          },
+          {
+            "text": "M.Dickson punts 47 yards to NE 33, Center-C.Stoll. M.Jones pushed ob at SEA 48 for 19 yards (M.Dickson). ** Injury Update: SEA-T.Knight has returned to the game. PENALTY on NE-D.Pettus, Illegal Block Above the Waist, 10 yards, enforced at NE 37.",
+            "clock": "5:24"
+          },
+          {
+            "text": "Official Timeout at 05:10.",
+            "clock": "5:10"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12374,7 +12966,33 @@
         "description": "3 plays, 6 yards, 1:32",
         "result": "Punt",
         "yards": 6,
-        "playCount": 3
+        "playCount": 3,
+        "period": 3,
+        "timeElapsed": "1:32",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 25 for -2 yards (B.Murphy).",
+            "clock": "5:10"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short right to M.Hollins to NE 33 for 8 yards (E.Jones).",
+            "clock": "4:30"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete short middle to K.Boutte.",
+            "clock": "3:49"
+          },
+          {
+            "text": "B.Baringer punts 46 yards to SEA 21, Center-J.Ashby, fair catch by R.Shaheed.",
+            "clock": "3:45"
+          },
+          {
+            "text": "Official Timeout at 03:38.",
+            "clock": "3:38"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12382,7 +13000,29 @@
         "description": "3 plays, 6 yards, 1:43",
         "result": "Punt",
         "yards": 6,
-        "playCount": 3
+        "playCount": 3,
+        "period": 3,
+        "timeElapsed": "1:43",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "K.Walker up the middle to SEA 19 for -2 yards (A.Jennings, L.Taylor).",
+            "clock": "3:38"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short middle to C.Kupp (C.Gonzalez).",
+            "clock": "2:53"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short middle to C.Kupp to SEA 27 for 8 yards (J.Hawkins).",
+            "clock": "2:48"
+          },
+          {
+            "text": "M.Dickson punts 46 yards to NE 27, Center-C.Stoll, downed by SEA-N.Pritchett.",
+            "clock": "2:08"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12390,7 +13030,33 @@
         "description": "5 plays, 10 yards, 1:45",
         "result": "Fumble",
         "yards": 10,
-        "playCount": 5
+        "playCount": 5,
+        "period": 3,
+        "timeElapsed": "1:45",
+        "awayScore": 12,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "(Shotgun) T.Henderson up the middle to NE 30 for 3 yards (D.Lawrence).",
+            "clock": "1:55"
+          },
+          {
+            "text": "(Shotgun) D.Maye scrambles right tackle pushed ob at NE 35 for 5 yards (E.Jones).PENALTY on SEA-D.Witherspoon, Defensive Holding, 5 yards, enforced at NE 35.",
+            "clock": "1:23"
+          },
+          {
+            "text": "D.Maye pass incomplete short right to H.Henry (D.Lawrence) [D.Lawrence].",
+            "clock": "0:58"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short right to T.Henderson pushed ob at NE 44 for 4 yards (N.Emmanwori).",
+            "clock": "0:52"
+          },
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 37 for -7 yards (D.Hall). FUMBLES (D.Hall) [D.Hall], RECOVERED by SEA-B.Murphy at NE 37.",
+            "clock": "0:16"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12399,7 +13065,42 @@
         "result": "Touchdown",
         "isScore": true,
         "yards": 37,
-        "playCount": 5
+        "playCount": 5,
+        "period": 3,
+        "timeElapsed": "1:46",
+        "awayScore": 19,
+        "homeScore": 0,
+        "plays": [
+          {
+            "text": "S.Darnold pass short right to A.Barner to NE 26 for 11 yards (A.Jennings).",
+            "clock": "0:10"
+          },
+          {
+            "text": "END QUARTER 3",
+            "clock": "0:00"
+          },
+          {
+            "text": "K.Walker right tackle to NE 25 for 1 yard (J.Gibbens).",
+            "clock": "15:00"
+          },
+          {
+            "text": "S.Darnold pass incomplete deep right to C.Kupp (C.Woodson).",
+            "clock": "14:20"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short left to C.Kupp to NE 16 for 9 yards (C.Gonzalez).",
+            "clock": "14:14"
+          },
+          {
+            "text": "S.Darnold pass deep right to A.Barner for 16 yards, TOUCHDOWN. J.Myers extra point is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "13:24",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 13:24.",
+            "clock": "13:24"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12408,7 +13109,34 @@
         "result": "Touchdown",
         "isScore": true,
         "yards": 65,
-        "playCount": 3
+        "playCount": 3,
+        "period": 4,
+        "timeElapsed": "0:57",
+        "awayScore": 19,
+        "homeScore": 7,
+        "plays": [
+          {
+            "text": "J.Myers kicks 65 yards from SEA 35 to end zone, Touchback to the NE 35.",
+            "clock": "13:24"
+          },
+          {
+            "text": "(Shotgun) D.Maye scrambles right end ran ob at NE 41 for 6 yards (D.Thomas).",
+            "clock": "13:24"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass deep middle to M.Hollins to SEA 35 for 24 yards (T.Woolen) [B.Mafe].",
+            "clock": "12:56"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass deep left to M.Hollins for 35 yards, TOUCHDOWN. A.Borregales extra point is GOOD, Center-J.Ashby, Holder-B.Baringer.",
+            "clock": "12:27",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 12:27.",
+            "clock": "12:27"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12416,7 +13144,37 @@
         "description": "4 plays, 10 yards, 1:47",
         "result": "Punt",
         "yards": 10,
-        "playCount": 4
+        "playCount": 4,
+        "period": 4,
+        "timeElapsed": "1:47",
+        "awayScore": 19,
+        "homeScore": 7,
+        "plays": [
+          {
+            "text": "A.Borregales kicks 54 yards from NE 35 to SEA 11. R.Shaheed to SEA 31 for 20 yards (C.Muma).",
+            "clock": "12:27"
+          },
+          {
+            "text": "S.Darnold pass short right to R.Shaheed pushed ob at SEA 42 for 11 yards (C.Gonzalez).",
+            "clock": "12:22"
+          },
+          {
+            "text": "K.Walker up the middle to SEA 41 for -1 yards (K.Chaisson). ** Injury Update: SEA-J.Smith-Njigba has returned to the game.",
+            "clock": "11:41"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete short right.",
+            "clock": "11:04"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass incomplete deep right to R.Shaheed.",
+            "clock": "11:00"
+          },
+          {
+            "text": "M.Dickson punts 55 yards to NE 4, Center-C.Stoll, downed by SEA-V.Jones.",
+            "clock": "10:55"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12424,7 +13182,41 @@
         "description": "7 plays, 40 yards, 2:03",
         "result": "Interception",
         "yards": 40,
-        "playCount": 7
+        "playCount": 7,
+        "period": 4,
+        "timeElapsed": "2:03",
+        "awayScore": 19,
+        "homeScore": 7,
+        "plays": [
+          {
+            "text": "(Shotgun) D.Maye pass incomplete deep left to A.Hooper.",
+            "clock": "10:40"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to R.Stevenson ran ob at NE 17 for 13 yards (J.Jobe).",
+            "clock": "10:35"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass incomplete deep left to M.Hollins (C.Bryant).",
+            "clock": "10:11"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to H.Henry to NE 21 for 4 yards (N.Emmanwori).",
+            "clock": "10:02"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye scrambles up the middle to NE 37 for 16 yards (T.Woolen).",
+            "clock": "9:35"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short left to K.Williams ran ob at NE 44 for 7 yards (J.Jobe).",
+            "clock": "9:07"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass deep middle intended for K.Williams INTERCEPTED by J.Love at SEA 27. J.Love pushed ob at NE 38 for 35 yards (T.Henderson).",
+            "clock": "8:49"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12433,7 +13225,46 @@
         "result": "Field Goal",
         "isScore": true,
         "yards": 30,
-        "playCount": 6
+        "playCount": 6,
+        "period": 4,
+        "timeElapsed": "3:02",
+        "awayScore": 22,
+        "homeScore": 7,
+        "plays": [
+          {
+            "text": "K.Walker right end pushed ob at NE 24 for 14 yards (J.Hawkins).",
+            "clock": "8:37"
+          },
+          {
+            "text": "K.Walker right guard to NE 14 for 10 yards (C.Woodson; J.Hawkins).",
+            "clock": "7:59"
+          },
+          {
+            "text": "K.Walker right end to NE 12 for 2 yards (H.Landry).",
+            "clock": "7:11"
+          },
+          {
+            "text": "K.Walker right end to NE 11 for 1 yard (C.Davis).",
+            "clock": "6:28"
+          },
+          {
+            "text": "(Shotgun) S.Darnold pass short left to J.Smith-Njigba to NE 8 for 3 yards (M.Jones).",
+            "clock": "5:43"
+          },
+          {
+            "text": "Timeout #1 by NE at 05:38.",
+            "clock": "5:38"
+          },
+          {
+            "text": "J.Myers 26 yard field goal is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "5:35",
+            "scoring": true
+          },
+          {
+            "text": "Official Timeout at 05:35.",
+            "clock": "5:35"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12442,7 +13273,34 @@
         "result": "Interception Touchdown",
         "isScore": true,
         "yards": 18,
-        "playCount": 4
+        "playCount": 4,
+        "period": 4,
+        "timeElapsed": "1:08",
+        "awayScore": 29,
+        "homeScore": 7,
+        "plays": [
+          {
+            "text": "J.Myers kicks 65 yards from SEA 35 to NE 0. T.Henderson ran ob at NE 38 for 38 yards (J.Myers).",
+            "clock": "5:35"
+          },
+          {
+            "text": "(Shotgun) D.Maye sacked at NE 34 for -4 yards (B.Murphy).",
+            "clock": "5:29"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short right to R.Stevenson ran ob at NE 40 for 6 yards (N.Emmanwori; J.Jobe).",
+            "clock": "5:04"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short middle to H.Henry to SEA 44 for 16 yards (E.Jones).",
+            "clock": "4:57"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short middle intended for K.Boutte INTERCEPTED by U.Nwosu (D.Witherspoon) [D.Witherspoon] at NE 45. U.Nwosu for 45 yards, TOUCHDOWN. J.Myers extra point is GOOD, Center-C.Stoll, Holder-M.Dickson.",
+            "clock": "4:27",
+            "scoring": true
+          }
+        ]
       },
       {
         "side": "home",
@@ -12451,7 +13309,62 @@
         "result": "Touchdown",
         "isScore": true,
         "yards": 65,
-        "playCount": 8
+        "playCount": 8,
+        "period": 4,
+        "timeElapsed": "2:06",
+        "awayScore": 29,
+        "homeScore": 13,
+        "plays": [
+          {
+            "text": "J.Myers kicks 65 yards from SEA 35 to end zone, Touchback to the NE 35.",
+            "clock": "4:27"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short middle to D.Douglas to NE 46 for 11 yards (E.Jones).",
+            "clock": "4:27"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short middle to D.Douglas to SEA 46 for 8 yards (B.Mafe).",
+            "clock": "4:08"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short left to A.Hooper pushed ob at SEA 41 for 5 yards (D.Witherspoon).",
+            "clock": "3:48"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye scrambles left guard to SEA 37 for 4 yards (N.Emmanwori).PENALTY on NE-G.Bradbury, Offensive Holding, 10 yards, enforced at SEA 41 - No Play.",
+            "clock": "3:42"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short right to R.Stevenson pushed ob at SEA 44 for 7 yards (D.Witherspoon).",
+            "clock": "3:36"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short middle to H.Henry to SEA 33 for 11 yards (D.Witherspoon).",
+            "clock": "3:28"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass deep middle to S.Diggs to SEA 7 for 26 yards (C.Bryant).",
+            "clock": "2:58"
+          },
+          {
+            "text": "Timeout #2 by SEA at 02:32.",
+            "clock": "2:32"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass incomplete short left to M.Hollins.",
+            "clock": "2:32"
+          },
+          {
+            "text": "(Shotgun) D.Maye pass short left to R.Stevenson for 7 yards, TOUCHDOWN. TWO-POINT CONVERSION ATTEMPT. D.Maye pass to H.Henry is incomplete. ATTEMPT FAILS. SEA-C.Bryant was injured during the play.",
+            "clock": "2:21",
+            "scoring": true
+          },
+          {
+            "text": "Timeout #3 by SEA at 02:21.",
+            "clock": "2:21"
+          }
+        ]
       },
       {
         "side": "away",
@@ -12459,7 +13372,49 @@
         "description": "3 plays, -12 yards, 0:32",
         "result": "Punt",
         "yards": -12,
-        "playCount": 3
+        "playCount": 3,
+        "period": 4,
+        "timeElapsed": "0:32",
+        "awayScore": 29,
+        "homeScore": 13,
+        "plays": [
+          {
+            "text": "A.Borregales kicks onside 11 yards from NE 35 to NE 46. G.Holani (didn't try to advance) to NE 46 for no gain.",
+            "clock": "2:21"
+          },
+          {
+            "text": "K.Walker right end to NE 43 for 3 yards (A.Jennings).",
+            "clock": "2:20"
+          },
+          {
+            "text": "Timeout #2 by NE at 02:14.",
+            "clock": "2:14"
+          },
+          {
+            "text": "O.Oluwatimi and J.Jones reported in as eligible.  S.Darnold right tackle to NE 49 for -6 yards (M.Williams).",
+            "clock": "2:14"
+          },
+          {
+            "text": "Timeout #3 by NE at 02:10.",
+            "clock": "2:10"
+          },
+          {
+            "text": "O.Oluwatimi and J.Jones reported in as eligible.  K.Walker up the middle for 49 yards, TOUCHDOWN NULLIFIED by Penalty.PENALTY on SEA-J.Sundell, Offensive Holding, 10 yards, enforced at NE 49 - No Play.",
+            "clock": "2:10"
+          },
+          {
+            "text": "O.Oluwatimi and J.Jones reported in as eligible.  K.Walker right guard to SEA 42 for 1 yard (A.Jennings; K.Tonga).",
+            "clock": "2:01"
+          },
+          {
+            "text": "Two-Minute Warning",
+            "clock": "1:57"
+          },
+          {
+            "text": "M.Dickson punts 52 yards to NE 6, Center-C.Stoll, out of bounds.",
+            "clock": "1:57"
+          }
+        ]
       },
       {
         "side": "home",
@@ -12467,7 +13422,49 @@
         "description": "6 plays, 65 yards, 1:49",
         "result": "End of Game",
         "yards": 65,
-        "playCount": 6
+        "playCount": 6,
+        "period": 4,
+        "timeElapsed": "1:49",
+        "awayScore": 29,
+        "homeScore": 13,
+        "plays": [
+          {
+            "text": "(Shotgun) D.Maye pass short middle to S.Diggs to NE 12 for 6 yards (E.Jones). ** Injury Update: SEA-C.Bryant has returned to the game.",
+            "clock": "1:49"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short left to A.Hooper to NE 17 for 5 yards (N.Emmanwori).",
+            "clock": "1:30"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short left to M.Hollins to NE 28 for 11 yards (T.Woolen).",
+            "clock": "1:12"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye sacked at NE 27 for -1 yards (L.Williams).PENALTY on SEA-U.Nwosu, Defensive Offside, 5 yards, enforced at NE 28 - No Play.",
+            "clock": "0:53"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass incomplete deep right [B.Mafe].PENALTY on SEA-T.Woolen, Illegal Use of Hands, 5 yards, enforced at NE 33 - No Play.",
+            "clock": "0:47"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short middle to D.Douglas to NE 47 for 9 yards (E.Jones).",
+            "clock": "0:39"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass incomplete deep right to K.Boutte.",
+            "clock": "0:20"
+          },
+          {
+            "text": "(No Huddle, Shotgun) D.Maye pass short right to T.Henderson to SEA 29 for 24 yards (J.Love).",
+            "clock": "0:12"
+          },
+          {
+            "text": "END GAME",
+            "clock": "0:00"
+          }
+        ]
       }
     ],
     "attendance": 70823,

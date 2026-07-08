@@ -110,6 +110,71 @@ The workflow **reuses the deterministic tools** (its agents run `probe.mjs`/
 imported by the tools here and intended for reuse by the Cloudflare Worker so the
 "resolve a league's config" rule never forks.
 
+## 5. `crawl.mjs` + `rollup.mjs` — the evidence-based field guide
+
+Two passes that replace guessing about ESPN's shapes with observation:
+
+```bash
+node schema/tools/crawl.mjs               # coverage scope: v1 + 2 leagues per sport
+node schema/tools/crawl.mjs --all         # every concrete league (heavy)
+node schema/tools/crawl.mjs --league golf/pga --months 12
+node schema/tools/crawl.mjs --no-graph    # site templates only, skip the core $ref crawl
+node schema/tools/crawl.mjs --graph-depth 7 --graph-max-nodes 500
+node schema/tools/rollup.mjs              # corpus → schema/espn-guide/
+```
+
+**`crawl.mjs`** crawls in **two modes, because ESPN has two API styles:**
+
+- The **site/summary API** is flat — a fixed set of named endpoints
+  ([pseudo-r/Public-ESPN-API](https://github.com/pseudo-r/Public-ESPN-API/tree/main/docs)):
+  site scoreboard (13 ten-day windows across the past year) / summary / standings /
+  teams / roster / schedule / statistics / injuries / rankings / news, and golf's
+  playersummary. These are hit by **fixed URL templates**.
+- The **core API** (`sports.core.api.espn.com`) is **hypermedia (HATEOAS)**: every
+  resource is a bag of `$ref` links to its children. Guessing those URLs breaks the
+  moment an event's competition id ≠ its event id — true for **tennis, golf, MMA,
+  racing**, where one "event" (a tournament / fight card / race weekend) contains
+  many "competitions". So the core API is **discovered, not guessed**: `crawlGraph`
+  does a breadth-first walk from each league root and its events, following every
+  `$ref`, and — to stay bounded — fetches only the **first representative of each
+  distinct URL *template*** (ids collapsed to `{n}`). A 333-match tournament
+  collapses to one competition sample, yet the walk still reaches
+  `competition → competitors → linescores` (set-by-set scores) and the whole league
+  tree (seasons / types / calendar / tournaments / athletes / rankings /
+  transactions …). The walk is confined to the same host, sport, and league; bounded
+  by `--graph-depth` (default 7) and `--graph-max-nodes` (default 500).
+
+Every raw response is persisted verbatim under `schema/crawl-data/` (gitignored),
+with a `manifest.jsonl` that also records failures (a 404 documents "no reachable
+resource here"). Resumable: existing files are skipped (use `--force` to refetch).
+
+> **Why this matters:** the old crawler guessed `events/{id}/competitions/{id}/…`
+> and recorded tennis odds / set scores as `—` ("tier doesn't exist"). That was a
+> *false negative* — the data was always there, just not at a guessable URL. The
+> `$ref` walk finds it.
+
+**`rollup.mjs`** infers the observed schema from the corpus and writes
+`schema/espn-guide/` (committed): one markdown field guide per endpoint — path,
+types (with numeric-string detection), presence %, per-sport variance, exhaustive
+enum value sets, normalized `$ref` URL templates — plus an `index.md` that lists
+the site endpoints and the (open-ended) set of discovered **core resource shapes**
+separately, with two support matrices (site endpoints; core graph, transposed and
+sorted by cross-sport breadth), and a machine-readable `fields.json`. The output
+format is designed to be consumed by an LLM (e.g. as grounding for normalizer work
+or the `onboard-league` workflow).
+
+It also emits **`espn-guide/by-sport/<sport>.md`** — the reader's entry point. One
+page per sport, re-sliced from the same corpus: the registry leagues + their
+competition shape (`layout · scoreKind · competitorKind`), a cheat-sheet of which
+site endpoints work (and which 404 — the answer to "does this sport have a
+summary/rankings tier?") with copy-pasteable URL templates, the reachable
+core-graph resources, and the sport's **fingerprint** — the value-bearing fields
+it carries that aren't near-universal (cricket's `wickets`/`overs`, golf's `toPar`
+`scoreType`, soccer's card/goal `details[]`, tennis's set `winner` + best-of
+`periods`). Presence is sport-specific; enum samples are pooled across the sports
+that share a field (disclosed inline). The **`espn-api` Claude skill**
+(`.claude/skills/espn-api/`) routes ESPN-data questions to these files.
+
 ---
 
 ## Typical flows

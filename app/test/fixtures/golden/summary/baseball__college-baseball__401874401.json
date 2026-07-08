@@ -6824,7 +6824,8 @@
                   ".339",
                   ".445",
                   ".529"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Pyne",
@@ -6842,7 +6843,8 @@
                   ".285",
                   ".368",
                   ".484"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "B. Cavill",
@@ -6860,7 +6862,8 @@
                   ".276",
                   ".433",
                   ".492"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Janicki",
@@ -6878,7 +6881,8 @@
                   ".344",
                   ".417",
                   ".667"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "S. Meier",
@@ -6896,7 +6900,8 @@
                   ".312",
                   ".451",
                   ".514"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "Z. Diaz",
@@ -6914,7 +6919,8 @@
                   ".157",
                   ".302",
                   ".235"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "D. Nelson",
@@ -6932,7 +6938,8 @@
                   ".310",
                   ".396",
                   ".468"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "S. Darnell",
@@ -6950,7 +6957,8 @@
                   ".264",
                   ".386",
                   ".389"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Boroff",
@@ -6968,7 +6976,8 @@
                   ".276",
                   ".405",
                   ".663"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "H. Markham",
@@ -6986,7 +6995,8 @@
                   ".325",
                   ".359",
                   ".467"
-                ]
+                ],
+                "starter": true
               }
             ]
           },
@@ -7010,7 +7020,8 @@
                   ".270",
                   ".409",
                   ".429"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Utermark",
@@ -7028,7 +7039,8 @@
                   ".309",
                   ".419",
                   ".630"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "W. Furniss",
@@ -7046,7 +7058,8 @@
                   ".306",
                   ".420",
                   ".474"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "T. Bissetta",
@@ -7064,7 +7077,8 @@
                   ".272",
                   ".382",
                   ".601"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "H. Federico",
@@ -7082,7 +7096,8 @@
                   ".302",
                   ".429",
                   ".406"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "O. Paino",
@@ -7100,7 +7115,8 @@
                   ".244",
                   ".373",
                   ".407"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "A. Fawley",
@@ -7118,7 +7134,8 @@
                   ".234",
                   ".356",
                   ".489"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "B. Randle",
@@ -7136,7 +7153,8 @@
                   ".259",
                   ".342",
                   ".383"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "C. Reuter",
@@ -7154,7 +7172,8 @@
                   ".264",
                   ".360",
                   ".483"
-                ]
+                ],
+                "starter": true
               }
             ]
           }
@@ -7193,7 +7212,8 @@
                   "44-24",
                   "5.46",
                   "44"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "H. Smith",
@@ -7209,7 +7229,8 @@
                   "34-19",
                   "3.24",
                   "34"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "N. Thigpen",
@@ -7225,7 +7246,8 @@
                   "87-56",
                   "6.07",
                   "87"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "Z. Crotchfelt",
@@ -7241,7 +7263,8 @@
                   "13-9",
                   "3.49",
                   "13"
-                ]
+                ],
+                "starter": false
               }
             ]
           },
@@ -7263,7 +7286,8 @@
                   "98-61",
                   "5.40",
                   "98"
-                ]
+                ],
+                "starter": true
               },
               {
                 "name": "J. Robertson",
@@ -7279,7 +7303,8 @@
                   "15-13",
                   "4.34",
                   "15"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "W. Hooks",
@@ -7295,7 +7320,8 @@
                   "21-12",
                   "3.24",
                   "21"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "W. Libbert",
@@ -7311,7 +7337,8 @@
                   "20-12",
                   "6.19",
                   "20"
-                ]
+                ],
+                "starter": false
               },
               {
                 "name": "L. Waters",
@@ -7327,7 +7354,8 @@
                   "19-11",
                   "3.00",
                   "19"
-                ]
+                ],
+                "starter": false
               }
             ]
           }
@@ -7337,9 +7365,11 @@
     "scoringPlays": [
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "J. Utermark singled to left, D. Decker scored. ",
         "away": 0,
         "home": 1,
@@ -7348,9 +7378,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "H. Federico doubled to left, T. Bissetta scored. ",
         "away": 0,
         "home": 2,
@@ -7359,9 +7391,11 @@
       },
       {
         "period": 2,
+        "half": "top",
         "periodLabel": "2nd Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "S. Darnell homered to right, S. Meier scored. ",
         "away": 2,
         "home": 2,
@@ -7370,9 +7404,11 @@
       },
       {
         "period": 2,
+        "half": "bottom",
         "periodLabel": "2nd Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "B. Randle homered to right, A. Fawley scored. ",
         "away": 2,
         "home": 4,
@@ -7381,9 +7417,11 @@
       },
       {
         "period": 4,
+        "half": "bottom",
         "periodLabel": "4th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "H. Smith",
         "text": "C. Reuter homered to right, B. Randle scored. ",
         "away": 2,
         "home": 6,
@@ -7392,9 +7430,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "J. Pyne scored, J. Janicki to third, D. Nelson to second on balk by H. Elliott.",
         "away": 3,
         "home": 6,
@@ -7403,9 +7443,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "J. Pyne scored, J. Janicki to third, D. Nelson to second on balk by H. Elliott.",
         "away": 3,
         "home": 6,
@@ -7414,9 +7456,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "S. Darnell singled to left, J. Pyne scored, D. Nelson and J. Janicki scored advancing on play. ",
         "away": 5,
         "home": 6,
@@ -7425,9 +7469,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "J. Robertson",
         "text": "J. Janicki homered to left. ",
         "away": 6,
         "home": 6,
@@ -7436,9 +7482,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "J. Boroff doubled to left, D. Nelson and S. Darnell scored. ",
         "away": 8,
         "home": 6,
@@ -7447,9 +7495,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "H. Markham singled to right center, J. Boroff scored. ",
         "away": 9,
         "home": 6,
@@ -7458,9 +7508,11 @@
       },
       {
         "period": 7,
+        "half": "bottom",
         "periodLabel": "7th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "N. Thigpen",
         "text": "A. Fawley singled to left, H. Federico scored. ",
         "away": 9,
         "home": 7,
@@ -7469,9 +7521,11 @@
       },
       {
         "period": 8,
+        "half": "top",
         "periodLabel": "8th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "B. Cavill homered to left. ",
         "away": 10,
         "home": 7,
@@ -7480,9 +7534,11 @@
       },
       {
         "period": 8,
+        "half": "top",
         "periodLabel": "8th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Libbert",
         "text": "J. Boroff safe at second on error by shortstop O. Paino, D. Nelson and S. Darnell scored. ",
         "away": 12,
         "home": 7,
@@ -7491,9 +7547,11 @@
       },
       {
         "period": 8,
+        "half": "bottom",
         "periodLabel": "8th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "N. Thigpen",
         "text": "W. Furniss homered to left. ",
         "away": 12,
         "home": 8,
@@ -7641,9 +7699,11 @@
     "plays": [
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "J. Utermark singled to left, D. Decker scored. ",
         "away": 0,
         "home": 1,
@@ -7652,9 +7712,11 @@
       },
       {
         "period": 1,
+        "half": "bottom",
         "periodLabel": "1st Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "H. Federico doubled to left, T. Bissetta scored. ",
         "away": 0,
         "home": 2,
@@ -7663,9 +7725,11 @@
       },
       {
         "period": 2,
+        "half": "top",
         "periodLabel": "2nd Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "S. Darnell homered to right, S. Meier scored. ",
         "away": 2,
         "home": 2,
@@ -7674,9 +7738,11 @@
       },
       {
         "period": 2,
+        "half": "bottom",
         "periodLabel": "2nd Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "T. Egan",
         "text": "B. Randle homered to right, A. Fawley scored. ",
         "away": 2,
         "home": 4,
@@ -7685,9 +7751,11 @@
       },
       {
         "period": 4,
+        "half": "bottom",
         "periodLabel": "4th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "H. Smith",
         "text": "C. Reuter homered to right, B. Randle scored. ",
         "away": 2,
         "home": 6,
@@ -7696,9 +7764,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "J. Pyne scored, J. Janicki to third, D. Nelson to second on balk by H. Elliott.",
         "away": 3,
         "home": 6,
@@ -7707,9 +7777,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "J. Pyne scored, J. Janicki to third, D. Nelson to second on balk by H. Elliott.",
         "away": 3,
         "home": 6,
@@ -7718,9 +7790,11 @@
       },
       {
         "period": 5,
+        "half": "top",
         "periodLabel": "5th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "H. Elliott",
         "text": "S. Darnell singled to left, J. Pyne scored, D. Nelson and J. Janicki scored advancing on play. ",
         "away": 5,
         "home": 6,
@@ -7729,9 +7803,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "J. Robertson",
         "text": "J. Janicki homered to left. ",
         "away": 6,
         "home": 6,
@@ -7740,9 +7816,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "J. Boroff doubled to left, D. Nelson and S. Darnell scored. ",
         "away": 8,
         "home": 6,
@@ -7751,9 +7829,11 @@
       },
       {
         "period": 7,
+        "half": "top",
         "periodLabel": "7th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "H. Markham singled to right center, J. Boroff scored. ",
         "away": 9,
         "home": 6,
@@ -7762,9 +7842,11 @@
       },
       {
         "period": 7,
+        "half": "bottom",
         "periodLabel": "7th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "N. Thigpen",
         "text": "A. Fawley singled to left, H. Federico scored. ",
         "away": 9,
         "home": 7,
@@ -7773,9 +7855,11 @@
       },
       {
         "period": 8,
+        "half": "top",
         "periodLabel": "8th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Hooks",
         "text": "B. Cavill homered to left. ",
         "away": 10,
         "home": 7,
@@ -7784,9 +7868,11 @@
       },
       {
         "period": 8,
+        "half": "top",
         "periodLabel": "8th Inning",
         "side": "away",
         "teamAbbr": "TROY",
+        "actor": "W. Libbert",
         "text": "J. Boroff safe at second on error by shortstop O. Paino, D. Nelson and S. Darnell scored. ",
         "away": 12,
         "home": 7,
@@ -7795,9 +7881,11 @@
       },
       {
         "period": 8,
+        "half": "bottom",
         "periodLabel": "8th Inning",
         "side": "home",
         "teamAbbr": "MISS",
+        "actor": "N. Thigpen",
         "text": "W. Furniss homered to left. ",
         "away": 12,
         "home": 8,

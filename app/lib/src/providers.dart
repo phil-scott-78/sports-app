@@ -252,6 +252,17 @@ final summaryProvider =
   (ref, k) => ref.watch(apiProvider).summary(k.league, k.eventId),
 );
 
+/// The rich per-match tennis resource (ESPN core competition), fetched lazily
+/// when a tennis match detail opens. `eventId` is the parent tournament event
+/// id, `compId` the match id. autoDispose + best-effort (null on failure).
+typedef TennisMatchKey = ({String league, String eventId, String compId});
+
+final tennisMatchProvider =
+    FutureProvider.autoDispose.family<TennisMatchInfo?, TennisMatchKey>(
+  (ref, k) =>
+      ref.watch(apiProvider).tennisMatchInfo(k.league, k.eventId, k.compId),
+);
+
 /// Rankings feed for a league page (college polls / ATP-WTA / UFC divisions).
 /// Lazy + autoDispose: only alive while that league page is open; the worker
 /// caches it for an hour, so re-fetch-on-open is cheap.

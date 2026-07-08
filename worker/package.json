@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "mock": "node scripts/mock-espn-server.mjs",
+    "mock:megaweek": "node scripts/mock-espn-server.mjs --scenario megaweek",
     "capture": "node scripts/capture-fixtures.mjs",
     "capture-extra": "node scripts/capture-extra.mjs",
     "goldens": "node scripts/gen-goldens.mjs",

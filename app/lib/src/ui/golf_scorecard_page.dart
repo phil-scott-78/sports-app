@@ -22,6 +22,54 @@ void openGolfScorecard(
   ));
 }
 
+/// The event-page hole-by-hole strip (§7a): the leader's latest played round as a
+/// compact card, lazily fetched via [scorecardProvider]. Renders nothing until it
+/// loads and nothing before the player has holes — a leaderboard supporting card,
+/// never a spinner. Tapping opens the full per-round scorecard.
+class GolfLeaderStripCard extends ConsumerWidget {
+  final String league, eventId;
+  final Competitor leader;
+  final int? season;
+
+  /// The tournament's current round (from the leaderboard). The strip shows the
+  /// latest played round that isn't past it — so a live Round 3 never surfaces a
+  /// stale Round 4 card. 0/null → just the latest played round.
+  final int? currentRound;
+  const GolfLeaderStripCard({
+    super.key,
+    required this.league,
+    required this.eventId,
+    required this.leader,
+    this.season,
+    this.currentRound,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final key = (
+      league: league,
+      eventId: eventId,
+      playerId: leader.id,
+      season: season,
+    );
+    final rounds =
+        ref.watch(scorecardProvider(key)).valueOrNull?.rounds ?? const [];
+    final cap = (currentRound ?? 0) > 0 ? currentRound! : null;
+    ScorecardRound? sel;
+    for (final r in rounds) {
+      if (r.played && (cap == null || r.round <= cap)) sel = r; // latest played ≤ current
+    }
+    if (sel == null) return const SizedBox.shrink();
+    final name = (leader.shortName ?? leader.displayName).toUpperCase();
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () =>
+          openGolfScorecard(context, league, eventId, leader, season: season),
+      child: _RoundCard(sel, label: '$name · R${sel.round}'),
+    );
+  }
+}
+
 /// One golfer's hole-by-hole scorecard: per-round front/back nine grids with
 /// birdie/eagle/bogey coloring, front-back-total splits, and — for a round not
 /// yet started — the tee time. Lazy fetch on open (60s worker TTL); no polling:
@@ -203,7 +251,8 @@ class _RoundChip extends StatelessWidget {
 /// a strokes row colored by score type.
 class _RoundCard extends StatelessWidget {
   final ScorecardRound round;
-  const _RoundCard(this.round);
+  final String? label; // defaults to 'Round N'; the event-page strip passes a name
+  const _RoundCard(this.round, {this.label});
 
   /// The hole currently being played: the first hole with no strokes yet, but
   /// only when the round is genuinely in progress (at least one hole played and
@@ -227,7 +276,7 @@ class _RoundCard extends StatelessWidget {
       padding: T.padTable, // §10 scorecard table: tighter sides, tables need width
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
-          CardLabel('Round ${round.round}'),
+          CardLabel(label ?? 'Round ${round.round}'),
           const Spacer(),
           if (round.strokes != null)
             Text(

@@ -23,11 +23,22 @@ import {
   synthScoreboard, synthSummary, synthTeams, synthStandings, synthRankings,
   synthGolfExtras, synthGolfScorecard, synthMmaCore, synthTeamDetailParts,
 } from '../mock/synth.mjs';
+import { getScenario } from '../mock/scenarios.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FIX_DIR = join(HERE, '..', 'mock', 'fixtures');
 const PORT = Number(process.env.PORT || 8787);
 const REF_HOST = 'https://sports.core.api.espn.com'; // any host — the app swaps the origin to us
+
+// Optional "director's cut" overlay (see mock/scenarios.mjs). Cross-platform: read
+// `--scenario <name>` from argv (an env var like SCENARIO=x doesn't survive npm on
+// Windows cmd) with SCENARIO as a fallback. null → normal mock behavior.
+const scenarioName = (() => {
+  const i = process.argv.indexOf('--scenario');
+  return i !== -1 ? process.argv[i + 1] : (process.env.SCENARIO || null);
+})();
+const SCENARIO = getScenario(scenarioName);
+if (scenarioName && !SCENARIO) console.warn(`⚠  Unknown scenario "${scenarioName}" — serving the normal mock.\n`);
 
 const fixtures = new Map();
 function loadFixtures() {
@@ -67,20 +78,20 @@ function handle(req, res) {
     if (seg[0] === 'mock' && seg[1] === 'golf-tourn') {
       const key = `${seg[2]}/${seg[3]}`, eventId = seg[4];
       const fx = fxFor(key);
-      const sb = synthScoreboard(registry, key, fx, { now });
+      const sb = synthScoreboard(registry, key, fx, { now, scenario: SCENARIO });
       const extras = synthGolfExtras(registry, key, fx, sb) || {};
       return send(res, (extras.golfTournaments || {})[eventId] || {});
     }
     // /mock/mma-status/{sport}/{league}/{eventId}/{boutId}
     if (seg[0] === 'mock' && seg[1] === 'mma-status') {
       const key = `${seg[2]}/${seg[3]}`;
-      const { statuses } = synthMmaCore(registry, key, fxFor(key), seg[4], { now });
+      const { statuses } = synthMmaCore(registry, key, fxFor(key), seg[4], { now, scenario: SCENARIO });
       return send(res, statuses[seg[5]] || { type: { state: 'pre' } });
     }
     // /mock/mma-linescore/{sport}/{league}/{eventId}/{boutId}/{compId}
     if (seg[0] === 'mock' && seg[1] === 'mma-linescore') {
       const key = `${seg[2]}/${seg[3]}`;
-      const { linescores } = synthMmaCore(registry, key, fxFor(key), seg[4], { now });
+      const { linescores } = synthMmaCore(registry, key, fxFor(key), seg[4], { now, scenario: SCENARIO });
       return send(res, linescores[`${seg[5]}/${seg[6]}`] || { items: [] });
     }
 
@@ -89,7 +100,7 @@ function handle(req, res) {
       const key = `${seg[2]}/${seg[4]}`, eventId = seg[6];
       const prof = resolve(registry, key);
       if (prof.espnSport === 'mma') {
-        const { coreEvent } = synthMmaCore(registry, key, fxFor(key), eventId, { now });
+        const { coreEvent } = synthMmaCore(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
         // inject $refs pointing back at us so the app's per-bout follow works.
         for (const c of coreEvent.competitions || []) {
           c.status = { $ref: `${REF_HOST}/mock/mma-status/${key}/${eventId}/${c.id}` };
@@ -111,7 +122,7 @@ function handle(req, res) {
       if (!known(key)) return send(res, { error: `unknown league "${key}"` }, 404);
       const fx = fxFor(key);
       if (resource === 'scoreboard') {
-        return send(res, synthScoreboard(registry, key, fx, { now, date: q.get('dates') || null }));
+        return send(res, synthScoreboard(registry, key, fx, { now, date: q.get('dates') || null, scenario: SCENARIO }));
       }
       if (resource === 'summary') {
         return send(res, synthSummary(fx, q.get('event')));
@@ -154,5 +165,6 @@ http.createServer(handle).listen(PORT, '0.0.0.0', () => {
   const withEvents = [...fixtures.values()].filter((f) => f.events?.length).length;
   console.log(`Mock ESPN → http://localhost:${PORT}   (Android emulator: http://10.0.2.2:${PORT})`);
   console.log(`  ${fixtures.size} league fixtures (${withEvents} with events). Serves RAW ESPN shapes on ESPN paths.`);
+  if (SCENARIO) console.log(`  🏆 scenario "${SCENARIO.name}" ON — every league lit up live now, championships staged across the week.`);
   console.log('  Point the app: Settings → set the API base override to this URL.\n');
 });

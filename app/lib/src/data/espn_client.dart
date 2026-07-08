@@ -30,6 +30,8 @@ const _teamRoster = 'https://site.api.espn.com/apis/site/v2/sports/{p}/teams/{id
 const _teamStats = 'https://site.api.espn.com/apis/site/v2/sports/{p}/teams/{id}/statistics';
 const _rankings = 'https://site.api.espn.com/apis/site/v2/sports/{p}/rankings';
 const _coreEvent = 'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}';
+const _coreCompetition =
+    'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}';
 const _golfPlayerSummary =
     'https://site.web.api.espn.com/apis/site/v2/sports/{p}/leaderboard/{event}/playersummary?season={season}&player={player}';
 
@@ -126,6 +128,17 @@ class EspnClient {
 
   Future<dynamic> coreEvent(String key, String eventId, {int ttl = 30}) =>
       _get(_coreEvent.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', eventId), ttl: ttl);
+
+  /// One match's rich core resource (tennis drill-in): round + court + draw type
+  /// + the result note, keyed by the parent event id and the competition id.
+  Future<dynamic> coreCompetition(String key, String eventId, String compId,
+          {int ttl = 60}) =>
+      _get(
+          _coreCompetition
+              .replaceFirst('{c}', _corePath(key))
+              .replaceFirst('{id}', eventId)
+              .replaceFirst('{comp}', compId),
+          ttl: ttl);
 
   Future<dynamic> golfPlayerSummary(String key, String eventId, String season, String playerId, {int ttl = 60}) =>
       _get(_golfPlayerSummary

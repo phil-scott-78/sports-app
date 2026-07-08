@@ -244,7 +244,11 @@ Top to bottom — this order is fixed:
 3. **Chip nav** — horizontal pills. Active chip = inverted (`invertedBg` bg,
    `invertedText` text, 600). Inactive = 1.5px `border` outline, `textDim` text.
    Tab names are per-sport data, not per-sport code (Now/Plays/Box/Leaders,
-   Now/Timeline/Stats/Lineups, Leaderboard/Following/Course/Tee times…).
+   Now/Timeline/Stats/Lineups, Leaderboard/Following/Course/Tee times…). **Tabs
+   are data-gated** — never render a chip for absent data. Golf shows
+   `Leaderboard` always, plus a per-round chip (`R1 R2 R3 …`) for each round that
+   has scores — a round chip swaps the leaderboard's middle column to that round's
+   sub-scores; `Course` / `Tee times` appear only when the core feed carries them.
 4. **Situation card** — the sport's flourish (§8). The only per-sport shape.
 5. **Win probability card** — label + `statCallout` right; 12px two-segment
    rounded bar in team colors with a 2px gap.
@@ -405,7 +409,11 @@ same vocabulary (§11 checklist).
   zeros dim, unplayed `–` in `ghost`, current inning a `track` chip with `•`,
   R/H/E columns with R highlighted — then dual scope toggles (team | split)
   over batting/pitching tables (H and K the key columns, position tags inline,
-  NOW pill on the active pitcher).
+  NOW pill on the active pitcher). **Width rule:** the nine inning columns flex
+  to fill the card (`44px label + 9×1fr + R/H/E fixed`), so a 9-inning grid never
+  leaves dead space. Extra innings first *shrink* the cells toward an ~18px floor,
+  then the innings pane *alone* scrolls horizontally — the label column and R/H/E
+  stay pinned.
 
 ### Football (gridiron) — the drive field
 - **Situation card**: down-&-distance headline (`3RD & 4`) + spot caption; field
@@ -456,6 +464,13 @@ same vocabulary (§11 checklist).
   the score (`1 (4)`).
 - **Stats card**: possession split bar (two team-color segments, 2px gap) +
   SHOTS/xG/CORNERS rows (Barlow numbers flanking a faint centered label).
+  **The bar rule** (applies everywhere stats compare): a bar compares two sides
+  of *one whole* — a possession split, a share-of-total. Independent per-team
+  values — counts, averages, and percents like FG% / SV% / faceoff% — render as
+  **number rows** (leader value white 600 in a fixed column, centered faint
+  letterspaced label, trailer dim), never as bars or mirrored half-gauges. The
+  only bars beyond the share split are the §10 center-spine mirrored bars, which
+  are the team-stats comparison card alone.
 - **Feed glyphs** (time-rail): goal = filled team dot (+GOAL row gets the team
   wash); yellow/red card = small rect; sub = `track` circle with team ring;
   VAR = outlined square.
@@ -742,6 +757,16 @@ As events-per-match rises, compress in this order (never skip ahead of need):
 ✓ = designed in the exploration. Unmarked rows are extrapolations — sound
 defaults, but fair game to refine when that sport gets designed.
 
+**Until a sport's feed archetype is built, its Now tab carries the story with
+supporting cards.** Hockey's archetype-A feed is unbuilt, so the hockey Now tab
+leads with the §8 **shots-pressure card** (shots bars + goalie SV% footer) and a
+quiet **SCORING card** (design 6c: a faint period·clock rail + play prose) built
+from the summary's scoring plays — otherwise it was two lonely cards. The same
+quiet SCORING supporting card appears on the **gridiron Now** when its
+down-&-distance situation is sparse (the drive-log lives in full on the Drives
+tab, but the Now must never collapse to just a headline + win-prob bar). Dispatch
+these on data presence — a shots total, drives — never sport name.
+
 ### Composing
 
 Archetypes nest and controls transfer. Baseball's All-plays view (designed) is
@@ -780,6 +805,11 @@ else recedes.
 - **Footer summary line**: 11 `textFaint` tabular, middot-joined, above a
   `divider` (`FG 34/71 · 47.9% · 3PT 11/28 · FT 8/10 · TO 9`) — the stats that
   didn't earn a column.
+- **Substitution rows** (composed from the grammar; baseball box): a replacement
+  player renders **indented** in the man-he-replaced's slot, its name prefixed by
+  ESPN's letter marker (`a-`, `b-`), with the lineup note as an 11px `textFaint`
+  footnote line beneath the row (`a-doubled to left for Caissie in the 7th`).
+  Never truncate the batting order — late substitutes must all show.
 
 ### Semantic cells
 
@@ -808,7 +838,9 @@ table never scrolls horizontally — scope controls exist so it doesn't have to.
   between them the **gap bar** — 5px `track`, two team-color segments growing
   from opposite edges, widths proportional to the values. Team-tinted initial
   avatars (§6), 38px.
-- **Center-spine mirrored bars** (team stats): per stat — value Barlow 17/700
+- **Center-spine mirrored bars** (team stats): the *only* sanctioned mirrored-bar
+  treatment — independent per-team values in every other surface are number rows
+  (§8 "the bar rule"), never gauges. Per stat — value Barlow 17/700
   at both edges (both white; the bars carry the comparison), label 11 dim
   centered; beneath, two half-width 5px r3 team-color bars growing outward-in
   toward a 3px center gap. The card's header row doubles as the legend:

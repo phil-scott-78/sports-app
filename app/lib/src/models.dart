@@ -116,6 +116,12 @@ class SportEvent {
   final EventLinks links;
   final List<Competition> competitions;
 
+  /// When this event is a single tennis match exploded out of its parent
+  /// tournament ([matches]), the id of that parent tournament event — so game
+  /// detail can re-resolve the live match inside the freshest tournament slate.
+  /// Null for ordinary (already one-competition) events.
+  final String? tournamentId;
+
   SportEvent({
     required this.id,
     required this.name,
@@ -129,13 +135,14 @@ class SportEvent {
     this.weather,
     required this.links,
     required this.competitions,
+    this.tournamentId,
   });
 
   /// The competition to foreground. Most events have exactly one; a racing weekend
   /// has several (ESPN orders them FP1/FP2/FP3/Qual/Race) — surface the live session,
-  /// else the Race, else the first, so the card never headlines practice. Tennis also
-  /// nests many competitions but is expanded one-card-per-match upstream, so `.first`
-  /// stays correct there.
+  /// else the Race, else the first, so the card never headlines practice. A tennis
+  /// tournament also nests many competitions, but the UI routes those through
+  /// [isTournamentOfMatches] → [matches] (one card per match) rather than `main`.
   Competition? get main {
     if (competitions.isEmpty) return null;
     if (competitions.length > 1) {
@@ -149,10 +156,33 @@ class SportEvent {
     return competitions.first;
   }
 
-  /// A shallow copy carrying a single competition — used to explode a tennis
-  /// tournament (one ESPN event nesting many matches) into one card per match.
+  /// A tennis-style event: a whole tournament nesting many independent, set-based
+  /// head-to-head matches (singles = athlete, doubles = pair). Discriminator-
+  /// driven, never sport name: volleyball is set-based too but team-vs-team
+  /// (competitorKind `team`), and MMA/boxing is round-based — both fall out here,
+  /// so neither is mistaken for a tournament. Routes the Scores list to a calm
+  /// per-tournament summary row that drills into [matches] instead of collapsing
+  /// the whole draw onto one (fight-card-shaped) detail screen.
+  bool get isTournamentOfMatches =>
+      competitions.length > 1 &&
+      competitions.every((c) =>
+          c.layout == 'headToHead' &&
+          c.competitorKind != 'team' &&
+          c.periods.unit == 'set');
+
+  /// This tournament's matches, one single-competition [SportEvent] per match —
+  /// the design's "one card per match". Each keeps the real ESPN match id (so
+  /// rows/detail are uniquely keyed) and the parent [tournamentId] (so a live
+  /// match re-resolves inside the freshest tournament slate).
+  List<SportEvent> get matches =>
+      [for (final c in competitions) withCompetition(c)];
+
+  /// A shallow copy carrying a single competition — explodes one match out of a
+  /// tennis tournament. Re-ids to the match (unique) and records the parent
+  /// tournament id in [tournamentId].
   SportEvent withCompetition(Competition c) => SportEvent(
-        id: id,
+        id: c.id,
+        tournamentId: id,
         name: name,
         shortName: shortName,
         start: start,
@@ -182,6 +212,7 @@ class SportEvent {
         competitions: _list(j['competitions'])
             .map((c) => Competition.fromJson(_map(c)))
             .toList(growable: false),
+        tournamentId: _strOrNull(j['tournamentId']),
       );
 }
 
@@ -1318,6 +1349,51 @@ class TeamStanding {
       );
 }
 
+/// The rich per-match tennis resource — ESPN's core `events/{id}/competitions/
+/// {cid}` (the tennis drill-in). The site `/summary` is dead for tennis, but the
+/// core competition carries the match's identity: draw type, round + court, and
+/// a ready-made result note ("Korneeva bt Shubladze 2-6 7-6 (7-2) 6-3"). Stats /
+/// head-to-head / probabilities all 404, so this is a header, not a box score.
+/// Best-effort — every field is nullable and the detail degrades to the cheap
+/// set grid when the fetch fails (offline mock, or a live 404).
+class TennisMatchInfo {
+  final String? drawType; // "Women's Singles" / "Men's Doubles" / "Mixed Doubles"
+  final String? round; // "Quarterfinal" / "Qualifying 1st Round"
+  final String? roundAbbr; // "QF" / "Q1ST"
+  final String? court; // "Court 2 Roehampton"
+  final String? resultLine; // the human recap note (winner bt loser, full score)
+  TennisMatchInfo({
+    this.drawType,
+    this.round,
+    this.roundAbbr,
+    this.court,
+    this.resultLine,
+  });
+
+  bool get isEmpty =>
+      drawType == null &&
+      round == null &&
+      court == null &&
+      resultLine == null;
+
+  /// Whether there's identity to show (draw/round/court) beyond the result note.
+  bool get hasContext => drawType != null || round != null || court != null;
+
+  /// The 'Quarterfinal · Court 2 Roehampton' caption under the draw-type label.
+  String? get contextLine {
+    final parts = [if (round != null) round!, if (court != null) court!];
+    return parts.isEmpty ? null : parts.join(' · ');
+  }
+
+  factory TennisMatchInfo.fromJson(Map<String, dynamic> j) => TennisMatchInfo(
+        drawType: _strOrNull(j['drawType']),
+        round: _strOrNull(j['round']),
+        roundAbbr: _strOrNull(j['roundAbbr']),
+        court: _strOrNull(j['court']),
+        resultLine: _strOrNull(j['resultLine']),
+      );
+}
+
 // ---- game summary (rich tier) -----------------------------------------------
 class GameSummary {
   final String eventId;
@@ -1340,6 +1416,7 @@ class GameSummary {
   final List<CricketInningsCard> cricketInnings; // the real cricket scorecard
   final List<BoutResult> bouts; // MMA structured results (core-built)
   final List<MatchEvent> timeline; // soccer curated event feed ([] elsewhere)
+  final List<AtBat> atBats; // baseball at-bats w/ pitch sequences ([] elsewhere) (§3e)
   GameSummary({
     required this.eventId,
     required this.live,
@@ -1359,6 +1436,7 @@ class GameSummary {
     this.cricketInnings = const [],
     this.bouts = const [],
     this.timeline = const [],
+    this.atBats = const [],
   });
   factory GameSummary.fromJson(Map<String, dynamic> j) => GameSummary(
         eventId: _str(j['eventId']),
@@ -1409,6 +1487,9 @@ class GameSummary {
         timeline: _list(j['timeline'])
             .map((e) => MatchEvent.fromJson(_map(e)))
             .toList(growable: false),
+        atBats: _list(j['atBats'])
+            .map((a) => AtBat.fromJson(_map(a)))
+            .toList(growable: false),
       );
 
   bool get isEmpty =>
@@ -1426,7 +1507,8 @@ class GameSummary {
       winProbability == null &&
       drives.isEmpty &&
       cricketInnings.isEmpty &&
-      bouts.isEmpty;
+      bouts.isEmpty &&
+      atBats.isEmpty;
 
   /// The structured result for one bout (MMA detail is per-bout; the summary is
   /// per-card) — matched by the bout's Competition.id.
@@ -1469,6 +1551,15 @@ class DriveSummary {
   final String? side, teamAbbr, description, result;
   final bool isScore;
   final int? yards, playCount;
+
+  /// §5b: the drive's quarter (its first play's period) — the feed groups drives
+  /// into per-quarter cards; the elapsed clock ('2:44') for the stat strip; the
+  /// running score after the drive; and the slim per-drive plays for the All-view
+  /// tap-to-expand. All null/empty for older payloads.
+  final int? period;
+  final String? timeElapsed;
+  final num? awayScore, homeScore;
+  final List<DrivePlay> plays;
   DriveSummary({
     this.side,
     this.teamAbbr,
@@ -1477,6 +1568,11 @@ class DriveSummary {
     this.isScore = false,
     this.yards,
     this.playCount,
+    this.period,
+    this.timeElapsed,
+    this.awayScore,
+    this.homeScore,
+    this.plays = const [],
   });
   factory DriveSummary.fromJson(Map<String, dynamic> j) => DriveSummary(
         side: _strOrNull(j['side']),
@@ -1486,6 +1582,89 @@ class DriveSummary {
         isScore: _bool(j['isScore']),
         yards: _int(j['yards']),
         playCount: _int(j['playCount']),
+        period: _int(j['period']),
+        timeElapsed: _strOrNull(j['timeElapsed']),
+        awayScore: _num(j['awayScore']),
+        homeScore: _num(j['homeScore']),
+        plays: _list(j['plays'])
+            .map((e) => DrivePlay.fromJson(_map(e)))
+            .toList(growable: false),
+      );
+}
+
+/// One play inside a drive — the §5b All-view disclosure rows behind a drive.
+class DrivePlay {
+  final String text;
+  final String? clock;
+  final bool scoring;
+  DrivePlay({required this.text, this.clock, this.scoring = false});
+  factory DrivePlay.fromJson(Map<String, dynamic> j) => DrivePlay(
+        text: _str(j['text']),
+        clock: _strOrNull(j['clock']),
+        scoring: _bool(j['scoring']),
+      );
+}
+
+/// One baseball at-bat (§3e): a condensed row in the All-plays view that expands
+/// to its [pitches]. [text] is the batting result (empty while [live]); [batter]
+/// (resolved short name) rides only the live, pre-expanded at-bat. [outs]/[away]/
+/// [home] are the state AFTER the at-bat. Pitching-change rows are not at-bats.
+class AtBat {
+  final int? period;
+  final String? half, side, teamAbbr, batter;
+  final String text;
+  final bool scoring, live;
+  final int? outs, balls, strikes;
+  final num? away, home;
+  final List<Pitch> pitches;
+  AtBat({
+    this.period,
+    this.half,
+    this.side,
+    this.teamAbbr,
+    this.batter,
+    this.text = '',
+    this.scoring = false,
+    this.live = false,
+    this.outs,
+    this.balls,
+    this.strikes,
+    this.away,
+    this.home,
+    this.pitches = const [],
+  });
+  factory AtBat.fromJson(Map<String, dynamic> j) => AtBat(
+        period: _int(j['period']),
+        half: _strOrNull(j['half']),
+        side: _strOrNull(j['side']),
+        teamAbbr: _strOrNull(j['teamAbbr']),
+        batter: _strOrNull(j['batter']),
+        text: _str(j['text']),
+        scoring: _bool(j['scoring']),
+        live: _bool(j['live']),
+        outs: _int(j['outs']),
+        balls: _int(j['balls']),
+        strikes: _int(j['strikes']),
+        away: _num(j['away']),
+        home: _num(j['home']),
+        pitches: _list(j['pitches'])
+            .map((p) => Pitch.fromJson(_map(p)))
+            .toList(growable: false),
+      );
+}
+
+/// One pitch inside an [AtBat]. [r] classifies the result for the §2 muted glyph
+/// dot (ball / strike / foul / inplay / other); [text] is the pitch outcome with
+/// the 'Pitch N :' prefix stripped ('Strike 1 Swinging'); [velo] is MPH.
+class Pitch {
+  final String r;
+  final String text;
+  final num? velo;
+  Pitch({this.r = 'other', this.text = '', this.velo});
+  factory Pitch.fromJson(Map<String, dynamic> j) => Pitch(
+        r: _str(j['r']).isEmpty ? 'other' : _str(j['r']),
+        text: _str(j['text']),
+        velo: _num(j['velo']),
       );
 }
 
@@ -1720,17 +1899,42 @@ class BoxRow {
   final String name;
   final String? pos;
   final List<String> stats;
-  BoxRow({required this.name, this.pos, required this.stats});
+
+  /// Baseball only: `false` marks a substitute (the app indents the row), `true`
+  /// a starter, null where ESPN ships no starter flag (§3d).
+  final bool? starter;
+
+  /// The athlete's lineup note ('a-walked for Thomas in the 7th') — the
+  /// substitution footnote. Null when absent.
+  final String? note;
+  BoxRow(
+      {required this.name,
+      this.pos,
+      required this.stats,
+      this.starter,
+      this.note});
   factory BoxRow.fromJson(Map<String, dynamic> j) => BoxRow(
         name: _str(j['name']),
         pos: _strOrNull(j['pos']),
         stats: _list(j['stats']).map(_str).toList(growable: false),
+        starter: j['starter'] is bool ? j['starter'] as bool : null,
+        note: _strOrNull(j['note']),
       );
 }
 
 class SummaryPlay {
   final int? period;
+
+  /// Baseball half-inning ('top'|'bottom') from ESPN `period.type` — lets the
+  /// feed group scoring/all plays by (period, half), so a 4-run bottom doesn't
+  /// merge into the top of the same inning (§3c). Null for every other sport.
+  final String? half;
   final String? periodLabel, clock, side, teamAbbr, type;
+
+  /// The play's first participant (basketball), resolved to a name via the
+  /// boxscore — the feed bolds it. Null when there's no participant or the id
+  /// isn't in the box (the row then renders entirely dim) (§4b).
+  final String? actor;
   final String text;
   final num? away, home;
 
@@ -1742,11 +1946,13 @@ class SummaryPlay {
 
   SummaryPlay({
     this.period,
+    this.half,
     this.periodLabel,
     this.clock,
     this.side,
     this.teamAbbr,
     this.type,
+    this.actor,
     required this.text,
     this.away,
     this.home,
@@ -1754,11 +1960,13 @@ class SummaryPlay {
   });
   factory SummaryPlay.fromJson(Map<String, dynamic> j) => SummaryPlay(
         period: _int(j['period']),
+        half: _strOrNull(j['half']),
         periodLabel: _strOrNull(j['periodLabel']),
         clock: _strOrNull(j['clock']),
         side: _strOrNull(j['side']),
         teamAbbr: _strOrNull(j['teamAbbr']),
         type: _strOrNull(j['type']),
+        actor: _strOrNull(j['actor']),
         text: _str(j['text']),
         away: _num(j['away']),
         home: _num(j['home']),
@@ -1835,6 +2043,7 @@ class MatchEvent {
         clock: p.clock,
         side: p.side,
         teamAbbr: p.teamAbbr,
+        athlete: p.actor, // basketball actor (§4b) — the feed bolds it when present
         text: p.text,
         scoring: p.scoring,
         scoreAway: p.away,

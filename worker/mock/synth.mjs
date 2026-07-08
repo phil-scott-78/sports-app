@@ -124,6 +124,23 @@ function shapeNumeric(comp, profile, eventId, P) {
   }
 }
 
+// Golf live shaping: the captured leaderboard is a FINISHED tournament (every
+// competitor THRU F on the final round). Re-project it to a mid-round `now` —
+// keep the completed rounds, drop rounds past the current one, and trim the
+// current round to a varying THRU so the leaderboard reads genuinely live (§8.4).
+function shapeGolfLive(comp, eventId, currentRound) {
+  for (const c of comp.competitors || []) {
+    if (!Array.isArray(c.linescores) || !c.linescores.length) continue;
+    const kept = c.linescores.filter((ls) => (ls.period ?? 0) <= currentRound);
+    const cur = kept.find((ls) => (ls.period ?? 0) === currentRound);
+    if (cur && Array.isArray(cur.linescores) && cur.linescores.length) {
+      const thru = 1 + (hashStr(`${eventId}:${c.id}:thru`) % 17); // 1..17 holes (mid-round)
+      cur.linescores = cur.linescores.slice(0, thru);
+    }
+    c.linescores = kept;
+  }
+}
+
 function setWinners(comp, profile) {
   if (profile.layout !== 'headToHead' || comp.competitors.length !== 2) return;
   if (profile.scoreKind !== 'numeric') return; // golf=order, mma=captured winner, racing=order
@@ -152,6 +169,7 @@ function makeLive(comp, profile, eventId, startMs) {
   comp.date = iso(startMs);
   const P = livePeriod(profile);
   shapeNumeric(comp, profile, eventId, P);
+  if (profile.periodUnit === 'hole_rounds') shapeGolfLive(comp, eventId, P); // §8.4
   for (const c of comp.competitors) { delete c.winner; }
   const L = liveLabels(profile, P);
   comp.status = { type: { id: '2', name: 'STATUS_IN_PROGRESS', state: 'in', completed: false, description: 'In Progress', detail: L.detail, shortDetail: L.shortDetail }, period: L.period, displayClock: L.clock || '0:00' };
@@ -187,8 +205,30 @@ function injectSituation(comp, profile, eventId) {
     };
     comp.outsText = `${outs} Out${outs === 1 ? '' : 's'}`; // QUIRK: outsText lives on the competition, not situation
   } else if (profile.espnSport === 'football') {
-    const down = 1 + Math.floor(mulberry(hashStr(eventId + ':dd'))() * 4), dist = randInt(eventId + ':dist', 1, 15);
-    comp.situation = { down, distance: dist, downDistanceText: `${ordinal(down)} & ${dist}`, isRedZone: false };
+    const r = mulberry(hashStr(eventId + ':gsit'));
+    const down = 1 + Math.floor(r() * 4);   // 1..4
+    const dist = 1 + Math.floor(r() * 12);  // 1..12
+    const comps = comp.competitors || [];
+    const poss = comps.length ? comps[r() < 0.5 ? 0 : comps.length - 1] : null;
+    // possession must match the competitor's canonical id (normalize.js buildCompetitor:
+    // id = raw.id ?? team.id); the field bar (situations.dart fieldPosition) parses the
+    // "at ABBR yard" spot — so the drive graphic + LAST PLAY render, not just the
+    // down&distance headline (§8.3 unblocks the §5a CFB Now).
+    const possId = poss ? String(poss.id ?? poss.team?.id ?? '') : '';
+    const abbr = poss?.team?.abbreviation || poss?.abbreviation;
+    const yard = 20 + Math.floor(r() * 25); // a plausible mid-drive spot in own territory
+    const spot = abbr ? ` at ${abbr} ${yard}` : '';
+    const lastPlays = ['Run up the middle for 4 yards', 'Pass complete for a first down',
+      'Incomplete pass down the sideline', 'Sacked for a loss of 6', 'Scramble for 9 yards', 'Screen pass for 5'];
+    comp.situation = {
+      down, distance: dist,
+      downDistanceText: `${ordinal(down)} & ${dist}${spot}`,
+      ...(possId ? { possession: possId } : {}),
+      isRedZone: false,
+      homeTimeouts: 1 + Math.floor(r() * 3),
+      awayTimeouts: 1 + Math.floor(r() * 3),
+      lastPlay: { text: lastPlays[Math.floor(r() * lastPlays.length)] },
+    };
   }
 }
 
@@ -292,7 +332,7 @@ function synthLeague(fixture, profile, key, now) {
  * spec ('YYYYMMDD' or 'YYYYMMDD-YYYYMMDD'). null/today → a full final+live+scheduled
  * mix; a past day → finals; a future day → scheduled; a range → spread across it.
  */
-export function synthScoreboard(registry, key, fixture, { now = Date.now(), date = null } = {}) {
+export function synthScoreboard(registry, key, fixture, { now = Date.now(), date = null, scenario = null } = {}) {
   const profile = resolve(registry, key);
   let pool = (fixture.events && fixture.events.length) ? fixture.events : fabricateFromTeams(fixture, profile, 6);
 
@@ -305,7 +345,8 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
     if (s != null && e != null) {
       const today = etDayMs(now);
       const days = Math.max(1, Math.round((e - s) / DAY) + 1);
-      pool = ensurePool(pool, Math.min(days, 12));
+      pool = ensurePool(pool, Math.max(scenario ? scenario.minPool : 0, Math.min(days, 12)));
+      const heroDays = new Set(); // scenario: at most one championship hero per day
       pool.forEach((src, i) => {
         const dayMs = s + (i % days) * DAY;
         const role = etDayMs(dayMs) < today ? 'final' : etDayMs(dayMs) > today ? 'scheduled' : 'live';
@@ -313,6 +354,11 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
         applyRole(ev, role, profile, dayStart(dayMs, role, i), String(ev.id));
         if (!ev.competitions?.[0]) return;
         ev.date = ev.competitions[0].date;
+        if (scenario) {
+          const dayOffset = Math.round((etDayMs(dayMs) - today) / DAY);
+          scenario.frame(ev, { role, profile, key, dayOffset, firstOfDay: !heroDays.has(dayOffset) });
+          if (role === 'scheduled') heroDays.add(dayOffset);
+        }
         out.events.push(ev);
       });
       out.day = { date: ymdDash(range[0]) };
@@ -324,13 +370,16 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
   // targetDay + today are both "UTC-midnight of an ET day" stamps → compare directly.
   const targetDay = date ? (ymdToMs(date) ?? today) : today;
   const cmp = targetDay - today;
+  const dayOffset = Math.round(cmp / DAY); // whole-day delta a scenario reasons in
 
   let roles;
-  if (cmp === 0) { pool = ensurePool(pool, 3); roles = mixedRoles(pool.length); }
+  if (scenario) { pool = ensurePool(pool, scenario.minPool); roles = scenario.roles(profile, key, dayOffset, pool.length); }
+  else if (cmp === 0) { pool = ensurePool(pool, 3); roles = mixedRoles(pool.length); }
   else if (cmp < 0) roles = pool.map(() => 'final');
   else roles = pool.map(() => 'scheduled');
 
   const counters = { final: 0, live: 0, scheduled: 0 };
+  let heroTaken = false; // scenario: at most one championship hero for this single day
   pool.forEach((src, i) => {
     const role = roles[i];
     const k = counters[role]++;
@@ -339,6 +388,10 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
     applyRole(ev, role, profile, startMs, String(ev.id));
     if (!ev.competitions?.[0]) return; // event with no competitions/groupings → skip
     ev.date = ev.competitions[0].date; // event date follows its (first) competition
+    if (scenario) {
+      scenario.frame(ev, { role, profile, key, dayOffset, firstOfDay: !heroTaken });
+      if (role === 'scheduled') heroTaken = true;
+    }
     out.events.push(ev);
   });
   out.day = { date: date ? ymdDash(date) : etDayDash(now) };
@@ -354,6 +407,13 @@ export function synthSummary(fixture, eventId) {
   const base = String(eventId).split('-c')[0].split(':')[0]; // strip clone/comp suffixes
   const raw = fixture.summaries?.[eventId] || fixture.summaries?.[base];
   if (raw) return raw;
+  // No captured summary for THIS event → borrow one of the league's captured
+  // summaries (deterministic by id) so far more scoreboard events open a RICH
+  // detail offline instead of the degraded empty envelope. The borrowed box-score
+  // teams won't match the synthesized score block — but the mock's job is to walk
+  // the rich-detail rendering (feeds, box tables, scoring), not data fidelity.
+  const captured = fixture.summaries ? Object.values(fixture.summaries) : [];
+  if (captured.length) return captured[hashStr(String(eventId)) % captured.length];
   return { header: { id: String(eventId), competitions: [{ id: String(eventId), competitors: [], status: { type: { state: 'post', completed: true } } }] }, boxscore: { teams: [], players: [] }, plays: [], scoringPlays: [], keyEvents: [], rosters: [] };
 }
 
@@ -373,17 +433,25 @@ export function synthGolfExtras(registry, key, fixture, sb) {
   const profile = resolve(registry, key);
   if (profile.espnSport !== 'golf' || profile.layout !== 'field') return undefined;
   const golfTournaments = {};
+  const rounds = profile.regulationPeriods || 4;
   for (const ev of sb.events || []) {
     const id = String(ev.id);
+    const status = ev.competitions?.[0]?.status;
+    const live = status?.type?.state === 'in';
+    const currentRound = Math.min(Math.max(status?.period || rounds, 1), rounds);
     const captured = fixture.tournaments?.[id] || fixture.tournaments?.[baseId(id)];
-    if (captured) { golfTournaments[id] = captured; continue; }
-    const rounds = profile.regulationPeriods || 4;
-    const period = ev.competitions?.[0]?.status?.period || rounds;
+    if (captured) {
+      // Align a captured (often finished R4) tournament's currentRound to the
+      // synthesized live round so the pill (status.period) and GolfMeta.currentRound
+      // agree; leave final/scheduled captures verbatim (§8.4).
+      golfTournaments[id] = live ? { ...captured, currentRound } : captured;
+      continue;
+    }
     const noCut = hashStr(`${id}:cut`) % 3 === 0; // a third of events: signature/no-cut
     golfTournaments[id] = {
       displayName: ev.name, major: hashStr(`${id}:mj`) % 4 === 0,
       scoringSystem: { name: 'Medal' }, numberOfRounds: rounds,
-      currentRound: Math.min(Math.max(period, 1), rounds),
+      currentRound,
       cutRound: noCut ? 0 : 2,
       ...(noCut ? {} : { cutScore: -(hashStr(`${id}:cs`) % 4 + 1), cutCount: 65 + (hashStr(`${id}:cc`) % 15) }),
     };
@@ -449,8 +517,8 @@ const MMA_RESULTS = [
   { name: 'decision---unanimous', displayName: 'Decision - Unanimous', shortDisplayName: 'U Dec' },
   { name: 'decision---split', displayName: 'Decision - Split', shortDisplayName: 'S Dec' },
 ];
-export function synthMmaCore(registry, key, fixture, eventId, { now = Date.now() } = {}) {
-  const sb = synthScoreboard(registry, key, fixture, { now });
+export function synthMmaCore(registry, key, fixture, eventId, { now = Date.now(), scenario = null } = {}) {
+  const sb = synthScoreboard(registry, key, fixture, { now, scenario });
   const ev = (sb.events || []).find((e) => String(e.id) === String(eventId)) || (sb.events || [])[0];
   if (!ev) return { coreEvent: { id: String(eventId), competitions: [] }, statuses: {}, linescores: {} };
   const coreEvent = { id: String(ev.id), date: ev.date, competitions: [] };

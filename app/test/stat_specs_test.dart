@@ -105,10 +105,31 @@ void main() {
             StatCompareRow(
                 spec: spec, away: away[spec.key], home: home[spec.key]),
       ]);
-      expect(find.text('Field goals'), findsOneWidget);
+      expect(find.text('FIELD GOALS'), findsOneWidget);
       expect(find.text('38.4%'), findsOneWidget); // sign restored
-      expect(find.text('Rebounds'), findsOneWidget);
+      expect(find.text('REBOUNDS'), findsOneWidget);
       expect(find.text('47'), findsOneWidget);
+      // FG% and REB are independent per-team values — number rows, no bar.
+      expect(find.byKey(const ValueKey('statShareBar')), findsNothing);
+    });
+
+    testWidgets('soccer possession draws the split bar; counts do not',
+        (tester) async {
+      final panel = cheapStatPanels['soccer']!;
+      final away = {'PP': '55.3', 'SHOT': '14'};
+      final home = {'PP': '44.7', 'SHOT': '9'};
+      await pump(tester, [
+        for (final spec in panel.rows)
+          if (away[spec.key] != null || home[spec.key] != null)
+            StatCompareRow(
+                spec: spec, away: away[spec.key], home: home[spec.key]),
+      ]);
+      // Possession is a share → the one split bar. Shots is a count → no bar.
+      expect(find.byKey(const ValueKey('statShareBar')), findsOneWidget);
+      expect(find.text('POSSESSION'), findsOneWidget);
+      expect(find.text('55.3%'), findsOneWidget);
+      expect(find.text('SHOTS'), findsOneWidget);
+      expect(find.text('14'), findsOneWidget);
     });
 
     testWidgets('classified rich ratio row displays raw made-of-attempts',
@@ -119,7 +140,29 @@ void main() {
       ]);
       expect(find.text('4-16'), findsOneWidget);
       expect(find.text('6-15'), findsOneWidget);
-      expect(find.text('3rd down efficiency'), findsOneWidget);
+      expect(find.text('3RD DOWN EFFICIENCY'), findsOneWidget);
+      // A conversion ratio is an independent per-team value — number row, no bar.
+      expect(find.byKey(const ValueKey('statShareBar')), findsNothing);
+    });
+  });
+
+  group('share classification', () {
+    TeamStatRow row(String label, String away, String home) =>
+        TeamStatRow(label: label, away: away, home: home);
+
+    test('possession & time-of-possession are shares; independents are not', () {
+      // possession first, shots second in the soccer cheap panel.
+      expect(cheapStatPanels['soccer']!.rows.first.share, isTrue);
+      expect(cheapStatPanels['soccer']!.rows[1].share, isFalse);
+      // FG% is an independent per-team percent — not a share.
+      expect(cheapStatPanels['basketball']!.rows.first.share, isFalse);
+      // Rugby possession/territory (0–1 fractions) are shares.
+      expect(cheapStatPanels['rugby']!.rows.first.share, isTrue);
+
+      expect(classifyRichRow(row('Possession', '33:11', '26:49')).share, isTrue);
+      expect(classifyRichRow(row('Total Yards', '335', '331')).share, isFalse);
+      expect(
+          classifyRichRow(row('Field Goal %', '45.5', '41.2')).share, isFalse);
     });
   });
 }

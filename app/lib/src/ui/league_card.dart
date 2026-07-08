@@ -5,6 +5,7 @@ import '../util.dart';
 import 'follow_sheet.dart';
 import 'game_detail_page.dart';
 import 'situations.dart';
+import 'tournament_page.dart';
 import 'widgets.dart';
 
 /// One league's slate as a dense card of game rows — shared by the home feed
@@ -59,6 +60,13 @@ class LeagueEventRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // A tennis tournament is one ESPN "event" nesting a whole draw of matches;
+    // it gets a calm per-tournament summary row that drills into its matches,
+    // rather than collapsing to one match (and misreading as a fight card).
+    if (event.isTournamentOfMatches) {
+      return _TournamentRow(
+          league: league, event: event, divider: divider, date: date);
+    }
     final comp = event.main;
     if (comp == null) return const SizedBox.shrink();
     final body = comp.isField ? _fieldRow(comp) : _h2hRow(comp);
@@ -236,6 +244,152 @@ class LeagueEventRow extends StatelessWidget {
       const SizedBox(width: 10),
       _StatusColumn(event: event, comp: comp),
     ]);
+  }
+}
+
+/// A tennis tournament summarised as one dense row: name + a preview of the
+/// marquee match, with a live/round status stack, tapping into the tournament's
+/// full match list. Keeps a whole draw from flooding the Scores list while
+/// staying one tap from every match.
+class _TournamentRow extends StatelessWidget {
+  final String league;
+  final SportEvent event;
+  final bool divider;
+  final String? date;
+  const _TournamentRow({
+    required this.league,
+    required this.event,
+    required this.divider,
+    this.date,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final matches = event.competitions;
+    final liveCount = matches.where((c) => c.status.live).length;
+    final headliner = _headliner(matches);
+    final round = _deepestRound(matches);
+
+    return InkWell(
+      onTap: () => openTournamentPage(context, league, event, date: date),
+      child: Container(
+        decoration: divider
+            ? const BoxDecoration(
+                border: Border(top: BorderSide(color: T.divider)))
+            : null,
+        child: Padding(
+          padding: T.padDenseRow,
+          child: Row(children: [
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      event.shortName.isNotEmpty
+                          ? event.shortName
+                          : event.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.rowText,
+                    ),
+                    if (headliner != null) ...[
+                      const SizedBox(height: 4),
+                      Text(_matchupLine(headliner, matches.length),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: T.captionFaint),
+                    ],
+                  ]),
+            ),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                if (liveCount > 0) ...[
+                  const LiveDot(),
+                  const SizedBox(width: 6),
+                ],
+                Text(_statusText(matches, liveCount),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: liveCount > 0 ? T.text : T.textFaint)),
+              ]),
+              if (round != null) ...[
+                const SizedBox(height: 2),
+                Text(round, style: T.captionFaint),
+              ],
+            ]),
+            const SizedBox(width: 4),
+            const Icon(Icons.chevron_right_rounded,
+                size: 16, color: T.textFaint),
+          ]),
+        ),
+      ),
+    );
+  }
+
+  String _statusText(List<Competition> matches, int liveCount) {
+    if (liveCount > 0) return '$liveCount live';
+    final scheduled = matches.where((c) => c.status.isScheduled).length;
+    final done = matches.where((c) => c.status.ended).length;
+    if (scheduled == 0 && done > 0) return done == 1 ? 'Final' : 'Completed';
+    if (done == 0 && scheduled > 0) {
+      return scheduled == 1 ? 'Upcoming' : '$scheduled upcoming';
+    }
+    return '${matches.length} matches';
+  }
+
+  /// The most headline-worthy match — deepest live, else deepest upcoming, else
+  /// deepest completed — so the row previews the marquee.
+  Competition? _headliner(List<Competition> matches) {
+    var pool = matches.where((c) => c.status.live).toList();
+    if (pool.isEmpty) {
+      pool = matches.where((c) => c.status.isScheduled).toList();
+    }
+    if (pool.isEmpty) pool = List.of(matches);
+    if (pool.isEmpty) return null;
+    pool.sort((a, b) => tennisRoundRank(b.meta?.round)
+        .compareTo(tennisRoundRank(a.meta?.round)));
+    return pool.first;
+  }
+
+  /// The deepest active round abbreviation across the draw (live → upcoming →
+  /// any), e.g. "QF".
+  String? _deepestRound(List<Competition> matches) {
+    Iterable<Competition> pool = matches.where((c) => c.status.live);
+    if (pool.isEmpty) pool = matches.where((c) => c.status.isScheduled);
+    if (pool.isEmpty) pool = matches;
+    String? best;
+    var bestRank = -1 << 30;
+    for (final c in pool) {
+      final r = c.meta?.round;
+      if (r == null || r.isEmpty) continue;
+      final rank = tennisRoundRank(r);
+      if (rank > bestRank) {
+        bestRank = rank;
+        best = r;
+      }
+    }
+    return best == null ? null : tennisRoundAbbr(best);
+  }
+
+  String _matchupLine(Competition c, int total) {
+    final matchup =
+        c.competitors.map(_shortName).where((s) => s.isNotEmpty).join(' · ');
+    final others = total - 1;
+    return others > 0 ? '$matchup  +$others' : matchup;
+  }
+
+  String _shortName(Competitor c) {
+    if (c.athletes.length >= 2) {
+      return c.athletes.map((a) => _lastName(a.name)).join('/');
+    }
+    return _lastName(c.displayName.isNotEmpty ? c.displayName : c.label);
+  }
+
+  String _lastName(String full) {
+    final t = full.trim();
+    if (t.isEmpty) return t;
+    return t.split(RegExp(r'\s+')).last;
   }
 }
 

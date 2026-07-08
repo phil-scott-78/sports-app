@@ -70,11 +70,53 @@ class Api {
 
   // ---- summary ---------------------------------------------------------------
   Future<GameSummary> summary(String league, String eventId) async {
-    if (resolve(_reg, league)['espnSport'] == 'mma') {
+    final sport = resolve(_reg, league)['espnSport'];
+    if (sport == 'mma') {
       return GameSummary.fromJson(await _mmaSummary(league, eventId));
+    }
+    // Tennis /summary is DEAD — ESPN 400s for every event/competition id
+    // permutation (verified 2026-07; see the tennis rankingsNote in
+    // league-profiles). Skip the always-failing fetch: the match's whole story
+    // is the cheap-tier set grid + situation card. Returning an empty summary
+    // keeps the detail screen on its set-grid path with no network churn.
+    if (sport == 'tennis') {
+      return GameSummary.fromJson(const <String, dynamic>{});
     }
     final raw = await _c.summary(league, eventId) as Map;
     return GameSummary.fromJson(sm.normalizeSummary(_reg, league, raw));
+  }
+
+  /// The rich per-match tennis resource — ESPN's core competition (the drill-in
+  /// the site /summary can't give). `eventId` is the parent tournament event id,
+  /// `compId` the match id. Best-effort: a failure (offline mock, live 404)
+  /// yields null and the detail keeps its cheap set grid.
+  Future<TennisMatchInfo?> tennisMatchInfo(
+      String league, String eventId, String compId) async {
+    try {
+      final c = await _c.coreCompetition(league, eventId, compId) as Map;
+      Map? sub(dynamic x) => x is Map ? x : null;
+      String? firstNote() {
+        final notes = c['notes'];
+        if (notes is List) {
+          for (final n in notes) {
+            final t = sub(n)?['text'];
+            if (t is String && t.trim().isNotEmpty) return t.trim();
+          }
+        }
+        return null;
+      }
+
+      final info = TennisMatchInfo.fromJson({
+        'drawType': sub(c['type'])?['text'],
+        'round': sub(c['round'])?['description'],
+        'roundAbbr': sub(c['round'])?['abbreviation'],
+        'court': sub(c['court'])?['description'],
+        'resultLine': firstNote(),
+      });
+      return info.isEmpty ? null : info;
+    } catch (_) {
+      return null; // enrichment only
+    }
   }
 
   /// MMA: ESPN's site /summary 404s for every event, so the rich tier is built

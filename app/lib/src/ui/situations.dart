@@ -440,7 +440,7 @@ class MatchTimelineCard extends StatelessWidget {
     final total = _regulationMinutes(comp);
     final live = comp.status.live;
     final now = live ? _clockMinutes(comp.status.clock) : null;
-    final recent = comp.events.reversed.take(3).toList();
+    final recent = _curatedRecent();
     final rightLabel = live
         ? (comp.status.shortDetail ?? comp.status.detail)
         : (comp.status.ended ? 'FT' : null);
@@ -467,6 +467,21 @@ class MatchTimelineCard extends StatelessWidget {
             child: LayoutBuilder(builder: (context, box) {
               final w = box.maxWidth;
               double x(int minute) => w * minute.clamp(0, total) / total;
+              // Keep every marker fully on the rail — stoppage-time minutes
+              // (90'+8) clamp into the last sliver instead of hanging off the
+              // right edge (x() already clamps the minute; this clamps the glyph).
+              Positioned markerAt(ScoringEvent e) {
+                final isRed = e.redCard || e.type == 'red-card';
+                final hw = isRed ? 5.0 : 9.0;
+                final left =
+                    (x(_clockMinutes(e.clock)!) - hw).clamp(0.0, w - hw * 2);
+                return Positioned(
+                  left: left,
+                  top: isRed ? 10 : 8,
+                  child: _marker(e),
+                );
+              }
+
               return Stack(children: [
                 Positioned(
                     left: 0,
@@ -494,13 +509,7 @@ class MatchTimelineCard extends StatelessWidget {
                     bottom: 9,
                     child: Container(width: 1.5, color: T.outline)),
                 for (final e in comp.events)
-                  if (_clockMinutes(e.clock) != null)
-                    Positioned(
-                      left: x(_clockMinutes(e.clock)!) -
-                          (e.redCard || e.type == 'red-card' ? 5 : 9),
-                      top: e.redCard || e.type == 'red-card' ? 10 : 8,
-                      child: _marker(e),
-                    ),
+                  if (_clockMinutes(e.clock) != null) markerAt(e),
                 if (live && now != null)
                   Positioned(
                       left: x(now) - 1.25,
@@ -560,6 +569,20 @@ class MatchTimelineCard extends StatelessWidget {
     final reg = p.regulation > 0 ? p.regulation : 2;
     final total = len * reg;
     return total > 0 ? total : 90;
+  }
+
+  /// The recent-event rows below the rail: the signal events — goals and red
+  /// cards — newest first, capped, so a three-goal second half doesn't bury the
+  /// early match (design 6a curates, it doesn't tail). Falls back to the last
+  /// three events when nothing signal-worthy has happened yet. The rail above
+  /// still plots every event.
+  List<ScoringEvent> _curatedRecent() {
+    final signal = [
+      for (final e in comp.events.reversed)
+        if (e.isGoal || e.redCard || e.type == 'red-card') e,
+    ];
+    if (signal.isNotEmpty) return signal.take(5).toList();
+    return comp.events.reversed.take(3).toList();
   }
 
   Widget _marker(ScoringEvent e, {bool small = false}) {
@@ -713,21 +736,7 @@ class SetGridBlock extends StatelessWidget {
                   color: T.serveBall, shape: BoxShape.circle)),
         ],
         const Spacer(),
-        for (var s = 1; s <= maxSets; s++)
-          SizedBox(
-            width: 30,
-            child: Text(
-              _setDisplay(c, s),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'BarlowCondensed',
-                fontWeight: FontWeight.w700,
-                fontSize: 22,
-                fontFeatures: const [FontFeature.tabularFigures()],
-                color: _setColor(c, s, current, dim),
-              ),
-            ),
-          ),
+        for (var s = 1; s <= maxSets; s++) _setCell(c, s, current, dim),
         // the match sets total (§8 tennis / volleyball "sets won as the score").
         if ((c.score?.display ?? '').isNotEmpty)
           SizedBox(
@@ -746,11 +755,51 @@ class SetGridBlock extends StatelessWidget {
     );
   }
 
-  String _setDisplay(Competitor c, int set) {
+  PeriodScore? _psFor(Competitor c, int set) {
     for (final p in c.periodScores) {
-      if (p.period == set) return p.display;
+      if (p.period == set) return p;
     }
-    return '';
+    return null;
+  }
+
+  /// One set column for a player: the games total, with the tiebreak points
+  /// riding the set LOSER's cell as a superscript — `6⁴` reads "lost the
+  /// breaker 7–4", reconstructing broadcast's `7-6⁽⁴⁾`. (Tiebreak lives on both
+  /// sides in the data; only the loser shows it, per convention.)
+  Widget _setCell(Competitor c, int set, int current, bool dim) {
+    final ps = _psFor(c, set);
+    final color = _setColor(c, set, current, dim);
+    final base = TextStyle(
+      fontFamily: 'BarlowCondensed',
+      fontWeight: FontWeight.w700,
+      fontSize: 22,
+      fontFeatures: const [FontFeature.tabularFigures()],
+      color: color,
+    );
+    final tb = (ps != null && ps.tiebreak != null && ps.setWinner == false)
+        ? ps.tiebreak!.round().toString()
+        : null;
+    return SizedBox(
+      width: 30,
+      child: Text.rich(
+        TextSpan(
+          text: ps?.display ?? '',
+          style: base,
+          children: [
+            if (tb != null)
+              WidgetSpan(
+                alignment: PlaceholderAlignment.top,
+                child: Transform.translate(
+                  offset: const Offset(1, -1),
+                  child: Text(tb,
+                      style: base.copyWith(fontSize: 11, color: T.textFaint)),
+                ),
+              ),
+          ],
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 
   Color _setColor(Competitor c, int set, int current, bool dim) {
@@ -780,12 +829,18 @@ class FieldLeaderboard extends StatelessWidget {
   /// Racing: show each entrant's constructor/manufacturer between name and
   /// result (dropped when the field carries none). Ignored for golf.
   final bool showConstructor;
+
+  /// Golf (§7a per-round chip): a specific round to read the middle column from —
+  /// its header becomes `R{n}` and the value is that round's to-par/holes. Null →
+  /// the live TODAY column (the current round).
+  final int? round;
   const FieldLeaderboard(this.comp,
       {super.key,
       this.maxRows = 10,
       this.highlightIds = const {},
       this.onRowTap,
-      this.showConstructor = false});
+      this.showConstructor = false,
+      this.round});
 
   static String _constructor(Competitor c) {
     final v = c.vehicle;
@@ -812,13 +867,19 @@ class FieldLeaderboard extends StatelessWidget {
                     comp.competitorKind == 'athlete' ? 'PLAYER' : 'FIELD',
                     style: T.cardLabelFaint)),
             if (toPar) ...[
+              // TODAY (§7a): the current round's to-par — under par reads red.
+              // A per-round chip relabels it R{n} and reads that round instead.
+              SizedBox(
+                  width: 44,
+                  child: Text(round == null ? 'TODAY' : 'R$round',
+                      textAlign: TextAlign.center, style: T.cardLabelFaint)),
               const SizedBox(
-                  width: 48,
+                  width: 40,
                   child: Text('THRU',
                       textAlign: TextAlign.center, style: T.cardLabelFaint)),
               // TOTAL is the key-stat column (§10) — its header reads white.
               SizedBox(
-                  width: 52,
+                  width: 48,
                   child: Text('TOTAL',
                       textAlign: TextAlign.right,
                       style: T.cardLabelFaint.copyWith(color: T.text))),
@@ -887,13 +948,20 @@ class FieldLeaderboard extends StatelessWidget {
         ),
         if (toPar) ...[
           SizedBox(
-            width: 48,
+            width: 44,
+            child: Text(_today(c),
+                textAlign: TextAlign.center,
+                style: T.statLine.copyWith(
+                    color: _today(c).startsWith('-') ? T.underPar : T.textDim)),
+          ),
+          SizedBox(
+            width: 40,
             child: Text(_thru(c),
                 textAlign: TextAlign.center,
                 style: T.statLine.copyWith(color: T.textDim)),
           ),
           SizedBox(
-            width: 52,
+            width: 48,
             child: Text(c.score?.display ?? '',
                 textAlign: TextAlign.right,
                 style: T.statLineStrong.copyWith(color: scoreColor)),
@@ -939,18 +1007,31 @@ class FieldLeaderboard extends StatelessWidget {
     return out;
   }
 
-  String _thru(Competitor c) {
-    // Current round's holes played; 'F' when the round is done.
+  // The linescore the middle column reads: an explicit [round] when a per-round
+  // chip is active, else the current round (highest period with holes played).
+  PeriodScore? _roundScore(Competitor c) {
     PeriodScore? latest;
     for (final p in c.periodScores) {
-      if (p.holesPlayed != null &&
+      if (round != null) {
+        if (p.period == round) return p;
+      } else if (p.holesPlayed != null &&
           (latest == null || p.period > latest.period)) {
         latest = p;
       }
     }
-    final h = latest?.holesPlayed;
+    return latest;
+  }
+
+  String _thru(Competitor c) {
+    // The round's holes played; 'F' when the round is done.
+    final h = _roundScore(c)?.holesPlayed;
     if (h == null) return '';
     return h >= 18 ? 'F' : '$h';
+  }
+
+  String _today(Competitor c) {
+    // The round's to-par ('-3', 'E', '+1') — §7a TODAY / R{n} column.
+    return _roundScore(c)?.display ?? '';
   }
 
   String? _flag(Competitor c) {

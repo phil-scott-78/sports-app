@@ -164,12 +164,12 @@ function trimStandings(raw, maxRows = 60) {
   return walk(raw);
 }
 
-// Drop the heaviest summary payloads the normalizer never reads: full play-by-play
-// (only scoringPlay rows survive — exactly what buildScoringPlays keeps), plus
-// news/video/odds blocks. Keeps boxscore + scoring feed + lineups + the 2026-07
-// additions (gameInfo, drives [plays slimmed], cricket matchcards) and the summary
-// enrichments the app renders (seasonseries / lastFiveGames / injuries /
-// winprobability [last point only]).
+// Drop the heaviest summary payloads the normalizer never reads (news/video/odds).
+// Keeps boxscore + the FULL play-by-play (every row, fields slimmed — the Plays tab
+// and the §3e/§4b feeds need the non-scoring rows: timeouts, pitches, participants),
+// scoring feed + lineups + the 2026-07 additions (gameInfo, drives [plays slimmed],
+// cricket matchcards) and the summary enrichments the app renders (seasonseries /
+// lastFiveGames / injuries / winprobability [last point only]).
 function trimSummary(raw) {
   if (!raw || typeof raw !== 'object') return raw;
   const header = raw.header && {
@@ -184,20 +184,29 @@ function trimSummary(raw) {
     })),
   };
   const slimPlay = (p) => {
-    const o = pick(p, ['text', 'shortText', 'awayScore', 'homeScore', 'scoringPlay']);
-    if (p.period?.number != null) o.period = { number: p.period.number, displayValue: p.period.displayValue };
+    const o = pick(p, ['text', 'shortText', 'awayScore', 'homeScore', 'scoringPlay',
+      // baseball detail: pitch rows (§3e) + outs for the half-inning stat strip (§3c).
+      'atBatId', 'summaryType', 'pitchVelocity', 'pitchCount', 'resultCount', 'outs']);
+    // period.type = 'Top'|'Bottom' drives the §3c half-inning grouping (canonical play.half).
+    if (p.period?.number != null) o.period = { number: p.period.number, displayValue: p.period.displayValue, ...(p.period.type ? { type: p.period.type } : {}) };
     if (p.clock?.displayValue) o.clock = { displayValue: p.clock.displayValue };
-    if (p.type) o.type = pick(p.type, ['text']);
+    if (p.type) o.type = pick(p.type, ['id', 'text']);
+    if (p.pitchType) o.pitchType = pick(p.pitchType, ['id', 'text', 'abbreviation']);
     // keep displayName: soccer commentary plays carry NO id/abbreviation — the
     // normalizer attributes sides by team display name (summary.js sideMaps).
     if (p.team) o.team = pick(p.team, ['id', 'abbreviation', 'displayName']);
     if (p.scoringType?.displayName) o.scoringType = { displayName: p.scoringType.displayName };
+    // basketball actor (§4b): the participants' athlete ids (the name resolves
+    // against the boxscore) — id-only so the full play-by-play stays slim.
+    if (Array.isArray(p.participants) && p.participants.length) {
+      o.participants = p.participants.map((x) => ({ athlete: pick(x.athlete || {}, ['id']), type: x.type }));
+    }
     return o;
   };
   const out = {};
   if (header) out.header = header;
   if (raw.boxscore) out.boxscore = raw.boxscore;
-  if (Array.isArray(raw.plays)) out.plays = raw.plays.filter((p) => p.scoringPlay === true);
+  if (Array.isArray(raw.plays)) out.plays = raw.plays.map(slimPlay); // FULL feed now (§8.1), fields slimmed
   if (Array.isArray(raw.scoringPlays)) out.scoringPlays = raw.scoringPlays;
   if (Array.isArray(raw.keyEvents)) out.keyEvents = raw.keyEvents;
   // soccer/rugby narrative feed → GameSummary.plays (summary.js buildCommentaryPlays)

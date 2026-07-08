@@ -32,7 +32,18 @@ function sideMaps(raw) {
       for (const n of [t.displayName, t.shortDisplayName, t.name]) if (n) nameSide[n] = c.homeAway;
     }
   }
-  return { side, abbr, nameSide, haAbbr, comps };
+  // athlete id → short name, for resolving a play's participant to an actor name
+  // (§4b basketball). Built from the boxscore, the only place ids meet names.
+  const athletes = {};
+  for (const tb of (raw.boxscore?.players || [])) {
+    for (const g of (tb.statistics || [])) {
+      for (const a of (g.athletes || [])) {
+        const id = String(a.athlete?.id ?? '');
+        if (id && !athletes[id]) athletes[id] = aShort(a.athlete);
+      }
+    }
+  }
+  return { side, abbr, nameSide, haAbbr, comps, athletes };
 }
 
 const aShort = a => a?.shortName || a?.displayName || a?.fullName || '';
@@ -97,7 +108,17 @@ function buildBoxGroups(raw, side) {
         const stats = (a.stats || []).map(str);
         // drop DNPs / malformed rows: a row must have a name and align with columns
         if (!name || stats.length === 0 || (columns.length && stats.length !== columns.length)) return null;
-        return pick({ name, pos: aPos(a.athlete) || a.position?.abbreviation, stats }, ['name', 'pos', 'stats']);
+        // baseball substitutions (§3d): the batting LINEUP note ('a-walked for
+        // Thomas in the 7th'), NOT the pitchingDecision note (W/L). starter only
+        // when ESPN ships it (baseball) so other sports' rows don't all read as subs.
+        const note = (a.notes || []).find(n => n.type === 'lineup')?.text;
+        return pick({
+          name,
+          pos: aPos(a.athlete) || a.position?.abbreviation,
+          stats,
+          starter: typeof a.starter === 'boolean' ? a.starter : undefined,
+          note,
+        }, ['name', 'pos', 'stats', 'starter', 'note']);
       }).filter(Boolean);
       if (!rows.length) continue;
       if (!byTitle.has(title)) { byTitle.set(title, { title, columns, teams: [] }); order.push(title); }
@@ -123,22 +144,33 @@ export function cleanSubText(text) {
   return (tail ? tail[1] : t.replace(/^substitution[,.]?\s*/i, '')).trim() || t;
 }
 
-function mapPlay(p, side, abbr) {
+function mapPlay(p, side, abbr, athletes) {
   const tid = String(p.team?.id ?? '');
+  // Baseball ships period.type = 'Top'|'Bottom' → canonical half, so the feed can
+  // key containers on (period, half) — a 4-run bottom no longer merges into the
+  // top of the same inning (§3c). Absent for every other sport.
+  const half = p.period?.type ? String(p.period.type).toLowerCase() : null;
+  // basketball actor (§4b): the first participant's athlete, resolved to a name via
+  // the boxscore. Absent when there's no participant or the id isn't in the box —
+  // the app then renders the whole line dim rather than guessing.
+  const pid = String(p.participants?.[0]?.athlete?.id ?? '');
+  const actor = (pid && athletes) ? athletes[pid] : undefined;
   return pick({
     period: p.period?.number,
+    half: half === 'top' || half === 'bottom' ? half : undefined,
     periodLabel: p.period?.displayValue,
     clock: p.clock?.displayValue,
     side: side[tid] || (p.team?.homeAway),
     teamAbbr: abbr[tid] || p.team?.abbreviation,
+    actor,
     text: p.text || p.shortText || '',
     away: numOrNull(p.awayScore),
     home: numOrNull(p.homeScore),
     type: p.scoringType?.displayName || p.type?.text,
-  }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type']);
+  }, ['period', 'half', 'periodLabel', 'clock', 'side', 'teamAbbr', 'actor', 'text', 'away', 'home', 'type']);
 }
 
-function buildScoringPlays(raw, side, abbr) {
+function buildScoringPlays(raw, side, abbr, athletes) {
   let src = [], soccer = false;
   if (Array.isArray(raw.scoringPlays) && raw.scoringPlays.length) {
     src = raw.scoringPlays; // NFL
@@ -149,7 +181,7 @@ function buildScoringPlays(raw, side, abbr) {
     soccer = true;
   }
   const out = src.map(p => {
-    const m = mapPlay(p, side, abbr);
+    const m = mapPlay(p, side, abbr, athletes);
     // Whether this row is an actual score (a goal) vs. one of the cards/subs
     // that ride soccer's keyEvents feed. Lets the app's condensed "Scoring"
     // recap show goals only, while the full Plays list still carries everything.
@@ -417,6 +449,20 @@ function drivesList(raw) {
 function buildDrives(raw, side, abbr) {
   const rows = drivesList(raw).map(d => {
     const tid = String(d.team?.id ?? '');
+    const dp = Array.isArray(d.plays) ? d.plays : [];
+    const last = dp.length ? dp[dp.length - 1] : null;
+    // §5b: the drive's quarter (from its first play), the elapsed clock (a raw
+    // field when captured, else the tail of the description '5 plays, 20 yards,
+    // 2:39'), the running score after the drive (its last play), and a slim play
+    // list (text + clock) for the design-9c All-view expansion.
+    const period = dp[0]?.period?.number ?? d.start?.period?.number;
+    const timeElapsed = d.timeElapsed?.displayValue
+      || (typeof d.description === 'string' ? (d.description.match(/(\d{1,2}:\d{2})\s*$/)?.[1]) : undefined);
+    const plays = dp.map(p => pick({
+      text: p.text || p.shortText,
+      clock: p.clock?.displayValue,
+      scoring: p.scoringPlay === true ? true : undefined,
+    }, ['text', 'clock', 'scoring'])).filter(p => p.text);
     return pick({
       side: side[tid],
       teamAbbr: abbr[tid] || d.team?.abbreviation,
@@ -425,7 +471,12 @@ function buildDrives(raw, side, abbr) {
       isScore: d.isScore === true ? true : undefined,
       yards: typeof d.yards === 'number' ? d.yards : undefined,
       playCount: typeof d.offensivePlays === 'number' ? d.offensivePlays : undefined,
-    }, ['side', 'teamAbbr', 'description', 'result', 'isScore', 'yards', 'playCount']);
+      period: typeof period === 'number' ? period : undefined,
+      timeElapsed,
+      awayScore: numOrNull(last?.awayScore),
+      homeScore: numOrNull(last?.homeScore),
+      plays: plays.length ? plays : undefined,
+    }, ['side', 'teamAbbr', 'description', 'result', 'isScore', 'yards', 'playCount', 'period', 'timeElapsed', 'awayScore', 'homeScore', 'plays']);
   }).filter(d => d.description || d.result);
   return rows.length ? rows : undefined;
 }
@@ -439,7 +490,7 @@ function buildDrives(raw, side, abbr) {
 // Capped so the rich payload stays bounded; a regulation game is well under the
 // cap, so it only trims pathological multi-OT.
 function buildPlays(raw, maps) {
-  const { side, abbr } = maps;
+  const { side, abbr, athletes } = maps;
   let plays = raw.plays;
   if (!Array.isArray(plays) || !plays.length) {
     const drives = drivesList(raw);
@@ -447,7 +498,7 @@ function buildPlays(raw, maps) {
   }
   if (!Array.isArray(plays) || !plays.length) return buildCommentaryPlays(raw, maps);
   const mapped = plays.map(p => {
-    const m = mapPlay(p, side, abbr);
+    const m = mapPlay(p, side, abbr, athletes);
     m.scoring = p.scoringPlay === true; // per-play, so the app can highlight scores
     return m;
   }).filter(p => p.text);
@@ -455,6 +506,82 @@ function buildPlays(raw, maps) {
   if (mapped.length <= 1) return undefined;
   const CAP = 800;
   return mapped.length > CAP ? mapped.slice(mapped.length - CAP) : mapped;
+}
+
+// ---- baseball at-bats (the §3e all-plays disclosure layer) ------------------
+// MLB ships the FULL play feed: per at-bat an 'A' header ("X pitches to Y"), the
+// 'P' pitch rows, and a terminal 'N'/'S' batting result ('S' = scoring). Group
+// them by atBatId so the app's All-plays view renders one condensed row per
+// at-bat that expands to its pitch sequence (design 9e). Only built when pitch
+// rows are present (summaryType 'P'); a scoring-only capture (college) keeps the
+// flat scoring feed. When built, the noisy flat plays[] is suppressed upstream.
+const PITCH_PREFIX = /^Pitch\s+\d+\s*:\s*/i;
+function pitchResult(p) {
+  // A contact pitch's `text` is 'Ball In Play' while its `type.text` is the
+  // BATTED-BALL outcome ('Double', 'Fly Out') — so read 'in play' off the pitch
+  // text first, then classify the rest off type.text (the pitch call).
+  if (String(p.text || '').toLowerCase().includes('in play')) return 'inplay';
+  const t = String(p.type?.text || p.text || '').toLowerCase();
+  if (t.includes('foul')) return 'foul';
+  if (t.includes('ball')) return 'ball';
+  if (t.includes('strike')) return 'strike';
+  return 'other';
+}
+function buildAtBats(raw, side, abbr, athletes) {
+  const plays = Array.isArray(raw.plays) ? raw.plays : [];
+  if (!plays.some(p => p.summaryType === 'P')) return undefined; // no pitch data
+  const order = [];
+  const groups = new Map();
+  for (const p of plays) {
+    const id = p.atBatId;
+    if (!id) continue;
+    if (!groups.has(id)) { groups.set(id, []); order.push(id); }
+    groups.get(id).push(p);
+  }
+  const out = [];
+  for (const id of order) {
+    const g = groups.get(id);
+    const header = g.find(p => p.summaryType === 'A');
+    const pitches = g.filter(p => p.summaryType === 'P');
+    // Batting result = the last N/S row (S = scoring). 'C' rows are pitching-change
+    // notes mid at-bat, not the batting outcome; 'I'/undefined are inning/junk.
+    const results = g.filter(p => p.summaryType === 'N' || p.summaryType === 'S');
+    const term = results.length ? results[results.length - 1] : undefined;
+    if (!header && !pitches.length && !term) continue;
+    const last = pitches.length ? pitches[pitches.length - 1] : undefined;
+    // side/team = the BATTING team (header/result); pitch rows carry the pitcher's
+    // team, so never anchor off a pitch for the side.
+    const teamAnchor = term || header || last;
+    const tid = String(teamAnchor.team?.id ?? '');
+    const stateAnchor = term || last || header; // outs + running score come from here
+    const live = !term;
+    // batter (live only — a finished row's text already leads with the last name):
+    // the header's batter participant, resolved to a short name via the boxscore.
+    const bpid = String((header?.participants || teamAnchor.participants || [])
+      .find(x => x.type === 'batter')?.athlete?.id ?? '');
+    const batter = live && bpid && athletes ? athletes[bpid] : undefined;
+    out.push(pick({
+      period: teamAnchor.period?.number,
+      half: teamAnchor.period?.type ? String(teamAnchor.period.type).toLowerCase() : undefined,
+      side: side[tid] || teamAnchor.team?.homeAway,
+      teamAbbr: abbr[tid] || teamAnchor.team?.abbreviation,
+      batter,
+      text: term ? (term.text || '') : '',
+      scoring: term && term.summaryType === 'S' ? true : undefined,
+      outs: typeof stateAnchor?.outs === 'number' ? stateAnchor.outs : undefined,
+      away: numOrNull(stateAnchor?.awayScore),
+      home: numOrNull(stateAnchor?.homeScore),
+      live: live ? true : undefined,
+      balls: live ? last?.resultCount?.balls : undefined,
+      strikes: live ? last?.resultCount?.strikes : undefined,
+      pitches: pitches.map(p => pick({
+        r: pitchResult(p),
+        text: String(p.text || '').replace(PITCH_PREFIX, ''),
+        velo: typeof p.pitchVelocity === 'number' ? p.pitchVelocity : undefined,
+      }, ['r', 'text', 'velo'])),
+    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitches']));
+  }
+  return out.length ? out : undefined;
 }
 
 // Soccer/rugby half label from the period number, for when ESPN omits a
@@ -570,7 +697,7 @@ function buildCricketInnings(raw) {
 export function normalizeSummary(reg, key, raw) {
   const profile = resolve(reg, key);
   const maps = sideMaps(raw);
-  const { side, abbr } = maps;
+  const { side, abbr, athletes } = maps;
   const header = raw.header || {};
   const comp0 = header.competitions?.[0] || {};
   const status = comp0.status?.type || {};
@@ -584,7 +711,7 @@ export function normalizeSummary(reg, key, raw) {
     live: status.state === 'in',
     teamStats: buildTeamStats(raw),
     boxGroups: boxGroups.length ? boxGroups : buildRosterBoxGroups(raw, side),
-    scoringPlays: buildScoringPlays(raw, side, abbr),
+    scoringPlays: buildScoringPlays(raw, side, abbr, athletes),
     lineups,
   };
   if (periodLines) out.periodLines = periodLines;
@@ -602,7 +729,12 @@ export function normalizeSummary(reg, key, raw) {
   // Timeline tab, so the ~700-item ball-by-ball commentary isn't shipped too.
   const timeline = buildMatchTimeline(raw, maps);
   if (timeline) out.timeline = timeline;
-  const plays = timeline ? undefined : buildPlays(raw, maps);
+  // Baseball groups into at-bats (each with its pitch sequence) for the §3e
+  // all-plays disclosure; when present it REPLACES the flat pitch-by-pitch plays[]
+  // (which would be ~500 rows of noise) as the Plays tab's source.
+  const atBats = buildAtBats(raw, side, abbr, athletes);
+  if (atBats) out.atBats = atBats;
+  const plays = timeline || atBats ? undefined : buildPlays(raw, maps);
   if (plays) out.plays = plays;
   const drives = buildDrives(raw, side, abbr);
   if (drives) out.drives = drives;

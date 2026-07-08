@@ -42,7 +42,29 @@ Map<String, dynamic> _sideMaps(Map raw) {
       }
     }
   }
-  return {'side': side, 'abbr': abbr, 'nameSide': nameSide, 'haAbbr': haAbbr, 'comps': compsList};
+  // athlete id → short name, for resolving a play's participant to an actor name
+  // (§4b basketball). Built from the boxscore, the only place ids meet names.
+  final athletes = <String, dynamic>{};
+  final players = field(raw['boxscore'], 'players');
+  if (players is List) {
+    for (final tb in players) {
+      final stats = field(tb, 'statistics');
+      if (stats is List) {
+        for (final g in stats) {
+          final aths = field(g, 'athletes');
+          if (aths is List) {
+            for (final a in aths) {
+              final id = jsStr(field(field(a, 'athlete'), 'id') ?? '');
+              if (id != '' && !truthy(athletes[id])) {
+                athletes[id] = aShort(field(a, 'athlete'));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return {'side': side, 'abbr': abbr, 'nameSide': nameSide, 'haAbbr': haAbbr, 'comps': compsList, 'athletes': athletes};
 }
 
 // ---- team stat comparison ---------------------------------------------------
@@ -106,7 +128,26 @@ List<Map<String, dynamic>> _buildBoxGroups(Map raw, Map side) {
         final name = aShort(field(aRow, 'athlete'));
         final stats = (field(aRow, 'stats') is List ? field(aRow, 'stats') as List : const []).map(jsStr).toList();
         if (name == '' || stats.isEmpty || (columns.isNotEmpty && stats.length != columns.length)) continue;
-        rows.add(pickT({'name': name, 'pos': or([_aPos(field(aRow, 'athlete')), field(field(aRow, 'position'), 'abbreviation')]), 'stats': stats}, ['name', 'pos', 'stats']));
+        // baseball substitutions (§3d): the batting LINEUP note, NOT the
+        // pitchingDecision (W/L). starter only when ESPN ships it (baseball).
+        final notes = field(aRow, 'notes');
+        String? note;
+        if (notes is List) {
+          for (final n in notes) {
+            if (field(n, 'type') == 'lineup') {
+              note = field(n, 'text');
+              break;
+            }
+          }
+        }
+        final st = field(aRow, 'starter');
+        rows.add(pickT({
+          'name': name,
+          'pos': or([_aPos(field(aRow, 'athlete')), field(field(aRow, 'position'), 'abbreviation')]),
+          'stats': stats,
+          'starter': st is bool ? st : null,
+          'note': note,
+        }, ['name', 'pos', 'stats', 'starter', 'note']));
       }
       if (rows.isEmpty) continue;
       if (!byTitle.containsKey(title)) {
@@ -131,22 +172,36 @@ String cleanSubText(dynamic text) {
   return res.isNotEmpty ? res : t;
 }
 
-Map<String, dynamic> _mapPlay(Map p, Map side, Map abbr) {
+Map<String, dynamic> _mapPlay(Map p, Map side, Map abbr, Map athletes) {
   final tid = jsStr(field(p['team'], 'id') ?? '');
+  // Baseball ships period.type = 'Top'|'Bottom' → canonical half, so the feed can
+  // key containers on (period, half) — a 4-run bottom no longer merges into the
+  // top of the same inning (§3c). Absent for every other sport.
+  final pt = field(p['period'], 'type');
+  final half = (pt != null && pt != '') ? pt.toString().toLowerCase() : null;
+  // basketball actor (§4b): the first participant's athlete, resolved to a name via
+  // the boxscore. Absent when there's no participant or the id isn't in the box —
+  // the app then renders the whole line dim rather than guessing.
+  final parts = field(p, 'participants');
+  final firstPart = (parts is List && parts.isNotEmpty) ? parts.first : null;
+  final pid = jsStr(field(field(firstPart, 'athlete'), 'id') ?? '');
+  final actor = pid != '' ? athletes[pid] : null;
   return pickT({
     'period': field(p['period'], 'number'),
+    'half': half == 'top' || half == 'bottom' ? half : null,
     'periodLabel': field(p['period'], 'displayValue'),
     'clock': field(p['clock'], 'displayValue'),
     'side': or([side[tid], field(p['team'], 'homeAway')]),
     'teamAbbr': or([abbr[tid], field(p['team'], 'abbreviation')]),
+    'actor': actor,
     'text': or([p['text'], p['shortText'], '']),
     'away': _numOrNull(p['awayScore']),
     'home': _numOrNull(p['homeScore']),
     'type': or([field(p['scoringType'], 'displayName'), field(p['type'], 'text')]),
-  }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type']);
+  }, ['period', 'half', 'periodLabel', 'clock', 'side', 'teamAbbr', 'actor', 'text', 'away', 'home', 'type']);
 }
 
-List<Map<String, dynamic>> _buildScoringPlays(Map raw, Map side, Map abbr) {
+List<Map<String, dynamic>> _buildScoringPlays(Map raw, Map side, Map abbr, Map athletes) {
   List src = const [];
   var soccer = false;
   if (raw['scoringPlays'] is List && (raw['scoringPlays'] as List).isNotEmpty) {
@@ -161,7 +216,7 @@ List<Map<String, dynamic>> _buildScoringPlays(Map raw, Map side, Map abbr) {
   }
   final out = <Map<String, dynamic>>[];
   for (final p in src) {
-    final m = _mapPlay(p as Map, side, abbr);
+    final m = _mapPlay(p as Map, side, abbr, athletes);
     m['scoring'] = soccer ? field(p, 'scoringPlay') == true : true;
     if (truthy(m['text'])) out.add(m);
   }
@@ -440,15 +495,43 @@ List<Map<String, dynamic>>? _buildDrives(Map raw, Map side, Map abbr) {
   final rows = <Map<String, dynamic>>[];
   for (final d in _drivesList(raw)) {
     final tid = jsStr(field(field(d, 'team'), 'id') ?? '');
+    final dp = field(d, 'plays') is List ? field(d, 'plays') as List : const [];
+    final last = dp.isNotEmpty ? dp.last : null;
+    // §5b: the drive's quarter (from its first play), elapsed clock (raw field
+    // when captured, else the tail of the description), running score after the
+    // drive, and a slim play list (text + clock) for the 9c All-view expansion.
+    final period = field(field(first(dp), 'period'), 'number') ??
+        field(field(field(d, 'start'), 'period'), 'number');
+    final desc = field(d, 'description');
+    final timeElapsed = or([
+      field(field(d, 'timeElapsed'), 'displayValue'),
+      desc is String
+          ? RegExp(r'(\d{1,2}:\d{2})\s*$').firstMatch(desc)?.group(1)
+          : null,
+    ]);
+    final plays = <Map<String, dynamic>>[];
+    for (final p in dp) {
+      final pl = pickT({
+        'text': or([field(p, 'text'), field(p, 'shortText')]),
+        'clock': field(field(p, 'clock'), 'displayValue'),
+        'scoring': field(p, 'scoringPlay') == true ? true : null,
+      }, ['text', 'clock', 'scoring']);
+      if (truthy(pl['text'])) plays.add(pl);
+    }
     final row = pickT({
       'side': side[tid],
       'teamAbbr': or([abbr[tid], field(field(d, 'team'), 'abbreviation')]),
-      'description': field(d, 'description'),
+      'description': desc,
       'result': or([field(d, 'displayResult'), field(d, 'shortDisplayResult'), field(d, 'result')]),
       'isScore': field(d, 'isScore') == true ? true : null,
       'yards': field(d, 'yards') is num ? field(d, 'yards') : null,
       'playCount': field(d, 'offensivePlays') is num ? field(d, 'offensivePlays') : null,
-    }, ['side', 'teamAbbr', 'description', 'result', 'isScore', 'yards', 'playCount']);
+      'period': period is num ? period : null,
+      'timeElapsed': timeElapsed,
+      'awayScore': _numOrNull(field(last, 'awayScore')),
+      'homeScore': _numOrNull(field(last, 'homeScore')),
+      'plays': plays.isNotEmpty ? plays : null,
+    }, ['side', 'teamAbbr', 'description', 'result', 'isScore', 'yards', 'playCount', 'period', 'timeElapsed', 'awayScore', 'homeScore', 'plays']);
     if (truthy(row['description']) || truthy(row['result'])) rows.add(row);
   }
   return rows.isNotEmpty ? rows : null;
@@ -456,7 +539,7 @@ List<Map<String, dynamic>>? _buildDrives(Map raw, Map side, Map abbr) {
 
 // ---- full play-by-play ------------------------------------------------------
 List<Map<String, dynamic>>? _buildPlays(Map raw, Map maps) {
-  final side = maps['side'] as Map, abbr = maps['abbr'] as Map;
+  final side = maps['side'] as Map, abbr = maps['abbr'] as Map, athletes = maps['athletes'] as Map;
   List plays = raw['plays'] is List ? raw['plays'] as List : const [];
   if (plays.isEmpty) {
     final drives = _drivesList(raw);
@@ -467,13 +550,102 @@ List<Map<String, dynamic>>? _buildPlays(Map raw, Map maps) {
   if (plays.isEmpty) return _buildCommentaryPlays(raw, maps);
   final mapped = <Map<String, dynamic>>[];
   for (final p in plays) {
-    final m = _mapPlay(p as Map, side, abbr);
+    final m = _mapPlay(p as Map, side, abbr, athletes);
     m['scoring'] = field(p, 'scoringPlay') == true;
     if (truthy(m['text'])) mapped.add(m);
   }
   if (mapped.length <= 1) return null;
   const cap = 800;
   return mapped.length > cap ? mapped.sublist(mapped.length - cap) : mapped;
+}
+
+// ---- baseball at-bats (the §3e all-plays disclosure layer) ------------------
+// MLB ships the FULL play feed: per at-bat an 'A' header ("X pitches to Y"), the
+// 'P' pitch rows, and a terminal 'N'/'S' batting result ('S' = scoring). Group
+// them by atBatId so the app's All-plays view renders one condensed row per
+// at-bat that expands to its pitch sequence (design 9e). Only built when pitch
+// rows are present (summaryType 'P'); a scoring-only capture (college) keeps the
+// flat scoring feed. When built, the noisy flat plays[] is suppressed upstream.
+final _pitchPrefix = RegExp(r'^Pitch\s+\d+\s*:\s*', caseSensitive: false);
+String _pitchResult(dynamic p) {
+  // A contact pitch's `text` is 'Ball In Play' while its `type.text` is the
+  // BATTED-BALL outcome ('Double', 'Fly Out') — so read 'in play' off the pitch
+  // text first, then classify the rest off type.text (the pitch call).
+  if (jsStr(field(p, 'text')).toLowerCase().contains('in play')) return 'inplay';
+  final t = jsStr(or([field(field(p, 'type'), 'text'), field(p, 'text')])).toLowerCase();
+  if (t.contains('foul')) return 'foul';
+  if (t.contains('ball')) return 'ball';
+  if (t.contains('strike')) return 'strike';
+  return 'other';
+}
+
+List<Map<String, dynamic>>? _buildAtBats(Map raw, Map side, Map abbr, Map athletes) {
+  final plays = raw['plays'] is List ? raw['plays'] as List : const [];
+  if (!plays.any((p) => field(p, 'summaryType') == 'P')) return null; // no pitch data
+  final order = <dynamic>[];
+  final groups = <dynamic, List>{};
+  for (final p in plays) {
+    final id = field(p, 'atBatId');
+    if (id == null) continue;
+    (groups[id] ??= (() {
+      order.add(id);
+      return <dynamic>[];
+    })())
+        .add(p);
+  }
+  final out = <Map<String, dynamic>>[];
+  for (final id in order) {
+    final g = groups[id]!;
+    final header = g.firstWhere((p) => field(p, 'summaryType') == 'A', orElse: () => null);
+    final pitches = g.where((p) => field(p, 'summaryType') == 'P').toList();
+    // Batting result = the last N/S row (S = scoring). 'C' rows are pitching-change
+    // notes mid at-bat, not the batting outcome; 'I'/undefined are inning/junk.
+    final results = g.where((p) => field(p, 'summaryType') == 'N' || field(p, 'summaryType') == 'S').toList();
+    final term = results.isNotEmpty ? results.last : null;
+    if (header == null && pitches.isEmpty && term == null) continue;
+    final last = pitches.isNotEmpty ? pitches.last : null;
+    // side/team = the BATTING team (header/result); pitch rows carry the pitcher's
+    // team, so never anchor off a pitch for the side.
+    final teamAnchor = term ?? header ?? last;
+    final tid = jsStr(field(field(teamAnchor, 'team'), 'id') ?? '');
+    final stateAnchor = term ?? last ?? header; // outs + running score come from here
+    final live = term == null;
+    // batter (live only — a finished row's text already leads with the last name):
+    // the header's batter participant, resolved to a short name via the boxscore.
+    final parts = field(header, 'participants') ?? field(teamAnchor, 'participants');
+    final bpart = (parts is List)
+        ? parts.firstWhere((x) => field(x, 'type') == 'batter', orElse: () => null)
+        : null;
+    final bpid = jsStr(field(field(bpart, 'athlete'), 'id') ?? '');
+    final batter = live && bpid != '' ? athletes[bpid] : null;
+    final termType = field(term, 'summaryType');
+    out.add(pickT({
+      'period': field(field(teamAnchor, 'period'), 'number'),
+      'half': field(field(teamAnchor, 'period'), 'type') != null
+          ? jsStr(field(field(teamAnchor, 'period'), 'type')).toLowerCase()
+          : null,
+      'side': or([side[tid], field(field(teamAnchor, 'team'), 'homeAway')]),
+      'teamAbbr': or([abbr[tid], field(field(teamAnchor, 'team'), 'abbreviation')]),
+      'batter': batter,
+      'text': term != null ? or([field(term, 'text'), '']) : '',
+      'scoring': term != null && termType == 'S' ? true : null,
+      'outs': field(stateAnchor, 'outs') is num ? field(stateAnchor, 'outs') : null,
+      'away': _numOrNull(field(stateAnchor, 'awayScore')),
+      'home': _numOrNull(field(stateAnchor, 'homeScore')),
+      'live': live ? true : null,
+      'balls': live ? field(field(last, 'resultCount'), 'balls') : null,
+      'strikes': live ? field(field(last, 'resultCount'), 'strikes') : null,
+      'pitches': [
+        for (final p in pitches)
+          pickT({
+            'r': _pitchResult(p),
+            'text': jsStr(or([field(p, 'text'), ''])).replaceFirst(_pitchPrefix, ''),
+            'velo': field(p, 'pitchVelocity') is num ? field(p, 'pitchVelocity') : null,
+          }, ['r', 'text', 'velo']),
+      ],
+    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitches']));
+  }
+  return out.isNotEmpty ? out : null;
 }
 
 String? _halfLabel(dynamic n) => const {1: '1st Half', 2: '2nd Half', 3: 'Extra Time', 4: 'Extra Time', 5: 'Penalties'}[n];
@@ -555,7 +727,7 @@ List<Map<String, dynamic>>? _buildCricketInnings(Map raw) {
 Map<String, dynamic> normalizeSummary(Registry reg, String key, Map raw) {
   final profile = resolve(reg, key);
   final maps = _sideMaps(raw);
-  final side = maps['side'] as Map, abbr = maps['abbr'] as Map;
+  final side = maps['side'] as Map, abbr = maps['abbr'] as Map, athletes = maps['athletes'] as Map;
   final header = raw['header'] ?? {};
   final comp0 = first(field(header, 'competitions')) ?? {};
   final status = field(field(comp0, 'status'), 'type') ?? {};
@@ -567,7 +739,7 @@ Map<String, dynamic> normalizeSummary(Registry reg, String key, Map raw) {
     'live': field(status, 'state') == 'in',
     'teamStats': _buildTeamStats(raw),
     'boxGroups': boxGroups.isNotEmpty ? boxGroups : _buildRosterBoxGroups(raw, side),
-    'scoringPlays': _buildScoringPlays(raw, side, abbr),
+    'scoringPlays': _buildScoringPlays(raw, side, abbr, athletes),
     'lineups': lineups,
   };
   if (periodLines != null) out['periodLines'] = periodLines;
@@ -581,7 +753,12 @@ Map<String, dynamic> normalizeSummary(Registry reg, String key, Map raw) {
   if (winProbability != null) out['winProbability'] = winProbability;
   final timeline = buildMatchTimeline(raw, maps);
   if (timeline != null) out['timeline'] = timeline;
-  final plays = timeline != null ? null : _buildPlays(raw, maps);
+  // Baseball groups into at-bats (each with its pitch sequence) for the §3e
+  // all-plays disclosure; when present it REPLACES the flat pitch-by-pitch plays[]
+  // (which would be ~500 rows of noise) as the Plays tab's source.
+  final atBats = _buildAtBats(raw, side, abbr, athletes);
+  if (atBats != null) out['atBats'] = atBats;
+  final plays = timeline != null || atBats != null ? null : _buildPlays(raw, maps);
   if (plays != null) out['plays'] = plays;
   final drives = _buildDrives(raw, side, abbr);
   if (drives != null) out['drives'] = drives;

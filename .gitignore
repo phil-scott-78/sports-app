@@ -13,6 +13,10 @@ node_modules/
 # Cloudflare Wrangler local dev / build state (no secrets, but machine-local).
 .wrangler/
 
+# Raw ESPN crawl corpus (schema/tools/crawl.mjs) — hundreds of MB of raw
+# responses. The rolled-up guide (schema/espn-guide/) IS committed.
+schema/crawl-data/
+
 # Claude Code per-machine state. The workflows/ directory IS committed
 # (onboard-league.js is a documented project tool — see CLAUDE.md).
 .claude/settings.local.json

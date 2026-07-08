@@ -143,7 +143,7 @@ void main() {
 
     // 'Now' view: the cheap match-stats panel off the scoreboard...
     expect(find.text('MATCH STATS'), findsOneWidget);
-    expect(find.text('Possession'), findsOneWidget);
+    expect(find.text('POSSESSION'), findsOneWidget); // compare-row label tier
     expect(find.text('58.0%'), findsOneWidget); // whole-form percent signed
     // ...and the team sheets that v2 now renders.
     expect(find.text('4-3-3'), findsOneWidget);
@@ -156,14 +156,14 @@ void main() {
     await tester.tap(find.text('Box'));
     await tester.pump();
     expect(find.text('TEAM STATS'), findsOneWidget);
-    expect(find.text('Stat01'), findsOneWidget);
-    expect(find.text('Stat12'), findsNothing); // folded away
+    expect(find.text('STAT01'), findsOneWidget);
+    expect(find.text('STAT12'), findsNothing); // folded away
     final expander = find.text('All team stats (12)');
     await tester.ensureVisible(expander);
     await tester.pump();
     await tester.tap(expander);
     await tester.pump();
-    expect(find.text('Stat12'), findsOneWidget);
+    expect(find.text('STAT12'), findsOneWidget);
   });
 
   testWidgets(
