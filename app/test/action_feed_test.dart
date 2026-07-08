@@ -147,6 +147,67 @@ void main() {
     expect(find.textContaining('FULL TIMEOUT'), findsOneWidget);
   });
 
+  // §4a regression: the Plays tab renders through the virtualized
+  // [ActionFeedSliver] (a SliverList.builder inside the page CustomScrollView),
+  // NOT a boxed [ActionFeed] Column that materializes every row. A big game's
+  // off-screen plays must not be built — the flatten is memoized and only the
+  // visible slice is realized.
+  testWidgets('Plays tab virtualizes: off-screen plays are not built',
+      (tester) async {
+    tester.view.physicalSize = const Size(400, 700);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final p = await prefs();
+    final scores = ScoresResponse.fromJson(nbaScores());
+    // 4 quarters × 50 plays — well past the >60 threshold and far taller than
+    // one viewport, so the bottom (oldest, Q1) plays fall outside the sliver's
+    // build + cache window.
+    final plays = <Map<String, dynamic>>[
+      for (var period = 1; period <= 4; period++)
+        for (var i = 0; i < 50; i++)
+          {
+            'period': period,
+            'clock': '10:00',
+            'side': i.isEven ? 'away' : 'home',
+            'teamAbbr': i.isEven ? 'OKC' : 'CLE',
+            'text': 'P${period}_$i action',
+            'scoring': false,
+          },
+    ];
+    final summary = GameSummary.fromJson({
+      'eventId': 'G1', 'live': true, 'teamStats': <dynamic>[],
+      'boxGroups': <dynamic>[], 'lineups': <dynamic>[],
+      'scoringPlays': <dynamic>[], 'plays': plays,
+    });
+
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(p),
+        leagueScoresProvider.overrideWith((ref, league) async => scores),
+        summaryProvider.overrideWith((ref, key) async => summary),
+      ],
+      child: MaterialApp(
+        theme: buildV2Theme(),
+        home: GameDetailPage(
+            league: 'basketball/nba', initialEvent: scores.events.first),
+      ),
+    ));
+    await tester.pump();
+    await tester.pump();
+    await tester.tap(find.text('Plays'));
+    await tester.pump();
+
+    // The virtualized sliver path owns the body — not a mounted boxed feed.
+    expect(find.byType(ActionFeedSliver), findsOneWidget);
+    expect(find.byType(ActionFeed), findsNothing);
+    // Newest period first: the 4th-quarter header sits at the top and builds…
+    expect(find.textContaining('4TH QUARTER'), findsOneWidget);
+    // …while the very last row (oldest Q1 play) is off-screen and NOT built.
+    expect(find.text('P1_0 action'), findsNothing);
+  });
+
   testWidgets('RuleLabelDivider ellipsizes an over-long label instead of overflowing',
       (tester) async {
     tester.view.physicalSize = const Size(320, 200);

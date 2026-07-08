@@ -65,6 +65,42 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
   int _chip = 0;
   int _playsPeriod = 0; // dense-feed period filter (§4b): 0 = all, else a period #
 
+  // §4a: stable feed projections so the play list handed to [ActionFeedSliver]
+  // keeps its *identity* across setState-only rebuilds (chip / period-filter
+  // taps, polls that return the same summary) — that identity is the key the
+  // feed's flatten memo (match_events.dart) hits, so a whole game's ~800 plays
+  // aren't re-projected and re-sorted every frame. Rebuilt only when the source
+  // list identity changes (a fresh /summary).
+  List<SummaryPlay>? _playsSrc;
+  List<MatchEvent>? _playsEvents;
+  List<MatchEvent>? _filterSrc;
+  int _filterPeriod = -1;
+  List<MatchEvent>? _filterEvents;
+
+  /// The summary's plays projected to [MatchEvent], memoized on the source
+  /// list's identity so unrelated rebuilds reuse the projection.
+  List<MatchEvent> _projectPlays(List<SummaryPlay> plays) {
+    if (!identical(plays, _playsSrc) || _playsEvents == null) {
+      _playsSrc = plays;
+      _playsEvents = [for (final p in plays) MatchEvent.fromSummaryPlay(p)];
+    }
+    return _playsEvents!;
+  }
+
+  /// The feed narrowed to a single period (the §4b length control), memoized on
+  /// (source identity, period) so a stable identity flows to the flatten memo.
+  List<MatchEvent> _filterFeed(List<MatchEvent> events, int period) {
+    if (period == 0) return events;
+    if (identical(events, _filterSrc) &&
+        period == _filterPeriod &&
+        _filterEvents != null) {
+      return _filterEvents!;
+    }
+    _filterSrc = events;
+    _filterPeriod = period;
+    return _filterEvents = events.where((e) => e.period == period).toList();
+  }
+
   SummaryKey get _summaryKey =>
       (league: widget.league, eventId: widget.initialEvent.id);
 
@@ -188,11 +224,8 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     }
     final showFilter = feedPeriods.length > 1;
     final activePeriod = feedPeriods.contains(_playsPeriod) ? _playsPeriod : 0;
-    final feedEvents = feed == null
-        ? const <MatchEvent>[]
-        : (activePeriod == 0
-            ? feed.events
-            : feed.events.where((e) => e.period == activePeriod).toList());
+    final feedEvents =
+        feed == null ? const <MatchEvent>[] : _filterFeed(feed.events, activePeriod);
 
     return Scaffold(
       body: CustomScrollView(
@@ -266,10 +299,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     if (label == 'Plays' && summary != null && summary.atBats.isEmpty) {
       final plays =
           summary.plays.isNotEmpty ? summary.plays : summary.scoringPlays;
-      return (
-        events: [for (final p in plays) MatchEvent.fromSummaryPlay(p)],
-        tally: false,
-      );
+      return (events: _projectPlays(plays), tally: false);
     }
     return null;
   }

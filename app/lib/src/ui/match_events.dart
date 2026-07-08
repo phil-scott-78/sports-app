@@ -36,7 +36,7 @@ class ActionFeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = _buildItems();
+    final items = _memoizedItems(this);
     if (items.isEmpty) return scoringOnly ? const SizedBox.shrink() : _empty();
     return _card([for (final it in items) _buildItemWidget(it)]);
   }
@@ -511,6 +511,44 @@ class _FeedRowItem extends _FeedItem {
   const _FeedRowItem(this.row);
 }
 
+/// A bounded memo of the flattened feed (§4a), keyed on the *identity* of the
+/// inputs that shape it — the events list plus the flatten flags. The flatten is
+/// pure over `(events, scoringOnly, tallyScore, label)` (it never reads `comp`;
+/// `comp` only colours rows lazily in [ActionFeed._buildItemWidget]), so caching
+/// on identity is sound. GameDetailPage feeds a *stable* events list per /summary
+/// (see `_projectPlays`/`_filterFeed`), so a setState-only rebuild — a chip tap,
+/// a period-filter tap, a poll that returns the same slate — reuses the
+/// O(n log n) sort + running-score tally + period bucketing instead of redoing it
+/// over a whole game's ~800 plays every frame. Bounded to a handful of live feeds.
+class _FeedMemo {
+  final List<MatchEvent> events;
+  final bool scoringOnly, tallyScore;
+  final String? label;
+  final List<_FeedItem> items;
+  _FeedMemo(
+      this.events, this.scoringOnly, this.tallyScore, this.label, this.items);
+}
+
+final List<_FeedMemo> _feedMemoCache = [];
+
+/// The flattened feed for [feed], from the memo when the same (identical) events
+/// list + flags were flattened recently, else computed once and cached.
+List<_FeedItem> _memoizedItems(ActionFeed feed) {
+  for (final m in _feedMemoCache) {
+    if (identical(m.events, feed.events) &&
+        m.scoringOnly == feed.scoringOnly &&
+        m.tallyScore == feed.tallyScore &&
+        m.label == feed.label) {
+      return m.items;
+    }
+  }
+  final items = feed._buildItems();
+  _feedMemoCache.add(_FeedMemo(
+      feed.events, feed.scoringOnly, feed.tallyScore, feed.label, items));
+  if (_feedMemoCache.length > 4) _feedMemoCache.removeAt(0);
+  return items;
+}
+
 /// The virtualized form of [ActionFeed] for the long play-by-play tabs (Plays /
 /// Timeline): the SAME grammar, but the flattened rows go through a
 /// [SliverList.builder] so only the visible handful are built. A basketball
@@ -539,7 +577,7 @@ class ActionFeedSliver extends StatelessWidget {
     // it is never mounted — its item methods are pure given (events, comp).
     final feed = ActionFeed(events, comp,
         scoringOnly: scoringOnly, tallyScore: tallyScore, label: label);
-    final items = feed._buildItems();
+    final items = _memoizedItems(feed);
     if (items.isEmpty) {
       return SliverToBoxAdapter(
           child: scoringOnly ? const SizedBox.shrink() : feed._empty());

@@ -478,7 +478,9 @@ class MatchTimelineCard extends StatelessWidget {
                 return Positioned(
                   left: left,
                   top: isRed ? 10 : 8,
-                  child: _marker(e),
+                  child: KeyedSubtree(
+                      key: ValueKey('railMarker:${e.clock}'),
+                      child: _marker(e)),
                 );
               }
 
@@ -488,6 +490,7 @@ class MatchTimelineCard extends StatelessWidget {
                     right: 0,
                     top: 15,
                     child: Container(
+                        key: const ValueKey('timelineTrack'),
                         height: 4,
                         decoration: BoxDecoration(
                             color: T.track,

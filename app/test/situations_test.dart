@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scores/src/models.dart';
+import 'package:scores/src/theme.dart';
 import 'package:scores/src/ui/situations.dart';
 
 Competition gridiron({
@@ -131,6 +133,118 @@ void main() {
       'competitors': [],
     });
     expect(situationCardFor(idle), isNull);
+  });
+
+  group('MatchTimelineCard Now-card curation (design 6a)', () {
+    // A live 2nd-half soccer match with a busy timeline: seven goals and a red
+    // card plus a yellow, chronological (oldest first) as the cheap feed ships.
+    Competition timeline(List<Map<String, dynamic>> events,
+            {bool live = true}) =>
+        Competition.fromJson({
+          'id': 'T1',
+          'layout': 'headToHead',
+          'scoreKind': 'numeric',
+          'competitorKind': 'team',
+          'status': {
+            'phase': live ? 'in' : 'final',
+            'live': live,
+            'ended': !live,
+            'period': 2,
+            'detail': live ? "62'" : 'FT',
+          },
+          'periods': {
+            'unit': 'half',
+            'regulation': 2,
+            'played': 2,
+            'lengthMin': 45,
+          },
+          'competitors': [
+            {'kind': 'team', 'id': 'a', 'abbreviation': 'ARS', 'homeAway': 'away'},
+            {'kind': 'team', 'id': 'h', 'abbreviation': 'CHE', 'homeAway': 'home'},
+          ],
+          'events': events,
+        });
+
+    Map<String, dynamic> goal(int min, String who) => {
+          'type': 'goal',
+          'team': 'away',
+          'clock': "$min'",
+          'athlete': who,
+          'detail': 'Goal',
+        };
+
+    Future<void> pump(WidgetTester tester, Competition comp) =>
+        tester.pumpWidget(MaterialApp(
+          theme: buildV2Theme(),
+          home: Scaffold(body: MatchTimelineCard(comp)),
+        ));
+
+    testWidgets(
+        'lists ALL goals + red cards newest-first, caps at 5, drops yellows',
+        (tester) async {
+      final comp = timeline([
+        goal(10, 'Ten'),
+        goal(20, 'Twenty'),
+        {'type': 'yellow-card', 'team': 'home', 'clock': "25'", 'athlete': 'Booked'},
+        goal(30, 'Thirty'),
+        goal(40, 'Forty'),
+        goal(50, 'Fifty'),
+        goal(60, 'Sixty'),
+        {'type': 'red-card', 'team': 'home', 'clock': "70'", 'athlete': 'Sent', 'detail': 'Red Card'},
+      ]);
+      await pump(tester, comp);
+
+      // Signal events newest-first, capped at 5: red(70), 60, 50, 40, 30.
+      expect(find.text('Sent — Red Card'), findsOneWidget);
+      expect(find.text('Sixty — Goal'), findsOneWidget);
+      expect(find.text('Thirty — Goal'), findsOneWidget);
+      // The two oldest goals fall past the cap of 5; the yellow is not a signal.
+      expect(find.text('Twenty — Goal'), findsNothing);
+      expect(find.text('Ten — Goal'), findsNothing);
+      expect(find.text('Booked — yellow-card'), findsNothing);
+
+      // Newest first: the 70' red card sits above the 30' goal.
+      final redY = tester.getTopLeft(find.text('Sent — Red Card')).dy;
+      final oldGoalY = tester.getTopLeft(find.text('Thirty — Goal')).dy;
+      expect(redY, lessThan(oldGoalY));
+    });
+
+    testWidgets('falls back to the last 3 events when nothing signal-worthy',
+        (tester) async {
+      // Only yellow cards (no goals, no reds) → the tail-of-3 fallback.
+      final comp = timeline([
+        for (var i = 1; i <= 6; i++)
+          {'type': 'yellow-card', 'team': 'home', 'clock': "${i * 10}'", 'athlete': 'Y$i'},
+      ]);
+      await pump(tester, comp);
+      expect(find.text('Y6 — yellow-card'), findsOneWidget);
+      expect(find.text('Y5 — yellow-card'), findsOneWidget);
+      expect(find.text('Y4 — yellow-card'), findsOneWidget);
+      // Only the last 3 — earlier bookings stay on the rail, not in the list.
+      expect(find.text('Y3 — yellow-card'), findsNothing);
+    });
+
+    testWidgets('stoppage-time markers clamp onto the rail, never past the edge',
+        (tester) async {
+      // A goal at 90'+8 — its minute (98) is past regulation (90). The rail
+      // marker must clamp into the last sliver, not hang off the right edge.
+      final comp = timeline([goal(30, 'Early'), {
+        'type': 'goal',
+        'team': 'away',
+        'clock': "90'+8",
+        'athlete': 'Late',
+        'detail': 'Goal',
+      }]);
+      await pump(tester, comp);
+
+      final track =
+          tester.getRect(find.byKey(const ValueKey('timelineTrack')));
+      final markerRect =
+          tester.getRect(find.byKey(const ValueKey("railMarker:90'+8")));
+      // Fully on the rail: right edge at/inside the track, pushed to the end.
+      expect(markerRect.right, lessThanOrEqualTo(track.right + 0.5));
+      expect(markerRect.left, greaterThan(track.center.dx));
+    });
   });
 
   group('matchRowContext (home-feed soccer context off the cheap timeline)', () {

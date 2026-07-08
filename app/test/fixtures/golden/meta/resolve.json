@@ -10,6 +10,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -91,6 +96,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -172,6 +182,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -254,6 +269,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -335,6 +355,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -417,6 +442,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -498,6 +528,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -579,6 +614,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -659,6 +699,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -740,6 +785,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -820,6 +870,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasWinProb": true,
+      "hasScoringPlaysArray": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -889,6 +944,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasWinProb": true,
+      "hasScoringPlaysArray": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -959,6 +1019,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasWinProb": true,
+      "hasScoringPlaysArray": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1026,6 +1091,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasWinProb": true,
+      "hasScoringPlaysArray": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1094,6 +1164,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1150,6 +1226,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1205,6 +1287,13 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasSeeds": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1250,7 +1339,7 @@
     "verifiedIds": true,
     "rankingsFeed": "polls",
     "queryParams": "?groups=50&limit=400",
-    "_note": "THE delta: only basketball league in HALVES (verified format.regulation.periods=2, clock=1200s); OT periods 3+; player box score lacks +/- (13 cols vs NBA 14)"
+    "_note": "capabilities.hasSeeds merges ONTO the basketball-family flags (core tournamentMatchup.seed, NCAA tournament only). THE delta: only basketball league in HALVES (verified format.regulation.periods=2, clock=1200s); OT periods 3+; player box score lacks +/- (13 cols vs NBA 14)"
   },
   "basketball/womens-college-basketball": {
     "espnSport": "basketball",
@@ -1263,6 +1352,13 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasSeeds": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1308,7 +1404,7 @@
     "verifiedIds": true,
     "rankingsFeed": "polls",
     "queryParams": "?groups=50&limit=400",
-    "_note": "VERIFIED quarters since 2015-16 (matches WNBA, NOT NCAAM) — the most error-prone assumption, confirmed against 2025 title game"
+    "_note": "capabilities.hasSeeds merges onto the family flags (NCAA tournament seeds). VERIFIED quarters since 2015-16 (matches WNBA, NOT NCAAM) — the most error-prone assumption, confirmed against 2025 title game"
   },
   "basketball/nbl": {
     "espnSport": "basketball",
@@ -1321,6 +1417,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1376,6 +1478,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1436,6 +1545,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1496,6 +1612,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -1557,6 +1680,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -1628,6 +1756,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -1698,6 +1831,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -1767,6 +1905,9 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSeeds": true
+    },
     "homeAwayMeaningless": true,
     "bestOf": "DO NOT trust format.regulation.periods (VERIFIED unreliable: returns 5 for non-major qualifying & doubles). Derive: men's singles at a Slam (events.major && mens-singles) = best-of-5; everything else = best-of-3. Validate against actual linescores length.",
     "tiebreak": "periodScores[].tiebreak is present on BOTH competitors = each side's TB points. Reconstruct '7-6(3)' from the loser's value. Can exceed 10 (11-9 super-TBs); never key off ==10.",
@@ -1799,6 +1940,9 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSeeds": true
+    },
     "homeAwayMeaningless": true,
     "bestOf": "DO NOT trust format.regulation.periods (VERIFIED unreliable: returns 5 for non-major qualifying & doubles). Derive: men's singles at a Slam (events.major && mens-singles) = best-of-5; everything else = best-of-3. Validate against actual linescores length.",
     "tiebreak": "periodScores[].tiebreak is present on BOTH competitors = each side's TB points. Reconstruct '7-6(3)' from the loser's value. Can exceed 10 (11-9 super-TBs); never key off ==10.",
@@ -2200,6 +2344,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -2235,6 +2383,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -2269,6 +2421,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -2305,6 +2461,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -2339,6 +2499,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -2372,6 +2536,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -2405,6 +2573,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -2438,6 +2610,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -2476,6 +2652,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2557,6 +2738,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2639,6 +2825,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2720,6 +2911,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2802,6 +2998,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2883,6 +3084,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -2965,6 +3171,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3047,6 +3258,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3128,6 +3344,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3210,6 +3431,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3291,6 +3517,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3372,6 +3603,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3454,6 +3690,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3535,6 +3776,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3616,6 +3862,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3697,6 +3948,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3778,6 +4034,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3859,6 +4120,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -3940,6 +4206,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4021,6 +4292,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4102,6 +4378,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4183,6 +4464,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4265,6 +4551,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4346,6 +4637,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4427,6 +4723,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4508,6 +4809,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4589,6 +4895,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4670,6 +4981,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4751,6 +5067,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4832,6 +5153,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4913,6 +5239,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -4995,6 +5326,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5076,6 +5412,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5157,6 +5498,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5238,6 +5584,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5319,6 +5670,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5400,6 +5756,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5481,6 +5842,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5562,6 +5928,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5643,6 +6014,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5724,6 +6100,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5806,6 +6187,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5887,6 +6273,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -5968,6 +6359,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6049,6 +6445,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6130,6 +6531,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6211,6 +6617,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6292,6 +6703,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6373,6 +6789,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6454,6 +6875,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6535,6 +6961,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6616,6 +7047,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6698,6 +7134,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6779,6 +7220,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6860,6 +7306,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -6941,6 +7392,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7022,6 +7478,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7103,6 +7564,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7183,6 +7649,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7264,6 +7735,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7344,6 +7820,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7425,6 +7906,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7505,6 +7991,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7586,6 +8077,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7667,6 +8163,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7747,6 +8248,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7828,6 +8334,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7908,6 +8419,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -7989,6 +8505,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8070,6 +8591,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8151,6 +8677,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8232,6 +8763,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8312,6 +8848,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8392,6 +8933,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8472,6 +9018,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8553,6 +9104,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8634,6 +9190,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8715,6 +9276,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8795,6 +9361,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8875,6 +9446,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -8955,6 +9531,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9036,6 +9617,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9117,6 +9703,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9198,6 +9789,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9279,6 +9875,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9359,6 +9960,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9439,6 +10045,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9520,6 +10131,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9601,6 +10217,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9681,6 +10302,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9762,6 +10388,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9843,6 +10474,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -9924,6 +10560,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10005,6 +10646,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10085,6 +10731,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10166,6 +10817,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10246,6 +10902,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10326,6 +10987,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10406,6 +11072,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10487,6 +11158,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10567,6 +11243,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10648,6 +11329,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10728,6 +11414,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10808,6 +11499,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10889,6 +11585,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -10970,6 +11671,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11050,6 +11756,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11131,6 +11842,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11212,6 +11928,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11293,6 +12014,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11373,6 +12099,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11453,6 +12184,11 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true,
+      "hasForm": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -11534,6 +12270,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11590,6 +12332,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11646,6 +12394,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11702,6 +12456,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11758,6 +12518,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11814,6 +12580,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11870,6 +12642,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11926,6 +12704,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -11982,6 +12766,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12038,6 +12828,12 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12093,6 +12889,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12153,6 +12956,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12213,6 +13023,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12273,6 +13090,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12333,6 +13157,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12393,6 +13224,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12453,6 +13291,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12513,6 +13358,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12573,6 +13425,13 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasSituation": true,
+      "hasWinProb": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -12634,6 +13493,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -12704,6 +13568,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -12774,6 +13643,11 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasPowerPlay": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -13481,6 +14355,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13516,6 +14394,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13551,6 +14433,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13586,6 +14472,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13621,6 +14511,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13656,6 +14550,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13691,6 +14589,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13726,6 +14628,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13761,6 +14667,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13796,6 +14706,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13831,6 +14745,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13866,6 +14784,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13901,6 +14823,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13936,6 +14862,10 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasCommentary": true
+    },
     "format": "READ PER MATCH from competitions[].class.generalClassCard — present broadly (NOT internationals-only): 'Twenty20'(IPL,20ov/2inn), 'Women T20', 'ODI'(50ov/2inn), 'T20I', 'First-class'/'Test'(up to 4 innings, multi-day). class.eventType is the coarse bucket (T20/ODI/Test). A single tour id can contain matches of DIFFERENT formats.",
     "score": "competitor.score is a COMPOSITE STRING ('161/5 (18/20 ov, target 156)'); authoritative numbers in periodScores[].cricket {runs,wickets,overs,isBatting,target,reason}. reason ∈ {'all out','target reached','complete','No result'}.",
     "result": "status.summary carries the result ('RCB won by 5 wkts (12b rem)' / 'AUS Women won by 65 runs' / 'Match drawn' / 'No result'). Winner via summary, not run totals.",
@@ -13972,6 +14902,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14006,6 +14940,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14040,6 +14978,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14074,6 +15016,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14108,6 +15054,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14142,6 +15092,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14176,6 +15130,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14210,6 +15168,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14244,6 +15206,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14278,6 +15244,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14312,6 +15282,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14346,6 +15320,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14380,6 +15358,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14414,6 +15396,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14448,6 +15434,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14482,6 +15472,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14516,6 +15510,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14550,6 +15548,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14584,6 +15586,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14618,6 +15624,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14652,6 +15662,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14686,6 +15700,10 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasForm": true
+    },
     "ignorePeriods": [
       20,
       60
@@ -14720,6 +15738,11 @@
     "clockDirection": "up",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true,
+      "hasPlaysFeed": true,
+      "hasWeather": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",
@@ -14794,6 +15817,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -14859,6 +15885,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "none",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -14924,6 +15953,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -14990,6 +16022,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -15055,6 +16090,9 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "setBased": "VERIFIED: best-of-5, win 3. competitor.score = SETS WON (numeric, e.g. '3'); periodScores[]/linescores[] = per-set POINTS (race-to-25 for sets 1-4, race-to-15 for the deciding set 5), each set carrying its own winner bool. Match has NO clock and NO overtime — the 5th set IS the decider. 3-5 periods played; period count = sets contested, not fixed at 5.",
     "standingsColumns": [
       {
@@ -15115,6 +16153,9 @@
     "clockDirection": "none",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "setBased": "VERIFIED: best-of-5, win 3. competitor.score = SETS WON (numeric, e.g. '3'); periodScores[]/linescores[] = per-set POINTS (race-to-25 for sets 1-4, race-to-15 for the deciding set 5), each set carrying its own winner bool. Match has NO clock and NO overtime — the 5th set IS the decider. 3-5 periods played; period count = sets contested, not fixed at 5.",
     "standingsColumns": [
       {
@@ -15176,6 +16217,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -15231,6 +16275,9 @@
     "clockDirection": "down",
     "hasLineScores": true,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "wins",
@@ -15286,6 +16333,9 @@
     "clockDirection": "up",
     "hasLineScores": false,
     "ranking": "curatedRank",
+    "capabilities": {
+      "hasSummaryTier": true
+    },
     "standingsColumns": [
       {
         "key": "gamesPlayed",

@@ -119,6 +119,49 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
   ok(Array.isArray(s.boxGroups) && s.boxGroups.length === 0, 'minimal summary degrades to empty box groups');
 }
 
+// ---- 8b. borrowed summary (calendar-proof fix, §8.2): a summary-less event ----
+// borrows another captured summary from the SAME league and rebases its date/status
+// — deterministic by event id, stable across polls — instead of the empty envelope.
+{
+  const oldRaw = {
+    header: { id: '999', competitions: [{
+      id: '999', date: '2025-01-01T00:00:00Z',
+      status: { type: { id: '3', name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'Final', shortDetail: 'Final' }, period: 9 },
+      competitors: [
+        { id: '9', homeAway: 'home', team: { id: '9', abbreviation: 'MIN' }, score: '5' },
+        { id: '24', homeAway: 'away', team: { id: '24', abbreviation: 'STL' }, score: '3' },
+      ],
+    }] },
+    boxscore: { teams: [], players: [] }, plays: [], scoringPlays: [], keyEvents: [], rosters: [],
+  };
+  const fx = { ...mlbFixture, summaries: { 999: oldRaw } };
+  const eventId = 'zzz-uncaptured-1'; // no exact/base match → must borrow
+  const borrowed = synthSummary(fx, eventId, { now: NOW });
+  const c = borrowed.header.competitions[0];
+  ok(borrowed.header.id === eventId, `borrowed summary: header id rebased to the requested event (got ${borrowed.header.id})`);
+  ok(c.id === eventId, 'borrowed summary: competition id rebased too');
+  ok(['pre', 'in', 'post'].includes(c.status.type.state), `borrowed summary: valid status state (${c.status.type.state})`);
+  ok(c.date !== '2025-01-01T00:00:00Z', 'borrowed summary: stale capture-time date replaced');
+  ok(c.competitors.map((x) => x.score).join(',') === '5,3', 'borrowed summary: donor box score/scoreline left untouched');
+
+  // deterministic per (eventId, now)
+  const again = synthSummary(fx, eventId, { now: NOW });
+  ok(JSON.stringify(borrowed) === JSON.stringify(again), 'borrowed summary: deterministic per (eventId, now)');
+
+  // phase is keyed off the id, not `now` — never flickers state between polls
+  const laterPoll = synthSummary(fx, eventId, { now: NOW + 20000 });
+  ok(laterPoll.header.competitions[0].status.type.state === c.status.type.state, 'borrowed summary: phase stable across polls');
+
+  // normalizes cleanly through the real normalizer, keyed to the rebased id
+  const norm = normalizeSummary(registry, 'baseball/mlb', borrowed);
+  ok(norm.eventId === eventId, 'borrowed summary: normalizer reads the rebased event id');
+  ok(norm.live === (c.status.type.state === 'in'), 'borrowed summary: normalizer live flag matches rebased status');
+
+  // exact-id match is still returned verbatim — NOT rebased (real capture, real date)
+  const exact = synthSummary(fx, '999', { now: NOW });
+  ok(exact.header.competitions[0].date === '2025-01-01T00:00:00Z', 'exact-match summary: returned verbatim, unrebased');
+}
+
 // ---- 9. sweep captured fixtures (if any): every one normalizes -------------
 {
   let files = [];

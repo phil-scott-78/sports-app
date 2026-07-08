@@ -94,6 +94,41 @@ A consumer never special-cases by sport name. It reads three flags:
 `competitorKind: 'pair'` (tennis/golf doubles) carries `athletes[2]`; everything
 else carries `athletes[1]` (athlete) or team identity (team).
 
+### 2a. Capability flags (`capabilities{}`) — the render-or-hide gate
+
+The three discriminators pick the *renderer*; they do **not** say which optional
+datum a sport actually serves. That is the `capabilities{}` object on each
+**family** in `league-profiles.json`, resolved through the same `extends` chain
+as everything else (objects shallow-merge, so a league override **adds** flags
+without restating the family's — e.g. `basketball/mens-college-basketball` adds
+`hasSeeds` on top of the basketball family's four). **Omit-means-false:** read
+`capabilities.flag == true` and hide the element cleanly otherwise — never an
+empty chip. Every flag below was verified against observed presence in
+`schema/espn-guide/` (crawl 2026-07-08), not documentation.
+
+| Flag | True for (families; + league overrides) | Gates | Evidence (espn-guide) |
+|---|---|---|---|
+| `hasSummaryTier` | all except golf / mma / racing / tennis | Box / Plays / Stats chips; the whole rich detail | summary endpoint `—` (404) for exactly those four sports |
+| `hasSituation` | baseball, basketball | bases/count/outs, bonus — the cheap live glance | scoreboard `competitions[].situation` observed only for those two |
+| `hasWinProb` | baseball, basketball, football | the win-probability bar | summary `winprobability[]` |
+| `hasScoringPlaysArray` | football | the `scoringPlays[]` feed shape (others derive from `plays[]`/`keyEvents[]`) | summary `scoringPlays[]` football-only |
+| `hasPlaysFeed` | australian-football, baseball, basketball, hockey | dense play-by-play tab | summary `plays[]` |
+| `hasCommentary` | soccer, cricket | soccer narrative / cricket ball-by-ball | soccer: summary `commentary[]`; cricket: summary `header.competitions[].commentaries.{key}` (different path, same gate) |
+| `hasForm` | soccer, rugby, rugby-league | the `WLWWL` form string | scoreboard `competitors[].form` |
+| `hasPowerPlay` | hockey | PP badge/clock | summary `plays[].strength` (`power-play`/`short-handed`) |
+| `hasSeeds` | tennis; + `basketball/{mens,womens}-college-basketball` | bracket seed badges | core `competitors[].tournamentMatchup.seed` (NCAA tournament); tennis groupings `curatedRank` |
+| `hasWeather` | baseball, australian-football | weather chip (~1% of events: outdoor + game-day) | scoreboard `events[].weather` |
+
+Two capability-shaped keys **predate** this object and stay top-level (do NOT
+duplicate them into `capabilities{}`): **`hasLineScores`** (the per-period grid)
+and **`rankingsFeed`** (`polls` / `tour` / `divisions` — the standalone rankings
+page). Known tension left as-is: the crawl observed scoreboard `linescores` for
+field-hockey and mma where the registry's live-probed `hasLineScores:false`
+stands — re-probe before flipping those.
+
+Consumers: JS resolves via `schema/tools/resolve.mjs`; the Dart port exposes
+`hasCapability(profile, flag)` in `app/lib/src/data/profiles.dart`.
+
 ---
 
 ## 3. Universal envelope mapping (ESPN → canonical)

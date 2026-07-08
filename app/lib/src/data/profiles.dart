@@ -87,6 +87,18 @@ Map<String, dynamic> resolve(Registry reg, String key, [Set<String>? seen]) {
   return merged;
 }
 
+/// Read a capability flag off a resolved profile — the registry's per-family
+/// `capabilities{}` object (SCHEMA.md §2a), resolved through the extends chain
+/// like everything else. OMIT-MEANS-FALSE: a missing object or missing flag
+/// means the sport does not serve that datum — hide the element cleanly.
+/// Flags: hasSummaryTier, hasSituation, hasWinProb, hasScoringPlaysArray,
+/// hasPlaysFeed, hasCommentary, hasForm, hasPowerPlay, hasSeeds, hasWeather.
+/// (hasLineScores and rankingsFeed predate this object and stay top-level keys.)
+bool hasCapability(Map<String, dynamic> profile, String flag) {
+  final caps = profile['capabilities'];
+  return caps is Map && caps[flag] == true;
+}
+
 /// All concrete league keys, optionally filtered. Skips dynamic `_*` buckets.
 /// `priority` accepts a single tier ('v1') or a list (['v1','v2']). Order is
 /// registry insertion order (JSON object key order — preserved by dart:convert),

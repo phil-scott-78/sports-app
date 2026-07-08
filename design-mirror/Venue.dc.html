@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+a{color:#2a78d6}
+a:hover{color:#1a5cad}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-note{margin:0 0 24px;max-width:640px;font:400 12px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t14" data-screen-label="Turn 14 — Venue view">
+<div class="dv-thd"><a class="dv-tid" href="#t14">14</a><span class="dv-tname">Venue view — photo, location, capacity facts</span></div>
+<p class="dv-note">Venue tab of a game detail — the stadium counterpart to the F1 circuit view (<a href="Circuit.dc.html#13a">13a</a>). Photo card up top (drop a real image on the slot), then the same 2-col StatCell fact grid. Same card grammar throughout.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="14a">
+<div class="dv-olabel"><a class="dv-oid" href="#14a">14a</a>Venue tab — Wrigley Field</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+
+  <!-- event header -->
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>BOT 7 · MIL 4 – CHC 5</span>
+      <span style="font-size:12px;color:#9aa3ad">Chicago, IL</span>
+    </div>
+    <div style="font:700 44px/1 'Barlow Condensed'">WRIGLEY FIELD</div>
+    <div style="font-size:13px;color:#9aa3ad;margin-top:5px">Home of the Chicago Cubs</div>
+  </div>
+
+  <!-- chip nav -->
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Box</span>
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Venue</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+
+  <!-- venue photo -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;border:1px solid #262c35;overflow:hidden">
+    <div style="width:100%;height:210px;background:#161a20">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:100%;height:210px;display:block" id="venue-photo-wrigley" placeholder="Venue photo" hint-size="100%,210px"></x-import>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">1060 W ADDISON ST · CHICAGO, IL</span>
+      <span style="font-size:11px;color:#6c7480">Est. 1914</span>
+    </div>
+  </div>
+
+  <!-- fact grid -->
+  <div style="margin:12px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">CAPACITY</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">41,649</span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">OPENED</span>
+      <span style="font:700 30px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">1914</span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">SURFACE</span>
+      <span style="font:700 30px/1 'Barlow Condensed'">GRASS</span>
+    </div>
+    <div style="background:#1a1e25;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">ROOF</span>
+      <span style="font:700 30px/1 'Barlow Condensed'">OPEN AIR</span>
+    </div>
+  </div>
+
+  <!-- tonight at the venue -->
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+    <div style="display:flex;flex-direction:column;gap:3px">
+      <span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad">TONIGHT</span>
+      <span style="font-size:14px;font-weight:600">Wind out to left · 12 mph</span>
+      <span style="font-size:12px;color:#6c7480">72°F · Clear</span>
+    </div>
+    <span style="font:700 32px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">38,551 <span style="font-size:17px;color:#9aa3ad">ATT</span></span>
+  </div>
+
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+</x-dc>
+</body>
+</html>

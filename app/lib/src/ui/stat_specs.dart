@@ -320,11 +320,13 @@ const Map<String, List<String>> richPriorityKeywords = {
 
 // ---- the one comparison-row renderer -----------------------------------------
 
-TextStyle _numStyle(bool strong, Color color) => TextStyle(
+/// Barlow-condensed tabular number for a compare row (DESIGN §8/§10): 13px w600,
+/// [color] carrying the read — leader white, trailer dim.
+TextStyle _numStyle(Color color) => TextStyle(
       fontFamily: 'BarlowCondensed',
       fontFeatures: const [FontFeature.tabularFigures()],
-      fontSize: 14,
-      fontWeight: strong ? FontWeight.w700 : FontWeight.w600,
+      fontSize: 13,
+      fontWeight: FontWeight.w600,
       color: color,
     );
 
@@ -333,9 +335,9 @@ TextStyle _numStyle(bool strong, Color color) => TextStyle(
 /// single full-width split bar in the two team colors beneath; every other stat
 /// (counts, and independent percents like FG%/SV%) renders as the number row
 /// alone — no bar. The leading side (lower when [StatSpec.invert]) carries the
-/// bold white number; the trailer stays dim. That asymmetry, not color, is the
-/// read. The §10 gridiron center-spine mirrored bars are a separate card — this
-/// renderer never gauges.
+/// white number; the trailer stays dim. That color asymmetry — leader white,
+/// trailer dim — is the read, not weight. The §10 gridiron center-spine mirrored
+/// bars are a separate card — this renderer never gauges.
 class StatCompareRow extends StatelessWidget {
   final StatSpec spec;
   final String? away, home;
@@ -366,12 +368,13 @@ class StatCompareRow extends StatelessWidget {
     Widget num(String s, bool strong) => Text(s,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: _numStyle(strong, strong ? T.text : T.textDim));
+        style: _numStyle(strong ? T.text : T.textDim));
 
     return Column(children: [
       Row(children: [
+        // ~40px fixed value columns flanking a centred faint label (DESIGN §8).
         SizedBox(
-            width: 52,
+            width: 40,
             child: Align(
                 alignment: Alignment.centerLeft,
                 child: num(aText, awayLeads))),
@@ -383,7 +386,7 @@ class StatCompareRow extends StatelessWidget {
               style: T.cardLabelFaint),
         ),
         SizedBox(
-            width: 52,
+            width: 40,
             child: Align(
                 alignment: Alignment.centerRight,
                 child: num(hText, homeLeads))),

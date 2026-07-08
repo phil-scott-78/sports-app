@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:Archivo,system-ui,sans-serif;color:#1a1a1a}
+a{color:#2a78d6}
+a:hover{color:#1a5cad}
+</style>
+</helmet>
+<div style="max-width:920px;margin:0 auto;padding:56px 44px 80px">
+
+  <div style="font:700 13px/1 Archivo;letter-spacing:.14em;color:#8a8578;text-transform:uppercase">Sports App Design Concept</div>
+  <h1 style="font:700 54px/0.98 'Barlow Condensed';margin:10px 0 14px;letter-spacing:.01em">SCREEN LIBRARY — FILE INDEX</h1>
+  <p style="max-width:600px;font:400 15px/1.6 Archivo;color:#514c42;margin:0 0 40px">Final drafts, split one file per feature area so each can be pulled into Claude Code independently. Every screen is an Android device frame; all files share one theme and two dependencies.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+    <a href="HomeFeed.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">HOME FEED</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Stacked hero cards — one per favorite, detail scales with game state.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">HomeFeed.dc.html</div>
+    </a>
+    <a href="LiveGame.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">LIVE GAME DETAIL</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Per-sport live screens — football, basketball, cricket, olympics, soccer, tennis, hockey, golf. Shared card grammar, sport-specific situation card.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">LiveGame.dc.html</div>
+    </a>
+    <a href="EventList.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">EVENT LIST</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Play-by-play / timeline tab as a full screen, one grammar across sports.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">EventList.dc.html</div>
+    </a>
+    <a href="BoxScore.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">BOX SCORES</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Dense stat tables — box score, game leaders, season stats, line score.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">BoxScore.dc.html</div>
+    </a>
+    <a href="TeamPlayer.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">TEAM & PLAYER</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Overview pages across four sports + player page. Logo / headshot image slots.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">TeamPlayer.dc.html</div>
+    </a>
+    <a href="Tournaments.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">TOURNAMENTS</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Four bracket grammars — World Cup groups, Wimbledon draw, March Madness, College World Series.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">Tournaments.dc.html</div>
+    </a>
+    <a href="Circuit.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">F1 CIRCUIT</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Circuit tab — track map, venue fact grid, lap record card. Spa-Francorchamps.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">Circuit.dc.html</div>
+    </a>
+    <a href="Venue.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">VENUE</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Venue tab — photo slot, capacity fact grid, game-day conditions. Wrigley Field.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">Venue.dc.html</div>
+    </a>
+    <a href="Standings.dc.html" style="text-decoration:none;color:inherit;background:#fff;border-radius:16px;padding:20px;border:1px solid rgba(0,0,0,.07)" style-hover="border-color:#2a78d6">
+      <div style="font:700 22px/1 'Barlow Condensed';margin-bottom:6px">STANDINGS & FAVORITES</div>
+      <div style="font:400 13px/1.5 Archivo;color:#6c6659">Division table with playoff cut line, long-press follow sheet, manage-following tab.</div>
+      <div style="font:600 11px/1 ui-monospace,Menlo,monospace;color:#8a8578;margin-top:12px">Standings.dc.html</div>
+    </a>
+  </div>
+
+  <div style="margin-top:44px;background:#1a1e25;border-radius:18px;padding:28px 30px;color:#eef1f4">
+    <div style="font:700 13px/1 Archivo;letter-spacing:.12em;color:#9aa3ad;text-transform:uppercase;margin-bottom:16px">Handoff notes</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+      <div>
+        <div style="font:600 14px/1 Archivo;margin-bottom:10px">Shared dependencies</div>
+        <div style="font:400 12.5px/1.6 ui-monospace,Menlo,monospace;color:#c5cdd6">./android-frame.jsx<br>./image-slot.js<br>./support.js</div>
+        <div style="font:400 12px/1.55 Archivo;color:#9aa3ad;margin-top:8px">Every screen mounts <code>AndroidDevice</code> (dark, 428×908). Team/player/tournament crests use <code>image-slot</code> drop targets — drop real logos in and they persist.</div>
+      </div>
+      <div>
+        <div style="font:600 14px/1 Archivo;margin-bottom:10px">Theme tokens</div>
+        <div style="font:400 12.5px/1.7 ui-monospace,Menlo,monospace;color:#c5cdd6">
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#111318;outline:1px solid #333"></span>#111318 screen bg</span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#1a1e25"></span>#1a1e25 card</span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#1e232c"></span>#1e232c lifted</span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#eef1f4"></span>#eef1f4 text</span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#9aa3ad"></span>#9aa3ad muted</span><br>
+          <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:11px;height:11px;border-radius:3px;background:#3ba86f"></span>#3ba86f win / #e5484d loss</span>
+        </div>
+      </div>
+      <div>
+        <div style="font:600 14px/1 Archivo;margin-bottom:10px">Type</div>
+        <div style="font:400 12.5px/1.7 Archivo;color:#c5cdd6"><b style="font-family:'Barlow Condensed';font-weight:700;font-size:16px">Barlow Condensed</b> — numerals, team names, big scores<br><b>Archivo</b> — labels, body, table text</div>
+        <div style="font:400 12px/1.55 Archivo;color:#9aa3ad;margin-top:8px">Stat columns use <code>font-variant-numeric: tabular-nums</code>.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

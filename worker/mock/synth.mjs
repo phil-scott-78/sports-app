@@ -398,22 +398,54 @@ export function synthScoreboard(registry, key, fixture, { now = Date.now(), date
   return out;
 }
 
+// A borrowed summary's header still carries its CAPTURE-time date/status (often a
+// months-old Final) — dropped verbatim onto a "now"-rebased slate it reads as
+// stale/inconsistent (e.g. a "live" scoreboard event opening to a June Final). Patch
+// just the header identity + date/status — deterministic by event id (stable across
+// polls, same "never on `now` alone" rule every other synth transform follows) — and
+// leave the borrowed box score/plays/rosters untouched (§8.2: the mock's job is to
+// walk rich-detail rendering, not data fidelity).
+function rebaseBorrowedSummary(raw, eventId, now) {
+  const out = clone(raw);
+  const header = out.header || (out.header = {});
+  header.id = String(eventId);
+  const comp = (header.competitions ||= [{}])[0] ||= {};
+  comp.id = String(eventId);
+  const roll = hashStr(`${eventId}:sumphase`) % 3; // 0 final · 1 live · 2 scheduled
+  if (roll === 2) { // scheduled: a plausible upcoming kickoff
+    const startMs = now + (30 + (hashStr(`${eventId}:sumsched`) % 300)) * MIN;
+    comp.date = iso(startMs);
+    comp.status = { type: { id: '1', name: 'STATUS_SCHEDULED', state: 'pre', completed: false, description: 'Scheduled', detail: kickShort(startMs), shortDetail: kickShort(startMs) }, period: 0, displayClock: '0:00' };
+  } else if (roll === 1) { // live: recently started
+    const startMs = now - (15 + (hashStr(`${eventId}:sumlive`) % 90)) * MIN;
+    comp.date = iso(startMs);
+    comp.status = { type: { id: '2', name: 'STATUS_IN_PROGRESS', state: 'in', completed: false, description: 'In Progress', detail: 'In Progress', shortDetail: 'In Progress' }, period: comp.status?.period || 1, displayClock: comp.status?.displayClock || '0:00' };
+  } else { // final: earlier today
+    const startMs = now - (1 + (hashStr(`${eventId}:sumfinal`) % 5)) * HOUR;
+    comp.date = iso(startMs);
+    comp.status = { type: { id: '3', name: 'STATUS_FINAL', state: 'post', completed: true, description: 'Final', detail: 'Final', shortDetail: 'Final' }, period: comp.status?.period || 1, displayClock: '0:00' };
+  }
+  return out;
+}
+
 /**
  * Raw ESPN-shaped summary for an event id. Returns the captured real summary when
  * we have one (best fidelity — real box scores), else a minimal valid envelope so
  * normalizeSummary yields empty tables and the detail page degrades to cheap-tier.
  */
-export function synthSummary(fixture, eventId) {
+export function synthSummary(fixture, eventId, { now = Date.now() } = {}) {
   const base = String(eventId).split('-c')[0].split(':')[0]; // strip clone/comp suffixes
   const raw = fixture.summaries?.[eventId] || fixture.summaries?.[base];
   if (raw) return raw;
   // No captured summary for THIS event → borrow one of the league's captured
-  // summaries (deterministic by id) so far more scoreboard events open a RICH
-  // detail offline instead of the degraded empty envelope. The borrowed box-score
-  // teams won't match the synthesized score block — but the mock's job is to walk
-  // the rich-detail rendering (feeds, box tables, scoring), not data fidelity.
+  // summaries (deterministic by id, same calendar-proof fix as the scoreboard's own
+  // pool-borrowing) so far more scoreboard events open a RICH detail offline instead
+  // of the degraded empty envelope, then rebase its date/status so it doesn't read
+  // stale. The borrowed box-score teams won't match the synthesized score block —
+  // but the mock's job is to walk the rich-detail rendering (feeds, box tables,
+  // scoring), not data fidelity.
   const captured = fixture.summaries ? Object.values(fixture.summaries) : [];
-  if (captured.length) return captured[hashStr(String(eventId)) % captured.length];
+  if (captured.length) return rebaseBorrowedSummary(captured[hashStr(String(eventId)) % captured.length], eventId, now);
   return { header: { id: String(eventId), competitions: [{ id: String(eventId), competitors: [], status: { type: { state: 'post', completed: true } } }] }, boxscore: { teams: [], players: [] }, plays: [], scoringPlays: [], keyEvents: [], rosters: [] };
 }
 
