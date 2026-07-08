@@ -109,6 +109,7 @@ class SportEvent {
   final DateTime? start;
   final bool neutralSite;
   final Venue? venue;
+  final Circuit? circuit; // racing only — the §2.9 Circuit tab join
   final List<String> broadcasts;
   final List<String> notes;
   final String? weekLabel; // 'Week 5' / 'Round 15' (gridiron/rugby, regular season)
@@ -129,6 +130,7 @@ class SportEvent {
     required this.start,
     required this.neutralSite,
     required this.venue,
+    this.circuit,
     required this.broadcasts,
     required this.notes,
     this.weekLabel,
@@ -188,6 +190,7 @@ class SportEvent {
         start: start,
         neutralSite: neutralSite,
         venue: venue,
+        circuit: circuit,
         broadcasts: broadcasts,
         notes: notes,
         weekLabel: weekLabel,
@@ -203,6 +206,7 @@ class SportEvent {
         start: DateTime.tryParse(_str(j['start']))?.toLocal(),
         neutralSite: _bool(j['neutralSite']),
         venue: j['venue'] == null ? null : Venue.fromJson(_map(j['venue'])),
+        circuit: j['circuit'] == null ? null : Circuit.fromJson(_map(j['circuit'])),
         broadcasts: _list(j['broadcasts']).map(_str).toList(growable: false),
         notes: _list(j['notes']).map(_str).toList(growable: false),
         weekLabel: _strOrNull(j['weekLabel']),
@@ -217,11 +221,15 @@ class SportEvent {
 }
 
 class Venue {
+  /// CORE venues/{id} join id (scoreboard competitions[].venue.id) — gates the
+  /// §2.9 Venue tab. Null when ESPN ships no venue id (e.g. racing).
+  final String? id;
   final String name;
   final String? city, country;
   final bool indoor;
-  Venue({required this.name, this.city, this.country, this.indoor = false});
+  Venue({this.id, required this.name, this.city, this.country, this.indoor = false});
   factory Venue.fromJson(Map<String, dynamic> j) => Venue(
+        id: _strOrNull(j['id']),
         name: _str(j['name']),
         city: _strOrNull(j['city']),
         country: _strOrNull(j['country']),
@@ -229,6 +237,19 @@ class Venue {
       );
   String get location =>
       [if (city != null) city, if (country != null) country].join(', ');
+}
+
+/// Racing circuit join (scoreboard events[].circuit) — gates the §2.9 Circuit
+/// tab (CORE circuits/{id}). Present for racing only; every field tolerant.
+class Circuit {
+  final String? id, fullName, city, country;
+  Circuit({this.id, this.fullName, this.city, this.country});
+  factory Circuit.fromJson(Map<String, dynamic> j) => Circuit(
+        id: _strOrNull(j['id']),
+        fullName: _strOrNull(j['fullName']),
+        city: _strOrNull(j['city']),
+        country: _strOrNull(j['country']),
+      );
 }
 
 /// Outdoor-game weather (emitted only for non-indoor venues).
@@ -2350,6 +2371,9 @@ class BoxTeam {
 }
 
 class BoxRow {
+  /// CORE athletes/{id} join — non-null makes the row tap through to the player
+  /// page. Null where ESPN ships no athlete id (the row stays inert).
+  final String? id;
   final String name;
   final String? pos;
   final List<String> stats;
@@ -2362,12 +2386,14 @@ class BoxRow {
   /// substitution footnote. Null when absent.
   final String? note;
   BoxRow(
-      {required this.name,
+      {this.id,
+      required this.name,
       this.pos,
       required this.stats,
       this.starter,
       this.note});
   factory BoxRow.fromJson(Map<String, dynamic> j) => BoxRow(
+        id: _strOrNull(j['id']),
         name: _str(j['name']),
         pos: _strOrNull(j['pos']),
         stats: _list(j['stats']).map(_str).toList(growable: false),
@@ -2562,10 +2588,14 @@ class Lineup {
 }
 
 class LineupPlayer {
+  /// CORE athletes/{id} join — non-null makes the row tap through to the player
+  /// page. Null where ESPN ships no athlete id (the row stays inert).
+  final String? id;
   final String name;
   final String? pos, jersey;
-  LineupPlayer({required this.name, this.pos, this.jersey});
+  LineupPlayer({this.id, required this.name, this.pos, this.jersey});
   factory LineupPlayer.fromJson(Map<String, dynamic> j) => LineupPlayer(
+        id: _strOrNull(j['id']),
         name: _str(j['name']),
         pos: _strOrNull(j['pos']),
         jersey: _strOrNull(j['jersey']),

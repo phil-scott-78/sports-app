@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../config.dart';
 import '../models.dart';
 import '../providers.dart';
@@ -9,6 +10,7 @@ import '../theme.dart';
 import '../util.dart';
 import 'golf_scorecard_page.dart';
 import 'match_events.dart';
+import 'player_page.dart';
 import 'poll.dart';
 import 'situations.dart';
 import 'stat_specs.dart';
@@ -138,6 +140,22 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
   String _sessionLabel(Competition c, int i) {
     final l = c.label;
     return (l != null && l.isNotEmpty) ? l : 'Session ${i + 1}';
+  }
+
+  /// The §2.9 tab shape for this event, by DATA PRESENCE (never sport name):
+  /// a circuit join id → Circuit; else a stadium venue join id → Venue; neither
+  /// → none. Delegates to the pure [venueTabKind] so the branch is unit-testable.
+  VenueTabKind _venueTab(SportEvent event, Competition comp) {
+    final (venueId, circuitId) = _venueTabIds(event, comp);
+    return venueTabKind(venueId: venueId, circuitId: circuitId);
+  }
+
+  /// The (venueId, circuitId) join ids the Venue/Circuit tab needs. Sourced from
+  /// the canonical event: `competitions[].venue.id` → `event.venue?.id` (the CORE
+  /// venues/{id} join) and `events[].circuit.id` → `event.circuit?.id` (the CORE
+  /// circuits/{id} join). Either may be null (then [venueTabKind] hides the tab).
+  (String?, String?) _venueTabIds(SportEvent event, Competition comp) {
+    return (event.venue?.id, event.circuit?.id);
   }
 
   @override
@@ -327,7 +345,19 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     };
   }
 
+  /// The chip labels, with the §2.9 Venue/Circuit tab appended when the event
+  /// carries the join id its shape needs (never by sport name — see [_venueTab]).
   List<String> _chipLabels(
+      SportEvent event, Competition comp, GameSummary? summary) {
+    final core = _coreChips(event, comp, summary);
+    return switch (_venueTab(event, comp)) {
+      VenueTabKind.circuit => [...core, 'Circuit'],
+      VenueTabKind.venue => [...core, 'Venue'],
+      VenueTabKind.none => core,
+    };
+  }
+
+  List<String> _coreChips(
       SportEvent event, Competition comp, GameSummary? summary) {
     if (comp.isField) {
       // A racing weekend gets one chip per session (practice/qual/race); a
@@ -384,6 +414,23 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     List<String> chips,
     int chipIndex,
   ) {
+    // §2.9 Venue/Circuit tab — dispatched before the field/non-field split so it
+    // works for a racing weekend (Circuit) and a stadium team game (Venue) alike.
+    final selected = chipIndex >= 0 && chipIndex < chips.length ? chips[chipIndex] : '';
+    if (selected == 'Circuit') {
+      final (_, circuitId) = _venueTabIds(event, comp);
+      return [
+        CircuitTab(
+            league: widget.league, event: event, comp: comp, circuitId: circuitId)
+      ];
+    }
+    if (selected == 'Venue') {
+      final (venueId, _) = _venueTabIds(event, comp);
+      return [
+        VenueTab(
+            league: widget.league, event: event, comp: comp, venueId: venueId)
+      ];
+    }
     if (comp.isField) {
       // On a racing weekend the chip nav picks the session; golf/one-off races
       // stay on their single competition.
@@ -442,7 +489,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           if (summary != null && summary.teamStats.isNotEmpty)
             _TeamStatsCard(comp: comp, rows: summary.teamStats, sport: _sport),
           if (summary != null)
-            for (final g in summary.boxGroups) _BoxGroupCard(g),
+            for (final g in summary.boxGroups) _BoxGroupCard(g, league: widget.league),
           if (summary == null) const _LoadingCard(),
         ];
       case 'Drives':
@@ -546,7 +593,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
             if (scoringNow.isNotEmpty) _ScoringSummaryCard(scoringNow),
             _TopPerformersCard(comp),
             if (summary != null && summary.lineups.isNotEmpty)
-              _LineupsCard(summary.lineups),
+              _LineupsCard(summary.lineups, league: widget.league),
             if (summary != null && summary.seasonSeries != null)
               _SeasonSeriesCard(summary.seasonSeries!),
           ].whereType<Widget>().toList();
@@ -573,7 +620,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
               _ProbablesCard(comp),
             if (odds != null) _OddsCard(comp: comp, odds: odds),
             if (summary != null && summary.lineups.isNotEmpty)
-              _LineupsCard(summary.lineups),
+              _LineupsCard(summary.lineups, league: widget.league),
             if (summary != null && summary.recentForm.isNotEmpty)
               _FormCard(summary.recentForm),
             if (summary != null && summary.injuries.isNotEmpty)
@@ -2254,7 +2301,8 @@ class _BaseballPlaysFeedState extends State<_BaseballPlaysFeed> {
 /// the starting XI (formation header) with a dimmed bench beneath.
 class _LineupsCard extends StatelessWidget {
   final List<Lineup> lineups;
-  const _LineupsCard(this.lineups);
+  final String league;
+  const _LineupsCard(this.lineups, {required this.league});
 
   @override
   Widget build(BuildContext context) {
@@ -2270,13 +2318,13 @@ class _LineupsCard extends StatelessWidget {
       children: [
         for (var i = 0; i < ordered.length; i++) ...[
           if (i > 0) const SizedBox(height: 12),
-          _panel(ordered[i]),
+          _panel(context, ordered[i]),
         ],
       ],
     );
   }
 
-  Widget _panel(Lineup lineup) {
+  Widget _panel(BuildContext context, Lineup lineup) {
     final hasFormation =
         lineup.formation != null && lineup.formation!.isNotEmpty;
     return V2Card(
@@ -2290,48 +2338,60 @@ class _LineupsCard extends StatelessWidget {
           ],
         ]),
         const SizedBox(height: 6),
-        for (final pl in lineup.starters) _playerRow(pl),
+        for (final pl in lineup.starters) _playerRow(context, lineup, pl),
         if (lineup.bench.isNotEmpty) ...[
           const SizedBox(height: 10),
           const CardLabel('Bench'),
           const SizedBox(height: 2),
-          for (final pl in lineup.bench) _playerRow(pl, dim: true),
+          for (final pl in lineup.bench) _playerRow(context, lineup, pl, dim: true),
         ],
       ]),
     );
   }
 
-  Widget _playerRow(LineupPlayer pl, {bool dim = false}) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3),
-        child: Row(children: [
+  Widget _playerRow(BuildContext context, Lineup lineup, LineupPlayer pl,
+      {bool dim = false}) {
+    final row = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: Row(children: [
+        SizedBox(
+          width: 24,
+          child: Text(pl.jersey ?? '',
+              maxLines: 1, style: T.statLine.copyWith(color: T.textFaint)),
+        ),
+        Expanded(
+          child: Text(pl.name,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: 14, color: dim ? T.textDim : T.text)),
+        ),
+        if (pl.pos != null && pl.pos!.isNotEmpty)
           SizedBox(
-            width: 24,
-            child: Text(pl.jersey ?? '',
-                maxLines: 1, style: T.statLine.copyWith(color: T.textFaint)),
-          ),
-          Expanded(
-            child: Text(pl.name,
+            width: 34,
+            child: Text(pl.pos!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style:
-                    TextStyle(fontSize: 14, color: dim ? T.textDim : T.text)),
+                textAlign: TextAlign.right,
+                style: const TextStyle(fontSize: 13, color: T.textDim)),
           ),
-          if (pl.pos != null && pl.pos!.isNotEmpty)
-            SizedBox(
-              width: 34,
-              child: Text(pl.pos!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(fontSize: 13, color: T.textDim)),
-            ),
-        ]),
-      );
+      ]),
+    );
+    // Tap through to the player page when the roster carries an athlete id; an
+    // idless row stays inert.
+    final id = pl.id;
+    if (id == null || id.isEmpty) return row;
+    return InkWell(
+      onTap: () => openPlayerPage(context, league,
+          athleteId: id, name: pl.name),
+      child: row,
+    );
+  }
 }
 
 class _BoxGroupCard extends StatelessWidget {
   final BoxGroup group;
-  const _BoxGroupCard(this.group);
+  final String league;
+  const _BoxGroupCard(this.group, {required this.league});
 
   static const _maxCols = 5;
 
@@ -2355,7 +2415,7 @@ class _BoxGroupCard extends StatelessWidget {
                       textAlign: TextAlign.right, style: T.cardLabelFaint)),
           ]),
           // Every row (no take(12) cap — that hid late substitutes outright).
-          for (final r in team.rows) _boxRow(r, cols),
+          for (final r in team.rows) _boxRow(context, r, cols),
         ],
       ]),
     );
@@ -2364,10 +2424,11 @@ class _BoxGroupCard extends StatelessWidget {
   /// One box row. A substitute (`starter == false`, baseball only) is indented
   /// under the man it replaced, prefixed with ESPN's lineup letter marker (a-, b-)
   /// or a ↳ glyph, and carries its lineup note as an 11px footnote (§3d / §10).
-  Widget _boxRow(BoxRow r, List<String> cols) {
+  /// Taps through to the player page when the row carries an athlete id.
+  Widget _boxRow(BuildContext context, BoxRow r, List<String> cols) {
     final sub = r.starter == false;
     final marker = _subMarker(r);
-    return Container(
+    final row = Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: T.divider))),
@@ -2408,6 +2469,13 @@ class _BoxGroupCard extends StatelessWidget {
             child: Text(r.note!, style: T.captionFaint),
           ),
       ]),
+    );
+    final id = r.id;
+    if (id == null || id.isEmpty) return row;
+    return InkWell(
+      onTap: () => openPlayerPage(context, league,
+          athleteId: id, name: r.name),
+      child: row,
     );
   }
 
@@ -2675,6 +2743,481 @@ class _VenueCard extends StatelessWidget {
           ),
       ]),
     );
+  }
+}
+
+// ═══════════════════════ §2.9 Venue & Circuit tab ═══════════════════════════
+// One detail tab, two shapes chosen by DATA PRESENCE (never sport name): a
+// racing event with a circuit join id → [CircuitTab] (track map + facts + lap
+// record, design 13a); else a stadium with a venue join id → [VenueTab] (photo +
+// venue facts, design 14a); neither → no tab. This is the §1 situation-card
+// dispatch lifted to a whole tab. The photo/map + fact grid are a single lazy
+// CORE fetch on tab-open ([venueFactsProvider] / [circuitFactsProvider]); the
+// roof/attendance/weather ride the cheap scoreboard already in hand.
+
+/// Which §2.9 tab an event gets. Pure so the gate is unit-testable.
+enum VenueTabKind { none, venue, circuit }
+
+/// The §2.9 gate: a circuit id → Circuit; else a venue id → Venue; else none.
+/// (Circuit wins because a racing event also carries a circuit-derived venue.)
+VenueTabKind venueTabKind({String? venueId, String? circuitId}) =>
+    (circuitId != null && circuitId.isNotEmpty)
+        ? VenueTabKind.circuit
+        : (venueId != null && venueId.isNotEmpty)
+            ? VenueTabKind.venue
+            : VenueTabKind.none;
+
+/// One §2.9 fact cell (14a/13a): a faint small-caps label over a Barlow-30 value
+/// with an optional small unit suffix (`7.004 KM`). r16, 14×16 pad, on `surface`.
+class _FactCell extends StatelessWidget {
+  final String label, value;
+  final String? unit;
+  const _FactCell({required this.label, required this.value, this.unit});
+
+  static const _value = TextStyle(
+      fontFamily: 'BarlowCondensed',
+      fontWeight: FontWeight.w700,
+      fontSize: 30,
+      height: 1.0,
+      color: T.text,
+      fontFeatures: [FontFeature.tabularFigures()]);
+
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+            color: T.surface,
+            borderRadius: BorderRadius.circular(T.rowCardRadius)),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(label.toUpperCase(), style: T.cardLabelFaint),
+          const SizedBox(height: 4),
+          RichText(
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(style: _value, text: value, children: [
+              if (unit != null && unit!.isNotEmpty)
+                TextSpan(
+                    text: ' ${unit!.toUpperCase()}',
+                    style: const TextStyle(
+                        fontFamily: 'BarlowCondensed',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17,
+                        color: T.textDim)),
+            ]),
+          ),
+        ]),
+      );
+}
+
+/// The 2-col fact grid (gap 10): cells flow two-per-row; an odd final cell spans
+/// full width. Renders nothing when there are no served cells.
+Widget _factGrid(List<Widget> cells) {
+  if (cells.isEmpty) return const SizedBox.shrink();
+  final rows = <Widget>[];
+  for (var i = 0; i < cells.length; i += 2) {
+    final right = i + 1 < cells.length ? cells[i + 1] : null;
+    if (rows.isNotEmpty) rows.add(const SizedBox(height: 10));
+    // IntrinsicHeight so the paired cells share the taller one's height (the
+    // grid lives in a vertically-unbounded scroll view, where a bare stretch
+    // Row would force an infinite height).
+    rows.add(IntrinsicHeight(
+      child: Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        Expanded(child: cells[i]),
+        if (right != null) ...[
+          const SizedBox(width: 10),
+          Expanded(child: right),
+        ],
+      ]),
+    ));
+  }
+  return Column(children: rows);
+}
+
+String _thousands(int n) => n
+    .toString()
+    .replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},');
+
+/// A measurement value without a trailing `.0` (`44.0` → `44`, `7.004` → `7.004`).
+String _trimNum(num v) {
+  final s = v.toString();
+  return s.endsWith('.0') ? s.substring(0, s.length - 2) : s;
+}
+
+/// A photo/map placeholder well (design 14a/13a): a darker inset with a hint.
+Widget _mediaWell(String hint, {double height = 180}) => Container(
+      height: height,
+      width: double.infinity,
+      color: T.bg,
+      alignment: Alignment.center,
+      child: Text(hint.toUpperCase(), style: T.cardLabelFaint),
+    );
+
+/// Render a CDN diagram/photo by extension: `.svg` → [SvgPicture.network] (the
+/// dark F1 circuit art is SVG-only; flutter_svg is the one justified dep), else
+/// [Image.network]. Both degrade to a placeholder well on load failure.
+Widget _networkArt(String href, String hint, {BoxFit fit = BoxFit.cover, double height = 180}) {
+  final well = _mediaWell(hint, height: height);
+  if (href.toLowerCase().contains('.svg')) {
+    return SvgPicture.network(href,
+        fit: fit, placeholderBuilder: (_) => well);
+  }
+  return Image.network(href,
+      fit: fit,
+      gaplessPlayback: true,
+      errorBuilder: (_, __, ___) => well,
+      loadingBuilder: (ctx, child, progress) =>
+          progress == null ? child : well);
+}
+
+/// The §2.9 Venue tab (design 14a): a photo card, then the served-cell fact grid
+/// (surface/roof/attendance/weather), then a TONIGHT card when weather or
+/// attendance is present. The photo + surface are the only fields that need the
+/// lazy [venueFactsProvider] core fetch; roof/attendance/weather ride the cheap
+/// scoreboard, so the tab is useful even before (or without) the facts.
+class VenueTab extends ConsumerWidget {
+  final String league;
+  final SportEvent event;
+  final Competition comp;
+  final String? venueId;
+  const VenueTab({
+    super.key,
+    required this.league,
+    required this.event,
+    required this.comp,
+    this.venueId,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final facts = (venueId != null && venueId!.isNotEmpty)
+        ? ref
+            .watch(venueFactsProvider((league: league, venueId: venueId!)))
+            .valueOrNull
+        : null;
+    final cells = _cells(facts);
+    final tonight = _tonight();
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      _photo(facts),
+      if (cells.isNotEmpty) ...[
+        const SizedBox(height: T.gapCard),
+        _factGrid(cells),
+      ],
+      if (tonight != null) ...[
+        const SizedBox(height: T.gapCard),
+        tonight,
+      ],
+    ]);
+  }
+
+  Widget _photo(VenueFacts? f) {
+    final photo = f?.photo;
+    final addr = _addressLine(f);
+    return Container(
+      decoration: BoxDecoration(
+        color: T.surface,
+        borderRadius: BorderRadius.circular(T.cardRadius),
+        border: Border.all(color: T.divider),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        SizedBox(
+          height: 210,
+          child: photo != null && photo.isNotEmpty
+              ? _networkArt(photo, 'Venue photo', height: 210)
+              : _mediaWell('Venue photo', height: 210),
+        ),
+        if (addr != null)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+            child: Text(addr.toUpperCase(),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: T.cardLabelFaint.copyWith(color: T.textDim)),
+          ),
+      ]),
+    );
+  }
+
+  /// `1060 W ADDISON ST · CHICAGO, IL` — address1 (rarely served) prepended to
+  /// the city·state line; the city line alone when address1 is absent.
+  String? _addressLine(VenueFacts? f) {
+    final loc = (f != null && f.location.isNotEmpty)
+        ? f.location
+        : (event.venue?.location ?? '');
+    final a1 = f?.address1;
+    final parts = <String>[
+      if (a1 != null && a1.isNotEmpty) a1,
+      if (loc.isNotEmpty) loc,
+    ];
+    return parts.isEmpty ? null : parts.join(' · ');
+  }
+
+  List<Widget> _cells(VenueFacts? f) {
+    final cells = <Widget>[];
+    // SURFACE — core `grass` bool only (not on the scoreboard); hide when absent.
+    final surf = f?.surface;
+    if (surf == 'grass' || surf == 'turf') {
+      cells.add(_FactCell(
+          label: 'Surface', value: surf == 'grass' ? 'GRASS' : 'TURF'));
+    }
+    // ROOF — the core `indoor` bool (present-only) preferred; the cheap venue's
+    // `indoor` is a reliable signal only when true (it defaults false when the
+    // field is absent), so open-air is shown only from the authoritative facts.
+    final roof = f?.roof ?? (event.venue?.indoor == true ? 'indoor' : null);
+    if (roof == 'indoor' || roof == 'open') {
+      cells.add(_FactCell(
+          label: 'Roof', value: roof == 'indoor' ? 'INDOOR' : 'OPEN AIR'));
+    }
+    // ATTENDANCE — cheap `competition.attendance`; 0 = not reported → hide.
+    final att = comp.attendance;
+    if (att != null && att > 0) {
+      cells.add(_FactCell(label: 'Attendance', value: _thousands(att)));
+    }
+    // WEATHER — cheap event weather (temp + condition), ~1% (baseball/AFL).
+    final w = event.weather;
+    if (w != null && w.temperature != null) {
+      cells.add(_FactCell(
+          label: 'Weather',
+          value: '${w.temperature!.round()}°',
+          unit: w.condition));
+    }
+    return cells;
+  }
+
+  /// TONIGHT card (14a, lifted r20) — weather line + a big attendance figure.
+  /// Only when weather or attendance is present. No wind row (NOT OBSERVED).
+  Widget? _tonight() {
+    final w = event.weather;
+    final att = comp.attendance;
+    final hasW = w != null && w.summary.isNotEmpty;
+    final hasA = att != null && att > 0;
+    if (!hasW && !hasA) return null;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+          color: T.sheet, borderRadius: BorderRadius.circular(T.cardRadius)),
+      child: Row(children: [
+        Expanded(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('TONIGHT',
+                style: T.cardLabelFaint
+                    .copyWith(color: T.textDim, letterSpacing: 0.88)),
+            if (hasW) ...[
+              const SizedBox(height: 4),
+              Text(w.summary,
+                  style: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w600, color: T.text)),
+            ],
+          ]),
+        ),
+        if (hasA)
+          RichText(
+            text: TextSpan(
+              style: const TextStyle(
+                  fontFamily: 'BarlowCondensed',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 32,
+                  height: 1.0,
+                  color: T.text,
+                  fontFeatures: [FontFeature.tabularFigures()]),
+              text: _thousands(att),
+              children: const [
+                TextSpan(
+                    text: ' ATT',
+                    style: TextStyle(
+                        fontFamily: 'Archivo',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 17,
+                        color: T.textDim)),
+              ],
+            ),
+          ),
+      ]),
+    );
+  }
+}
+
+/// The §2.9 Circuit tab (design 13a): a track-map card, then the served-cell fact
+/// grid (length/distance/laps/turns), then a LAP RECORD card. Every field is the
+/// lazy [circuitFactsProvider] core fetch (F1's `circuits/{id}`); non-F1 racing
+/// carries no such resource, so [facts] is null → placeholders. The join id comes
+/// from `event.circuit?.id` (see [_GameDetailPageState._venueTabIds]).
+class CircuitTab extends ConsumerWidget {
+  final String league;
+  final SportEvent event;
+  final Competition comp;
+  final String? circuitId;
+  const CircuitTab({
+    super.key,
+    required this.league,
+    required this.event,
+    required this.comp,
+    this.circuitId,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final facts = (circuitId != null && circuitId!.isNotEmpty)
+        ? ref
+            .watch(circuitFactsProvider((league: league, circuitId: circuitId!)))
+            .valueOrNull
+        : null;
+    final cells = _cells(facts);
+    final lap = _lapRecord(facts);
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      _map(facts),
+      if (cells.isNotEmpty) ...[
+        const SizedBox(height: T.gapCard),
+        _factGrid(cells),
+      ],
+      if (lap != null) ...[
+        const SizedBox(height: T.gapCard),
+        lap,
+      ],
+    ]);
+  }
+
+  Widget _map(CircuitFacts? f) {
+    final diagram = f?.diagram;
+    final dir = f?.direction;
+    final est = f?.established;
+    final hasFooter = (dir != null && dir.isNotEmpty) || est != null;
+    return Container(
+      decoration: BoxDecoration(
+        color: T.surface,
+        borderRadius: BorderRadius.circular(T.cardRadius),
+        border: Border.all(color: T.divider),
+      ),
+      padding: const EdgeInsets.fromLTRB(18, 20, 18, 14),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        SizedBox(
+          height: 180,
+          child: diagram != null && diagram.isNotEmpty
+              ? _networkArt(diagram, 'Circuit map',
+                  fit: BoxFit.contain, height: 180)
+              : _mediaWell('Circuit map', height: 180),
+        ),
+        if (hasFooter) ...[
+          const SizedBox(height: 12),
+          Container(
+            padding: const EdgeInsets.only(top: 12),
+            decoration: const BoxDecoration(
+                border: Border(top: BorderSide(color: T.divider))),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (dir != null && dir.isNotEmpty)
+                    Text(dir.toUpperCase(),
+                        style: T.cardLabelFaint.copyWith(color: T.textDim))
+                  else
+                    const SizedBox.shrink(),
+                  if (est != null)
+                    Text('Est. $est', style: T.captionFaint),
+                ]),
+          ),
+        ],
+      ]),
+    );
+  }
+
+  List<Widget> _cells(CircuitFacts? f) {
+    if (f == null) return const [];
+    final cells = <Widget>[];
+    void measure(String label, Measure? m) {
+      if (m == null) return;
+      final hasVal = m.value != null;
+      cells.add(_FactCell(
+          label: label,
+          value: hasVal ? _trimNum(m.value!) : m.display,
+          unit: hasVal ? m.unit : null));
+    }
+
+    measure('Circuit length', f.length);
+    measure('Race distance', f.distance);
+    if (f.laps != null) {
+      cells.add(_FactCell(label: 'Laps', value: '${f.laps}'));
+    }
+    if (f.turns != null) {
+      cells.add(_FactCell(label: 'Turns', value: '${f.turns}'));
+    }
+    return cells;
+  }
+
+  /// LAP RECORD card (13a, lifted r20): headshot slot + Barlow-32 time, with the
+  /// driver name + year on the right. Only when a fastest-lap time is served.
+  Widget? _lapRecord(CircuitFacts? f) {
+    final lap = f?.fastestLap;
+    if (lap == null || lap.time == null || lap.time!.isEmpty) return null;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+          color: T.sheet, borderRadius: BorderRadius.circular(T.cardRadius)),
+      child: Row(children: [
+        _headshot(lap.driverHeadshot, lap.driverName),
+        const SizedBox(width: 14),
+        Expanded(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('LAP RECORD',
+                style: T.cardLabelFaint
+                    .copyWith(color: T.textDim, letterSpacing: 0.88)),
+            const SizedBox(height: 4),
+            Text(lap.time!,
+                style: const TextStyle(
+                    fontFamily: 'BarlowCondensed',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 32,
+                    height: 1.0,
+                    color: T.text,
+                    fontFeatures: [FontFeature.tabularFigures()])),
+          ]),
+        ),
+        if (lap.driverName != null || lap.year != null)
+          Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+            if (lap.driverName != null && lap.driverName!.isNotEmpty)
+              Text(lap.driverName!,
+                  style: const TextStyle(
+                      fontSize: 14, fontWeight: FontWeight.w600, color: T.text)),
+            if (lap.year != null) ...[
+              const SizedBox(height: 3),
+              Text('${lap.year}', style: T.captionFaint),
+            ],
+          ]),
+      ]),
+    );
+  }
+
+  Widget _headshot(String? url, String? name) {
+    final avatar = TintedAvatar(_initials(name), T.track, size: 52);
+    if (url == null || url.isEmpty) return ClipOval(child: avatar);
+    return ClipOval(
+      child: SizedBox(
+        width: 52,
+        height: 52,
+        child: Stack(fit: StackFit.expand, children: [
+          avatar,
+          Image.network(url,
+              fit: BoxFit.cover,
+              gaplessPlayback: true,
+              errorBuilder: (_, __, ___) => const SizedBox.shrink()),
+        ]),
+      ),
+    );
+  }
+
+  static String _initials(String? name) {
+    final parts = (name ?? '')
+        .trim()
+        .split(RegExp(r'\s+'))
+        .where((s) => s.isNotEmpty)
+        .toList();
+    if (parts.isEmpty) return '?';
+    if (parts.length == 1) return parts.first.substring(0, 1).toUpperCase();
+    return (parts.first.substring(0, 1) + parts.last.substring(0, 1))
+        .toUpperCase();
   }
 }
 

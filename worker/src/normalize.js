@@ -537,7 +537,25 @@ function buildCompetition(profile, rc, rawEvent) {
 // ---- event ------------------------------------------------------------------
 function buildVenue(v) {
   if (!v) return undefined;
-  return pick({ name: v.fullName, city: v.address?.city, country: v.address?.country, indoor: v.indoor }, ['name', 'city', 'country', 'indoor']);
+  // id (competitions[].venue.id, str-numeric 100% where a venue is present —
+  // schema/espn-guide/scoreboard.md) is the CORE venues/{id} join for the Venue
+  // tab. Omitted when absent (e.g. the circuit-derived fold below carries none).
+  return pick({ id: v.id != null ? String(v.id) : undefined, name: v.fullName, city: v.address?.city, country: v.address?.country, indoor: v.indoor }, ['id', 'name', 'city', 'country', 'indoor']);
+}
+
+// racing circuit join — events[].circuit (id/fullName/city/country, all 100% for
+// racing per schema/espn-guide/scoreboard.md). Emitted ALONGSIDE the venue fold
+// (buildEvent still folds circuit into the venue name/address for back-compat) so
+// the Circuit tab can lazy-fetch CORE circuits/{id}. Omitted when absent.
+function buildCircuit(cir) {
+  if (!cir || typeof cir !== 'object') return undefined;
+  const out = pick({
+    id: cir.id != null ? String(cir.id) : undefined,
+    fullName: cir.fullName,
+    city: cir.address?.city,
+    country: cir.address?.country,
+  }, ['id', 'fullName', 'city', 'country']);
+  return Object.keys(out).length ? out : undefined;
 }
 
 // A schedule caption ('Week 5' / 'Round 15') from event.week.number — REGULAR SEASON
@@ -581,12 +599,14 @@ export function buildEvent(profile, e) {
   // racing has no venue/competition.venue — the location lives in event.circuit.
   const venue = buildVenue(c0?.venue || e.venue
     || (e.circuit && { fullName: e.circuit.fullName, address: e.circuit.address }));
+  const circuit = buildCircuit(e.circuit);
   const weekLabel = weekLabelOf(profile, e);
   const weather = buildWeather(e, venue);
   return {
     id: String(e.id), name: e.name || '', shortName: e.shortName || '',
     start: e.date, neutralSite: !!c0?.neutralSite,
     venue,
+    ...(circuit ? { circuit } : {}),
     broadcasts: [...new Set((c0?.broadcasts || []).flatMap(b => b.names || []))],
     notes: (c0?.notes || []).map(n => n.headline).filter(Boolean),
     ...(weekLabel ? { weekLabel } : {}),

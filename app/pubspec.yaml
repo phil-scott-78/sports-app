@@ -10,6 +10,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
+  # §2.9 Circuit tab: ESPN serves the F1 `circuit-dark` track map as SVG only
+  # (no dark raster variant). flutter_svg is the one justified new dep — a
+  # well-maintained package — to render `SvgPicture.network` for that map. Raster
+  # (.jpg) diagram rels are preferred first; SVG is the fallback the dep covers.
+  flutter_svg: ^2.0.10
   http: ^1.2.2
   shared_preferences: ^2.3.3
   intl: ^0.19.0

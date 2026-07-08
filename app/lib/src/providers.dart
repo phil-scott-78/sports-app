@@ -270,6 +270,21 @@ final standingsProvider = FutureProvider.autoDispose.family<Standings, String>(
   (ref, league) => ref.watch(apiProvider).standings(league),
 );
 
+/// One player's profile (§2.6 Player page): identity + season per-game stats +
+/// a last-N game log. CORE-tier + a $ref fan-out, lazy (on player-row open) and
+/// best-effort — a null result means even identity couldn't be established, a
+/// partial (identity-only) profile is valid. `teamId` (when arriving from a
+/// team) lets [Api.athleteProfile] read the denser roster row. autoDispose:
+/// alive only while the player page is open; past games are immutable so a
+/// re-open is served free from the espn_client cache.
+typedef AthleteKey = ({String league, String athleteId, String? teamId});
+
+final athleteProfileProvider =
+    FutureProvider.autoDispose.family<AthleteProfile?, AthleteKey>(
+  (ref, k) =>
+      ref.watch(apiProvider).athleteProfile(k.league, k.athleteId, teamId: k.teamId),
+);
+
 /// Rich game-detail summary, fetched lazily when a detail opens. autoDispose:
 /// the detail page re-fetches on mount, so dropping it on pop is lossless.
 typedef SummaryKey = ({String league, String eventId});
@@ -322,4 +337,26 @@ final scorecardProvider =
   (ref, k) => ref
       .watch(apiProvider)
       .scorecard(k.league, k.eventId, k.playerId, season: k.season),
+);
+
+/// Stadium facts for the §2.9 Venue tab — one lazy CORE `venues/{id}` fetch,
+/// keyed by the scoreboard `competitions[].venue.id`. Fetched only when the tab
+/// opens (the detail page passes a non-null venueId). autoDispose + best-effort
+/// (null on failure): a venue's facts are immutable so a re-open is cache-served.
+typedef VenueKey = ({String league, String venueId});
+
+final venueFactsProvider =
+    FutureProvider.autoDispose.family<VenueFacts?, VenueKey>(
+  (ref, k) => ref.watch(apiProvider).venueFacts(k.league, k.venueId),
+);
+
+/// F1 circuit facts for the §2.9 Circuit tab — one lazy CORE `circuits/{id}`
+/// fetch (+ the cached fastestLapDriver `$ref` resolve), keyed by the scoreboard
+/// `events[].circuit.id`. autoDispose + best-effort (null on a 404 / non-F1
+/// racing series, which carries no `circuits` resource).
+typedef CircuitKey = ({String league, String circuitId});
+
+final circuitFactsProvider =
+    FutureProvider.autoDispose.family<CircuitFacts?, CircuitKey>(
+  (ref, k) => ref.watch(apiProvider).circuitFacts(k.league, k.circuitId),
 );

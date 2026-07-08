@@ -465,6 +465,10 @@ before implementation (John Deere Classic live, Wimbledon live, World Cup live).
 - `bouts[]` — MMA structured results. The site summary 404s for MMA, so the
   worker builds the rich tier from the core event's per-bout `status` (result
   displayName/short) + per-competitor `linescores` (judge totals, decisions only).
+- `BoxRow.id` + `LineupPlayer.id` — the CORE `athletes/{id}` join, from the
+  summary's `boxscore` athlete id (box rows) and `rosters[].roster[].athlete.id`
+  (soccer/rugby lineups). Non-null makes the row tap through to the player page;
+  omitted when ESPN ships no athlete id (the row stays inert).
 
 **New endpoint:**
 - `GET /v1/scorecard/{sport}/{league}/{eventId}/{playerId}[?season=]` — golf
@@ -554,6 +558,10 @@ Every path OBSERVED in `espn-guide/core-venues-id.md` / `core-circuits-id.md`.
   `EspnClient`, best-effort (null on 404/offline → the tab keeps the cheap header).
   Goldens: `app/test/fixtures/golden/{venue,circuit}/` from stable pinned venue ids
   + the Spa circuit capture; parity in `app/test/port_venue_test.dart`.
+- **The join ids ride the CHEAP scoreboard:** `Venue.id` (from `competitions[].venue.id`,
+  str-numeric 100% where a venue is present) and the new `SportEvent.circuit`
+  `{id,fullName,city?,country?}` (from `events[].circuit`, all 100% for racing —
+  emitted alongside the legacy venue name/address fold) are what gate the tab.
 
 ## 10d. Athlete / player profile (the §2.6 "Player rows")
 

@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:scores/src/models.dart';
 import 'package:scores/src/providers.dart';
 import 'package:scores/src/theme.dart';
+import 'package:scores/src/ui/player_page.dart';
 import 'package:scores/src/ui/standings_page.dart';
 import 'package:scores/src/ui/team_page.dart';
 
@@ -48,8 +49,9 @@ void main() {
     expect(d.standing!.rows.any((r) => r.team.id == d.team.id), isTrue);
   });
 
-  testWidgets('TeamPage renders every section', (tester) async {
-    // Tall window so the whole single-scroll page lays out (roster is deep).
+  testWidgets('TeamPage renders the overview grammar + data-driven tabs',
+      (tester) async {
+    // Tall window so the whole single-scroll page lays out.
     tester.view.physicalSize = const Size(1200, 4000);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
@@ -74,16 +76,69 @@ void main() {
     ));
     await tester.pump(); // resolve the detail future
 
-    // app bar shouts the name
+    // compact bar label + the identity block shouts the name
+    expect(find.text('TEAM'), findsOneWidget);
     expect(find.text(d.team.displayName.toUpperCase()), findsWidgets);
-    // every section label present
-    expect(find.text('SCHEDULE'), findsOneWidget);
-    expect(find.text('STANDING'), findsOneWidget);
-    expect(find.text('SEASON STATS'), findsOneWidget);
-    expect(find.text('ROSTER'), findsOneWidget);
-    // standing group name + a roster athlete render
-    expect(find.text(d.standing!.groupName.toUpperCase()), findsWidgets);
+
+    // data-driven chip tabs (NBA → Overview/Schedule/Roster/Stats)
+    expect(find.text('Overview'), findsOneWidget);
+    expect(find.text('Schedule'), findsOneWidget);
+    expect(find.text('Roster'), findsOneWidget);
+    expect(find.text('Stats'), findsOneWidget);
+
+    // OVERVIEW: the form card is derived from the fixture's completed games
+    // (NBA has no draws → 'LAST 5' with a 'Won N of 5' caption).
+    expect(find.text('LAST 5'), findsOneWidget);
+
+    // switching to the Roster tab reveals a roster athlete row
+    await tester.tap(find.text('Roster'));
+    await tester.pump();
     expect(find.text(d.roster.first.athletes.first.name), findsWidgets);
+
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('TeamPage: tapping a roster row opens the player page',
+      (tester) async {
+    tester.view.physicalSize = const Size(1200, 4000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final p = await prefs();
+    final d = TeamDetail.fromJson(fixture('teamdetail_nba.json'));
+    final first = d.roster.first.athletes.first;
+    await tester.pumpWidget(wrap(
+      TeamPage(
+          league: d.league, teamId: d.team.id, name: d.team.displayName),
+      [
+        sharedPrefsProvider.overrideWithValue(p),
+        teamDetailProvider.overrideWith((ref, k) async => d),
+        teamCardProvider.overrideWith((ref, k) async => TeamCard(
+              league: d.league,
+              sport: d.sport,
+              leagueName: d.leagueName,
+              team: d.team,
+              anyLive: false,
+            )),
+        // identity-only profile so the pushed player page renders without net.
+        athleteProfileProvider.overrideWith((ref, k) async => AthleteProfile(
+              id: first.id,
+              league: d.league,
+              name: first.name,
+            )),
+      ],
+    ));
+    await tester.pump();
+
+    await tester.tap(find.text('Roster'));
+    await tester.pump();
+    await tester.tap(find.text(first.name).first);
+    await tester.pump();
+    await tester.pump();
+
+    expect(find.byType(PlayerPage), findsOneWidget);
+    expect(find.text('PLAYER'), findsOneWidget);
 
     await tester.pumpWidget(const SizedBox());
   });

@@ -141,13 +141,15 @@ List<Map<String, dynamic>> _buildBoxGroups(Map raw, Map side) {
           }
         }
         final st = field(aRow, 'starter');
+        final aid = field(field(aRow, 'athlete'), 'id');
         rows.add(pickT({
+          'id': aid != null ? jsStr(aid) : null, // CORE athletes/{id} join → tap opens the player page
           'name': name,
           'pos': or([_aPos(field(aRow, 'athlete')), field(field(aRow, 'position'), 'abbreviation')]),
           'stats': stats,
           'starter': st is bool ? st : null,
           'note': note,
-        }, ['name', 'pos', 'stats', 'starter', 'note']));
+        }, ['id', 'name', 'pos', 'stats', 'starter', 'note']));
       }
       if (rows.isEmpty) continue;
       if (!byTitle.containsKey(title)) {
@@ -378,11 +380,13 @@ List<Map<String, dynamic>> _buildLineups(Map raw, Map side) {
     final rosterList = field(r, 'roster') is List ? field(r, 'roster') as List : const [];
     final players = <Map<String, dynamic>>[];
     for (final p in rosterList) {
+      final pid = field(field(p, 'athlete'), 'id');
       final row = pickT({
+        'id': pid != null ? jsStr(pid) : null, // CORE athletes/{id} join → tap opens the player page
         'name': or([aShort(field(p, 'athlete')), field(field(p, 'athlete'), 'displayName')]),
         'pos': or([field(field(p, 'position'), 'abbreviation'), field(field(p, 'position'), 'name')]),
         'jersey': field(p, 'jersey'),
-      }, ['name', 'pos', 'jersey']);
+      }, ['id', 'name', 'pos', 'jersey']);
       players.add(row);
     }
     final named = players.where((p) => truthy(p['name'])).toList();

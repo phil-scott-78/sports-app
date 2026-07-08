@@ -125,6 +125,9 @@ export interface SportEvent {
   start: string;          // ISO-8601 UTC ('...Z'). Always convert locally.
   neutralSite: boolean;
   venue?: Venue;
+  circuit?: Circuit;      // CHEAP: racing only — events[].circuit. The CORE
+                          // circuits/{id} join for the §2.9 Circuit tab. Emitted
+                          // ALONGSIDE the venue fold (see Venue). See normalize.js.
   broadcasts: string[];   // flattened network names
   notes: string[];        // 'NBA Finals - Game 7', bowl name, aggregate line
   weekLabel?: string;     // CHEAP: 'Week 5' (gridiron) / 'Round 15' (rugby) from
@@ -135,10 +138,26 @@ export interface SportEvent {
 }
 
 export interface Venue {
+  id?: string;            // VERIFIED: scoreboard competitions[].venue.id str-numeric,
+                          // 100% where a venue is present (schema/espn-guide/
+                          // scoreboard.md) — the CORE venues/{id} join for the §2.9
+                          // Venue tab. Omitted when absent (e.g. the racing
+                          // circuit-derived venue fold carries no venue id).
   name: string;
   city?: string;
   country?: string;
   indoor?: boolean;
+}
+
+/** Racing circuit join (scoreboard events[].circuit). VERIFIED: id/fullName/
+ *  address.city/address.country all 100% for racing (schema/espn-guide/
+ *  scoreboard.md). The lazy CORE circuits/{id} join for the §2.9 Circuit tab;
+ *  the cheap Venue above still carries the folded name/city for the header. */
+export interface Circuit {
+  id?: string;
+  fullName?: string;
+  city?: string;
+  country?: string;
 }
 
 /** Outdoor-game weather (scoreboard event.weather). Emitted only when the venue
@@ -830,6 +849,10 @@ export interface BoxTeam {
   rows: BoxRow[];
 }
 export interface BoxRow {
+  id?: string;         // VERIFIED: summary boxscore athlete.id str-numeric (~90%
+                       // across sports — schema/espn-guide) — the CORE athletes/{id}
+                       // join so a box row taps through to the player page. Omitted
+                       // when ESPN ships no athlete id.
   name: string;        // short athlete name
   pos?: string;
   stats: string[];     // aligned 1:1 with BoxGroup.columns
@@ -974,6 +997,9 @@ export interface Lineup {
   bench: LineupPlayer[];
 }
 export interface LineupPlayer {
+  id?: string;           // VERIFIED: summary rosters[].roster[].athlete.id
+                         // str-numeric (soccer/rugby lineups) — CORE athletes/{id}
+                         // join so a lineup row taps through to the player page.
   name: string;
   pos?: string;
   jersey?: string;

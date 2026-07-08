@@ -6,6 +6,7 @@ import '../providers.dart';
 import '../theme.dart';
 import 'league_card.dart';
 import 'poll.dart';
+import 'rankings_page.dart';
 import 'widgets.dart';
 
 void openLeaguePage(BuildContext context, String league, {String? name}) {
@@ -158,164 +159,36 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
   }
 }
 
-/// The league's rankings feed — ATP/WTA world rankings, UFC divisions, or the
-/// college Top-25 polls, whichever the catalog says this league has. Poll chips
-/// switch between lists (UFC ships P4P + every division).
-class _RankingsSection extends ConsumerStatefulWidget {
+/// The league's rankings feed — a compact teaser of the primary poll (ATP/WTA
+/// tour, first UFC division, or the top college poll, whichever the catalog
+/// says this league has): top 5 rows + a "See all" row that pushes the full
+/// [RankingsPage] (every poll/division, untruncated).
+class _RankingsSection extends ConsumerWidget {
   final String league;
   const _RankingsSection(this.league);
 
   @override
-  ConsumerState<_RankingsSection> createState() => _RankingsSectionState();
-}
-
-class _RankingsSectionState extends ConsumerState<_RankingsSection> {
-  int _poll = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    final rankings = ref.watch(rankingsProvider(widget.league)).valueOrNull;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final rankings = ref.watch(rankingsProvider(league)).valueOrNull;
     final polls = rankings?.polls ?? const <Poll>[];
     if (polls.isEmpty) return const SizedBox.shrink();
-    final sel = polls[_poll.clamp(0, polls.length - 1)];
+    final primary = polls.first;
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Padding(
         padding: T.sectionHeaderPad,
         child: Text('RANKINGS', style: T.cardLabelFaint),
       ),
-      if (polls.length > 1) ...[
-        SizedBox(
-          height: 34,
-          child: ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
-            scrollDirection: Axis.horizontal,
-            itemCount: polls.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 8),
-            itemBuilder: (_, i) => _PollChip(
-              label: polls[i].shortName.isNotEmpty
-                  ? polls[i].shortName
-                  : polls[i].name,
-              selected: i == _poll,
-              onTap: () => setState(() => _poll = i),
-            ),
-          ),
-        ),
-        const SizedBox(height: T.gapFirstCard),
-      ],
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
-        child: _RankingsCard(sel),
+        child: RankingsCard(
+          primary,
+          maxRows: 5,
+          onSeeAll: () =>
+              openRankingsPage(context, league, name: primary.name),
+        ),
       ),
     ]);
-  }
-}
-
-class _PollChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-  const _PollChip(
-      {required this.label, required this.selected, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: T.chipPad,
-          decoration: BoxDecoration(
-            color: selected ? T.invertedBg : T.surface,
-            borderRadius: BorderRadius.circular(100),
-          ),
-          child: Text(label,
-              style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: selected ? T.invertedText : T.textDim)),
-        ),
-      );
-}
-
-class _RankingsCard extends StatelessWidget {
-  final Poll poll;
-  const _RankingsCard(this.poll);
-
-  static String _points(int p) => p.toString().replaceAllMapped(
-      RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},');
-
-  @override
-  Widget build(BuildContext context) => V2Card(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Expanded(child: CardLabel(poll.name)),
-            if (poll.occurrence != null && poll.occurrence!.isNotEmpty)
-              Flexible(
-                child: Text(poll.occurrence!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: T.captionFaint),
-              ),
-          ]),
-          const SizedBox(height: 4),
-          for (var i = 0; i < poll.ranks.length; i++) _row(poll.ranks[i], i),
-        ]),
-      );
-
-  Widget _row(RankEntry r, int i) {
-    final first = i == 0;
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 9),
-      decoration: i == 0
-          ? null
-          : const BoxDecoration(
-              border: Border(top: BorderSide(color: T.divider))),
-      child: Row(children: [
-        SizedBox(
-          width: 26,
-          child: Text(r.champion ? 'C' : '${r.current ?? i + 1}',
-              style: TextStyle(
-                  fontFamily: 'BarlowCondensed',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: first || r.champion ? T.gold : T.textDim)),
-        ),
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              text: r.name,
-              style: T.listText.copyWith(
-                  fontWeight: first ? FontWeight.w600 : FontWeight.w400),
-              children: [
-                if (r.athlete?.country != null)
-                  TextSpan(
-                      text: '  ${r.athlete!.country}',
-                      style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w400,
-                          color: T.textFaint)),
-              ],
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        if (r.trendDir != 'flat')
-          Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: Icon(
-              r.trendDir == 'up'
-                  ? Icons.arrow_drop_up_rounded
-                  : Icons.arrow_drop_down_rounded,
-              size: 20,
-              color: r.trendDir == 'up' ? T.green : T.live,
-            ),
-          ),
-        Text(
-          r.points != null ? _points(r.points!) : (r.record ?? ''),
-          style: T.statLine.copyWith(color: T.textDim),
-        ),
-      ]),
-    );
   }
 }
 

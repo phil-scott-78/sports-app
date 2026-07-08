@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team & Player Overviews</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-note{margin:0 0 24px;max-width:640px;font:400 12px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t11" data-screen-label="Turn 11 — Team & player overview pages with logo / headshot slots">
+<div class="dv-thd"><a class="dv-tid" href="#t11">11</a><span class="dv-tname">Team & player overviews — one system across four sports</span></div>
+<p class="dv-note">A shared overview grammar: circular logo/headshot slot (drag your own image in), identity block with record, then stacked cards — next game, recent form, leaders, and one sport-specific module. <a class="dv-oid" href="#11a">11a</a> NBA team; <a class="dv-oid" href="#11b">11b</a> NFL team with division standings; <a class="dv-oid" href="#11c">11c</a> MLB team with probable pitchers; <a class="dv-oid" href="#11d">11d</a> soccer club with league-table snippet; <a class="dv-oid" href="#11e">11e</a> player overview with headshot + season splits.</p>
+<div class="dv-opts">
+
+<!-- ═══════════════ 11a · NBA TEAM ═══════════════ -->
+<div class="dv-opt" id="11a">
+<div class="dv-olabel"><a class="dv-oid" href="#11a">11a</a>NBA team — Lakers, logo slot + next game + form + leaders</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0">
+    <span style="font-size:22px;color:#9aa3ad">‹</span>
+    <span style="font-size:12px;font-weight:600;letter-spacing:.04em;color:#9aa3ad">TEAM</span>
+    <span style="font-size:17px;color:#9aa3ad">⤴</span>
+  </div>
+
+  <!-- identity -->
+  <div style="padding:18px 20px 10px;display:flex;align-items:center;gap:16px">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:80px;height:80px;flex:none" id="logo-lal" shape="circle" placeholder="Logo" hint-size="80px,80px"></x-import>
+    <div style="min-width:0">
+      <div style="font:700 34px/0.95 'Barlow Condensed';letter-spacing:.01em">LOS ANGELES<br>LAKERS</div>
+      <div style="margin-top:7px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:#9aa3ad">
+        <span style="width:10px;height:10px;border-radius:3px;background:#552583"></span>
+        <span style="font-weight:600;color:#eef1f4">32–18</span><span>·</span><span>3rd West</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- tabs -->
+  <div style="display:flex;gap:8px;padding:8px 20px 4px">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Overview</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Schedule</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Roster</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+
+  <!-- next game -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:12px">NEXT GAME · SAT 7:30 PM</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:26px;border-radius:2px;background:#552583"></span><span style="font:700 22px/1 'Barlow Condensed'">LAL</span></div>
+      <span style="font-size:12px;color:#6c7480">vs</span>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 22px/1 'Barlow Condensed';color:#9aa3ad">GSW</span><span style="width:8px;height:26px;border-radius:2px;background:#1d428a"></span></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px;font-size:11.5px;color:#9aa3ad">
+      <span style="background:#1e232c;border-radius:8px;padding:6px 10px">Crypto.com Arena</span>
+      <span style="background:#1e232c;border-radius:8px;padding:6px 10px">Line LAL −4.5</span>
+    </div>
+  </div>
+
+  <!-- form -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480">LAST 5</div>
+      <div style="font-size:11.5px;color:#3ba86f;font-weight:600">Won 4 of 5</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(229,72,77,.16);color:#e5484d;font:700 13px 'Barlow Condensed'">L</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+    </div>
+  </div>
+
+  <!-- leaders -->
+  <div style="margin:12px 20px 24px;background:#1a1e25;border-radius:20px;padding:16px 16px 6px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:6px">TEAM LEADERS</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #22272f"><span style="font-size:13.5px;font-weight:600">L. James</span><span style="font-size:11.5px;color:#6c7480">PPG</span><span style="font:700 17px 'Barlow Condensed';font-variant-numeric:tabular-nums">25.4</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #22272f"><span style="font-size:13.5px;font-weight:600">A. Davis</span><span style="font-size:11.5px;color:#6c7480">RPG</span><span style="font:700 17px 'Barlow Condensed';font-variant-numeric:tabular-nums">12.1</span></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0"><span style="font-size:13.5px;font-weight:600">L. James</span><span style="font-size:11.5px;color:#6c7480">APG</span><span style="font:700 17px 'Barlow Condensed';font-variant-numeric:tabular-nums">8.2</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 11b · NFL TEAM ═══════════════ -->
+<div class="dv-opt" id="11b">
+<div class="dv-olabel"><a class="dv-oid" href="#11b">11b</a>NFL team — Chiefs, division standings module</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0">
+    <span style="font-size:22px;color:#9aa3ad">‹</span><span style="font-size:12px;font-weight:600;letter-spacing:.04em;color:#9aa3ad">TEAM</span><span style="font-size:17px;color:#9aa3ad">⤴</span>
+  </div>
+  <div style="padding:18px 20px 10px;display:flex;align-items:center;gap:16px">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:80px;height:80px;flex:none" id="logo-kc" shape="circle" placeholder="Logo" hint-size="80px,80px"></x-import>
+    <div style="min-width:0">
+      <div style="font:700 34px/0.95 'Barlow Condensed'">KANSAS CITY<br>CHIEFS</div>
+      <div style="margin-top:7px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:#9aa3ad"><span style="width:10px;height:10px;border-radius:3px;background:#e31837"></span><span style="font-weight:600;color:#eef1f4">11–3</span><span>·</span><span>1st AFC West</span></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;padding:8px 20px 4px">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Overview</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Schedule</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Roster</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:12px">NEXT GAME · SUN 4:25 PM</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:26px;border-radius:2px;background:#e31837"></span><span style="font:700 22px/1 'Barlow Condensed'">KC</span></div>
+      <span style="font-size:12px;color:#6c7480">@</span>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 22px/1 'Barlow Condensed';color:#9aa3ad">BUF</span><span style="width:8px;height:26px;border-radius:2px;background:#00338d"></span></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px;font-size:11.5px;color:#9aa3ad"><span style="background:#1e232c;border-radius:8px;padding:6px 10px">Highmark Stadium</span><span style="background:#1e232c;border-radius:8px;padding:6px 10px">O/U 47.5</span></div>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480">LAST 5</div><div style="font-size:11.5px;color:#3ba86f;font-weight:600">Won 4 of 5</div></div>
+    <div style="display:flex;gap:8px">
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(229,72,77,.16);color:#e5484d;font:700 13px 'Barlow Condensed'">L</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+    </div>
+  </div>
+  <!-- division standings -->
+  <div style="margin:12px 20px 24px;background:#1a1e25;border-radius:20px;padding:16px 16px 8px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:4px">AFC WEST</div>
+    <div style="display:grid;grid-template-columns:1fr 46px 40px;gap:2px;font-size:10px;font-weight:700;letter-spacing:.05em;color:#6c7480;padding:8px 0 7px;border-bottom:1px solid #262c35"><span>TEAM</span><span style="text-align:right">W–L</span><span style="text-align:right">PCT</span></div>
+    <div style="display:grid;grid-template-columns:1fr 46px 40px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="font-weight:700;display:flex;align-items:center;gap:8px"><span style="width:5px;height:16px;border-radius:2px;background:#e31837"></span>Chiefs</span><span style="text-align:right;font:700 14px 'Barlow Condensed'">11–3</span><span style="text-align:right;color:#9aa3ad">.786</span></div>
+    <div style="display:grid;grid-template-columns:1fr 46px 40px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#c5cdd6;padding-left:13px">Chargers</span><span style="text-align:right">9–5</span><span style="text-align:right;color:#9aa3ad">.643</span></div>
+    <div style="display:grid;grid-template-columns:1fr 46px 40px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#c5cdd6;padding-left:13px">Broncos</span><span style="text-align:right">8–6</span><span style="text-align:right;color:#9aa3ad">.571</span></div>
+    <div style="display:grid;grid-template-columns:1fr 46px 40px;gap:2px;align-items:center;padding:9px 0;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#c5cdd6;padding-left:13px">Raiders</span><span style="text-align:right">5–9</span><span style="text-align:right;color:#9aa3ad">.357</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 11c · MLB TEAM ═══════════════ -->
+<div class="dv-opt" id="11c">
+<div class="dv-olabel"><a class="dv-oid" href="#11c">11c</a>MLB team — Dodgers, probable pitchers module</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0">
+    <span style="font-size:22px;color:#9aa3ad">‹</span><span style="font-size:12px;font-weight:600;letter-spacing:.04em;color:#9aa3ad">TEAM</span><span style="font-size:17px;color:#9aa3ad">⤴</span>
+  </div>
+  <div style="padding:18px 20px 10px;display:flex;align-items:center;gap:16px">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:80px;height:80px;flex:none" id="logo-lad" shape="circle" placeholder="Logo" hint-size="80px,80px"></x-import>
+    <div style="min-width:0">
+      <div style="font:700 34px/0.95 'Barlow Condensed'">LOS ANGELES<br>DODGERS</div>
+      <div style="margin-top:7px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:#9aa3ad"><span style="width:10px;height:10px;border-radius:3px;background:#005a9c"></span><span style="font-weight:600;color:#eef1f4">54–32</span><span>·</span><span>1st NL West</span></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;padding:8px 20px 4px">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Overview</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Schedule</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Roster</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:12px">NEXT GAME · TONIGHT 7:10 PM</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:26px;border-radius:2px;background:#005a9c"></span><span style="font:700 22px/1 'Barlow Condensed'">LAD</span></div>
+      <span style="font-size:12px;color:#6c7480">vs</span>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 22px/1 'Barlow Condensed';color:#9aa3ad">SF</span><span style="width:8px;height:26px;border-radius:2px;background:#fd5a1e"></span></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px;font-size:11.5px;color:#9aa3ad"><span style="background:#1e232c;border-radius:8px;padding:6px 10px">Dodger Stadium</span><span style="background:#1e232c;border-radius:8px;padding:6px 10px">Clear 74°</span></div>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480">LAST 5</div><div style="font-size:11.5px;color:#3ba86f;font-weight:600">Won 3 of 5</div></div>
+    <div style="display:flex;gap:8px">
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(229,72,77,.16);color:#e5484d;font:700 13px 'Barlow Condensed'">L</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(229,72,77,.16);color:#e5484d;font:700 13px 'Barlow Condensed'">L</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+    </div>
+  </div>
+  <!-- probable pitchers -->
+  <div style="margin:12px 20px 24px;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:12px">PROBABLE PITCHERS</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #22272f">
+      <div><div style="font-size:14px;font-weight:600">Y. Yamamoto</div><div style="font-size:11px;color:#6c7480;margin-top:2px">LAD · RHP</div></div>
+      <div style="text-align:right;font-variant-numeric:tabular-nums"><span style="font:700 16px 'Barlow Condensed'">9–4</span><span style="font-size:11px;color:#6c7480;margin-left:8px">2.81 ERA</span></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0">
+      <div><div style="font-size:14px;font-weight:600;color:#c5cdd6">L. Webb</div><div style="font-size:11px;color:#6c7480;margin-top:2px">SF · RHP</div></div>
+      <div style="text-align:right;font-variant-numeric:tabular-nums"><span style="font:700 16px 'Barlow Condensed';color:#c5cdd6">7–6</span><span style="font-size:11px;color:#6c7480;margin-left:8px">3.24 ERA</span></div>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 11d · SOCCER CLUB ═══════════════ -->
+<div class="dv-opt" id="11d">
+<div class="dv-olabel"><a class="dv-oid" href="#11d">11d</a>Soccer club — Arsenal, league-table snippet + W/D/L form</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0">
+    <span style="font-size:22px;color:#9aa3ad">‹</span><span style="font-size:12px;font-weight:600;letter-spacing:.04em;color:#9aa3ad">CLUB</span><span style="font-size:17px;color:#9aa3ad">⤴</span>
+  </div>
+  <div style="padding:18px 20px 10px;display:flex;align-items:center;gap:16px">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:80px;height:80px;flex:none" id="logo-ars" shape="circle" placeholder="Crest" hint-size="80px,80px"></x-import>
+    <div style="min-width:0">
+      <div style="font:700 34px/0.95 'Barlow Condensed'">ARSENAL</div>
+      <div style="margin-top:7px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:#9aa3ad"><span style="width:10px;height:10px;border-radius:3px;background:#ef0107"></span><span style="font-weight:600;color:#eef1f4">2nd</span><span>·</span><span>Premier League</span></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;padding:8px 20px 4px">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Overview</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Fixtures</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Squad</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Table</span>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:12px">NEXT FIXTURE · SUN 16:30</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:26px;border-radius:2px;background:#ef0107"></span><span style="font:700 20px/1 'Barlow Condensed'">ARS</span></div>
+      <span style="font-size:12px;color:#6c7480">vs</span>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 20px/1 'Barlow Condensed';color:#9aa3ad">TOT</span><span style="width:8px;height:26px;border-radius:2px;background:#132257"></span></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px;font-size:11.5px;color:#9aa3ad"><span style="background:#1e232c;border-radius:8px;padding:6px 10px">Emirates Stadium</span><span style="background:#1e232c;border-radius:8px;padding:6px 10px">North London Derby</span></div>
+  </div>
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480">FORM</div><div style="font-size:11.5px;color:#9aa3ad;font-weight:600">10 pts / 5</div></div>
+    <div style="display:flex;gap:8px">
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(154,163,173,.16);color:#c5cdd6;font:700 13px 'Barlow Condensed'">D</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(59,168,111,.16);color:#3ba86f;font:700 13px 'Barlow Condensed'">W</span>
+      <span style="flex:1;text-align:center;padding:8px 0;border-radius:9px;background:rgba(229,72,77,.16);color:#e5484d;font:700 13px 'Barlow Condensed'">L</span>
+    </div>
+  </div>
+  <!-- league table snippet -->
+  <div style="margin:12px 20px 24px;background:#1a1e25;border-radius:20px;padding:16px 16px 8px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:4px">TABLE</div>
+    <div style="display:grid;grid-template-columns:20px 1fr 34px 34px;gap:2px;font-size:10px;font-weight:700;letter-spacing:.05em;color:#6c7480;padding:8px 0 7px;border-bottom:1px solid #262c35"><span>#</span><span>CLUB</span><span style="text-align:right">GD</span><span style="text-align:right">PTS</span></div>
+    <div style="display:grid;grid-template-columns:20px 1fr 34px 34px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#9aa3ad">1</span><span style="color:#c5cdd6">Liverpool</span><span style="text-align:right;color:#9aa3ad">+31</span><span style="text-align:right;font:700 14px 'Barlow Condensed'">45</span></div>
+    <div style="display:grid;grid-template-columns:20px 1fr 34px 34px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#eef1f4;font-weight:700">2</span><span style="font-weight:700;display:flex;align-items:center;gap:8px"><span style="width:5px;height:16px;border-radius:2px;background:#ef0107"></span>Arsenal</span><span style="text-align:right;color:#9aa3ad">+27</span><span style="text-align:right;font:700 14px 'Barlow Condensed'">42</span></div>
+    <div style="display:grid;grid-template-columns:20px 1fr 34px 34px;gap:2px;align-items:center;padding:9px 0;font-size:13px;font-variant-numeric:tabular-nums"><span style="color:#9aa3ad">3</span><span style="color:#c5cdd6">Chelsea</span><span style="text-align:right;color:#9aa3ad">+18</span><span style="text-align:right;font:700 14px 'Barlow Condensed'">38</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 11e · PLAYER OVERVIEW ═══════════════ -->
+<div class="dv-opt" id="11e">
+<div class="dv-olabel"><a class="dv-oid" href="#11e">11e</a>Player overview — headshot slot, season averages + recent games</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 0">
+    <span style="font-size:22px;color:#9aa3ad">‹</span><span style="font-size:12px;font-weight:600;letter-spacing:.04em;color:#9aa3ad">PLAYER</span><span style="font-size:17px;color:#9aa3ad">☆</span>
+  </div>
+  <!-- headshot + identity -->
+  <div style="padding:18px 20px 12px;display:flex;align-items:center;gap:16px">
+    <div style="position:relative;flex:none">
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" style="width:92px;height:92px" id="headshot-lebron" shape="circle" placeholder="Photo" hint-size="92px,92px"></x-import>
+    </div>
+    <div style="min-width:0">
+      <div style="display:flex;align-items:baseline;gap:8px"><span style="font:700 30px/0.95 'Barlow Condensed'">LEBRON JAMES</span></div>
+      <div style="margin-top:6px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:#9aa3ad"><span style="width:10px;height:10px;border-radius:3px;background:#552583"></span><span style="color:#eef1f4;font-weight:600">#23</span><span>·</span><span>Forward</span><span>·</span><span>Lakers</span></div>
+    </div>
+  </div>
+  <!-- season averages -->
+  <div style="margin:6px 20px 0;background:#1a1e25;border-radius:20px;padding:16px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:14px">2025–26 · PER GAME</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px 4px">
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">25.4</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">PTS</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">8.2</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">AST</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">7.9</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">REB</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">1.3</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">STL</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">51.2</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">FG%</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">37.8</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">3P%</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">75.6</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">FT%</div></div>
+      <div><div style="font:700 26px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">34.9</div><div style="font-size:10px;color:#6c7480;margin-top:4px;letter-spacing:.05em">MIN</div></div>
+    </div>
+  </div>
+  <!-- recent games -->
+  <div style="margin:12px 20px 24px;background:#1a1e25;border-radius:20px;padding:16px 16px 8px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#6c7480;margin-bottom:4px">LAST 4 GAMES</div>
+    <div style="display:grid;grid-template-columns:1fr 44px 30px 30px 30px;gap:2px;font-size:10px;font-weight:700;letter-spacing:.05em;color:#6c7480;padding:8px 0 7px;border-bottom:1px solid #262c35"><span>OPP</span><span style="text-align:right">RESULT</span><span style="text-align:right;color:#eef1f4">PTS</span><span style="text-align:right">REB</span><span style="text-align:right">AST</span></div>
+    <div style="display:grid;grid-template-columns:1fr 44px 30px 30px 30px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="font-weight:600">vs DEN</span><span style="text-align:right;color:#3ba86f;font-weight:600">W</span><span style="text-align:right;font:700 15px 'Barlow Condensed'">31</span><span style="text-align:right;color:#9aa3ad">9</span><span style="text-align:right;color:#9aa3ad">11</span></div>
+    <div style="display:grid;grid-template-columns:1fr 44px 30px 30px 30px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="font-weight:600">@ PHX</span><span style="text-align:right;color:#3ba86f;font-weight:600">W</span><span style="text-align:right;font:700 15px 'Barlow Condensed'">24</span><span style="text-align:right;color:#9aa3ad">6</span><span style="text-align:right;color:#9aa3ad">8</span></div>
+    <div style="display:grid;grid-template-columns:1fr 44px 30px 30px 30px;gap:2px;align-items:center;padding:9px 0;border-bottom:1px solid #22272f;font-size:13px;font-variant-numeric:tabular-nums"><span style="font-weight:600">@ SAC</span><span style="text-align:right;color:#e5484d;font-weight:600">L</span><span style="text-align:right;font:700 15px 'Barlow Condensed'">19</span><span style="text-align:right;color:#9aa3ad">7</span><span style="text-align:right;color:#9aa3ad">9</span></div>
+    <div style="display:grid;grid-template-columns:1fr 44px 30px 30px 30px;gap:2px;align-items:center;padding:9px 0;font-size:13px;font-variant-numeric:tabular-nums"><span style="font-weight:600">vs GSW</span><span style="text-align:right;color:#3ba86f;font-weight:600">W</span><span style="text-align:right;font:700 15px 'Barlow Condensed'">28</span><span style="text-align:right;color:#9aa3ad">10</span><span style="text-align:right;color:#9aa3ad">7</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+</x-dc>
+</body>
+</html>

@@ -113,12 +113,13 @@ function buildBoxGroups(raw, side) {
         // when ESPN ships it (baseball) so other sports' rows don't all read as subs.
         const note = (a.notes || []).find(n => n.type === 'lineup')?.text;
         return pick({
+          id: a.athlete?.id != null ? String(a.athlete.id) : undefined, // CORE athletes/{id} join → tap opens the player page
           name,
           pos: aPos(a.athlete) || a.position?.abbreviation,
           stats,
           starter: typeof a.starter === 'boolean' ? a.starter : undefined,
           note,
-        }, ['name', 'pos', 'stats', 'starter', 'note']);
+        }, ['id', 'name', 'pos', 'stats', 'starter', 'note']);
       }).filter(Boolean);
       if (!rows.length) continue;
       if (!byTitle.has(title)) { byTitle.set(title, { title, columns, teams: [] }); order.push(title); }
@@ -346,10 +347,11 @@ function buildLineups(raw, side) {
   if (!rosters.length) return [];
   return rosters.map(r => {
     const players = (r.roster || []).map(p => pick({
+      id: p.athlete?.id != null ? String(p.athlete.id) : undefined, // CORE athletes/{id} join → tap opens the player page
       name: aShort(p.athlete) || p.athlete?.displayName,
       pos: p.position?.abbreviation || p.position?.name,
       jersey: p.jersey,
-    }, ['name', 'pos', 'jersey'])).filter(p => p.name);
+    }, ['id', 'name', 'pos', 'jersey'])).filter(p => p.name);
     return pick({
       side: r.homeAway || side[String(r.team?.id ?? '')],
       abbr: r.team?.abbreviation,

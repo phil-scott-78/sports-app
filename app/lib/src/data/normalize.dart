@@ -677,13 +677,30 @@ Map<String, dynamic> _buildCompetition(Map profile, Map rc, Map rawEvent) {
 // ---- event ------------------------------------------------------------------
 Map<String, dynamic>? _buildVenue(dynamic v) {
   if (v == null) return null;
+  final id = field(v, 'id');
   final out = pickNN({
+    'id': id != null ? jsStr(id) : null,
     'name': field(v, 'fullName'),
     'city': field(field(v, 'address'), 'city'),
     'country': field(field(v, 'address'), 'country'),
     'indoor': field(v, 'indoor'),
-  }, ['name', 'city', 'country', 'indoor']);
+  }, ['id', 'name', 'city', 'country', 'indoor']);
   return out;
+}
+
+// racing circuit join — events[].circuit → {id, fullName, city?, country?}.
+// Emitted alongside the venue fold (buildEvent still folds circuit into the venue
+// name/address); port of normalize.js buildCircuit. Null when absent.
+Map<String, dynamic>? _buildCircuit(dynamic cir) {
+  if (cir is! Map) return null;
+  final id = cir['id'];
+  final out = pickNN({
+    'id': id != null ? jsStr(id) : null,
+    'fullName': field(cir, 'fullName'),
+    'city': field(field(cir, 'address'), 'city'),
+    'country': field(field(cir, 'address'), 'country'),
+  }, ['id', 'fullName', 'city', 'country']);
+  return out.isNotEmpty ? out : null;
 }
 
 String? _weekLabelOf(Map profile, Map e) {
@@ -732,6 +749,7 @@ Map<String, dynamic> buildEvent(Map profile, Map e) {
   final venue = _buildVenue(field(c0, 'venue') ??
       e['venue'] ??
       (circuit is Map ? {'fullName': circuit['fullName'], 'address': circuit['address']} : null));
+  final circuitObj = _buildCircuit(circuit);
   final weekLabel = _weekLabelOf(profile, e);
   final weather = _buildWeather(e, venue);
   final broadcasts = <dynamic>{};
@@ -746,6 +764,7 @@ Map<String, dynamic> buildEvent(Map profile, Map e) {
     'start': e['date'],
     'neutralSite': field(c0, 'neutralSite') == true,
     if (venue != null) 'venue': venue,
+    if (circuitObj != null) 'circuit': circuitObj,
     'broadcasts': broadcasts.toList(),
     'notes': (field(c0, 'notes') is List ? field(c0, 'notes') as List : const [])
         .map((n) => field(n, 'headline'))

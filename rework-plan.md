@@ -85,6 +85,21 @@ fake: capacity/opened/wind, xG, tennis live points…), final verification sweep
 CLAUDE.md updates.
 
 ## Status log
+- 2026-07-08: Phase 4 COMPLETE + committed (4a03284), gate green FIRST PASS
+  (flutter 381/381, worker units 162 + mock 214). Landed: broadcast + odds
+  (inline + core moneyline, hasOdds gate), core situation + predictor fallback
+  (hasCoreSituation gate, offline mock routes), VenueFacts/CircuitFacts,
+  athleteProfile (both identity paths fixture-captured), team-leaders card +
+  L10/DIV/CONF sub-records, date-strip coverage dots (tri-state, off hot path),
+  4b signal-row discipline + persistent score column.
+  DEFERRED: situationCore/winprob goldens=0 (no live game at capture moment —
+  re-run `node worker/scripts/capture-extra.mjs --only situation` during a live
+  MLB/WNBA window); NBA/NHL/NFL sub-records blank till in-season; NASCAR lacks a
+  cheap venue/circuit join id.
+- 2026-07-08: Phase 5a workflow launched (phase5a-new-screens-1): team-page
+  overview upgrade + NEW player page (design 11a–11e), standalone rankings page,
+  then venue/circuit tab (14a/13a) + player-row taps. TeamPlayer.dc.html
+  mirrored.
 - 2026-07-08: plan created; Phase 0+1 workflow launched.
 - 2026-07-08: Phase 0+1 COMPLETE, gate fully green (flutter analyze clean, flutter
   test 348/348 incl. parity suites, worker offline + live suites pass). Notes:
