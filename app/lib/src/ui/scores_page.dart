@@ -12,6 +12,7 @@ import 'league_card.dart';
 import 'league_page.dart';
 import 'poll.dart';
 import 'settings_page.dart';
+import 'today_page.dart';
 import 'widgets.dart';
 
 /// The home feed: TODAY header, stacked favorite hero cards, then one dense
@@ -45,11 +46,28 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
     // A picked past/future day is a static slate — don't poll it. (Pull-to-refresh
     // still works for a manual refresh.)
     if (ref.read(homeDateProvider) != null) return null;
-    final feeds = ref.read(feedProvider).valueOrNull;
+    final feeds = ref.read(mergedFeedProvider).valueOrNull;
     final favs = ref.read(favoritesFeedProvider).valueOrNull;
-    final anyLive = (feeds ?? []).any((f) => f.scores?.anyLive == true) ||
-        (favs ?? []).any((f) => f.card?.anyLive == true);
-    if (anyLive) return AppConfig.refreshLive;
+    final bigs = ref.read(bigGamesProvider).valueOrNull;
+    // Liveness that only the poll can refresh: favorite hero cards (teamCard)
+    // and BIG GAMES rows are never push-fed.
+    final pollOnlyLive = (favs ?? []).any((f) => f.card?.anyLive == true) ||
+        (bigs ?? []).any((b) => b.event.main?.status.live == true);
+    final liveLeagues = [
+      for (final f in feeds ?? const <LeagueFeed>[])
+        if (f.scores?.anyLive == true) f.key
+    ];
+    if (pollOnlyLive || liveLeagues.isNotEmpty) {
+      // Demote to the slow reconciliation cadence when EVERY live league is
+      // push-fed and healthy — the scores flip via FastCast, the poll is only
+      // the safety net. Any push gap snaps back to the fast poll.
+      final demoted = !pollOnlyLive &&
+          liveLeagues.every((k) {
+            final s = ref.read(liveSlateProvider(k));
+            return s.hasValue && !s.hasError;
+          });
+      return demoted ? AppConfig.refreshReconcile : AppConfig.refreshLive;
+    }
     final soon = (feeds ?? [])
         .any((f) => kickoffSoonMs(f.scores?.nextStartMs));
     if (soon) return AppConfig.refreshNearKickoff;
@@ -60,6 +78,8 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
   void onPoll() {
     ref.invalidate(feedProvider);
     ref.invalidate(favoritesFeedProvider);
+    // Cheap re-scan: the ttl-60 scoreboard cache absorbs most of it.
+    ref.invalidate(bigGamesProvider);
   }
 
   @override
@@ -67,14 +87,18 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
 
   @override
   Widget build(BuildContext context) {
-    // Re-pace whenever the data (live state), active tab, or picked day changes.
-    ref.listen(feedProvider, (_, __) => repace());
+    // Re-pace whenever the data (live state / push health), active tab, or
+    // picked day changes. Listening on the MERGED feed covers both poll rounds
+    // and push transitions; repace keeps the running timer when the cadence is
+    // unchanged, so ~1/s push rebuilds can't starve the reconciliation tick.
+    ref.listen(mergedFeedProvider, (_, __) => repace());
+    ref.listen(bigGamesProvider, (_, __) => repace());
     ref.listen(tabIndexProvider, (_, __) => repace());
     ref.listen(homeDateProvider, (_, __) => repace());
 
     final date = ref.watch(homeDateProvider);
     final dated = date != null;
-    final feeds = ref.watch(feedProvider);
+    final feeds = ref.watch(mergedFeedProvider);
     final favs = ref.watch(favoritesFeedProvider);
     final fresh = ref.watch(feedFreshnessProvider);
 
@@ -116,6 +140,10 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
                 ],
               _ => const <Widget>[],
             },
+          // Today's marquee games from flagship leagues you DON'T follow —
+          // absent on an ordinary day, and now-anchored like the hero cards,
+          // so hidden on a picked past/future day.
+          if (!dated) ..._bigGamesSection(),
           ...switch (feeds) {
             AsyncData(:final value) => _leagueSections(value, date),
             AsyncError(:final error) => [_feedError('$error')],
@@ -128,9 +156,47 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
                   ),
               ],
           },
+          // The one way from the home feed to EVERYTHING on today (followed or
+          // not). Today-only, and only once the feed itself has painted.
+          if (!dated && feeds.valueOrNull != null) _AllGamesRow(),
         ],
       ),
     );
+  }
+
+  /// The BIG GAMES section: today's marquee games (playoffs, finals, ranked
+  /// matchups — see marquee.dart) from flagship leagues you don't follow, as
+  /// one dense card of cross-league rows, each tagged with its league/stakes.
+  /// Renders nothing on an ordinary day, while loading, and on failure — the
+  /// section earns its place or doesn't exist.
+  List<Widget> _bigGamesSection() {
+    final bigs = ref.watch(bigGamesProvider).valueOrNull ?? const [];
+    if (bigs.isEmpty) return const [];
+    return [
+      const Padding(
+        padding: T.sectionHeaderPad,
+        child: Text('BIG GAMES', style: T.sectionTitle),
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
+        child: Container(
+          decoration: BoxDecoration(
+            color: T.surface,
+            borderRadius: BorderRadius.circular(T.rowCardRadius),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(children: [
+            for (var i = 0; i < bigs.length; i++)
+              LeagueEventRow(
+                league: bigs[i].league,
+                event: bigs[i].event,
+                divider: i > 0,
+                tagLine: bigs[i].tagLine,
+              ),
+          ]),
+        ),
+      ),
+    ];
   }
 
   /// The followed-league sections. An empty slate is a VALID offseason/no-games
@@ -175,6 +241,32 @@ class _ScoresPageState extends ConsumerState<ScoresPage> with LifecyclePoll {
   Widget _feedError(String message) => Padding(
         padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
         child: HintCard(message),
+      );
+}
+
+/// The quiet foot-of-feed row into [TodayPage] — every league on today,
+/// followed or not. A plain surface row (not gold/dashed: it's a standing
+/// destination, not a "nothing here" hint).
+class _AllGamesRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 22, T.pageMargin, 0),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(T.rowCardRadius),
+          onTap: () => openTodayPage(context),
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: T.surface,
+              borderRadius: BorderRadius.circular(T.rowCardRadius),
+            ),
+            child: const Row(children: [
+              Expanded(child: Text('All games today', style: T.rowText)),
+              Icon(Icons.chevron_right_rounded, size: 16, color: T.textFaint),
+            ]),
+          ),
+        ),
       );
 }
 

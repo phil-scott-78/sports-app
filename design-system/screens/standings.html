@@ -1,0 +1,264 @@
+<!-- @dsCard group="Screens" name="Standings" subtitle="League chips · Division/Wild Card toggle · playoff line · favorite wash" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local CSS ─────────────────────────────────────────── */
+body { padding: 24px; }
+.frame {
+  max-width: 428px; margin: 0 auto;
+  border: 1px solid var(--divider); border-radius: 24px; overflow: hidden;
+  background: var(--bg); display: flex; flex-direction: column;
+}
+
+.hdr { padding: 14px var(--page-margin) 0; }
+.page-title { font: 700 30px/1 var(--font-score); color: var(--text); }
+
+/* League chip row */
+.chips { display: flex; gap: var(--chip-gap); padding: 14px var(--page-margin) 4px; overflow: hidden; }
+.chips .chip { white-space: nowrap; }
+
+/* Division / Wild Card / League underline toggle */
+.subtabs { display: flex; gap: 16px; padding: 12px var(--page-margin) 0; font: 400 13px var(--font-copy); }
+.subtab { color: var(--text-faint); padding-bottom: 6px; }
+.subtab--active { color: var(--text); font-weight: 600; border-bottom: 2px solid var(--gold); }
+
+/* Wild-card table */
+.table { margin: 14px var(--page-margin) var(--gap-card); background: var(--surface); border-radius: var(--r-card); padding: 16px 14px; display: flex; flex-direction: column; }
+.trow { display: grid; grid-template-columns: 1fr 34px 34px 52px 44px; align-items: center; padding: var(--row-vpad) 0; border-top: 1px solid var(--divider); font-variant-numeric: tabular-nums; }
+.thead { display: grid; grid-template-columns: 1fr 34px 34px 52px 44px; padding-bottom: 10px; border-top: 0; font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.tname { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.trank { font: 700 13px var(--font-score); color: var(--text-dim); width: 14px; flex: none; font-variant-numeric: tabular-nums; }
+.tteam { font: 400 13.5px var(--font-copy); color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tteam--dim { color: var(--text-dim); }
+.num { font: 600 14px var(--font-score); color: var(--text-dim); text-align: center; font-variant-numeric: tabular-nums; }
+.num--right { text-align: right; }
+.num--white { color: var(--text); }
+.num--green { color: var(--green); }
+.num--live { color: var(--live); }
+
+/* Favorite wash (gold at .08, bleed to card edges) */
+.trow--fav { background: linear-gradient(90deg, rgba(255,197,47,.08), transparent); margin: 0 -14px; padding-left: 14px; padding-right: 14px; }
+.fav-star { font-size: 10px; color: var(--gold); flex: none; }
+
+/* The cut line */
+.cut { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+.cut span:first-child, .cut span:last-child { flex: 1; border-top: 2px dashed var(--live); }
+.cut-label { font: 700 10px var(--font-copy); letter-spacing: .08em; color: var(--live); }
+.cut + .trow { border-top: 0; }
+
+/* Bottom nav */
+.nav { margin-top: auto; background: var(--nav-bg); border-top: 1px solid var(--divider); display: flex; padding: 10px 8px 8px; }
+.nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.nav-icon { width: 22px; height: 22px; border-radius: 6px; background: var(--border); }
+.nav-item span:last-child { font: 400 11px var(--font-copy); color: var(--text-faint); }
+.nav-item--active .nav-icon { background: var(--inverted-bg); }
+.nav-item--active span:last-child { font-weight: 600; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="hdr"><div class="page-title">STANDINGS</div></div>
+
+  <!-- league chips -->
+  <div class="chips">
+    <span class="chip chip--active">MLB</span>
+    <span class="chip">NBA</span>
+    <span class="chip">Premier League</span>
+    <span class="chip">NHL</span>
+  </div>
+
+  <!-- Division / Wild Card / League toggle -->
+  <div class="subtabs">
+    <span class="subtab">Division</span>
+    <span class="subtab subtab--active">Wild Card</span>
+    <span class="subtab">League</span>
+  </div>
+
+  <!-- NL wild card -->
+  <div class="table">
+    <div class="thead"><span>NL WILD CARD</span><span style="text-align:center">W</span><span style="text-align:center">L</span><span style="text-align:right">GB</span><span style="text-align:right">STRK</span></div>
+
+    <div class="trow">
+      <span class="tname"><span class="trank">1</span><span class="team-bar team-bar--row" style="background:#FFC52F"></span><span class="tteam">Brewers</span></span>
+      <span class="num">50</span><span class="num">37</span><span class="num num--right num--green">+3.5</span><span class="num num--right num--green">W4</span>
+    </div>
+    <div class="trow trow--fav">
+      <span class="tname"><span class="trank">2</span><span class="team-bar team-bar--row" style="background:#FD5A1E"></span><span class="tteam" style="font-weight:600">Giants</span><span class="fav-star">★</span></span>
+      <span class="num num--white">48</span><span class="num">39</span><span class="num num--right num--green">+2</span><span class="num num--right num--green">W2</span>
+    </div>
+    <div class="trow">
+      <span class="tname"><span class="trank">3</span><span class="team-bar team-bar--row" style="background:#003278"></span><span class="tteam">Dodgers</span></span>
+      <span class="num">46</span><span class="num">41</span><span class="num num--right">—</span><span class="num num--right num--live">L1</span>
+    </div>
+
+    <div class="cut"><span></span><span class="cut-label">PLAYOFF LINE</span><span></span></div>
+
+    <div class="trow">
+      <span class="tname"><span class="trank">4</span><span class="team-bar team-bar--row" style="background:#C41E3A"></span><span class="tteam tteam--dim">Cardinals</span></span>
+      <span class="num">44</span><span class="num">42</span><span class="num num--right">1.5</span><span class="num num--right num--green">W2</span>
+    </div>
+    <div class="trow">
+      <span class="tname"><span class="trank">5</span><span class="team-bar team-bar--row" style="background:#2F241D"></span><span class="tteam tteam--dim">Padres</span></span>
+      <span class="num">43</span><span class="num">44</span><span class="num num--right">2.5</span><span class="num num--right num--live">L1</span>
+    </div>
+    <div class="trow">
+      <span class="tname"><span class="trank">6</span><span class="team-bar team-bar--row" style="background:#C6011F"></span><span class="tteam tteam--dim">Reds</span></span>
+      <span class="num">41</span><span class="num">46</span><span class="num num--right">4.5</span><span class="num num--right num--live">L3</span>
+    </div>
+    <div class="trow">
+      <span class="tname"><span class="trank">7</span><span class="team-bar team-bar--row" style="background:#00A3E0"></span><span class="tteam tteam--dim">Marlins</span></span>
+      <span class="num">38</span><span class="num">48</span><span class="num num--right">7</span><span class="num num--right num--green">W1</span>
+    </div>
+    <div class="trow">
+      <span class="tname"><span class="trank">8</span><span class="team-bar team-bar--row" style="background:#FDB827"></span><span class="tteam tteam--dim">Pirates</span></span>
+      <span class="num">35</span><span class="num">52</span><span class="num num--right">10.5</span><span class="num num--right num--live">L2</span>
+    </div>
+  </div>
+
+  <!-- bottom nav -->
+  <div class="nav">
+    <div class="nav-item"><span class="nav-icon"></span><span>Scores</span></div>
+    <div class="nav-item nav-item--active"><span class="nav-icon"></span><span>Standings</span></div>
+    <div class="nav-item"><span class="nav-icon"></span><span>Following</span></div>
+  </div>
+
+</div>
+</body>
+</html>

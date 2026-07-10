@@ -1,0 +1,247 @@
+<!-- @dsCard group="Situation cards" name="Golf" subtitle="Event block · leaderboard · hole-by-hole strip" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local ─────────────────────────────────────────────── */
+body { padding: 24px; }
+.col { max-width: 428px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); margin-bottom: 10px; }
+.row { display: flex; align-items: center; }
+.between { justify-content: space-between; }
+
+.lb-grid { display: grid; grid-template-columns: 24px 1fr 48px 48px 52px; align-items: center; font-variant-numeric: tabular-nums; }
+.lb-row { padding: 9px 0; border-top: 1px solid var(--divider); }
+.lb-rank { font: 700 15px var(--font-score); color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.lb-num { font: 600 14px var(--font-score); text-align: center; font-variant-numeric: tabular-nums; }
+.lb-total { font: 700 17px var(--font-score); text-align: right; font-variant-numeric: tabular-nums; }
+.hole-cell { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font: 600 14px var(--font-score); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <!-- event block -->
+  <div>
+    <div class="anno">EVENT BLOCK — replaces the team score block when layout == 'field' (data presence, never sport name) · Barlow 40 title + narrative caption</div>
+    <div style="padding:10px 0;border-bottom:2px solid var(--border)">
+      <div class="score" style="font-size:40px;line-height:1">THE OPEN CHAMPIONSHIP</div>
+      <div style="font-size:13px;color:var(--text-dim);margin-top:6px">Moving day &middot; wind 18 mph off the coast</div>
+    </div>
+  </div>
+
+  <!-- leaderboard -->
+  <div>
+    <div class="anno">LEADERBOARD — renders on layout == 'field' + scoreKind == 'toPar', never sport name · leader rank gold · under par --under-par red (E/over dim, never alarm-red) · THRU F = finished · followed player: gold wash + "following" tag</div>
+    <div class="card" style="display:flex;flex-direction:column;gap:2px">
+      <div class="lb-grid" style="padding-bottom:10px"><span></span><span class="card-label-faint" style="letter-spacing:.06em">PLAYER</span><span class="card-label-faint" style="text-align:center">TODAY</span><span class="card-label-faint" style="text-align:center">THRU</span><span class="card-label-faint" style="text-align:right">TOTAL</span></div>
+      <div class="lb-grid lb-row">
+        <span class="lb-rank" style="color:var(--gold)">1</span>
+        <span style="font-size:13.5px;font-weight:600">Scheffler <span style="font-size:11px;color:var(--text-faint)">USA</span></span>
+        <span class="lb-num" style="color:var(--under-par)">&minus;3</span>
+        <span class="lb-num" style="color:var(--text-dim)">14</span>
+        <span class="lb-total" style="color:var(--under-par)">&minus;11</span>
+      </div>
+      <div class="lb-grid lb-row">
+        <span class="lb-rank">2</span>
+        <span style="font-size:13.5px">McIlroy <span style="font-size:11px;color:var(--text-faint)">NIR</span></span>
+        <span class="lb-num" style="color:var(--under-par)">&minus;5</span>
+        <span class="lb-num" style="color:var(--text-dim)">F</span>
+        <span class="lb-total" style="color:var(--under-par)">&minus;9</span>
+      </div>
+      <div class="lb-grid lb-row" style="background:linear-gradient(90deg,rgba(255,197,47,.07),transparent);margin:0 -18px;padding-left:18px;padding-right:18px">
+        <span class="lb-rank">3</span>
+        <span style="font-size:13.5px;font-weight:600">&Aring;berg <span style="font-size:11px;color:var(--text-faint)">SWE &middot; following</span></span>
+        <span class="lb-num" style="color:var(--under-par)">&minus;2</span>
+        <span class="lb-num" style="color:var(--text-dim)">12</span>
+        <span class="lb-total" style="color:var(--under-par)">&minus;8</span>
+      </div>
+      <div class="lb-grid lb-row">
+        <span class="lb-rank">4</span>
+        <span style="font-size:13.5px">Matsuyama <span style="font-size:11px;color:var(--text-faint)">JPN</span></span>
+        <span class="lb-num" style="color:var(--text-dim)">E</span>
+        <span class="lb-num" style="color:var(--text-dim)">13</span>
+        <span class="lb-total" style="color:var(--under-par)">&minus;6</span>
+      </div>
+      <div class="lb-grid lb-row">
+        <span class="lb-rank">5</span>
+        <span style="font-size:13.5px">Fleetwood <span style="font-size:11px;color:var(--text-faint)">ENG</span></span>
+        <span class="lb-num" style="color:var(--text-dim)">+1</span>
+        <span class="lb-num" style="color:var(--text-dim)">15</span>
+        <span class="lb-total" style="color:var(--under-par)">&minus;5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- hole-by-hole strip -->
+  <div>
+    <div class="anno">HOLE-BY-HOLE STRIP — golf's event history is the scorecard grid, not a feed · 30px cells: birdie 1.5px under-par circle ring · bogey 1.5px textFaint square ring · eagle double circle · par bare numeral · current hole dashed gold ring (in progress, not empty)</div>
+    <div class="card">
+      <div class="row between" style="margin-bottom:12px">
+        <div><div class="score" style="font-size:24px;line-height:1">&Aring;BERG &middot; HOLE 13</div><div class="caption" style="margin-top:4px">Par 5 &middot; 547 yds &middot; 2nd shot, 231 to the pin</div></div>
+        <span class="score" style="font-size:26px;color:var(--under-par)">&minus;8</span>
+      </div>
+      <div style="border-top:1px solid var(--divider);padding-top:14px">
+        <div class="card-label-faint" style="margin-bottom:10px">BACK NINE &middot; <span style="color:var(--text-dim)">&#9675; birdie &middot; &#9633; bogey &middot; &#9678; eagle</span></div>
+        <div style="display:flex;gap:8px">
+          <!-- par: bare numeral -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">10</span><span class="hole-cell" style="color:var(--text-dim)">4</span></div>
+          <!-- eagle: double circle -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">11</span><span class="hole-cell" style="border-radius:50%;border:1.5px solid var(--under-par)"><span style="width:22px;height:22px;border-radius:50%;border:1.5px solid var(--under-par);display:flex;align-items:center;justify-content:center;color:var(--under-par)">2</span></span></div>
+          <!-- bogey: square ring -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">12</span><span class="hole-cell" style="border:1.5px solid var(--text-faint);border-radius:4px;color:var(--text-dim)">5</span></div>
+          <!-- current hole: dashed gold ring, gold number -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--gold)">13</span><span class="hole-cell" style="border-radius:50%;border:1.5px dashed var(--gold);color:var(--gold)">&middot;</span></div>
+          <!-- birdie: circle ring (shown earlier in round for variety) -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">14</span><span class="hole-cell"></span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">15</span><span class="hole-cell"></span></div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <div class="card-label-faint" style="align-self:center;width:30px">OUT</div>
+          <!-- front-nine excerpt so the birdie ring shows -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">7</span><span class="hole-cell" style="border-radius:50%;border:1.5px solid var(--under-par);color:var(--under-par)">3</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">8</span><span class="hole-cell" style="color:var(--text-dim)">4</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:var(--text-faint)">9</span><span class="hole-cell" style="border-radius:50%;border:1.5px solid var(--under-par);color:var(--under-par)">3</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

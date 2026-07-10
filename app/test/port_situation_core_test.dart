@@ -123,5 +123,37 @@ void main() {
       expect(winProbabilityFromPredictor(null), isNull);
       expect(winProbabilityFromPredictor(<String, dynamic>{}), isNull);
     });
+
+    // teamPredWinpct fallback — VERIFIED live 2026-07-09 (WNBA): the in-game
+    // predictor carries NO gameProjection, only teamPredWinpct (+ matchupQuality/
+    // teamPredPtDiff). gameProjection still wins when both are present.
+    test('teamPredWinpct fallback when gameProjection absent', () {
+      final wp = winProbabilityFromPredictor({
+        'homeTeam': {
+          'statistics': [
+            {'name': 'matchupQuality', 'value': 32.3974},
+            {'name': 'teamPredWinpct', 'value': 83.27, 'displayValue': '83.3'},
+          ]
+        },
+        'awayTeam': {
+          'statistics': [
+            {'name': 'teamPredWinpct', 'value': 16.73, 'displayValue': '16.7'},
+          ]
+        },
+      });
+      expect(wp, {'home': 83, 'away': 17});
+    });
+
+    test('gameProjection preferred over teamPredWinpct', () {
+      final wp = winProbabilityFromPredictor({
+        'homeTeam': {
+          'statistics': [
+            {'name': 'teamPredWinpct', 'value': 90},
+            {'name': 'gameProjection', 'value': 40},
+          ]
+        },
+      });
+      expect(wp!['home'], 40);
+    });
   });
 }

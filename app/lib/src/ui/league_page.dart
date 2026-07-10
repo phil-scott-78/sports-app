@@ -48,9 +48,15 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
 
   @override
   Duration? pollInterval() {
-    final scores = ref.read(leagueScoresProvider(_key)).valueOrNull;
+    final scores = ref.read(mergedLeagueScoresProvider(_key)).valueOrNull;
     if (scores == null) return null; // first load in flight
-    if (scores.anyLive) return AppConfig.refreshLive;
+    if (scores.anyLive) {
+      // Push-healthy → the slate updates via FastCast; poll = reconciliation.
+      final s = ref.read(liveSlateProvider(widget.league));
+      return (s.hasValue && !s.hasError)
+          ? AppConfig.refreshReconcile
+          : AppConfig.refreshLive;
+    }
     if (kickoffSoonMs(scores.nextStartMs)) return AppConfig.refreshNearKickoff;
     return AppConfig.refreshIdle;
   }
@@ -76,8 +82,8 @@ class _LeaguePageState extends ConsumerState<LeaguePage> with LifecyclePoll {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(leagueScoresProvider(_key), (_, __) => repace());
-    final scores = ref.watch(leagueScoresProvider(_key));
+    ref.listen(mergedLeagueScoresProvider(_key), (_, __) => repace());
+    final scores = ref.watch(mergedLeagueScoresProvider(_key));
     final followed = ref.watch(followedProvider).contains(widget.league);
     final title =
         (scores.valueOrNull?.leagueName ?? widget.name ?? widget.league)
@@ -192,6 +198,7 @@ class _RankingsSection extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: T.pageMargin),
         child: RankingsCard(
           primary,
+          league: league,
           maxRows: 5,
           onSeeAll: () =>
               openRankingsPage(context, league, name: primary.name),

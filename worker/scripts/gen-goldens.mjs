@@ -31,12 +31,14 @@ import { normalizeTeams, normalizeTeamCard, applyScoreboardFallback } from '../s
 import { normalizeTeamDetail } from '../src/teamdetail.js';
 import { normalizeMmaSummary, buildCoreSituation, winProbabilityFromPredictor } from '../src/summary.js';
 import { normalizeCompetitionOdds } from '../src/normalize.js';
-import { classifyLeague } from '../src/overview.js';
+import { classifyLeague, classifyMergedSlate } from '../src/overview.js';
 import { normalizeVenueFacts, normalizeCircuitFacts } from '../src/venue.js';
+import { normalizeMatchFeed } from '../src/matchfeed.js';
 import { normalizeAthleteProfile } from '../src/athlete.js';
 import { normalizeTournament } from '../src/tournament.js';
 import { leagueKeys } from '../../schema/tools/resolve.mjs';
 import { buildCatalog } from '../src/catalog.js';
+import { applyOps, applyEventOps, normalizeFastcastSlate } from '../src/fastcast.js';
 
 // Fixed reference instant for the deterministic overview-classifier goldens.
 const CLASSIFY_NOW_MS = Date.parse('2026-07-06T20:00:00.000Z');
@@ -69,7 +71,7 @@ function write(endpoint, name, args, output) {
 try { rmSync(OUT_DIR, { recursive: true, force: true }); } catch { /* first run */ }
 
 const fixtures = loadFixtures();
-const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, teamCard: 0, teamDetail: 0, mma: 0, odds: 0, situationCore: 0, winprob: 0, venue: 0, circuit: 0, athlete: 0, teamLeaders: 0, standingsRecords: 0, tournament: 0 };
+const counts = { scores: 0, summary: 0, standings: 0, teams: 0, rankings: 0, scorecard: 0, overview: 0, overviewMerged: 0, teamCard: 0, teamDetail: 0, mma: 0, odds: 0, matchfeed: 0, situationCore: 0, winprob: 0, venue: 0, circuit: 0, athlete: 0, teamLeaders: 0, standingsRecords: 0, tournament: 0, fastcast: 0 };
 const index = []; // manifest of every golden, for the Dart test to enumerate
 
 for (const [key, fx] of fixtures) {
@@ -149,6 +151,33 @@ for (const [key, fx] of fixtures) {
   }
 }
 
+// ---- overviewMerged: classifyMergedSlate on synthesized '<sport>/all' slates --
+// The merged pseudo-league (capability hasAllScoreboard) serves the SAME event
+// objects the per-league scoreboards do, so each sport's merged input is
+// synthesized by concatenating its committed fixtures' events — deterministic,
+// no extra capture section needed.
+{
+  const bySport = new Map();
+  for (const [key, fx] of fixtures) {
+    const profile = resolve(registry, key);
+    if (profile?.capabilities?.hasAllScoreboard !== true) continue;
+    const sport = key.split('/')[0];
+    if (!bySport.has(sport)) bySport.set(sport, []);
+    bySport.get(sport).push(...(fx.events || []));
+  }
+  for (const [sport, events] of bySport) {
+    const sb = { events };
+    // Anchor "now" to the slate's own first event date (fixtures are dated at
+    // capture time, not CLASSIFY_NOW) so the today/eastern-day bucketing is
+    // actually exercised — still deterministic: derived from committed data.
+    const nowMs = Date.parse(((events.find((e) => e && e.date) || {}).date) || '') || CLASSIFY_NOW_MS;
+    const output = classifyMergedSlate(sb, new Date(nowMs));
+    write('overviewMerged', sport, { sport, sb, nowMs }, output);
+    index.push({ endpoint: 'overviewMerged', file: `overviewMerged/${sport}.json`, key: sport });
+    counts.overviewMerged++;
+  }
+}
+
 // ---- Set B goldens from the live-captured raw inputs (_extra.json) -----------
 // team.js card path (+ scoreboard fallback), teamdetail.js, and MMA summary — the
 // normalizers whose raw inputs aren't in the committed per-league fixtures.
@@ -182,6 +211,17 @@ for (const [key, fx] of fixtures) {
     write('mma', name, { key, eventId, coreEvent, statuses, linescores }, output);
     index.push({ endpoint: 'mma', file: `mma/${name}.json`, key, eventId });
     counts.mma++;
+  }
+  // soccer core match feed → canonical MatchFeed (the live-pitch/shot-map/momentum
+  // source; capability hasMatchFeed). Team-relative coords, athlete/team $ref joins.
+  for (const m of (extra?.matchFeeds || [])) {
+    const { key, eventId, homeId, awayId, raw } = m;
+    if (!raw) continue; // no soccer game at capture time
+    const output = normalizeMatchFeed(raw, homeId, awayId);
+    const name = `${fileKey(key)}__${eventId}`;
+    write('matchfeed', name, { key, eventId, homeId, awayId, raw }, output);
+    index.push({ endpoint: 'matchfeed', file: `matchfeed/${name}.json`, key, eventId });
+    counts.matchfeed++;
   }
   // core competition-odds → canonical Odds (the pre-game moneyline enrichment).
   for (const o of (extra?.odds || [])) {
@@ -301,6 +341,55 @@ for (const [key, fx] of fixtures) {
       write('winprob', name, { key, eventId, raw: predictor }, output);
       index.push({ endpoint: 'winprob', file: `winprob/${name}.json`, key, eventId });
       counts.winprob++;
+    }
+  }
+}
+
+// ---- fastcast goldens: replay the captured push streams (fastcast-plan.md) ----
+// Per committed capture (mock/fixtures/fastcast/): apply every patch frame in
+// mid order — applyEventOps for event-* topics, applyOps for gp-* — and emit
+// {args: the whole capture, output: {finalDoc, errors, slates?}}. `slates` (event
+// topics only) is normalizeFastcastSlate at the checkpoint and after each frame,
+// so the Dart port's applier AND normalizer are pinned stage by stage; gp topics
+// pin the final doc byte-for-byte (the summary normalizer already has its own
+// goldens — the gp checkpoint is summary-shaped by verified design).
+{
+  const FC_DIR = join(FIX_DIR, 'fastcast');
+  let files = [];
+  try { files = readdirSync(FC_DIR).filter((f) => f.endsWith('.json')); } catch { /* not captured */ }
+  for (const f of files) {
+    const fx = JSON.parse(readFileSync(join(FC_DIR, f), 'utf8'));
+    const isGp = fx.topic.startsWith('gp-');
+    const key = isGp ? null : fx.topic.replace(/^event-/, '').replace('-', '/');
+    let doc = fx.checkpoint;
+    const errors = [];
+    const slates = key ? [normalizeFastcastSlate(registry, key, doc)] : null;
+    for (const frame of fx.frames) {
+      if (!frame.ops) continue;
+      const r = isGp ? applyOps(doc, frame.ops) : applyEventOps(doc, frame.ops);
+      doc = r.doc;
+      errors.push(...r.errors);
+      if (slates) slates.push(normalizeFastcastSlate(registry, key, doc));
+    }
+    const name = fx.topic;
+    const output = { finalDoc: doc, errors };
+    if (slates) output.slates = slates;
+    write('fastcast', name, { topic: fx.topic, key, checkpoint: fx.checkpoint, frames: fx.frames }, output);
+    index.push({ endpoint: 'fastcast', file: `fastcast/${name}.json`, key: key ?? fx.topic });
+    counts.fastcast++;
+    // The gp checkpoint IS a summary payload captured mid-broadcast — the only
+    // committed baseball feed with pitch coordinates/types (final-game summary
+    // captures ship types but no coords). Pin normalizeSummary on it too so the
+    // Dart port's strike-zone inputs are golden-verified.
+    if (isGp) {
+      const seg = fx.topic.replace(/^gp-/, '').split('-');
+      const eventId = seg.pop();
+      const gpKey = `${seg.shift()}/${seg.join('-')}`;
+      const gpName = `${fileKey(gpKey)}__${eventId}`;
+      write('summary', gpName, { key: gpKey, eventId, raw: fx.checkpoint },
+        blankUpdated(normalizeSummary(registry, gpKey, fx.checkpoint)));
+      index.push({ endpoint: 'summary', file: `summary/${gpName}.json`, key: gpKey, eventId });
+      counts.summary++;
     }
   }
 }

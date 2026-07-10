@@ -9,8 +9,21 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart' show compute;
 import 'package:http/http.dart' as http;
 import '../config.dart';
+
+/// Bodies at or past this size decode on a background isolate ([compute]):
+/// college scoreboards (`limit=400`), teams (`limit=900`), and rich summaries
+/// run to hundreds of KB – megabytes, and a `jsonDecode` that big on the UI
+/// isolate janks route pushes and scrolling (worst during Explore's ~70-league
+/// pulse fan-out). Below the threshold the isolate spawn + transfer would cost
+/// more than the decode itself, so small bodies stay inline.
+const int _bigBodyChars = 100 * 1024;
+
+/// Top-level so [compute] can send it to the worker isolate; the decoded tree
+/// comes back via `Isolate.exit` (transferred, not copied).
+dynamic _jsonDecodeIsolate(String body) => jsonDecode(body);
 
 class ApiException implements Exception {
   final int status;
@@ -36,6 +49,8 @@ const _coreCompetitionOdds =
     'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/odds';
 const _coreSituation =
     'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/situation';
+const _corePlays =
+    'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/plays';
 const _corePredictor =
     'https://sports.core.api.espn.com/v2/sports/{c}/events/{id}/competitions/{comp}/predictor';
 const _coreVenue = 'https://sports.core.api.espn.com/v2/sports/{c}/venues/{id}';
@@ -150,7 +165,10 @@ class EspnClient {
     }
     if (r.statusCode != 200) throw ApiException(r.statusCode, 'upstream ${r.statusCode}');
     try {
-      return jsonDecode(r.body);
+      final body = r.body;
+      return body.length >= _bigBodyChars
+          ? await compute(_jsonDecodeIsolate, body)
+          : jsonDecode(body);
     } catch (_) {
       throw ApiException(0, 'Unexpected response from the server.');
     }
@@ -159,7 +177,10 @@ class EspnClient {
   static String _q(Map<String, String> qs) => qs.entries.map((e) => '${e.key}=${Uri.encodeQueryComponent(e.value)}').join('&');
   static String _corePath(String key) => key.replaceFirst('/', '/leagues/');
 
-  Future<dynamic> scoreboard(String key, {String? date, int ttl = 15}) async {
+  /// [limit] overrides ESPN's default page size — used by the merged
+  /// `<sport>/all` pseudo-league fetch, whose busy-Saturday slate can exceed it.
+  Future<dynamic> scoreboard(String key,
+      {String? date, int ttl = 15, int? limit}) async {
     var url = _scoreboard.replaceFirst('{p}', key);
     final qs = <String, String>{};
     if (date != null) qs['dates'] = date;
@@ -168,6 +189,7 @@ class EspnClient {
       if (key.contains('basketball')) qs['groups'] = '50';
       if (key.contains('football')) qs['groups'] = '80';
     }
+    if (limit != null) qs['limit'] = '$limit';
     if (qs.isNotEmpty) url += '?${_q(qs)}';
     final json = await _get(url, ttl: ttl);
     // Record freshness for the stale banner (see [Api.feedFreshness]).
@@ -227,9 +249,26 @@ class EspnClient {
               .replaceFirst('{comp}', compId),
           ttl: ttl);
 
+  /// One page of the CORE plays feed (`.../competitions/{id}/plays`) — soccer's
+  /// touch-by-touch match feed (capability hasMatchFeed). Paginated oldest-first
+  /// (~25/page by default; `limit` honored to ≥300) and APPEND-ONLY, so
+  /// api.dart caches full pages forever and re-polls only the tail. TTL matches
+  /// the live poll: the tail page changes every few seconds, the client cache
+  /// only has to absorb same-cycle provider overlap.
+  Future<dynamic> corePlays(String key, String eventId, String compId,
+          {int limit = 300, int page = 1, int ttl = 12}) =>
+      _get(
+          '${_corePlays.replaceFirst('{c}', _corePath(key)).replaceFirst('{id}', eventId).replaceFirst('{comp}', compId)}?${_q({
+            'limit': '$limit',
+            if (page > 1) 'page': '$page',
+          })}',
+          ttl: ttl);
+
   /// The CORE predictor (`.../competitions/{id}/predictor`) — per-side
-  /// `gameProjection` win %. The win-probability fallback when /summary carries no
-  /// winprobability[] but the league hasWinProb. Detail-open, summary-poll cadence.
+  /// `gameProjection` win % (`teamPredWinpct` on WNBA-style predictors). The
+  /// win-probability fallback when /summary carries no winprobability[] but the
+  /// league hasWinProb. Detail-open, summary-poll cadence — though for basketball
+  /// it's a STATIC pregame model (verified live 2026-07-09), so no live timeline.
   Future<dynamic> corePredictor(String key, String eventId, String compId,
           {int ttl = 20}) =>
       _get(

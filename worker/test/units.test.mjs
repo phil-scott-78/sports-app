@@ -232,10 +232,19 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
       { status: 'Out', athlete: { shortName: 'J. Doe', position: { abbreviation: 'PG' } }, details: { detail: 'Knee', returnDate: '2026-07-01' } },
       { status: '', athlete: {} }, // dropped: no name/status
     ] }],
-    plays: [{ id: '1', text: 'Tip', period: { number: 1 }, scoringPlay: false }, { id: '2', text: 'Bucket', period: { number: 1 }, scoringPlay: true }],
+    plays: [{ id: '1', text: 'Tip', period: { number: 1 }, scoringPlay: false }, { id: '2', text: 'Bucket', period: { number: 2, displayValue: '2nd Quarter' }, clock: { displayValue: '4:12' }, awayScore: 10, homeScore: 12, scoringPlay: true }],
   };
   const s = normalizeSummary(registry, 'basketball/nba', raw);
   ok(s.winProbability?.home === 73 && s.winProbability?.away === 27, `summary: winProb from last entry (got ${JSON.stringify(s.winProbability)})`);
+  // the full arc, each point joined by playId to its play for the scrub context
+  const pts = s.winProbability?.points || [];
+  ok(pts.length === 2 && pts[0].home === 50 && pts[1].home === 73, `summary: winProb arc shipped (got ${JSON.stringify(pts)})`);
+  ok(pts[1].period === 2 && pts[1].periodLabel === '2nd Quarter' && pts[1].clock === '4:12' && pts[1].awayScore === 10 && pts[1].homeScore === 12,
+    `summary: arc point joined to play state (got ${JSON.stringify(pts[1])})`);
+  ok(pts[0].period === 1 && pts[0].clock === undefined && pts[0].awayScore === undefined, `summary: absent play context omitted per-point (got ${JSON.stringify(pts[0])})`);
+  // a single-entry arc (old trimmed fixtures / game start) ships NO points
+  const s1 = normalizeSummary(registry, 'basketball/nba', { ...raw, winprobability: [{ homeWinPercentage: 0.73, tiePercentage: 0, playId: '2' }] });
+  ok(s1.winProbability?.home === 73 && s1.winProbability?.points === undefined, `summary: 1-point arc → no points (got ${JSON.stringify(s1.winProbability)})`);
   ok(s.seasonSeries?.summary === 'HOM leads 2-1', `summary: seasonSeries prefers non-preseason (got ${s.seasonSeries?.summary})`);
   const hForm = (s.recentForm || []).find(f => f.side === 'home');
   ok(hForm?.form === 'WL', `summary: recentForm newest-last (got ${hForm?.form})`);
@@ -715,6 +724,140 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   ok(bs.lastPlay === 'Jump shot', 'basketball: lastPlay text still surfaces alongside win prob');
 }
 
+// ---- baseball scoreboard situation: lastPlay text + onDeck (turn 8) ----------
+// The raw lastPlay is PITCH-granular; type.alternativeText is a coarse at-bat
+// label ("Now at bat" on start-batter rows, a lingering "Strikeout") — the
+// canonical lastPlay must read the play's own text. dueUp[] leads with the
+// CURRENT batter mid at-bat, so onDeck is the first entry who isn't at the plate.
+{
+  const mlbSb = {
+    leagues: [{ id: '10', slug: 'mlb', name: '', season: {} }],
+    events: [{ id: '1', date: '2026-07-09T00:00Z', name: 'A v B', shortName: 'A v B',
+      competitions: [{ id: '1',
+        status: { type: { name: 'STATUS_IN_PROGRESS', state: 'in', completed: false }, period: 7 },
+        competitors: [
+          { id: '15', homeAway: 'home', team: { id: '15', abbreviation: 'ATL', displayName: 'Braves', color: 'ce1141' }, score: '3' },
+          { id: '23', homeAway: 'away', team: { id: '23', abbreviation: 'PIT', displayName: 'Pirates', color: 'fdb827' }, score: '1' },
+        ],
+        situation: {
+          balls: 1, strikes: 2, outs: 1, onFirst: false, onSecond: true, onThird: false,
+          batter: { athlete: { id: 'b1', shortName: 'J. Mangum' } },
+          pitcher: { athlete: { id: 'p1', shortName: 'B. Elder' }, summary: '1.2 IP, 2 H, 0 ER' },
+          dueUp: [
+            { athlete: { id: 'b1', shortName: 'J. Mangum' } },  // current batter leads dueUp
+            { athlete: { id: 'b2', shortName: 'B. Lowe' }, summary: '1-3, K' },
+          ],
+          lastPlay: {
+            text: 'Jose Soriano pitches to Joc Pederson',
+            type: { id: '58', text: 'Start Batter/Pitcher', type: 'start-batterpitcher', alternativeText: 'Now at bat' },
+          },
+        },
+      }],
+    }],
+  };
+  const s = normalizeScoreboard(registry, 'baseball/mlb', mlbSb).events[0].competitions[0].situation || {};
+  ok(s.lastPlay === 'Jose Soriano pitches to Joc Pederson', `baseball: lastPlay prefers text over "Now at bat" (${s.lastPlay})`);
+  ok(s.onDeck === 'B. Lowe', `baseball: onDeck skips the current batter in dueUp (${s.onDeck})`);
+  ok(JSON.stringify(s.dueUp) === JSON.stringify([{ name: 'J. Mangum' }, { name: 'B. Lowe', line: '1-3, K' }]),
+    `baseball: canonical dueUp keeps the full list in ESPN order with day lines (${JSON.stringify(s.dueUp)})`);
+  const noText = normalizeScoreboard(registry, 'baseball/mlb', JSON.parse(JSON.stringify(mlbSb).replace('"Jose Soriano pitches to Joc Pederson"', '""')))
+    .events[0].competitions[0].situation || {};
+  ok(noText.lastPlay === 'Now at bat', 'baseball: alternativeText still the fallback when text is empty');
+}
+
+// ---- baseball summary: the derived "what really was the last play" (turn 8) --
+// ESPN appends a start-batterpitcher bookend the instant an at-bat resolves —
+// the derived lastPlay walks back past it to the real result; a trailing pitch
+// row stays kind 'pitch' with its type/velo; live at-bat extras (pitcher's game
+// pitch count, runner names, zone coords) ride the live entry.
+{
+  const raw = (plays) => ({
+    header: { id: '9', competitions: [{ id: '9', status: { type: { state: 'in' } }, competitors: [
+      { id: '15', homeAway: 'home', team: { id: '15', abbreviation: 'ATL' } },
+      { id: '23', homeAway: 'away', team: { id: '23', abbreviation: 'PIT' } },
+    ] }] },
+    boxscore: { players: [
+      { team: { id: '23' }, statistics: [{ name: 'batting', labels: [], athletes: [
+        { athlete: { id: 'b1', shortName: 'J. Mangum' }, stats: [] },
+        { athlete: { id: 'r2', shortName: 'T. Callihan' }, stats: [] },
+      ] }] },
+      { team: { id: '15' }, statistics: [{ name: 'pitching', labels: [], athletes: [
+        { athlete: { id: 'p1', shortName: 'B. Elder' }, stats: [] },
+      ] }] },
+    ] },
+    plays,
+  });
+  const P = (n, atBatId, text, extra = {}) => ({
+    summaryType: 'P', atBatId, atBatPitchNumber: n, text,
+    participants: [{ athlete: { id: 'p1' }, type: 'pitcher' }, { athlete: { id: 'b1' }, type: 'batter' }],
+    team: { id: '15' }, ...extra,
+  });
+  // finished at-bat: double, then ESPN's next-batter bookend
+  const finished = [
+    { summaryType: 'A', atBatId: 'ab1', text: 'Elder pitches to Neto', team: { id: '23' },
+      participants: [{ athlete: { id: 'p1' }, type: 'pitcher' }, { athlete: { id: 'b1' }, type: 'batter' }] },
+    P(1, 'ab1', 'Pitch 1 : Strike 1 Looking', { pitchType: { text: 'Curve' }, pitchVelocity: 83, pitchCoordinate: { x: 118, y: 181 } }),
+    P(2, 'ab1', 'Pitch 2 : Ball In Play', { pitchType: { text: 'Cutter' }, pitchVelocity: 90 }),
+    { summaryType: 'N', atBatId: 'ab1', text: 'Neto doubled to left.', team: { id: '23' }, outs: 1 },
+    { summaryType: 'A', atBatId: 'ab2', text: 'Elder pitches to Mangum', team: { id: '23' },
+      participants: [{ athlete: { id: 'p1' }, type: 'pitcher' }, { athlete: { id: 'b1' }, type: 'batter' }] },
+  ];
+  const s1 = normalizeSummary(registry, 'baseball/mlb', raw(finished));
+  ok(s1.lastPlay?.kind === 'play' && s1.lastPlay?.text === 'Neto doubled to left.',
+    `baseball lastPlay: walks back past the bookend to the real result (${JSON.stringify(s1.lastPlay)})`);
+  // live at-bat: last row is a pitch → kind 'pitch' with type/velo; the live
+  // entry carries the pitcher's pitch count, runners, and zone coords.
+  const live = [...finished,
+    P(1, 'ab2', 'Pitch 1 : Ball 1', {
+      pitchType: { text: 'Slider' }, pitchVelocity: 85, pitchCoordinate: { x: 60, y: 260 },
+      resultCount: { balls: 1, strikes: 0 }, onSecond: { athlete: { id: 'r2' } },
+    }),
+  ];
+  const s2 = normalizeSummary(registry, 'baseball/mlb', raw(live));
+  ok(s2.lastPlay?.kind === 'pitch' && s2.lastPlay?.text === 'Ball 1' && s2.lastPlay?.type === 'Slider' && s2.lastPlay?.velo === 85,
+    `baseball lastPlay: trailing pitch → kind pitch + type/velo, prefix stripped (${JSON.stringify(s2.lastPlay)})`);
+  const lv = (s2.atBats || []).find(a => a.live);
+  ok(lv && lv.pitchCount === 3, `baseball live at-bat: pitcher's GAME pitch count (${lv?.pitchCount})`);
+  ok(lv && lv.second === 'T. Callihan' && lv.first === undefined && lv.third === undefined,
+    `baseball live at-bat: runner names resolved from the latest pitch (${lv?.second})`);
+  const zp = lv.pitches[0];
+  ok(zp.type === 'Slider' && zp.x === 60 && zp.y === 260, `baseball pitch: type + raw zone coords surface (${JSON.stringify(zp)})`);
+  // a finished at-bat's pitches keep coords too (the zone card can replay them)
+  const fin = (s2.atBats || []).find(a => !a.live);
+  ok(fin.pitches[0].x === 118 && fin.pitches[0].type === 'Curve', 'baseball pitch: finished at-bat keeps type/coords');
+  ok(fin.pitchCount === undefined && fin.first === undefined, 'baseball finished at-bat: no live-only extras');
+  // a batter just walked → the fresh at-bat is ONLY its header row for a while,
+  // and that header carries the on-base state: the runner name must not drop.
+  const headerOnly = [...finished.slice(0, 4), {
+    summaryType: 'A', atBatId: 'ab2', text: 'Elder pitches to Mangum', team: { id: '23' },
+    onFirst: { athlete: { id: 'r2' } },
+    participants: [{ athlete: { id: 'p1' }, type: 'pitcher' }, { athlete: { id: 'b1' }, type: 'batter' }],
+  }];
+  const s3 = normalizeSummary(registry, 'baseball/mlb', raw(headerOnly));
+  const lv3 = (s3.atBats || []).find(a => a.live);
+  ok(lv3 && lv3.first === 'T. Callihan' && lv3.pitches.length === 0,
+    `baseball live at-bat: runner names ride the header before the first pitch (${lv3?.first})`);
+  // ABS challenge (2026, VERIFIED live 401816083): the type.text suffix marks a
+  // challenged call — final ruling leads, so `r` and the count stay correct.
+  // Matched on the suffix (never id 91/92) so the Ball variants classify too.
+  const challenged = [...finished,
+    P(1, 'ab2', 'Pitch 1 : Ball 1', { type: { id: '93', text: 'Ball - Confirmed' }, resultCount: { balls: 1, strikes: 0 } }),
+    P(2, 'ab2', 'Pitch 2 : Strike 1 Looking', {
+      type: { id: '91', text: 'Strike Looking - Overturned' },
+      pitchType: { text: 'Sinker' }, pitchVelocity: 94, resultCount: { balls: 1, strikes: 1 },
+    }),
+  ];
+  const s4 = normalizeSummary(registry, 'baseball/mlb', raw(challenged));
+  const lv4 = (s4.atBats || []).find(a => a.live);
+  ok(lv4?.pitches[0].challenge === 'upheld' && lv4?.pitches[0].r === 'ball',
+    `baseball ABS: ' - Confirmed' → challenge upheld, r from the final call (${JSON.stringify(lv4?.pitches[0])})`);
+  ok(lv4?.pitches[1].challenge === 'overturned' && lv4?.pitches[1].r === 'strike',
+    `baseball ABS: ' - Overturned' → challenge overturned (${JSON.stringify(lv4?.pitches[1])})`);
+  ok(fin.pitches[0].challenge === undefined, 'baseball ABS: unchallenged pitch carries no marker');
+  ok(s4.lastPlay?.kind === 'pitch' && s4.lastPlay?.challenge === 'overturned',
+    `baseball ABS: derived lastPlay carries the challenge (${JSON.stringify(s4.lastPlay)})`);
+}
+
 // ---- CORE situation → canonical Situation delta (guide-shaped inputs) --------
 // Inputs mirror schema/espn-guide/core-situation.md exactly (real observed shapes).
 // These pin the normalizer where no LIVE gridiron/basketball game is capturable now
@@ -776,6 +919,21 @@ const FINAL = { name: 'STATUS_FINAL', state: 'post', completed: true, detail: 'F
   ok(JSON.stringify(winProbabilityFromPredictor({ awayTeam: { statistics: [{ name: 'gameProjection', value: 70 }] } })) === JSON.stringify({ home: 30, away: 70 }),
     'predictor: away-only → home derived, sums to 100');
   ok(winProbabilityFromPredictor(null) === undefined && winProbabilityFromPredictor({}) === undefined, 'predictor: no data → undefined');
+  // teamPredWinpct fallback — VERIFIED live 2026-07-09 (WNBA): the in-game
+  // predictor carries NO gameProjection, only teamPredWinpct (+ matchupQuality/
+  // teamPredPtDiff). gameProjection still wins when both are present.
+  const wnba = {
+    homeTeam: { statistics: [
+      { name: 'matchupQuality', value: 32.3974 },
+      { name: 'teamPredWinpct', value: 83.27, displayValue: '83.3' },
+    ] },
+    awayTeam: { statistics: [{ name: 'teamPredWinpct', value: 16.73, displayValue: '16.7' }] },
+  };
+  ok(JSON.stringify(winProbabilityFromPredictor(wnba)) === JSON.stringify({ home: 83, away: 17 }),
+    'predictor: teamPredWinpct fallback when gameProjection absent');
+  ok(winProbabilityFromPredictor({
+    homeTeam: { statistics: [{ name: 'teamPredWinpct', value: 90 }, { name: 'gameProjection', value: 40 }] },
+  }).home === 40, 'predictor: gameProjection preferred over teamPredWinpct');
 }
 
 // ---- athlete profile (§2.6): identity paths + degraded/partial + stat shaping ---

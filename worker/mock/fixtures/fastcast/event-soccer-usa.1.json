@@ -1,0 +1,2221 @@
+{
+ "topic": "event-soccer-usa.1",
+ "capturedAt": "2026-07-09T02:56:03.679Z",
+ "checkpointUrl": "https://fcast.espncdn.com/FastcastService/pubsub/profiles/12000/topic/event-soccer-usa.1/message/6273/checkpoint",
+ "checkpoint": {
+  "sports": [
+   {
+    "id": "600",
+    "uid": "s:600",
+    "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+    "name": "Soccer",
+    "slug": "soccer",
+    "logos": [
+     {
+      "href": "https://a.espncdn.com/combiner/i?img=/guid/119cfa41-71d4-39bf-a790-6273a52b0259/logos/default.png",
+      "alt": "",
+      "rel": [
+       "full",
+       "default"
+      ],
+      "width": 500,
+      "height": 500
+     },
+     {
+      "href": "https://a.espncdn.com/combiner/i?img=/guid/119cfa41-71d4-39bf-a790-6273a52b0259/logos/default-dark.png",
+      "alt": "",
+      "rel": [
+       "full",
+       "dark"
+      ],
+      "width": 500,
+      "height": 500
+     }
+    ],
+    "leagues": [
+     {
+      "id": "770",
+      "uid": "s:600~l:770",
+      "name": "MLS",
+      "abbreviation": "MLS",
+      "shortName": "MLS",
+      "slug": "usa.1",
+      "tag": "usa.1",
+      "isTournament": false,
+      "smartdates": [
+       "2023-09-27T07:00Z",
+       "2023-09-30T07:00Z",
+       "2023-10-01T07:00Z"
+      ],
+      "events": [
+       {
+        "id": "660016",
+        "uid": "s:600~l:770~e:660016~c:660016",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660016",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660016",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660016",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660016",
+        "location": "Lower.com Field",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660016",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "CLB -124",
+         "overUnder": 3.5,
+         "spread": -0.5,
+         "overOdds": 125,
+         "underOdds": -160,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -124
+         },
+         "away": {
+          "moneyLine": 300
+         },
+         "draw": {
+          "moneyLine": 290
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 300,
+          "spreadOdds": 100,
+          "team": {
+           "id": "10739",
+           "abbreviation": "PHI"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -124,
+          "spreadOdds": -130,
+          "team": {
+           "id": "183",
+           "abbreviation": "CLB"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 290
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "10739",
+          "uid": "s:600~t:10739",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "DDDDW",
+          "displayName": "Philadelphia Union",
+          "name": "Philadelphia",
+          "abbreviation": "PHI",
+          "location": "Philadelphia Union",
+          "color": "001f5e",
+          "alternateColor": "008de5",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "14-8-8",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10739.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/10739.png"
+         },
+         {
+          "id": "183",
+          "uid": "s:600~t:183",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DWLWL",
+          "displayName": "Columbus Crew",
+          "name": "Columbus",
+          "abbreviation": "CLB",
+          "location": "Columbus Crew",
+          "color": "ffff00",
+          "alternateColor": "c9c7c8",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "14-7-9",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/183.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/183.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660020",
+        "uid": "s:600~l:770~e:660020~c:660020",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660020",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660020",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660020",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660020",
+        "location": "DRV PNK Stadium",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660020",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "MIA +104",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -140,
+         "underOdds": 110,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": 104
+         },
+         "away": {
+          "moneyLine": 245
+         },
+         "draw": {
+          "moneyLine": 255
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 245,
+          "spreadOdds": -130,
+          "team": {
+           "id": "17606",
+           "abbreviation": "NYC"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": 104,
+          "spreadOdds": 100,
+          "team": {
+           "id": "20232",
+           "abbreviation": "MIA"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 255
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "17606",
+          "uid": "s:600~t:17606",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "WWDDW",
+          "displayName": "New York City FC",
+          "name": "NYCFC",
+          "abbreviation": "NYC",
+          "location": "New York City FC",
+          "color": "6caedf",
+          "alternateColor": "002d62",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "8-13-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17606.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/17606.png"
+         },
+         {
+          "id": "20232",
+          "uid": "s:600~t:20232",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "LDWLW",
+          "displayName": "Inter Miami CF",
+          "name": "Miami",
+          "abbreviation": "MIA",
+          "location": "Inter Miami CF",
+          "color": "231f20",
+          "alternateColor": "f7b5cd",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "9-5-15",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20232.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/20232.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660018",
+        "uid": "s:600~l:770~e:660018~c:660018",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660018",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660018",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660018",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660018",
+        "location": "Gillette Stadium",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660018",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "NE -124",
+         "overUnder": 3.5,
+         "spread": -0.5,
+         "overOdds": 130,
+         "underOdds": -170,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -124
+         },
+         "away": {
+          "moneyLine": 295
+         },
+         "draw": {
+          "moneyLine": 295
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 295,
+          "spreadOdds": 100,
+          "team": {
+           "id": "21300",
+           "abbreviation": "CLT"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -124,
+          "spreadOdds": -130,
+          "team": {
+           "id": "189",
+           "abbreviation": "NE"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 295
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "21300",
+          "uid": "s:600~t:21300",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "LDDDD",
+          "displayName": "Charlotte FC",
+          "name": "Charlotte",
+          "abbreviation": "CLT",
+          "location": "Charlotte FC",
+          "color": "0080ff",
+          "alternateColor": "000000",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "7-12-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21300.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/21300.png"
+         },
+         {
+          "id": "189",
+          "uid": "s:600~t:189",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DLDDW",
+          "displayName": "New England Revolution",
+          "name": "New England",
+          "abbreviation": "NE",
+          "location": "New England Revolution",
+          "color": "022166",
+          "alternateColor": "c9c7c8",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "13-10-6",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/189.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/189.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660017",
+        "uid": "s:600~l:770~e:660017~c:660017",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660017",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660017",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660017",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660017",
+        "location": "Red Bull Arena",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660017",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "NY -150",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -130,
+         "underOdds": 100,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -150
+         },
+         "away": {
+          "moneyLine": 400
+         },
+         "draw": {
+          "moneyLine": 285
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 400,
+          "spreadOdds": 125,
+          "team": {
+           "id": "182",
+           "abbreviation": "CHI"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -150,
+          "spreadOdds": -160,
+          "team": {
+           "id": "190",
+           "abbreviation": "NY"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 285
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "182",
+          "uid": "s:600~t:182",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "DLDLL",
+          "displayName": "Chicago Fire FC",
+          "name": "Chicago",
+          "abbreviation": "CHI",
+          "location": "Chicago Fire FC",
+          "color": "00006c",
+          "alternateColor": "a4d1ff",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "8-10-12",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/182.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/182.png"
+         },
+         {
+          "id": "190",
+          "uid": "s:600~t:190",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "WDDLL",
+          "displayName": "New York Red Bulls",
+          "name": "NY Red Bulls",
+          "abbreviation": "NY",
+          "location": "New York Red Bulls",
+          "color": "c9c7c8",
+          "alternateColor": "D50031",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "8-10-12",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/190.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/190.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660015",
+        "uid": "s:600~l:770~e:660015~c:660015",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660015",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660015",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660015",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660015",
+        "location": "Exploria Stadium",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660015",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "ORL -165",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -145,
+         "underOdds": 115,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -165
+         },
+         "away": {
+          "moneyLine": 420
+         },
+         "draw": {
+          "moneyLine": 305
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 420,
+          "spreadOdds": 130,
+          "team": {
+           "id": "9720",
+           "abbreviation": "MTL"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -165,
+          "spreadOdds": -170,
+          "team": {
+           "id": "12011",
+           "abbreviation": "ORL"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 305
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "9720",
+          "uid": "s:600~t:9720",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "LDDLL",
+          "displayName": "CF Montréal",
+          "name": "CF Montréal",
+          "abbreviation": "MTL",
+          "location": "CF Montréal",
+          "color": "181818",
+          "alternateColor": "c9c7c8",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "11-4-15",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9720.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/9720.png"
+         },
+         {
+          "id": "12011",
+          "uid": "s:600~t:12011",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DLWWD",
+          "displayName": "Orlando City SC",
+          "name": "Orlando",
+          "abbreviation": "ORL",
+          "location": "Orlando City SC",
+          "color": "633492",
+          "alternateColor": "ffffff",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "14-9-7",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12011.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/12011.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660019",
+        "uid": "s:600~l:770~e:660019~c:660019",
+        "date": "2023-09-30T23:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660019",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660019",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660019",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660019",
+        "location": "BMO Field",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660019",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "CIN -130",
+         "overUnder": 3.5,
+         "spread": 0.5,
+         "overOdds": 135,
+         "underOdds": -180,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": 305
+         },
+         "away": {
+          "moneyLine": -130
+         },
+         "draw": {
+          "moneyLine": 300
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -130,
+          "spreadOdds": -140,
+          "team": {
+           "id": "18267",
+           "abbreviation": "CIN"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 305,
+          "spreadOdds": 110,
+          "team": {
+           "id": "7318",
+           "abbreviation": "TOR"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 300
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 7:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "18267",
+          "uid": "s:600~t:18267",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "WDDLW",
+          "displayName": "FC Cincinnati",
+          "name": "Cincinnati",
+          "abbreviation": "CIN",
+          "location": "FC Cincinnati",
+          "color": "001f5e",
+          "alternateColor": "F36600",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "18-8-4",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18267.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/18267.png"
+         },
+         {
+          "id": "7318",
+          "uid": "s:600~t:7318",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "LLLWL",
+          "displayName": "Toronto FC",
+          "name": "Toronto",
+          "abbreviation": "TOR",
+          "location": "Toronto FC",
+          "color": "D80016",
+          "alternateColor": "c9c7c8",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "4-10-16",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7318.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/7318.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660022",
+        "uid": "s:600~l:770~e:660022~c:660022",
+        "date": "2023-10-01T00:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660022",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660022",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660022",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660022",
+        "location": "Shell Energy Stadium",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660022",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "HOU -123",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -115,
+         "underOdds": -115,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -123
+         },
+         "away": {
+          "moneyLine": 330
+         },
+         "draw": {
+          "moneyLine": 260
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 330,
+          "spreadOdds": -110,
+          "team": {
+           "id": "185",
+           "abbreviation": "DAL"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -123,
+          "spreadOdds": -120,
+          "team": {
+           "id": "6077",
+           "abbreviation": "HOU"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 260
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 8:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "185",
+          "uid": "s:600~t:185",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "DDWDD",
+          "displayName": "FC Dallas",
+          "name": "Dallas",
+          "abbreviation": "DAL",
+          "location": "FC Dallas",
+          "color": "CF0032",
+          "alternateColor": "9fcfff",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "10-10-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/185.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/185.png"
+         },
+         {
+          "id": "6077",
+          "uid": "s:600~t:6077",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "WLWDD",
+          "displayName": "Houston Dynamo FC",
+          "name": "Houston",
+          "abbreviation": "HOU",
+          "location": "Houston Dynamo FC",
+          "color": "F36600",
+          "alternateColor": "000000",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "12-7-11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6077.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/6077.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660023",
+        "uid": "s:600~l:770~e:660023~c:660023",
+        "date": "2023-10-01T00:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660023",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660023",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660023",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660023",
+        "location": "Allianz Field",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660023",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "MIN -127",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -160,
+         "underOdds": 125,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -127
+         },
+         "away": {
+          "moneyLine": 310
+         },
+         "draw": {
+          "moneyLine": 285
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 310,
+          "spreadOdds": -105,
+          "team": {
+           "id": "191",
+           "abbreviation": "SJ"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -127,
+          "spreadOdds": -125,
+          "team": {
+           "id": "17362",
+           "abbreviation": "MIN"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 285
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 8:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "191",
+          "uid": "s:600~t:191",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "DLWDD",
+          "displayName": "San Jose Earthquakes",
+          "name": "San Jose",
+          "abbreviation": "SJ",
+          "location": "San Jose Earthquakes",
+          "color": "0000ff",
+          "alternateColor": "ffffff",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "10-11-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/191.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/191.png"
+         },
+         {
+          "id": "17362",
+          "uid": "s:600~t:17362",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "LLLDD",
+          "displayName": "Minnesota United FC",
+          "name": "Minnesota",
+          "abbreviation": "MIN",
+          "location": "Minnesota United FC",
+          "color": "000000",
+          "alternateColor": "6CADDF",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "9-10-11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17362.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/17362.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660021",
+        "uid": "s:600~l:770~e:660021~c:660021",
+        "date": "2023-10-01T00:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660021",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660021",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660021",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660021",
+        "location": "GEODIS Park",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660021",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "NSH +102",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -105,
+         "underOdds": -125,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": 102
+         },
+         "away": {
+          "moneyLine": 270
+         },
+         "draw": {
+          "moneyLine": 240
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 270,
+          "spreadOdds": -125,
+          "team": {
+           "id": "9726",
+           "abbreviation": "SEA"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": 102,
+          "spreadOdds": -105,
+          "team": {
+           "id": "18986",
+           "abbreviation": "NSH"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 240
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 8:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "9726",
+          "uid": "s:600~t:9726",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "WDDWD",
+          "displayName": "Seattle Sounders FC",
+          "name": "Seattle",
+          "abbreviation": "SEA",
+          "location": "Seattle Sounders FC",
+          "color": "628b18",
+          "alternateColor": "4c4091",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "12-9-9",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9726.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/9726.png"
+         },
+         {
+          "id": "18986",
+          "uid": "s:600~t:18986",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DWDDL",
+          "displayName": "Nashville SC",
+          "name": "Nashville",
+          "abbreviation": "NSH",
+          "location": "Nashville SC",
+          "color": "ffff00",
+          "alternateColor": "001f5e",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "12-8-9",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18986.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/18986.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660024",
+        "uid": "s:600~l:770~e:660024~c:660024",
+        "date": "2023-10-01T00:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660024",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660024",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660024",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660024",
+        "location": "CityPark",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660024",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "STL +107",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -150,
+         "underOdds": 120,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": 107
+         },
+         "away": {
+          "moneyLine": 230
+         },
+         "draw": {
+          "moneyLine": 260
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 230,
+          "spreadOdds": -135,
+          "team": {
+           "id": "186",
+           "abbreviation": "SKC"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": 107,
+          "spreadOdds": 105,
+          "team": {
+           "id": "21812",
+           "abbreviation": "STL"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 260
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 8:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "186",
+          "uid": "s:600~t:186",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "WLWLW",
+          "displayName": "Sporting Kansas City",
+          "name": "Kansas City",
+          "abbreviation": "SKC",
+          "location": "Sporting Kansas City",
+          "color": "9fcfff",
+          "alternateColor": "231F20",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "10-8-13",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/186.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/186.png"
+         },
+         {
+          "id": "21812",
+          "uid": "s:600~t:21812",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "WDDDL",
+          "displayName": "St. Louis CITY SC",
+          "name": "St. Louis",
+          "abbreviation": "STL",
+          "location": "St. Louis CITY SC",
+          "color": "E0004D",
+          "alternateColor": "0C2340",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "16-5-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21812.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/21812.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660025",
+        "uid": "s:600~l:770~e:660025~c:660025",
+        "date": "2023-10-01T01:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660025",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660025",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660025",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660025",
+        "location": "Dick's Sporting Goods Park",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660025",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "COL +130",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -140,
+         "underOdds": 110,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": 130
+         },
+         "away": {
+          "moneyLine": 195
+         },
+         "draw": {
+          "moneyLine": 245
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 195,
+          "spreadOdds": -150,
+          "team": {
+           "id": "20906",
+           "abbreviation": "ATX"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": 130,
+          "spreadOdds": 120,
+          "team": {
+           "id": "184",
+           "abbreviation": "COL"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 245
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 9:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "20906",
+          "uid": "s:600~t:20906",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "DDLDL",
+          "displayName": "Austin FC",
+          "name": "Austin",
+          "abbreviation": "ATX",
+          "location": "Austin FC",
+          "color": "00b140",
+          "alternateColor": "000000",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "9-8-13",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20906.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/20906.png"
+         },
+         {
+          "id": "184",
+          "uid": "s:600~t:184",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DLLWL",
+          "displayName": "Colorado Rapids",
+          "name": "Colorado",
+          "abbreviation": "COL",
+          "location": "Colorado Rapids",
+          "color": "7A003C",
+          "alternateColor": "ceded4",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "4-11-15",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/184.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/184.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660027",
+        "uid": "s:600~l:770~e:660027~c:660027",
+        "date": "2023-10-01T02:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660027",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660027",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660027",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660027",
+        "location": "Dignity Health Sports Park",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660027",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "LA -101",
+         "overUnder": 3.5,
+         "spread": -0.5,
+         "overOdds": 120,
+         "underOdds": -150,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -101
+         },
+         "away": {
+          "moneyLine": 235
+         },
+         "draw": {
+          "moneyLine": 285
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 235,
+          "spreadOdds": -120,
+          "team": {
+           "id": "9723",
+           "abbreviation": "POR"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -101,
+          "spreadOdds": -110,
+          "team": {
+           "id": "187",
+           "abbreviation": "LA"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 285
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 10:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "9723",
+          "uid": "s:600~t:9723",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "WWWWD",
+          "displayName": "Portland Timbers",
+          "name": "Portland",
+          "abbreviation": "POR",
+          "location": "Portland Timbers",
+          "color": "004812",
+          "alternateColor": "f8cecb",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "11-9-11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9723.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/9723.png"
+         },
+         {
+          "id": "187",
+          "uid": "s:600~t:187",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DWLDD",
+          "displayName": "LA Galaxy",
+          "name": "LA Galaxy",
+          "abbreviation": "LA",
+          "location": "LA Galaxy",
+          "color": "00235d",
+          "alternateColor": "ffd204",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "8-10-11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/187.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/187.png"
+         }
+        ],
+        "appLinks": []
+       },
+       {
+        "id": "660026",
+        "uid": "s:600~l:770~e:660026~c:660026",
+        "date": "2023-10-01T02:30:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2023 Major League Soccer",
+        "shortName": "2023 Major League Soccer",
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/660026",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/660026",
+          "text": "Statistics"
+         },
+         {
+          "rel": [
+           "conversation",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/conversation?gameId=660026",
+          "text": "Conversation"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": false,
+        "onWatch": false,
+        "competitionId": "660026",
+        "location": "BC Place",
+        "season": 2023,
+        "seasonStartDate": "2023-01-01T10:00:00Z",
+        "seasonEndDate": "2023-10-22T03:59:00Z",
+        "seasonType": "1",
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "1",
+         "name": "Regular Season",
+         "abbreviation": "2023 Major League Soccer",
+         "shortName": "2023 Major League Soccer"
+        },
+        "link": "https://www.espn.com/soccer/match/_/gameId/660026",
+        "status": "pre",
+        "summary": "Scheduled",
+        "period": 0,
+        "clock": "0'",
+        "addedClock": 0,
+        "odds": {
+         "details": "VAN -135",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -160,
+         "underOdds": 125,
+         "provider": {
+          "id": "45",
+          "name": "Caesars Sportsbook (NJ)",
+          "priority": 1
+         },
+         "home": {
+          "moneyLine": -135
+         },
+         "away": {
+          "moneyLine": 340
+         },
+         "draw": {
+          "moneyLine": 280
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "moneyLine": 340,
+          "spreadOdds": 120,
+          "team": {
+           "id": "193",
+           "abbreviation": "DC"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "moneyLine": -135,
+          "spreadOdds": -150,
+          "team": {
+           "id": "9727",
+           "abbreviation": "VAN"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 280
+         },
+         "links": []
+        },
+        "fullStatus": {
+         "clock": 0,
+         "addedClock": 0,
+         "displayClock": "0'",
+         "period": 0,
+         "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Sat, September 30th at 10:30 PM EDT",
+          "shortDetail": "Scheduled"
+         }
+        },
+        "competitors": [
+         {
+          "id": "193",
+          "uid": "s:600~t:193",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "form": "LDDDW",
+          "displayName": "D.C. United",
+          "name": "D.C. United",
+          "abbreviation": "DC",
+          "location": "D.C. United",
+          "color": "000000",
+          "alternateColor": "c9c7c8",
+          "score": "",
+          "isNational": false,
+          "group": "1",
+          "record": "9-9-13",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/193.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/193.png"
+         },
+         {
+          "id": "9727",
+          "uid": "s:600~t:9727",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "form": "DLLWD",
+          "displayName": "Vancouver Whitecaps",
+          "name": "Vancouver",
+          "abbreviation": "VAN",
+          "location": "Vancouver Whitecaps",
+          "color": "ffffff",
+          "alternateColor": "001f5e",
+          "score": "",
+          "isNational": false,
+          "group": "2",
+          "record": "11-9-10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9727.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/soccer/500-dark/9727.png"
+         }
+        ],
+        "appLinks": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "frames": [
+  {
+   "mid": 6273,
+   "op": "H"
+  }
+ ]
+}

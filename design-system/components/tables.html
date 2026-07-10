@@ -1,0 +1,382 @@
+<!-- @dsCard group="Components" name="Table grammar" subtitle="Key-stat column · semantic cells · cut line · note bands · totals · agate" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Table grammar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local CSS ─────────────────────────────────────────────── */
+body { padding: 24px; }
+.col { max-width: 428px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 9px; }
+
+/* standings grid */
+.stand-grid { display: grid; grid-template-columns: 1fr 30px 30px 44px 40px 44px; align-items: center; }
+.stand-head { font: 700 10px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); padding-bottom: 10px; }
+.stand-head .key { color: var(--text); }
+.stand-row { padding: 9px 0; border-top: 1px solid var(--divider); font-variant-numeric: tabular-nums; }
+.num { font: 600 14px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-dim); text-align: center; }
+.num--key { font: 700 15px var(--font-score); color: var(--text); }
+.name-cell { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.tname { font: 400 13.5px var(--font-copy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tname--fav { font-weight: 600; }
+.wash-fav { margin: 0 -14px; padding-left: 14px; padding-right: 14px; background: linear-gradient(90deg, rgba(255,197,47,.08), transparent); }
+
+/* wild card grid */
+.wc-grid { display: grid; grid-template-columns: 1fr 60px; align-items: center; }
+.wc-row { padding: 8px 0; border-top: 1px solid var(--divider); font-variant-numeric: tabular-nums; }
+.wc-rank { font: 700 13px var(--font-score); color: var(--text-dim); width: 14px; flex: none; }
+.cut-line { display: flex; align-items: center; gap: 8px; padding: 6px 0; }
+.cut-line span:first-child, .cut-line span:last-child { flex: 1; border-top: 2px dashed var(--live); }
+.cut-label { font: 700 10px var(--font-copy); letter-spacing: .08em; color: var(--live); }
+
+/* soccer group table */
+.grp-grid { display: grid; grid-template-columns: 20px 1fr 30px 34px 34px; align-items: center; }
+.grp-row { position: relative; padding: 9px 0; border-top: 1px solid var(--track); font-variant-numeric: tabular-nums; }
+.band { position: absolute; left: -14px; top: 0; bottom: 0; width: 3px; }
+.legend { display: flex; flex-direction: column; gap: 7px; padding-top: 12px; margin-top: 4px; border-top: 1px solid var(--divider); }
+.legend-item { display: flex; align-items: center; gap: 8px; font: 400 11px var(--font-copy); color: var(--text-faint); }
+.swatch { width: 3px; height: 12px; flex: none; }
+
+/* line score */
+.ls-grid { display: grid; grid-template-columns: 44px repeat(9, 1fr) 28px 26px 26px; align-items: center; }
+.ls-head { font: 700 10px var(--font-copy); letter-spacing: .06em; color: var(--text-faint); text-align: center; padding-bottom: 8px; }
+.ls-row { padding: 8px 0; border-top: 1px solid var(--track); font-variant-numeric: tabular-nums; }
+.ls-cell { font: 600 14px var(--font-score); font-variant-numeric: tabular-nums; text-align: center; }
+.ls-zero { color: var(--text-dim); }
+.ls-ghost { color: var(--ghost); }
+.ls-now { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 16px; border-radius: 4px; background: var(--track); color: var(--text-dim); font-size: 11px; line-height: 1; }
+.ls-abbr { font: 600 13px var(--font-copy); display: flex; align-items: center; gap: 7px; }
+
+/* box score */
+.box-grid { display: grid; grid-template-columns: 1fr 32px 34px 30px 30px 34px; align-items: center; }
+.box-head { font: 700 10px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); text-align: right; padding: 8px 0 7px; }
+.box-row { padding: 9px 0; border-top: 1px solid var(--track); font-variant-numeric: tabular-nums; }
+.box-name { font: 600 13px var(--font-copy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.box-pos { font: 400 11px var(--font-copy); color: var(--text-faint); margin-left: 5px; }
+.box-num { font-size: 13px; font-variant-numeric: tabular-nums; color: var(--text-dim); text-align: right; }
+.section-row { padding: 8px 0 7px; border-top: 1px solid var(--divider); font: 700 10px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.totals-row { padding: 10px 0 2px; border-top: 1px solid var(--divider); }
+.footer-line { font: 400 11px var(--font-copy); font-variant-numeric: tabular-nums; color: var(--text-faint); padding-top: 10px; margin-top: 8px; border-top: 1px solid var(--divider); }
+.pm-pos { color: var(--green); }
+.pm-neg { color: var(--live); }
+
+/* agate */
+.agate-sec { font: 700 10px var(--font-copy); letter-spacing: .06em; color: var(--text-faint); margin: 12px 0 5px; }
+.agate-sec:first-of-type { margin-top: 10px; }
+.agate-line { font: 400 11px/1.65 var(--font-copy); font-variant-numeric: tabular-nums; color: var(--text-dim); }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <!-- ── 1 · STANDINGS TABLE ── -->
+  <div>
+    <div class="anno">Standings table — key-stat column (PCT) · favorite wash + ★ · streak semantics · r20 · padTable 14×16</div>
+    <div class="card card--table">
+      <div class="stand-grid stand-head">
+        <span>NL CENTRAL</span><span style="text-align:center">W</span><span style="text-align:center">L</span><span class="key" style="text-align:center">PCT</span><span style="text-align:center">L10</span><span style="text-align:right">STRK</span>
+      </div>
+      <div class="stand-grid stand-row wash-fav">
+        <span class="name-cell"><span class="team-bar team-bar--row" style="background:#CC3433"></span><span class="tname tname--fav">Cubs</span><span style="font-size:10px;color:var(--gold)">★</span></span>
+        <span class="num" style="color:var(--text)">52</span><span class="num">34</span><span class="num num--key">.605</span><span class="num">7-3</span><span class="num" style="color:var(--green);text-align:right">W3</span>
+      </div>
+      <div class="stand-grid stand-row">
+        <span class="name-cell"><span class="team-bar team-bar--row" style="background:#FFC52F"></span><span class="tname">Brewers</span></span>
+        <span class="num">50</span><span class="num">37</span><span class="num num--key">.575</span><span class="num">6-4</span><span class="num" style="color:var(--live);text-align:right">L2</span>
+      </div>
+      <div class="stand-grid stand-row">
+        <span class="name-cell"><span class="team-bar team-bar--row" style="background:#C41E3A"></span><span class="tname">Cardinals</span></span>
+        <span class="num">44</span><span class="num">42</span><span class="num num--key">.512</span><span class="num">5-5</span><span class="num" style="color:var(--green);text-align:right">W2</span>
+      </div>
+      <div class="stand-grid stand-row">
+        <span class="name-cell"><span class="team-bar team-bar--row" style="background:#C6011F"></span><span class="tname">Reds</span></span>
+        <span class="num">41</span><span class="num">46</span><span class="num num--key">.471</span><span class="num">4-6</span><span class="num" style="color:var(--live);text-align:right">L3</span>
+      </div>
+      <div class="stand-grid stand-row">
+        <span class="name-cell"><span class="team-bar team-bar--row" style="background:#FDB827"></span><span class="tname">Pirates</span></span>
+        <span class="num">35</span><span class="num">52</span><span class="num num--key">.402</span><span class="num">3-7</span><span class="num" style="color:var(--live);text-align:right">L1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2 · WILD CARD + CUT LINE ── -->
+  <div>
+    <div class="anno">Wild card — 2px dashed live PLAYOFF LINE · GB: +N green above · N dim below · — last-in</div>
+    <div class="card card--table">
+      <div class="wc-grid stand-head">
+        <span>NL WILD CARD</span><span style="text-align:right">GB</span>
+      </div>
+      <div class="wc-grid wc-row">
+        <span class="name-cell"><span class="wc-rank">1</span><span class="team-bar team-bar--row" style="background:#FFC52F"></span><span class="tname">Brewers</span></span>
+        <span class="num" style="color:var(--green);text-align:right">+3.5</span>
+      </div>
+      <div class="wc-grid wc-row">
+        <span class="name-cell"><span class="wc-rank">2</span><span class="team-bar team-bar--row" style="background:#FD5A1E"></span><span class="tname">Giants</span></span>
+        <span class="num" style="color:var(--green);text-align:right">+2</span>
+      </div>
+      <div class="wc-grid wc-row">
+        <span class="name-cell"><span class="wc-rank">3</span><span class="team-bar team-bar--row" style="background:#003278"></span><span class="tname">Dodgers</span></span>
+        <span class="num" style="text-align:right">—</span>
+      </div>
+      <div class="cut-line"><span></span><span class="cut-label">PLAYOFF LINE</span><span></span></div>
+      <div class="wc-grid wc-row" style="border-top:0">
+        <span class="name-cell"><span class="wc-rank">4</span><span class="team-bar team-bar--row" style="background:#C41E3A"></span><span class="tname" style="color:var(--text-dim)">Cardinals</span></span>
+        <span class="num" style="text-align:right">1.5</span>
+      </div>
+      <div class="wc-grid wc-row">
+        <span class="name-cell"><span class="wc-rank">5</span><span class="team-bar team-bar--row" style="background:#E3D4AD"></span><span class="tname" style="color:var(--text-dim)">Padres</span></span>
+        <span class="num" style="text-align:right">2</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3 · SOCCER GROUP TABLE + NOTE BANDS ── -->
+  <div>
+    <div class="anno">Qualification note-bands — 3px band flush to card edge, content unshifted · legend once per card · PTS key column</div>
+    <div class="card card--table">
+      <div class="grp-grid stand-head">
+        <span>#</span><span>CLUB</span><span style="text-align:right">P</span><span style="text-align:right">GD</span><span class="key" style="text-align:right">PTS</span>
+      </div>
+      <div class="grp-grid grp-row" style="border-top:1px solid var(--divider)">
+        <span class="band" style="background:#2E6FD8"></span>
+        <span class="num" style="text-align:left;color:var(--text)">1</span><span class="name-cell"><span class="tname">Liverpool</span></span>
+        <span class="box-num">21</span><span class="box-num">+31</span><span class="num num--key" style="text-align:right">45</span>
+      </div>
+      <div class="grp-grid grp-row">
+        <span class="band" style="background:#2E6FD8"></span>
+        <span class="num" style="text-align:left">2</span><span class="name-cell"><span class="team-bar team-bar--row" style="background:#EF0107"></span><span class="tname tname--fav">Arsenal</span></span>
+        <span class="box-num">21</span><span class="box-num">+27</span><span class="num num--key" style="text-align:right">42</span>
+      </div>
+      <div class="grp-grid grp-row">
+        <span class="num" style="text-align:left">3</span><span class="name-cell"><span class="tname">Chelsea</span></span>
+        <span class="box-num">21</span><span class="box-num">+18</span><span class="num num--key" style="text-align:right">38</span>
+      </div>
+      <div class="grp-grid grp-row">
+        <span class="band" style="background:#E88C2E"></span>
+        <span class="num" style="text-align:left">4</span><span class="name-cell"><span class="tname">Aston Villa</span></span>
+        <span class="box-num">21</span><span class="box-num">+9</span><span class="num num--key" style="text-align:right">36</span>
+      </div>
+      <div class="grp-grid grp-row">
+        <span class="band" style="background:#E5484D"></span>
+        <span class="num" style="text-align:left">18</span><span class="name-cell"><span class="tname" style="color:var(--text-dim)">Luton Town</span></span>
+        <span class="box-num">21</span><span class="box-num">−22</span><span class="num num--key" style="text-align:right;color:var(--text-dim);font-weight:600;font-size:14px">14</span>
+      </div>
+      <div class="legend">
+        <div class="legend-item"><span class="swatch" style="background:#2E6FD8"></span>Champions League</div>
+        <div class="legend-item"><span class="swatch" style="background:#E88C2E"></span>Europa League</div>
+        <div class="legend-item"><span class="swatch" style="background:#E5484D"></span>Relegation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4 · BASEBALL LINE SCORE ── -->
+  <div>
+    <div class="anno">Line score — scoring innings white · zeros dim · unplayed – ghost · current inning track chip • · R highlighted</div>
+    <div class="card card--table">
+      <div class="ls-grid" style="padding-bottom:2px">
+        <span></span>
+        <span class="ls-head">1</span><span class="ls-head">2</span><span class="ls-head">3</span><span class="ls-head">4</span><span class="ls-head">5</span><span class="ls-head">6</span><span class="ls-head">7</span><span class="ls-head">8</span><span class="ls-head">9</span>
+        <span class="ls-head" style="color:var(--text)">R</span><span class="ls-head">H</span><span class="ls-head">E</span>
+      </div>
+      <div class="ls-grid ls-row" style="border-top:1px solid var(--divider)">
+        <span class="ls-abbr"><span class="team-bar team-bar--row" style="background:#FFC52F"></span>MIL</span>
+        <span class="ls-cell ls-zero">0</span><span class="ls-cell">1</span><span class="ls-cell ls-zero">0</span><span class="ls-cell">2</span><span class="ls-cell ls-zero">0</span><span class="ls-cell ls-zero">0</span><span class="ls-cell">1</span><span class="ls-cell ls-ghost">–</span><span class="ls-cell ls-ghost">–</span>
+        <span class="ls-cell" style="font-weight:700;font-size:15px">4</span><span class="ls-cell ls-zero">8</span><span class="ls-cell ls-zero">0</span>
+      </div>
+      <div class="ls-grid ls-row">
+        <span class="ls-abbr"><span class="team-bar team-bar--row" style="background:#CC3433"></span>CHC</span>
+        <span class="ls-cell">2</span><span class="ls-cell ls-zero">0</span><span class="ls-cell ls-zero">0</span><span class="ls-cell">1</span><span class="ls-cell">1</span><span class="ls-cell">1</span><span class="ls-cell" style="text-align:center"><span class="ls-now">•</span></span><span class="ls-cell ls-ghost">–</span><span class="ls-cell ls-ghost">–</span>
+        <span class="ls-cell" style="font-weight:700;font-size:15px">5</span><span class="ls-cell ls-zero">9</span><span class="ls-cell ls-zero">1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5 · BOX SCORE FRAGMENT ── -->
+  <div>
+    <div class="anno">Box score — STARTERS / BENCH section rows · PTS key column · signed +/− · totals · faint middot footer</div>
+    <div class="card card--table">
+      <div class="box-grid">
+        <span class="box-head" style="text-align:left">THUNDER</span><span class="box-head">MIN</span><span class="box-head" style="color:var(--text)">PTS</span><span class="box-head">REB</span><span class="box-head">AST</span><span class="box-head">+/−</span>
+      </div>
+      <div class="box-grid section-row"><span style="grid-column:1/-1">STARTERS</span></div>
+      <div class="box-grid box-row" style="border-top:0">
+        <span class="box-name">S. Gilgeous-Alexander<span class="box-pos">G</span></span>
+        <span class="box-num">36</span><span class="num num--key" style="text-align:right">34</span><span class="box-num">5</span><span class="box-num">8</span><span class="box-num pm-pos">+12</span>
+      </div>
+      <div class="box-grid box-row">
+        <span class="box-name">J. Williams<span class="box-pos">F</span></span>
+        <span class="box-num">33</span><span class="num num--key" style="text-align:right">21</span><span class="box-num">7</span><span class="box-num">4</span><span class="box-num pm-pos">+9</span>
+      </div>
+      <div class="box-grid box-row">
+        <span class="box-name">C. Holmgren<span class="box-pos">C</span></span>
+        <span class="box-num">29</span><span class="num num--key" style="text-align:right">14</span><span class="box-num">11</span><span class="box-num">2</span><span class="box-num">0</span>
+      </div>
+      <div class="box-grid section-row"><span style="grid-column:1/-1">BENCH</span></div>
+      <div class="box-grid box-row" style="border-top:0">
+        <span class="box-name">A. Caruso<span class="box-pos">G</span></span>
+        <span class="box-num">22</span><span class="num num--key" style="text-align:right">9</span><span class="box-num">3</span><span class="box-num">3</span><span class="box-num pm-neg">−5</span>
+      </div>
+      <div class="box-grid box-row">
+        <span class="box-name">I. Hartenstein<span class="box-pos">C</span></span>
+        <span class="box-num">19</span><span class="num num--key" style="text-align:right">6</span><span class="box-num">8</span><span class="box-num">1</span><span class="box-num pm-pos">+4</span>
+      </div>
+      <div class="box-grid totals-row">
+        <span class="box-name" style="font-weight:700">TEAM</span>
+        <span class="box-num" style="color:var(--text);font-weight:600">240</span><span class="num num--key" style="text-align:right">112</span><span class="box-num" style="color:var(--text);font-weight:600">44</span><span class="box-num" style="color:var(--text);font-weight:600">26</span><span class="box-num"></span>
+      </div>
+      <div class="footer-line">FG 41/86 · 47.7% · 3PT 12/31 · FT 18/22 · TO 11 · PTS IN PAINT 48</div>
+    </div>
+  </div>
+
+  <!-- ── 6 · NEWSPAPER AGATE BLOCK ── -->
+  <div>
+    <div class="anno">Newspaper agate — §10 footer-summary voice as a card · 11px faint-dim tabular · middot fragments</div>
+    <div class="card card--table" style="padding-top:14px;padding-bottom:14px">
+      <div class="card-label-faint">CUBS · GAME NOTES</div>
+      <div class="agate-sec">BATTING</div>
+      <div class="agate-line">2B: Vierling (12, Lopez) · 3B: none · HR: Suzuki (18, 6th inning off Peralta)</div>
+      <div class="agate-line">Team LOB: 7 · RISP: 2-for-9 · GIDP: Hoerner</div>
+      <div class="agate-sec">FIELDING</div>
+      <div class="agate-line">E: Hoerner (4, throw) · DP: 2 · Outfield assists: Crow-Armstrong (Chourio at home)</div>
+      <div class="agate-sec">BASERUNNING</div>
+      <div class="agate-line">SB: Crow-Armstrong (27, 2nd base off Peralta/Contreras) · CS: none</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -15509,67 +15509,78 @@
             "id": "301648",
             "name": "O. Gill",
             "pos": "G",
-            "jersey": "12"
+            "jersey": "12",
+            "formationPlace": "1"
           },
           {
             "id": "118395",
             "name": "G. Gómez",
             "pos": "CD",
-            "jersey": "15"
+            "jersey": "15",
+            "formationPlace": "5"
           },
           {
             "id": "215401",
             "name": "O. Alderete",
             "pos": "CD-L",
-            "jersey": "3"
+            "jersey": "3",
+            "formationPlace": "4"
           },
           {
             "id": "119413",
             "name": "G. Velázquez",
             "pos": "CD-R",
-            "jersey": "2"
+            "jersey": "2",
+            "formationPlace": "6"
           },
           {
             "id": "181657",
             "name": "J. Alonso",
             "pos": "LB",
-            "jersey": "6"
+            "jersey": "6",
+            "formationPlace": "3"
           },
           {
             "id": "84295",
             "name": "J. Cáceres",
             "pos": "RB",
-            "jersey": "4"
+            "jersey": "4",
+            "formationPlace": "2"
           },
           {
             "id": "202501",
             "name": "A. Cubas",
             "pos": "CM-L",
-            "jersey": "14"
+            "jersey": "14",
+            "formationPlace": "10"
           },
           {
             "id": "192278",
             "name": "D. Gómez",
             "pos": "CM-R",
-            "jersey": "8"
+            "jersey": "8",
+            "formationPlace": "8"
           },
           {
             "id": "297328",
             "name": "M. Galarza",
             "pos": "LM",
-            "jersey": "23"
+            "jersey": "23",
+            "formationPlace": "11"
           },
           {
             "id": "48128",
             "name": "M. Almirón",
             "pos": "RM",
-            "jersey": "10"
+            "jersey": "10",
+            "formationPlace": "7"
           },
           {
             "id": "20975",
             "name": "J. Enciso",
             "pos": "F",
-            "jersey": "19"
+            "jersey": "19",
+            "formationPlace": "9"
           }
         ],
         "bench": [
@@ -15674,67 +15685,78 @@
             "id": "189026",
             "name": "M. Maignan",
             "pos": "G",
-            "jersey": "16"
+            "jersey": "16",
+            "formationPlace": "1"
           },
           {
             "id": "277385",
             "name": "W. Saliba",
             "pos": "CD-L",
-            "jersey": "17"
+            "jersey": "17",
+            "formationPlace": "6"
           },
           {
             "id": "222793",
             "name": "D. Upamecano",
             "pos": "CD-R",
-            "jersey": "4"
+            "jersey": "4",
+            "formationPlace": "5"
           },
           {
             "id": "160115",
             "name": "L. Digne",
             "pos": "LB",
-            "jersey": "3"
+            "jersey": "3",
+            "formationPlace": "3"
           },
           {
             "id": "231692",
             "name": "J. Koundé",
             "pos": "RB",
-            "jersey": "5"
+            "jersey": "5",
+            "formationPlace": "2"
           },
           {
             "id": "286831",
             "name": "M. Olise",
             "pos": "AM",
-            "jersey": "11"
+            "jersey": "11",
+            "formationPlace": "10"
           },
           {
             "id": "176203",
             "name": "A. Rabiot",
             "pos": "LM",
-            "jersey": "14"
+            "jersey": "14",
+            "formationPlace": "4"
           },
           {
             "id": "285226",
             "name": "M. Koné",
             "pos": "RM",
-            "jersey": "6"
+            "jersey": "6",
+            "formationPlace": "8"
           },
           {
             "id": "231388",
             "name": "K. Mbappé",
             "pos": "F",
-            "jersey": "10"
+            "jersey": "10",
+            "formationPlace": "9"
           },
           {
             "id": "328238",
             "name": "B. Barcola",
             "pos": "AM-L",
-            "jersey": "12"
+            "jersey": "12",
+            "formationPlace": "11"
           },
           {
             "id": "229744",
             "name": "O. Dembélé",
             "pos": "AM-R",
-            "jersey": "7"
+            "jersey": "7",
+            "formationPlace": "7"
           }
         ],
         "bench": [
@@ -15981,6 +16003,1054 @@
         "teamAbbr": "FRA",
         "athlete": "Michael Olise",
         "text": "Michael Olise (France) is shown the yellow card.",
+        "scoring": false
+      }
+    ],
+    "commentary": [
+      {
+        "text": "Lineups are announced and players are warming up.",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "text": "First Half begins.",
+        "type": "Kickoff",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "7'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Miguel Almirón.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "12'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Matías Galarza (Paraguay) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "12'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Manu Koné (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "14'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Matías Galarza (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "14'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Michael Olise (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "18'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Júnior Alonso.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "19'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Juan José Cáceres (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "19'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Bradley Barcola (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "19'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Bradley Barcola (France) is shown the yellow card for a bad foul.",
+        "type": "Yellow Card",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "22'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt blocked. Manu Koné (France) left footed shot from outside the box is blocked. Assisted by Ousmane Dembélé.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "22'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Diego Gómez.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "23'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Gustavo Velázquez.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "23'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay in match for a drinks break.",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "26'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "28'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Attempt missed. Júnior Alonso (Paraguay) left footed shot from outside the box misses to the right. Assisted by Andrés Cubas.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "28'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Attempt missed. Diego Gómez (Paraguay) right footed shot from outside the box misses to the right.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "30'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Miguel Almirón (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "30'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Bradley Barcola (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "30'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Matías Galarza (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "30'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Manu Koné (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "33'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Adrien Rabiot (France) left footed shot from outside the box is too high. Assisted by Ousmane Dembélé.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "33'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Julio Enciso (Paraguay) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "33'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by William Saliba (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "34'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Gustavo Velázquez (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "34'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Mike Maignan (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "34'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Andrés Cubas (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "34'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Kylian Mbappé (France) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "36'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Andrés Cubas.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "36'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Gustavo Gómez (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "36'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Dayot Upamecano (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "38'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt blocked. Ousmane Dembélé (France) left footed shot from the right side of the box is blocked. Assisted by Kylian Mbappé.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "38'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Júnior Alonso.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "40'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Julio Enciso (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "40'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Jules Koundé (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "41'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Omar Alderete.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "43'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Manu Koné (France) right footed shot from outside the box is high and wide to the right. Assisted by Dayot Upamecano.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt blocked. Adrien Rabiot (France) left footed shot from outside the box is blocked. Assisted by Bradley Barcola.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "clock": "45'",
+        "text": "Fourth official has announced 3 minutes of added time.",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+4'",
+        "text": "First Half ends, Paraguay 0, France 0.",
+        "type": "Halftime",
+        "scoring": false
+      },
+      {
+        "clock": "45'",
+        "text": "Second Half begins Paraguay 0, France 0.",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "46'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Miguel Almirón (Paraguay) wins a free kick on the right wing.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "46'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Lucas Digne (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "47'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Gustavo Velázquez (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "47'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Michael Olise (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "49'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Adrien Rabiot (France) left footed shot from outside the box is too high. Assisted by Manu Koné.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "50'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Attempt blocked. Miguel Almirón (Paraguay) left footed shot from the right side of the box is blocked.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "50'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Corner, Paraguay. Conceded by William Saliba.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "51'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Juan José Cáceres.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "52'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Ousmane Dembélé (France) right footed shot from a difficult angle on the left is close, but misses to the left. Assisted by Kylian Mbappé following a corner.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "52'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Delay in match because of an injury Orlando Gill (Paraguay).",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "53'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "54'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt saved. Manu Koné (France) right footed shot from outside the box is saved in the top right corner by Orlando Gill (Paraguay). Assisted by Bradley Barcola.",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "54'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Orlando Gill.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "56'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Juan José Cáceres.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "58'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Substitution, Paraguay. José Canale replaces Omar Alderete because of an injury.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "60'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Bradley Barcola (France) right footed shot from outside the box is too high. Assisted by Adrien Rabiot.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "61'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Substitution, Paraguay. Gustavo Caballero replaces Julio Enciso because of an injury.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "61'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Substitution, France. Désiré Doué replaces Bradley Barcola.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "64'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt missed. Kylian Mbappé (France) right footed shot from outside the box is too high. Assisted by Désiré Doué.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "65'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Penalty conceded by Diego Gómez (Paraguay) after a foul in the penalty area.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "65'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Penalty France. Désiré Doué draws a foul in the penalty area.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "66'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay in match because of an injury Désiré Doué (France).",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "67'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "67'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "VAR Decision: Penalty France.",
+        "type": "VAR - Referee decision cancelled",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "70'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Goal! Paraguay 0, France 1. Kylian Mbappé (France) converts the penalty with a right footed shot to the bottom right corner.",
+        "type": "Penalty - Scored",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "71'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Substitution, Paraguay. Mauricio replaces Diego Gómez.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "71'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Substitution, Paraguay. Gabriel Ávalos replaces Miguel Almirón.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "72'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Andrés Cubas (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "72'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Adrien Rabiot (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "73'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay in match for a drinks break.",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "76'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "77'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Juan José Cáceres (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "77'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Kylian Mbappé (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "80'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Gabriel Ávalos (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "80'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Dayot Upamecano (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "81'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Juan José Cáceres (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "81'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Manu Koné (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "81'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Manu Koné (France) is shown the yellow card for a bad foul.",
+        "type": "Yellow Card",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "84'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Gustavo Caballero (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "84'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Michael Olise (France) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "84'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Substitution, France. Rayan Cherki replaces Ousmane Dembélé.",
+        "type": "Substitution",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "87'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Attempt missed. Júnior Alonso (Paraguay) left footed shot from outside the box misses to the right. Assisted by Mauricio.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "87'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Matías Galarza (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "87'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Manu Koné (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "89'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt saved. Kylian Mbappé (France) right footed shot from outside the box is saved in the bottom right corner by Orlando Gill (Paraguay). Assisted by Désiré Doué.",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Attempt missed. Mauricio (Paraguay) right footed shot from outside the box is close, but misses to the left. Assisted by Matías Galarza with a headed pass.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "clock": "90'",
+        "text": "Fourth official has announced 10 minutes of added time.",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+1'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt blocked. Désiré Doué (France) right footed shot from outside the box is blocked. Assisted by Michael Olise.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+1'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Matías Galarza (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+1'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Michael Olise (France) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+2'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Gustavo Caballero (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+2'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Dayot Upamecano (France) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+4'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Júnior Alonso.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+6'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt saved. Kylian Mbappé (France) left footed shot from the centre of the box is saved in the bottom left corner by Orlando Gill (Paraguay). Assisted by Désiré Doué.",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+6'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Attempt saved. Kylian Mbappé (France) left footed shot from the centre of the box is saved in the centre of the goal by Orlando Gill (Paraguay).",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+7'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Matías Galarza (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+7'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Michael Olise (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+7'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Michael Olise (France) is shown the yellow card.",
+        "type": "Yellow Card",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+8'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Corner, Paraguay. Conceded by William Saliba.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+9'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Foul by Juan José Cáceres (Paraguay).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+9'",
+        "side": "home",
+        "teamAbbr": "PAR",
+        "text": "Kylian Mbappé (France) wins a free kick on the left wing.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+10'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Corner, France. Conceded by Matías Galarza.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+10'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Mauricio (Paraguay) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+10'",
+        "side": "away",
+        "teamAbbr": "FRA",
+        "text": "Foul by Désiré Doué (France).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "90'+11'",
+        "text": "Second Half ends, Paraguay 0, France 1.",
+        "type": "End Regular Time",
+        "scoring": false
+      },
+      {
+        "text": "Match ends, Paraguay 0, France 1.",
         "scoring": false
       }
     ],

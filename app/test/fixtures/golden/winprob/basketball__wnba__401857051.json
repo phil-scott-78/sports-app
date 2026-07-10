@@ -1,0 +1,85 @@
+{
+  "endpoint": "winprob",
+  "args": {
+    "key": "basketball/wnba",
+    "eventId": "401857051",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/events/401857051/competitions/401857051/predictor?lang=en&region=us",
+      "name": "Seattle Storm at Atlanta Dream",
+      "shortName": "SEA @ ATL",
+      "lastModified": "2026-07-09T10:08Z",
+      "homeTeam": {
+        "team": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/20?lang=en&region=us"
+        },
+        "statistics": [
+          {
+            "name": "matchupQuality",
+            "displayName": "Matchup Quality",
+            "shortDisplayName": "MQ",
+            "description": "A measure of projected competitiveness and excitement in the game, using a 0 to 100 scale, with 100 as the most exciting",
+            "abbreviation": "MQ",
+            "value": 32.3974,
+            "displayValue": "32.3974"
+          },
+          {
+            "name": "teamPredPtDiff",
+            "displayName": "Team Pred Pt Diff",
+            "shortDisplayName": "Pred Pt Diff",
+            "description": "",
+            "abbreviation": "TPPD",
+            "value": 0,
+            "displayValue": "0.000"
+          },
+          {
+            "name": "teamPredWinpct",
+            "displayName": "Team Pred Win Percentage",
+            "shortDisplayName": "Pred Win Percentage",
+            "description": "",
+            "abbreviation": "TPWP",
+            "value": 83.27,
+            "displayValue": "83.3"
+          }
+        ]
+      },
+      "awayTeam": {
+        "team": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/seasons/2026/teams/14?lang=en&region=us"
+        },
+        "statistics": [
+          {
+            "name": "matchupQuality",
+            "displayName": "Matchup Quality",
+            "shortDisplayName": "MQ",
+            "description": "A measure of projected competitiveness and excitement in the game, using a 0 to 100 scale, with 100 as the most exciting",
+            "abbreviation": "MQ",
+            "value": 32.3974,
+            "displayValue": "32.3974"
+          },
+          {
+            "name": "teamPredPtDiff",
+            "displayName": "Team Pred Pt Diff",
+            "shortDisplayName": "Pred Pt Diff",
+            "description": "",
+            "abbreviation": "TPPD",
+            "value": 0,
+            "displayValue": "0.000"
+          },
+          {
+            "name": "teamPredWinpct",
+            "displayName": "Team Pred Win Percentage",
+            "shortDisplayName": "Pred Win Percentage",
+            "description": "",
+            "abbreviation": "TPWP",
+            "value": 16.73,
+            "displayValue": "16.7"
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "home": 83,
+    "away": 17
+  }
+}

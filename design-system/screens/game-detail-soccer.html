@@ -1,0 +1,403 @@
+<!-- @dsCard group="Screens" name="Game detail — soccer (live)" subtitle="Timeline · momentum · commentary preview · stats split" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game detail — soccer (live)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ——— card-local ——— */
+body { padding: 24px; }
+.frame {
+  max-width: 428px; margin: 0 auto;
+  border: 1px solid var(--divider); border-radius: 24px; overflow: hidden;
+  background: var(--bg);
+}
+.screen-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px var(--page-margin) 0;
+}
+.screen-head .chev { font-size: 22px; color: var(--text-dim); line-height: 1; width: 22px; }
+.screen-head .ttl { font: 600 12px var(--font-copy); letter-spacing: .04em; color: var(--text-dim); }
+.screen-head .sp { width: 22px; }
+
+.status-row { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--page-margin) 0; }
+.status-row .live-dot { width: 6px; height: 6px; }
+
+.score-block { padding: 6px var(--page-margin) 0; }
+.score-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px solid var(--border); }
+.score-row .side { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.score-row .name { font: 700 40px/1 var(--font-score); letter-spacing: .01em; }
+.score-row .num { font: 700 52px/1 var(--font-score); font-variant-numeric: tabular-nums; }
+.score-row.trail .name, .score-row.trail .num { color: var(--text-dim); }
+.badge-alarm {
+  font: 700 10px var(--font-copy); letter-spacing: .05em;
+  background: var(--live); color: #fff; border-radius: 4px; padding: 2px 6px;
+}
+
+.chip-nav { display: flex; gap: var(--chip-gap); padding: 16px var(--page-margin) 4px; overflow: hidden; }
+
+.mcard { margin: var(--gap-card) var(--page-margin) 0; }
+.mcard--first { margin-top: var(--gap-first-card); }
+
+/* match timeline */
+.tl-head { display: flex; justify-content: space-between; margin-bottom: 14px; }
+.tl-head .min { font: 700 14px var(--font-score); color: var(--text); font-variant-numeric: tabular-nums; }
+.tl { position: relative; height: 34px; }
+.tl .rail { position: absolute; left: 0; right: 0; top: 15px; height: 4px; border-radius: 2px; background: var(--track); }
+.tl .elapsed { position: absolute; left: 0; top: 15px; height: 4px; border-radius: 2px; background: #3A4250; }
+.tl .ht { position: absolute; left: 50%; top: 9px; bottom: 9px; width: 1.5px; background: var(--outline); }
+.tl .goal { position: absolute; top: 8px; width: 18px; height: 18px; border-radius: 50%; transform: translateX(-50%); border: 2px solid var(--bg); }
+.tl .cardm { position: absolute; top: 10px; width: 10px; height: 14px; border-radius: 2px; transform: translateX(-50%); }
+.tl .now { position: absolute; top: 5px; bottom: 5px; width: 2.5px; background: var(--text); }
+.tl-axis { display: flex; justify-content: space-between; font: 400 10px var(--font-copy); color: var(--text-faint); margin-top: 2px; }
+.tl-rows { display: flex; flex-direction: column; gap: 6px; border-top: 1px solid var(--divider); margin-top: 12px; padding-top: 12px; font: 400 12px var(--font-copy); color: var(--text-dim); }
+.tl-rows .r { display: flex; gap: 10px; align-items: flex-start; }
+.tl-rows .m { font: 600 12px var(--font-score); color: var(--text-faint); width: 26px; flex: none; font-variant-numeric: tabular-nums; }
+.tl-rows .g-dot { width: 12px; height: 12px; border-radius: 50%; flex: none; margin-top: 1px; }
+.tl-rows .g-card { width: 8px; height: 12px; border-radius: 1.5px; flex: none; margin-top: 2px; }
+
+/* momentum */
+.mo-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.mo-legend { display: flex; gap: 14px; font: 400 11px var(--font-copy); color: var(--text-dim); }
+.mo-legend .k { display: inline-flex; align-items: center; gap: 5px; }
+.mo-legend .sw { width: 8px; height: 8px; border-radius: 2px; }
+.mo { position: relative; }
+.mo .up { display: flex; gap: 3px; align-items: flex-end; height: 48px; }
+.mo .down { display: flex; gap: 3px; align-items: flex-start; height: 22px; }
+.mo .up span, .mo .down span { flex: 1; }
+.mo .up span { border-radius: 2px 2px 0 0; }
+.mo .down span { border-radius: 0 0 2px 2px; }
+.mo .mid { height: 2px; background: var(--outline); border-radius: 1px; }
+.mo .ht { position: absolute; top: -4px; bottom: 16px; left: 50%; width: 1.5px; background: var(--border); }
+.mo .now { position: absolute; top: -4px; bottom: 16px; left: 81%; width: 1.5px; background: var(--border); }
+.mo-axis { display: flex; justify-content: space-between; font: 400 10px var(--font-copy); color: var(--text-faint); margin-top: 4px; }
+
+/* commentary preview */
+.cm-row { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--divider); }
+.cm-row .min {
+  flex: none; width: 34px; height: 26px; border-radius: 6px; background: var(--track);
+  display: flex; align-items: center; justify-content: center;
+  font: 700 14px var(--font-score); color: var(--text); font-variant-numeric: tabular-nums;
+}
+.cm-row p { margin: 0; font: 400 13px/1.55 var(--font-copy); color: var(--text-body); }
+.cm-row.old p { color: var(--text-dim); }
+.cm-foot { border-top: 1px solid var(--divider); padding-top: 12px; text-align: center; font: 600 13px var(--font-copy); color: var(--text-dim); }
+
+/* stats */
+.pos-head { display: flex; justify-content: space-between; font: 400 11px var(--font-copy); color: var(--text-dim); margin-bottom: 6px; }
+.pos-head .pct { font-weight: 600; font-variant-numeric: tabular-nums; }
+.pos-head .lbl { letter-spacing: .06em; text-transform: uppercase; }
+.pos-bar { height: 8px; display: flex; gap: 2px; }
+.pos-bar span { border-radius: 4px; }
+.num-rows { display: flex; flex-direction: column; gap: 8px; font-variant-numeric: tabular-nums; margin-top: 14px; }
+.num-rows .r { display: flex; justify-content: space-between; align-items: baseline; font: 400 13px var(--font-copy); }
+.num-rows .a { font-weight: 600; width: 40px; color: var(--text); }
+.num-rows .lbl { font: 400 11px var(--font-copy); color: var(--text-faint); letter-spacing: .06em; text-transform: uppercase; }
+.num-rows .b { color: var(--text-dim); width: 40px; text-align: right; }
+.scroll-pad { height: var(--scroll-bottom); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="screen-head">
+    <span class="chev">‹</span>
+    <span class="ttl">WORLD CUP</span>
+    <span class="sp"></span>
+  </div>
+
+  <!-- 1 · status pill row -->
+  <div class="status-row">
+    <span class="pill"><span class="live-dot"></span>73′</span>
+    <span class="caption">De Kuip · Rotterdam</span>
+  </div>
+
+  <!-- 2 · giant score block, one side 10 MEN -->
+  <div class="score-block">
+    <div class="score-row">
+      <div class="side">
+        <span class="team-bar team-bar--block" style="background:#C8102E"></span>
+        <span class="name">ENGLAND</span>
+      </div>
+      <span class="num">2</span>
+    </div>
+    <div class="score-row trail">
+      <div class="side">
+        <span class="team-bar team-bar--block" style="background:#F36C21"></span>
+        <span class="name">NETHERLANDS</span>
+        <span class="badge-alarm">10 MEN</span>
+      </div>
+      <span class="num">1</span>
+    </div>
+  </div>
+
+  <!-- 3 · chip nav -->
+  <div class="chip-nav">
+    <span class="chip chip--active">Now</span>
+    <span class="chip">Live pitch</span>
+    <span class="chip">Commentary</span>
+    <span class="chip">Lineups</span>
+    <span class="chip">Stats</span>
+  </div>
+
+  <!-- 4 · MATCH TIMELINE situation card -->
+  <div class="card mcard mcard--first">
+    <div class="tl-head">
+      <span class="card-label">MATCH TIMELINE</span>
+      <span class="min">73′</span>
+    </div>
+    <div class="tl">
+      <div class="rail"></div>
+      <div class="elapsed" style="width:81%"></div>
+      <div class="ht"></div>
+      <span class="goal" style="left:13%;background:#C8102E"></span>
+      <span class="goal" style="left:34%;background:#F36C21"></span>
+      <span class="cardm" style="left:56%;background:var(--gold)"></span>
+      <span class="cardm" style="left:63%;background:var(--live)"></span>
+      <span class="goal" style="left:76%;background:#C8102E"></span>
+      <span class="now" style="left:81%"></span>
+    </div>
+    <div class="tl-axis"><span>KO</span><span>HT</span><span>90′</span></div>
+    <div class="tl-rows">
+      <div class="r"><span class="m">74′</span><span class="g-dot" style="background:#C8102E"></span><span>Kane — sweeps in Saka's cutback</span></div>
+      <div class="r"><span class="m">68′</span><span class="g-card" style="background:var(--live)"></span><span>De Ligt — second yellow, Netherlands to 10</span></div>
+      <div class="r"><span class="m">31′</span><span class="g-dot" style="background:#F36C21"></span><span>Gakpo — left-footed, top corner</span></div>
+    </div>
+  </div>
+
+  <!-- 5 · inverted LAST EVENT (the loud moment — one per screen) -->
+  <div class="inverted mcard">
+    <div class="card-label" style="margin-bottom:8px">LAST EVENT</div>
+    <div class="inverted-prose">Kane sweeps in Saka's cutback at the near post — England lead 2–1.</div>
+  </div>
+
+  <!-- 6 · MOMENTUM card -->
+  <div class="card mcard">
+    <div class="mo-head">
+      <span class="card-label">MOMENTUM</span>
+      <span class="mo-legend">
+        <span class="k"><span class="sw" style="background:#C8102E"></span>ENG</span>
+        <span class="k"><span class="sw" style="background:#F36C21"></span>NED</span>
+      </span>
+    </div>
+    <div class="mo">
+      <div class="up">
+        <span style="height:8px;background:#C8102E"></span>
+        <span style="height:22px;background:#C8102E"></span>
+        <span style="height:14px;background:#C8102E"></span>
+        <span></span>
+        <span style="height:6px;background:#C8102E"></span>
+        <span style="height:30px;background:#C8102E"></span>
+        <span style="height:40px;background:#C8102E"></span>
+        <span style="height:26px;background:#C8102E"></span>
+        <span></span>
+        <span style="height:10px;background:#C8102E"></span>
+        <span style="height:18px;background:#C8102E"></span>
+        <span style="height:34px;background:#C8102E"></span>
+        <span style="height:46px;background:#C8102E"></span>
+        <span style="height:38px;background:#C8102E"></span>
+        <span style="height:24px;background:#C8102E"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="mid"></div>
+      <div class="down">
+        <span></span>
+        <span></span>
+        <span style="height:6px;background:#F36C21"></span>
+        <span style="height:14px;background:#F36C21"></span>
+        <span style="height:8px;background:#F36C21"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span style="height:12px;background:#F36C21"></span>
+        <span style="height:5px;background:#F36C21"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="ht"></div>
+      <div class="now"></div>
+    </div>
+    <div class="mo-axis"><span>KO</span><span>HT</span><span>FT</span></div>
+  </div>
+
+  <!-- 7 · commentary preview -->
+  <div class="card mcard" style="display:flex;flex-direction:column">
+    <div class="card-label" style="padding-bottom:6px">COMMENTARY</div>
+    <div class="cm-row">
+      <span class="min">74′</span>
+      <p>Bedlam at De Kuip. Saka skins Frimpong on the right and pulls it back for Kane, who makes no mistake from eight yards.</p>
+    </div>
+    <div class="cm-row">
+      <span class="min">71′</span>
+      <p>England probe against the ten men — Rice switches the point of attack and Walker overlaps, but the cross is cut out by Van Dijk.</p>
+    </div>
+    <div class="cm-row old">
+      <span class="min">68′</span>
+      <p>De Ligt lunges in on Foden and referee Marciniak reaches for a second yellow. The Netherlands are down to ten.</p>
+    </div>
+    <div class="cm-foot">Full commentary</div>
+  </div>
+
+  <!-- 8 · stats — possession split + number rows -->
+  <div class="card mcard">
+    <div class="pos-head">
+      <span class="pct">58%</span>
+      <span class="lbl">POSSESSION</span>
+      <span class="pct" style="color:var(--text-dim)">42%</span>
+    </div>
+    <div class="pos-bar">
+      <span style="width:58%;background:#C8102E"></span>
+      <span style="flex:1;background:#F36C21"></span>
+    </div>
+    <div class="num-rows">
+      <div class="r"><span class="a tab">14</span><span class="lbl">SHOTS</span><span class="b tab">6</span></div>
+      <div class="r"><span class="a tab">1.8</span><span class="lbl">EXPECTED GOALS</span><span class="b tab">0.9</span></div>
+      <div class="r"><span class="a tab">7</span><span class="lbl">CORNERS</span><span class="b tab">2</span></div>
+    </div>
+  </div>
+
+  <div class="scroll-pad"></div>
+</div>
+</body>
+</html>

@@ -13,6 +13,7 @@ one-liner.
 |---|---|---|---|
 | **Verify existing** | `verify.mjs` (uses `probe.mjs`) | No — pure code | Anytime / CI / cron. Catches drift & gaps for free. |
 | **Onboard new/weird** | `onboard-league` workflow | Yes — only when there's judgment | A new league/sport, or rules that don't fit. |
+| **Probe coordinate feeds** | `probe-plays-coords.mjs` | No — pure code | Does a sport's core plays feed carry x/y (shot charts / pitch views)? Probe IN SEASON — offseason slates read INCONCLUSIVE. Results → SCHEMA.md §2b. |
 
 The deterministic half runs forever at zero cost. The LLM half only fires when
 there's actual design work (classify a new sport, propose a profile).

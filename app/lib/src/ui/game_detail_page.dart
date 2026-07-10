@@ -4,15 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../config.dart';
+import '../data/fastcast_log.dart';
+import '../inning_recap.dart';
 import '../models.dart';
+import '../momentum.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../util.dart';
+import 'follow_sheet.dart';
 import 'golf_scorecard_page.dart';
 import 'match_events.dart';
 import 'player_page.dart';
 import 'poll.dart';
 import 'situations.dart';
+import 'soccer_live.dart';
 import 'stat_specs.dart';
 import 'widgets.dart';
 
@@ -27,6 +32,24 @@ void openGameDetail(BuildContext context, String league, SportEvent event,
 /// The freshest narrative line for a soccer/rugby live game — composed from the
 /// cheap [Competition.events] timeline when there's no core `situation.lastPlay`
 /// — so the §7 inverted "loud moment" card isn't absent for the sport.
+/// Baseball's derived last-play prose (turn 8): the narrative text, with the
+/// pitch name + velocity appended for a mid-at-bat pitch when captured
+/// ('Strike 2 Foul — Cutter, 89 mph'). A challenged call appends its ABS
+/// outcome ('· call overturned' / '· challenge upheld') — the loud moment IS
+/// where the challenge drama lands.
+String _lastPlayProse(BaseballLastPlay lp) {
+  final extra = [
+    if (lp.type != null) lp.type!,
+    if (lp.velo != null) '${lp.velo} mph',
+  ].join(', ');
+  final base = extra.isEmpty ? lp.text : '${lp.text} — $extra';
+  return switch (lp.challenge) {
+    'overturned' => '$base · call overturned',
+    'upheld' => '$base · challenge upheld',
+    _ => base,
+  };
+}
+
 String? lastEventLine(Competition comp) {
   for (final e in comp.events.reversed) {
     final who = e.athlete;
@@ -78,6 +101,10 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
   List<MatchEvent>? _filterSrc;
   int _filterPeriod = -1;
   List<MatchEvent>? _filterEvents;
+
+  /// Last logged situation-source line (see the 'act sit-source' log) — dedupes
+  /// the ~1/s rebuild spam down to actual changes.
+  String? _lastSitSource;
 
   /// The summary's plays projected to [MatchEvent], memoized on the source
   /// list's identity so unrelated rebuilds reuse the projection.
@@ -165,7 +192,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
   }
 
   SportEvent get _event {
-    final scores = ref.read(leagueScoresProvider(_scoresKey)).valueOrNull;
+    final scores = ref.read(mergedLeagueScoresProvider(_scoresKey)).valueOrNull;
     final initial = widget.initialEvent;
     if (scores != null) {
       // A tennis match is one competition inside its parent tournament event —
@@ -192,7 +219,19 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
   Duration? pollInterval() {
     final comp = _event.main;
     if (comp == null) return null;
-    if (comp.status.live) return const Duration(seconds: 20);
+    if (comp.status.live) {
+      // Demote to reconciliation when BOTH push tracks are healthy: the gp
+      // stream feeds the summary and the event stream feeds the score header
+      // (via mergedLeagueScoresProvider) — the poll is only the safety net.
+      if (_pushEligible) {
+        final slate = ref.read(liveSlateProvider(widget.league));
+        final sum = ref.read(liveSummaryProvider(_summaryKey));
+        if (slate.hasValue && !slate.hasError && sum.hasValue && !sum.hasError) {
+          return AppConfig.refreshReconcile;
+        }
+      }
+      return const Duration(seconds: 20);
+    }
     if (comp.status.isScheduled && kickoffSoon(_event.start)) {
       return AppConfig.refreshNearKickoff;
     }
@@ -200,17 +239,71 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     return AppConfig.refreshIdle;
   }
 
+  /// FastCast Track 1 gate: push-feed the summary only while the game is LIVE
+  /// on a fastcast-served league (registry capability, ESPN-direct only). The
+  /// scoreboard poll flips this off when the game ends, which tears down the
+  /// topic subscription via autoDispose.
+  bool get _pushEligible {
+    final comp = _event.main;
+    return comp != null &&
+        comp.status.live &&
+        ref.read(apiProvider).liveSummarySupported(widget.league);
+  }
+
+  /// The match-feed provider key (soccer core plays): the competition's team
+  /// ids ride along because core plays tag teams by $ref only.
+  MatchFeedKey _matchFeedKey(SportEvent event, Competition comp) => (
+        league: widget.league,
+        eventId: event.id,
+        compId: comp.id,
+        homeId: comp.competitorByHome('home')?.id,
+        awayId: comp.competitorByHome('away')?.id,
+      );
+
   @override
   void onPoll() {
     ref.invalidate(leagueScoresProvider(_scoresKey));
+    // The soccer match feed re-polls with the page (its immutable pages are
+    // cached in Api; a steady-state tick costs one tail request). Live only —
+    // a final's feed never changes again.
+    final comp = _event.main;
+    if (comp != null && comp.status.live && !comp.isField) {
+      ref.invalidate(matchFeedProvider(_matchFeedKey(_event, comp)));
+    }
+    // While the FastCast stream is healthy (has data, no error) the summary is
+    // push-fed — skip the 20s re-fetch entirely; polling is only the fallback.
+    if (_pushEligible) {
+      final push = ref.read(liveSummaryProvider(_summaryKey));
+      if (push.hasValue && !push.hasError) {
+        FcLog.log('act', 'detail poll: summary push healthy — skip /summary re-fetch');
+        return;
+      }
+      FcLog.log('act', 'detail poll: summary push not healthy — invalidating /summary');
+    }
     ref.invalidate(summaryProvider(_summaryKey));
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(leagueScoresProvider(_scoresKey), (_, __) => repace());
-    ref.watch(leagueScoresProvider(_scoresKey));
-    final summary = ref.watch(summaryProvider(_summaryKey)).valueOrNull;
+    // The MERGED slate: poll rounds + push overlay emissions + push-health
+    // transitions all land here (repace keeps the running timer when the
+    // cadence is unchanged, so ~1/s push rebuilds don't starve reconciliation).
+    ref.listen(mergedLeagueScoresProvider(_scoresKey), (_, __) => repace());
+    ref.watch(mergedLeagueScoresProvider(_scoresKey));
+    if (_pushEligible) {
+      // Summary-push health changes the poll cadence too (see pollInterval).
+      ref.listen(liveSummaryProvider(_summaryKey), (_, __) => repace());
+    }
+    // Push replaces poll while healthy: a pushed summary short-circuits the
+    // `??` so [summaryProvider] isn't even watched (autoDispose then drops its
+    // fetch); any push gap — still connecting, topic 404, socket lost — falls
+    // back to the polled summary silently.
+    final push =
+        _pushEligible ? ref.watch(liveSummaryProvider(_summaryKey)) : null;
+    final pushed =
+        (push != null && push.hasValue && !push.hasError) ? push.valueOrNull : null;
+    final summary =
+        pushed ?? ref.watch(summaryProvider(_summaryKey)).valueOrNull;
 
     final event = _event;
     final comp = event.main;
@@ -218,7 +311,17 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
       return const Scaffold(body: Center(child: Text('No competition data')));
     }
 
-    final chips = _chipLabels(event, comp, summary);
+    // The soccer touch-by-touch match feed (capability hasMatchFeed — Api
+    // no-ops every other league without a fetch): the live-pitch / shot-map /
+    // momentum source. Not fetched pre-game (empty until kickoff).
+    MatchFeed? matchFeed;
+    if (!comp.isField && !comp.status.isScheduled) {
+      matchFeed = ref
+          .watch(matchFeedProvider(_matchFeedKey(event, comp)))
+          .valueOrNull;
+    }
+
+    final chips = _chipLabels(event, comp, summary, matchFeed);
     final chipIndex = _chip.clamp(0, chips.length - 1);
     final tabLabel = chips.isEmpty ? '' : chips[chipIndex];
     // The long play-by-play tabs virtualize (one sliver list of rows); every
@@ -227,7 +330,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     final feed = _feedForTab(tabLabel, comp, summary);
     final sections = feed != null
         ? const <Widget>[]
-        : _sections(context, event, comp, summary, chips, chipIndex);
+        : _sections(context, event, comp, summary, chips, chipIndex, matchFeed);
     const bodyPadding = EdgeInsets.fromLTRB(
         T.pageMargin, T.gapFirstCard, T.pageMargin, T.scrollBottom);
 
@@ -255,6 +358,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
               // without a status-bar cutout (web/desktop preview) and never jams
               // the back chevron against the top edge.
               topPadding: math.max(MediaQuery.paddingOf(context).top, 16),
+              league: widget.league,
               event: event,
               comp: comp,
               chips: chips,
@@ -345,11 +449,20 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     };
   }
 
+  /// An innings sport (baseball and kin) — the discriminator for the reorganized
+  /// three-tab detail (Now/Recap · Box · Plays) where the venue/series/injury
+  /// story lives ON the first page instead of behind extra chips. Data presence
+  /// (the period unit), never a sport name.
+  bool _isInnings(Competition comp) => comp.periods.unit == 'inning';
+
   /// The chip labels, with the §2.9 Venue/Circuit tab appended when the event
   /// carries the join id its shape needs (never by sport name — see [_venueTab]).
-  List<String> _chipLabels(
-      SportEvent event, Competition comp, GameSummary? summary) {
-    final core = _coreChips(event, comp, summary);
+  /// Innings sports keep exactly their three core tabs (the venue facts render
+  /// as first-page cards there, so the extra chip would be a second home).
+  List<String> _chipLabels(SportEvent event, Competition comp,
+      GameSummary? summary, MatchFeed? matchFeed) {
+    final core = _coreChips(event, comp, summary, matchFeed);
+    if (_isInnings(comp)) return core;
     return switch (_venueTab(event, comp)) {
       VenueTabKind.circuit => [...core, 'Circuit'],
       VenueTabKind.venue => [...core, 'Venue'],
@@ -357,8 +470,8 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     };
   }
 
-  List<String> _coreChips(
-      SportEvent event, Competition comp, GameSummary? summary) {
+  List<String> _coreChips(SportEvent event, Competition comp,
+      GameSummary? summary, MatchFeed? matchFeed) {
     if (comp.isField) {
       // A racing weekend gets one chip per session (practice/qual/race); a
       // single-session field event (golf, one-off race) keeps a plain chip.
@@ -394,6 +507,38 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
             summary.atBats.isNotEmpty);
     final hasDrives = summary != null && summary.drives.isNotEmpty;
     final hasLeaders = comp.competitors.any((c) => c.leaders.isNotEmpty);
+    // Innings sports (the reorganized baseball detail): exactly Now/Recap ·
+    // Box · Plays — the leaders read rides the box tables, the venue/series
+    // cards live on the first page.
+    if (_isInnings(comp)) {
+      return [first, if (hasBox) 'Box', if (hasPlays) 'Plays'];
+    }
+    // The deep soccer detail (design LiveGame 9–10), gated on the summary
+    // actually shipping the deep modules (commentary narrative / match
+    // leaders) — data presence, never sport name, so rugby joins the moment
+    // its summary carries them and a degraded soccer feed falls back to the
+    // generic tab set below. Box/Leaders retire for this grammar: the player
+    // tables move onto Lineups, the team stats + shot map onto Stats, the
+    // leaders read onto the Now card.
+    final soccerDeep = summary != null &&
+        (summary.commentary.isNotEmpty || summary.matchLeaders.isNotEmpty);
+    if (soccerDeep) {
+      final hasShots =
+          matchFeed != null && matchShots(matchFeed.plays).isNotEmpty;
+      return [
+        first,
+        // Turn 10: the live field pass — only while the ball is rolling and
+        // the core feed is actually serving plays.
+        if (s.live && matchFeed != null && matchFeed.plays.isNotEmpty)
+          'Live pitch',
+        if (summary.commentary.isNotEmpty)
+          'Commentary'
+        else if (hasTimeline)
+          'Timeline',
+        if (summary.lineups.isNotEmpty) 'Lineups',
+        if (summary.teamStats.isNotEmpty || hasShots) 'Stats',
+      ];
+    }
     return [
       first,
       if (hasScorecard) 'Scorecard',
@@ -406,6 +551,13 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     ];
   }
 
+  /// Foot-link tab switch ('Full commentary' → the Commentary chip). No-op
+  /// when the chip isn't present.
+  void _switchTab(List<String> chips, String label) {
+    final i = chips.indexOf(label);
+    if (i >= 0) setState(() => _chip = i);
+  }
+
   List<Widget> _sections(
     BuildContext context,
     SportEvent event,
@@ -413,6 +565,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     GameSummary? summary,
     List<String> chips,
     int chipIndex,
+    MatchFeed? matchFeed,
   ) {
     // §2.9 Venue/Circuit tab — dispatched before the field/non-field split so it
     // works for a racing weekend (Circuit) and a stadium team game (Venue) alike.
@@ -440,7 +593,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           : comp;
       final golf = session.meta?.golf;
       final season =
-          ref.read(leagueScoresProvider(_scoresKey)).valueOrNull?.season.year;
+          ref.read(mergedLeagueScoresProvider(_scoresKey)).valueOrNull?.season.year;
       final isGolf = session.scoreKind == 'toPar';
       // chipIndex 0 = Leaderboard (live TODAY column); 1..n = the R{n} chip.
       final golfRound = isGolf && !multiSession && chipIndex > 0 ? chipIndex : null;
@@ -478,11 +631,70 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
     }
     final label = chips[chipIndex];
     switch (label) {
+      case 'Live pitch':
+        // Turn 10: the live field pass — pitch + trail, the last touch as the
+        // quiet sentence, and the restart log. All off the core match feed.
+        final plays = matchFeed?.plays ?? const <MatchFeedPlay>[];
+        final lineups = summary?.lineups ?? const <Lineup>[];
+        return [
+          LivePitchCard(comp: comp, plays: plays, lineups: lineups),
+          LastTouchCard(plays: plays, lineups: lineups),
+          StoppagesCard(comp: comp, plays: plays, lineups: lineups),
+        ];
+      case 'Commentary':
+        return [CommentaryFeedCard(summary!.commentary)];
+      case 'Lineups':
+        // Formation pitch when every starter carries a placement (design 9b),
+        // the plain lists as the reference below, then the per-player tables —
+        // the 'Full player stats' the leaders card links to.
+        return [
+          if (summary!.lineups.any(FormationCard.placeable))
+            FormationCard(
+                comp: comp, lineups: summary.lineups, league: widget.league),
+          _LineupsCard(summary.lineups, league: widget.league),
+          for (final g in summary.boxGroups)
+            _BoxGroupCard(g, league: widget.league),
+        ];
+      case 'Stats':
+        final shots = matchFeed == null
+            ? const <MatchFeedPlay>[]
+            : matchShots(matchFeed.plays);
+        return [
+          if (summary != null && summary.teamStats.isNotEmpty)
+            _TeamStatsCard(comp: comp, rows: summary.teamStats, sport: _sport),
+          if (shots.isNotEmpty)
+            ShotMapCard(
+                comp: comp,
+                shots: shots,
+                lineups: summary?.lineups ?? const <Lineup>[]),
+        ];
       case 'Scorecard': // cricket innings scorecard (batting + bowling figures)
         return [
           for (final inn in summary!.cricketInnings) _CricketInningsCard(inn),
         ];
       case 'Box':
+        // Innings sports: the newspaper page — line score, the W/L line, the
+        // team-tabbed box WITH the agate footnotes (2B:/HR:/Team LOB/RISP…),
+        // the scoring summary from the 1st, and the venue footer.
+        if (_isInnings(comp)) {
+          return [
+            if (_hasCheapLines(comp) || summary?.periodLines != null)
+              _LineScoreCard(comp: comp, lines: summary?.periodLines),
+            if (summary != null && summary.decisions.isNotEmpty)
+              _DecisionsCard(summary.decisions, league: widget.league),
+            if (summary == null)
+              const _LoadingCard()
+            else
+              _BaseballBox(
+                  comp: comp,
+                  summary: summary,
+                  league: widget.league,
+                  showDetails: true),
+            ..._baseballScoringCards(comp, summary, lines: false),
+            _VenueCard(event,
+                comp: comp, summary: summary, includeWeather: false),
+          ];
+        }
         return [
           if (_hasCheapLines(comp) || summary?.periodLines != null)
             _LineScoreCard(comp: comp, lines: summary?.periodLines),
@@ -504,9 +716,16 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
         ];
       case 'Plays':
         // Baseball: the design-9e Scoring|All disclosure feed (at-bats grouping
-        // into half-inning containers, pitch sequences folded behind a tap).
+        // into half-inning containers, pitch sequences folded behind a tap),
+        // headed by the box grid + the W/L line so the tab opens with the score.
         if (summary!.atBats.isNotEmpty) {
-          return [_BaseballPlaysFeed(summary, comp)];
+          return [
+            if (_hasCheapLines(comp) || summary.periodLines != null)
+              _LineScoreCard(comp: comp, lines: summary.periodLines),
+            if (summary.decisions.isNotEmpty)
+              _DecisionsCard(summary.decisions, league: widget.league),
+            _BaseballPlaysFeed(summary, comp),
+          ];
         }
         // Every other sport's full play-by-play, through the SAME feed grammar
         // (design 9b/9c): grouped by period, scores lifted with the running total.
@@ -533,16 +752,99 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           // bonus/timeouts, hockey power play — merged into the summary payload by
           // api.dart) over the cheap scoreboard situation, so the card upgrades in
           // place. Null-safe: no summary/core situation → the scoreboard one stands.
+          //
+          // NOTE (logged below): mergedWith gives the CORE fields precedence,
+          // including balls/strikes — and core rides the 12s espn_client cache,
+          // so on a push-fed slate the count here can trail the (~1s fresh)
+          // pushed scoreboard situation. The 'act sit-source' log line is the
+          // evidence trail for that.
           final liveComp = summary?.situation != null
               ? comp.withSituation(
                   (comp.situation ?? summary!.situation!).mergedWith(summary!.situation))
               : comp;
-          final situation = situationCardFor(liveComp);
-          final cheap = _cheapPanelFor(comp);
+          final coreSit = summary?.situation;
+          final sitSource = coreSit != null
+              ? 'core-over-push (count ${coreSit.balls}-${coreSit.strikes}'
+                  ' vs pushed ${comp.situation?.balls}-${comp.situation?.strikes})'
+              : 'push/scoreboard only';
+          if (sitSource != _lastSitSource) {
+            _lastSitSource = sitSource;
+            FcLog.log('act', 'detail sit-source: $sitSource');
+          }
+          // Baseball's rich live at-bat (turn 8): the last atBats entry while
+          // it's still unresolved — feeds the duel card's pitch count, the
+          // strike-zone card, and the pitch strip. Null for every other sport.
+          final liveAtBat =
+              (summary != null && summary.atBats.isNotEmpty && summary.atBats.last.live)
+                  ? summary.atBats.last
+                  : null;
+          // Between innings (situation.isDueUp): the Due Up card wants the
+          // previous half's story — deterministic off the rich at-bats, with
+          // the optional AI sentence (recapProvider, key-gated in Settings)
+          // upgrading it in place when it lands.
+          final betweenInnings = liveComp.situation?.isDueUp == true;
+          final recap = betweenInnings && summary != null
+              ? previousHalfInningRecap(summary.atBats)
+              : null;
+          final aiRecap = recap != null
+              ? ref
+                  .watch(inningRecapProvider((
+                    league: widget.league,
+                    eventId: event.id,
+                    period: recap.period,
+                    half: recap.half,
+                  )))
+                  .valueOrNull
+              : null;
+          // Scoring plays with running scores — feed basketball's clock-&-run
+          // slot (the situation card) and the §8 lead tracker below it.
           final leadPlays = _leadPlays(summary);
+          final situation = situationCardFor(liveComp,
+              liveAtBat: liveAtBat,
+              recap: recap,
+              aiRecap: aiRecap,
+              leadPlays: leadPlays);
+          // The reorganized innings-sport Now (data-gated on the period unit):
+          // the at-bat story (duel → zone/bases → pitch strip → the loud last
+          // play), the scoring summary from the 1st, then the deep-dive cards
+          // inline — box, win prob, game stats, injuries, series, venue, weather.
+          if (_isInnings(comp)) {
+            return [
+              if (situation != null) situation,
+              if (!betweenInnings &&
+                  liveComp.situation?.hasBaseball == true &&
+                  (liveAtBat != null || liveComp.situation?.onFirst != null))
+                BaseballZoneCard(liveComp, liveAtBat: liveAtBat),
+              if (liveAtBat != null && liveAtBat.pitches.isNotEmpty)
+                PitchStripCard(liveAtBat),
+              if (summary?.lastPlay != null)
+                InvertedCard(
+                    label: summary!.lastPlay!.kind == 'pitch'
+                        ? 'Last pitch'
+                        : 'Last play',
+                    text: _lastPlayProse(summary.lastPlay!))
+              else if (liveComp.situation?.lastPlay != null)
+                InvertedCard(
+                    label: 'Last play', text: liveComp.situation!.lastPlay!),
+              ..._baseballScoringCards(comp, summary),
+              ..._baseballSupportCards(event, comp, summary, chips),
+              if (event.weather != null && event.weather!.summary.isNotEmpty)
+                _WeatherCard(event.weather!),
+            ];
+          }
+          final cheap = _cheapPanelFor(comp);
           final crease = (summary?.cricketInnings.isNotEmpty ?? false)
               ? summary!.cricketInnings.last
               : null;
+          // The deep soccer Now (design 9a): momentum + commentary preview +
+          // match leaders; the team-stat/leader/lineup story moves to its own
+          // tabs, so their generic Now cards stand down (data presence).
+          final soccerDeep = summary != null &&
+              (summary.commentary.isNotEmpty ||
+                  summary.matchLeaders.isNotEmpty);
+          final momentum = matchFeed != null
+              ? momentumBuckets(matchFeed.plays)
+              : const <MomentumBucket>[];
           // §6: the rich shots-on-goal total supersedes the thin goaltending
           // cheap panel — data-driven (a summary shots total + a cheap panel that
           // isn't the sport's own rich stat story, so soccer/basketball keep
@@ -566,6 +868,20 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
               : const <SummaryPlay>[];
           return [
             if (situation != null) situation,
+            // The 9a momentum chart — attacking pressure per minute off the
+            // match feed; absent feed → absent card.
+            if (momentum.isNotEmpty)
+              MomentumCard(comp: comp, buckets: momentum),
+            // Turn 8: strike zone (only with pitch locations) + bases, then the
+            // pitch-by-pitch strip — baseball's rich Now, gated on data presence.
+            // (suppressed between innings — an empty diamond under the Due Up
+            // card says nothing; the bases reset with the next half anyway)
+            if (!betweenInnings &&
+                liveComp.situation?.hasBaseball == true &&
+                (liveAtBat != null || liveComp.situation?.onFirst != null))
+              BaseballZoneCard(liveComp, liveAtBat: liveAtBat),
+            if (liveAtBat != null && liveAtBat.pitches.isNotEmpty)
+              PitchStripCard(liveAtBat),
             if (tennisContext != null) tennisContext,
             // Basketball's §8 lead tracker — computed from the summary's running
             // scores (data-driven: only games with a scoring curve draw it).
@@ -576,23 +892,43 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
               _FightCardCard(league: widget.league, event: event, main: comp),
             if (summary?.winProbability != null)
               _WinProbCard(comp: comp, wp: summary!.winProbability!),
-            // The one loud moment (§7): the core last-play text, or — for
-            // soccer/rugby, which carry no core situation — the freshest event.
-            if (liveComp.situation?.lastPlay != null)
+            // The one loud moment (§7): baseball's derived "what really was the
+            // last play" (rich, walks back past ESPN's next-batter bookends —
+            // a groundout reads as the groundout, an inning end as "End of the
+            // 3rd inning", never "Now at bat"), else the cheap situation's
+            // last-play text, else — for soccer/rugby, which carry no core
+            // situation — the freshest event.
+            if (summary?.lastPlay != null)
+              InvertedCard(
+                  label: summary!.lastPlay!.kind == 'pitch'
+                      ? 'Last pitch'
+                      : 'Last play',
+                  text: _lastPlayProse(summary.lastPlay!))
+            else if (liveComp.situation?.lastPlay != null)
               InvertedCard(label: 'Last play', text: liveComp.situation!.lastPlay!)
             else if (lastEventLine(comp) != null)
               InvertedCard(label: 'Last event', text: lastEventLine(comp)!),
+            // The 9a commentary preview + match leaders (the deep soccer Now).
+            if (soccerDeep && summary.commentary.isNotEmpty)
+              CommentaryPreviewCard(summary.commentary,
+                  onMore: () => _switchTab(chips, 'Commentary')),
+            if (soccerDeep && summary.matchLeaders.isNotEmpty)
+              MatchLeadersCard(summary.matchLeaders,
+                  comp: comp,
+                  league: widget.league,
+                  onFullStats: () => _switchTab(chips, 'Lineups')),
             // Match-stats pulse: hockey's §8 shots-pressure card when the summary
             // ships shots, else the cheap scoreboard panel straight off the wire.
+            // The deep soccer grammar moves this read onto its Stats tab.
             if (showShots)
               _ShotsPressureCard(comp: comp, shots: shotsStat)
-            else if (cheap != null)
+            else if (cheap != null && !soccerDeep)
               _CheapStatsCard(comp: comp, panel: cheap),
             // The quiet scoring summary (design 6c) — hockey's Now was two lonely
             // cards without it.
             if (scoringNow.isNotEmpty) _ScoringSummaryCard(scoringNow),
-            _TopPerformersCard(comp),
-            if (summary != null && summary.lineups.isNotEmpty)
+            if (!soccerDeep) _TopPerformersCard(comp),
+            if (summary != null && summary.lineups.isNotEmpty && !soccerDeep)
               _LineupsCard(summary.lineups, league: widget.league),
             if (summary != null && summary.seasonSeries != null)
               _SeasonSeriesCard(summary.seasonSeries!),
@@ -629,11 +965,30 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           ];
         }
         // Recap
+        // The reorganized innings-sport recap (user-spec order): line score →
+        // the W/L line → the scoring summary from the 1st → the deep-dive cards.
+        if (_isInnings(comp)) {
+          return [
+            if (_hasCheapLines(comp) || summary?.periodLines != null)
+              _LineScoreCard(comp: comp, lines: summary?.periodLines),
+            if (summary != null && summary.decisions.isNotEmpty)
+              _DecisionsCard(summary.decisions, league: widget.league),
+            ..._baseballScoringCards(comp, summary, lines: false),
+            ..._baseballSupportCards(event, comp, summary, chips),
+          ];
+        }
         final bout = summary?.boutFor(comp.id);
         final cheap = _cheapPanelFor(comp);
         final shotsStat = _shotsStat(summary);
         final showShots = shotsStat != null && !(cheap?.overlapsRich ?? false);
         final timeline = _matchTimeline(comp, summary);
+        // The deep soccer recap: the full-match momentum read + match leaders;
+        // team stats live on the Stats tab, the narrative on Commentary.
+        final soccerDeep = summary != null &&
+            (summary.commentary.isNotEmpty || summary.matchLeaders.isNotEmpty);
+        final momentum = matchFeed != null
+            ? momentumBuckets(matchFeed.plays)
+            : const <MomentumBucket>[];
         final hasGoals = timeline.any((e) => e.isScoring);
         // Non-soccer condensed "who scored" log (soccer/rugby use the timeline
         // goals above): actual scores only, no cap — a >12-run game must not drop
@@ -652,20 +1007,33 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           // The match timeline reads as well after full-time as it does live —
           // it's the goal/card story of the game at a glance (soccer/rugby).
           if (comp.events.isNotEmpty) MatchTimelineCard(comp),
+          // The full-match momentum chart (design 9a) — the KO→FT pressure
+          // story in one glance; feed-gated like the live version.
+          if (momentum.isNotEmpty) MomentumCard(comp: comp, buckets: momentum),
           if (comp.method != null || bout != null)
             _MethodCard(comp: comp, bout: bout),
           if (_isFightCard(event, comp))
             _FightCardCard(league: widget.league, event: event, main: comp),
           if (_leadPlays(summary).length >= 12)
             _LeadTrackerCard(comp: comp, plays: _leadPlays(summary)),
+          // Post-game the single win% is a foregone 100 — but the full arc is
+          // the game's story, so the scrubbable chart earns a recap slot.
+          if ((summary?.winProbability?.points.length ?? 0) >= 2)
+            _WinProbCard(comp: comp, wp: summary!.winProbability!),
           if (_hasCheapLines(comp) || summary?.periodLines != null)
             _LineScoreCard(comp: comp, lines: summary?.periodLines),
           if (showShots)
             _ShotsPressureCard(comp: comp, shots: shotsStat)
-          else if (cheap != null)
+          else if (cheap != null && !soccerDeep)
             _CheapStatsCard(comp: comp, panel: cheap),
           if (comp.headline != null) _HeadlineCard(comp.headline!),
-          _TopPerformersCard(comp),
+          if (soccerDeep && summary.matchLeaders.isNotEmpty)
+            MatchLeadersCard(summary.matchLeaders,
+                comp: comp,
+                league: widget.league,
+                onFullStats: () => _switchTab(chips, 'Lineups'))
+          else
+            _TopPerformersCard(comp),
           if (hasGoals)
             ActionFeed(timeline, comp,
                 scoringOnly: true,
@@ -684,6 +1052,48 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
           _VenueCard(event, comp: comp, summary: summary),
         ].whereType<Widget>().toList();
     }
+  }
+
+  /// The baseball "scoring summary" block (user spec: the box grid + the runs
+  /// story starting in the FIRST inning): the line score, then the half-inning
+  /// scoring feed in CHRONOLOGICAL order — the one designed exception to §9's
+  /// newest-first (this block recaps, the Plays tab still leads with the fresh).
+  /// [lines] gates the grid off for pages that already lead with it.
+  List<Widget> _baseballScoringCards(Competition comp, GameSummary? summary,
+      {bool lines = true}) {
+    final scoring = summary == null
+        ? const <SummaryPlay>[]
+        : summary.scoringPlays.where((p) => p.scoring).toList();
+    return [
+      if (lines && (_hasCheapLines(comp) || summary?.periodLines != null))
+        _LineScoreCard(comp: comp, lines: summary?.periodLines),
+      if (scoring.isNotEmpty) _HalfInningFeed(scoring, comp, chronological: true),
+    ];
+  }
+
+  /// The innings-sport first page's deep-dive tail, shared by Now and Recap:
+  /// the Plays link → the team-tabbed box → win probability → the grouped
+  /// hitting/pitching game stats → injuries → season series → venue. Every
+  /// card data-gated; weather is the live page's own addendum.
+  List<Widget> _baseballSupportCards(SportEvent event, Competition comp,
+      GameSummary? summary, List<String> chips) {
+    final playsAt = chips.indexOf('Plays');
+    return [
+      if (playsAt >= 0)
+        _PlaysLink(onTap: () => setState(() => _chip = playsAt)),
+      if (summary != null && summary.boxGroups.isNotEmpty)
+        _BaseballBox(comp: comp, summary: summary, league: widget.league),
+      if (summary?.winProbability != null)
+        _WinProbCard(comp: comp, wp: summary!.winProbability!),
+      if (summary != null)
+        for (final g in summary.teamGameStats)
+          _SummaryStatGroupCard(comp: comp, group: g),
+      if (summary != null && summary.injuries.isNotEmpty)
+        _InjuriesCard(summary.injuries),
+      if (summary != null && summary.seasonSeries != null)
+        _SeasonSeriesCard(summary.seasonSeries!),
+      _VenueCard(event, comp: comp, summary: summary, includeWeather: false),
+    ];
   }
 
   /// The field-event leader — the competitor the leaderboard sorts to the top
@@ -796,6 +1206,7 @@ class _GameDetailPageState extends ConsumerState<GameDetailPage>
 
 class _HeaderDelegate extends SliverPersistentHeaderDelegate {
   final double topPadding;
+  final String league;
   final SportEvent event;
   final Competition comp;
   final List<String> chips;
@@ -804,6 +1215,7 @@ class _HeaderDelegate extends SliverPersistentHeaderDelegate {
 
   _HeaderDelegate({
     required this.topPadding,
+    required this.league,
     required this.event,
     required this.comp,
     required this.chips,
@@ -853,7 +1265,9 @@ class _HeaderDelegate extends SliverPersistentHeaderDelegate {
               ignoring: t > 0.5,
               child: Opacity(
                 opacity: (1 - t * 1.6).clamp(0.0, 1.0),
-                child: ClipRect(child: _ExpandedBlock(event: event, comp: comp)),
+                child: ClipRect(
+                    child: _ExpandedBlock(
+                        league: league, event: event, comp: comp)),
               ),
             ),
           ),
@@ -916,9 +1330,11 @@ class _HeaderDelegate extends SliverPersistentHeaderDelegate {
 }
 
 class _ExpandedBlock extends StatelessWidget {
+  final String league;
   final SportEvent event;
   final Competition comp;
-  const _ExpandedBlock({required this.event, required this.comp});
+  const _ExpandedBlock(
+      {required this.league, required this.event, required this.comp});
 
   @override
   Widget build(BuildContext context) {
@@ -983,26 +1399,35 @@ class _ExpandedBlock extends StatelessWidget {
       if (comp.broadcast != null) comp.broadcast!,
     ].join(' · ');
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(T.pageMargin, 6, T.pageMargin, 0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-        Padding(
-          // room for the back chevron on the left
-          padding: const EdgeInsets.only(left: 34),
-          child: Row(children: [
-            StatusPill(_pillText(), live: comp.status.live),
-            const Spacer(),
-            Flexible(
-              child: Text(contextLine,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: T.caption),
-            ),
-          ]),
-        ),
-        const SizedBox(height: 4),
-        block,
-      ]),
+    // The header's score block carries the same long-press-to-follow grammar
+    // as the feed rows — team-kind head-to-head games only.
+    final canFollow = !comp.isField && comp.competitorKind == 'team';
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onLongPress: canFollow
+          ? () => showGameFollowSheet(context, league: league, comp: comp)
+          : null,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(T.pageMargin, 6, T.pageMargin, 0),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+          Padding(
+            // room for the back chevron on the left
+            padding: const EdgeInsets.only(left: 34),
+            child: Row(children: [
+              StatusPill(_pillText(), live: comp.status.live),
+              const Spacer(),
+              Flexible(
+                child: Text(contextLine,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: T.caption),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 4),
+          block,
+        ]),
+      ),
     );
   }
 
@@ -1076,17 +1501,37 @@ class _LoadingCard extends StatelessWidget {
       );
 }
 
-class _WinProbCard extends StatelessWidget {
+/// Win probability. With the full-game arc (`wp.points`, summary-sourced) this
+/// is a scrubbable chart: hold/drag across the curve to replay any moment — the
+/// headline %, the split bar, and a game-state caption (period · clock · score)
+/// track the finger; release snaps back to now. Without an arc (the predictor
+/// fallback, or old payloads) it stays the passive label + split bar.
+class _WinProbCard extends StatefulWidget {
   final Competition comp;
   final WinProbability wp;
   const _WinProbCard({required this.comp, required this.wp});
 
   @override
+  State<_WinProbCard> createState() => _WinProbCardState();
+}
+
+class _WinProbCardState extends State<_WinProbCard> {
+  int? _scrub; // selected arc index while touching; null = resting (now/final)
+
+  @override
   Widget build(BuildContext context) {
+    final comp = widget.comp, wp = widget.wp;
     final away = comp.away, home = comp.home;
     if (away == null || home == null) return const SizedBox.shrink();
-    final leader = wp.home >= wp.away ? home : away;
-    final pct = wp.home >= wp.away ? wp.home : wp.away;
+    final points = wp.points;
+    final hasArc = points.length >= 2;
+    final sel = hasArc && _scrub != null ? points[_scrub!] : null;
+
+    final homePct = sel?.home ?? wp.home;
+    final awayPct = sel != null ? 100 - sel.home : wp.away;
+    final leader = homePct >= awayPct ? home : away;
+    final pct = homePct >= awayPct ? homePct : awayPct;
+
     return V2Card(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(
@@ -1094,23 +1539,168 @@ class _WinProbCard extends StatelessWidget {
           textBaseline: TextBaseline.alphabetic,
           children: [
             const Expanded(child: CardLabel('Win probability')),
-            Text('${leader.label} $pct%', style: T.statCallout),
+            Text('${leader.label} $pct%',
+                style: sel != null
+                    ? T.statCallout.copyWith(color: T.gold)
+                    : T.statCallout),
           ],
         ),
-        const SizedBox(height: 10),
+        if (hasArc) ...[
+          const SizedBox(height: 10),
+          _chart(points, away, home),
+          SizedBox(
+            height: 18,
+            child: sel != null
+                ? Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(_pointCaption(sel, away, home),
+                        style: T.caption, maxLines: 1),
+                  )
+                : null,
+          ),
+        ] else
+          const SizedBox(height: 10),
         SplitBar(
-          leftFraction: wp.away / 100,
+          leftFraction: awayPct / 100,
           left: teamColor(away),
           right: teamColor(home),
         ),
       ]),
     );
   }
+
+  Widget _chart(List<WinProbPoint> points, Competitor away, Competitor home) =>
+      LayoutBuilder(builder: (context, c) {
+        final w = c.maxWidth;
+        void select(Offset local) {
+          final i = ((local.dx / w) * (points.length - 1))
+              .round()
+              .clamp(0, points.length - 1);
+          if (i != _scrub) setState(() => _scrub = i);
+        }
+
+        void release() => setState(() => _scrub = null);
+
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTapDown: (d) => select(d.localPosition),
+          onTapUp: (_) => release(),
+          onTapCancel: release,
+          onHorizontalDragStart: (d) => select(d.localPosition),
+          onHorizontalDragUpdate: (d) => select(d.localPosition),
+          onHorizontalDragEnd: (_) => release(),
+          onHorizontalDragCancel: release,
+          child: SizedBox(
+            height: 72,
+            width: double.infinity,
+            child: CustomPaint(
+              painter: _WinProbChartPainter(
+                points: points,
+                awayColor: teamColor(away),
+                homeColor: teamColor(home),
+                scrub: _scrub,
+              ),
+            ),
+          ),
+        );
+      });
+
+  /// 'TOP 5 · ATL 2–4 DET' / 'Q3 4:12 · LAL 68–71 BOS' — whatever the joined
+  /// play carried; a context-less point just reads nothing extra.
+  String _pointCaption(WinProbPoint p, Competitor away, Competitor home) {
+    final parts = <String>[];
+    final rail = [
+      if (p.half != null && p.period != null)
+        '${p.half == 'top' ? 'Top' : 'Bot'} ${p.period}'
+      else if (p.periodLabel != null && p.periodLabel!.isNotEmpty)
+        p.periodLabel!
+      else if (p.period != null)
+        'Period ${p.period}',
+      if (p.clock != null && p.clock!.isNotEmpty) p.clock!,
+    ].join(' ');
+    if (rail.isNotEmpty) parts.add(rail);
+    if (p.awayScore != null && p.homeScore != null) {
+      parts.add('${away.label} ${p.awayScore!.round()}'
+          '–${p.homeScore!.round()} ${home.label}');
+    }
+    return parts.join(' · ').toUpperCase();
+  }
+}
+
+/// The win-prob curve: home share up / away share down around a 50% centerline,
+/// the stroke wearing each side's color on its half (two clipped passes), faint
+/// verticals at period changes, and — while scrubbing — a hairline + gold dot at
+/// the selected point (else a dot on the newest point, lead-tracker style).
+class _WinProbChartPainter extends CustomPainter {
+  final List<WinProbPoint> points;
+  final Color awayColor, homeColor;
+  final int? scrub;
+  _WinProbChartPainter(
+      {required this.points,
+      required this.awayColor,
+      required this.homeColor,
+      this.scrub});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final n = points.length;
+    final mid = size.height / 2;
+    double x(int i) => n == 1 ? 0 : size.width * i / (n - 1);
+    double y(int homePct) => size.height * (1 - homePct / 100);
+
+    // period boundaries — the "part of the game" landmarks the scrub needs
+    final divPaint = Paint()..color = T.divider..strokeWidth = 1;
+    for (var i = 1; i < n; i++) {
+      final a = points[i - 1].period, b = points[i].period;
+      if (a != null && b != null && a != b) {
+        canvas.drawLine(Offset(x(i), 0), Offset(x(i), size.height), divPaint);
+      }
+    }
+    // 50% centerline
+    canvas.drawLine(Offset(0, mid), Offset(size.width, mid), divPaint);
+
+    final path = Path()..moveTo(0, y(points.first.home));
+    for (var i = 1; i < n; i++) {
+      path.lineTo(x(i), y(points[i].home));
+    }
+    final stroke = Paint()
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke
+      ..strokeJoin = StrokeJoin.round;
+    // home color above the line, away color below — each side owns its half
+    canvas.save();
+    canvas.clipRect(Rect.fromLTRB(0, -2, size.width, mid));
+    canvas.drawPath(path, stroke..color = homeColor);
+    canvas.restore();
+    canvas.save();
+    canvas.clipRect(Rect.fromLTRB(0, mid, size.width, size.height + 2));
+    canvas.drawPath(path, stroke..color = awayColor);
+    canvas.restore();
+
+    if (scrub != null) {
+      final sx = x(scrub!), sy = y(points[scrub!].home);
+      canvas.drawLine(Offset(sx, 0), Offset(sx, size.height),
+          Paint()..color = T.textDim..strokeWidth = 1);
+      canvas.drawCircle(Offset(sx, sy), 3.5, Paint()..color = T.gold);
+    } else {
+      final last = points.last.home;
+      canvas.drawCircle(Offset(x(n - 1), y(last)), 3,
+          Paint()..color = last >= 50 ? homeColor : awayColor);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_WinProbChartPainter old) =>
+      old.points != points ||
+      old.scrub != scrub ||
+      old.awayColor != awayColor ||
+      old.homeColor != homeColor;
 }
 
 /// The §8 basketball "lead tracker" — a margin polyline over the game's scoring
-/// plays, with a recent unanswered-run callout. Built entirely client-side from
-/// the summary's running scores (no extra fetch). Shown when a game has enough
+/// plays, headed by the current leader's margin (the run callout lives on the
+/// clock-&-run situation card above). Built entirely client-side from the
+/// summary's running scores (no extra fetch). Shown when a game has enough
 /// scoring events to draw a curve (data-driven — selects basketball naturally).
 class _LeadTrackerCard extends StatelessWidget {
   final Competition comp;
@@ -1127,36 +1717,15 @@ class _LeadTrackerCard extends StatelessWidget {
     final last = margins.last;
     final leader = last == 0 ? null : (last > 0 ? home : away);
 
-    // Trailing unanswered run: points by the last-scoring side since the other
-    // side last scored.
-    int runPts = 0;
-    String? runSide;
-    for (var i = plays.length - 1; i >= 0; i--) {
-      final p = plays[i];
-      runSide ??= p.side;
-      if (p.side != runSide || p.side == null) break;
-      final prevHome = i > 0 ? (plays[i - 1].home ?? 0) : 0;
-      final prevAway = i > 0 ? (plays[i - 1].away ?? 0) : 0;
-      final pts = (p.side == 'home'
-              ? (p.home ?? 0) - prevHome
-              : (p.away ?? 0) - prevAway)
-          .round();
-      if (pts <= 0) break;
-      runPts += pts;
-    }
-    final runTeam = runSide == 'home' ? home : (runSide == 'away' ? away : null);
-    final hasRun = runPts >= 6 && runTeam != null;
-
     return V2Card(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(crossAxisAlignment: CrossAxisAlignment.baseline, textBaseline: TextBaseline.alphabetic, children: [
           const Expanded(child: CardLabel('Lead tracker')),
-          if (hasRun)
-            Text('${runTeam.label} $runPts–0 RUN',
-                style: T.statCallout.copyWith(fontSize: 18, color: T.gold))
-          else if (leader != null)
+          if (leader != null)
             Text('${leader.label} +${last.abs().round()}',
-                style: T.statCallout.copyWith(fontSize: 18)),
+                style: T.statCallout.copyWith(fontSize: 18))
+          else
+            Text('TIED', style: T.statCallout.copyWith(fontSize: 18, color: T.textDim)),
         ]),
         const SizedBox(height: 12),
         SizedBox(
@@ -1926,7 +2495,10 @@ class _ScoringSummaryCard extends StatelessWidget {
 class _HalfInningFeed extends StatelessWidget {
   final List<SummaryPlay> plays; // scoring plays, chronological, carrying period + half
   final Competition comp;
-  const _HalfInningFeed(this.plays, this.comp);
+  // The reorganized baseball first page reads the game start-to-finish
+  // ("scores starting in the first"); the Plays tab keeps §9's newest-first.
+  final bool chronological;
+  const _HalfInningFeed(this.plays, this.comp, {this.chronological = false});
 
   @override
   Widget build(BuildContext context) {
@@ -1942,7 +2514,8 @@ class _HalfInningFeed extends StatelessWidget {
           .add(p);
     }
     final latest = plays.last; // the freshest scoring play overall
-    final ordered = order.reversed.toList(); // newest half-inning first
+    final ordered =
+        chronological ? order : order.reversed.toList(); // newest first default
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -2252,9 +2825,22 @@ class _BaseballPlaysFeedState extends State<_BaseballPlaysFeed> {
                           _pitchDot(a.pitches[p]),
                           const SizedBox(width: 12),
                           Expanded(
-                            child: Text(a.pitches[p].text,
+                            // ABS challenge suffix: faint, caution pale when
+                            // the call was flipped (§2 muted-pair glyph text).
+                            child: Text.rich(TextSpan(
+                                text: a.pitches[p].text,
                                 style: const TextStyle(
-                                    fontSize: 12.5, color: T.textDim)),
+                                    fontSize: 12.5, color: T.textDim),
+                                children: [
+                                  if (a.pitches[p].challenge != null)
+                                    TextSpan(
+                                        text: ' · ${a.pitches[p].challenge}',
+                                        style: TextStyle(
+                                            color: a.pitches[p].challenge ==
+                                                    'overturned'
+                                                ? T.mutedNeutralGlyph
+                                                : T.textFaint)),
+                                ])),
                           ),
                           if (a.pitches[p].velo != null)
                             Text('${_fmtN(a.pitches[p].velo!)} MPH',
@@ -2391,18 +2977,25 @@ class _LineupsCard extends StatelessWidget {
 class _BoxGroupCard extends StatelessWidget {
   final BoxGroup group;
   final String league;
-  const _BoxGroupCard(this.group, {required this.league});
+  // Team-tabbed box (the baseball reorg): render only this side's block — the
+  // §10 scope control above the card already names the team.
+  final String? side;
+  const _BoxGroupCard(this.group, {required this.league, this.side});
 
   static const _maxCols = 5;
 
   @override
   Widget build(BuildContext context) {
     final cols = group.columns.take(_maxCols).toList();
+    final teams = side == null
+        ? group.teams
+        : group.teams.where((t) => t.side == side).toList();
+    if (teams.isEmpty) return const SizedBox.shrink();
     return V2Card(
       padding: T.padTable, // §10 dense table: tighter sides, tables need width
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         CardLabel(group.title),
-        for (final team in group.teams) ...[
+        for (final team in teams) ...[
           const SizedBox(height: 10),
           Row(children: [
             Expanded(
@@ -2598,6 +3191,259 @@ class _SeasonSeriesCard extends StatelessWidget {
       );
 }
 
+/// The baseball pitcher-decision line (user spec "Win | Loss"): W / L / SV rows
+/// off summary.decisions — a tinted role chip (§6 semantic: W green, L live,
+/// SV gold), the pitcher (tap → player page), team + season line trailing.
+/// Data-gated: ESPN ships featuredAthletes only once there's a decision.
+class _DecisionsCard extends StatelessWidget {
+  final List<Decision> decisions;
+  final String league;
+  const _DecisionsCard(this.decisions, {required this.league});
+
+  (String, Color) _chip(String role) => switch (role) {
+        'win' => ('W', T.green),
+        'loss' => ('L', T.live),
+        _ => ('SV', T.gold),
+      };
+
+  @override
+  Widget build(BuildContext context) => V2Card(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const CardLabel('Decision'),
+          const SizedBox(height: 4),
+          for (final d in decisions) _row(context, d),
+        ]),
+      );
+
+  Widget _row(BuildContext context, Decision d) {
+    final (letter, color) = _chip(d.role);
+    final trail = [
+      if (d.abbr != null) d.abbr!,
+      if (d.record != null) d.record!,
+      if (d.role == 'save' && d.saves != null) '${d.saves} SV',
+    ].join(' · ');
+    final row = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(children: [
+        Container(
+          width: 26,
+          height: 20,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.16),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Text(letter,
+              style: TextStyle(
+                  fontSize: 11, fontWeight: FontWeight.w700, color: color)),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Text(d.name,
+              maxLines: 1, overflow: TextOverflow.ellipsis, style: T.rowText),
+        ),
+        if (trail.isNotEmpty) Text(trail, style: T.caption),
+      ]),
+    );
+    final id = d.id;
+    if (id == null || id.isEmpty) return row;
+    return InkWell(
+      onTap: () =>
+          openPlayerPage(context, league, athleteId: id, name: d.name),
+      child: row,
+    );
+  }
+}
+
+/// The team-tabbed box score (baseball reorg): one §6/§10 scope control picking
+/// the team, then that side's Batting/Pitching player tables — and, on the Box
+/// tab ([showDetails]), the team's newspaper agate block beneath.
+class _BaseballBox extends StatefulWidget {
+  final Competition comp;
+  final GameSummary summary;
+  final String league;
+  final bool showDetails;
+  const _BaseballBox(
+      {required this.comp,
+      required this.summary,
+      required this.league,
+      this.showDetails = false});
+
+  @override
+  State<_BaseballBox> createState() => _BaseballBoxState();
+}
+
+class _BaseballBoxState extends State<_BaseballBox> {
+  int _side = 0; // 0 = away · 1 = home
+
+  @override
+  Widget build(BuildContext context) {
+    final away = widget.comp.away, home = widget.comp.home;
+    final side = _side == 0 ? 'away' : 'home';
+    final details = widget.showDetails
+        ? widget.summary.teamDetails.where((t) => t.side == side).toList()
+        : const <TeamDetails>[];
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      SegmentedControl(
+        items: [away?.label ?? 'Away', home?.label ?? 'Home'],
+        selected: _side,
+        onTap: (i) => setState(() => _side = i),
+      ),
+      for (final g in widget.summary.boxGroups) ...[
+        const SizedBox(height: T.gapCard),
+        _BoxGroupCard(g, league: widget.league, side: side),
+      ],
+      for (final t in details) ...[
+        const SizedBox(height: T.gapCard),
+        _TeamDetailsCard(t),
+      ],
+    ]);
+  }
+}
+
+/// One team's newspaper agate block (summary.teamDetails): BATTING/PITCHING/
+/// FIELDING/BASERUNNING sections of '2B: Vierling (12, Lopez)' lines — the §10
+/// footer-summary voice given a card of its own.
+class _TeamDetailsCard extends StatelessWidget {
+  final TeamDetails details;
+  const _TeamDetailsCard(this.details);
+
+  @override
+  Widget build(BuildContext context) => V2Card(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          CardLabel(
+              [if (details.abbr != null) details.abbr!, 'Notes'].join(' ')),
+          for (final g in details.groups) ...[
+            const SizedBox(height: 12),
+            Text(g.title.toUpperCase(), style: T.cardLabelFaint),
+            const SizedBox(height: 4),
+            for (final r in g.rows)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                child: Text.rich(TextSpan(children: [
+                  TextSpan(
+                      text: '${r.label}: ',
+                      style: const TextStyle(
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w600,
+                          color: T.textDim)),
+                  TextSpan(
+                      text: r.value,
+                      style: const TextStyle(
+                          fontSize: 12.5, height: 1.35, color: T.textBody)),
+                ])),
+              ),
+          ],
+        ]),
+      );
+}
+
+/// One grouped this-game team comparison (summary.teamGameStats): HITTING /
+/// PITCHING rows through the same [StatCompareRow] the rich team-stats card
+/// uses, so the tiers can't drift. 'Batting' reads as HITTING in the page's
+/// voice; every row data-gated.
+class _SummaryStatGroupCard extends StatelessWidget {
+  final Competition comp;
+  final SummaryStatGroup group;
+  const _SummaryStatGroupCard({required this.comp, required this.group});
+
+  @override
+  Widget build(BuildContext context) {
+    final away = comp.away, home = comp.home;
+    final present =
+        group.rows.where((r) => r.away != null || r.home != null).toList();
+    if (present.isEmpty) return const SizedBox.shrink();
+    final title =
+        group.title.toLowerCase() == 'batting' ? 'Hitting' : group.title;
+    return V2Card(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Text(away?.label ?? '',
+              style: T.cardLabelFaint.copyWith(color: teamColor(away))),
+          const Spacer(),
+          CardLabel(title),
+          const Spacer(),
+          Text(home?.label ?? '',
+              style: T.cardLabelFaint.copyWith(color: teamColor(home))),
+        ]),
+        const SizedBox(height: 10),
+        for (var i = 0; i < present.length; i++) ...[
+          if (i > 0) const SizedBox(height: 10),
+          StatCompareRow(
+            spec: classifyRichRow(present[i]),
+            away: present[i].away,
+            home: present[i].home,
+            awayColor: teamColor(away),
+            homeColor: teamColor(home),
+          ),
+        ],
+      ]),
+    );
+  }
+}
+
+/// CURRENT WEATHER (live baseball first page): the cheap scoreboard weather —
+/// Barlow temperature + condition caption. Indoor/unserved → no card (§11.8).
+class _WeatherCard extends StatelessWidget {
+  final Weather weather;
+  const _WeatherCard(this.weather);
+
+  @override
+  Widget build(BuildContext context) {
+    final t = weather.temperature;
+    final cond = weather.condition;
+    return V2Card(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const CardLabel('Current weather'),
+        const SizedBox(height: 6),
+        Row(
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              if (t != null)
+                Text('${t.round()}°',
+                    style: const TextStyle(
+                        fontFamily: 'BarlowCondensed',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 30,
+                        height: 1.0,
+                        color: T.text,
+                        fontFeatures: [FontFeature.tabularFigures()])),
+              if (t != null && cond != null && cond.isNotEmpty)
+                const SizedBox(width: 10),
+              if (cond != null && cond.isNotEmpty)
+                Text(cond, style: T.caption),
+            ]),
+      ]),
+    );
+  }
+}
+
+/// The quiet standing-destination row into the Plays tab ("Full play-by-play")
+/// — the home feed's foot-row grammar at detail scale: a plain surface row +
+/// chevron, never a gold hint.
+class _PlaysLink extends StatelessWidget {
+  final VoidCallback onTap;
+  const _PlaysLink({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Material(
+        color: T.surface,
+        borderRadius: BorderRadius.circular(T.rowCardRadius),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(T.rowCardRadius),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            child: Row(children: [
+              Expanded(child: Text('Full play-by-play', style: T.rowText)),
+              Icon(Icons.chevron_right_rounded, size: 18, color: T.textFaint),
+            ]),
+          ),
+        ),
+      );
+}
+
 /// Pre-game betting line (§6) — the quiet PRE-GAME block: spread/total from the
 /// cheap scoreboard line, per-team moneyline when the core enrichment lands.
 /// Renders only what ESPN served; the whole card is hidden when odds are absent.
@@ -2692,7 +3538,11 @@ class _VenueCard extends StatelessWidget {
   final SportEvent event;
   final Competition? comp;
   final GameSummary? summary;
-  const _VenueCard(this.event, {this.comp, this.summary});
+  // The baseball first page carries its own CURRENT WEATHER card — skip the
+  // inline weather bit there so the two don't stack the same line.
+  final bool includeWeather;
+  const _VenueCard(this.event,
+      {this.comp, this.summary, this.includeWeather = true});
 
   static String _thousands(int n) => n.toString().replaceAllMapped(
       RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},');
@@ -2720,7 +3570,9 @@ class _VenueCard extends StatelessWidget {
     final officials = _officialsLine(summary?.officials ?? const []);
     final bits = [
       if (v != null) [v.name, v.location].where((s) => s.isNotEmpty).join(' · '),
-      if (event.weather != null && event.weather!.summary.isNotEmpty)
+      if (includeWeather &&
+          event.weather != null &&
+          event.weather!.summary.isNotEmpty)
         event.weather!.summary,
       if (attendance != null) 'Attendance ${_thousands(attendance)}',
       if (officials != null) officials,

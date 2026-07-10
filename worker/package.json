@@ -8,7 +8,8 @@
     "mock:megaweek": "node scripts/mock-espn-server.mjs --scenario megaweek",
     "capture": "node scripts/capture-fixtures.mjs",
     "capture-extra": "node scripts/capture-extra.mjs",
+    "capture:live": "node scripts/capture-live.mjs",
     "goldens": "node scripts/gen-goldens.mjs",
-    "test": "node test/mock.test.mjs && node test/units.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs && node test/teamdetail.test.mjs"
+    "test": "node test/mock.test.mjs && node test/units.test.mjs && node test/fastcast.test.mjs && node test/normalize.test.mjs && node test/summary.test.mjs && node test/overview.test.mjs && node test/team.test.mjs && node test/teamdetail.test.mjs"
   }
 }

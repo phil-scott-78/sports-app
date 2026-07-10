@@ -5,6 +5,7 @@ import '../data/profiles.dart';
 import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
+import 'follow_sheet.dart';
 import 'game_detail_page.dart';
 import 'poll.dart';
 import 'widgets.dart';
@@ -178,6 +179,7 @@ class _TournamentPageState extends ConsumerState<TournamentPage>
                 )
               : TournamentView(
                   response: t,
+                  league: widget.league,
                   onTapMatchup: _matchLookup.isEmpty ? null : _openMatch,
                 ),
         ),
@@ -192,10 +194,15 @@ class _TournamentPageState extends ConsumerState<TournamentPage>
 class TournamentView extends StatefulWidget {
   final TournamentResponse response;
 
+  /// The league key, enabling the long-press follow sheet on group/pool team
+  /// rows. Null (widget tests) leaves the rows inert.
+  final String? league;
+
   /// Tapped matchup → open its game detail. Null (or an unresolvable matchup)
   /// leaves the card inert.
   final void Function(TournamentMatchup)? onTapMatchup;
-  const TournamentView({super.key, required this.response, this.onTapMatchup});
+  const TournamentView(
+      {super.key, required this.response, this.league, this.onTapMatchup});
 
   @override
   State<TournamentView> createState() => _TournamentViewState();
@@ -278,7 +285,8 @@ class _TournamentViewState extends State<TournamentView> {
                 key: _groupKeys[g.label],
                 padding: const EdgeInsets.fromLTRB(
                     T.pageMargin, 0, T.pageMargin, T.gapCard),
-                child: _GroupCard(group: g, qualTag: qualTag),
+                child: _GroupCard(
+                    group: g, qualTag: qualTag, league: widget.league),
               ),
             if (knockout.isNotEmpty) ...[
               const Padding(
@@ -345,7 +353,7 @@ class _TournamentViewState extends State<TournamentView> {
             for (final p in t.pools)
               Padding(
                 padding: const EdgeInsets.only(bottom: T.gapCard),
-                child: _PoolCard(pool: p),
+                child: _PoolCard(pool: p, league: widget.league),
               ),
             if (t.series != null) _SeriesCard(series: t.series!),
           ],
@@ -596,7 +604,8 @@ class _PillChips extends StatelessWidget {
 class _GroupCard extends StatelessWidget {
   final TournamentGroup group;
   final String? qualTag;
-  const _GroupCard({required this.group, this.qualTag});
+  final String? league;
+  const _GroupCard({required this.group, this.qualTag, this.league});
 
   @override
   Widget build(BuildContext context) {
@@ -610,7 +619,7 @@ class _GroupCard extends StatelessWidget {
         _header(),
         for (var i = 0; i < rows.length; i++) ...[
           if (i == cut && cut > 0 && cut < rows.length) _cutline(),
-          _row(rows[i], i + 1, i < cut),
+          _row(context, rows[i], i + 1, i < cut),
         ],
       ]),
     );
@@ -639,10 +648,10 @@ class _GroupCard extends StatelessWidget {
                 : T.cardLabelFaint.copyWith(fontSize: 10)),
       );
 
-  Widget _row(StandingsRow r, int rank, bool qualified) {
+  Widget _row(BuildContext context, StandingsRow r, int rank, bool qualified) {
     final band = _bandColor(r.note?.color);
     final gd = r.stats['pointDifferential'] ?? '';
-    return Container(
+    final body = Container(
       decoration: const BoxDecoration(
           border: Border(top: BorderSide(color: T.divider))),
       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -686,6 +695,17 @@ class _GroupCard extends StatelessWidget {
               : const SizedBox.shrink(),
         ),
       ]),
+    );
+    if (league == null || r.team.id.isEmpty) return body;
+    return InkWell(
+      onLongPress: () => showTeamFollowSheet(
+        context,
+        league: league!,
+        teamId: r.team.id,
+        name: r.team.name,
+        abbr: r.team.abbr,
+      ),
+      child: body,
     );
   }
 
@@ -1003,7 +1023,8 @@ TournamentSide? _winnerOf(List<TournamentSide> cs) {
 // ═══════════════════════════ 12d pool card ═══════════════════════════
 class _PoolCard extends StatelessWidget {
   final TournamentPool pool;
-  const _PoolCard({required this.pool});
+  final String? league;
+  const _PoolCard({required this.pool, this.league});
 
   @override
   Widget build(BuildContext context) {
@@ -1031,15 +1052,15 @@ class _PoolCard extends StatelessWidget {
         ]),
         const SizedBox(height: 3),
         for (var i = 0; i < pool.rows.length; i++)
-          _row(pool.rows[i], top: i > 0),
+          _row(context, pool.rows[i], top: i > 0),
       ]),
     );
   }
 
-  Widget _row(TournamentPoolRow r, {required bool top}) {
+  Widget _row(BuildContext context, TournamentPoolRow r, {required bool top}) {
     final out = r.status == 'eliminated';
     final adv = r.status == 'advances';
-    return Container(
+    final body = Container(
       decoration: top
           ? const BoxDecoration(
               border: Border(top: BorderSide(color: T.divider)))
@@ -1077,6 +1098,17 @@ class _PoolCard extends StatelessWidget {
                           : T.textDim)),
         ),
       ]),
+    );
+    if (league == null || r.teamId.isEmpty) return body;
+    return InkWell(
+      onLongPress: () => showTeamFollowSheet(
+        context,
+        league: league!,
+        teamId: r.teamId,
+        name: r.teamName,
+        color: _sideColor(r.teamId, r.teamName),
+      ),
+      child: body,
     );
   }
 

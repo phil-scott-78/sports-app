@@ -762,6 +762,11 @@ class Situation {
   final bool? onFirst, onSecond, onThird;
   final String? pitcher, batter, outsText;
   final String? pitcherLine, batterLine; // live matchup lines ('0.2 IP, 0 ER' / '1-3')
+  final String? onDeck; // next batter up (dueUp), for the duel card footer
+  // the full due-up list (name + day line, ESPN order). Between innings ESPN
+  // drops batter/pitcher and this is the NEXT half-inning's batters — the
+  // "Due Up" card's data. Empty when ESPN doesn't ship it.
+  final List<DueUpBatter> dueUp;
   // gridiron
   final int? down, distance, homeTimeouts, awayTimeouts, yardLine;
   final String? downDistanceText, possession;
@@ -787,6 +792,8 @@ class Situation {
     this.batter,
     this.pitcherLine,
     this.batterLine,
+    this.onDeck,
+    this.dueUp = const [],
     this.outsText,
     this.down,
     this.distance,
@@ -816,6 +823,10 @@ class Situation {
         batter: _strOrNull(j['batter']),
         pitcherLine: _strOrNull(j['pitcherLine']),
         batterLine: _strOrNull(j['batterLine']),
+        onDeck: _strOrNull(j['onDeck']),
+        dueUp: _list(j['dueUp'])
+            .map((d) => DueUpBatter.fromJson(_map(d)))
+            .toList(growable: false),
         outsText: _strOrNull(j['outsText']),
         down: _int(j['down']),
         distance: _int(j['distance']),
@@ -853,6 +864,9 @@ class Situation {
       batter: core.batter ?? batter,
       pitcherLine: core.pitcherLine ?? pitcherLine,
       batterLine: core.batterLine ?? batterLine,
+      onDeck: core.onDeck ?? onDeck,
+      // the core situation never carries dueUp — keep the scoreboard list
+      dueUp: core.dueUp.isNotEmpty ? core.dueUp : dueUp,
       outsText: core.outsText ?? outsText,
       down: core.down ?? down,
       distance: core.distance ?? distance,
@@ -874,6 +888,12 @@ class Situation {
   }
 
   bool get hasBaseball => balls != null || strikes != null || outs != null;
+
+  /// Between innings (baseball): ESPN drops the batter/pitcher matchup and
+  /// dueUp lists the NEXT half-inning's batters — the Due Up card's gate.
+  /// Data presence only, never a sport-name check (dueUp is baseball-only by
+  /// observation).
+  bool get isDueUp => batter == null && dueUp.isNotEmpty;
   bool get hasGridiron => downDistanceText != null || down != null;
 
   /// A side is (or isn't) in the bonus — the basketball core-situation flourish.
@@ -893,6 +913,16 @@ class Situation {
       (strength != null &&
           strength != 'even-strength' &&
           strength != 'empty-net');
+}
+
+/// One upcoming batter from the cheap situation's dueUp[] — short name + the
+/// batter's day line ('1-3, K'). ESPN order (lineup order).
+class DueUpBatter {
+  final String name;
+  final String? line;
+  DueUpBatter({required this.name, this.line});
+  factory DueUpBatter.fromJson(Map<String, dynamic> j) =>
+      DueUpBatter(name: _str(j['name']), line: _strOrNull(j['line']));
 }
 
 class Status {
@@ -1918,7 +1948,22 @@ class GameSummary {
   final List<CricketInningsCard> cricketInnings; // the real cricket scorecard
   final List<BoutResult> bouts; // MMA structured results (core-built)
   final List<MatchEvent> timeline; // soccer curated event feed ([] elsewhere)
+  // Soccer's curated narrative (commentary[]) — always shipped when present,
+  // even beside `timeline` (unlike `plays`, which yields to it): the Commentary
+  // tab + the Now tab's preview. Rows may carry team-relative x/y coords.
+  final List<SummaryPlay> commentary;
+  // Soccer per-category match leaders (shots/passes/interventions/saves).
+  final List<MatchLeaderCategory> matchLeaders;
   final List<AtBat> atBats; // baseball at-bats w/ pitch sequences ([] elsewhere) (§3e)
+  // Baseball's derived "what really was the last play" (turn 8): the freshest
+  // narrative row past ESPN's start-batter bookends. Null for other sports.
+  final BaseballLastPlay? lastPlay;
+  // Baseball's box-adjacent trio (2026-07, all data-presence gated): the W/L/SV
+  // pitcher line, the newspaper footnote block (2B:/HR:/Team LOB/RISP…), and the
+  // grouped hitting/pitching team comparison (MLB's flat teamStats is []).
+  final List<Decision> decisions;
+  final List<TeamDetails> teamDetails;
+  final List<SummaryStatGroup> teamGameStats;
   // Detail-open CORE situation, merged into the summary payload by api.dart (NOT
   // from normalizeSummary): football down/distance, basketball bonus/timeouts,
   // hockey power play. Null off the poll/for sports without a core situation.
@@ -1942,7 +1987,13 @@ class GameSummary {
     this.cricketInnings = const [],
     this.bouts = const [],
     this.timeline = const [],
+    this.commentary = const [],
+    this.matchLeaders = const [],
     this.atBats = const [],
+    this.lastPlay,
+    this.decisions = const [],
+    this.teamDetails = const [],
+    this.teamGameStats = const [],
     this.situation,
   });
   factory GameSummary.fromJson(Map<String, dynamic> j) => GameSummary(
@@ -1994,8 +2045,26 @@ class GameSummary {
         timeline: _list(j['timeline'])
             .map((e) => MatchEvent.fromJson(_map(e)))
             .toList(growable: false),
+        commentary: _list(j['commentary'])
+            .map((p) => SummaryPlay.fromJson(_map(p)))
+            .toList(growable: false),
+        matchLeaders: _list(j['matchLeaders'])
+            .map((c) => MatchLeaderCategory.fromJson(_map(c)))
+            .toList(growable: false),
         atBats: _list(j['atBats'])
             .map((a) => AtBat.fromJson(_map(a)))
+            .toList(growable: false),
+        lastPlay: j['lastPlay'] == null
+            ? null
+            : BaseballLastPlay.fromJson(_map(j['lastPlay'])),
+        decisions: _list(j['decisions'])
+            .map((d) => Decision.fromJson(_map(d)))
+            .toList(growable: false),
+        teamDetails: _list(j['teamDetails'])
+            .map((t) => TeamDetails.fromJson(_map(t)))
+            .toList(growable: false),
+        teamGameStats: _list(j['teamGameStats'])
+            .map((g) => SummaryStatGroup.fromJson(_map(g)))
             .toList(growable: false),
         situation: j['situation'] == null
             ? null
@@ -2018,7 +2087,12 @@ class GameSummary {
       drives.isEmpty &&
       cricketInnings.isEmpty &&
       bouts.isEmpty &&
+      commentary.isEmpty &&
+      matchLeaders.isEmpty &&
       atBats.isEmpty &&
+      decisions.isEmpty &&
+      teamDetails.isEmpty &&
+      teamGameStats.isEmpty &&
       situation == null;
 
   /// The structured result for one bout (MMA detail is per-bout; the summary is
@@ -2044,6 +2118,81 @@ class GameSummary {
     }
     return null;
   }
+}
+
+/// One pitcher decision (summary.decisions) — the final's "W: Skubal (5-4)".
+/// role 'win' | 'loss' | 'save'; `saves` rides the save role only.
+class Decision {
+  final String role;
+  final String name;
+  final String? id, record, saves, side, abbr;
+  Decision({
+    required this.role,
+    required this.name,
+    this.id,
+    this.record,
+    this.saves,
+    this.side,
+    this.abbr,
+  });
+  factory Decision.fromJson(Map<String, dynamic> j) => Decision(
+        role: _str(j['role']),
+        name: _str(j['name']),
+        id: _strOrNull(j['id']),
+        record: _strOrNull(j['record']),
+        saves: _strOrNull(j['saves']),
+        side: _strOrNull(j['side']),
+        abbr: _strOrNull(j['abbr']),
+      );
+}
+
+/// One team's newspaper box-score footnote block (summary.teamDetails):
+/// Batting/Pitching/Fielding/Baserunning groups of label→value agate rows.
+class TeamDetails {
+  final String? side, abbr;
+  final List<TeamDetailGroup> groups;
+  TeamDetails({this.side, this.abbr, this.groups = const []});
+  factory TeamDetails.fromJson(Map<String, dynamic> j) => TeamDetails(
+        side: _strOrNull(j['side']),
+        abbr: _strOrNull(j['abbr']),
+        groups: _list(j['groups'])
+            .map((g) => TeamDetailGroup.fromJson(_map(g)))
+            .toList(growable: false),
+      );
+}
+
+class TeamDetailGroup {
+  final String title;
+  final List<TeamDetailRow> rows;
+  TeamDetailGroup({required this.title, this.rows = const []});
+  factory TeamDetailGroup.fromJson(Map<String, dynamic> j) => TeamDetailGroup(
+        title: _str(j['title']),
+        rows: _list(j['rows'])
+            .map((r) => TeamDetailRow.fromJson(_map(r)))
+            .toList(growable: false),
+      );
+}
+
+class TeamDetailRow {
+  final String label, value;
+  TeamDetailRow({required this.label, required this.value});
+  factory TeamDetailRow.fromJson(Map<String, dynamic> j) =>
+      TeamDetailRow(label: _str(j['label']), value: _str(j['value']));
+}
+
+/// One grouped team-stat comparison (summary.teamGameStats) — baseball's
+/// Hitting/Pitching game story, same away/home row shape as teamStats.
+/// (Named Summary- to avoid the team-page season [TeamStatGroup].)
+class SummaryStatGroup {
+  final String title;
+  final List<TeamStatRow> rows;
+  SummaryStatGroup({required this.title, this.rows = const []});
+  factory SummaryStatGroup.fromJson(Map<String, dynamic> j) => SummaryStatGroup(
+        title: _str(j['title']),
+        rows: _list(j['rows'])
+            .map((r) => TeamStatRow.fromJson(_map(r)))
+            .toList(growable: false),
+      );
 }
 
 /// A match official (summary gameInfo) — 'João Pinheiro · Referee'.
@@ -2127,6 +2276,10 @@ class AtBat {
   final bool scoring, live;
   final int? outs, balls, strikes;
   final num? away, home;
+  // live-only turn-8 extras: the pitcher's running game pitch count and the
+  // resolved runner names on each base (null = base empty / not resolved).
+  final int? pitchCount;
+  final String? first, second, third;
   final List<Pitch> pitches;
   AtBat({
     this.period,
@@ -2142,6 +2295,10 @@ class AtBat {
     this.strikes,
     this.away,
     this.home,
+    this.pitchCount,
+    this.first,
+    this.second,
+    this.third,
     this.pitches = const [],
   });
   factory AtBat.fromJson(Map<String, dynamic> j) => AtBat(
@@ -2158,6 +2315,10 @@ class AtBat {
         strikes: _int(j['strikes']),
         away: _num(j['away']),
         home: _num(j['home']),
+        pitchCount: _int(j['pitchCount']),
+        first: _strOrNull(j['first']),
+        second: _strOrNull(j['second']),
+        third: _strOrNull(j['third']),
         pitches: _list(j['pitches'])
             .map((p) => Pitch.fromJson(_map(p)))
             .toList(growable: false),
@@ -2167,15 +2328,49 @@ class AtBat {
 /// One pitch inside an [AtBat]. [r] classifies the result for the §2 muted glyph
 /// dot (ball / strike / foul / inplay / other); [text] is the pitch outcome with
 /// the 'Pitch N :' prefix stripped ('Strike 1 Swinging'); [velo] is MPH.
+/// [type] names the pitch ('Slider'); [x]/[y] are ESPN's raw catcher's-view
+/// strike-zone plot coords (~0-250 x; y grows DOWNWARD, past 250 in the dirt) —
+/// present only on live captures, so the zone card gates on them.
 class Pitch {
   final String r;
   final String text;
   final num? velo;
-  Pitch({this.r = 'other', this.text = '', this.velo});
+  final String? type;
+  final num? x, y;
+
+  /// ABS challenge marker ('overturned' | 'upheld') — [r] and the count are
+  /// already the FINAL ruling; this only says the call was challenged.
+  final String? challenge;
+  Pitch({this.r = 'other', this.text = '', this.velo, this.type, this.x, this.y, this.challenge});
   factory Pitch.fromJson(Map<String, dynamic> j) => Pitch(
         r: _str(j['r']).isEmpty ? 'other' : _str(j['r']),
         text: _str(j['text']),
         velo: _num(j['velo']),
+        type: _strOrNull(j['type']),
+        x: _num(j['x']),
+        y: _num(j['y']),
+        challenge: _strOrNull(j['challenge']),
+      );
+}
+
+/// Baseball's derived last-play line (canonical summary.lastPlay): [kind] is
+/// 'pitch' (a mid-at-bat pitch — [type]/[velo] ride along when captured) or
+/// 'play' (an at-bat result or inning bookend — the "what really happened").
+class BaseballLastPlay {
+  final String kind;
+  final String text;
+  final String? type;
+  final num? velo;
+
+  /// ABS challenge marker ('overturned' | 'upheld'), kind 'pitch' only.
+  final String? challenge;
+  BaseballLastPlay({this.kind = 'play', this.text = '', this.type, this.velo, this.challenge});
+  factory BaseballLastPlay.fromJson(Map<String, dynamic> j) => BaseballLastPlay(
+        kind: _str(j['kind']).isEmpty ? 'play' : _str(j['kind']),
+        text: _str(j['text']),
+        type: _strOrNull(j['type']),
+        velo: _num(j['velo']),
+        challenge: _strOrNull(j['challenge']),
       );
 }
 
@@ -2358,14 +2553,53 @@ class InjuryItem {
 }
 
 /// Current/final win probability (percentages 0-100). ESPN analytic, not a bet.
+/// `points` is the full-game per-play arc (≥2 entries when present) — the
+/// scrubbable chart's data. Absent on the predictor fallback (single number).
 class WinProbability {
   final int home, away;
   final int? tie;
-  WinProbability({required this.home, required this.away, this.tie});
+  final List<WinProbPoint> points;
+  WinProbability(
+      {required this.home,
+      required this.away,
+      this.tie,
+      this.points = const []});
   factory WinProbability.fromJson(Map<String, dynamic> j) => WinProbability(
         home: _int(j['home']) ?? 0,
         away: _int(j['away']) ?? 0,
         tie: _int(j['tie']),
+        points: j['points'] is List
+            ? [
+                for (final p in j['points'] as List)
+                  if (p is Map) WinProbPoint.fromJson(_map(p))
+              ]
+            : const [],
+      );
+}
+
+/// One arc point: home win % (0-100) + best-effort game state at that play
+/// (period/half, clock, running score) — the scrub label's raw material.
+class WinProbPoint {
+  final int home;
+  final int? period;
+  final String? half, periodLabel, clock;
+  final num? awayScore, homeScore;
+  WinProbPoint(
+      {required this.home,
+      this.period,
+      this.half,
+      this.periodLabel,
+      this.clock,
+      this.awayScore,
+      this.homeScore});
+  factory WinProbPoint.fromJson(Map<String, dynamic> j) => WinProbPoint(
+        home: _int(j['home']) ?? 50,
+        period: _int(j['period']),
+        half: _strOrNull(j['half']),
+        periodLabel: _strOrNull(j['periodLabel']),
+        clock: _strOrNull(j['clock']),
+        awayScore: _num(j['awayScore']),
+        homeScore: _num(j['homeScore']),
       );
 }
 
@@ -2460,6 +2694,11 @@ class SummaryPlay {
   /// scoring-play row is a score, and old cached payloads must not regress).
   final bool scoring;
 
+  /// Team-relative field coords (soccer commentary rows): where the play
+  /// happened — x 0 = own goal line, 100 = opponent goal line, y 0..100
+  /// across the pitch. Null when ESPN didn't tag the underlying play.
+  final num? x, y;
+
   SummaryPlay({
     this.period,
     this.half,
@@ -2473,6 +2712,8 @@ class SummaryPlay {
     this.away,
     this.home,
     this.scoring = true,
+    this.x,
+    this.y,
   });
   factory SummaryPlay.fromJson(Map<String, dynamic> j) => SummaryPlay(
         period: _int(j['period']),
@@ -2487,6 +2728,8 @@ class SummaryPlay {
         away: _num(j['away']),
         home: _num(j['home']),
         scoring: j.containsKey('scoring') ? _bool(j['scoring']) : true,
+        x: _num(j['x']),
+        y: _num(j['y']),
       );
 }
 
@@ -2629,13 +2872,138 @@ class LineupPlayer {
   final String? id;
   final String name;
   final String? pos, jersey;
-  LineupPlayer({this.id, required this.name, this.pos, this.jersey});
+
+  /// Soccer formation slot: '1' = GK, '2'..'11' enumerate the outfield row by
+  /// row (defense first) against the lineup's formation string ('4-2-3-1').
+  /// Null for bench players / sports without placements — the formation pitch
+  /// renders only when every starter carries one.
+  final String? formationPlace;
+  LineupPlayer({this.id, required this.name, this.pos, this.jersey, this.formationPlace});
   factory LineupPlayer.fromJson(Map<String, dynamic> j) => LineupPlayer(
         id: _strOrNull(j['id']),
         name: _str(j['name']),
         pos: _strOrNull(j['pos']),
         jersey: _strOrNull(j['jersey']),
+        formationPlace: _strOrNull(j['formationPlace']),
       );
+}
+
+// ---- match leaders (soccer summary.leaders) -----------------------------------
+/// One match-leader category (Total Shots / Accurate Passes / Defensive
+/// Interventions / Saves) with at most one leader entry per side. The card
+/// compares [MatchLeader.value] across sides to pick the overall leader row.
+class MatchLeaderCategory {
+  final String name; // ESPN stat key: 'totalShots' | 'accuratePasses' | …
+  final String? label; // 'Total Shots'
+  final List<MatchLeader> leaders; // 1–2 entries (one per side that has one)
+  MatchLeaderCategory({required this.name, this.label, required this.leaders});
+  factory MatchLeaderCategory.fromJson(Map<String, dynamic> j) => MatchLeaderCategory(
+        name: _str(j['name']),
+        label: _strOrNull(j['label']),
+        leaders: _list(j['leaders'])
+            .map((l) => MatchLeader.fromJson(_map(l)))
+            .toList(growable: false),
+      );
+
+  /// The overall leader across both sides (larger numeric value wins; the
+  /// first entry when values are missing or tied).
+  MatchLeader? get top {
+    MatchLeader? best;
+    for (final l in leaders) {
+      if (best == null) {
+        best = l;
+      } else if ((l.value ?? double.negativeInfinity) > (best.value ?? double.negativeInfinity)) {
+        best = l;
+      }
+    }
+    return best;
+  }
+}
+
+class MatchLeader {
+  final String? side, teamAbbr, id, jersey, pos;
+  final String name;
+  final num? value;
+  final String displayValue;
+  MatchLeader({this.side, this.teamAbbr, this.id, required this.name, this.jersey, this.pos, this.value, this.displayValue = ''});
+  factory MatchLeader.fromJson(Map<String, dynamic> j) => MatchLeader(
+        side: _strOrNull(j['side']),
+        teamAbbr: _strOrNull(j['teamAbbr']),
+        id: _strOrNull(j['id']),
+        name: _str(j['name']),
+        jersey: _strOrNull(j['jersey']),
+        pos: _strOrNull(j['pos']),
+        value: _num(j['value']),
+        displayValue: _str(j['displayValue']),
+      );
+}
+
+// ---- match feed (soccer core plays) -------------------------------------------
+/// The normalized CORE touch-by-touch plays feed (capability hasMatchFeed) —
+/// the live-pitch view / shot map / momentum source. Coordinates are
+/// TEAM-RELATIVE: x 0 = own goal line, 100 = opponent goal line, y 0..100
+/// across the pitch (both teams' attacking events read x→100; the renderer
+/// mirrors one side onto a shared pitch). Chronological, oldest first.
+class MatchFeed {
+  final int count; // ESPN's total play count at fetch time
+  final List<MatchFeedPlay> plays;
+  MatchFeed({required this.count, required this.plays});
+  factory MatchFeed.fromJson(Map<String, dynamic> j) => MatchFeed(
+        count: _int(j['count']) ?? 0,
+        plays: _list(j['plays'])
+            .map((p) => MatchFeedPlay.fromJson(_map(p)))
+            .toList(growable: false),
+      );
+}
+
+class MatchFeedPlay {
+  final String id;
+  final String type; // 'Pass' | 'Throw In' | 'Shot On Target' | … (open set)
+  final int? period;
+  final String? clock; // "25'"
+  final num? sec; // match-time seconds — momentum bucketing
+  final String? side; // 'home' | 'away'
+  final String? athleteId; // joins the summary lineups for a display name
+  final String? shortText; // 'William Saliba Pass' — self-contained label
+  final String? text; // full sentence (shots carry rich prose)
+  final num? x, y; // where the play happened (team-relative)
+  final num? x2, y2; // where the ball ended (passes/shots)
+  final bool scoring;
+  MatchFeedPlay({
+    required this.id,
+    required this.type,
+    this.period,
+    this.clock,
+    this.sec,
+    this.side,
+    this.athleteId,
+    this.shortText,
+    this.text,
+    this.x,
+    this.y,
+    this.x2,
+    this.y2,
+    this.scoring = false,
+  });
+  factory MatchFeedPlay.fromJson(Map<String, dynamic> j) => MatchFeedPlay(
+        id: _str(j['id']),
+        type: _str(j['type']),
+        period: _int(j['period']),
+        clock: _strOrNull(j['clock']),
+        sec: _num(j['sec']),
+        side: _strOrNull(j['side']),
+        athleteId: _strOrNull(j['athleteId']),
+        shortText: _strOrNull(j['shortText']),
+        text: _strOrNull(j['text']),
+        x: _num(j['x']),
+        y: _num(j['y']),
+        x2: _num(j['x2']),
+        y2: _num(j['y2']),
+        scoring: _bool(j['scoring']),
+      );
+
+  /// Minute bucket for momentum/trail grouping (sec is match time).
+  int get minute => sec == null ? 0 : (sec! ~/ 60);
 }
 
 // ---- rankings (college polls) -----------------------------------------------

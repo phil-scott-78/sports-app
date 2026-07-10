@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Game Detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-note{margin:0 0 24px;max-width:640px;font:400 12px/1.55 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t10" data-screen-label="Turn 10 — Live pitch view">
+<div class="dv-thd"><a class="dv-tid" href="#t10">10</a><span class="dv-tname">Live pitch — ball position, possession, pass trail, labelled restarts</span></div>
+<p class="dv-note">A live "field pass" card: the pitch shows who has the ball, passes draw as a fading trail (oldest faintest), and when play stops the state chip flips to the restart label — throw-in, goal kick, corner — with a marker at the spot. Recent restarts list under the pitch.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="10a">
+<div class="dv-olabel"><a class="dv-oid" href="#10a">10a</a>Live pitch — pass trail + possession chip + restart log</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>14′ · 1ST HALF</span>
+      <span style="font-size:12px;color:#9aa3ad">World Cup · Quarterfinal</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#1d6ee0"></span><span style="font:700 40px/1 'Barlow Condensed'">FRANCE</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">0</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#c8102e"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">MOROCCO</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600;white-space:nowrap">Live pitch</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Commentary</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+
+  <!-- live pitch -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">LIVE PITCH</span>
+      <span style="display:inline-flex;align-items:center;gap:6px;background:#22272f;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600"><span style="width:8px;height:8px;border-radius:50%;background:#1d6ee0"></span>FRA POSSESSION · OPEN PLAY</span>
+    </div>
+    <div style="position:relative;height:210px;border-radius:12px;background:#15231b;overflow:hidden">
+      <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(238,241,244,.14)"></div>
+      <div style="position:absolute;top:50%;left:50%;width:70px;height:70px;border:1px solid rgba(238,241,244,.14);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;top:24%;bottom:24%;right:0;width:52px;border:1px solid rgba(238,241,244,.14);border-right:none"></div>
+      <div style="position:absolute;top:24%;bottom:24%;left:0;width:52px;border:1px solid rgba(238,241,244,.14);border-left:none"></div>
+      <svg width="100%" height="100%" viewBox="0 0 340 210" preserveAspectRatio="none" style="position:absolute;inset:0">
+        <line x1="60" y1="158" x2="115" y2="98" stroke="#1d6ee0" stroke-width="2" opacity="0.3"></line>
+        <line x1="115" y1="98" x2="185" y2="56" stroke="#1d6ee0" stroke-width="2" opacity="0.5"></line>
+        <line x1="185" y1="56" x2="232" y2="108" stroke="#1d6ee0" stroke-width="2" opacity="0.7"></line>
+        <line x1="232" y1="108" x2="282" y2="86" stroke="#1d6ee0" stroke-width="2.5" opacity="0.95"></line>
+        <circle cx="60" cy="158" r="4" fill="#1d6ee0" opacity="0.35"></circle>
+        <circle cx="115" cy="98" r="4" fill="#1d6ee0" opacity="0.55"></circle>
+        <circle cx="185" cy="56" r="4" fill="#1d6ee0" opacity="0.75"></circle>
+        <circle cx="232" cy="108" r="4" fill="#1d6ee0" opacity="0.95"></circle>
+        <circle cx="282" cy="86" r="9" fill="none" stroke="#eef1f4" stroke-width="1.5" opacity="0.7"></circle>
+        <circle cx="282" cy="86" r="5" fill="#eef1f4"></circle>
+      </svg>
+      <span style="position:absolute;left:83%;top:32%;font-size:10.5px;font-weight:600;color:#eef1f4">Mbappé</span>
+      <span style="position:absolute;left:12px;bottom:10px;font-size:10px;color:#6c7480">FRA attacking →</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:#9aa3ad"><span><span style="color:#eef1f4;font-weight:600">4 passes</span> this sequence</span><span>ball in MAR half · 22 yds out</span></div>
+  </div>
+
+  <!-- last touch -->
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST TOUCH</div>
+    <div style="font:600 17px/1.35 Archivo">Koné slides it wide to Mbappé — France working it toward the corner of the box.</div>
+  </div>
+
+  <!-- restart log -->
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;padding-bottom:6px">RECENT STOPPAGES</div>
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">13′</span>
+      <span style="flex:1;font-size:13px">Throw-in · <span style="font-weight:600">France</span></span>
+      <span style="font-size:11px;color:#6c7480">right flank, MAR half</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">11′</span>
+      <span style="flex:1;font-size:13px;color:#9aa3ad">Goal kick · <span style="font-weight:600;color:#eef1f4">Morocco</span></span>
+      <span style="font-size:11px;color:#6c7480">Bounou</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">9′</span>
+      <span style="flex:1;font-size:13px;color:#9aa3ad">Corner · <span style="font-weight:600;color:#eef1f4">France</span></span>
+      <span style="font-size:11px;color:#6c7480">cleared at the near post</span>
+    </div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t9" data-screen-label="Turn 9 — Soccer deep modules">
+<div class="dv-thd"><a class="dv-tid" href="#t9">9</a><span class="dv-tname">Soccer deep modules — momentum, commentary, leaders, formations, shot map, venue</span></div>
+<p class="dv-note">The full soccer live-game module set, split across the chip nav: <a class="dv-oid" href="#9a">9a</a> is the "Now" tab (momentum chart, live commentary, match leaders → full player stats), <a class="dv-oid" href="#9b">9b</a> is "Lineups &amp; Stats" (formation pitch with toggle, team stats, clickable shot map with per-shot detail, venue). Momentum bars = attacking pressure per minute, home above the line, away below.</p>
+<div class="dv-opts">
+
+<!-- ═══════════════ 9a · NOW: momentum + commentary + leaders ═══════════════ -->
+<div class="dv-opt" id="9a">
+<div class="dv-olabel"><a class="dv-oid" href="#9a">9a</a>Now tab — momentum chart, commentary feed, match leaders</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>14′ · 1ST HALF</span>
+      <span style="font-size:12px;color:#9aa3ad">World Cup · Quarterfinal</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#1d6ee0"></span><span style="font:700 40px/1 'Barlow Condensed'">FRANCE</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">0</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#c8102e"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">MOROCCO</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Commentary</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Lineups</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+
+  <!-- momentum -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">MOMENTUM</span>
+      <span style="display:flex;gap:14px;font-size:11px;color:#9aa3ad"><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#1d6ee0"></span>FRA</span><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#c8102e"></span>MAR</span></span>
+    </div>
+    <div style="position:relative">
+      <div style="display:flex;gap:3px;align-items:flex-end;height:48px">
+        <span style="flex:1;height:4px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:44px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:38px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:30px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:12px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:8px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:6px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1;height:5px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:26px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:32px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:20px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1;height:10px;background:#1d6ee0;border-radius:2px 2px 0 0"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+      </div>
+      <div style="height:2px;background:#414a55;border-radius:1px"></div>
+      <div style="display:flex;gap:3px;align-items:flex-start;height:22px">
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1;height:5px;background:#c8102e;border-radius:0 0 2px 2px"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1;height:8px;background:#c8102e;border-radius:0 0 2px 2px"></span>
+        <span style="flex:1;height:14px;background:#c8102e;border-radius:0 0 2px 2px"></span>
+        <span style="flex:1;height:6px;background:#c8102e;border-radius:0 0 2px 2px"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1;height:4px;background:#c8102e;border-radius:0 0 2px 2px"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+        <span style="flex:1"></span>
+      </div>
+      <div style="position:absolute;top:-4px;bottom:16px;left:63.6%;width:1.5px;background:#2a303a"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#6c7480;margin-top:4px"><span>KO</span><span>HT</span><span>FT</span></div>
+  </div>
+
+  <!-- commentary -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;padding-bottom:6px">COMMENTARY</div>
+    <div style="display:flex;gap:12px;padding:12px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">12′</span>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#c8cfd6">Les Bleus have been sloppy in possession. Diaz charges into the heart of the French defence, but his momentum is halted by a strong — and fair — challenge from Koné.</p>
+    </div>
+    <div style="display:flex;gap:12px;padding:12px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">10′</span>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#c8cfd6">France look to unlock the Morocco defence with patient build-up. Worked out to Doué, who takes aim — blocked by the well-placed Diop.</p>
+    </div>
+    <div style="display:flex;gap:12px;padding:12px 0;border-top:1px solid #262c35">
+      <span style="flex:none;font:700 15px 'Barlow Condensed';color:#eef1f4;background:#22272f;border-radius:6px;width:34px;height:26px;display:flex;align-items:center;justify-content:center">8′</span>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#9aa3ad">After that early scare, Morocco wisely take the chance to get a feel for the ball, keeping possession at a steady pace.</p>
+    </div>
+    <div style="border-top:1px solid #262c35;padding-top:12px;text-align:center;font-size:13px;font-weight:600;color:#8ab4f8">Full commentary</div>
+  </div>
+
+  <!-- match leaders -->
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;padding-bottom:6px">MATCH LEADERS</div>
+    <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid #262c35">
+      <span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none;border-left:3px solid #1d6ee0;box-sizing:border-box"></span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px">Mbappé</div><div style="font-size:11px;color:#6c7480">FRA · FW</div></div>
+      <div style="text-align:right"><span style="font:700 22px 'Barlow Condensed'">3</span><div style="font-size:10px;color:#6c7480;letter-spacing:.06em">TOTAL SHOTS</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid #262c35">
+      <span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none;border-left:3px solid #c8102e;box-sizing:border-box"></span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px">Amrabat</div><div style="font-size:11px;color:#6c7480">MAR · MF</div></div>
+      <div style="text-align:right"><span style="font:700 22px 'Barlow Condensed'">14</span><div style="font-size:10px;color:#6c7480;letter-spacing:.06em">ACCURATE PASSES</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid #262c35">
+      <span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none;border-left:3px solid #c8102e;box-sizing:border-box"></span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px">Diop</div><div style="font-size:11px;color:#6c7480">MAR · DF</div></div>
+      <div style="text-align:right"><span style="font:700 22px 'Barlow Condensed'">4</span><div style="font-size:10px;color:#6c7480;letter-spacing:.06em">DEF. INTERVENTIONS</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid #262c35">
+      <span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none;border-left:3px solid #c8102e;box-sizing:border-box"></span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px">Bounou</div><div style="font-size:11px;color:#6c7480">MAR · GK</div></div>
+      <div style="text-align:right"><span style="font:700 22px 'Barlow Condensed'">2</span><div style="font-size:10px;color:#6c7480;letter-spacing:.06em">SAVES</div></div>
+    </div>
+    <div style="border-top:1px solid #262c35;padding-top:12px;text-align:center;font-size:13px;font-weight:600;color:#8ab4f8">Full player stats</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 9b · LINEUPS & STATS: formation, team stats, shot map, venue ═══════════════ -->
+<div class="dv-opt" id="9b">
+<div class="dv-olabel"><a class="dv-oid" href="#9b">9b</a>Lineups &amp; stats tab — formation pitch, team stats, shot map, venue</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>14′ · 1ST HALF</span>
+      <span style="font-size:12px;color:#9aa3ad">FRA 0 · MAR 0</span>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:12px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Commentary</span>
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Lineups</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+  </div>
+
+  <!-- formations -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;margin-bottom:12px">FORMATIONS &amp; LINEUPS</div>
+    <div style="display:flex;background:#22272f;border-radius:100px;padding:3px;margin-bottom:14px">
+      <span style="flex:1;text-align:center;padding:7px 0;border-radius:100px;background:#eef1f4;color:#111318;font-size:12.5px;font-weight:600">FRA · 4-2-3-1</span>
+      <span style="flex:1;text-align:center;padding:7px 0;font-size:12.5px;color:#9aa3ad">MAR · 4-2-3-1</span>
+    </div>
+    <div style="position:relative;height:400px;border-radius:12px;background:#15231b;overflow:hidden">
+      <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(238,241,244,.14)"></div>
+      <div style="position:absolute;left:50%;top:50%;width:90px;height:90px;border:1px solid rgba(238,241,244,.14);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;left:22%;right:22%;bottom:0;height:56px;border:1px solid rgba(238,241,244,.14);border-bottom:none"></div>
+      <div style="position:absolute;left:22%;right:22%;top:0;height:56px;border:1px solid rgba(238,241,244,.14);border-top:none"></div>
+      <div style="position:absolute;left:50%;top:8%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">10</span><span style="font-size:10.5px;color:#c8cfd6">Mbappé</span></div>
+      <div style="position:absolute;left:18%;top:27%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">20</span><span style="font-size:10.5px;color:#c8cfd6">Doué</span></div>
+      <div style="position:absolute;left:50%;top:27%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">11</span><span style="font-size:10.5px;color:#c8cfd6">Olise</span></div>
+      <div style="position:absolute;left:82%;top:27%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">7</span><span style="font-size:10.5px;color:#c8cfd6">Dembélé</span></div>
+      <div style="position:absolute;left:35%;top:47%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">14</span><span style="font-size:10.5px;color:#c8cfd6">Rabiot</span></div>
+      <div style="position:absolute;left:65%;top:47%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">6</span><span style="font-size:10.5px;color:#c8cfd6">Koné</span></div>
+      <div style="position:absolute;left:12%;top:67%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">3</span><span style="font-size:10.5px;color:#c8cfd6">Digne</span></div>
+      <div style="position:absolute;left:37%;top:71%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">17</span><span style="font-size:10.5px;color:#c8cfd6">Saliba</span></div>
+      <div style="position:absolute;left:63%;top:71%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">4</span><span style="font-size:10.5px;color:#c8cfd6">Upamecano</span></div>
+      <div style="position:absolute;left:88%;top:67%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">5</span><span style="font-size:10.5px;color:#c8cfd6">Koundé</span></div>
+      <div style="position:absolute;left:50%;top:90%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px"><span style="width:32px;height:32px;border-radius:50%;background:#414a55;display:flex;align-items:center;justify-content:center;font:700 14px 'Barlow Condensed';color:#fff">16</span><span style="font-size:10.5px;color:#c8cfd6">Maignan</span></div>
+    </div>
+    <div style="padding-top:12px;text-align:center;font-size:13px;font-weight:600;color:#8ab4f8">Full player stats</div>
+  </div>
+
+  <!-- team stats -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:14px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">TEAM STATS</div>
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:#9aa3ad;margin-bottom:6px"><span style="font-weight:600">62%</span><span style="letter-spacing:.06em">POSSESSION</span><span>38%</span></div>
+      <div style="height:8px;border-radius:4px;overflow:hidden;display:flex;gap:2px"><span style="width:62%;background:#1d6ee0;border-radius:4px"></span><span style="flex:1;background:#c8102e;border-radius:4px"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">5</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">SHOTS</span><span style="color:#9aa3ad;width:44px;text-align:right">2</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">0.4</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">EXPECTED GOALS</span><span style="color:#9aa3ad;width:44px;text-align:right">0.1</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">89%</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">PASS ACCURACY</span><span style="color:#9aa3ad;width:44px;text-align:right">81%</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">2</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">CORNERS</span><span style="color:#9aa3ad;width:44px;text-align:right">0</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">3</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">FOULS</span><span style="color:#9aa3ad;width:44px;text-align:right">5</span></div>
+    </div>
+  </div>
+
+  <!-- shot map -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">SHOT MAP</span>
+      <span style="font-size:12px;color:#9aa3ad;background:#22272f;border-radius:100px;padding:5px 12px">All players ▾</span>
+    </div>
+    <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#6c7480;border:1.5px solid #2a303a;border-radius:100px;padding:4px 10px"><span style="width:8px;height:8px;border-radius:50%;background:#3fa96b"></span>Goal</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#9aa3ad;border:1.5px solid #2a303a;border-radius:100px;padding:4px 10px"><span style="width:8px;height:8px;border-radius:50%;background:#ffc52f"></span>Save</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#9aa3ad;border:1.5px solid #2a303a;border-radius:100px;padding:4px 10px"><span style="width:8px;height:8px;border-radius:50%;border:1.5px solid #9aa3ad;box-sizing:border-box"></span>Off target</span>
+      <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#eef1f4;border:1.5px solid #414a55;border-radius:100px;padding:4px 10px;background:#22272f"><span style="width:8px;height:8px;border-radius:50%;background:#e5484d"></span>Block</span>
+    </div>
+    <div style="position:relative;height:190px;border-radius:12px;background:#15231b;overflow:hidden">
+      <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(238,241,244,.14)"></div>
+      <div style="position:absolute;top:50%;left:50%;width:70px;height:70px;border:1px solid rgba(238,241,244,.14);border-radius:50%;transform:translate(-50%,-50%)"></div>
+      <div style="position:absolute;top:24%;bottom:24%;right:0;width:52px;border:1px solid rgba(238,241,244,.14);border-right:none"></div>
+      <div style="position:absolute;top:24%;bottom:24%;left:0;width:52px;border:1px solid rgba(238,241,244,.14);border-left:none"></div>
+      <span style="position:absolute;left:74%;top:38%;width:14px;height:14px;border-radius:50%;background:#e5484d;border:2px solid #15231b;transform:translate(-50%,-50%)"></span>
+      <span style="position:absolute;left:79%;top:33%;width:20px;height:20px;border-radius:50%;background:#e5484d;border:3px solid rgba(238,241,244,.85);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(229,72,77,.35)"></span>
+      <span style="position:absolute;left:91%;top:62%;width:14px;height:14px;border-radius:50%;background:transparent;border:2px solid #9aa3ad;box-sizing:border-box;transform:translate(-50%,-50%)"></span>
+      <div style="position:absolute;left:80.5%;top:32%;width:11%;height:1.5px;background:rgba(238,241,244,.5);transform:rotate(9deg);transform-origin:left center"></div>
+    </div>
+    <!-- selected shot detail -->
+    <div style="margin-top:12px;background:#22272f;border-radius:14px;padding:14px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span style="width:32px;height:32px;border-radius:50%;background:#1d6ee0;display:flex;align-items:center;justify-content:center;font:700 13px 'Barlow Condensed';color:#fff;flex:none">20</span>
+        <div style="flex:1"><div style="font-size:13.5px;font-weight:600">D. Doué <span style="font-size:11px;color:#6c7480">FRA · AM</span></div><div style="font-size:11px;color:#e5484d;font-weight:600;margin-top:2px">BLOCKED · 10′</div></div>
+        <span style="font-size:11px;color:#6c7480">3 of 3 ‹ ›</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;border-top:1px solid #2a303a;padding-top:12px;font-variant-numeric:tabular-nums">
+        <div><div style="font:700 17px 'Barlow Condensed'">0.03</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">XG</div></div>
+        <div><div style="font:700 17px 'Barlow Condensed'">27 yds</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">DISTANCE</div></div>
+        <div><div style="font:700 17px 'Barlow Condensed'">Right foot</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">SHOT TYPE</div></div>
+        <div><div style="font:700 17px 'Barlow Condensed'">0.00</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">XGOT</div></div>
+        <div><div style="font:700 17px 'Barlow Condensed'">Regular</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">SITUATION</div></div>
+        <div><div style="font:700 17px 'Barlow Condensed'">Low centre</div><div style="font-size:10px;color:#6c7480;letter-spacing:.05em">GOAL ZONE</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- venue -->
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;margin-bottom:12px">VENUE</div>
+    <div style="height:110px;border-radius:12px;background:repeating-linear-gradient(45deg,#1e232c,#1e232c 10px,#22272f 10px,#22272f 20px);display:flex;align-items:center;justify-content:center;margin-bottom:12px"><span style="font:11px ui-monospace,Menlo,monospace;color:#6c7480">stadium photo</span></div>
+    <div style="font-size:15px;font-weight:600">Gillette Stadium</div>
+    <div style="font-size:12px;color:#9aa3ad;margin-top:4px">Foxborough, Massachusetts</div>
+    <div style="display:flex;justify-content:space-between;border-top:1px solid #262c35;margin-top:12px;padding-top:12px;font-size:12px;color:#9aa3ad"><span>Attendance <span style="color:#eef1f4;font-weight:600">64,214</span></span><span>21°C · Clear</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t8" data-screen-label="Turn 8 — Baseball live detail">
+<div class="dv-thd"><a class="dv-tid" href="#t8">8</a><span class="dv-tname">Baseball — batter vs pitcher matchup, strike-zone plot, bases, pitch-by-pitch strip</span></div>
+<p class="dv-note">The situation card becomes a duel: pitcher and batter face off with their live lines, count dots underneath. The strike zone is a 3×3 heat grid (catcher's view) with numbered pitch markers keyed to a horizontally scrollable pitch strip. Bases render as a rotated-square diamond. Zone heat needs pitch-location data — degrade to the plain zone outline + markers if we only have locations, or hide the card entirely if not.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="8a">
+<div class="dv-olabel"><a class="dv-oid" href="#8a">8a</a>Baseball — matchup duel, zone heat map, diamond, pitch strip</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>TOP 2ND · 1 OUT</span>
+      <span style="font-size:12px;color:#9aa3ad">Spring Training · North Port</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#ce1141"></span><span style="font:700 40px/1 'Barlow Condensed'">ATLANTA</span><svg width="10" height="12" viewBox="0 0 8 10"><path d="M8 5L0 0v10z" fill="#eef1f4"></path></svg></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">3</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#0c2340"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">TAMPA BAY</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">1</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Plays</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Box</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Leaders</span>
+  </div>
+
+  <!-- situation: the duel -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:8px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="width:44px;height:44px;border-radius:50%;background:#2a303a"></span>
+        <div><div style="font-size:11px;color:#6c7480;letter-spacing:.06em">PITCHING</div><div style="font-size:14.5px;font-weight:600;margin-top:3px">B. Elder <span style="font-size:11px;color:#6c7480">RHP</span></div></div>
+        <div style="font:600 13px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">1.2 IP · 2 H · 0 ER · 2 K · 2 BB</div>
+      </div>
+      <span style="font:700 16px 'Barlow Condensed';color:#414a55;padding-top:14px">VS</span>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;text-align:right">
+        <span style="width:44px;height:44px;border-radius:50%;background:#2a303a"></span>
+        <div><div style="font-size:11px;color:#6c7480;letter-spacing:.06em">AT BAT</div><div style="font-size:14.5px;font-weight:600;margin-top:3px">J. Mangum <span style="font-size:11px;color:#6c7480">CF</span></div></div>
+        <div style="font:600 13px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">1-1 today · .318 AVG</div>
+      </div>
+    </div>
+    <!-- count dots -->
+    <div style="display:flex;justify-content:space-between;border-top:1px solid #262c35;margin-top:14px;padding-top:14px">
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:#6c7480;letter-spacing:.06em">BALLS</span><span style="display:flex;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#3fa96b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22272f"></span><span style="width:10px;height:10px;border-radius:50%;background:#22272f"></span></span></div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:#6c7480;letter-spacing:.06em">STRIKES</span><span style="display:flex;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e5484d"></span><span style="width:10px;height:10px;border-radius:50%;background:#e5484d"></span></span></div>
+      <div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:#6c7480;letter-spacing:.06em">OUTS</span><span style="display:flex;gap:4px"><span style="width:10px;height:10px;border-radius:50%;background:#e5484d"></span><span style="width:10px;height:10px;border-radius:50%;background:#22272f"></span></span></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;border-top:1px solid #262c35;margin-top:14px;padding-top:12px;font-size:12px;color:#9aa3ad"><span>Pitch count <span style="font:600 14px 'Barlow Condensed';color:#eef1f4">40</span></span><span>On deck · <span style="color:#eef1f4;font-weight:600">B. Lowe</span></span></div>
+  </div>
+
+  <!-- strike zone + bases -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;margin-bottom:14px"><span>STRIKE ZONE</span><span style="color:#6c7480;font-weight:400">catcher's view</span></div>
+    <div style="display:flex;gap:18px;align-items:center">
+      <!-- zone -->
+      <div style="position:relative;width:150px;height:170px;flex:none">
+        <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:2px">
+          <span style="background:rgba(29,110,224,.30);border-radius:3px"></span><span style="background:rgba(29,110,224,.18);border-radius:3px"></span><span style="background:rgba(229,72,77,.22);border-radius:3px"></span>
+          <span style="background:rgba(229,72,77,.16);border-radius:3px"></span><span style="background:rgba(229,72,77,.34);border-radius:3px"></span><span style="background:rgba(229,72,77,.48);border-radius:3px"></span>
+          <span style="background:rgba(229,72,77,.26);border-radius:3px"></span><span style="background:rgba(229,72,77,.40);border-radius:3px"></span><span style="background:rgba(29,110,224,.20);border-radius:3px"></span>
+        </div>
+        <div style="position:absolute;left:16%;right:16%;top:14%;bottom:14%;border:1.5px solid rgba(238,241,244,.55);border-radius:2px"></div>
+        <span style="position:absolute;left:74%;top:2%;width:22px;height:22px;border-radius:50%;background:#e5484d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed';border:2px solid #1a1e25;transform:translate(-50%,-50%)">2</span>
+        <span style="position:absolute;left:88%;top:38%;width:22px;height:22px;border-radius:50%;background:#e5484d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed';border:2px solid #1a1e25;transform:translate(-50%,-50%)">1</span>
+        <span style="position:absolute;left:6%;top:30%;width:22px;height:22px;border-radius:50%;background:#6c7480;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed';border:2px solid #1a1e25;transform:translate(-50%,-50%)">5</span>
+        <span style="position:absolute;left:52%;top:62%;width:22px;height:22px;border-radius:50%;background:#6c7480;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed';border:2px solid #1a1e25;transform:translate(-50%,-50%)">4</span>
+        <span style="position:absolute;left:40%;top:96%;width:22px;height:22px;border-radius:50%;background:#3fa96b;color:#111318;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed';border:2px solid #1a1e25;transform:translate(-50%,-50%)">3</span>
+      </div>
+      <!-- bases -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+        <div style="position:relative;width:84px;height:56px;margin:0 auto">
+          <span style="position:absolute;left:50%;top:0;width:22px;height:22px;background:#22272f;border:1.5px solid #414a55;box-sizing:border-box;border-radius:4px;transform:translateX(-50%) rotate(45deg);background:#ffc52f;border-color:#ffc52f"></span>
+          <span style="position:absolute;left:0;bottom:0;width:22px;height:22px;background:#ffc52f;border-radius:4px;transform:rotate(45deg)"></span>
+          <span style="position:absolute;right:0;bottom:0;width:22px;height:22px;background:#22272f;border:1.5px solid #414a55;box-sizing:border-box;border-radius:4px;transform:rotate(45deg)"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:#9aa3ad">
+          <div style="display:flex;justify-content:space-between"><span style="color:#6c7480">1B</span><span>empty</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#6c7480">2B</span><span style="color:#eef1f4;font-weight:600">T. Callihan</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#6c7480">3B</span><span style="color:#eef1f4;font-weight:600">N. Gonzales</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pitch strip -->
+  <div style="margin:12px 0 0;padding:0 20px 6px;display:flex;gap:8px;overflow-x:auto">
+    <div style="flex:none;width:96px;background:#1a1e25;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="width:22px;height:22px;border-radius:50%;background:#6c7480;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed'">5</span>
+      <span style="font-size:12px;font-weight:600">Foul ball</span>
+      <span style="font-size:11px;color:#9aa3ad">Cutter<br>91 mph</span>
+    </div>
+    <div style="flex:none;width:96px;background:#1a1e25;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="width:22px;height:22px;border-radius:50%;background:#6c7480;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed'">4</span>
+      <span style="font-size:12px;font-weight:600">Foul ball</span>
+      <span style="font-size:11px;color:#9aa3ad">Slider<br>85 mph</span>
+    </div>
+    <div style="flex:none;width:96px;background:#1a1e25;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="width:22px;height:22px;border-radius:50%;background:#3fa96b;color:#111318;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed'">3</span>
+      <span style="font-size:12px;font-weight:600">Ball</span>
+      <span style="font-size:11px;color:#9aa3ad">Slider<br>85 mph</span>
+    </div>
+    <div style="flex:none;width:96px;background:#1a1e25;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="width:22px;height:22px;border-radius:50%;background:#e5484d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed'">2</span>
+      <span style="font-size:12px;font-weight:600">Foul ball</span>
+      <span style="font-size:11px;color:#9aa3ad">Cutter<br>89 mph</span>
+    </div>
+    <div style="flex:none;width:96px;background:#1a1e25;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <span style="width:22px;height:22px;border-radius:50%;background:#e5484d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 11px 'Barlow Condensed'">1</span>
+      <span style="font-size:12px;font-weight:600">Strike swinging</span>
+      <span style="font-size:11px;color:#9aa3ad">Slider<br>82 mph</span>
+    </div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST PITCH</div>
+    <div style="font:600 17px/1.35 Archivo">Elder misses low with the slider — Mangum lays off, count even at 1-1.</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t7" data-screen-label="Turn 7 — Golf live detail">
+<div class="dv-thd"><a class="dv-tid" href="#t7">7</a><span class="dv-tname">Golf — leaderboard vs par, thru markers, classic circle/square scorecard notation</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="7a">
+<div class="dv-olabel"><a class="dv-oid" href="#7a">7a</a>Golf — event block, live leaderboard, followed player's hole-by-hole</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <!-- event block -->
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>ROUND 3 · IN PROGRESS</span>
+      <span style="font-size:12px;color:#9aa3ad">Royal Birkdale</span>
+    </div>
+    <div style="padding:10px 0;border-bottom:2px solid #2a303a">
+      <div style="font:700 40px/1 'Barlow Condensed'">THE OPEN CHAMPIONSHIP</div>
+      <div style="font-size:13px;color:#9aa3ad;margin-top:6px">Moving day · wind 18 mph off the coast</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Leaderboard</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Following</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Course</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Tee times</span>
+  </div>
+
+  <!-- leaderboard -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:2px">
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;font-size:11px;color:#6c7480;letter-spacing:.06em;padding-bottom:10px"><span></span><span>PLAYER</span><span style="text-align:center">TODAY</span><span style="text-align:center">THRU</span><span style="text-align:right">TOTAL</span></div>
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;align-items:center;padding:9px 0;border-top:1px solid #262c35;font-variant-numeric:tabular-nums">
+      <span style="font:700 15px 'Barlow Condensed';color:#ffc52f">1</span>
+      <span style="font-size:13.5px;font-weight:600">Scheffler <span style="font-size:11px;color:#6c7480">USA</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#f26d6d;text-align:center">−3</span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">14</span>
+      <span style="font:700 17px 'Barlow Condensed';color:#f26d6d;text-align:right">−11</span>
+    </div>
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;align-items:center;padding:9px 0;border-top:1px solid #262c35;font-variant-numeric:tabular-nums">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad">2</span>
+      <span style="font-size:13.5px">McIlroy <span style="font-size:11px;color:#6c7480">NIR</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#f26d6d;text-align:center">−5</span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">F</span>
+      <span style="font:700 17px 'Barlow Condensed';color:#f26d6d;text-align:right">−9</span>
+    </div>
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;align-items:center;padding:9px 0;border-top:1px solid #262c35;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,rgba(255,197,47,.07),transparent);margin:0 -18px;padding-left:18px;padding-right:18px">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad">3</span>
+      <span style="font-size:13.5px;font-weight:600">Åberg <span style="font-size:11px;color:#6c7480">SWE · following</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#f26d6d;text-align:center">−2</span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">12</span>
+      <span style="font:700 17px 'Barlow Condensed';color:#f26d6d;text-align:right">−8</span>
+    </div>
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;align-items:center;padding:9px 0;border-top:1px solid #262c35;font-variant-numeric:tabular-nums">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad">4</span>
+      <span style="font-size:13.5px">Matsuyama <span style="font-size:11px;color:#6c7480">JPN</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">E</span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">13</span>
+      <span style="font:700 17px 'Barlow Condensed';color:#f26d6d;text-align:right">−6</span>
+    </div>
+    <div style="display:grid;grid-template-columns:24px 1fr 48px 48px 52px;align-items:center;padding:9px 0;border-top:1px solid #262c35;font-variant-numeric:tabular-nums">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad">5</span>
+      <span style="font-size:13.5px">Fleetwood <span style="font-size:11px;color:#6c7480">ENG</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">+1</span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;text-align:center">15</span>
+      <span style="font:700 17px 'Barlow Condensed';color:#f26d6d;text-align:right">−5</span>
+    </div>
+  </div>
+
+  <!-- followed player: hole by hole -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div><div style="font:700 24px/1 'Barlow Condensed'">ÅBERG · HOLE 13</div><div style="font-size:12px;color:#9aa3ad;margin-top:4px">Par 5 · 547 yds · 2nd shot, 231 to the pin</div></div>
+      <span style="font:700 26px 'Barlow Condensed';color:#f26d6d">−8</span>
+    </div>
+    <div style="border-top:1px solid #262c35;padding-top:14px">
+      <div style="font-size:11px;color:#6c7480;letter-spacing:.06em;margin-bottom:10px">BACK NINE · <span style="color:#9aa3ad">○ birdie · □ bogey · ◎ eagle</span></div>
+      <div style="display:flex;gap:8px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#6c7480">10</span><span style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;font:600 14px 'Barlow Condensed';color:#9aa3ad">4</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#6c7480">11</span><span style="width:30px;height:30px;border-radius:50%;border:1.5px solid #f26d6d;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:600 14px 'Barlow Condensed';color:#f26d6d">2</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#6c7480">12</span><span style="width:30px;height:30px;border:1.5px solid #6c7480;border-radius:4px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:600 14px 'Barlow Condensed';color:#9aa3ad">5</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#ffc52f">13</span><span style="width:30px;height:30px;border-radius:50%;border:1.5px dashed #ffc52f;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:600 14px 'Barlow Condensed';color:#ffc52f">·</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#6c7480">14</span><span style="width:30px;height:30px"></span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:5px"><span style="font-size:10px;color:#6c7480">15</span><span style="width:30px;height:30px"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST SHOT</div>
+    <div style="font:600 17px/1.35 Archivo">Åberg rips a 3-wood up the 13th — pin-high left, 40 feet for eagle.</div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">COURSE · TOUGHEST TODAY</div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;font-variant-numeric:tabular-nums"><span>No. 6 · Par 4 · 499 yds</span><span style="font:600 14px 'Barlow Condensed';color:#9aa3ad">+0.42 avg</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px;color:#9aa3ad;font-variant-numeric:tabular-nums"><span>No. 16 · Par 4 · 439 yds</span><span style="font:600 14px 'Barlow Condensed'">+0.31 avg</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t6" data-screen-label="Turn 6 — Soccer, tennis, hockey live detail">
+<div class="dv-thd"><a class="dv-tid" href="#t6">6</a><span class="dv-tname">Soccer, tennis, hockey — three more situation-card shapes</span></div>
+<p class="dv-note">Soccer gets a match timeline (goals, cards, now-marker); tennis swaps the score block for a set grid + serve/break-point card; hockey gets a power-play clock with skater dots. Others that'd want special handling later: golf (leaderboard vs par, thru), F1/motorsport (lap counter, gaps, pit status), combat sports (round scorecards).</p>
+<div class="dv-opts">
+
+<!-- ═══════════════ 6a · SOCCER ═══════════════ -->
+<div class="dv-opt" id="6a">
+<div class="dv-olabel"><a class="dv-oid" href="#6a">6a</a>Soccer — match timeline, possession &amp; xG, man-advantage badge</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>73′ · 2ND HALF</span>
+      <span style="font-size:12px;color:#9aa3ad">World Cup · Round of 16</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#c8102e"></span><span style="font:700 40px/1 'Barlow Condensed'">ENGLAND</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">2</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#f36c21"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">NETHERLANDS</span><span style="font-size:10px;font-weight:700;letter-spacing:.05em;background:#e5484d;color:#fff;border-radius:4px;padding:2px 6px">10 MEN</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">1</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Timeline</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Lineups</span>
+  </div>
+
+  <!-- situation: match timeline -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;margin-bottom:14px"><span>MATCH TIMELINE</span><span style="color:#eef1f4">73′</span></div>
+    <div style="position:relative;height:34px">
+      <div style="position:absolute;left:0;right:0;top:15px;height:4px;border-radius:2px;background:#22272f"></div>
+      <div style="position:absolute;left:0;top:15px;width:81%;height:4px;border-radius:2px;background:#3a4250"></div>
+      <div style="position:absolute;left:50%;top:9px;bottom:9px;width:1.5px;background:#414a55"></div>
+      <span style="position:absolute;left:13%;top:8px;width:18px;height:18px;border-radius:50%;background:#c8102e;transform:translateX(-50%);border:2px solid #111318"></span>
+      <span style="position:absolute;left:34%;top:8px;width:18px;height:18px;border-radius:50%;background:#f36c21;transform:translateX(-50%);border:2px solid #111318"></span>
+      <span style="position:absolute;left:63%;top:10px;width:10px;height:14px;border-radius:2px;background:#e5484d;transform:translateX(-50%)"></span>
+      <span style="position:absolute;left:76%;top:8px;width:18px;height:18px;border-radius:50%;background:#c8102e;transform:translateX(-50%);border:2px solid #111318"></span>
+      <span style="position:absolute;left:81%;top:5px;bottom:5px;width:2.5px;background:#eef1f4"></span>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#6c7480;margin-top:2px"><span>KO</span><span>HT</span><span>90′</span></div>
+    <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #262c35;margin-top:12px;padding-top:12px;font-size:12px;color:#9aa3ad">
+      <div style="display:flex;gap:10px"><span style="font:600 12px 'Barlow Condensed';color:#6c7480;width:26px">68′</span><span style="width:8px;height:12px;border-radius:1.5px;background:#e5484d;margin-top:2px"></span><span>De Ligt — second yellow, Netherlands to 10</span></div>
+      <div style="display:flex;gap:10px"><span style="font:600 12px 'Barlow Condensed';color:#6c7480;width:26px">31′</span><span style="width:12px;height:12px;border-radius:50%;background:#f36c21;margin-top:1px"></span><span>Gakpo — left-footed, top corner</span></div>
+    </div>
+  </div>
+
+  <!-- possession / stats -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:14px">
+    <div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:#9aa3ad;margin-bottom:6px"><span style="font-weight:600">58%</span><span style="letter-spacing:.06em">POSSESSION</span><span>42%</span></div>
+      <div style="height:8px;border-radius:4px;overflow:hidden;display:flex;gap:2px"><span style="width:58%;background:#c8102e;border-radius:4px"></span><span style="flex:1;background:#f36c21;border-radius:4px"></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:40px">14</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">SHOTS</span><span style="color:#9aa3ad;width:40px;text-align:right">6</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:40px">1.8</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">EXPECTED GOALS</span><span style="color:#9aa3ad;width:40px;text-align:right">0.9</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:40px">7</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">CORNERS</span><span style="color:#9aa3ad;width:40px;text-align:right">2</span></div>
+    </div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST EVENT</div>
+    <div style="font:600 17px/1.35 Archivo">Saka cuts inside and curls one just wide — England pressing the 10 men.</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 6b · TENNIS ═══════════════ -->
+<div class="dv-opt" id="6b">
+<div class="dv-olabel"><a class="dv-oid" href="#6b">6b</a>Tennis — set grid, serve dot, set-point badge</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>3RD SET</span>
+      <span style="font-size:12px;color:#9aa3ad">Wimbledon · Final · Centre Court</span>
+    </div>
+    <!-- set grid score block -->
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:1fr repeat(3,34px) 44px;align-items:center;padding:10px 0;border-bottom:2px solid #2a303a;font-variant-numeric:tabular-nums">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:38px;border-radius:3px;background:#b23a48"></span><span style="font:700 32px/1 'Barlow Condensed'">ALCARAZ</span><span style="width:9px;height:9px;border-radius:50%;background:#c9e04a"></span></div>
+        <span style="font:700 22px 'Barlow Condensed';color:#9aa3ad;text-align:center">6</span>
+        <span style="font:700 22px 'Barlow Condensed';color:#6c7480;text-align:center">3</span>
+        <span style="font:700 22px 'Barlow Condensed';text-align:center">5</span>
+        <span style="font:700 26px 'Barlow Condensed';text-align:center;color:#c9e04a">40</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr repeat(3,34px) 44px;align-items:center;padding:10px 0;border-bottom:2px solid #2a303a;font-variant-numeric:tabular-nums">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:38px;border-radius:3px;background:#2d6a4f"></span><span style="font:700 32px/1 'Barlow Condensed';color:#9aa3ad">SINNER</span></div>
+        <span style="font:700 22px 'Barlow Condensed';color:#6c7480;text-align:center">4</span>
+        <span style="font:700 22px 'Barlow Condensed';color:#9aa3ad;text-align:center">6</span>
+        <span style="font:700 22px 'Barlow Condensed';color:#9aa3ad;text-align:center">4</span>
+        <span style="font:700 26px 'Barlow Condensed';text-align:center;color:#9aa3ad">30</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Points</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Stats</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">H2H</span>
+  </div>
+
+  <!-- situation: serve / set point -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div><div style="font:700 30px/1 'Barlow Condensed';color:#c9e04a">SET POINT</div><div style="font-size:12px;color:#9aa3ad;margin-top:4px">Alcaraz serving for the 3rd set · 40–30</div></div>
+      <div style="width:52px;height:52px;border-radius:50%;background:#22272f;display:flex;align-items:center;justify-content:center;flex:none"><span style="width:16px;height:16px;border-radius:50%;background:#c9e04a"></span></div>
+    </div>
+    <div style="display:flex;border-top:1px solid #262c35;padding-top:12px">
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;color:#6c7480">THIS GAME</span><span style="display:flex;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:#b23a48"></span><span style="width:8px;height:8px;border-radius:50%;background:#2d6a4f"></span><span style="width:8px;height:8px;border-radius:50%;background:#b23a48"></span><span style="width:8px;height:8px;border-radius:50%;background:#b23a48"></span><span style="width:8px;height:8px;border-radius:50%;background:#2d6a4f"></span></span></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;color:#6c7480">BREAKS · SET 3</span><span style="font-size:13px;font-weight:600">1–1</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end"><span style="font-size:11px;color:#6c7480">MATCH TIME</span><span style="font-size:13px;font-weight:600;font-variant-numeric:tabular-nums">2:47</span></div>
+    </div>
+  </div>
+
+  <!-- serve stats -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:#6c7480;letter-spacing:.06em;padding-bottom:4px"><span>ALCARAZ</span><span></span><span>SINNER</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">12</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">ACES</span><span style="color:#9aa3ad;width:44px;text-align:right">9</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">71%</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">1ST SERVE</span><span style="color:#9aa3ad;width:44px;text-align:right">64%</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">3/5</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">BREAK POINTS</span><span style="color:#9aa3ad;width:44px;text-align:right">2/4</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:13px"><span style="font-weight:600;width:44px">31</span><span style="color:#6c7480;font-size:11px;letter-spacing:.06em">WINNERS</span><span style="color:#9aa3ad;width:44px;text-align:right">28</span></div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST POINT</div>
+    <div style="font:600 17px/1.35 Archivo">22-shot rally ends with an Alcaraz drop shot — Centre Court on its feet.</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 6c · HOCKEY ═══════════════ -->
+<div class="dv-opt" id="6c">
+<div class="dv-olabel"><a class="dv-oid" href="#6c">6c</a>Hockey — power-play clock with skater dots, shots pressure</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>2ND · 08:44</span>
+      <span style="font-size:12px;color:#9aa3ad">Cup Final Game 6 · DAL leads 3–2</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#0a6650"></span><span style="font:700 40px/1 'Barlow Condensed'">STARS</span><span style="font-size:10px;font-weight:700;letter-spacing:.05em;background:#ffc52f;color:#111318;border-radius:4px;padding:2px 6px">POWER PLAY</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">2</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#b9975b"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">KNIGHTS</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">2</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Plays</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Box</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Leaders</span>
+  </div>
+
+  <!-- situation: power play -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div><div style="font:700 30px/1 'Barlow Condensed';color:#ffc52f">POWER PLAY</div><div style="font-size:12px;color:#9aa3ad;margin-top:4px">Theodore off for tripping</div></div>
+      <div style="text-align:right"><div style="font:700 34px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">1:24</div><div style="font-size:11px;color:#9aa3ad;margin-top:3px">REMAINING</div></div>
+    </div>
+    <div style="height:8px;border-radius:4px;background:#22272f;overflow:hidden;margin-bottom:14px"><div style="width:70%;height:100%;background:#ffc52f;border-radius:4px"></div></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid #262c35;padding-top:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="display:flex;gap:4px"><span style="width:11px;height:11px;border-radius:50%;background:#0a6650"></span><span style="width:11px;height:11px;border-radius:50%;background:#0a6650"></span><span style="width:11px;height:11px;border-radius:50%;background:#0a6650"></span><span style="width:11px;height:11px;border-radius:50%;background:#0a6650"></span><span style="width:11px;height:11px;border-radius:50%;background:#0a6650"></span></span>
+        <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad">5 v 4</span>
+        <span style="display:flex;gap:4px"><span style="width:11px;height:11px;border-radius:50%;background:#b9975b"></span><span style="width:11px;height:11px;border-radius:50%;background:#b9975b"></span><span style="width:11px;height:11px;border-radius:50%;background:#b9975b"></span><span style="width:11px;height:11px;border-radius:50%;background:#b9975b"></span><span style="width:11px;height:11px;border-radius:50%;border:1.5px dashed #414a55;box-sizing:border-box"></span></span>
+      </div>
+      <span style="font-size:12px;color:#9aa3ad">3 shots this PP</span>
+    </div>
+  </div>
+
+  <!-- shots pressure -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">SHOTS ON GOAL</div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-variant-numeric:tabular-nums">
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 15px 'Barlow Condensed';width:34px">DAL</span><span style="flex:1;height:10px;border-radius:5px;background:#22272f;overflow:hidden"><span style="display:block;width:80%;height:100%;background:#0a6650;border-radius:5px"></span></span><span style="font:700 16px 'Barlow Condensed';width:26px;text-align:right">24</span></div>
+      <div style="display:flex;align-items:center;gap:10px"><span style="font:700 15px 'Barlow Condensed';color:#9aa3ad;width:34px">VGK</span><span style="flex:1;height:10px;border-radius:5px;background:#22272f;overflow:hidden"><span style="display:block;width:63%;height:100%;background:#b9975b;border-radius:5px"></span></span><span style="font:700 16px 'Barlow Condensed';color:#9aa3ad;width:26px;text-align:right">19</span></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;border-top:1px solid #262c35;padding-top:12px;font-size:12px;color:#9aa3ad"><span>Oettinger .938 SV%</span><span>Hill .905 SV%</span></div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST PLAY</div>
+    <div style="font:600 17px/1.35 Archivo">Robertson one-timer from the circle — Hill gets a pad on it, rebound covered.</div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">SCORING</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:#c8cfd6"><span style="font:600 13px 'Barlow Condensed';color:#6c7480;width:44px;flex:none">2ND 4:12</span>Hintz (24) — snap shot, assists Robertson, Heiskanen</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:#c8cfd6"><span style="font:600 13px 'Barlow Condensed';color:#6c7480;width:44px;flex:none">1ST 16:40</span>Eichel (18) — wrist shot, assist Stone</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+
+<section class="dv-turn" id="t5" data-screen-label="Turn 5 — Live detail per sport">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Live game detail across sports — same <a class="dv-oid" href="#2a">2a</a> card grammar, sport-specific situation card</span></div>
+<p class="dv-note">The system: giant score block (or event block) → chip nav → <em>situation card</em> (the sport's flourish) → win probability → last play → supporting stats. Only the situation card changes shape per sport: drive field for football, clock-&-run for basketball, this-over for cricket, live lanes for racing sports.</p>
+<div class="dv-opts">
+
+<!-- ═══════════════ 5a · FOOTBALL ═══════════════ -->
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Football — drive field, down &amp; distance, first-down marker</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>Q3 · 8:22</span>
+      <span style="font-size:12px;color:#9aa3ad">Red River · Cotton Bowl</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#841617"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">SOONERS</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">14</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#bf5700"></span><span style="font:700 40px/1 'Barlow Condensed'">LONGHORNS</span><svg width="10" height="12" viewBox="0 0 8 10"><path d="M8 5L0 0v10z" fill="#eef1f4"></path></svg></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">17</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Drives</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Box</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Leaders</span>
+  </div>
+
+  <!-- situation: the field -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+      <span style="font:700 24px/1 'Barlow Condensed'">3RD &amp; 4</span>
+      <span style="font-size:12px;color:#9aa3ad">at OU 22 · TEX ball</span>
+    </div>
+    <div style="position:relative;height:56px;border-radius:8px;background:#161a20;overflow:hidden">
+      <div style="position:absolute;inset:0;display:flex">
+        <span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1;border-right:1px solid #232933"></span><span style="flex:1"></span>
+      </div>
+      <div style="position:absolute;top:0;bottom:0;right:0;width:9%;background:#841617;opacity:.5"></div>
+      <div style="position:absolute;top:0;bottom:0;left:14%;width:64%;background:rgba(191,87,0,.22)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:78%;width:3px;background:#bf5700"></div>
+      <div style="position:absolute;top:0;bottom:0;left:82%;width:2px;background:#ffc52f"></div>
+      <div style="position:absolute;top:6px;left:15%;font-size:10px;color:#6c7480">drive start · TEX 36</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#9aa3ad">
+      <span>8 plays · 42 yds · 3:51</span>
+      <span style="color:#ffc52f">4 yds to the sticks</span>
+    </div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">WIN PROBABILITY</span><span style="font:700 24px 'Barlow Condensed'">TEX 61%</span></div>
+    <div style="height:12px;border-radius:6px;overflow:hidden;display:flex;gap:2px"><div style="width:39%;background:#841617;border-radius:6px"></div><div style="flex:1;background:#bf5700;border-radius:6px"></div></div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST PLAY</div>
+    <div style="font:600 17px/1.35 Archivo">Wingo over the middle for 9 — dragged down at the 22.</div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">THIS DRIVE</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:#c8cfd6"><span style="font:600 13px 'Barlow Condensed';color:#6c7480;width:44px;flex:none">1st 10</span>Manning deep right to Golden, 18 yds</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:#c8cfd6"><span style="font:600 13px 'Barlow Condensed';color:#6c7480;width:44px;flex:none">2nd 3</span>Baxter up the middle, 7 yds</div>
+    <div style="display:flex;gap:12px;font-size:13px;color:#c8cfd6"><span style="font:600 13px 'Barlow Condensed';color:#6c7480;width:44px;flex:none">1st 10</span>Baxter left end, loss of 2</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 5b · BASKETBALL ═══════════════ -->
+<div class="dv-opt" id="5b">
+<div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Basketball — clock &amp; run, bonus/timeouts, lead tracker</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>Q4 · 4:12</span>
+      <span style="font-size:12px;color:#9aa3ad">Finals Game 6 · OKC leads 3–2</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#007ac1"></span><span style="font:700 40px/1 'Barlow Condensed'">THUNDER</span><svg width="10" height="12" viewBox="0 0 8 10"><path d="M8 5L0 0v10z" fill="#eef1f4"></path></svg></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">88</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#860038"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">CAVALIERS</span></div>
+        <span style="font:700 52px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">84</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Plays</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Box</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Leaders</span>
+  </div>
+
+  <!-- situation: clock & run -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+      <div><div style="font:700 34px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">4:12</div><div style="font-size:11px;color:#9aa3ad;margin-top:3px">4TH QUARTER</div></div>
+      <div style="text-align:right"><div style="font:700 20px/1 'Barlow Condensed';color:#ffc52f">OKC 9–2 RUN</div><div style="font-size:11px;color:#9aa3ad;margin-top:3px">last 2:40</div></div>
+    </div>
+    <div style="display:flex;gap:0;border-top:1px solid #262c35;padding-top:12px">
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;color:#6c7480">POSSESSION</span><span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600"><svg width="8" height="10" viewBox="0 0 8 10"><path d="M8 5L0 0v10z" fill="#007ac1"></path></svg>OKC · 14 on clock</span></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;color:#6c7480">BONUS</span><span style="font-size:13px;font-weight:600;color:#ffc52f">CLE in bonus</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end"><span style="font-size:11px;color:#6c7480">TIMEOUTS</span><span style="display:flex;gap:8px;align-items:center"><span style="display:flex;gap:3px"><span style="width:7px;height:7px;border-radius:50%;background:#007ac1"></span><span style="width:7px;height:7px;border-radius:50%;background:#007ac1"></span><span style="width:7px;height:7px;border-radius:50%;background:#2a303a"></span></span><span style="display:flex;gap:3px"><span style="width:7px;height:7px;border-radius:50%;background:#860038"></span><span style="width:7px;height:7px;border-radius:50%;background:#2a303a"></span><span style="width:7px;height:7px;border-radius:50%;background:#2a303a"></span></span></span></div>
+    </div>
+  </div>
+
+  <!-- lead tracker -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px 18px 12px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;margin-bottom:10px"><span>LEAD TRACKER</span><span style="color:#eef1f4">OKC +4</span></div>
+    <svg width="100%" height="64" viewBox="0 0 320 64" preserveAspectRatio="none">
+      <line x1="0" y1="32" x2="320" y2="32" stroke="#262c35" stroke-width="1"></line>
+      <polyline points="0,32 25,26 50,36 75,42 100,38 125,48 150,40 175,30 200,36 225,44 250,34 275,22 300,18 320,20" fill="none" stroke="#007ac1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+      <circle cx="320" cy="20" r="4" fill="#007ac1"></circle>
+    </svg>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#6c7480;margin-top:2px"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST PLAY</div>
+    <div style="font:600 17px/1.35 Archivo">Gilgeous-Alexander pull-up from 16 — good. OKC by 4.</div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">TOP PERFORMERS</div>
+    <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none"></span><div style="flex:1"><div style="font-weight:600;font-size:14px">Gilgeous-Alexander</div><div style="font-size:12px;color:#9aa3ad">OKC · G</div></div><span style="font:700 16px 'Barlow Condensed'">31 PTS · 8 AST</span></div>
+    <div style="display:flex;align-items:center;gap:12px"><span style="width:36px;height:36px;border-radius:50%;background:#2a303a;flex:none"></span><div style="flex:1"><div style="font-weight:600;font-size:14px">Mitchell</div><div style="font-size:12px;color:#9aa3ad">CLE · G</div></div><span style="font:700 16px 'Barlow Condensed'">29 PTS · 6 REB</span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 5c · CRICKET ═══════════════ -->
+<div class="dv-opt" id="5c">
+<div class="dv-olabel"><a class="dv-oid" href="#5c">5c</a>Cricket — chase equation, this over ball-by-ball, batters at the crease</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>T20 · 2ND INNINGS</span>
+      <span style="font-size:12px;color:#9aa3ad">MCG · Melbourne</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#1d6ee0"></span><span style="font:700 40px/1 'Barlow Condensed';color:#9aa3ad">INDIA</span></div>
+        <span style="font:700 44px/1 'Barlow Condensed';font-variant-numeric:tabular-nums;color:#9aa3ad">168/6</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:2px solid #2a303a">
+        <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:44px;border-radius:3px;background:#e8b70c"></span><span style="font:700 40px/1 'Barlow Condensed'">AUSTRALIA</span></div>
+        <div style="display:flex;align-items:baseline;gap:8px"><span style="font:700 44px/1 'Barlow Condensed';font-variant-numeric:tabular-nums">142/4</span><span style="font:600 18px 'Barlow Condensed';color:#9aa3ad">16.2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Now</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Overs</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Scorecard</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Wagon</span>
+  </div>
+
+  <!-- situation: the chase -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+      <span style="font:700 24px/1 'Barlow Condensed'">27 OFF 22</span>
+      <span style="font-size:12px;color:#9aa3ad">req. 7.36 · current 8.69</span>
+    </div>
+    <!-- this over -->
+    <div style="display:flex;align-items:center;gap:8px;border-top:1px solid #262c35;padding-top:14px">
+      <span style="font-size:11px;color:#6c7480;letter-spacing:.06em;flex:none">THIS OVER</span>
+      <div style="display:flex;gap:6px">
+        <span style="width:28px;height:28px;border-radius:50%;background:#22272f;display:flex;align-items:center;justify-content:center;font:600 13px 'Barlow Condensed';color:#9aa3ad">1</span>
+        <span style="width:28px;height:28px;border-radius:50%;background:#3fa96b;display:flex;align-items:center;justify-content:center;font:700 13px 'Barlow Condensed';color:#111318">4</span>
+        <span style="width:28px;height:28px;border-radius:50%;background:#e5484d;display:flex;align-items:center;justify-content:center;font:700 13px 'Barlow Condensed';color:#fff">W</span>
+        <span style="width:28px;height:28px;border-radius:50%;background:#22272f;display:flex;align-items:center;justify-content:center;font:600 13px 'Barlow Condensed';color:#9aa3ad">·</span>
+        <span style="width:28px;height:28px;border-radius:50%;border:1.5px dashed #414a55;box-sizing:border-box"></span>
+        <span style="width:28px;height:28px;border-radius:50%;border:1.5px dashed #414a55;box-sizing:border-box"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- batters / bowler -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:2px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;padding-bottom:10px">AT THE CREASE<span style="font:600 12px 'Barlow Condensed';letter-spacing:.08em;color:#6c7480">R (B) · SR</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid #262c35"><span style="font-size:13.5px;font-weight:600">Head *</span><span style="font:600 14px 'Barlow Condensed';font-variant-numeric:tabular-nums">58 (39) · 148.7</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid #262c35"><span style="font-size:13.5px">Marsh</span><span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">22 (18) · 122.2</span></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid #262c35"><span style="font-size:13.5px;color:#9aa3ad">Bumrah <span style="font-size:12px;color:#6c7480">bowling</span></span><span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">3.2–0–24–2</span></div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">WIN PROBABILITY</span><span style="font:700 24px 'Barlow Condensed'">AUS 61%</span></div>
+    <div style="height:12px;border-radius:6px;overflow:hidden;display:flex;gap:2px"><div style="width:39%;background:#1d6ee0;border-radius:6px"></div><div style="flex:1;background:#e8b70c;border-radius:6px"></div></div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">LAST BALL</div>
+    <div style="font:600 17px/1.35 Archivo">WICKET — Maxwell holes out to deep midwicket. Bumrah strikes again.</div>
+  </div>
+</div>
+</x-import>
+</div>
+
+<!-- ═══════════════ 5d · OLYMPICS / RACING ═══════════════ -->
+<div class="dv-opt" id="5d">
+<div class="dv-olabel"><a class="dv-oid" href="#5d">5d</a>Olympics — live lanes, splits vs leader, record pace line</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ true }}" hint-size="428px,908px">
+<div style="min-height:100%;background:#111318;color:#eef1f4;font-family:Archivo,system-ui,sans-serif;display:flex;flex-direction:column">
+  <!-- event block replaces team score block -->
+  <div style="padding:18px 20px 0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:#1a1e25;border-radius:100px;padding:5px 12px;font-size:11px;font-weight:600;letter-spacing:.04em"><span style="width:6px;height:6px;border-radius:50%;background:#e5484d"></span>LIVE · LAP 3 OF 4</span>
+      <span style="font-size:12px;color:#9aa3ad">Aquatics Centre</span>
+    </div>
+    <div style="padding:10px 0;border-bottom:2px solid #2a303a">
+      <div style="font:700 40px/1 'Barlow Condensed'">MEN'S 200M FREESTYLE</div>
+      <div style="font-size:13px;color:#9aa3ad;margin-top:6px">Final · Swimming</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;padding:16px 20px 4px;overflow:hidden">
+    <span style="padding:8px 16px;border-radius:100px;background:#eef1f4;color:#111318;font-size:13px;font-weight:600">Race</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Heats</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Medals</span>
+    <span style="padding:8px 16px;border-radius:100px;border:1.5px solid #2a303a;font-size:13px;color:#9aa3ad">Schedule</span>
+  </div>
+
+  <!-- situation: live lanes at 150m -->
+  <div style="margin:14px 20px 0;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:2px">
+    <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad;padding-bottom:10px">AT 150M<span style="font:600 12px 'Barlow Condensed';letter-spacing:.08em;color:#6c7480">SPLIT · GAP</span></div>
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #262c35">
+      <span style="font:700 15px 'Barlow Condensed';color:#ffc52f;width:18px">1</span><span style="font-size:11px;color:#6c7480;width:26px">L4</span><span style="width:6px;height:16px;border-radius:2px;background:#1d4f91"></span>
+      <span style="flex:1;font-size:13.5px;font-weight:600">Hobson <span style="color:#6c7480;font-size:11px">USA</span></span>
+      <span style="font:600 14px 'Barlow Condensed';font-variant-numeric:tabular-nums">1:19.42</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #262c35">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad;width:18px">2</span><span style="font-size:11px;color:#6c7480;width:26px">L5</span><span style="width:6px;height:16px;border-radius:2px;background:#00843d"></span>
+      <span style="flex:1;font-size:13.5px">Winnington <span style="color:#6c7480;font-size:11px">AUS</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">+0.31</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #262c35">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad;width:18px">3</span><span style="font-size:11px;color:#6c7480;width:26px">L3</span><span style="width:6px;height:16px;border-radius:2px;background:#c8102e"></span>
+      <span style="flex:1;font-size:13.5px">Richards <span style="color:#6c7480;font-size:11px">GBR</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">+0.58</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #262c35">
+      <span style="font:700 15px 'Barlow Condensed';color:#9aa3ad;width:18px">4</span><span style="font-size:11px;color:#6c7480;width:26px">L6</span><span style="width:6px;height:16px;border-radius:2px;background:#ce1126"></span>
+      <span style="flex:1;font-size:13.5px">Hwang <span style="color:#6c7480;font-size:11px">KOR</span></span>
+      <span style="font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums">+0.90</span>
+    </div>
+  </div>
+
+  <!-- record pace -->
+  <div style="margin:12px 20px 0;background:#1a1e25;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">RECORD PACE</span><span style="font:700 20px 'Barlow Condensed';color:#3fa96b">0.28 UNDER WR</span></div>
+    <div style="position:relative;height:12px;border-radius:6px;background:#22272f">
+      <div style="position:absolute;top:0;bottom:0;left:0;width:76%;border-radius:6px;background:#3fa96b"></div>
+      <div style="position:absolute;top:-3px;bottom:-3px;left:74%;width:2.5px;background:#ffc52f"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#6c7480;margin-top:6px"><span>Hobson at 150m</span><span style="color:#ffc52f">WR 1:42.00 pace</span></div>
+  </div>
+
+  <div style="margin:12px 20px 0;background:#1e232c;border-radius:20px;padding:18px">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.08em;color:#9aa3ad;margin-bottom:8px">RACE CALL</div>
+    <div style="font:600 17px/1.35 Archivo">Hobson turns first at 150 — under world-record pace with one lap to swim.</div>
+  </div>
+
+  <div style="margin:12px 20px 28px;background:#1a1e25;border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px">
+    <div style="font-size:12px;font-weight:600;letter-spacing:.06em;color:#9aa3ad">MEDAL TABLE · SWIMMING</div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:13.5px"><span style="width:6px;height:16px;border-radius:2px;background:#1d4f91"></span><span style="flex:1">United States</span><span style="display:flex;gap:14px;font:600 14px 'Barlow Condensed';font-variant-numeric:tabular-nums"><span style="color:#ffc52f">6</span><span style="color:#b9bfc7">4</span><span style="color:#b07a4a">3</span></span></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:13.5px"><span style="width:6px;height:16px;border-radius:2px;background:#00843d"></span><span style="flex:1;color:#9aa3ad">Australia</span><span style="display:flex;gap:14px;font:600 14px 'Barlow Condensed';color:#9aa3ad;font-variant-numeric:tabular-nums"><span style="color:#ffc52f">5</span><span style="color:#b9bfc7">6</span><span style="color:#b07a4a">2</span></span></div>
+  </div>
+</div>
+</x-import>
+</div>
+
+</div>
+</section>
+</x-dc>
+</body>
+</html>

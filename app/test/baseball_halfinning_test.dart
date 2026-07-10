@@ -53,6 +53,40 @@ Map<String, dynamic> _scores() => {
 GameSummary _summary() => GameSummary.fromJson({
       'eventId': 'B1',
       'live': false,
+      'decisions': [
+        {'role': 'win', 'id': '42409', 'name': 'J. Steele', 'record': '5-4', 'side': 'home', 'abbr': 'CHC'},
+        {'role': 'loss', 'name': 'J. Verlander', 'record': '7-5', 'side': 'away', 'abbr': 'HOU'},
+      ],
+      'teamGameStats': [
+        {
+          'title': 'Batting',
+          'rows': [
+            {'label': 'H', 'away': '7', 'home': '8'},
+            {'label': 'HR', 'away': '1', 'home': '2'},
+          ],
+        },
+        {
+          'title': 'Pitching',
+          'rows': [
+            {'label': 'K', 'away': '11', 'home': '12'},
+          ],
+        },
+      ],
+      'teamDetails': [
+        {
+          'side': 'home',
+          'abbr': 'CHC',
+          'groups': [
+            {
+              'title': 'Batting',
+              'rows': [
+                {'label': '2B', 'value': 'Happ (12, Verlander)'},
+                {'label': 'Team LOB', 'value': '7'},
+              ],
+            },
+          ],
+        },
+      ],
       'teamStats': <dynamic>[],
       'boxGroups': [
         {
@@ -144,10 +178,77 @@ void main() {
     await tester.tap(find.text('Box'));
     await tester.pump();
 
+    // The box is team-tabbed now: away (HOU) is the default scope, so the
+    // CHC rows appear only after switching the team segment.
+    expect(find.textContaining('K. Schwarber', findRichText: true), findsNothing);
+    await tester.tap(find.text('CHC'));
+    await tester.pump();
+
     expect(find.textContaining('K. Schwarber', findRichText: true), findsOneWidget);
     expect(find.textContaining('J. Crawford', findRichText: true), findsOneWidget); // the sub
     // The lineup note renders as a footnote, and the letter marker prefixes the sub.
     expect(find.text('a-struck out swinging for Schwarber in the 8th'), findsOneWidget);
     expect(find.text('a-'), findsOneWidget);
+    // The Box tab carries the selected team's newspaper agate block.
+    expect(find.textContaining('Happ (12, Verlander)', findRichText: true),
+        findsOneWidget);
+    expect(find.text('DECISION'), findsOneWidget);
+  });
+
+  testWidgets('baseball recap first page: decisions, chronological scoring, '
+      'plays link, hitting/pitching cards', (tester) async {
+    tester.view.physicalSize = const Size(1200, 4200);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    final p = await prefs();
+    final scores = ScoresResponse.fromJson(_scores());
+    await tester.pumpWidget(ProviderScope(
+      overrides: [
+        sharedPrefsProvider.overrideWithValue(p),
+        leagueScoresProvider.overrideWith((ref, league) async => scores),
+        summaryProvider.overrideWith((ref, key) async => _summary()),
+      ],
+      child: MaterialApp(
+        theme: buildV2Theme(),
+        home: GameDetailPage(league: 'baseball/mlb', initialEvent: scores.events.first),
+      ),
+    ));
+    await tester.pump();
+    await tester.pump();
+
+    // Tabs are exactly Recap · Box · Plays for an innings sport (no Leaders).
+    expect(find.text('Recap'), findsOneWidget);
+    expect(find.text('Box'), findsOneWidget);
+    expect(find.text('Plays'), findsOneWidget);
+    expect(find.text('Leaders'), findsNothing);
+
+    // The W/L pitcher line.
+    expect(find.text('DECISION'), findsOneWidget);
+    expect(find.text('J. Steele'), findsOneWidget);
+    expect(find.text('W'), findsOneWidget);
+    expect(find.text('L'), findsOneWidget);
+
+    // Scoring summary reads chronologically — TOP 1 renders ABOVE BOTTOM 8.
+    final top1 = tester.getTopLeft(find.textContaining('TOP 1'));
+    final bot8 = tester.getTopLeft(find.textContaining('BOTTOM 8'));
+    expect(top1.dy, lessThan(bot8.dy));
+
+    // The quiet Plays link switches to the Plays tab's disclosure feed.
+    expect(find.text('Full play-by-play'), findsOneWidget);
+
+    // The grouped game stats: Batting reads as HITTING; PITCHING rides along.
+    expect(find.text('HITTING'), findsOneWidget);
+    expect(find.text('PITCHING'), findsOneWidget);
+
+    // The team-tabbed box is on the first page too (no newspaper block here).
+    // ('CHC' also heads the hitting/pitching cards — the segment renders first.)
+    expect(find.textContaining('K. Schwarber', findRichText: true), findsNothing);
+    await tester.tap(find.text('CHC').first);
+    await tester.pump();
+    expect(find.textContaining('K. Schwarber', findRichText: true), findsOneWidget);
+    expect(find.textContaining('Happ (12, Verlander)', findRichText: true),
+        findsNothing);
   });
 }

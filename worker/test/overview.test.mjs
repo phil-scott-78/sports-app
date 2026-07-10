@@ -2,7 +2,7 @@
 // deterministic (synthetic ESPN shapes + a fixed `now`), so they run without
 // network; a short live smoke at the end asserts real leagues land on a valid
 // state. Run: node test/overview.test.mjs
-import { classifyLeague } from '../src/overview.js';
+import { classifyLeague, classifyMergedSlate } from '../src/overview.js';
 import { fetchScoreboard } from '../src/espn.js';
 
 let pass = 0, fail = 0;
@@ -72,6 +72,41 @@ const sb = (league, events = []) => ({ leagues: [league], events });
   const c = classifyLeague({}, NOW);
   ok(typeof c.state === 'string', 'empty payload yields a state, no throw');
   ok(['offseason', 'unknown'].includes(c.state), 'empty payload → offseason');
+}
+
+// --- merged '<sport>/all' slate → per-league-id live/today --------------------
+{
+  const ev = (leagueId, date, state) => ({
+    uid: `s:600~l:${leagueId}~e:1`,
+    date,
+    competitions: [{ status: { type: { state } } }],
+  });
+  const m = classifyMergedSlate({ events: [
+    ev(700, '2026-06-13T19:00Z', 'in'),   // live now
+    ev(740, '2026-06-13T23:00Z', 'pre'),  // later today
+    ev(720, '2026-06-14T19:00Z', 'pre'),  // tomorrow → silent
+    ev(700, '2026-06-13T23:00Z', 'pre'),  // second eng.1 game doesn't demote live
+    { date: '2026-06-13T19:00Z', competitions: [{ status: { type: { state: 'in' } } }] }, // no uid → skipped
+  ] }, NOW);
+  eq(m['700']?.state, 'live', 'merged: in-progress league is live');
+  eq(m['700']?.live, true, 'merged: live flag');
+  eq(m['740']?.state, 'today', 'merged: dated-today league is today');
+  eq(m['720'], undefined, 'merged: future-dated league stays silent');
+  eq(Object.keys(m).length, 2, 'merged: only positive states emitted');
+}
+// --- merged: a live event dated to its start day (golf Sunday) still reads live
+{
+  const m = classifyMergedSlate({ events: [{
+    uid: 's:1106~l:1108~e:9',
+    date: '2026-06-11T13:00Z', // tournament start day, not today
+    competitions: [{ status: { type: { state: 'in' } } }],
+  }] }, NOW);
+  eq(m['1108']?.state, 'live', 'merged: in-progress multi-day event is live');
+}
+// --- merged: degenerate input never throws ------------------------------------
+{
+  ok(Object.keys(classifyMergedSlate({}, NOW)).length === 0, 'merged: empty payload → {}');
+  ok(Object.keys(classifyMergedSlate(null, NOW)).length === 0, 'merged: null payload → {}');
 }
 
 // --- live smoke: real leagues land on a valid state --------------------------

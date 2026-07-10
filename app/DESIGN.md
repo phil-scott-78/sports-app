@@ -251,7 +251,16 @@ Top to bottom — this order is fixed:
    sub-scores; `Course` / `Tee times` appear only when the core feed carries them.
 4. **Situation card** — the sport's flourish (§8). The only per-sport shape.
 5. **Win probability card** — label + `statCallout` right; 12px two-segment
-   rounded bar in team colors with a 2px gap.
+   rounded bar in team colors with a 2px gap. When the summary ships the
+   full-game arc (`winProbability.points`, ≥2) the card grows a **scrubbable
+   72px curve** between label and bar: home share up / away share down around
+   a 50% `divider` centerline, the stroke wearing each side's color on its
+   half, faint verticals at period changes. Hold/drag replays any moment —
+   the callout % (gold while scrubbing), the split bar, and a reserved
+   `caption` line (`2ND QUARTER 4:12 · LAL 50–48 BOS`) track the finger;
+   release snaps back to now. No arc (predictor fallback) → the passive
+   two-line card unchanged. On the generic Recap the card appears **only**
+   with an arc (a foregone single 100% says nothing post-game).
 6. **Inverted LAST PLAY card** — the loud moment (§7).
 7. **Supporting cards** — scoring feed, top performers, drive log, serve stats…
    each a quiet `surface` card with an UPPERCASE `cardLabel`.
@@ -323,14 +332,32 @@ and nothing else — never a placeholder card.
    - **Upcoming**: single compact row — matchup + time + one context line
      ("Winner faces FRA/ESP"). No glyph.
    - **Final**: compact like upcoming; winner white, loser dim, `Final` caption.
-3. **League sections** — `sectionTitle` header (+ optional faint action right:
+3. **BIG GAMES** (occasional) — one `sectionTitle` header + one radius-16 card
+   of dense rows for today's marquee games from flagship leagues the user does
+   NOT follow (their own leagues already have sections). Membership is
+   data-presence rules (`lib/src/marquee.dart`): a playoff series, a postseason
+   slate, finals/championship copy, a ranked-vs-ranked matchup, a golf major —
+   never league name. Each row is the standard dense row with one extra
+   `cardLabelFaint` tag line naming its league/stakes (`NBA · WEST FINALS`).
+   Qualification is now-anchored: only games on today/yesterday (or live right
+   now — multi-day field events) count, because ESPN's offseason scoreboards
+   replay the last played slate for months (the April championship must not
+   resurface in July). Capped at 3; on an ordinary day the section does not
+   exist — that absence is the restraint.
+4. **League sections** — `sectionTitle` header (+ optional faint action right:
    "See all 15") over one radius-16 card of dense rows separated by hairlines.
+5. **Foot row** — a quiet surface-card row ("All games today" + chevron) into
+   the all-games page: every league on today, followed or not, one home-feed
+   league section per league (live leagues first). A plain surface row, not
+   the gold/dashed hint treatment — it's a standing destination, not a
+   "nothing here" nudge. Today-only (like the hero cards).
 
 **Dense row anatomy**: left = two stacked team lines (5×16 bar, 14px name,
 Barlow 17 score, possession arrow if relevant); right = status stack (live dot +
 phase 12px over one faint context line 11px — `2 out · 2–1`, `3rd & 4 · OU 22`,
 `NED down to 10`). A row may hang one glyph strip below it (drive field bar,
-series pips) inside the same row card.
+series pips) inside the same row card. An optional `cardLabelFaint` tag line
+above the body (BIG GAMES rows) is the one sanctioned addition.
 
 ### Standings / tables
 
@@ -478,7 +505,7 @@ These recur on every screen and are what makes the app feel like itself:
 ## 8. Sport delighters — the situation-card & glyph catalog
 
 Per principle 3: the *shape* below is chosen by **data presence**, never sport
-name (`situation.hasBaseball` → diamond, `hasGridiron` → drive field,
+name (`situation.hasBaseball` → the duel, `hasGridiron` → drive field,
 `competition.events` → timeline, cricket target → chase, `layout == 'field'` →
 leaderboard). Reuse these; when a new sport appears, compose a new one from the
 same vocabulary (§11 checklist).
@@ -504,12 +531,57 @@ presence — never a sport-name check). A man-advantage badge (gold `PP` chip,
 or a `live`-red `10 MEN`/`N MEN` chip) rides inline after a side's name in
 the Live body — the §6 tinted-badge recipe at hero-card scale.
 
-### Baseball — the diamond
-- **Situation card**: SVG diamond left (viewBox `0 0 128 112`; basepaths 3px
-  `diamondLine`; bases = 18×18 r3 rects rotated 45° at (112,54)/(64,12)/(16,54),
-  home 16×16 at (64,98); occupied = `gold` fill, empty = `track` fill + 2.5px
-  `outline` stroke) + right column: count headline (`2–1 COUNT`), dim narrative
-  line, B/S/O dot rows (9px dots: balls `green`, strikes `live`, outs white).
+### Baseball — the duel, the zone, the strip (LiveGame turn 8)
+- **Situation card — the duel**: pitcher and batter face off — left `PITCHING`
+  / right `AT BAT` (`cardLabelFaint` role, `rowText` name, dim Barlow day-line
+  `1.2 IP · 2 H · 0 ER` / `1-1, .318 AVG`), a faint `VS` between; below a
+  hairline, the count as three spread dot groups (10px: balls `green`,
+  strikes + outs `live`); a quiet footer row (`Pitch count 40` — rich live
+  at-bat only — and `On deck · B. Lowe` from the cheap `situation.onDeck`).
+  Every element data-gated; the card renders duel-less (count only) pre-pitch.
+- **Due Up card (between innings)**: when ESPN drops the batter/pitcher and
+  `situation.dueUp` lists the NEXT half's batters (`situation.isDueUp` — data
+  presence, never sport name), the duel yields to `DUE UP` — label row with the
+  faint between-innings beat (`Mid 5th`, cheap `status.shortDetail`), then up
+  to three rows: faint index, batter name (`rowText`), right-aligned dim day
+  line (`1-3, K`). Below a hairline, the previous half's story: faint caption
+  `TOP 5TH · PIT` + one line — the on-device AI sentence when the device
+  carries a local model (Gemini Nano via `scores/recap`; cached one inference
+  per half-inning), else the deterministic line computed from the rich at-bats
+  (`three up, three down` / `two runs on three hits, one stranded`; `inning_recap.dart`). The
+  zone/bases card is suppressed between innings (an empty diamond says
+  nothing); no recap data → batters only.
+- **Strike zone + bases card**: the plot renders ONLY when the live at-bat's
+  pitches carry ESPN's zone coords (live feeds only — the turn-8 degrade rule:
+  plain outline + numbered markers, no heat; hide the zone without locations).
+  150×170 `track` panel, zone outline (16%/14% inset, 1.5px white-55) that the
+  EMPIRICAL data zone maps onto — ESPN's plot space is non-isotropic, zone
+  x∈[~84,148] / y∈[~144,193] fitted from a full slate of called strikes and
+  cross-checked against ESPN's gamecast plot (markers beyond it clamp inside
+  the panel, so a ball in the dirt reads "below the zone") — 22px numbered
+  markers colored by pitch result (`green` ball / `live` strike / `textFaint`
+  foul / `gold` in play, 2px `surface` ring), numbers keyed to the pitch strip. Right column: the SVG diamond (viewBox
+  `0 0 128 112`; basepaths 3px `diamondLine`; bases = 18×18 r3 rects rotated
+  45°; occupied `gold`, empty `track` + 2.5px `outline` stroke) over 1B/2B/3B
+  rows — resolved runner names (`rowText` 13) or `on base`/`empty` captions.
+- **Pitch strip**: a horizontally scrollable row of 96px radius-16 `surface`
+  chips, LATEST FIRST — numbered result dot, the pitch outcome (`Strike 2
+  Foul`), faint pitch name + `91 mph`.
+- **ABS challenge (`Pitch.challenge`)**: one loud moment, quiet everywhere
+  else. The pitch's dot/count already carry the FINAL ruling (ESPN's type.text
+  leads with it), so the marker only says "this call was challenged": the strip
+  chip and the All-plays pitch row gain a terse lowercase suffix — `overturned`
+  in the caution muted-pair pale `#EADFB8` (an officiating flip, not scoring —
+  never gold), `upheld` plain `textFaint`; the last-play card appends the prose
+  (`· call overturned` / `· challenge upheld`) — that inverted card IS the
+  challenge's loud moment. The zone plot is deliberately unchanged (its marker
+  color is already the truth). No situation-card badge (per-pitch history, not
+  current state), no challenges-remaining counter (ESPN doesn't serve it).
+- **Last play — the loud moment**: the inverted card reads the summary's
+  DERIVED `lastPlay` first (kind `pitch` → label `LAST PITCH`, prose `Strike 2
+  Foul — Cutter, 89 mph`; kind `play` → `LAST PLAY`, the real at-bat result or
+  `End of the 3rd inning` — never ESPN's "Now at bat" bookend), falling back
+  to the cheap situation text.
 - **Glance glyph**: mini diamond (viewBox `0 0 26 22`, three 7×7 r1.5 rotated
   rects) — in rows and the collapsed scorebug. Phase text `Bot 7`.
 - **Feed**: archetype B by half-inning (§9); stat strip `412 FT · 104.6 MPH ·
@@ -518,15 +590,37 @@ the Live body — the §6 tinted-badge recipe at hero-card scale.
   chevron) expanding in place to the pitch sequence — 18px muted-fill B/S/F
   dots (§2) + description + velocity, indented behind a 1px rail; the live
   at-bat sits pre-expanded in a `track` inset card with its current count.
+- **Detail organization (the baseball reorg)**: an innings sport (dispatch:
+  `periods.unit == 'inning'`, never sport name) keeps exactly THREE tabs —
+  **Now/Recap · Box · Plays** (no Leaders, no Venue chip; that story moves onto
+  the first page). The first page is deliberately redundant with the deep tabs —
+  check-a-score-and-leave, everything one scroll away:
+  - **Now (live)**: the at-bat story (duel → zone/bases → pitch strip → the
+    loud LAST PLAY) → scoring summary (line score + the half-inning feed in
+    CHRONOLOGICAL order, "scores starting in the first" — the one designed
+    exception to §9's newest-first; the Plays tab keeps newest-first) → a quiet
+    "Full play-by-play" foot-row link into the Plays tab → the team-tabbed box
+    → win probability → HITTING / PITCHING game-stat cards (`teamGameStats`) →
+    key absences → season series → game info → CURRENT WEATHER (cheap
+    `event.weather`, absent indoors).
+  - **Recap (final)**: line score → **DECISION** card (`summary.decisions`:
+    W green / L live / SV gold tinted chips + record, rows tap to the player
+    page) → chronological scoring summary → the same deep-dive tail (link, box,
+    win prob, stats, injuries, series, venue — no weather).
+  - **Plays**: line score + DECISION on top of the §9 Scoring|All disclosure feed.
 - **Box tab** (§10, designed): line score by inning — scoring innings white,
   zeros dim, unplayed `–` in `ghost`, current inning a `track` chip with `•`,
-  R/H/E columns with R highlighted — then dual scope toggles (team | split)
-  over batting/pitching tables (H and K the key columns, position tags inline,
-  NOW pill on the active pitcher). **Width rule:** the nine inning columns flex
-  to fill the card (`44px label + 9×1fr + R/H/E fixed`), so a 9-inning grid never
-  leaves dead space. Extra innings first *shrink* the cells toward an ~18px floor,
-  then the innings pane *alone* scrolls horizontally — the label column and R/H/E
-  stay pinned.
+  R/H/E columns with R highlighted — then the DECISION card, a **team scope
+  toggle** (away | home segmented control) over that side's batting/pitching
+  tables (H and K the key columns, position tags inline, NOW pill on the active
+  pitcher), the selected team's **newspaper agate block** (`teamDetails`:
+  BATTING/PITCHING/FIELDING/BASERUNNING sections of `2B: Vierling (12, Lopez)` /
+  `Team LOB: 7` / RISP lines — §10's footer-summary voice as a card), the
+  chronological scoring summary, and the game-info footer. **Width rule:** the
+  nine inning columns flex to fill the card (`44px label + 9×1fr + R/H/E fixed`),
+  so a 9-inning grid never leaves dead space. Extra innings first *shrink* the
+  cells toward an ~18px floor, then the innings pane *alone* scrolls
+  horizontally — the label column and R/H/E stay pinned.
 
 ### Football (gridiron) — the drive field
 - **Situation card**: down-&-distance headline (`3RD & 4`) + spot caption; field
@@ -544,11 +638,18 @@ the Live body — the §6 tinted-badge recipe at hero-card scale.
 
 ### Basketball — clock & run
 - **Situation card**: big clock (Barlow 34) + quarter label left; `gold` run
-  callout right (`OKC 9–2 RUN` / "last 2:40"); footer row: possession arrow +
-  "14 on clock", bonus flag (`gold` text when in bonus), timeout dots (7px,
-  team color = remaining, `border` = used).
+  callout right (`OKC 9–2 RUN` / "last 2:40") derived from the summary's
+  running scores (`lead_story.dart`: the window extends back while the answer
+  stays ≤4 pts, qualifies at ≥6 for and 3× the answer). A run won't always be
+  on — the slot degrades to a quiet white tidbit for a back-and-forth game
+  (`14 LEAD CHANGES` / `TIED 6 TIMES` / a second-half `WIRE TO WIRE`), else
+  stays empty and the clock stands alone. Footer row: bonus flag (`gold` text
+  when in bonus) + timeout dots (7px, team color, remaining only — ESPN's core
+  situation carries no used total, and no possession/shot clock either, so the
+  design's possession slot is unsourced and omitted).
 - **Lead tracker card**: 64px polyline (2.5px team-color stroke, endpoint dot),
-  centerline 1px `divider`, Q1–Q4 axis labels 10px faint.
+  centerline 1px `divider`, Q1–Q4 axis labels 10px faint; header right = the
+  leader's margin (`OKC +4` — the run callout lives on the situation card).
 - **Glance**: possession arrow after abbr; series pips row when playoff.
 - **Feed**: archetype D dense play-by-play (§9) — one-line rows, persistent
   score column, LEAD badge on lead changes, quarter filter.
@@ -573,6 +674,52 @@ the Live body — the §6 tinted-badge recipe at hero-card scale.
   by minute — goals 18px team-color dots with 2px `bg` ring, cards 10×14 r2
   rects (`gold`/`live`), now-marker 2.5px white; KO/HT/90′ axis. Recent-event
   rows below a hairline.
+- **The deep soccer detail (LiveGame turns 9–10)** — activates when the summary
+  ships the deep modules (`commentary`/`matchLeaders` — data presence, never
+  sport name); the tab set becomes **Now · Live pitch (live only) · Commentary ·
+  Lineups · Stats** and Box/Leaders retire (player tables move onto Lineups,
+  team stats + shot map onto Stats, the leaders read onto Now). All pitch
+  surfaces use the one sanctioned sport-local surface, **pitch green `#15231B`**
+  with `rgba(238,241,244,.14)` lines (iconic physical color, like the tennis
+  ball). Pitch coords are team-relative (x 0 = own goal, 100 = opponent goal):
+  home plots attacking RIGHT, away mirrors both axes.
+  - **Momentum card (9a)**: attacking pressure per minute — home bars above a
+    2px `outline` midline, away below, team-color fills, HT tick + a `border`
+    now-marker while live, KO/HT/FT faint axis. Derived from the core match
+    feed (`momentum.dart`: shots 1.0, corners 0.5, deep open play ≤0.4,
+    normalized to the loudest minute); absent feed → absent card.
+  - **Commentary**: the Now tab previews the freshest three lines (minute chip
+    34×26 r6 `track` + Barlow 14/700, prose 13/1.55 `textBody`, oldest row dim)
+    over a quiet 'Full commentary' foot link; the Commentary tab is the full
+    curated feed newest-first with dim rule-label dividers at half boundaries.
+  - **Match leaders (9a)**: one row per served category (total shots / accurate
+    passes / defensive interventions / saves) — 36px team-tinted avatar, name +
+    `FRA · FW` caption, Barlow 22 value over a 10px letterspaced category label;
+    the overall leader across sides (compare numeric values). Rows tap to the
+    player page; 'Full player stats' foot link jumps to Lineups.
+  - **Live pitch (10a, live only)**: LIVE PITCH label + a `track` possession
+    chip (8px side-color dot + `FRA POSSESSION · OPEN PLAY`/restart label);
+    horizontal pitch with the trailing possession sequence as a fading
+    team-color trail (opacity .3→.95, 4px waypoint dots), the ball a white
+    dot + ring with the holder's surname label, an `ABBR attacking →` caption;
+    footer: `N passes this sequence` + `ball in MAR half · 22 yds out`. Below,
+    a quiet **LAST TOUCH** card (17/600 prose — shots keep ESPN's sentence,
+    ordinary touches read `Player — type`) and **RECENT STOPPAGES** (last three
+    restarts: minute chip, `Throw-in · France`, taker name faint right).
+  - **Formation pitch (9b)**: FORMATIONS & LINEUPS card with a per-side
+    segmented toggle (`FRA · 4-2-3-1`); vertical pitch, GK bottom (32px
+    `outline` circle), outfield rows defense→attack upward, 32px team-color
+    jersey-number circles + 10.5px surname below. Renders ONLY when a side's
+    starters all carry `formationPlace`; the plain lineup lists remain the
+    reference below, then the per-player box tables.
+  - **Shot map (9b)**: outcome legend chips (only outcomes present — Goal
+    `green` / Save `gold` / Off target `textDim` ring / Block `live`), shots
+    plotted at their spots (selected = enlarged, white ring + halo + the
+    trajectory line to the end coords), tap = nearest-dot hit test; a `track`
+    r14 detail inset — jersey circle, name + side·pos, outcome·minute in the
+    outcome color, `‹ N of M ›` pager, and a DISTANCE / SHOT TYPE / SITUATION
+    cell row (distance computed from coords; technique/situation parsed from
+    the prose). **No xG cells — ESPN serves none** (§11.8: omit, never empty).
 - **Score block extras**: `10 MEN` red badge; aggregate/pens in dim parens after
   the score (`1 (4)`).
 - **Stats card**: possession split bar (two team-color segments, 2px gap) +

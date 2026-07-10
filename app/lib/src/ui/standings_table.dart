@@ -16,6 +16,10 @@ class StandingsGroupCard extends StatelessWidget {
   /// When set, each row is tappable (→ the row's team page). Null → inert rows
   /// (athlete-shaped racing tables, or the team page's own standing card).
   final void Function(StandingsRow)? onRowTap;
+
+  /// When set, each row long-presses into the follow sheet (favorite / team
+  /// page / follow league — the app-wide add grammar).
+  final void Function(StandingsRow)? onRowLongPress;
   const StandingsGroupCard({
     super.key,
     required this.name,
@@ -23,6 +27,7 @@ class StandingsGroupCard extends StatelessWidget {
     this.columns = const [],
     this.highlightIds = const {},
     this.onRowTap,
+    this.onRowLongPress,
   });
 
   // §10 promotes ONE key column; the rest recede. 6 allows a US-league table to
@@ -236,8 +241,12 @@ class StandingsGroupCard extends StatelessWidget {
             )
           : content,
     );
-    if (onRowTap == null) return body;
-    return InkWell(onTap: () => onRowTap!(row), child: body);
+    if (onRowTap == null && onRowLongPress == null) return body;
+    return InkWell(
+      onTap: onRowTap == null ? null : () => onRowTap!(row),
+      onLongPress: onRowLongPress == null ? null : () => onRowLongPress!(row),
+      child: body,
+    );
   }
 
   Color _statColor(StandingColumn c, StandingsRow row) {
@@ -292,6 +301,7 @@ class WildCardCard extends StatelessWidget {
   final Set<String> highlightIds;
   final Map<String, Color> barColors;
   final void Function(StandingsRow)? onRowTap;
+  final void Function(StandingsRow)? onRowLongPress;
 
   const WildCardCard({
     super.key,
@@ -301,6 +311,7 @@ class WildCardCard extends StatelessWidget {
     this.highlightIds = const {},
     this.barColors = const {},
     this.onRowTap,
+    this.onRowLongPress,
   });
 
   static const _gbKeys = ['gamesbehind'];
@@ -427,8 +438,12 @@ class WildCardCard extends StatelessWidget {
             child: content,
           )
         : content;
-    if (onRowTap == null) return body;
-    return InkWell(onTap: () => onRowTap!(row), child: body);
+    if (onRowTap == null && onRowLongPress == null) return body;
+    return InkWell(
+      onTap: onRowTap == null ? null : () => onRowTap!(row),
+      onLongPress: onRowLongPress == null ? null : () => onRowLongPress!(row),
+      child: body,
+    );
   }
 
   static String _fmt(double d) =>

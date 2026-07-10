@@ -52,7 +52,7 @@ export function statusToPhase(t = {}) {
 }
 
 // ---- score (by scoreKind) ---------------------------------------------------
-function buildScore(scoreKind, raw) {
+export function buildScore(scoreKind, raw) {
   // ESPN's scoreboard serializes competitor.score as a STRING ("103"); the
   // team-schedule endpoint serializes it as an OBJECT ({value, displayValue},
   // soccer adds $ref/winner). Coerce to the scalar form FIRST so String() below
@@ -287,7 +287,7 @@ export function normalizeCompetitionOdds(raw) {
 // ---- live situation: the "what's happening right now" strip ------------------
 // Sport-agnostic union — only present keys are emitted. Baseball: count/outs/
 // baserunners/pitcher/batter. Gridiron: down/distance/possession/red-zone/timeouts.
-function buildSituation(rc) {
+export function buildSituation(rc) {
   const sit = rc.situation;
   if (!sit || typeof sit !== 'object') return undefined;
   const s = {};
@@ -302,10 +302,33 @@ function buildSituation(rc) {
   // the live matchup line — the read a fan opens a live MLB game for (CHEAP, same object)
   if (sit.pitcher?.summary) s.pitcherLine = sit.pitcher.summary; // '0.2 IP, 0 ER, K, BB'
   if (sit.batter?.summary) s.batterLine = sit.batter.summary;    // the batter's day '1-3, RBI'
+  // On deck (baseball): the first dueUp batter who isn't already at the plate —
+  // ESPN's dueUp[] leads with the CURRENT batter mid at-bat.
+  for (const d of (Array.isArray(sit.dueUp) ? sit.dueUp : [])) {
+    const a = d?.athlete;
+    const n = a && (a.shortName || a.displayName || a.fullName);
+    if (n && n !== s.batter) { s.onDeck = n; break; }
+  }
+  // The full due-up list (baseball): name + the batter's day line, ESPN order.
+  // Between innings (batter absent) this is the NEXT half-inning's batters —
+  // the "Due Up" card's data; mid at-bat it leads with the current batter.
+  const dueUp = (Array.isArray(sit.dueUp) ? sit.dueUp : []).map(d => {
+    const a = d?.athlete;
+    const n = a && (a.shortName || a.displayName || a.fullName);
+    if (!n) return null;
+    return pick({ name: n, line: typeof d.summary === 'string' && d.summary ? d.summary : undefined }, ['name', 'line']);
+  }).filter(Boolean);
+  if (dueUp.length) s.dueUp = dueUp;
   if (sit.downDistanceText) s.downDistanceText = sit.downDistanceText;
   if (sit.possession != null) s.possession = String(sit.possession); // team id of the side in possession
   const lp = sit.lastPlay;
-  const lpText = lp && (lp.type?.alternativeText || lp.text || lp.type?.text);
+  // Baseball trap: lastPlay is PITCH-granular and `type.alternativeText` is a
+  // coarse at-bat label ESPN stamps on only some play types — "Now at bat" on
+  // start-batter rows, a previous at-bat's "Strikeout" lingering while the real
+  // action moves on. `text` always describes the actual play object ("Pitch 4 :
+  // Strike 2 Foul", "End of the 3rd inning") — prefer it. Other sports ship a
+  // descriptive `text` and no alternativeText, so only baseball copy changes.
+  const lpText = lp && (lp.text || lp.type?.alternativeText || lp.type?.text);
   if (lpText) s.lastPlay = lpText;
   // CHEAP win probability — the basketball scoreboard carries it on lastPlay
   // (VERIFIED basketball-only, ~14%; schema/espn-guide/scoreboard.md). Store the

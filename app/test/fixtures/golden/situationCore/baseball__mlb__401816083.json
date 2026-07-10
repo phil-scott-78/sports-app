@@ -1,0 +1,104 @@
+{
+  "endpoint": "situationCore",
+  "args": {
+    "key": "baseball/mlb",
+    "eventId": "401816083",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/situation?lang=en&region=us",
+      "lastPlay": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/plays/4018160831605030021?lang=en&region=us"
+      },
+      "balls": 1,
+      "strikes": 1,
+      "outs": 2,
+      "onFirst": {
+        "playerId": 4719300,
+        "period": 9,
+        "athlete": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/athletes/4719300?lang=en&region=us"
+        },
+        "position": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/positions/6?lang=en&region=us"
+        },
+        "statistics": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/4719300/statistics/0?lang=en&region=us"
+        },
+        "projections": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/4719300/projections?lang=en&region=us"
+        }
+      },
+      "onThird": {
+        "playerId": 42598,
+        "period": 9,
+        "athlete": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/athletes/42598?lang=en&region=us"
+        },
+        "position": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/positions/2?lang=en&region=us"
+        },
+        "statistics": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/42598/statistics/0?lang=en&region=us"
+        },
+        "projections": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/42598/projections?lang=en&region=us"
+        }
+      },
+      "pitcher": {
+        "playerId": 29630,
+        "period": 9,
+        "athlete": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/athletes/29630?lang=en&region=us"
+        },
+        "statistics": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/6/roster/29630/statistics/0?lang=en&region=us"
+        },
+        "projections": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/6/roster/29630/projections?lang=en&region=us"
+        }
+      },
+      "batter": {
+        "playerId": 4686066,
+        "period": 9,
+        "athlete": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/athletes/4686066?lang=en&region=us"
+        },
+        "position": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/positions/7?lang=en&region=us"
+        },
+        "statistics": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/4686066/statistics/0?lang=en&region=us"
+        },
+        "projections": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/competitors/11/roster/4686066/projections?lang=en&region=us"
+        }
+      },
+      "situationNotes": [
+        {
+          "type": "RISP_STATS",
+          "text": "Soderstrom this year w/ RISP: 18 for 74 (.243 AVG), 3 HR, 15 SO"
+        },
+        {
+          "type": "BVP_STATS",
+          "text": "Soderstrom career vs. Jansen: 1 for 3 (.333 AVG), 0 HR, 2 SO"
+        },
+        {
+          "type": "CHANCES_TO_SCORE_1PLUS",
+          "text": "Chance of scoring 1+ runs this inning (2 outs, Runners on 1st, 3rd): 29.69%"
+        },
+        {
+          "type": "CHANCES_TO_SCORE_2PLUS",
+          "text": "Chance of scoring 2+ runs this inning (2 outs, Runners on 1st, 3rd): 13.40%"
+        }
+      ]
+    },
+    "lastPlayText": "Pitch 2 : Strike 1 Foul"
+  },
+  "output": {
+    "balls": 1,
+    "strikes": 1,
+    "outs": 2,
+    "onFirst": true,
+    "onThird": true,
+    "lastPlay": "Pitch 2 : Strike 1 Foul"
+  }
+}

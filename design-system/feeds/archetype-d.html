@@ -1,0 +1,365 @@
+<!-- @dsCard group="Event feeds" name="Archetype D — dense play-by-play" subtitle="Basketball · volleyball merged-rail · disclosure fold" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archetype D — dense play-by-play</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local ─────────────────────────────────────────────── */
+.col { max-width: 428px; margin: 0 auto; }
+body { padding: 24px; }
+.spec { margin-bottom: 28px; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); letter-spacing: .05em; text-transform: uppercase; margin: 0 0 10px 2px; }
+
+/* Period-filter segmented control (§6): played dim · active border fill · future faint */
+.seg { display: inline-flex; background: var(--surface); border-radius: 12px; padding: 4px; margin-bottom: 12px; }
+.seg span { font: 400 12.5px var(--font-copy); color: var(--text-dim); padding: 6px 14px; border-radius: 9px; }
+.seg .seg--on { background: var(--border); color: var(--text); font-weight: 600; }
+.seg .seg--future { color: var(--text-faint); }
+
+/* Dense card: tighter padding, track hairlines */
+.dfeed { padding: 4px 16px; }
+
+/* One-line row: time rail → 4×16 team tick → actor/action/parenthetical → persistent faint score column */
+.drow { display: flex; align-items: center; gap: 10px; padding: 10px 0; font: 400 13px/1.35 var(--font-copy); }
+.drail { font: 600 13px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-dim); width: 34px; flex: none; }
+.drail--merged { font: 600 14px var(--font-score); width: 44px; }
+.drail--white { color: var(--text); font-weight: 700; }
+.tick { width: 4px; height: 16px; border-radius: 2px; flex: none; }
+.dtext { flex: 1; min-width: 0; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.actor { font-weight: 600; color: var(--text); }
+.actor--sig { font-weight: 700; }
+.paren { color: var(--text-faint); }
+.dscore { font: 600 14px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-faint); width: 46px; text-align: right; flex: none; }
+.dscore--white { color: var(--text); font-weight: 700; }
+
+/* Signal row — denser rows and dark team colors take .10–.12 alpha */
+.drow--sig { margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+
+/* Tinted signal badge (§6): 10/700 +.05em, r999, 1×7 pad */
+.badge { font: 700 10px var(--font-copy); letter-spacing: .05em; text-transform: uppercase; border-radius: var(--r-pill); padding: 2px 7px; color: #FFFFFF; flex: none; }
+
+/* Rule-label divider (dim cut-line pattern) */
+.rl-div { display: flex; align-items: center; gap: 10px; padding: 10px 0; }
+.rl-line { flex: 1; border-top: 2px dashed var(--border); }
+.rl-lab { font: 700 10px var(--font-copy); letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; }
+
+/* ── Progressive disclosure (baseball All plays) ── */
+.ep { background: var(--surface); border-radius: var(--r-card); padding: 16px 18px; }
+.ep-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.crow { display: flex; align-items: center; gap: 10px; padding: 10px 0; font: 400 13px/1.35 var(--font-copy); }
+.crow .dtext { white-space: normal; }
+.pcount { font: 400 12px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-faint); margin-left: auto; flex: none; }
+.chev { font: 400 11px var(--font-copy); color: var(--text-faint); flex: none; width: 11px; text-align: center; }
+
+/* Expanded in place: track r14 inset, bleeding 4px past the row edge, rail-indented sub-sequence */
+.fold { background: var(--track); border-radius: 14px; padding: 14px 12px; margin: 2px -4px 6px; }
+.fold-inner { border-left: 1px solid var(--border); padding-left: 12px; display: flex; flex-direction: column; gap: 9px; }
+.prow { display: flex; align-items: center; gap: 10px; }
+.pdot { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 10px var(--font-score); flex: none; }
+.pdesc { font: 400 12px var(--font-copy); color: var(--text-dim); flex: 1; min-width: 0; }
+.pvel { font: 400 12px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-faint); flex: none; }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <p class="anno">Archetype D — Q1: ≳60 events, seconds apart — one-line rows, persistent score column, only state changes loud · Q2: no container in the flow (period/set becomes a filter) · Q3: signal = the lead change / set point</p>
+
+  <!-- ── Specimen (a): basketball ── -->
+  <div class="spec">
+    <p class="anno">Basketball — pad 4×16 · track hairlines · clock rail 13/600 ~34w · 4×16 tick · faint 14/600 score column ~46w (fixed LAL–BOS order) · signal = lead change (wash .10–.12 + LEAD badge)</p>
+
+    <div class="seg"><span>Q1</span><span>Q2</span><span class="seg--on">Q3</span><span class="seg--future">Q4</span></div>
+
+    <div class="card dfeed">
+      <div class="drow">
+        <div class="drail">3:41</div>
+        <div class="tick" style="background:#007A33;"></div>
+        <div class="dtext"><span class="actor">Tatum</span> makes driving layup <span class="paren">(Brown assist)</span></div>
+        <div class="dscore">101–104</div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="drow">
+        <div class="drail">3:58</div>
+        <div class="tick" style="background:#552583;"></div>
+        <div class="dtext"><span class="actor">James</span> misses 26-ft three-point jumper</div>
+        <div class="dscore">101–102</div>
+      </div>
+
+      <div class="rl-div">
+        <span class="rl-line"></span>
+        <span class="rl-lab">Lakers timeout · 4:01</span>
+        <span class="rl-line"></span>
+      </div>
+
+      <!-- Lead change — the signal row -->
+      <div class="drow drow--sig" style="background:linear-gradient(90deg, rgba(0,122,51,.11), transparent);">
+        <div class="drail">4:07</div>
+        <div class="tick" style="background:#007A33;"></div>
+        <div class="dtext"><span class="actor actor--sig">Tatum</span> makes 26-ft three <span class="paren">(White assist)</span> <span class="badge" style="background:rgba(0,122,51,.55);">Lead</span></div>
+        <div class="dscore dscore--white">101–102</div>
+      </div>
+      <div class="hr hr--track"></div>
+
+      <div class="drow">
+        <div class="drail">4:19</div>
+        <div class="tick" style="background:#552583;"></div>
+        <div class="dtext"><span class="actor">Davis</span> makes hook shot <span class="paren">(James assist)</span></div>
+        <div class="dscore">101–99</div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="drow">
+        <div class="drail">4:33</div>
+        <div class="tick" style="background:#007A33;"></div>
+        <div class="dtext"><span class="actor">Brown</span> makes pull-up jumper</div>
+        <div class="dscore">99–99</div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="drow">
+        <div class="drail">4:51</div>
+        <div class="tick" style="background:#552583;"></div>
+        <div class="dtext"><span class="actor">Reaves</span> makes free throw 2 of 2</div>
+        <div class="dscore">99–97</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Specimen (b): volleyball — merged rail ── -->
+  <div class="spec">
+    <p class="anno">Volleyball — rally scoring merges the columns: running score IN the rail (14/600 ~44w, fixed ITA–BRA order), no trailing column · signal = set point (gold badge) · timeout divider carries the score</p>
+
+    <div class="card dfeed">
+      <!-- Set point — the signal row -->
+      <div class="drow drow--sig" style="background:linear-gradient(90deg, rgba(0,100,170,.11), transparent);">
+        <div class="drail drail--merged drail--white">24–22</div>
+        <div class="tick" style="background:#0064AA;"></div>
+        <div class="dtext"><span class="actor actor--sig">Egonu</span> cross-court kill <span class="badge" style="background:#3D3517;">Set point</span></div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="drow">
+        <div class="drail drail--merged">23–22</div>
+        <div class="tick" style="background:#0064AA;"></div>
+        <div class="dtext"><span class="actor">Danesi</span> block on Gabi</div>
+      </div>
+
+      <div class="rl-div">
+        <span class="rl-line"></span>
+        <span class="rl-lab">Italy timeout · 22–21</span>
+        <span class="rl-line"></span>
+      </div>
+
+      <div class="drow">
+        <div class="drail drail--merged">22–21</div>
+        <div class="tick" style="background:#0064AA;"></div>
+        <div class="dtext"><span class="actor">Sylla</span> back-row kill <span class="paren">(Orro set)</span></div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="drow">
+        <div class="drail drail--merged">21–21</div>
+        <div class="tick" style="background:#1E9E4B;"></div>
+        <div class="dtext"><span class="actor">Gabi</span> tips over the block</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Specimen (c): progressive disclosure — baseball All plays ── -->
+  <div class="spec">
+    <p class="anno">Progressive disclosure — condensed one-line rows (4px tick · faint pitch count · 11px chevron); tap expands in place to a track r14 inset: B/S/F muted-fill dots + velocity, behind a 1px border rail · header carries container state, not score</p>
+
+    <div class="ep">
+      <div class="ep-head">
+        <span class="card-label-faint">Bottom 7 · Cubs</span>
+        <span class="card-label-faint tab">1 OUT</span>
+      </div>
+
+      <!-- expanded row -->
+      <div class="crow">
+        <div class="tick" style="background:#0E3386;"></div>
+        <div class="dtext"><span class="actor">Happ</span> strikes out swinging</div>
+        <div class="pcount">5 P</div>
+        <div class="chev">⌄</div>
+      </div>
+      <div class="fold">
+        <div class="fold-inner">
+          <div class="prow">
+            <div class="pdot" style="background:var(--muted-neg-bg);color:var(--muted-neg-fg);">S</div>
+            <div class="pdesc">Strike 3 swinging — slider, low and away</div>
+            <div class="pvel">86 MPH</div>
+          </div>
+          <div class="prow">
+            <div class="pdot" style="background:var(--muted-pos-bg);color:var(--muted-pos-fg);">B</div>
+            <div class="pdesc">Ball, inside — cutter</div>
+            <div class="pvel">91 MPH</div>
+          </div>
+          <div class="prow">
+            <div class="pdot" style="background:var(--muted-neutral-bg);color:var(--muted-neutral-fg);">F</div>
+            <div class="pdesc">Foul, tipped back — four-seam</div>
+            <div class="pvel">97 MPH</div>
+          </div>
+          <div class="prow">
+            <div class="pdot" style="background:var(--muted-neg-bg);color:var(--muted-neg-fg);">S</div>
+            <div class="pdesc">Strike looking — four-seam at the knees</div>
+            <div class="pvel">96 MPH</div>
+          </div>
+          <div class="prow">
+            <div class="pdot" style="background:var(--muted-pos-bg);color:var(--muted-pos-fg);">B</div>
+            <div class="pdesc">Ball, in the dirt — curveball</div>
+            <div class="pvel">81 MPH</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hr hr--track"></div>
+      <div class="crow">
+        <div class="tick" style="background:#0E3386;"></div>
+        <div class="dtext"><span class="actor">Hoerner</span> grounds out to short</div>
+        <div class="pcount">3 P</div>
+        <div class="chev">›</div>
+      </div>
+      <div class="hr hr--track"></div>
+      <div class="crow">
+        <div class="tick" style="background:#0E3386;"></div>
+        <div class="dtext"><span class="actor">Swanson</span> singles to center</div>
+        <div class="pcount">2 P</div>
+        <div class="chev">›</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

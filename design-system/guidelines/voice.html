@@ -1,0 +1,221 @@
+<!-- @dsCard group="Foundations" name="Voice & microcopy" subtitle="Middot fragments · en-dash · prime · label tier · the nevers" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voice &amp; microcopy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ---- card-local ---- */
+body { padding: 24px; }
+.col { max-width: 428px; margin: 0 auto; display: flex; flex-direction: column; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); letter-spacing: .05em; text-transform: uppercase; margin: 28px 0 10px; }
+.anno:first-child { margin-top: 0; }
+
+.vrow { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; }
+.vrow + .vrow { border-top: 1px solid var(--divider); }
+.vrow .why { font: 400 11px var(--font-copy); color: var(--text-faint); margin-left: auto; text-align: right; flex: none; }
+
+.punct { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; font-size: 24px; color: var(--text); }
+
+.dd-card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.dd-card li { font: 400 13px/1.6 var(--font-copy); color: var(--text-body); margin: 5px 0; }
+.dd-card ul { margin: 10px 0 0; padding-left: 18px; }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <div class="anno">Middot fragments — context lines are terse, joined by " · "</div>
+  <div class="card">
+    <div class="vrow"><span class="caption" style="color:var(--text-body)">Suzuki up · 2–1 · 2 out</span><span class="why">baseball situation</span></div>
+    <div class="vrow"><span class="caption" style="color:var(--text-body)">Game 6 · DAL leads 3–2</span><span class="why">series context</span></div>
+    <div class="vrow"><span class="caption" style="color:var(--text-body)">Par 5 · 547 yds · 2nd shot, 231 to the pin</span><span class="why">golf hole</span></div>
+    <div class="vrow"><span class="caption" style="color:var(--text-body)">Wrigley Field · Chicago</span><span class="why">venue caption</span></div>
+    <div class="caption-faint" style="margin-top:10px">Numerals over words, always. Sports vernacular, no explanation.</div>
+  </div>
+
+  <div class="anno">The punctuation kit — en-dash · prime · em-dash</div>
+  <div class="card">
+    <div class="vrow"><span class="punct">2–1</span><span class="punct" style="color:var(--text-dim)">112–108</span><span class="why">scores take the en-dash, never a hyphen</span></div>
+    <div class="vrow"><span class="punct">73′</span><span class="punct" style="color:var(--text-dim)">90′+4</span><span class="why">soccer minutes take the prime</span></div>
+    <div class="vrow"><span style="font:400 13px var(--font-copy);color:var(--text-body)">Happ singles to right — Hoerner scores</span><span class="why">prose takes the em-dash</span></div>
+  </div>
+
+  <div class="anno">The one editorial sentence — inverted prose, one per screen</div>
+  <div class="inverted">
+    <div class="card-label">LAST PLAY</div>
+    <div class="inverted-prose" style="margin-top:8px">Happ singles to right — Hoerner scores from second, Cubs within one.</div>
+  </div>
+  <div class="caption-faint" style="margin-top:6px">The inverted card whispers one good sentence. It never gets an exclamation point.</div>
+
+  <div class="anno">The label tier — the only UPPERCASE outside Barlow display</div>
+  <div class="card">
+    <div class="vrow"><span class="section-title">MLB</span><span class="why">sectionTitle · 16/700 · .08em</span></div>
+    <div class="vrow"><span class="section-title">WORLD CUP · ROUND OF 16</span><span class="why">sectionTitle with context</span></div>
+    <div class="vrow"><span class="card-label">WIN PROBABILITY</span><span class="why">cardLabel · 12/600 · .06em</span></div>
+    <div class="vrow"><span class="card-label-faint">NL CENTRAL</span><span class="why">cardLabelFaint · 11/600 · .06em</span></div>
+    <div class="vrow"><span class="pill" style="background:var(--track)"><span class="live-dot"></span>BOT 7 · 2 OUT</span><span class="why">pillText · 11/600 · .04em</span></div>
+    <div class="vrow"><span style="font:700 10px var(--font-copy);letter-spacing:.1em;color:var(--text-faint)">HALF TIME · 1–1</span><span class="why">period-rule label · 10/700 · .1em</span></div>
+  </div>
+
+  <div class="anno">Do</div>
+  <div class="dd-card">
+    <ul>
+      <li>Terse middot fragments — <span style="color:var(--text)">Suzuki up · 2–1 · 2 out</span> — never full sentences in context lines.</li>
+      <li>En-dash scores (2–1), prime minutes (73′), em-dash prose.</li>
+      <li>Numerals over words; sports vernacular without explanation.</li>
+      <li>Winner reads by weight — <span style="font-weight:600;color:var(--text)">text 600</span> vs <span style="color:var(--text-dim)">textDim 400</span> — not by color.</li>
+      <li>★ as the one glyph (the favorite star); the live dot, not the word LIVE.</li>
+      <li>One quiet, good sentence on the one inverted card.</li>
+    </ul>
+  </div>
+
+  <div class="anno">Never</div>
+  <div class="dd-card">
+    <ul style="color:var(--text-dim)">
+      <li>No logos, no team-colored text, no colored card backgrounds.</li>
+      <li>No light mode, no Material seed color, no default-blue anything.</li>
+      <li>No exclamation points, no banner headlines, no emoji.</li>
+      <li>No second inverted card; no second accent competing with gold.</li>
+      <li>No shadows on resting cards; no borders over 2px except color bars.</li>
+      <li>No sport-name branches — data presence only.</li>
+      <li>No proportional figures where a number can change while you watch.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

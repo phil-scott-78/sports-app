@@ -6911,6 +6911,240 @@
       "score": "1-0",
       "title": "Playoff Series"
     },
+    "teamDetails": [
+      {
+        "side": "away",
+        "abbr": "TTU",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "HR",
+                "value": "M. Davis (10, 1st inning off T. Kavan 0 on, 1 Out); M. Williams (27, 5th inning off T. Kavan 1 on, 2 Out)"
+              },
+              {
+                "label": "RBI",
+                "value": "M. Davis (51), M. Williams 2 (87)"
+              },
+              {
+                "label": "2Out RBI",
+                "value": "M. Williams 2"
+              },
+              {
+                "label": "Team LOB",
+                "value": "3"
+              },
+              {
+                "label": "Team RISP",
+                "value": "1-2 (H. Toney 0-1, M. Williams 1-1)"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "IBB",
+                "value": "K. Stewart (by S. Lincoln)."
+              },
+              {
+                "label": "HBP",
+                "value": "K. Stewart (by S. Lincoln)"
+              },
+              {
+                "label": "FPS-BF",
+                "value": "N. Canady 3/6; K. Terry 4/8; S. Lincoln 6/17"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "N. Canady-4-1-5-4; K. Terry-3-1-0-8; S. Lincoln-7-4-13-13"
+              },
+              {
+                "label": "GB-FB",
+                "value": "N. Canady 1-2; K. Terry 1-3; S. Lincoln 6-3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "side": "home",
+        "abbr": "TEX",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "3B",
+                "value": "A. Maloney (4, N. Canady)"
+              },
+              {
+                "label": "HR",
+                "value": "K. Stewart (31, 1st inning off K. Terry 1 on, 0 Out)"
+              },
+              {
+                "label": "RBI",
+                "value": "A. Maloney 2 (16), V. Martinez 2 (47), K. Stewart 2 (79), K. Altmeyer (28)"
+              },
+              {
+                "label": "2Out RBI",
+                "value": "K. Altmeyer"
+              },
+              {
+                "label": "SF",
+                "value": "V. Martinez"
+              },
+              {
+                "label": "Team LOB",
+                "value": "6"
+              },
+              {
+                "label": "Team RISP",
+                "value": "3-6 (A. Maloney 1-1, R. Atwood 0-2, V. Martinez 1-1, K. Altmeyer 1-1, J. Nichols 0-1)"
+              },
+              {
+                "label": "RISP 2-out",
+                "value": "R. Atwood 2; J. Nichols 1"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "HBP",
+                "value": "K. Terry (by T. Kavan)"
+              },
+              {
+                "label": "FPS-BF",
+                "value": "T. Kavan 19/27"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "T. Kavan-10-18-27-17"
+              },
+              {
+                "label": "GB-FB",
+                "value": "T. Kavan 8-7"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "teamGameStats": [
+      {
+        "title": "Batting",
+        "rows": [
+          {
+            "label": "AB",
+            "away": "24",
+            "home": "27"
+          },
+          {
+            "label": "R",
+            "away": "3",
+            "home": "7"
+          },
+          {
+            "label": "H",
+            "away": "3",
+            "home": "10"
+          },
+          {
+            "label": "2B",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "3B",
+            "away": "0",
+            "home": "1"
+          },
+          {
+            "label": "HR",
+            "away": "2",
+            "home": "1"
+          },
+          {
+            "label": "RBI",
+            "away": "3",
+            "home": "7"
+          },
+          {
+            "label": "TB",
+            "away": "9",
+            "home": "15"
+          },
+          {
+            "label": "BB",
+            "away": "2",
+            "home": "2"
+          },
+          {
+            "label": "K",
+            "away": "6",
+            "home": "2"
+          },
+          {
+            "label": "SB",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "LOB",
+            "away": "0",
+            "home": "0"
+          }
+        ]
+      },
+      {
+        "title": "Pitching",
+        "rows": [
+          {
+            "label": "K",
+            "away": "2",
+            "home": "6"
+          },
+          {
+            "label": "BB",
+            "away": "2",
+            "home": "2"
+          },
+          {
+            "label": "H",
+            "away": "10",
+            "home": "3"
+          },
+          {
+            "label": "R",
+            "away": "7",
+            "home": "3"
+          },
+          {
+            "label": "ER",
+            "away": "7",
+            "home": "3"
+          },
+          {
+            "label": "HR",
+            "away": "1",
+            "home": "2"
+          },
+          {
+            "label": "P",
+            "away": "109",
+            "home": "115"
+          },
+          {
+            "label": "S",
+            "away": "63",
+            "home": "72"
+          }
+        ]
+      }
+    ],
     "plays": [
       {
         "period": 1,

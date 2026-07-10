@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
+import 'follow_sheet.dart';
+import 'player_page.dart';
+import 'team_page.dart';
 import 'widgets.dart';
 
 /// Open the full rankings page for [league] — every poll/division the feed
@@ -68,7 +71,7 @@ class RankingsPage extends ConsumerWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(T.pageMargin,
                             i == 0 ? 0 : T.gapCard, T.pageMargin, 0),
-                        child: RankingsCard(value.polls[i]),
+                        child: RankingsCard(value.polls[i], league: league),
                       ),
                 ],
               AsyncError() => const [
@@ -98,9 +101,15 @@ class RankingsPage extends ConsumerWidget {
 /// teaser (pass [maxRows] + [onSeeAll] for a trailing "See all" row).
 class RankingsCard extends StatelessWidget {
   final Poll poll;
+
+  /// When set, rank rows become actionable: tap opens the entry's team/player
+  /// page, long-press on a team entry opens the follow sheet. Null → inert
+  /// rows (widget tests, contexts without a league key).
+  final String? league;
   final int? maxRows;
   final VoidCallback? onSeeAll;
-  const RankingsCard(this.poll, {super.key, this.maxRows, this.onSeeAll});
+  const RankingsCard(this.poll,
+      {super.key, this.league, this.maxRows, this.onSeeAll});
 
   static String _points(int p) => p.toString().replaceAllMapped(
       RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},');
@@ -123,15 +132,15 @@ class RankingsCard extends StatelessWidget {
             ),
         ]),
         const SizedBox(height: 4),
-        for (var i = 0; i < shown.length; i++) _row(shown[i], i),
+        for (var i = 0; i < shown.length; i++) _row(context, shown[i], i),
         if (truncated) _seeAllRow(),
       ]),
     );
   }
 
-  Widget _row(RankEntry r, int i) {
+  Widget _row(BuildContext context, RankEntry r, int i) {
     final first = i == 0;
-    return Container(
+    final body = Container(
       padding: const EdgeInsets.symmetric(vertical: T.rowVPad),
       decoration: i == 0
           ? null
@@ -184,6 +193,33 @@ class RankingsCard extends StatelessWidget {
         ),
       ]),
     );
+    if (league == null) return body;
+    final team = r.team;
+    final athlete = r.athlete;
+    if (team != null) {
+      return InkWell(
+        onTap: () => openTeamPage(context, league!,
+            teamId: team.id, name: team.name, color: team.color),
+        onLongPress: () => showTeamFollowSheet(
+          context,
+          league: league!,
+          teamId: team.id,
+          name: team.name,
+          abbr: team.abbr,
+          colorHex: team.color,
+          record: r.record,
+        ),
+        child: body,
+      );
+    }
+    if (athlete != null) {
+      return InkWell(
+        onTap: () =>
+            openPlayerPage(context, league!, athleteId: athlete.id, name: athlete.name),
+        child: body,
+      );
+    }
+    return body;
   }
 
   Widget _seeAllRow() => GestureDetector(

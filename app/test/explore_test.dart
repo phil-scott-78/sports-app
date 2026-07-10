@@ -71,7 +71,7 @@ void main() {
       overrides: [
         sharedPrefsProvider.overrideWithValue(p),
         catalogProvider.overrideWith((ref) async => _catalog),
-        exploreOverviewProvider.overrideWith((ref) async => _overview),
+        exploreOverviewProvider.overrideWith((ref) => Stream.value(_overview)),
       ],
       child: MaterialApp(theme: buildV2Theme(), home: const ExplorePage()),
     ));

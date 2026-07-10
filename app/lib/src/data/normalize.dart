@@ -79,7 +79,7 @@ Map<String, dynamic> statusToPhase([dynamic t]) {
 }
 
 // ---- score (by scoreKind) ---------------------------------------------------
-Map<String, dynamic> _buildScore(dynamic scoreKind, dynamic raw) {
+Map<String, dynamic> buildScore(dynamic scoreKind, dynamic raw) {
   if (raw != null && raw is Map) raw = raw['displayValue'] ?? raw['value'] ?? '';
   final display = raw == null ? '' : raw.toString();
   final s = <String, dynamic>{'display': display};
@@ -192,7 +192,7 @@ Map<String, dynamic> _buildCompetitor(Map profile, Map raw) {
   final cr = field(raw['curatedRank'], 'current');
   if (cr != null) c['rank'] = cr == 99 ? null : cr;
   if (raw['winner'] != null) c['winner'] = raw['winner'];
-  if (raw['score'] != null) c['score'] = _buildScore(profile['scoreKind'], raw['score']);
+  if (raw['score'] != null) c['score'] = buildScore(profile['scoreKind'], raw['score']);
 
   final linescores = raw['linescores'];
   if (linescores is List && linescores.isNotEmpty) {
@@ -405,7 +405,7 @@ Map<String, dynamic>? normalizeCompetitionOdds(dynamic raw) =>
     _oddsFromList(field(raw, 'items'));
 
 // ---- live situation ---------------------------------------------------------
-Map<String, dynamic>? _buildSituation(Map rc) {
+Map<String, dynamic>? buildSituation(Map rc) {
   final sit = rc['situation'];
   if (sit == null || sit is! Map) return null;
   final s = <String, dynamic>{};
@@ -423,10 +423,39 @@ Map<String, dynamic>? _buildSituation(Map rc) {
   if (b != null) s['batter'] = or([field(b, 'shortName'), field(b, 'displayName'), field(b, 'fullName')]);
   if (field(sit['pitcher'], 'summary') != null) s['pitcherLine'] = field(sit['pitcher'], 'summary');
   if (field(sit['batter'], 'summary') != null) s['batterLine'] = field(sit['batter'], 'summary');
+  // On deck (baseball): the first dueUp batter who isn't already at the plate —
+  // ESPN's dueUp[] leads with the CURRENT batter mid at-bat.
+  for (final d in (sit['dueUp'] is List ? sit['dueUp'] as List : const [])) {
+    final a = field(d, 'athlete');
+    final n = a != null ? or([field(a, 'shortName'), field(a, 'displayName'), field(a, 'fullName')]) : null;
+    if (truthy(n) && n != s['batter']) {
+      s['onDeck'] = n;
+      break;
+    }
+  }
+  // The full due-up list (baseball): name + the batter's day line, ESPN order.
+  // Between innings (batter absent) this is the NEXT half-inning's batters —
+  // the "Due Up" card's data; mid at-bat it leads with the current batter.
+  final dueUp = <Map<String, dynamic>>[];
+  for (final d in (sit['dueUp'] is List ? sit['dueUp'] as List : const [])) {
+    final a = field(d, 'athlete');
+    final n = a != null ? or([field(a, 'shortName'), field(a, 'displayName'), field(a, 'fullName')]) : null;
+    if (!truthy(n)) continue;
+    final line = field(d, 'summary');
+    dueUp.add(pickNN({
+      'name': n,
+      'line': line is String && line.isNotEmpty ? line : null,
+    }, ['name', 'line']));
+  }
+  if (dueUp.isNotEmpty) s['dueUp'] = dueUp;
   if (sit['downDistanceText'] != null) s['downDistanceText'] = sit['downDistanceText'];
   if (sit['possession'] != null) s['possession'] = jsStr(sit['possession']);
   final lp = sit['lastPlay'];
-  final lpText = lp != null ? (field(field(lp, 'type'), 'alternativeText') ?? field(lp, 'text') ?? field(field(lp, 'type'), 'text')) : null;
+  // Baseball trap: lastPlay is PITCH-granular and `type.alternativeText` is a
+  // coarse at-bat label ESPN stamps on only some play types — "Now at bat" on
+  // start-batter rows, a previous at-bat's "Strikeout" lingering while the real
+  // action moves on. `text` always describes the actual play object — prefer it.
+  final lpText = lp != null ? (or([field(lp, 'text'), field(field(lp, 'type'), 'alternativeText'), field(field(lp, 'type'), 'text')])) : null;
   if (lpText != null) s['lastPlay'] = lpText;
   // CHEAP win probability — basketball scoreboard only (~14%; scoreboard.md).
   // HOME win % as a 0-100 rounded int; absent for every other sport.
@@ -440,10 +469,16 @@ Map<String, dynamic>? _buildSituation(Map rc) {
   return s.isNotEmpty ? s : null;
 }
 
-const _otUnits = {'half', 'quarter', 'period', 'inning', 'over_innings'};
+/// The period units where played > regulation means EXTRA PLAY (OT/extra
+/// innings) — never sets, MMA rounds, laps, or golf rounds (the OT_UNITS rule).
+/// Public (like [buildScore]/[buildSituation]) for the fastcast overlay merge.
+const otUnits = {'half', 'quarter', 'period', 'inning', 'over_innings'};
 
 // ---- decision ---------------------------------------------------------------
-String? _decide(Map profile, Map comp) {
+/// How a FINAL competition was decided ('regulation'/'overtime'/'draw'/…).
+/// Public for the fastcast overlay merge, which recomputes it when a pushed
+/// status flips a game to final.
+String? decide(Map profile, Map comp) {
   if (field(comp['status'], 'phase') != 'final') return null;
   final cs = comp['competitors'] as List;
   if (cs.any((c) => (c as Map)['shootoutScore'] != null)) return 'shootout';
@@ -601,7 +636,7 @@ Map<String, dynamic> _buildCompetition(Map profile, Map rc, Map rawEvent) {
       'unit': profile['periodUnit'],
       'regulation': regCount,
       'played': played,
-      'isOvertime': _otUnits.contains(profile['periodUnit']) && regCount > 0 && played > regCount,
+      'isOvertime': otUnits.contains(profile['periodUnit']) && regCount > 0 && played > regCount,
       if (profile['periodLengthMin'] != null) 'lengthMin': profile['periodLengthMin'],
     },
     'decision': null,
@@ -669,12 +704,12 @@ Map<String, dynamic> _buildCompetition(Map profile, Map rc, Map rawEvent) {
   final odds = _oddsFromList(rc['odds']);
   if (odds != null) comp['odds'] = odds;
 
-  final situation = _buildSituation(rc);
+  final situation = buildSituation(rc);
   if (situation != null) comp['situation'] = situation;
 
-  comp['decision'] = _decide(profile, comp);
+  comp['decision'] = decide(profile, comp);
   _decorate(profile, comp, rc);
-  if (comp['meta'] != null) comp['decision'] = _decide(profile, comp) ?? comp['decision'];
+  if (comp['meta'] != null) comp['decision'] = decide(profile, comp) ?? comp['decision'];
   return comp;
 }
 

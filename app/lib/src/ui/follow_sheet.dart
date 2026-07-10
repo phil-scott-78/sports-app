@@ -29,7 +29,10 @@ void showGameFollowSheet(
   ]);
 }
 
-/// Long-press a favorite hero card → manage that one team.
+/// Long-press a single team identity (a favorite hero card, a standings or
+/// rankings row) → manage that one team. [color] tints the sheet avatar when
+/// the caller only has a resolved [Color] (the identity cache); [colorHex]
+/// additionally rides into the stored favorite + the team page push.
 void showTeamFollowSheet(
   BuildContext context, {
   required String league,
@@ -37,15 +40,18 @@ void showTeamFollowSheet(
   required String name,
   String? abbr,
   String? subtitle,
+  Color? color,
+  String? colorHex,
+  String? record,
 }) {
   _showSheet(context, league: league, leagueName: subtitle, teams: [
     (
       teamId: teamId,
       name: name,
       abbr: abbr ?? name,
-      color: T.outline,
-      colorHex: null,
-      record: null,
+      color: color ?? (colorHex != null ? teamColorOf(colorHex) : T.outline),
+      colorHex: colorHex,
+      record: record,
     ),
   ]);
 }

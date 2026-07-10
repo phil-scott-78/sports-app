@@ -23,6 +23,16 @@ void main() {
     });
   }
 
+  for (final e in goldenIndex().where((e) => e['endpoint'] == 'overviewMerged')) {
+    test('overviewMerged parity: ${e['key']}', () {
+      final g = readGolden(e['file'] as String);
+      final a = g['args'] as Map;
+      final now = DateTime.fromMillisecondsSinceEpoch(a['nowMs'] as int, isUtc: true);
+      final got = classifyMergedSlate(a['sb'], now);
+      expect(canonicalJson(got), canonicalJson(g['output']));
+    });
+  }
+
   for (final e in goldenIndex().where((e) => e['endpoint'] == 'teamCard')) {
     test('teamCard parity: ${e['key']}/${e['teamId']}', () {
       final g = readGolden(e['file'] as String);

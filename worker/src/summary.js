@@ -351,7 +351,11 @@ function buildLineups(raw, side) {
       name: aShort(p.athlete) || p.athlete?.displayName,
       pos: p.position?.abbreviation || p.position?.name,
       jersey: p.jersey,
-    }, ['id', 'name', 'pos', 'jersey'])).filter(p => p.name);
+      // '1' = GK, '2'..'11' = outfield slots row by row vs the formation string;
+      // '0' = substitute (dropped — only a placed starter renders on the pitch).
+      formationPlace: p.formationPlace != null && String(p.formationPlace) !== '0'
+        ? String(p.formationPlace) : undefined,
+    }, ['id', 'name', 'pos', 'jersey', 'formationPlace'])).filter(p => p.name);
     return pick({
       side: r.homeAway || side[String(r.team?.id ?? '')],
       abbr: r.team?.abbreviation,
@@ -360,6 +364,45 @@ function buildLineups(raw, side) {
       bench: players.filter((_, i) => (r.roster[i]?.starter !== true)),
     }, ['side', 'abbr', 'formation', 'starters', 'bench']);
   }).filter(l => (l.starters?.length || l.bench?.length));
+}
+
+// ---- match leaders (soccer) ---------------------------------------------------
+// VERIFIED 2026-07 (fifa.world, live): the rich /summary ships leaders[] as two
+// per-team blocks, each carrying the SAME four categories (totalShots,
+// accuratePasses, defensiveInterventions, saves) with at most ONE leader entry
+// per team. Canonical keeps one entry per category per side (the app compares
+// values to pick the overall leader row); athlete id joins the lineups/player
+// page. Category order follows the first block that carries each category.
+function buildMatchLeaders(raw, side) {
+  const blocks = Array.isArray(raw.leaders) ? raw.leaders : [];
+  if (!blocks.length) return undefined;
+  const cats = new Map(); // name -> { name, label, leaders[] }
+  for (const b of blocks) {
+    const teamSide = side[String(b.team?.id ?? '')];
+    const teamAbbr = b.team?.abbreviation;
+    for (const c of (b.leaders || [])) {
+      if (!c?.name) continue;
+      const entry = (c.leaders || [])[0];
+      if (!entry) continue;
+      const a = entry.athlete || {};
+      const name = aShort(a);
+      if (!name) continue;
+      if (!cats.has(c.name)) cats.set(c.name, pick({ name: c.name, label: c.displayName, leaders: [] }, ['name', 'label', 'leaders']));
+      // numeric value: prefer the statistics entry matching the category key
+      // (displayValue alone can't compare '89%' style values if ESPN ever sends one)
+      const stat = (entry.statistics || []).find(s => s.name === c.name);
+      const value = typeof stat?.value === 'number' ? stat.value : numOrNull(entry.displayValue);
+      cats.get(c.name).leaders.push(pick({
+        side: teamSide, teamAbbr,
+        id: a.id != null ? String(a.id) : undefined,
+        name, jersey: a.jersey, pos: aPos(a),
+        value: value ?? undefined,
+        displayValue: str(entry.displayValue ?? ''),
+      }, ['side', 'teamAbbr', 'id', 'name', 'jersey', 'pos', 'value', 'displayValue']));
+    }
+  }
+  const out = [...cats.values()].filter(c => c.leaders.length);
+  return out.length ? out : undefined;
 }
 
 // ---- season series (head-to-head this season) -------------------------------
@@ -418,11 +461,122 @@ function buildInjuries(raw, side) {
   return out.length ? out : undefined;
 }
 
-// ---- win probability (the single current/final number) ----------------------
+// ---- pitcher decisions (baseball W/L/SV) --------------------------------------
+// VERIFIED 2026-07 (MLB): header.competitions[0].status.featuredAthletes[] =
+// [{name:'winningPitcher'|'losingPitcher'|'savePitcher', athlete:{shortName,
+// record, saves}, team:{id}}]. The final's "W: Skubal (5-4)" line. Data-presence
+// gated — sports without these roles simply never emit anything.
+const DECISION_ROLES = { winningPitcher: 'win', losingPitcher: 'loss', savePitcher: 'save' };
+function buildDecisions(raw, side, abbr) {
+  const fa = raw.header?.competitions?.[0]?.status?.featuredAthletes;
+  if (!Array.isArray(fa) || !fa.length) return undefined;
+  const out = [];
+  for (const f of fa) {
+    const role = DECISION_ROLES[f.name];
+    if (!role) continue;
+    const a = f.athlete || {};
+    const name = aShort(a);
+    if (!name) continue;
+    const tid = String(f.team?.id ?? '');
+    out.push(pick({
+      role,
+      id: a.id != null ? String(a.id) : undefined, // CORE athletes/{id} join → player page
+      name,
+      record: a.record != null && a.record !== '' ? String(a.record) : undefined,
+      saves: role === 'save' && a.saves != null && a.saves !== '' ? String(a.saves) : undefined,
+      side: side[tid],
+      abbr: abbr[tid],
+    }, ['role', 'id', 'name', 'record', 'saves', 'side', 'abbr']));
+  }
+  return out.length ? out : undefined;
+}
+
+// ---- newspaper box-score footnotes (baseball) ---------------------------------
+// VERIFIED 2026-07 (MLB): boxscore.teams[].details[] = [{name:'battingDetails'…,
+// displayName:'Batting'|'Pitching'|'Fielding'|'Baserunning', stats:[{
+// shortDisplayName:'2B'|'HR'|'RBI'|'2Out RBI'|'Team LOB'|'Team RISP'…,
+// displayValue:'Vierling (12, Lopez); …'}]}] — the classic agate block under a
+// printed box score. Rows kept verbatim per team, group order preserved.
+function buildTeamDetails(raw, side) {
+  const teams = raw.boxscore?.teams || [];
+  const out = [];
+  for (const t of teams) {
+    const groups = (Array.isArray(t.details) ? t.details : []).map(d => {
+      const rows = (Array.isArray(d.stats) ? d.stats : []).map(s => pick({
+        label: s.shortDisplayName || s.abbreviation || s.displayName || s.name,
+        value: s.displayValue != null && s.displayValue !== '' ? String(s.displayValue) : undefined,
+      }, ['label', 'value'])).filter(r => r.label && r.value);
+      return rows.length ? { title: str(d.displayName || cap(d.name)), rows } : null;
+    }).filter(Boolean);
+    if (!groups.length) continue;
+    const tid = String(t.team?.id ?? '');
+    out.push(pick({ side: t.homeAway || side[tid], abbr: t.team?.abbreviation, groups }, ['side', 'abbr', 'groups']));
+  }
+  return out.length ? out : undefined;
+}
+
+// ---- grouped team game stats (baseball hitting/pitching) ----------------------
+// MLB's boxscore.teams[].statistics NEST (groups with stats[], no top-level
+// displayValue) so buildTeamStats yields [] for baseball. Distill the two groups
+// that read as THIS GAME's team story — batting and pitching — into a curated
+// away/home comparison. Whitelisted game keys only; the season-rate tail
+// (OPS/WHIP/ratings) deliberately stays behind. Flat-stat sports never enter
+// (their statistics entries carry no nested stats[]).
+const GAME_STAT_KEYS = [
+  ['batting', ['atBats', 'runs', 'hits', 'doubles', 'triples', 'homeRuns', 'RBIs', 'totalBases', 'walks', 'strikeouts', 'stolenBases', 'runnersLeftOnBase']],
+  ['pitching', ['strikeouts', 'walks', 'hits', 'runs', 'earnedRuns', 'homeRuns', 'pitches', 'strikes']],
+];
+function buildTeamGameStats(raw) {
+  const teams = raw.boxscore?.teams || [];
+  if (teams.length < 2) return undefined;
+  const byHa = {};
+  for (const t of teams) if (t.homeAway) byHa[t.homeAway] = t;
+  const away = byHa.away || teams[0];
+  const home = byHa.home || teams[1];
+  const groupOf = (t, name) => (t.statistics || []).find(g => g.name === name && Array.isArray(g.stats));
+  const statOf = (g, key) => (g?.stats || []).find(s => s.name === key);
+  const out = [];
+  for (const [gname, keys] of GAME_STAT_KEYS) {
+    const gA = groupOf(away, gname), gH = groupOf(home, gname);
+    if (!gA && !gH) continue;
+    const rows = [];
+    for (const k of keys) {
+      const a = statOf(gA, k), h = statOf(gH, k);
+      const lead = a || h;
+      if (!lead) continue;
+      const row = pick({
+        label: lead.shortDisplayName || lead.abbreviation || k,
+        away: a?.displayValue != null ? String(a.displayValue) : undefined,
+        home: h?.displayValue != null ? String(h.displayValue) : undefined,
+      }, ['label', 'away', 'home']);
+      if (row.away != null || row.home != null) rows.push(row);
+    }
+    if (rows.length) out.push({ title: str((gA || gH).displayName || cap(gname)), rows });
+  }
+  return out.length ? out : undefined;
+}
+
+// ---- win probability (current number + the full-game arc) -------------------
 // raw.winprobability[] = a per-play arc of {homeWinPercentage(0..1), tiePercentage,
-// playId}. We keep ONLY the LAST value (current live / final) — never the 500-point
-// curve (that's a chart, off-thesis). Present for NBA/NFL/MLB; ABSENT for NHL/soccer
+// playId}. `home/away/tie` stay the LAST value (the passive current/final read the
+// card shows at rest); `points[]` is the WHOLE arc — per point the home win %
+// (integer 0-100) joined by playId to the play feed (raw.plays, or gridiron's
+// drive-nested plays) for the game-state context the scrub shows: period/half,
+// clock, running score. Points with no matching play (trimmed fixtures predating
+// play ids, live keyEvent-only ids) still ship — the curve never gaps, the scrub
+// label just goes context-less. Present for NBA/NFL/MLB; ABSENT for NHL/soccer
 // (empty array → omitted). It is an ESPN analytic, not a betting line. Free.
+function winProbPlayIndex(raw) {
+  let plays = raw.plays;
+  if (!Array.isArray(plays) || !plays.length) {
+    const drives = drivesList(raw);
+    plays = drives.length ? drives.flatMap(d => d.plays || []) : [];
+  }
+  const byId = new Map();
+  for (const p of plays) { if (p && p.id != null) byId.set(String(p.id), p); }
+  return byId;
+}
+
 function buildWinProbability(raw) {
   const wp = raw.winprobability;
   if (!Array.isArray(wp) || !wp.length) return undefined;
@@ -432,7 +586,28 @@ function buildWinProbability(raw) {
   const tie = Math.round((typeof last.tiePercentage === 'number' ? last.tiePercentage : 0) * 100);
   const home = Math.round(h * 100);
   const away = Math.max(0, 100 - home - tie);
-  return pick({ home, away, tie: tie || undefined }, ['home', 'away', 'tie']);
+  const out = pick({ home, away, tie: tie || undefined }, ['home', 'away', 'tie']);
+  if (wp.length >= 2) {
+    const byId = winProbPlayIndex(raw);
+    const points = [];
+    for (const e of wp) {
+      const eh = typeof e.homeWinPercentage === 'number' ? e.homeWinPercentage : null;
+      if (eh == null) continue;
+      const p = byId.get(String(e.playId ?? ''));
+      const half = p?.period?.type ? String(p.period.type).toLowerCase() : null;
+      points.push(pick({
+        home: Math.round(eh * 100),
+        period: p?.period?.number,
+        half: half === 'top' || half === 'bottom' ? half : undefined,
+        periodLabel: p?.period?.displayValue,
+        clock: p?.clock?.displayValue,
+        awayScore: numOrNull(p?.awayScore),
+        homeScore: numOrNull(p?.homeScore),
+      }, ['home', 'period', 'half', 'periodLabel', 'clock', 'awayScore', 'homeScore']));
+    }
+    if (points.length >= 2) out.points = points;
+  }
+  return out;
 }
 
 // ---- CORE situation (detail-open enrichment, NOT the summary payload) ---------
@@ -482,18 +657,24 @@ export function buildCoreSituation(raw, lastPlayText) {
 // ---- win probability from the CORE predictor (the winprobability[] fallback) ---
 // When the /summary carries no winprobability[] but the league hasWinProb, the app
 // fetches the CORE predictor on detail open. Each side's `gameProjection` stat is
-// that side's win %; we keep only the single current number in the SAME canonical
+// that side's win % (`teamPredWinpct` on WNBA-style predictors, which carry no
+// gameProjection); we keep only the single current number in the SAME canonical
 // WinProbability shape the UI already renders. VERIFIED 2026-07
 // (schema/espn-guide/core-predictor.md): baseball/basketball/football only.
 function projectionOf(team) {
   const stats = team && team.statistics;
   if (!Array.isArray(stats)) return null;
-  for (const st of stats) {
-    if (st && st.name === 'gameProjection') {
-      if (typeof st.value === 'number') return st.value;
-      if (typeof st.displayValue === 'string' && st.displayValue !== '') {
-        const n = parseFloat(st.displayValue);
-        return Number.isNaN(n) ? null : n;
+  // Prefer gameProjection; fall back to teamPredWinpct — VERIFIED live 2026-07-09
+  // (WNBA in-game predictor): some basketball predictors carry ONLY
+  // teamPredWinpct/teamPredPtDiff/matchupQuality, no gameProjection at all.
+  for (const name of ['gameProjection', 'teamPredWinpct']) {
+    for (const st of stats) {
+      if (st && st.name === name) {
+        if (typeof st.value === 'number') return st.value;
+        if (typeof st.displayValue === 'string' && st.displayValue !== '') {
+          const n = parseFloat(st.displayValue);
+          return Number.isNaN(n) ? null : n;
+        }
       }
     }
   }
@@ -604,12 +785,30 @@ function pitchResult(p) {
   if (t.includes('strike')) return 'strike';
   return 'other';
 }
+// MLB ABS challenge (2026): a challenged pitch's type.text carries the FINAL
+// ruling plus a ' - Overturned' / ' - Confirmed' suffix (type ids 91/92 on the
+// Strike Looking variants, VERIFIED live 2026-07-09) — so pitchResult and the
+// count are already correct; this only marks that the call was challenged.
+// Matched on the suffix, not the id, so the Ball variants classify too.
+function pitchChallenge(p) {
+  const t = String(p.type?.text || '');
+  if (/ - Overturned$/i.test(t)) return 'overturned';
+  if (/ - Confirmed$/i.test(t)) return 'upheld';
+  return undefined;
+}
 function buildAtBats(raw, side, abbr, athletes) {
   const plays = Array.isArray(raw.plays) ? raw.plays : [];
   if (!plays.some(p => p.summaryType === 'P')) return undefined; // no pitch data
   const order = [];
   const groups = new Map();
+  // per-pitcher game pitch tally — every 'P' row carries its pitcher participant,
+  // so the LIVE at-bat can surface the pitcher's running pitch count.
+  const pitchTally = {};
   for (const p of plays) {
+    if (p.summaryType === 'P') {
+      const pid = String((p.participants || []).find(x => x.type === 'pitcher')?.athlete?.id ?? '');
+      if (pid) pitchTally[pid] = (pitchTally[pid] || 0) + 1;
+    }
     const id = p.atBatId;
     if (!id) continue;
     if (!groups.has(id)) { groups.set(id, []); order.push(id); }
@@ -637,6 +836,18 @@ function buildAtBats(raw, side, abbr, athletes) {
     const bpid = String((header?.participants || teamAnchor.participants || [])
       .find(x => x.type === 'batter')?.athlete?.id ?? '');
     const batter = live && bpid && athletes ? athletes[bpid] : undefined;
+    // live-only turn-8 extras: the pitcher's game pitch count and the runner
+    // names. EVERY feed row carries the on-base state as athlete ids while
+    // runners are on (absent = bases empty; VERIFIED live 2026-07) — anchor on
+    // the group's LATEST row, not the latest pitch: a fresh at-bat is only its
+    // "X pitches to Y" header for a while, and that header has the state too.
+    const ppid = String((header?.participants || [])
+      .find(x => x.type === 'pitcher')?.athlete?.id ?? '');
+    const stateRow = live ? g[g.length - 1] : undefined;
+    const runner = o => {
+      const rid = String(o?.athlete?.id ?? '');
+      return rid && athletes ? athletes[rid] : undefined;
+    };
     out.push(pick({
       period: teamAnchor.period?.number,
       half: teamAnchor.period?.type ? String(teamAnchor.period.type).toLowerCase() : undefined,
@@ -651,14 +862,55 @@ function buildAtBats(raw, side, abbr, athletes) {
       live: live ? true : undefined,
       balls: live ? last?.resultCount?.balls : undefined,
       strikes: live ? last?.resultCount?.strikes : undefined,
+      pitchCount: live && ppid ? pitchTally[ppid] : undefined,
+      first: live ? runner(stateRow?.onFirst) : undefined,
+      second: live ? runner(stateRow?.onSecond) : undefined,
+      third: live ? runner(stateRow?.onThird) : undefined,
       pitches: pitches.map(p => pick({
         r: pitchResult(p),
         text: String(p.text || '').replace(PITCH_PREFIX, ''),
         velo: typeof p.pitchVelocity === 'number' ? p.pitchVelocity : undefined,
-      }, ['r', 'text', 'velo'])),
-    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitches']));
+        // strike-zone plot inputs (turn 8): ESPN's raw catcher's-view plot
+        // coords (x grows RIGHT, y grows DOWN; the zone rect is empirically
+        // x∈[~84,148], y∈[~144,193] — see canonical.ts Pitch) and the pitch
+        // name ('Slider'). Live captures only.
+        type: p.pitchType?.text,
+        x: typeof p.pitchCoordinate?.x === 'number' ? p.pitchCoordinate.x : undefined,
+        y: typeof p.pitchCoordinate?.y === 'number' ? p.pitchCoordinate.y : undefined,
+        challenge: pitchChallenge(p),
+      }, ['r', 'text', 'velo', 'type', 'x', 'y', 'challenge'])),
+    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitchCount', 'first', 'second', 'third', 'pitches']));
   }
   return out.length ? out : undefined;
+}
+
+// ---- baseball "what really was the last play" ---------------------------------
+// ESPN appends a start-batterpitcher bookend the moment an at-bat resolves, so
+// the feed's naive tail reads "X pitches to Y" (the scoreboard mirrors it as
+// "Now at bat") while the double that just happened scrolls away. Walk back past
+// the bookends to the freshest NARRATIVE row: a pitch → kind 'pitch' (text with
+// the 'Pitch N :' prefix stripped, + pitch type/velocity when captured); an
+// at-bat result ('N'/'S') or inning bookend ("End of the 3rd inning") → kind
+// 'play'. Baseball-only by construction (built alongside atBats).
+function buildBaseballLastPlay(plays) {
+  if (!Array.isArray(plays)) return undefined;
+  for (let i = plays.length - 1; i >= 0; i--) {
+    const p = plays[i];
+    const text = String(p?.text || '').trim();
+    if (!text) continue;
+    if (p.summaryType === 'A' || String(p.type?.type || '') === 'start-batterpitcher') continue;
+    if (p.summaryType === 'P') {
+      return pick({
+        kind: 'pitch',
+        text: text.replace(PITCH_PREFIX, ''),
+        type: p.pitchType?.text,
+        velo: typeof p.pitchVelocity === 'number' ? p.pitchVelocity : undefined,
+        challenge: pitchChallenge(p),
+      }, ['kind', 'text', 'type', 'velo', 'challenge']);
+    }
+    return { kind: 'play', text };
+  }
+  return undefined;
 }
 
 // Soccer/rugby half label from the period number, for when ESPN omits a
@@ -675,7 +927,9 @@ function halfLabel(n) {
 // offsides, VAR, delays), each with a structured play {type, period, clock,
 // team:{displayName}}. keyEvents[] carries only goals/cards/subs/bookends (a 0-0
 // half is EMPTY after the timeline filter), and the core /plays feed is
-// touch-by-touch noise (700+ items by the half — every pass — behind pagination).
+// touch-by-touch (700+ items by the half — every pass — behind pagination):
+// never the narrative, though it IS the coordinate source for the live pitch /
+// shot map (matchfeed.js, capability hasMatchFeed).
 // Commentary is the right depth and rides the payload we already fetch. NOTE:
 // commentary play.team has NO id/abbreviation — side attribution goes through the
 // team display name (sideMaps.nameSide).
@@ -700,7 +954,12 @@ function buildCommentaryPlays(raw, { nameSide, haAbbr }) {
         home: numOrNull(p.homeScore),
         type: p.type?.text,
         scoring: p.scoringPlay === true,
-      }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type', 'scoring']);
+        // Team-relative field coords when ESPN tags the underlying play (x 0 =
+        // own goal line, 100 = opponent goal line) — the shot map's fallback
+        // source when the core match feed isn't available.
+        x: typeof p.fieldPositionX === 'number' ? p.fieldPositionX : undefined,
+        y: typeof p.fieldPositionY === 'number' ? p.fieldPositionY : undefined,
+      }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type', 'scoring', 'x', 'y']);
     })
     .filter(p => p.text);
   if (mapped.length <= 1) return undefined;
@@ -802,15 +1061,39 @@ export function normalizeSummary(reg, key, raw) {
   if (injuries) out.injuries = injuries;
   const winProbability = buildWinProbability(raw);
   if (winProbability) out.winProbability = winProbability;
+  // Baseball's three box-adjacent enrichments (each data-presence gated): the
+  // W/L/SV pitcher line, the newspaper footnote block, and the grouped
+  // hitting/pitching team comparison (MLB's flat teamStats is [] — see builders).
+  const decisions = buildDecisions(raw, side, abbr);
+  if (decisions) out.decisions = decisions;
+  const teamDetails = buildTeamDetails(raw, side);
+  if (teamDetails) out.teamDetails = teamDetails;
+  const teamGameStats = buildTeamGameStats(raw);
+  if (teamGameStats) out.teamGameStats = teamGameStats;
   // Soccer's curated event feed (goals/cards/subs). When present it's the app's
   // Timeline tab, so the ~700-item ball-by-ball commentary isn't shipped too.
   const timeline = buildMatchTimeline(raw, maps);
   if (timeline) out.timeline = timeline;
+  // The curated match narrative (soccer/rugby commentary[]) — ALWAYS shipped
+  // when present (unlike `plays` below, which yields to the timeline): the
+  // Commentary tab + the Now tab's preview read this directly.
+  const commentary = buildCommentaryPlays(raw, maps);
+  if (commentary) out.commentary = commentary;
+  // Per-category match leaders (soccer): shots / accurate passes / defensive
+  // interventions / saves, one entry per side.
+  const matchLeaders = buildMatchLeaders(raw, side);
+  if (matchLeaders) out.matchLeaders = matchLeaders;
   // Baseball groups into at-bats (each with its pitch sequence) for the §3e
   // all-plays disclosure; when present it REPLACES the flat pitch-by-pitch plays[]
   // (which would be ~500 rows of noise) as the Plays tab's source.
   const atBats = buildAtBats(raw, side, abbr, athletes);
   if (atBats) out.atBats = atBats;
+  // The derived "what really was the last play" line (rides the same plays[]
+  // the at-bats grouped) — the detail screen's loud inverted card.
+  if (atBats) {
+    const lastPlay = buildBaseballLastPlay(raw.plays);
+    if (lastPlay) out.lastPlay = lastPlay;
+  }
   const plays = timeline || atBats ? undefined : buildPlays(raw, maps);
   if (plays) out.plays = plays;
   const drives = buildDrives(raw, side, abbr);

@@ -60,10 +60,14 @@ const fxFor = (key) => fixtures.get(key) || emptyFixture(key);
 // a synthesized identity (no 404 on a tapped player). games/eventlog stay empty
 // offline (resolving a raw eventlog's $ref fan-out isn't worth reproducing).
 const athleteExtra = new Map(); // athleteId → { identity, statistics }
+const matchFeedExtra = new Map(); // sport → { raw: {count, items} } (captured soccer core plays)
 function loadExtra() {
   try {
     const ex = JSON.parse(readFileSync(join(FIX_DIR, '_extra.json'), 'utf8'));
     for (const a of ex.athletes || []) if (a?.athleteId != null) athleteExtra.set(String(a.athleteId), a);
+    // The captured core plays feed serves for ANY event of its sport — the app asks
+    // per event id, and every live mock soccer game replays the same captured feed.
+    for (const m of ex.matchFeeds || []) if (m?.raw?.items) matchFeedExtra.set(m.key.split('/')[0], m);
   } catch { /* no _extra.json — synthesized identities still serve */ }
 }
 
@@ -135,6 +139,38 @@ function handle(req, res) {
         sit.lastPlay = { $ref: `${REF_HOST}/mock/coreplay/${key}/${eventId}` };
         return send(res, { $ref: `${REF_HOST}${url.pathname}`, ...sit });
       }
+      // Core plays feed (soccer hasMatchFeed): replay the captured touch-by-touch
+      // feed for ANY event of the sport, sliced to the synthesized phase (a live
+      // 1st-half mock game serves only period-1 plays; a final serves everything)
+      // and paginated like real ESPN (?limit, ?page, oldest-first).
+      if (seg[7] === 'competitions' && seg[9] === 'plays') {
+        const mf = matchFeedExtra.get(prof.espnSport);
+        if (!mf) return send(res, { count: 0, pageIndex: 1, pageSize: 25, pageCount: 1, items: [] });
+        const state = synthCompetitionState(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
+        let items = mf.raw.items;
+        if (state?.state === 'pre') items = [];
+        else if (state?.state === 'in') items = items.filter((p) => (p.period?.number ?? 1) <= (state.period || 1));
+        // Rewrite team $refs to the mock game's two competitor ids (read from the
+        // synthesized scoreboard) so side attribution matches what's on screen.
+        const teams = synthEventTeams(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
+        const homeId = teams?.byHomeAway?.home?.id, awayId = teams?.byHomeAway?.away?.id;
+        if (homeId && awayId) {
+          const sub = { [mf.homeId]: String(homeId), [mf.awayId]: String(awayId) };
+          items = items.map((p) => {
+            const tid = p.team?.$ref?.match(/\/teams\/(\d+)/)?.[1];
+            return tid && sub[tid]
+              ? { ...p, team: { $ref: p.team.$ref.replace(`/teams/${tid}`, `/teams/${sub[tid]}`) } }
+              : p;
+          });
+        }
+        const limit = Math.max(1, Math.min(1000, Number(q.get('limit')) || 25));
+        const pageCount = Math.max(1, Math.ceil(items.length / limit));
+        const page = Math.max(1, Math.min(pageCount, Number(q.get('page')) || 1));
+        return send(res, {
+          count: items.length, pageIndex: page, pageSize: limit, pageCount,
+          items: items.slice((page - 1) * limit, page * limit),
+        });
+      }
       if (prof.espnSport === 'mma') {
         const { coreEvent } = synthMmaCore(registry, key, fxFor(key), eventId, { now, scenario: SCENARIO });
         // inject $refs pointing back at us so the app's per-bout follow works.
@@ -166,6 +202,20 @@ function handle(req, res) {
     if (seg[0] === 'apis' && seg[1] === 'site' && seg[2] === 'v2' && seg[3] === 'sports') {
       const sport = seg[4], league = seg[5], resource = seg[6];
       const key = `${sport}/${league}`;
+      // Merged '<sport>/all' pseudo-league (capability hasAllScoreboard) — the
+      // Explore pulse's fast first pass. One slate concatenating every fixture
+      // league of the sport, run through the SAME synth so phases (and event
+      // uids, which carry the league id) match the per-league scoreboards.
+      if (league === 'all' && resource === 'scoreboard') {
+        const events = [];
+        for (const fxKey of fixtures.keys()) {
+          if (!fxKey.startsWith(`${sport}/`) || !known(fxKey)) continue;
+          if (resolve(registry, fxKey)?.capabilities?.hasAllScoreboard !== true) continue;
+          const sb = synthScoreboard(registry, fxKey, fxFor(fxKey), { now, date: q.get('dates') || null, scenario: SCENARIO });
+          events.push(...(sb.events || []));
+        }
+        return send(res, { leagues: [{ calendar: [] }], events });
+      }
       if (!known(key)) return send(res, { error: `unknown league "${key}"` }, 404);
       const fx = fxFor(key);
       if (resource === 'scoreboard') {

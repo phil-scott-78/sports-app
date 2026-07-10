@@ -1,0 +1,157 @@
+{
+  "endpoint": "winprob",
+  "args": {
+    "key": "baseball/mlb",
+    "eventId": "401816083",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/401816083/competitions/401816083/predictor?lang=en&region=us",
+      "name": "Athletics Athletics at Detroit Tigers",
+      "shortName": "ATH @ DET",
+      "lastModified": "2026-07-09T11:04Z",
+      "homeTeam": {
+        "team": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/6?lang=en&region=us"
+        },
+        "statistics": [
+          {
+            "name": "gameProjection",
+            "displayName": "WIN PROB",
+            "shortDisplayName": "GP",
+            "description": "Team's predicted win percentage in this game at time of given BPI run",
+            "abbreviation": "GP",
+            "value": 63.36291790000001,
+            "displayValue": "63.4"
+          },
+          {
+            "name": "teamChanceLoss",
+            "displayName": "Team Chance Loss",
+            "shortDisplayName": "Chance Loss",
+            "description": "",
+            "abbreviation": "TCL",
+            "value": 36.63708209999999,
+            "displayValue": "36.6"
+          },
+          {
+            "name": "winProbability",
+            "displayName": "Win Probability",
+            "shortDisplayName": "WP",
+            "description": "Team's predicted win percentage in this game at time of given BPI run.",
+            "abbreviation": "WP",
+            "value": 63.36291790000001,
+            "displayValue": "63.4"
+          },
+          {
+            "name": "starterAdjustment",
+            "displayName": "Starter Adjustment",
+            "shortDisplayName": "SA",
+            "description": "Value by which to adjust the team's rating based on the team's starting pitcher.",
+            "abbreviation": "SA",
+            "value": 4.1271299046,
+            "displayValue": "4.1"
+          },
+          {
+            "name": "bullpenAdjustment",
+            "displayName": "Bullpen Adjustment",
+            "shortDisplayName": "BPA",
+            "description": "Value by which to adjust the team's rating based on the team's bullpen.",
+            "abbreviation": "BPA",
+            "value": 3.9438709411,
+            "displayValue": "3.9"
+          },
+          {
+            "name": "battingAdjustment",
+            "displayName": "Batting Adjustment",
+            "shortDisplayName": "BA",
+            "description": "Value by which to adjust the team's rating based on the team's batting.",
+            "abbreviation": "BA",
+            "value": 4.3182749518,
+            "displayValue": "4.3"
+          },
+          {
+            "name": "parkAdjustment",
+            "displayName": "Park Adjustment",
+            "shortDisplayName": "PA",
+            "description": "Value by which to adjust the team's rating based on the park where the game is being played.",
+            "abbreviation": "PA",
+            "value": 7.450614699999999,
+            "displayValue": "7.5"
+          }
+        ]
+      },
+      "awayTeam": {
+        "team": {
+          "$ref": "http://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/2026/teams/11?lang=en&region=us"
+        },
+        "statistics": [
+          {
+            "name": "gameProjection",
+            "displayName": "WIN PROB",
+            "shortDisplayName": "GP",
+            "description": "Team's predicted win percentage in this game at time of given BPI run",
+            "abbreviation": "GP",
+            "value": 36.6370821,
+            "displayValue": "36.6"
+          },
+          {
+            "name": "teamChanceLoss",
+            "displayName": "Team Chance Loss",
+            "shortDisplayName": "Chance Loss",
+            "description": "",
+            "abbreviation": "TCL",
+            "value": 63.36291789999999,
+            "displayValue": "63.4"
+          },
+          {
+            "name": "winProbability",
+            "displayName": "Win Probability",
+            "shortDisplayName": "WP",
+            "description": "Team's predicted win percentage in this game at time of given BPI run.",
+            "abbreviation": "WP",
+            "value": 36.6370821,
+            "displayValue": "36.6"
+          },
+          {
+            "name": "starterAdjustment",
+            "displayName": "Starter Adjustment",
+            "shortDisplayName": "SA",
+            "description": "Value by which to adjust the team's rating based on the team's starting pitcher.",
+            "abbreviation": "SA",
+            "value": 5.3062747689,
+            "displayValue": "5.3"
+          },
+          {
+            "name": "bullpenAdjustment",
+            "displayName": "Bullpen Adjustment",
+            "shortDisplayName": "BPA",
+            "description": "Value by which to adjust the team's rating based on the team's bullpen.",
+            "abbreviation": "BPA",
+            "value": 4.6254974272,
+            "displayValue": "4.6"
+          },
+          {
+            "name": "battingAdjustment",
+            "displayName": "Batting Adjustment",
+            "shortDisplayName": "BA",
+            "description": "Value by which to adjust the team's rating based on the team's batting.",
+            "abbreviation": "BA",
+            "value": 4.5285259043,
+            "displayValue": "4.5"
+          },
+          {
+            "name": "parkAdjustment",
+            "displayName": "Park Adjustment",
+            "shortDisplayName": "PA",
+            "description": "Value by which to adjust the team's rating based on the park where the game is being played.",
+            "abbreviation": "PA",
+            "value": 7.450614699999999,
+            "displayValue": "7.5"
+          }
+        ]
+      }
+    }
+  },
+  "output": {
+    "home": 63,
+    "away": 37
+  }
+}

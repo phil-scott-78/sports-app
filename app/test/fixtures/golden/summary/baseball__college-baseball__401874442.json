@@ -6423,6 +6423,250 @@
         "total": "5"
       }
     },
+    "teamDetails": [
+      {
+        "side": "away",
+        "abbr": "WVU",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "RBI",
+                "value": "A. Guzman (43)"
+              },
+              {
+                "label": "GIDP",
+                "value": "M. Ineich (2)"
+              },
+              {
+                "label": "Team LOB",
+                "value": "7"
+              },
+              {
+                "label": "Team RISP",
+                "value": "1-9 (B. Lumsden 0-1, S. Smith 0-1, A. Guzman 1-2, P. Schoenfeld 0-2, T. Hall 0-1, M. Ineich 0-2)"
+              },
+              {
+                "label": "RISP 2-out",
+                "value": "S. Smith 1; A. Guzman 1; P. Schoenfeld 1; T. Hall 1"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "PN",
+                "value": "\nM. Yehl pitched to 1 batter in the 8th.\n"
+              },
+              {
+                "label": "HBP",
+                "value": "M. Winslow (by M. Yehl); PB: G. Kelly"
+              },
+              {
+                "label": "FPS-BF",
+                "value": "M. Yehl 22/33; R. Bassinger 4/5"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "M. Yehl-21-10-21-23; R. Bassinger-4-1-2-2"
+              },
+              {
+                "label": "GB-FB",
+                "value": "M. Yehl 6-8; R. Bassinger 1-1"
+              }
+            ]
+          },
+          {
+            "title": "Fielding",
+            "rows": [
+              {
+                "label": "E",
+                "value": "B. Kresser (6, fielding); T. Hall (6, fielding)"
+              }
+            ]
+          },
+          {
+            "title": "Baserunning",
+            "rows": [
+              {
+                "label": "CS",
+                "value": "A. Guzman (4, 3rd base by R. Lynch/C. Hynek)"
+              },
+              {
+                "label": "SB",
+                "value": "T. Hall (20, 2nd base off W. McDuffie/C. Hynek)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "side": "home",
+        "abbr": "UNC",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "3B",
+                "value": "G. Gallaher (3, M. Yehl)"
+              },
+              {
+                "label": "RBI",
+                "value": "G. Gallaher 2 (57), E. Paulsen (55), O. Hull (83), C. Nicholson (49)"
+              },
+              {
+                "label": "SH",
+                "value": "T. Howe"
+              },
+              {
+                "label": "Team LOB",
+                "value": "9"
+              },
+              {
+                "label": "Team RISP",
+                "value": "2-7 (C. Hynek 0-1, G. Gallaher 1-2, E. Paulsen 0-1, O. Hull 1-1, T. Howe 0-1, C. Nicholson 0-1)"
+              },
+              {
+                "label": "RISP 2-out",
+                "value": "G. Gallaher 2; E. Paulsen 1; T. Howe 2"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "FPS-BF",
+                "value": "W. McDuffie 8/15; R. Lynch 9/19; C. Glauber 1/2"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "W. McDuffie-16-9-5-9; R. Lynch-13-2-12-15; C. Glauber-1-4-1-0"
+              },
+              {
+                "label": "GB-FB",
+                "value": "W. McDuffie 4-3; R. Lynch 9-2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "teamGameStats": [
+      {
+        "title": "Batting",
+        "rows": [
+          {
+            "label": "AB",
+            "away": "32",
+            "home": "33"
+          },
+          {
+            "label": "R",
+            "away": "2",
+            "home": "5"
+          },
+          {
+            "label": "H",
+            "away": "8",
+            "home": "8"
+          },
+          {
+            "label": "2B",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "3B",
+            "away": "0",
+            "home": "1"
+          },
+          {
+            "label": "HR",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "RBI",
+            "away": "1",
+            "home": "5"
+          },
+          {
+            "label": "TB",
+            "away": "8",
+            "home": "10"
+          },
+          {
+            "label": "BB",
+            "away": "4",
+            "home": "3"
+          },
+          {
+            "label": "K",
+            "away": "8",
+            "home": "8"
+          },
+          {
+            "label": "SB",
+            "away": "1",
+            "home": "0"
+          },
+          {
+            "label": "LOB",
+            "away": "0",
+            "home": "0"
+          }
+        ]
+      },
+      {
+        "title": "Pitching",
+        "rows": [
+          {
+            "label": "K",
+            "away": "8",
+            "home": "8"
+          },
+          {
+            "label": "BB",
+            "away": "3",
+            "home": "4"
+          },
+          {
+            "label": "H",
+            "away": "8",
+            "home": "8"
+          },
+          {
+            "label": "R",
+            "away": "5",
+            "home": "2"
+          },
+          {
+            "label": "ER",
+            "away": "2",
+            "home": "2"
+          },
+          {
+            "label": "HR",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "P",
+            "away": "124",
+            "home": "145"
+          },
+          {
+            "label": "S",
+            "away": "84",
+            "home": "88"
+          }
+        ]
+      }
+    ],
     "plays": [
       {
         "period": 1,

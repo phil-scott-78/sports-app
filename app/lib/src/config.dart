@@ -28,6 +28,13 @@ class AppConfig {
   static const Duration refreshNearKickoff = Duration(seconds: 30);
   static const Duration kickoffWindow = Duration(minutes: 5);
 
+  /// Reconciliation cadence while FastCast push is healthy (fastcast-plan.md
+  /// Track 2): pushes carry score/status the moment they happen, so the
+  /// scoreboard poll survives only as the slow safety net — new events
+  /// appearing on the slate, silent divergence. Any push failure snaps the
+  /// cadence back to [refreshLive] automatically.
+  static const Duration refreshReconcile = Duration(seconds: 180);
+
   /// Per-request network timeout.
   static const Duration httpTimeout = Duration(seconds: 12);
 }

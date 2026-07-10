@@ -5,6 +5,7 @@ import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../util.dart';
+import 'follow_sheet.dart';
 import 'league_card.dart';
 import 'player_page.dart';
 import 'poll.dart';
@@ -171,6 +172,7 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
               highlightIds: {widget.teamId},
               onRowTap: (r) => openTeamPage(context, widget.league,
                   teamId: r.team.id, name: r.team.name),
+              onRowLongPress: _standingsLongPress,
             ),
           ),
         ];
@@ -235,10 +237,22 @@ class _TeamPageState extends ConsumerState<TeamPage> with LifecyclePoll {
         highlightIds: {widget.teamId},
         onRowTap: (r) => openTeamPage(context, widget.league,
             teamId: r.team.id, name: r.team.name),
+        onRowLongPress: _standingsLongPress,
       ));
     }
     return out;
   }
+
+  /// Long-press a standings row → the follow sheet for that team (the same
+  /// add grammar as the home feed rows).
+  void _standingsLongPress(StandingsRow r) => showTeamFollowSheet(
+        context,
+        league: widget.league,
+        teamId: r.team.id,
+        name: r.team.name,
+        abbr: r.team.abbr,
+        color: cachedTeamColor(r.team.id),
+      );
 
   Widget _liveStrip(SportEvent event) => Container(
         decoration: BoxDecoration(
@@ -436,7 +450,7 @@ class _NextGameCard extends StatelessWidget {
     final themColor = teamColor(them);
     final chips = _contextChips(comp);
 
-    return V2Card(
+    final card = V2Card(
       padding: const EdgeInsets.all(16),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
@@ -463,6 +477,13 @@ class _NextGameCard extends StatelessWidget {
           ]),
         ],
       ]),
+    );
+    // Same long-press-to-follow grammar as the schedule's game rows.
+    if (comp.isField || comp.competitorKind != 'team') return card;
+    return GestureDetector(
+      onLongPress: () =>
+          showGameFollowSheet(context, league: league, comp: comp),
+      child: card,
     );
   }
 

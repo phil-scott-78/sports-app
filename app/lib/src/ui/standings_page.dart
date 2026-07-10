@@ -4,6 +4,7 @@ import '../models.dart';
 import '../providers.dart';
 import '../theme.dart';
 import '../util.dart';
+import 'follow_sheet.dart';
 import 'standings_table.dart';
 import 'team_page.dart';
 import 'widgets.dart';
@@ -124,6 +125,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
     if (standings.groups.isEmpty) return _empty();
     final favIds = _favIds(league);
     final onRowTap = _rowTap(league);
+    final onRowLongPress = _rowLongPress(league);
     return [
       for (final g in standings.groups)
         Padding(
@@ -134,6 +136,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
             columns: standings.columns,
             highlightIds: favIds,
             onRowTap: onRowTap,
+            onRowLongPress: onRowLongPress,
           ),
         ),
     ];
@@ -156,6 +159,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
             highlightIds: favIds,
             barColors: barColors,
             onRowTap: onRowTap,
+            onRowLongPress: _rowLongPress(league),
           ),
         ),
     ];
@@ -179,6 +183,7 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
           columns: standings.columns,
           highlightIds: _favIds(league),
           onRowTap: _rowTap(league),
+          onRowLongPress: _rowLongPress(league),
         ),
       ),
     ];
@@ -228,6 +233,21 @@ class _StandingsPageState extends ConsumerState<StandingsPage> {
     if (!_hasTeamPage(catalog, league)) return null;
     return (row) => openTeamPage(context, league,
         teamId: row.team.id, name: row.team.name);
+  }
+
+  /// Long-press → the follow sheet (favorite / team page / follow league),
+  /// gated like [_rowTap] so athlete-shaped tables stay inert.
+  void Function(StandingsRow)? _rowLongPress(String league) {
+    final catalog = ref.watch(catalogProvider).valueOrNull;
+    if (!_hasTeamPage(catalog, league)) return null;
+    return (row) => showTeamFollowSheet(
+          context,
+          league: league,
+          teamId: row.team.id,
+          name: row.team.name,
+          abbr: row.team.abbr,
+          color: cachedTeamColor(row.team.id),
+        );
   }
 
   List<Widget> _empty() => const [

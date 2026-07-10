@@ -41,3 +41,12 @@ Thumbs.db
 *.iml
 *.swp
 *~
+
+# FastCast protocol-soak output (worker/scripts/monitor-fastcast.mjs) — a
+# multi-day log of anomaly samples; inspect locally, never committed.
+worker/monitor/
+
+# Live-game snapshot series (worker/scripts/capture-live.mjs) — raw perishable
+# captures; distilled into mock/fixtures via the live-capture skill, never
+# committed wholesale.
+worker/mock/live-capture/

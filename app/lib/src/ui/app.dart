@@ -63,8 +63,13 @@ class _Shell extends ConsumerWidget {
                 Expanded(
                   child: GestureDetector(
                     behavior: HitTestBehavior.opaque,
-                    onTap: () =>
-                        ref.read(tabIndexProvider.notifier).state = i,
+                    onTap: () {
+                      // Following is the usual prelude to "+" → Explore: start
+                      // the season-pulse fan-out now (keepAlive, once per
+                      // session) so Explore opens against a warm map.
+                      if (i == 2) ref.read(exploreOverviewProvider);
+                      ref.read(tabIndexProvider.notifier).state = i;
+                    },
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
                       Icon(_tabs[i].icon,
                           size: 22,

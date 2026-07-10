@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,6 +14,7 @@ import 'package:scores/src/ui/player_page.dart';
 import 'package:scores/src/ui/scores_page.dart';
 import 'package:scores/src/ui/widgets.dart';
 import 'package:scores/src/util.dart';
+import 'golden_util.dart';
 
 Future<SharedPreferences> prefs() async {
   SharedPreferences.setMockInitialValues({});
@@ -74,6 +76,70 @@ void main() {
       await expectLater(
           c.scoreboard('basketball/nba'), throwsA(isA<ApiException>()));
     });
+
+    test('a big body (≥100KB → compute isolate) decodes the same as a small one',
+        () async {
+      // Pad past the off-isolate threshold so this exercises the compute path.
+      final pad = 'x' * (120 * 1024);
+      final mock = MockClient(
+          (req) async => http.Response('{"n":7,"pad":"$pad"}', 200));
+      final c = EspnClient('', mock);
+      final json = await c.scoreboard('basketball/nba') as Map;
+      expect(json['n'], 7);
+      expect((json['pad'] as String).length, pad.length);
+    });
+
+    test('a big malformed body still surfaces ApiException', () async {
+      final pad = 'x' * (120 * 1024);
+      final mock =
+          MockClient((req) async => http.Response('{"broken": "$pad', 200));
+      final c = EspnClient('', mock);
+      await expectLater(
+          c.scoreboard('basketball/nba'), throwsA(isA<ApiException>()));
+    });
+  });
+
+  // ───────────────────────── merged fast-pass pulse (Api) ───────────────────
+  test('overviewMergedFirst maps merged-slate uid league ids to registry keys',
+      () async {
+    loadTestRegistry();
+    final mock = MockClient((req) async {
+      final u = req.url.toString();
+      if (u.contains('/soccer/all/scoreboard')) {
+        return http.Response(
+            jsonEncode({
+              'events': [
+                {
+                  // eng.1 (espnLeagueId 700), in progress → live
+                  'uid': 's:600~l:700~e:1',
+                  'date': '2026-07-08T19:00Z',
+                  'competitions': [
+                    {'status': {'type': {'state': 'in'}}}
+                  ],
+                },
+                {
+                  // an id no registry league claims → dropped, never emitted
+                  'uid': 's:600~l:99999~e:2',
+                  'date': '2026-07-08T19:00Z',
+                  'competitions': [
+                    {'status': {'type': {'state': 'in'}}}
+                  ],
+                },
+              ]
+            }),
+            200);
+      }
+      return http.Response('{"events":[]}', 200); // other merged sports: empty
+    });
+    final api = Api('', EspnClient('', mock));
+    final got = <String, LeagueStateInfo>{};
+    await api.overviewMergedFirst(
+        priority: 'v1,v2', onResult: (k, i) => got[k] = i);
+    expect(got['soccer/eng.1']?.state, 'live');
+    expect(got['soccer/eng.1']?.live, isTrue);
+    expect(got.keys.every((k) => k.contains('/')), isTrue,
+        reason: 'emits registry keys, never raw ids');
+    expect(got.length, 1);
   });
 
   // ───────────────────────── freshness aggregate (Api) ─────────────────────

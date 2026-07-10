@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import '../config.dart';
+import '../data/fastcast_log.dart';
 
 /// True when [startMs] (an epoch-ms kickoff) sits within [AppConfig.kickoffWindow]
 /// of now on either side — a scheduled game about to start, or just started while
@@ -30,6 +31,7 @@ bool kickoffSoon(DateTime? start) =>
 /// tab predates this and keeps its own bespoke version.)
 mixin LifecyclePoll<T extends StatefulWidget> on State<T> {
   Timer? _pollTimer;
+  Duration? _pollTimerInterval;
   bool pollForeground = true;
   WidgetsBindingObserver? _pollObserver;
 
@@ -63,11 +65,21 @@ mixin LifecyclePoll<T extends StatefulWidget> on State<T> {
   /// (Re)arm or cancel the timer from [pollForeground] + [pollInterval]. Gating
   /// on [pollForeground]/[mounted] here is what stops a fetch that resolves
   /// *after* a background/dispose from re-arming a stray timer.
+  ///
+  /// An unchanged cadence keeps the RUNNING timer — repace is called from data
+  /// listeners, and FastCast push emissions rebuild data ~1/s; cancelling and
+  /// re-creating the timer each time would keep resetting a long reconciliation
+  /// interval so it never fires.
   void repace() {
+    final d = (!pollForeground || !mounted) ? null : pollInterval();
+    if (d != null && _pollTimer != null && d == _pollTimerInterval) return;
+    if (d != _pollTimerInterval) {
+      FcLog.log('poll',
+          '${widget.runtimeType} cadence → ${d == null ? 'paused' : '${d.inSeconds}s'}');
+    }
     _pollTimer?.cancel();
     _pollTimer = null;
-    if (!pollForeground || !mounted) return;
-    final d = pollInterval();
+    _pollTimerInterval = d;
     if (d == null) return;
     _pollTimer = Timer.periodic(d, (_) => onPoll());
   }

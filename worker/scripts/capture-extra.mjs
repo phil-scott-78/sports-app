@@ -83,6 +83,13 @@ const SITUATION_CASES = [
   { key: 'hockey/nhl' },
 ];
 
+// Soccer core match feed (capability hasMatchFeed): the touch-by-touch plays
+// resource behind the live-pitch view / shot map / momentum chart. LIVE-best
+// (a live capture exercises open-play passes + restarts + shots mid-stream),
+// falling back to today's most recent final. All pages merged (?limit=300,
+// oldest-first), items slimmed to what normalizeMatchFeed reads.
+const MATCHFEED_CASES = [{ key: 'soccer/fifa.world' }];
+
 // Athlete/player profile (§2.6 "Player rows"): identity + season stats + a last-N
 // game log — every piece CORE-tier + fanned-out ($ref resolves), exactly what
 // api.dart's athleteProfile() assembles at runtime. Two identity paths are covered:
@@ -497,6 +504,51 @@ async function captureSituation({ key }) {
   return { key, eventId: eid, competitionId: cid, shortName, situation, lastPlayText, predictor };
 }
 
+// One core plays item → the slim shape normalizeMatchFeed reads (refs kept as
+// bare {$ref} so the id-parsing path is exercised; everything else dropped).
+function slimMatchFeedPlay(p) {
+  const o = {};
+  if (p.id != null) o.id = p.id;
+  if (p.type) o.type = { id: p.type.id, text: p.type.text };
+  if (p.period?.number != null) o.period = { number: p.period.number };
+  if (p.clock) o.clock = { value: p.clock.value, displayValue: p.clock.displayValue };
+  if (p.team?.$ref) o.team = { $ref: p.team.$ref };
+  if (Array.isArray(p.participants) && p.participants.length && p.participants[0]?.athlete?.$ref) {
+    o.participants = [{ athlete: { $ref: p.participants[0].athlete.$ref } }];
+  }
+  if (p.text) o.text = p.text;
+  if (p.shortText) o.shortText = p.shortText;
+  for (const k of ['fieldPositionX', 'fieldPositionY', 'fieldPosition2X', 'fieldPosition2Y']) {
+    if (typeof p[k] === 'number') o[k] = p[k];
+  }
+  if (p.scoringPlay === true) o.scoringPlay = true;
+  if (p.valid === false) o.valid = false;
+  return o;
+}
+
+async function captureMatchFeed({ key }) {
+  const sb = await fetchScoreboard(key).catch(() => null);
+  const events = Array.isArray(sb?.events) ? sb.events : [];
+  const byState = (s) => events.find((e) => e.competitions?.[0]?.status?.type?.state === s);
+  const ev = byState('in') || byState('post') || events[0];
+  if (!ev) return { key, eventId: null, homeId: null, awayId: null, raw: null };
+  const comp = (ev.competitions || [])[0] || {};
+  const homeId = String(comp.competitors?.find((c) => c.homeAway === 'home')?.team?.id ?? '');
+  const awayId = String(comp.competitors?.find((c) => c.homeAway === 'away')?.team?.id ?? '');
+  const base = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/events/${ev.id}/competitions/${comp.id || ev.id}/plays`;
+  const first = await fetchCoreRef(`${base}?limit=300`).catch(() => null);
+  if (!first) return { key, eventId: String(ev.id), homeId, awayId, raw: null };
+  const items = [...(first.items || [])];
+  for (let p = 2; p <= (first.pageCount || 1); p++) {
+    const page = await fetchCoreRef(`${base}?limit=300&page=${p}`).catch(() => null);
+    if (page?.items) items.push(...page.items);
+  }
+  return {
+    key, eventId: String(ev.id), homeId, awayId,
+    raw: { count: first.count ?? items.length, items: items.map(slimMatchFeedPlay) },
+  };
+}
+
 async function captureFutures({ key, season }) {
   const url = `https://sports.core.api.espn.com/v2/sports/${corePath(key)}/seasons/${season}/futures?lang=en&region=us`;
   let futures = null;
@@ -541,6 +593,7 @@ out.leaders ||= [];
 out.standingsRecords ||= [];
 out.standingsNotes ||= [];
 out.tournaments ||= [];
+out.matchFeeds ||= [];
 
 if (want('teams')) {
   out.teams = [];
@@ -658,6 +711,15 @@ if (want('tournaments')) {
     walk(last.standings);
     console.log(`✓ tournament ${t.key} ${t.window} — ${evs} events, `
       + `${groupsN} standings groups${last.eventId ? `, event ${last.eventId}` : ''}`);
+  }
+}
+if (want('matchfeeds')) {
+  out.matchFeeds = [];
+  for (const m of MATCHFEED_CASES) {
+    out.matchFeeds.push(await captureMatchFeed(m));
+    const last = out.matchFeeds[out.matchFeeds.length - 1];
+    console.log(`✓ matchfeed ${m.key}/${last.eventId ?? '(none)'} — ${last.raw?.items?.length ?? 0} plays, `
+      + `home ${last.homeId ?? '—'} away ${last.awayId ?? '—'}`);
   }
 }
 writeFileSync(OUT, JSON.stringify(out));

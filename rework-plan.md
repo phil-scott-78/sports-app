@@ -85,6 +85,12 @@ fake: capacity/opened/wind, xG, tennis live points…), final verification sweep
 CLAUDE.md updates.
 
 ## Status log
+- 2026-07-08: Phase 6 COMPLETE + committed (d75b401). REWORK DONE — all six
+  phases landed and verified. Final gate: flutter analyze clean, flutter test
+  444/444, worker units 180 + mock 232, goldens zero-drift. The end-to-end
+  Playwright walk (26 screens vs mock:megaweek) passed with all findings
+  fixed. Remaining work lives ONLY in the "Deferred ledger (post-rework)"
+  section below (in-season re-captures + product decisions).
 - 2026-07-08: Phase 5c COMPLETE + committed (ddb59a7) after a mid-run session
   restart (resumed via workflow cache). Tournament data layer + screen (all 4
   grammars, real WC2026/Wimbledon/CWS goldens 24/236/0 links), leftovers all

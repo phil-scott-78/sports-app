@@ -309,6 +309,15 @@ export interface Situation {
   batter?: string;    // short name
   pitcherLine?: string; // CHEAP: situation.pitcher.summary — '0.2 IP, 0 ER, K, BB'
   batterLine?: string;  // CHEAP: situation.batter.summary — the batter's day '1-3, RBI'
+  onDeck?: string;    // CHEAP: first dueUp[] batter who isn't the current batter
+                      // (ESPN's dueUp leads with the CURRENT batter mid at-bat)
+  dueUp?: { name: string; line?: string }[];
+                      // CHEAP: the full dueUp[] list in ESPN order — short name +
+                      // the batter's day line (dueUp[].summary, '1-3, K'). Between
+                      // innings ESPN drops batter/pitcher and dueUp is the NEXT
+                      // half-inning's upcoming batters (the "Due Up" card's data);
+                      // mid at-bat it leads with the CURRENT batter (see onDeck).
+                      // Emitted only when non-empty; baseball-only by observation.
   outsText?: string;  // '2 Outs' (lives on competition, not situation, upstream)
   // gridiron
   down?: number;
@@ -335,7 +344,12 @@ export interface Situation {
   strength?: string;     // 'power-play'|'short-handed'|'even-strength'|'empty-net' — from situation.lastPlay.strength (ids 701/702/703/903)
   strengthTeam?: string; // competitor id of the side on the man advantage (situation.lastPlay.team.id)
   // any sport
-  lastPlay?: string;  // human-readable last play text
+  lastPlay?: string;  // human-readable last play text. QUIRK (baseball): the raw
+                      // scoreboard lastPlay is PITCH-granular and its
+                      // type.alternativeText is a coarse at-bat label ("Now at
+                      // bat", a lingering "Strikeout") — so this maps lastPlay.text
+                      // FIRST ("Pitch 4 : Strike 2 Foul", "End of the 3rd inning"),
+                      // falling back to the type labels only when text is absent.
   // CHEAP win probability — BASKETBALL ONLY (~14%, VERIFIED scoreboard.md):
   // situation.lastPlay.probability.homeWinPercentage (0-1) → 0-100 rounded int.
   // Absent for every other sport, so a consumer can render a win-prob bar keyed
@@ -622,16 +636,18 @@ export interface GameSummary {
                               // keyEvents is only goals/cards/subs, EMPTY timeline in
                               // a 0-0 game). commentary play.team carries display name
                               // only (no id), so sides attribute by name. The core
-                              // /plays resource is touch-by-touch noise (700+ by
-                              // halftime) — deliberately not used. VERIFIED 2026-07
-                              // live (fifa.world). Capped (≤800). Same shape.
+                              // /plays resource is touch-by-touch (700+ by halftime)
+                              // — never the narrative, but it IS the coordinate
+                              // source (MatchFeed, capability hasMatchFeed).
+                              // VERIFIED 2026-07 live (fifa.world). Capped (≤800).
   seasonSeries?: SeasonSeries;// head-to-head this season ('Series tied 1-1')
   recentForm?: SideForm[];    // per-side last-5 form string (MLB/NBA/NFL/NHL),
                               // newest LAST — mirrors the cheap scoreboard `form`
   injuries?: TeamInjuries[];  // per-side "key absences" (structured; comments dropped)
-  winProbability?: WinProbability; // single CURRENT/FINAL win% (NBA/NFL/MLB only;
-                              // absent NHL/soccer). ESPN analytic, not a betting line;
-                              // never the full curve. Render passively on detail.
+  winProbability?: WinProbability; // CURRENT/FINAL win% + the full-game arc
+                              // (points[], NBA/NFL/MLB only; absent NHL/soccer).
+                              // ESPN analytic, not a betting line. The arc powers
+                              // the detail's scrubbable win-prob chart.
   attendance?: number;        // gameInfo.attendance (VERIFIED 2026-07: NFL/soccer/cricket)
   officials?: Official[];     // gameInfo.officials — referee/umpires, capped
   drives?: DriveSummary[];    // gridiron ONLY (raw.drives.previous): compact per-drive
@@ -650,6 +666,17 @@ export interface GameSummary {
                               // (goals/cards/subs/VAR) for the Timeline tab, scorer
                               // & assist split out of participants[]. When present,
                               // `plays` (commentary) is NOT shipped. See MatchEvent.
+  commentary?: SummaryPlay[]; // SOCCER/RUGBY (raw.commentary[]): the curated match
+                              // narrative — timestamped prose (build-up, shots,
+                              // corners, VAR) — ALWAYS shipped when present, even
+                              // beside `timeline` (unlike `plays`, which it
+                              // supersedes as the Commentary tab's source). Rows
+                              // may carry team-relative x/y field coords when
+                              // ESPN tags the underlying play. Capped (≤800).
+  matchLeaders?: MatchLeaderCategory[]; // SOCCER (raw.leaders[]): per-category
+                              // match leaders (shots / accurate passes / defensive
+                              // interventions / saves), one entry per side. See
+                              // MatchLeaderCategory. VERIFIED 2026-07 live.
   atBats?: AtBat[];           // BASEBALL ONLY (raw.plays grouped by atBatId): one
                               // entry per at-bat with its pitch sequence, for the
                               // §3e All-plays disclosure. VERIFIED 2026-07: MLB ships
@@ -658,6 +685,68 @@ export interface GameSummary {
                               // scoring-only college capture has none → keeps the flat
                               // scoring feed). When present, the flat ~500-row plays[]
                               // is SUPPRESSED (it's the same feed, unfolded to noise).
+  lastPlay?: BaseballLastPlay; // BASEBALL ONLY (built alongside atBats): the derived
+                              // "what really was the last play" — the freshest
+                              // NARRATIVE row, walking back past ESPN's
+                              // start-batterpitcher bookends (whose text is "X
+                              // pitches to Y" / "Now at bat", not a play).
+  decisions?: Decision[];     // pitcher decisions (baseball W/L/SV): the final's
+                              // "W: Skubal (5-4)" line. VERIFIED 2026-07 MLB:
+                              // header.competitions[0].status.featuredAthletes[]
+                              // roles winningPitcher/losingPitcher/savePitcher.
+                              // Data-presence gated — sports without these roles
+                              // simply never emit it.
+  teamDetails?: TeamDetails[]; // newspaper box-score footnotes (baseball): per-team
+                              // Batting/Pitching/Fielding/Baserunning agate rows
+                              // ('2B: Vierling (12, Lopez)', 'Team LOB: 7', RISP…).
+                              // VERIFIED 2026-07 MLB: boxscore.teams[].details[].
+  teamGameStats?: SummaryStatGroup[]; // grouped this-game team comparison (baseball
+                              // Hitting/Pitching). QUIRK: MLB's boxscore.teams[]
+                              // .statistics NEST (groups, no top-level displayValue)
+                              // so the flat teamStats is [] for baseball — this is
+                              // the curated distillation of the batting + pitching
+                              // groups (whitelisted game keys; the season-rate tail
+                              // like OPS/WHIP deliberately stays behind).
+}
+
+/** One pitcher decision (summary.decisions) — role win|loss|save, with the
+ *  season line ESPN ships beside it ('5-4'; saves count for the save role). */
+export interface Decision {
+  role: 'win' | 'loss' | 'save';
+  id?: string;            // CORE athletes/{id} join → tap opens the player page
+  name: string;           // short name ('T. Skubal')
+  record?: string;        // W-L record after this game ('5-4')
+  saves?: string;         // save total, role 'save' only
+  side?: 'home' | 'away';
+  abbr?: string;
+}
+
+/** One team's newspaper footnote block (summary.teamDetails): groups in ESPN's
+ *  order (Batting/Pitching/Fielding/Baserunning), rows kept verbatim. */
+export interface TeamDetails {
+  side?: 'home' | 'away';
+  abbr?: string;
+  groups: { title: string; rows: { label: string; value: string }[] }[];
+}
+
+/** One grouped team-stat comparison card (summary.teamGameStats). */
+export interface SummaryStatGroup {
+  title: string;          // 'Batting' | 'Pitching'
+  rows: TeamStatRow[];    // same away/home row shape as teamStats
+}
+
+/** Baseball's derived last-play line (summary.lastPlay). kind 'pitch' = a
+ *  mid-at-bat pitch (type/velo ride along when the capture is live); kind
+ *  'play' = an at-bat result ('Neto doubled to left.') or an inning bookend
+ *  ('End of the 3rd inning'). */
+export interface BaseballLastPlay {
+  kind: 'pitch' | 'play';
+  text: string;
+  type?: string;          // pitch name ('Slider'), kind 'pitch' only
+  velo?: number;          // MPH, kind 'pitch' only
+  challenge?: 'overturned' | 'upheld';
+                          // kind 'pitch' only — the pitch's ABS challenge marker
+                          // (see Pitch.challenge); the loud-card prose appends it.
 }
 
 /** One baseball at-bat (raw.plays grouped by atBatId) — a condensed row in the
@@ -680,6 +769,11 @@ export interface AtBat {
   live?: boolean;         // in progress — no terminal result yet (pre-expanded)
   balls?: number;         // live only: current count
   strikes?: number;
+  pitchCount?: number;    // live only: the pitcher's GAME pitch count (every 'P'
+                          // row is tagged with its pitcher participant)
+  first?: string;         // live only: runner names on base, resolved through the
+  second?: string;        // boxscore (absent = base empty / roster not resolved)
+  third?: string;
   pitches: Pitch[];       // the at-bat's pitch-by-pitch sequence (may be empty)
 }
 
@@ -690,6 +784,22 @@ export interface Pitch {
   r: 'ball' | 'strike' | 'foul' | 'inplay' | 'other';
   text: string;
   velo?: number;          // pitch velocity (MPH)
+  type?: string;          // pitch name ('Slider', 'Four-seam FB') — live captures
+  x?: number;             // ESPN's raw strike-zone plot coords, catcher's view:
+  y?: number;             // x grows RIGHT, y grows DOWN — NOT isotropic. The zone
+                          // rect is empirically x∈[~84,148], y∈[~144,193] (fitted
+                          // from 108 called strikes, live 2026-07-09, cross-checked
+                          // against ESPN's gamecast plot); balls fan out to roughly
+                          // x 25-191 / y 108-236. VERIFIED live; final-game
+                          // summaries ship pitchType but NO coordinates.
+  challenge?: 'overturned' | 'upheld';
+                          // MLB ABS challenge (2026): the play's type.text carries
+                          // the FINAL ruling with a ' - Overturned' (call flipped)
+                          // or ' - Confirmed' (call stood) suffix — so `r` and the
+                          // count are already the truth; this only marks that a
+                          // challenge happened. VERIFIED live 2026-07-09 (401816083,
+                          // type ids 91/92 on the Strike Looking variants); derived
+                          // from the text suffix so Ball variants match too.
 }
 
 /** One soccer match event (worker `timeline`, from ESPN keyEvents[]). VERIFIED
@@ -828,11 +938,34 @@ export interface InjuryItem {
  *  FALLBACK: when the /summary carries no winprobability[] but the league hasWinProb,
  *  the app fetches the CORE predictor on detail open and reads each side's
  *  `gameProjection` stat (homeTeam/awayTeam.statistics[] name==='gameProjection') into
- *  this SAME shape — home = round(home gameProjection), away = 100 - home. */
+ *  this SAME shape — home = round(home gameProjection), away = 100 - home.
+ *  QUIRK (VERIFIED live 2026-07-09, WNBA): some basketball predictors carry NO
+ *  gameProjection — only `teamPredWinpct`, read as the fallback's fallback. That
+ *  predictor is a STATIC pregame model (never updates in-game); the live timeline
+ *  is always summary winprobability[] / scoreboard lastPlay.probability. */
 export interface WinProbability {
   home: number;
   away: number;
   tie?: number;        // soccer/draw-capable only (usually absent)
+  points?: WinProbPoint[]; // the WHOLE per-play arc, chronological (≥2 entries or
+                       // omitted) — the scrubbable full-game chart. Built ONLY from
+                       // summary winprobability[], never from the predictor fallback
+                       // (a single pregame number has no arc).
+}
+
+/** One point of the win-probability arc: the home win % (integer 0-100) plus the
+ *  game state at that play, joined by winprobability[].playId into the play feed
+ *  (raw.plays, or gridiron's drive-nested plays). Context fields are best-effort —
+ *  a point whose playId resolves to no play still ships (the curve must not gap),
+ *  it just scrubs without a score/clock label. */
+export interface WinProbPoint {
+  home: number;        // home win % 0-100 (away reads as 100 - home)
+  period?: number;     // the joined play's period/inning number
+  half?: 'top' | 'bottom'; // baseball half-inning (play period.type) — like SummaryPlay
+  periodLabel?: string; // play period.displayValue — same convention as SummaryPlay
+  clock?: string;      // display clock at the play ('4:12'); baseball has none
+  awayScore?: number;  // running score AFTER the play (numeric play fields,
+  homeScore?: number;  //   not the string competitor.score)
 }
 
 /** One mirrored stat row: 'Possession 61% — 39%'. */
@@ -978,6 +1111,9 @@ export interface SummaryPlay {
                          // of the run of play. Soccer's key-event scoring feed also
                          // carries cards/subs (scoring:false). Absent ⇒ treat as
                          // scoring (every scoringPlays row is a score).
+  x?: number;            // team-relative field coords (commentary rows, soccer):
+  y?: number;            // where the play happened — x 0 = own goal line, 100 =
+                         // opponent goal line, y 0..100 across. VERIFIED 2026-07.
 }
 
 /** Per-period scoreboard split sourced from the summary header. */
@@ -1008,6 +1144,72 @@ export interface LineupPlayer {
   name: string;
   pos?: string;
   jersey?: string;
+  formationPlace?: string; // VERIFIED 2026-07 (fifa.world live): soccer roster
+                         // entries carry formationPlace — '1' = GK, '2'..'11'
+                         // enumerate the outfield slots row by row (defense first)
+                         // against the lineup's formation string ('4-2-3-1');
+                         // '0' = substitute (omitted). Powers the formation-pitch
+                         // diagram. Kept a string (ESPN sends a string).
+}
+
+/** One match-leader category (soccer summary.leaders). VERIFIED 2026-07
+ *  (fifa.world live): the rich /summary ships leaders[] as two per-team blocks,
+ *  each with the SAME four categories — totalShots, accuratePasses,
+ *  defensiveInterventions, saves — holding at most ONE leader entry per team.
+ *  Canonical keeps one entry per category per side; the app compares values to
+ *  pick the overall leader row. Athlete id joins the lineups/player page. */
+export interface MatchLeaderCategory {
+  name: string;          // ESPN stat key: 'totalShots' | 'accuratePasses' | …
+  label?: string;        // ESPN displayName: 'Total Shots'
+  leaders: MatchLeader[]; // 1–2 entries (one per side that has a leader)
+}
+export interface MatchLeader {
+  side?: 'home' | 'away';
+  teamAbbr?: string;
+  id?: string;           // athlete id (CORE join / lineup join)
+  name: string;          // short name ('O. Dembélé')
+  jersey?: string;
+  pos?: string;
+  value?: number;        // numeric value when resolvable (for cross-team compare)
+  displayValue: string;  // '14'
+}
+
+// =============================================================================
+// Match feed — the CORE touch-by-touch plays resource, normalized. SOCCER ONLY
+// (capability hasMatchFeed). VERIFIED 2026-07 (fifa.world live): every play
+// carries team-relative pitch coordinates — fieldPositionX/Y is where the play
+// happened (x 0 = own goal line, 100 = opponent goal line; y 0..100 across the
+// pitch), and passes/shots ALSO carry fieldPosition2X/Y (where the ball ended
+// up). Both teams' attacking events read x→100 — the renderer mirrors one side
+// onto a shared pitch. Participants are $refs (no names); athleteId is parsed
+// from the ref and joined against the summary lineups for display names, while
+// shortText ('W. Saliba Pass') is the self-contained fallback label.
+// The feed is paginated (~25/page default; ?limit honored to ≥300) and
+// APPEND-ONLY — the client caches full pages and refetches only the tail.
+// This powers the live-pitch view (pass trail, possession, restarts), the shot
+// map (start→end trajectories) and the derived momentum chart. It is NOT the
+// narrative feed — commentary (summary tier) remains the human-readable story.
+// =============================================================================
+export interface MatchFeed {
+  count: number;         // ESPN's total play count at fetch time
+  plays: MatchFeedPlay[]; // chronological (ESPN order — oldest first)
+}
+export interface MatchFeedPlay {
+  id: string;
+  type: string;          // ESPN type.text: 'Pass' | 'Throw In' | 'Goal Kick' |
+                         // 'Corner Awarded' | 'Free Kick' | 'Shot On Target' |
+                         // 'Shot Off Target' | 'Shot Blocked' | 'Goal' |
+                         // 'Penalty - Saved' | 'Save' | 'Foul' | … (open set)
+  period?: number;
+  clock?: string;        // "25'"
+  sec?: number;          // clock.value (seconds of match time) — momentum bucketing
+  side?: 'home' | 'away';
+  athleteId?: string;    // first participant, parsed from the core $ref
+  shortText?: string;    // 'William Saliba Pass' — self-contained label
+  text?: string;         // full sentence (shots carry rich prose)
+  x?: number; y?: number;   // where the play happened (team-relative, see above)
+  x2?: number; y2?: number; // where the ball ended (passes/shots)
+  scoring?: boolean;
 }
 
 // =============================================================================

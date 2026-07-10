@@ -381,12 +381,16 @@ List<Map<String, dynamic>> _buildLineups(Map raw, Map side) {
     final players = <Map<String, dynamic>>[];
     for (final p in rosterList) {
       final pid = field(field(p, 'athlete'), 'id');
+      final fp = field(p, 'formationPlace');
       final row = pickT({
         'id': pid != null ? jsStr(pid) : null, // CORE athletes/{id} join → tap opens the player page
         'name': or([aShort(field(p, 'athlete')), field(field(p, 'athlete'), 'displayName')]),
         'pos': or([field(field(p, 'position'), 'abbreviation'), field(field(p, 'position'), 'name')]),
         'jersey': field(p, 'jersey'),
-      }, ['id', 'name', 'pos', 'jersey']);
+        // '1' = GK, '2'..'11' = outfield slots row by row vs the formation string;
+        // '0' = substitute (dropped — only a placed starter renders on the pitch).
+        'formationPlace': fp != null && jsStr(fp) != '0' ? jsStr(fp) : null,
+      }, ['id', 'name', 'pos', 'jersey', 'formationPlace']);
       players.add(row);
     }
     final named = players.where((p) => truthy(p['name'])).toList();
@@ -412,6 +416,46 @@ List<Map<String, dynamic>> _buildLineups(Map raw, Map side) {
     }
   }
   return result;
+}
+
+// ---- match leaders (soccer) ---------------------------------------------------
+// Port of summary.js buildMatchLeaders. VERIFIED 2026-07 (fifa.world, live): the
+// rich /summary ships leaders[] as two per-team blocks, each carrying the SAME
+// four categories (totalShots, accuratePasses, defensiveInterventions, saves)
+// with at most ONE leader entry per team. Canonical keeps one entry per category
+// per side; athlete id joins the lineups/player page.
+List<Map<String, dynamic>>? _buildMatchLeaders(Map raw, Map side) {
+  final blocks = raw['leaders'] is List ? raw['leaders'] as List : const [];
+  if (blocks.isEmpty) return null;
+  final cats = <String, Map<String, dynamic>>{}; // insertion-ordered, like JS Map
+  for (final b in blocks) {
+    final teamSide = side[jsStr(field(field(b, 'team'), 'id') ?? '')];
+    final teamAbbr = field(field(b, 'team'), 'abbreviation');
+    for (final c in (field(b, 'leaders') is List ? field(b, 'leaders') as List : const [])) {
+      final catName = field(c, 'name');
+      if (!truthy(catName)) continue;
+      final entry = first(field(c, 'leaders'));
+      if (entry == null) continue;
+      final a = field(entry, 'athlete') ?? {};
+      final name = aShort(a);
+      if (!truthy(name)) continue;
+      cats.putIfAbsent(catName, () => pickT({'name': catName, 'label': field(c, 'displayName'), 'leaders': <Map<String, dynamic>>[]}, ['name', 'label', 'leaders']));
+      // numeric value: prefer the statistics entry matching the category key
+      // (displayValue alone can't compare '89%' style values if ESPN ever sends one)
+      final statsList = field(entry, 'statistics') is List ? field(entry, 'statistics') as List : const [];
+      final stat = statsList.cast<dynamic>().firstWhere((s) => field(s, 'name') == catName, orElse: () => null);
+      final value = field(stat, 'value') is num ? field(stat, 'value') : _numOrNull(field(entry, 'displayValue'));
+      (cats[catName]!['leaders'] as List).add(pickT({
+        'side': teamSide, 'teamAbbr': teamAbbr,
+        'id': field(a, 'id') != null ? jsStr(field(a, 'id')) : null,
+        'name': name, 'jersey': field(a, 'jersey'), 'pos': _aPos(a),
+        'value': value,
+        'displayValue': jsStr(field(entry, 'displayValue') ?? ''),
+      }, ['side', 'teamAbbr', 'id', 'name', 'jersey', 'pos', 'value', 'displayValue']));
+    }
+  }
+  final out = cats.values.where((c) => (c['leaders'] as List).isNotEmpty).toList();
+  return out.isNotEmpty ? out : null;
 }
 
 // ---- season series ----------------------------------------------------------
@@ -473,7 +517,26 @@ List<Map<String, dynamic>>? _buildInjuries(Map raw, Map side) {
   return out.isNotEmpty ? out : null;
 }
 
-// ---- win probability --------------------------------------------------------
+// ---- win probability (current number + the full-game arc; port of summary.js) --
+// home/away/tie stay the LAST value; `points` is the whole per-play arc joined by
+// playId into the play feed (raw.plays, or gridiron's drive-nested plays) for the
+// scrub context: period/half, clock, running score. Points with no matching play
+// still ship (the curve never gaps) — they just scrub context-less.
+Map<String, Map> _winProbPlayIndex(Map raw) {
+  List plays = raw['plays'] is List ? raw['plays'] as List : const [];
+  if (plays.isEmpty) {
+    final drives = _drivesList(raw);
+    if (drives.isNotEmpty) {
+      plays = drives.expand((d) => field(d, 'plays') is List ? field(d, 'plays') as List : const []).toList();
+    }
+  }
+  final byId = <String, Map>{};
+  for (final p in plays) {
+    if (p is Map && field(p, 'id') != null) byId[jsStr(field(p, 'id'))] = p;
+  }
+  return byId;
+}
+
 Map<String, dynamic>? _buildWinProbability(Map raw) {
   final wp = raw['winprobability'];
   if (wp is! List || wp.isEmpty) return null;
@@ -483,7 +546,149 @@ Map<String, dynamic>? _buildWinProbability(Map raw) {
   final tie = ((field(last, 'tiePercentage') is num ? field(last, 'tiePercentage') as num : 0) * 100).round();
   final home = (hRaw * 100).round();
   final away = (100 - home - tie) < 0 ? 0 : (100 - home - tie);
-  return pickT({'home': home, 'away': away, 'tie': tie != 0 ? tie : null}, ['home', 'away', 'tie']);
+  final out = pickT({'home': home, 'away': away, 'tie': tie != 0 ? tie : null}, ['home', 'away', 'tie']);
+  if (wp.length >= 2) {
+    final byId = _winProbPlayIndex(raw);
+    final points = <Map<String, dynamic>>[];
+    for (final e in wp) {
+      final eh = field(e, 'homeWinPercentage');
+      if (eh is! num) continue;
+      final p = byId[jsStr(field(e, 'playId') ?? '')];
+      final halfRaw = field(field(p, 'period'), 'type');
+      final half = halfRaw != null ? jsStr(halfRaw).toLowerCase() : null;
+      points.add(pickT({
+        'home': (eh * 100).round(),
+        'period': field(field(p, 'period'), 'number'),
+        'half': half == 'top' || half == 'bottom' ? half : null,
+        'periodLabel': field(field(p, 'period'), 'displayValue'),
+        'clock': field(field(p, 'clock'), 'displayValue'),
+        'awayScore': _numOrNull(field(p, 'awayScore')),
+        'homeScore': _numOrNull(field(p, 'homeScore')),
+      }, ['home', 'period', 'half', 'periodLabel', 'clock', 'awayScore', 'homeScore']));
+    }
+    if (points.length >= 2) out['points'] = points;
+  }
+  return out;
+}
+
+// ---- pitcher decisions (baseball W/L/SV; faithful port of summary.js) --------
+// header.competitions[0].status.featuredAthletes[] roles winningPitcher/
+// losingPitcher/savePitcher → the final's "W: Skubal (5-4)" line. Data-presence
+// gated — sports without these roles simply never emit anything.
+const _decisionRoles = {'winningPitcher': 'win', 'losingPitcher': 'loss', 'savePitcher': 'save'};
+List<Map<String, dynamic>>? _buildDecisions(Map raw, Map side, Map abbr) {
+  final fa = field(field(first(field(raw['header'], 'competitions')), 'status'), 'featuredAthletes');
+  if (fa is! List || fa.isEmpty) return null;
+  final out = <Map<String, dynamic>>[];
+  for (final f in fa) {
+    final role = _decisionRoles[field(f, 'name')];
+    if (role == null) continue;
+    final a = field(f, 'athlete') ?? {};
+    final name = aShort(a);
+    if (name == '') continue;
+    final tid = jsStr(field(field(f, 'team'), 'id') ?? '');
+    out.add(pickT({
+      'role': role,
+      'id': field(a, 'id') != null ? jsStr(field(a, 'id')) : null,
+      'name': name,
+      'record': field(a, 'record') != null && field(a, 'record') != '' ? jsStr(field(a, 'record')) : null,
+      'saves': role == 'save' && field(a, 'saves') != null && field(a, 'saves') != '' ? jsStr(field(a, 'saves')) : null,
+      'side': side[tid],
+      'abbr': abbr[tid],
+    }, ['role', 'id', 'name', 'record', 'saves', 'side', 'abbr']));
+  }
+  return out.isNotEmpty ? out : null;
+}
+
+// ---- newspaper box-score footnotes (baseball; faithful port of summary.js) ----
+// boxscore.teams[].details[] — the classic agate block under a printed box score
+// ('2B: Vierling (12, Lopez)', 'Team LOB: 7', RISP…). Rows kept verbatim per
+// team, group order (Batting/Pitching/Fielding/Baserunning) preserved.
+List<Map<String, dynamic>>? _buildTeamDetails(Map raw, Map side) {
+  final teams = field(raw['boxscore'], 'teams');
+  final teamsList = teams is List ? teams : const [];
+  final out = <Map<String, dynamic>>[];
+  for (final t in teamsList) {
+    final details = field(t, 'details');
+    final groups = <Map<String, dynamic>>[];
+    for (final d in (details is List ? details : const [])) {
+      final stats = field(d, 'stats');
+      final rows = <Map<String, dynamic>>[];
+      for (final s in (stats is List ? stats : const [])) {
+        final row = pickT({
+          'label': or([field(s, 'shortDisplayName'), field(s, 'abbreviation'), field(s, 'displayName'), field(s, 'name')]),
+          'value': field(s, 'displayValue') != null && field(s, 'displayValue') != '' ? jsStr(field(s, 'displayValue')) : null,
+        }, ['label', 'value']);
+        if (truthy(row['label']) && truthy(row['value'])) rows.add(row);
+      }
+      if (rows.isNotEmpty) {
+        groups.add({'title': jsStr(or([field(d, 'displayName'), _cap(field(d, 'name'))])), 'rows': rows});
+      }
+    }
+    if (groups.isEmpty) continue;
+    final tid = jsStr(field(field(t, 'team'), 'id') ?? '');
+    out.add(pickT({'side': or([field(t, 'homeAway'), side[tid]]), 'abbr': field(field(t, 'team'), 'abbreviation'), 'groups': groups}, ['side', 'abbr', 'groups']));
+  }
+  return out.isNotEmpty ? out : null;
+}
+
+// ---- grouped team game stats (baseball hitting/pitching; port of summary.js) --
+// MLB's boxscore.teams[].statistics NEST (groups with stats[], no top-level
+// displayValue) so _buildTeamStats yields [] for baseball. Distill the batting +
+// pitching groups into a curated away/home comparison (whitelisted game keys;
+// the season-rate tail like OPS/WHIP stays behind).
+const _gameStatKeys = [
+  ('batting', ['atBats', 'runs', 'hits', 'doubles', 'triples', 'homeRuns', 'RBIs', 'totalBases', 'walks', 'strikeouts', 'stolenBases', 'runnersLeftOnBase']),
+  ('pitching', ['strikeouts', 'walks', 'hits', 'runs', 'earnedRuns', 'homeRuns', 'pitches', 'strikes']),
+];
+List<Map<String, dynamic>>? _buildTeamGameStats(Map raw) {
+  final teams = field(raw['boxscore'], 'teams');
+  if (teams is! List || teams.length < 2) return null;
+  final byHa = <String, dynamic>{};
+  for (final t in teams) {
+    if (field(t, 'homeAway') != null) byHa[field(t, 'homeAway')] = t;
+  }
+  final away = byHa['away'] ?? teams[0];
+  final home = byHa['home'] ?? teams[1];
+  dynamic groupOf(dynamic t, String name) {
+    final stats = field(t, 'statistics');
+    if (stats is! List) return null;
+    for (final g in stats) {
+      if (field(g, 'name') == name && field(g, 'stats') is List) return g;
+    }
+    return null;
+  }
+
+  dynamic statOf(dynamic g, String key) {
+    final stats = field(g, 'stats');
+    if (stats is! List) return null;
+    for (final s in stats) {
+      if (field(s, 'name') == key) return s;
+    }
+    return null;
+  }
+
+  final out = <Map<String, dynamic>>[];
+  for (final (gname, keys) in _gameStatKeys) {
+    final gA = groupOf(away, gname), gH = groupOf(home, gname);
+    if (gA == null && gH == null) continue;
+    final rows = <Map<String, dynamic>>[];
+    for (final k in keys) {
+      final a = statOf(gA, k), h = statOf(gH, k);
+      final lead = a ?? h;
+      if (lead == null) continue;
+      final row = pickT({
+        'label': or([field(lead, 'shortDisplayName'), field(lead, 'abbreviation'), k]),
+        'away': a != null && field(a, 'displayValue') != null ? jsStr(field(a, 'displayValue')) : null,
+        'home': h != null && field(h, 'displayValue') != null ? jsStr(field(h, 'displayValue')) : null,
+      }, ['label', 'away', 'home']);
+      if (row['away'] != null || row['home'] != null) rows.add(row);
+    }
+    if (rows.isNotEmpty) {
+      out.add({'title': jsStr(or([field(gA ?? gH, 'displayName'), _cap(gname)])), 'rows': rows});
+    }
+  }
+  return out.isNotEmpty ? out : null;
 }
 
 // ---- CORE situation (detail-open enrichment; faithful port of summary.js) -----
@@ -532,17 +737,23 @@ Map<String, dynamic>? buildCoreSituation(dynamic raw, [String? lastPlayText]) {
 
 // ---- win probability from the CORE predictor (winprobability[] fallback) -------
 // Faithful port of summary.js winProbabilityFromPredictor: each side's
-// `gameProjection` stat is that side's win %; keep only the single current number in
-// the canonical WinProbability shape. VERIFIED baseball/basketball/football only.
+// `gameProjection` stat is that side's win % (`teamPredWinpct` on WNBA-style
+// predictors, which carry no gameProjection); keep only the single current number
+// in the canonical WinProbability shape. VERIFIED baseball/basketball/football only.
 double? _projectionOf(dynamic team) {
   final stats = field(team, 'statistics');
   if (stats is! List) return null;
-  for (final st in stats) {
-    if (field(st, 'name') == 'gameProjection') {
-      final v = field(st, 'value');
-      if (v is num && v is! bool) return v.toDouble();
-      final dv = field(st, 'displayValue');
-      if (dv is String && dv.isNotEmpty) return double.tryParse(dv);
+  // Prefer gameProjection; fall back to teamPredWinpct — VERIFIED live 2026-07-09
+  // (WNBA in-game predictor): some basketball predictors carry ONLY
+  // teamPredWinpct/teamPredPtDiff/matchupQuality, no gameProjection at all.
+  for (final name in ['gameProjection', 'teamPredWinpct']) {
+    for (final st in stats) {
+      if (field(st, 'name') == name) {
+        final v = field(st, 'value');
+        if (v is num && v is! bool) return v.toDouble();
+        final dv = field(st, 'displayValue');
+        if (dv is String && dv.isNotEmpty) return double.tryParse(dv);
+      }
     }
   }
   return null;
@@ -654,12 +865,37 @@ String _pitchResult(dynamic p) {
   return 'other';
 }
 
+// MLB ABS challenge (2026): a challenged pitch's type.text carries the FINAL
+// ruling plus a ' - Overturned' / ' - Confirmed' suffix (type ids 91/92 on the
+// Strike Looking variants, VERIFIED live 2026-07-09) — so _pitchResult and the
+// count are already correct; this only marks that the call was challenged.
+// Matched on the suffix, not the id, so the Ball variants classify too.
+final _overturnedSuffix = RegExp(r' - Overturned$', caseSensitive: false);
+final _confirmedSuffix = RegExp(r' - Confirmed$', caseSensitive: false);
+String? _pitchChallenge(dynamic p) {
+  final t = jsStr(field(field(p, 'type'), 'text') ?? '');
+  if (_overturnedSuffix.hasMatch(t)) return 'overturned';
+  if (_confirmedSuffix.hasMatch(t)) return 'upheld';
+  return null;
+}
+
 List<Map<String, dynamic>>? _buildAtBats(Map raw, Map side, Map abbr, Map athletes) {
   final plays = raw['plays'] is List ? raw['plays'] as List : const [];
   if (!plays.any((p) => field(p, 'summaryType') == 'P')) return null; // no pitch data
   final order = <dynamic>[];
   final groups = <dynamic, List>{};
+  // per-pitcher game pitch tally — every 'P' row carries its pitcher participant,
+  // so the LIVE at-bat can surface the pitcher's running pitch count.
+  final pitchTally = <String, int>{};
   for (final p in plays) {
+    if (field(p, 'summaryType') == 'P') {
+      final parts = field(p, 'participants');
+      final ppart = (parts is List)
+          ? parts.firstWhere((x) => field(x, 'type') == 'pitcher', orElse: () => null)
+          : null;
+      final pid = jsStr(field(field(ppart, 'athlete'), 'id') ?? '');
+      if (pid != '') pitchTally[pid] = (pitchTally[pid] ?? 0) + 1;
+    }
     final id = field(p, 'atBatId');
     if (id == null) continue;
     (groups[id] ??= (() {
@@ -693,6 +929,21 @@ List<Map<String, dynamic>>? _buildAtBats(Map raw, Map side, Map abbr, Map athlet
         : null;
     final bpid = jsStr(field(field(bpart, 'athlete'), 'id') ?? '');
     final batter = live && bpid != '' ? athletes[bpid] : null;
+    // live-only turn-8 extras: the pitcher's game pitch count and the runner
+    // names. EVERY feed row carries the on-base state as athlete ids while
+    // runners are on (absent = bases empty; VERIFIED live 2026-07) — anchor on
+    // the group's LATEST row, not the latest pitch: a fresh at-bat is only its
+    // "X pitches to Y" header for a while, and that header has the state too.
+    final hparts = field(header, 'participants');
+    final ppart = (hparts is List)
+        ? hparts.firstWhere((x) => field(x, 'type') == 'pitcher', orElse: () => null)
+        : null;
+    final ppid = jsStr(field(field(ppart, 'athlete'), 'id') ?? '');
+    final stateRow = live ? g[g.length - 1] : null;
+    dynamic runner(dynamic o) {
+      final rid = jsStr(field(field(o, 'athlete'), 'id') ?? '');
+      return rid != '' ? athletes[rid] : null;
+    }
     final termType = field(term, 'summaryType');
     out.add(pickT({
       'period': field(field(teamAnchor, 'period'), 'number'),
@@ -710,17 +961,59 @@ List<Map<String, dynamic>>? _buildAtBats(Map raw, Map side, Map abbr, Map athlet
       'live': live ? true : null,
       'balls': live ? field(field(last, 'resultCount'), 'balls') : null,
       'strikes': live ? field(field(last, 'resultCount'), 'strikes') : null,
+      'pitchCount': live && ppid != '' ? pitchTally[ppid] : null,
+      'first': live ? runner(field(stateRow, 'onFirst')) : null,
+      'second': live ? runner(field(stateRow, 'onSecond')) : null,
+      'third': live ? runner(field(stateRow, 'onThird')) : null,
       'pitches': [
         for (final p in pitches)
           pickT({
             'r': _pitchResult(p),
             'text': jsStr(or([field(p, 'text'), ''])).replaceFirst(_pitchPrefix, ''),
             'velo': field(p, 'pitchVelocity') is num ? field(p, 'pitchVelocity') : null,
-          }, ['r', 'text', 'velo']),
+            // strike-zone plot inputs (turn 8): ESPN's raw catcher's-view plot
+            // coords (x grows RIGHT, y grows DOWN; the zone rect is empirically
+            // x∈[~84,148], y∈[~144,193] — see canonical.ts Pitch) and the pitch
+            // name ('Slider'). Live captures only.
+            'type': field(field(p, 'pitchType'), 'text'),
+            'x': field(field(p, 'pitchCoordinate'), 'x') is num ? field(field(p, 'pitchCoordinate'), 'x') : null,
+            'y': field(field(p, 'pitchCoordinate'), 'y') is num ? field(field(p, 'pitchCoordinate'), 'y') : null,
+            'challenge': _pitchChallenge(p),
+          }, ['r', 'text', 'velo', 'type', 'x', 'y', 'challenge']),
       ],
-    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitches']));
+    }, ['period', 'half', 'side', 'teamAbbr', 'batter', 'text', 'scoring', 'outs', 'away', 'home', 'live', 'balls', 'strikes', 'pitchCount', 'first', 'second', 'third', 'pitches']));
   }
   return out.isNotEmpty ? out : null;
+}
+
+// ---- baseball "what really was the last play" ---------------------------------
+// ESPN appends a start-batterpitcher bookend the moment an at-bat resolves, so
+// the feed's naive tail reads "X pitches to Y" (the scoreboard mirrors it as
+// "Now at bat") while the double that just happened scrolls away. Walk back past
+// the bookends to the freshest NARRATIVE row: a pitch → kind 'pitch' (text with
+// the 'Pitch N :' prefix stripped, + pitch type/velocity when captured); an
+// at-bat result ('N'/'S') or inning bookend ("End of the 3rd inning") → kind
+// 'play'. Baseball-only by construction (built alongside atBats).
+Map<String, dynamic>? _buildBaseballLastPlay(dynamic plays) {
+  if (plays is! List) return null;
+  for (var i = plays.length - 1; i >= 0; i--) {
+    final p = plays[i];
+    final text = jsStr(or([field(p, 'text'), ''])).trim();
+    if (text.isEmpty) continue;
+    final st = field(p, 'summaryType');
+    if (st == 'A' || jsStr(field(field(p, 'type'), 'type') ?? '') == 'start-batterpitcher') continue;
+    if (st == 'P') {
+      return pickT({
+        'kind': 'pitch',
+        'text': text.replaceFirst(_pitchPrefix, ''),
+        'type': field(field(p, 'pitchType'), 'text'),
+        'velo': field(p, 'pitchVelocity') is num ? field(p, 'pitchVelocity') : null,
+        'challenge': _pitchChallenge(p),
+      }, ['kind', 'text', 'type', 'velo', 'challenge']);
+    }
+    return {'kind': 'play', 'text': text};
+  }
+  return null;
 }
 
 String? _halfLabel(dynamic n) => const {1: '1st Half', 2: '2nd Half', 3: 'Extra Time', 4: 'Extra Time', 5: 'Penalties'}[n];
@@ -746,7 +1039,12 @@ List<Map<String, dynamic>>? _buildCommentaryPlays(Map raw, Map maps) {
       'home': _numOrNull(field(p, 'homeScore')),
       'type': field(field(p, 'type'), 'text'),
       'scoring': field(p, 'scoringPlay') == true,
-    }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type', 'scoring']);
+      // Team-relative field coords when ESPN tags the underlying play (x 0 =
+      // own goal line, 100 = opponent goal line) — the shot map's fallback
+      // source when the core match feed isn't available.
+      'x': field(p, 'fieldPositionX') is num ? field(p, 'fieldPositionX') : null,
+      'y': field(p, 'fieldPositionY') is num ? field(p, 'fieldPositionY') : null,
+    }, ['period', 'periodLabel', 'clock', 'side', 'teamAbbr', 'text', 'away', 'home', 'type', 'scoring', 'x', 'y']);
     if (truthy(m['text'])) mapped.add(m);
   }
   if (mapped.length <= 1) return null;
@@ -826,13 +1124,37 @@ Map<String, dynamic> normalizeSummary(Registry reg, String key, Map raw) {
   if (injuries != null) out['injuries'] = injuries;
   final winProbability = _buildWinProbability(raw);
   if (winProbability != null) out['winProbability'] = winProbability;
+  // Baseball's three box-adjacent enrichments (each data-presence gated): the
+  // W/L/SV pitcher line, the newspaper footnote block, and the grouped
+  // hitting/pitching team comparison (MLB's flat teamStats is [] — see builders).
+  final decisions = _buildDecisions(raw, side, abbr);
+  if (decisions != null) out['decisions'] = decisions;
+  final teamDetails = _buildTeamDetails(raw, side);
+  if (teamDetails != null) out['teamDetails'] = teamDetails;
+  final teamGameStats = _buildTeamGameStats(raw);
+  if (teamGameStats != null) out['teamGameStats'] = teamGameStats;
   final timeline = buildMatchTimeline(raw, maps);
   if (timeline != null) out['timeline'] = timeline;
+  // The curated match narrative (soccer/rugby commentary[]) — ALWAYS shipped
+  // when present (unlike `plays` below, which yields to the timeline): the
+  // Commentary tab + the Now tab's preview read this directly.
+  final commentary = _buildCommentaryPlays(raw, maps);
+  if (commentary != null) out['commentary'] = commentary;
+  // Per-category match leaders (soccer): shots / accurate passes / defensive
+  // interventions / saves, one entry per side.
+  final matchLeaders = _buildMatchLeaders(raw, side);
+  if (matchLeaders != null) out['matchLeaders'] = matchLeaders;
   // Baseball groups into at-bats (each with its pitch sequence) for the §3e
   // all-plays disclosure; when present it REPLACES the flat pitch-by-pitch plays[]
   // (which would be ~500 rows of noise) as the Plays tab's source.
   final atBats = _buildAtBats(raw, side, abbr, athletes);
   if (atBats != null) out['atBats'] = atBats;
+  // The derived "what really was the last play" line (rides the same plays[]
+  // the at-bats grouped) — the detail screen's loud inverted card.
+  if (atBats != null) {
+    final lastPlay = _buildBaseballLastPlay(raw['plays']);
+    if (lastPlay != null) out['lastPlay'] = lastPlay;
+  }
   final plays = timeline != null || atBats != null ? null : _buildPlays(raw, maps);
   if (plays != null) out['plays'] = plays;
   final drives = _buildDrives(raw, side, abbr);

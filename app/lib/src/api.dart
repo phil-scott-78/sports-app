@@ -1,4 +1,10 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'data/espn_client.dart';
+import 'data/fastcast.dart' as fcst;
+import 'data/fastcast_client.dart';
+import 'data/fastcast_log.dart';
+import 'data/fastcast_merge.dart';
 import 'data/identity_cache.dart';
 import 'data/profiles.dart';
 import 'data/normalize.dart';
@@ -11,9 +17,11 @@ import 'data/team.dart' as tm;
 import 'data/teamdetail.dart' as td;
 import 'data/overview.dart' as ov;
 import 'data/venue.dart' as vn;
+import 'data/matchfeed.dart' as mf;
 import 'data/athlete.dart' as ath;
 import 'data/teamleaders.dart' as tl;
 import 'data/tournament.dart' as tn;
+import 'marquee.dart';
 import 'models.dart';
 
 export 'data/espn_client.dart' show ApiException;
@@ -33,17 +41,27 @@ class FeedFreshness {
 /// normalizers the worker used to run — ported to Dart under lib/src/data/. The
 /// method surface is unchanged, so providers/UI didn't move.
 ///
-/// Parsing + normalization stay on the main isolate on purpose: payloads are
+/// Normalization stays on the main isolate on purpose: payloads are mostly
 /// small (a league scoreboard ≈45 KB) and the normalizers are pure map work.
+/// The exception is the JSON *decode* of big bodies (college scoreboards,
+/// teams, rich summaries) — [EspnClient] offloads those to a background
+/// isolate so they can't jank the UI.
 class Api {
   /// Optional ESPN-origin override (Settings) — points at the offline mock. Empty
   /// → ESPN direct. (Was the worker base URL; repurposed as the mock override.)
   final String baseUrl;
   final EspnClient _c;
 
+  /// The shared FastCast push client (ONE socket app-wide, injected by
+  /// [apiProvider] so it survives an [Api] rebuild). Null → push disabled,
+  /// everything polls exactly as before.
+  final FastcastClient? _fastcast;
+
   /// [client] is injectable for tests (offline mock / stale-while-revalidate
   /// checks); production always builds one from [baseUrl].
-  Api(this.baseUrl, [EspnClient? client]) : _c = client ?? EspnClient(baseUrl);
+  Api(this.baseUrl, [EspnClient? client, FastcastClient? fastcast])
+      : _c = client ?? EspnClient(baseUrl),
+        _fastcast = fastcast;
 
   /// Direct-to-ESPN needs no configuration, so the app is always "configured".
   bool get configured => true;
@@ -57,10 +75,30 @@ class Api {
       HealthInfo(ok: true, leagues: _reg.leagues.length, client: null);
 
   // ---- scores ----------------------------------------------------------------
+  /// The last raw + normalized TODAY scoreboard per league. The norm is the
+  /// slate the fastcast overlay merges over ([mergeSlate]); the raw reference
+  /// doubles as a re-normalize skip — an espn_client cache hit returns the
+  /// IDENTICAL map, so the canonical output can't differ (a push-driven
+  /// provider re-run then costs a map lookup, not a full re-normalize).
+  final Map<String, Map> _lastRawSb = {};
+  final Map<String, Map<String, dynamic>> _lastNorm = {};
+
   Future<ScoresResponse> scores(String league, {String? date}) async {
     final sb = await _c.scoreboard(league, date: date) as Map;
     final extras = await _golfExtras(league, sb);
-    final norm = normalizeScoreboard(_reg, league, sb, extras);
+    Map<String, dynamic> norm;
+    if (date == null &&
+        extras.isEmpty &&
+        identical(sb, _lastRawSb[league]) &&
+        _lastNorm[league] != null) {
+      norm = _lastNorm[league]!;
+    } else {
+      norm = normalizeScoreboard(_reg, league, sb, extras);
+    }
+    if (date == null) {
+      _lastRawSb[league] = sb;
+      _lastNorm[league] = norm;
+    }
     // Warm the identity cache off every scoreboard (the color/logo source
     // color-less screens — standings, brackets — join against). §3.1.
     IdentityCache.instance.warmScoreboard(norm);
@@ -203,6 +241,111 @@ class Api {
     ]);
   }
 
+  // ---- fastcast live push (Track 1 game detail + Track 2 slate overlay) -------
+  /// The shared push gate: false on WEB (the FastCast socket is dart:io, and a
+  /// browser can't send the Origin/UA headers the upgrade requires — web polls,
+  /// full stop), when no push client was injected, when an API base override is
+  /// set (mock mode — everything must poll through the mock), when no registry
+  /// is loaded yet (widget tests — evaluated synchronously from builds), or
+  /// when the league's family isn't fastcast-served (registry capability).
+  bool _fastcastReady(String league) {
+    if (kIsWeb) return false;
+    if (_fastcast == null || baseUrl.trim().isNotEmpty) return false;
+    if (!Registry.loaded) return false;
+    return hasCapability(resolve(_reg, league), 'fastcast');
+  }
+
+  /// Whether a LIVE game's detail in [league] can be push-fed (Track 1). On
+  /// top of [_fastcastReady]: the sport's summary must be the normal
+  /// normalizeSummary shape — MMA's is built from CORE and tennis has none, so
+  /// the gp doc can't feed them.
+  bool liveSummarySupported(String league) {
+    if (!_fastcastReady(league)) return false;
+    final sport = resolve(_reg, league)['espnSport'];
+    return sport != 'mma' && sport != 'tennis';
+  }
+
+  /// Whether [league]'s TODAY slate can take the push overlay (Track 2). Any
+  /// fastcast-served family qualifies — the overlay is sport-generic (status/
+  /// score/situation via the same builders as the scoreboard normalizer).
+  bool liveSlateSupported(String league) => _fastcastReady(league);
+
+  /// The Track-2 slate overlay stream: subscribe `event-{sport}-{league}` and
+  /// normalize each (coalesced, ≤1/s) doc through `normalizeFastcastSlate`.
+  /// Emissions are PARTIAL per-event updates to merge over the last polled
+  /// slate ([mergeSlate]) — never a scoreboard replacement. Errors mean "push
+  /// unavailable, keep polling"; rc:404 (dormant league) ends the stream.
+  Stream<Map<String, dynamic>> liveSlate(String league) async* {
+    final parts = league.split('/');
+    await for (final doc in _fastcast!.docs('event-${parts[0]}-${parts[1]}')) {
+      Map<String, dynamic>? ov;
+      try {
+        ov = fcst.normalizeFastcastSlate(_reg, league, doc);
+      } catch (e) {
+        FcLog.log('err', 'overlay $league normalize failed: $e — frame skipped');
+      }
+      if (ov != null) {
+        final events = ov['events'] as List;
+        final live = events
+            .where((e) => ((e as Map)['status'] as Map)['live'] == true)
+            .length;
+        FcLog.log('overlay', '$league → ${events.length} event(s), $live live');
+        yield ov;
+      }
+    }
+  }
+
+  /// The latest push [overlay] merged over the last polled TODAY slate — a
+  /// pure in-memory join (no fetch, no re-normalize; see fastcast_merge.dart).
+  /// Null when no slate has been polled yet this session (nothing to merge
+  /// over) or the merge fails — callers fall back to the polled response.
+  ScoresResponse? mergeSlate(String league, Map<String, dynamic> overlay) {
+    final norm = _lastNorm[league];
+    if (norm == null) {
+      FcLog.log('merge', '$league: no polled slate yet — overlay held');
+      return null;
+    }
+    try {
+      final t0 = DateTime.now().millisecondsSinceEpoch;
+      final merged = ScoresResponse.fromJson(
+          mergeFastcastSlate(resolve(_reg, league), norm, overlay));
+      FcLog.log('merge',
+          '$league overlay merged over polled slate (${DateTime.now().millisecondsSinceEpoch - t0}ms)');
+      return merged;
+    } catch (e) {
+      FcLog.log('err', '$league merge failed: $e — serving polled slate');
+      return null;
+    }
+  }
+
+  /// The push-fed live game detail: subscribe `gp-{sport}-{league}-{eventId}`,
+  /// normalize each (throttled, coalesced) doc through the SAME
+  /// `normalizeSummary` the polled path uses — the gp checkpoint is verified
+  /// shape-identical to site /summary. The live CORE enrichments
+  /// ([_enrichLiveDetail]) ride each emission but are rate-limited by the
+  /// espn_client cache TTLs, so push doesn't multiply their fetch cost. Stream
+  /// errors mean "push unavailable" — the caller's cue to keep polling; data
+  /// resumes automatically when the socket recovers.
+  Stream<GameSummary> liveSummary(String league, String eventId) async* {
+    final parts = league.split('/');
+    final topic = 'gp-${parts[0]}-${parts[1]}-$eventId';
+    await for (final doc in _fastcast!.docs(topic)) {
+      if (doc is! Map) continue;
+      try {
+        final t0 = DateTime.now().millisecondsSinceEpoch;
+        final out = sm.normalizeSummary(_reg, league, doc);
+        await _enrichLiveDetail(league, eventId, doc, out);
+        FcLog.log('emit',
+            '$topic → summary (normalize+enrich ${DateTime.now().millisecondsSinceEpoch - t0}ms)');
+        yield GameSummary.fromJson(out);
+      } catch (e) {
+        // A doc that fails to normalize is skipped; the client's resync path
+        // covers real divergence, and the consumer still has its last value.
+        FcLog.log('err', '$topic normalizeSummary failed: $e — frame skipped');
+      }
+    }
+  }
+
   /// The rich per-match tennis resource — ESPN's core competition (the drill-in
   /// the site /summary can't give). `eventId` is the parent tournament event id,
   /// `compId` the match id. Best-effort: a failure (offline mock, live 404)
@@ -286,6 +429,70 @@ class Api {
       return o == null ? null : Odds.fromJson(o);
     } catch (_) {
       return null; // enrichment only
+    }
+  }
+
+  // ---- match feed (soccer core plays) -----------------------------------------
+  /// The core plays feed is APPEND-ONLY with a fixed page size (oldest first),
+  /// so every page except the tail is immutable — cache full pages per
+  /// (league,event) for the session and refetch ONLY the tail each poll. The
+  /// probe starts at the last-seen tail page, so a steady-state live poll costs
+  /// one request (+1 whenever the feed spills onto a new page).
+  static const int _mfLimit = 300;
+  final Map<String, int> _mfTailPage = {}; // 'league|event' → last-seen pageCount
+  final Map<String, List> _mfPages = {}; // 'league|event|page' → immutable items
+
+  /// The soccer touch-by-touch match feed (capability hasMatchFeed) — the
+  /// live-pitch view / shot map / momentum source. [homeId]/[awayId] are the
+  /// competition's team ids (core plays tag teams by $ref only). Best-effort:
+  /// null when the league has no feed / offline / 404.
+  Future<MatchFeed?> matchFeed(String league, String eventId, String compId,
+      {String? homeId, String? awayId}) async {
+    if (!hasCapability(resolve(_reg, league), 'hasMatchFeed')) return null;
+    try {
+      final ek = '$league|$eventId';
+      // A finished match's feed is bounded; keep the page cache from growing
+      // across many opened matches (session-scoped, ~90 KB per full page).
+      if (_mfPages.length > 40) {
+        _mfPages.clear();
+        _mfTailPage.clear();
+      }
+      Future<Map> fetchPage(int page) async =>
+          await _c.corePlays(league, eventId, compId, limit: _mfLimit, page: page) as Map;
+      int pageCountOf(Map doc) =>
+          doc['pageCount'] is num ? (doc['pageCount'] as num).toInt() : 1;
+
+      // Probe the last-known tail; follow the feed if it spilled onto new pages.
+      final probedPage = _mfTailPage[ek] ?? 1;
+      var tail = await fetchPage(probedPage);
+      var pageCount = pageCountOf(tail);
+      if (pageCount != probedPage) {
+        if (pageCount > probedPage &&
+            (tail['items'] as List? ?? const []).length >= _mfLimit) {
+          _mfPages['$ek|$probedPage'] = tail['items'] as List; // now immutable
+        }
+        tail = await fetchPage(pageCount);
+        pageCount = pageCountOf(tail);
+      }
+      _mfTailPage[ek] = pageCount;
+
+      // Assemble: immutable pages 1..N-1 (cache, fetch any missing) + the tail.
+      final items = [];
+      for (var p = 1; p < pageCount; p++) {
+        var pg = _mfPages['$ek|$p'];
+        if (pg == null) {
+          pg = (await fetchPage(p))['items'] as List? ?? const [];
+          if (pg.length >= _mfLimit) _mfPages['$ek|$p'] = pg;
+        }
+        items.addAll(pg);
+      }
+      items.addAll(tail['items'] as List? ?? const []);
+      final norm = mf.normalizeMatchFeed(
+          {'count': tail['count'], 'items': items}, homeId, awayId);
+      final feed = MatchFeed.fromJson(norm);
+      return feed.plays.isEmpty ? null : feed;
+    } catch (_) {
+      return null; // enrichment only — the detail renders without the feed
     }
   }
 
@@ -697,7 +904,13 @@ class Api {
   // ---- overview (season-pulse fan-out, capped concurrency) -------------------
   static const _overviewCap = 48;
 
-  Future<Map<String, LeagueStateInfo>> overview({String? priority, int? page, List<String>? keys}) async {
+  /// [onResult] (optional) fires as EACH league classifies — Explore streams the
+  /// pulse in incrementally instead of waiting for the slowest of the fan-out.
+  Future<Map<String, LeagueStateInfo>> overview(
+      {String? priority,
+      int? page,
+      List<String>? keys,
+      void Function(String key, LeagueStateInfo info)? onResult}) async {
     List<String> selected;
     if (keys != null && keys.isNotEmpty) {
       selected = keys.toSet().where((k) => _reg.leagues.containsKey(k)).take(_overviewCap).toList();
@@ -709,15 +922,92 @@ class Api {
     }
     final now = DateTime.now();
     final results = await _pool<String, MapEntry<String, LeagueStateInfo>>(selected, 8, (key) async {
+      LeagueStateInfo info;
       try {
         final sb = await _c.scoreboard(key, ttl: 60);
         final s = ov.classifyLeague(sb, now);
-        return MapEntry(key, LeagueStateInfo.fromJson({'key': key, ...s}));
+        info = LeagueStateInfo.fromJson({'key': key, ...s});
       } catch (_) {
-        return MapEntry(key, LeagueStateInfo(key: key, state: 'unknown', detail: '', live: false));
+        info = LeagueStateInfo(key: key, state: 'unknown', detail: '', live: false);
       }
+      onResult?.call(key, info);
+      return MapEntry(key, info);
     });
     return {for (final e in results) e.key: e.value};
+  }
+
+  /// The Explore pulse's FAST first pass: ONE merged `<sport>/all` scoreboard
+  /// per capable sport (capability `hasAllScoreboard` — soccer, rugby,
+  /// rugby-league, tennis, golf, mma) classifies every league with a game in
+  /// the slate as live/today in a single round-trip, instead of
+  /// fetch-completion order across the ~70-league fan-out. Positive states
+  /// only — the merged feed carries no per-league season/calendar, so the
+  /// per-league [overview] supplies captions (and refinements) behind it.
+  /// Best-effort per sport: a failed merged fetch just means that sport waits
+  /// for the fan-out.
+  Future<void> overviewMergedFirst(
+      {String? priority,
+      required void Function(String key, LeagueStateInfo info) onResult}) async {
+    final all = leagueKeys(_reg,
+        priority: priority?.split(',').map((s) => s.trim()).toList());
+    // sport → espnLeagueId → league key, capable sports only.
+    final bySport = <String, Map<String, String>>{};
+    for (final key in all) {
+      final prof = resolve(_reg, key);
+      if (!hasCapability(prof, 'hasAllScoreboard')) continue;
+      final id = prof['espnLeagueId']?.toString() ?? '';
+      if (id.isEmpty) continue;
+      bySport.putIfAbsent(key.split('/').first, () => {})[id] = key;
+    }
+    final now = DateTime.now();
+    await Future.wait(bySport.entries.map((e) async {
+      try {
+        final sb = await _c.scoreboard('${e.key}/all', ttl: 60, limit: 400);
+        ov.classifyMergedSlate(sb, now).forEach((id, s) {
+          final league = e.value[id];
+          if (league != null) {
+            onResult(league,
+                LeagueStateInfo.fromJson({'key': league, ...s as Map}));
+          }
+        });
+      } catch (_) {
+        // best-effort — the per-league fan-out covers this sport.
+      }
+    }));
+  }
+
+  // ---- big games (home-feed marquee scan) ------------------------------------
+  /// The scan set is the FLAGSHIP tier only (priority v1, ~15 leagues) minus
+  /// what's already followed — a deliberately small fetch budget, not the
+  /// pulse's ~70-league fan-out. Pool cap stays low so the scan never crowds
+  /// the followed feed's own fetches.
+  static const _bigGamesConc = 4;
+
+  /// Today's marquee games across the flagship leagues the user does NOT
+  /// follow — the home feed's BIG GAMES section (see marquee.dart for the
+  /// ranking rules). Cheap-tier scoreboards at ttl 60 (same tier/TTL as the
+  /// Explore pulse, so the two share cache entries); per-league best-effort —
+  /// a failed league contributes nothing. Returns at most [cap] games, biggest
+  /// first; empty on an ordinary day (the section hides).
+  Future<List<BigGame>> bigGames(
+      {required List<String> exclude, int cap = 3}) async {
+    final candidates = leagueKeys(_reg, priority: const ['v1'])
+        .where((k) => !exclude.contains(k))
+        .toList();
+    if (candidates.isEmpty) return const [];
+    final now = DateTime.now();
+    final lists =
+        await _pool<String, List<BigGame>>(candidates, _bigGamesConc, (key) async {
+      try {
+        final sb = await _c.scoreboard(key, ttl: 60) as Map;
+        final norm = normalizeScoreboard(_reg, key, sb, const {});
+        IdentityCache.instance.warmScoreboard(norm); // §3.1 — rows need colors
+        return pickBigGames(key, ScoresResponse.fromJson(norm), now: now);
+      } catch (_) {
+        return const <BigGame>[]; // best-effort — a failed league is no news
+      }
+    });
+    return topBigGames(lists.expand((l) => l), cap: cap);
   }
 
   /// Run [fn] over [items] with at most [n] in flight (order-preserving output).

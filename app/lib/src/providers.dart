@@ -1,8 +1,13 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'config.dart';
+import 'data/fastcast_client.dart';
+import 'data/recap.dart';
+import 'inning_recap.dart';
+import 'marquee.dart';
 import 'models.dart';
 import 'util.dart';
 
@@ -146,8 +151,21 @@ final favoriteTeamsProvider =
         FavoriteTeamsNotifier.new);
 
 // ---- api + data -------------------------------------------------------------
-final apiProvider = Provider<Api>(
-    (ref) => Api(ref.watch(settingsProvider.select((s) => s.baseUrl))));
+/// The ONE FastCast socket for the whole app (fastcast-plan.md: "one socket
+/// total"). Lives outside [apiProvider] so a Settings baseUrl change rebuilds
+/// [Api] without dropping the connection; foreground-only lifecycle is handled
+/// inside the client itself.
+final fastcastClientProvider = Provider<FastcastClient>((ref) {
+  final c = FastcastClient();
+  ref.onDispose(c.dispose);
+  return c;
+});
+
+final apiProvider = Provider<Api>((ref) => Api(
+      ref.watch(settingsProvider.select((s) => s.baseUrl)),
+      null,
+      ref.watch(fastcastClientProvider),
+    ));
 
 /// The home feed: every followed league's today slate, fetched in parallel. A
 /// failed league becomes a LeagueFeed.error instead of failing the whole feed.
@@ -163,6 +181,46 @@ final feedProvider = FutureProvider<List<LeagueFeed>>((ref) async {
       return LeagueFeed(key, null, error: e.toString());
     }
   }));
+});
+
+/// The latest FastCast slate overlay for [league]'s TODAY slate (Track 2 —
+/// fastcast-plan.md): partial per-event updates (score/status/clock/situation/
+/// series), throttled ≤1/s by the client. Subscribed only while a merged
+/// provider below watches it (autoDispose tears the topic down with the last
+/// screen). Error state = push unavailable → consumers skip the merge and the
+/// poll carries on; a dormant league's rc:404 ends the stream the same way.
+final liveSlateProvider =
+    StreamProvider.autoDispose.family<Map<String, dynamic>, String>((ref, league) {
+  final api = ref.watch(apiProvider);
+  if (!api.liveSlateSupported(league)) {
+    return const Stream<Map<String, dynamic>>.empty();
+  }
+  return api.liveSlate(league);
+});
+
+/// [feedProvider] with each league's healthy push overlay merged in — the thing
+/// the UI actually watches. The merge is SYNCHRONOUS (an in-memory join over
+/// the last polled slate, [Api.mergeSlate]) so push emissions never re-run the
+/// network future: [feedProvider] stays poll-driven and its invalidation
+/// cadence (demoted to reconciliation while push is healthy — scores_page)
+/// remains the only fetch trigger. Today only: a picked day is static.
+final mergedFeedProvider = Provider<AsyncValue<List<LeagueFeed>>>((ref) {
+  final base = ref.watch(feedProvider);
+  final feeds = base.valueOrNull;
+  if (feeds == null || ref.watch(homeDateProvider) != null) return base;
+  final api = ref.watch(apiProvider);
+  var changed = false;
+  final out = feeds.map((f) {
+    if (f.scores == null || !api.liveSlateSupported(f.key)) return f;
+    final ovA = ref.watch(liveSlateProvider(f.key));
+    final ov = ovA.hasError ? null : ovA.valueOrNull;
+    if (ov == null) return f;
+    final merged = api.mergeSlate(f.key, ov);
+    if (merged == null) return f;
+    changed = true;
+    return LeagueFeed(f.key, merged);
+  }).toList();
+  return changed ? AsyncValue.data(out) : base;
 });
 
 /// The home feed's freshness (see [Api.feedFreshness]) — recomputed each time the
@@ -248,22 +306,71 @@ final favoritesFeedProvider =
   }));
 });
 
-/// Season pulse for the curated league set — powers the Explore browser's
-/// LIVE NOW / ON TODAY sections and the per-league captions. Two coalesced
-/// worker pages (v1+v2 tiers) merged; a pulse failure degrades to an empty
-/// map so the catalog list still renders.
-final exploreOverviewProvider =
-    FutureProvider<Map<String, LeagueStateInfo>>((ref) async {
+/// Today's marquee games from flagship leagues the user does NOT follow — the
+/// home feed's BIG GAMES section. A small v1-tier scan (see [Api.bigGames]),
+/// invalidated by the Scores tab's poll loop like the feed itself; the ttl-60
+/// scoreboard cache keeps the re-scan to at most one real fetch per league per
+/// minute. Empty (section hidden) on an ordinary day, on any failure, and the
+/// section only renders on the TODAY view. Followed leagues are excluded —
+/// their games are already on the feed.
+final bigGamesProvider = FutureProvider<List<BigGame>>((ref) {
   final api = ref.watch(apiProvider);
-  try {
-    final pages = await Future.wait([
-      api.overview(priority: 'v1,v2', page: 0),
-      api.overview(priority: 'v1,v2', page: 1),
-    ]);
-    return {for (final m in pages) ...m};
-  } catch (_) {
-    return const {};
+  final followed = ref.watch(followedProvider);
+  return api.bigGames(exclude: followed);
+});
+
+/// Season pulse for the curated league set — powers the Explore browser's
+/// LIVE NOW / ON TODAY sections and the per-league captions. Two overview
+/// pages (v1+v2 tiers, ~70 leagues) fanned out at capped concurrency.
+///
+/// STREAMED, in two passes:
+///  1. FAST: one merged `<sport>/all` scoreboard per capable sport
+///     ([Api.overviewMergedFirst], capability `hasAllScoreboard`) marks
+///     live/today leagues in a single round-trip — LIVE NOW / ON TODAY are
+///     essentially instant.
+///  2. The per-league fan-out streams in behind it, filling the season
+///     captions (upcoming/recent/offseason) and refining pass 1.
+/// Each result is folded into the map and emitted as it lands, so Explore
+/// paints the catalog immediately and the pulse fills in — first open never
+/// waits ~seconds for the slowest scoreboard (or a 12s timeout). A pulse
+/// failure degrades to whatever accumulated (worst case the empty map) so the
+/// catalog list still renders. keepAlive: fetched once per session; _Shell
+/// warms it when the Following tab is selected so the "+" → Explore push
+/// usually opens against a warm (or already in-flight) map.
+final exploreOverviewProvider =
+    StreamProvider<Map<String, LeagueStateInfo>>((ref) {
+  final api = ref.watch(apiProvider);
+  final ctrl = StreamController<Map<String, LeagueStateInfo>>();
+  final acc = <String, LeagueStateInfo>{};
+  void fold(String key, LeagueStateInfo info, {required bool refine}) {
+    final cur = acc[key];
+    // The merged fast pass never overwrites a per-league result…
+    if (!refine && cur != null) return;
+    // …and a per-league FAILURE ('unknown') never erases a real state.
+    if (refine && info.state == 'unknown' && cur != null && cur.state != 'unknown') {
+      return;
+    }
+    acc[key] = info;
+    if (!ctrl.isClosed) ctrl.add(Map.of(acc));
   }
+
+  void fast(String k, LeagueStateInfo i) => fold(k, i, refine: false);
+  void full(String k, LeagueStateInfo i) => fold(k, i, refine: true);
+  // Per-league failures are absorbed inside overview(); the guard only covers
+  // a wholesale failure — serve whatever accumulated instead of erroring.
+  Future<void> guard(Future<dynamic> f) => f.then((_) {}, onError: (_) {});
+
+  unawaited(Future.wait([
+    guard(api.overviewMergedFirst(priority: 'v1,v2', onResult: fast)),
+    guard(api.overview(priority: 'v1,v2', page: 0, onResult: full)),
+    guard(api.overview(priority: 'v1,v2', page: 1, onResult: full)),
+  ]).whenComplete(() {
+    if (!ctrl.isClosed) ctrl.close();
+  }));
+  ref.onDispose(() {
+    if (!ctrl.isClosed) ctrl.close();
+  });
+  return ctrl.stream;
 });
 
 /// One league's slate for a specific day (null date = today), independent of the
@@ -278,6 +385,24 @@ final leagueScoresProvider =
     FutureProvider.autoDispose.family<ScoresResponse, ScoresKey>(
   (ref, k) => ref.watch(apiProvider).scores(k.league, date: k.date),
 );
+
+/// [leagueScoresProvider] with the league's healthy push overlay merged in —
+/// what detail/league/today screens watch (same AsyncValue shape, so
+/// `.valueOrNull` reads are unchanged). Poll invalidation still targets
+/// [leagueScoresProvider]; this layer is synchronous and fetch-free, exactly
+/// like [mergedFeedProvider]. Dated slates pass through untouched.
+final mergedLeagueScoresProvider = Provider.autoDispose
+    .family<AsyncValue<ScoresResponse>, ScoresKey>((ref, k) {
+  final base = ref.watch(leagueScoresProvider(k));
+  if (k.date != null || base.valueOrNull == null) return base;
+  final api = ref.watch(apiProvider);
+  if (!api.liveSlateSupported(k.league)) return base;
+  final ovA = ref.watch(liveSlateProvider(k.league));
+  final ov = ovA.hasError ? null : ovA.valueOrNull;
+  if (ov == null) return base;
+  final merged = api.mergeSlate(k.league, ov);
+  return merged == null ? base : AsyncValue.data(merged);
+});
 
 final standingsProvider = FutureProvider.autoDispose.family<Standings, String>(
   (ref, league) => ref.watch(apiProvider).standings(league),
@@ -306,6 +431,72 @@ final summaryProvider =
     FutureProvider.autoDispose.family<GameSummary, SummaryKey>(
   (ref, k) => ref.watch(apiProvider).summary(k.league, k.eventId),
 );
+
+/// The soccer touch-by-touch match feed (capability hasMatchFeed) — the live
+/// pitch / shot map / momentum source. Fetched lazily on detail open, re-run by
+/// the detail page's poll (invalidate) while live; [Api.matchFeed] caches the
+/// feed's immutable pages so a steady-state poll costs one tail request. Null
+/// = no feed (capability off / offline / empty) → those cards hide cleanly.
+typedef MatchFeedKey = ({
+  String league,
+  String eventId,
+  String compId,
+  String? homeId,
+  String? awayId,
+});
+
+final matchFeedProvider =
+    FutureProvider.autoDispose.family<MatchFeed?, MatchFeedKey>(
+  (ref, k) => ref.watch(apiProvider).matchFeed(k.league, k.eventId, k.compId,
+      homeId: k.homeId, awayId: k.awayId),
+);
+
+/// The optional AI-written recap of the half-inning that just ended (the Due
+/// Up card's footer), from the DEVICE'S on-board model (Gemini Nano via the
+/// ML Kit GenAI Prompt API) — fully automatic when the model is present, and
+/// null everywhere else (no local model, web, any failure), which means the
+/// deterministic [previousHalfInningRecap] line stands. Keyed by (game,
+/// inning, half) so a new half is a fresh inference; RecapClient
+/// caches/coalesces per key, so the 15s summary poll re-running this provider
+/// never re-asks about the same half.
+typedef RecapKey = ({String league, String eventId, int period, String half});
+
+final recapClientProvider = Provider<RecapClient>((_) => RecapClient());
+
+final inningRecapProvider =
+    FutureProvider.autoDispose.family<String?, RecapKey>((ref, k) async {
+  final summary = ref
+      .watch(summaryProvider((league: k.league, eventId: k.eventId)))
+      .valueOrNull;
+  if (summary == null) return null;
+  final recap = previousHalfInningRecap(summary.atBats);
+  // Only recap the half the caller is showing — a stale key (inning moved on
+  // while this was in flight) must not caption the wrong half.
+  if (recap == null || recap.period != k.period || recap.half != k.half) {
+    return null;
+  }
+  return ref.read(recapClientProvider).inningRecap(
+        cacheKey: '${k.league}|${k.eventId}|${k.period}|${k.half}',
+        label: [recap.label, if (recap.teamAbbr != null) recap.teamAbbr!]
+            .join(' · '),
+        texts: recap.texts,
+      );
+});
+
+/// The push-fed live summary (FastCast Track 1). Watched by the detail page
+/// ONLY while the game is LIVE and [Api.liveSummarySupported]; each emission is
+/// a fresh [GameSummary] (throttled ≤1/s by the client). An error state is the
+/// silent-fallback signal — the page reverts to the polled [summaryProvider]
+/// and switches back when data flows again. autoDispose: closing the detail
+/// unsubscribes the topic (and the socket, when it was the last one).
+final liveSummaryProvider =
+    StreamProvider.autoDispose.family<GameSummary, SummaryKey>((ref, k) {
+  final api = ref.watch(apiProvider);
+  if (!api.liveSummarySupported(k.league)) {
+    return const Stream<GameSummary>.empty();
+  }
+  return api.liveSummary(k.league, k.eventId);
+});
 
 /// The rich per-match tennis resource (ESPN core competition), fetched lazily
 /// when a tennis match detail opens. `eventId` is the parent tournament event

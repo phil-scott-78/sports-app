@@ -1,0 +1,346 @@
+<!-- @dsCard group="Event feeds" name="Archetype A — sparse timeline" subtitle="Soccer · racing — continuous clock, every event a full row" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archetype A — sparse timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local ─────────────────────────────────────────────── */
+.col { max-width: 428px; margin: 0 auto; }
+body { padding: 24px; }
+.spec { margin-bottom: 28px; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); letter-spacing: .05em; text-transform: uppercase; margin: 0 0 10px 2px; }
+
+.feed { padding: 6px 18px; }
+
+/* Row: time rail → glyph → two-line body → optional running score */
+.frow { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.rail { font: 600 14px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-dim); width: 32px; flex: none; }
+.rail--lap { width: 38px; }
+.rail--white { color: var(--text); }
+.gcell { width: 18px; flex: none; display: flex; justify-content: center; }
+.fbody { flex: 1; min-width: 0; }
+.ftitle { font: 600 14px/1.3 var(--font-copy); color: var(--text); }
+.ftitle--sig { font-weight: 700; }
+.fdetail { font: 400 12px/1.35 var(--font-copy); color: var(--text-dim); margin-top: 2px; }
+.rscore { font: 700 18px var(--font-score); font-variant-numeric: tabular-nums; color: var(--text-dim); margin-left: auto; flex: none; }
+.rscore--latest { color: var(--text); }
+
+/* Signal row — team wash bleeding edge-to-edge */
+.frow--sig { margin: 0 -18px; padding-left: 18px; padding-right: 18px; }
+
+/* Event glyphs — the sport's vocabulary */
+.g-goal { width: 16px; height: 16px; border-radius: 50%; flex: none; }
+.g-card { width: 11px; height: 15px; border-radius: 2px; flex: none; }
+.g-sub  { width: 14px; height: 14px; border-radius: 50%; background: var(--track); border-width: 2px; border-style: solid; flex: none; }
+.g-var  { width: 14px; height: 14px; border: 1.5px solid var(--outline); border-radius: 2px; flex: none; }
+/* Racing: glyphs wear the DRIVER'S team color */
+.g-pass { width: 16px; height: 16px; border-radius: 50%; flex: none; }
+.g-pit  { width: 14px; height: 14px; border-radius: 50%; background: var(--track); border-width: 2px; border-style: solid; flex: none; }
+.g-inc  { width: 14px; height: 14px; border-radius: 50%; background: var(--track); border: 2px solid var(--text-faint); flex: none; }
+
+/* Rule-label divider (the cut-line pattern, in dim) */
+.rl-div { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
+.rl-line { flex: 1; border-top: 2px dashed var(--border); }
+.rl-lab { font: 700 10px var(--font-copy); letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.rl-swatch { width: 8px; height: 8px; flex: none; }
+.rl-pill { font: 700 10px var(--font-copy); letter-spacing: .05em; text-transform: uppercase; background: #3D3517; color: #FFFFFF; border-radius: var(--r-pill); padding: 3px 8px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <p class="anno">Archetype A — Q1: ≲20 key events per match, every one earns a full two-line row · Q2: no native container, play flows on a continuous clock · Q3: signal = the goal / the pass for position</p>
+
+  <!-- ── Specimen (a): soccer ── -->
+  <div class="spec">
+    <p class="anno">Soccer — surface card r20 · pad 6×18 · newest first · minute rail 14/600 ~32w · signal = goal (wash + 18/700 running score)</p>
+    <div class="card feed">
+
+      <!-- 74′ GOAL — signal row -->
+      <div class="frow frow--sig" style="background:linear-gradient(90deg, rgba(218,41,28,.08), transparent);">
+        <div class="rail rail--white">74′</div>
+        <div class="gcell"><div class="g-goal" style="background:#DA291C;"></div></div>
+        <div class="fbody">
+          <div class="ftitle ftitle--sig">GOAL — Saka</div>
+          <div class="fdetail">Right-footed from the edge of the box, Ødegaard assist</div>
+        </div>
+        <div class="rscore rscore--latest">2–1</div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- 70′ substitution -->
+      <div class="frow">
+        <div class="rail">70′</div>
+        <div class="gcell"><div class="g-sub" style="border-color:#6CABDD;"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Substitution — Man City</div>
+          <div class="fdetail">Doku on for Foden</div>
+        </div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- 61′ yellow card -->
+      <div class="frow">
+        <div class="rail">61′</div>
+        <div class="gcell"><div class="g-card" style="background:var(--gold);"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Yellow card — Rodri</div>
+          <div class="fdetail">Cynical foul on Rice at halfway</div>
+        </div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- 58′ VAR -->
+      <div class="frow">
+        <div class="rail">58′</div>
+        <div class="gcell"><div class="g-var"></div></div>
+        <div class="fbody">
+          <div class="ftitle">VAR — penalty check, Arsenal</div>
+          <div class="fdetail">No penalty · on-field call stands</div>
+        </div>
+      </div>
+
+      <!-- HALF TIME divider -->
+      <div class="rl-div">
+        <span class="rl-line"></span>
+        <span class="rl-lab">Half time · 1–1</span>
+        <span class="rl-line"></span>
+      </div>
+
+      <!-- 39′ GOAL — older signal, score dim -->
+      <div class="frow frow--sig" style="background:linear-gradient(90deg, rgba(108,171,221,.08), transparent);">
+        <div class="rail rail--white">39′</div>
+        <div class="gcell"><div class="g-goal" style="background:#6CABDD;"></div></div>
+        <div class="fbody">
+          <div class="ftitle ftitle--sig">GOAL — Haaland</div>
+          <div class="fdetail">Header from six yards, De Bruyne cross</div>
+        </div>
+        <div class="rscore">1–1</div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- 23′ GOAL — oldest signal -->
+      <div class="frow frow--sig" style="background:linear-gradient(90deg, rgba(218,41,28,.08), transparent);">
+        <div class="rail rail--white">23′</div>
+        <div class="gcell"><div class="g-goal" style="background:#DA291C;"></div></div>
+        <div class="fbody">
+          <div class="ftitle ftitle--sig">GOAL — Ødegaard</div>
+          <div class="fdetail">Low finish inside the far post, Saka cutback</div>
+        </div>
+        <div class="rscore">1–0</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Specimen (b): racing ── -->
+  <div class="spec">
+    <p class="anno">Racing — lap rail "L 46" ~38w · glyphs wear the driver's team color · signal = pass for position · flag phases as dividers</p>
+    <div class="card feed">
+
+      <!-- L 47 pass — signal row -->
+      <div class="frow frow--sig" style="background:linear-gradient(90deg, rgba(255,128,0,.08), transparent);">
+        <div class="rail rail--lap rail--white">L 47</div>
+        <div class="gcell"><div class="g-pass" style="background:#FF8000;"></div></div>
+        <div class="fbody">
+          <div class="ftitle ftitle--sig">Norris passes Leclerc — P2</div>
+          <div class="fdetail">DRS into Turn 1 · now chasing Verstappen, gap 2.8s</div>
+        </div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- L 45 pit stop -->
+      <div class="frow">
+        <div class="rail rail--lap">L 45</div>
+        <div class="gcell"><div class="g-pit" style="border-color:#E8002D;"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Leclerc pits — hard tyres</div>
+          <div class="fdetail">2.4s stationary · rejoins P4</div>
+        </div>
+      </div>
+      <div class="hr"></div>
+
+      <!-- L 43 fastest lap -->
+      <div class="frow">
+        <div class="rail rail--lap">L 43</div>
+        <div class="gcell"><div class="g-pit" style="border-color:#27F4D2;"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Russell — fastest lap</div>
+          <div class="fdetail">1:22.041 · purple in all three sectors</div>
+        </div>
+      </div>
+
+      <!-- GREEN FLAG divider with flag swatch -->
+      <div class="rl-div">
+        <span class="rl-line"></span>
+        <span class="rl-lab"><span class="rl-swatch" style="background:var(--green);"></span>Green flag · Lap 41</span>
+        <span class="rl-line"></span>
+      </div>
+
+      <!-- L 39 pit under safety car -->
+      <div class="frow">
+        <div class="rail rail--lap">L 39</div>
+        <div class="gcell"><div class="g-pit" style="border-color:#3671C6;"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Verstappen pits — hard tyres</div>
+          <div class="fdetail">1.9s stationary · retains P1</div>
+        </div>
+      </div>
+
+      <!-- SAFETY CAR — gold-tinted pill divider (the phase compromises play) -->
+      <div class="rl-div">
+        <span class="rl-line"></span>
+        <span class="rl-pill">Safety car · Lap 38</span>
+        <span class="rl-line"></span>
+      </div>
+
+      <!-- L 38 incident — neutral faint ring -->
+      <div class="frow">
+        <div class="rail rail--lap">L 38</div>
+        <div class="gcell"><div class="g-inc"></div></div>
+        <div class="fbody">
+          <div class="ftitle">Stroll stops at Turn 9</div>
+          <div class="fdetail">Front wing damage · car recovered</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

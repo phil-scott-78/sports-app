@@ -1,0 +1,6054 @@
+{
+ "topic": "event-soccer-fifa.world",
+ "capturedAt": "2026-07-09T03:00:19.744Z",
+ "checkpointUrl": "https://fcast.espncdn.com/FastcastService/pubsub/profiles/12000/topic/event-soccer-fifa.world/message/65266/checkpoint",
+ "checkpoint": {
+  "sports": [
+   {
+    "id": "600",
+    "uid": "s:600",
+    "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+    "name": "Soccer",
+    "slug": "soccer",
+    "logos": [
+     {
+      "href": "https://a.espncdn.com/combiner/i?img=/guid/119cfa41-71d4-39bf-a790-6273a52b0259/logos/default.png",
+      "alt": "",
+      "rel": [
+       "full",
+       "default"
+      ],
+      "width": 500,
+      "height": 500
+     },
+     {
+      "href": "https://a.espncdn.com/combiner/i?img=/guid/119cfa41-71d4-39bf-a790-6273a52b0259/logos/default-dark.png",
+      "alt": "",
+      "rel": [
+       "full",
+       "dark"
+      ],
+      "width": 500,
+      "height": 500
+     }
+    ],
+    "leagues": [
+     {
+      "id": "606",
+      "uid": "s:600~l:606",
+      "name": "FIFA World Cup",
+      "abbreviation": "FIFA World Cup",
+      "shortName": "FIFA World Cup",
+      "slug": "fifa.world",
+      "tag": "fifa.world",
+      "isTournament": true,
+      "smartdates": [
+       "2026-07-07T07:00Z",
+       "2026-07-09T07:00Z",
+       "2026-07-10T07:00Z"
+      ],
+      "events": [
+       {
+        "id": "760502",
+        "uid": "s:600~l:606~e:760502~c:760502",
+        "guid": "9f5982f3-5b4f-386e-ae88-928b068b891b",
+        "date": "2026-07-04T17:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-05T22:39Z",
+          "text": "Morocco advances.",
+          "headline": "Morocco advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760502/morocco-canada",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760502",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760502",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760502",
+        "location": "NRG Stadium",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760502/morocco-canada",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+9'",
+        "addedClock": 540,
+        "matchNumber": 90,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "MAR -125",
+         "overUnder": 2.5,
+         "spread": 0.5,
+         "overOdds": 135,
+         "underOdds": -165,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 400
+         },
+         "away": {
+          "moneyLine": -125
+         },
+         "draw": {
+          "moneyLine": 230
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": -125,
+          "spreadOdds": -125,
+          "team": {
+           "id": "2869",
+           "abbreviation": "MAR",
+           "displayName": "Morocco",
+           "name": "Morocco"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 400,
+          "spreadOdds": 100,
+          "team": {
+           "id": "206",
+           "abbreviation": "CAN",
+           "displayName": "Canada",
+           "name": "Canada"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 230
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34339353",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+0.5",
+            "odds": "+105"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "+100"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-0.5",
+            "odds": "-135"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "-125"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+370"
+           },
+           "close": {
+            "odds": "+400"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "-125"
+           },
+           "close": {
+            "odds": "-125"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+265"
+           },
+           "close": {
+            "odds": "+230"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "+125"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "+135"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-155"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "-165"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 540,
+         "displayClock": "90'+9'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "2869",
+          "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+          "uid": "s:600~t:2869",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWWWD",
+          "displayName": "Morocco",
+          "name": "Morocco",
+          "abbreviation": "MAR",
+          "location": "Morocco",
+          "color": "df2027",
+          "alternateColor": "ffffff",
+          "score": "3",
+          "isNational": true,
+          "uniform": {
+           "type": "away",
+           "color": "ffffff",
+           "alternateColor": "f2dfc5"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/2869/morocco",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/2869/morocco",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2869&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/2869/morocco",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2869&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/2869/morocco",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2869&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2869&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/2869/morocco",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2869&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/mar.png",
+          "goalieSummary": [
+           {
+            "displayValue": "0 GA, 3 SV",
+            "athlete": {
+             "id": "175149",
+             "displayName": "Yassine Bounou",
+             "shortName": "Y. Bounou",
+             "fullName": "Yassine Bounou",
+             "lastName": "Bounou",
+             "jersey": "1",
+             "team": {
+              "id": "2869"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "206",
+          "guid": "c09eeeeb-7c2d-23f9-1bbf-153ff7e59905",
+          "uid": "s:600~t:206",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWLWD",
+          "displayName": "Canada",
+          "name": "Canada",
+          "abbreviation": "CAN",
+          "location": "Canada",
+          "color": "000000",
+          "alternateColor": "ed2224",
+          "score": "0",
+          "isNational": true,
+          "uniform": {
+           "type": "away",
+           "color": "000000"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/206/canada",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/206/canada",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:206&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/206/canada",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:206&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/206/canada",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:206&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:206&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/206/canada",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:206&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/can.png",
+          "goalieSummary": [
+           {
+            "displayValue": "3 GA, 1 SV",
+            "athlete": {
+             "id": "159382",
+             "displayName": "Maxime Crépeau",
+             "shortName": "M. Crépeau",
+             "fullName": "Maxime Crépeau",
+             "lastName": "Crépeau",
+             "jersey": "16",
+             "team": {
+              "id": "206"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832645",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760502",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760503",
+        "uid": "s:600~l:606~e:760503~c:760503",
+        "guid": "35b70d90-c396-3333-ba55-223dd263e07b",
+        "date": "2026-07-04T21:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-05T09:05Z",
+          "text": "France advances.",
+          "headline": "France advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760503/france-paraguay",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760503",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760503",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760503",
+        "location": "Lincoln Financial Field",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760503/france-paraguay",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+11'",
+        "addedClock": 660,
+        "matchNumber": 89,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "FRA -500",
+         "overUnder": 2.5,
+         "spread": 1.5,
+         "overOdds": -140,
+         "underOdds": 115,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 1600
+         },
+         "away": {
+          "moneyLine": -500
+         },
+         "draw": {
+          "moneyLine": 500
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": -500,
+          "spreadOdds": -145,
+          "team": {
+           "id": "478",
+           "abbreviation": "FRA",
+           "displayName": "France",
+           "name": "France"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 1600,
+          "spreadOdds": 115,
+          "team": {
+           "id": "210",
+           "abbreviation": "PAR",
+           "displayName": "Paraguay",
+           "name": "Paraguay"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 500
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34342726",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+1.5",
+            "odds": "+130"
+           },
+           "close": {
+            "line": "+1.5",
+            "odds": "+115"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-1.5",
+            "odds": "-165"
+           },
+           "close": {
+            "line": "-1.5",
+            "odds": "-145"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+1500"
+           },
+           "close": {
+            "odds": "+1600"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "-500"
+           },
+           "close": {
+            "odds": "-500"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+600"
+           },
+           "close": {
+            "odds": "+500"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "-175"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "-140"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "+140"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "+115"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 660,
+         "displayClock": "90'+11'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "478",
+          "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+          "uid": "s:600~t:478",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWWWW",
+          "displayName": "France",
+          "name": "France",
+          "abbreviation": "FRA",
+          "location": "France",
+          "color": "000080",
+          "alternateColor": "C8E6D8",
+          "score": "1",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "1f466f",
+           "alternateColor": "2184df"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/478/france",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/478/france",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:478&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/478/france",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:478&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/478/france",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:478&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:478&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/478/france",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:478&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/fra.png",
+          "goalieSummary": [
+           {
+            "displayValue": "0 GA, 0 SV",
+            "athlete": {
+             "id": "189026",
+             "displayName": "Mike Maignan",
+             "shortName": "M. Maignan",
+             "fullName": "Mike Maignan",
+             "lastName": "Maignan",
+             "jersey": "16",
+             "team": {
+              "id": "478"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "210",
+          "guid": "67227b21-5b19-9dd2-b805-534045f412f9",
+          "uid": "s:600~t:210",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWDWL",
+          "displayName": "Paraguay",
+          "name": "Paraguay",
+          "abbreviation": "PAR",
+          "location": "Paraguay",
+          "color": "ea2300",
+          "alternateColor": "21418c",
+          "score": "0",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "ff0000",
+           "alternateColor": "ffffff"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/210/paraguay",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/210/paraguay",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:210&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/210/paraguay",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:210&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/210/paraguay",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:210&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:210&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/210/paraguay",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:210&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/par.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/par.png",
+          "goalieSummary": [
+           {
+            "displayValue": "1 GA, 4 SV",
+            "athlete": {
+             "id": "301648",
+             "displayName": "Orlando Gill",
+             "shortName": "O. Gill",
+             "fullName": "Orlando Gill",
+             "lastName": "Gill",
+             "jersey": "12",
+             "team": {
+              "id": "210"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832646",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760503",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760504",
+        "uid": "s:600~l:606~e:760504~c:760504",
+        "guid": "fbc71e60-0518-3468-8992-33e383223e29",
+        "date": "2026-07-05T20:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-07T09:28Z",
+          "text": "Norway advances.",
+          "headline": "Norway advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760504/norway-brazil",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760504",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760504",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760504",
+        "location": "MetLife Stadium",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760504/norway-brazil",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+11'",
+        "addedClock": 660,
+        "matchNumber": 91,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "BRA -135",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -135,
+         "underOdds": 110,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": -135
+         },
+         "away": {
+          "moneyLine": 370
+         },
+         "draw": {
+          "moneyLine": 270
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 370,
+          "spreadOdds": 110,
+          "team": {
+           "id": "464",
+           "abbreviation": "NOR",
+           "displayName": "Norway",
+           "name": "Norway"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": -135,
+          "spreadOdds": -135,
+          "team": {
+           "id": "205",
+           "abbreviation": "BRA",
+           "displayName": "Brazil",
+           "name": "Brazil"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 270
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34342332",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "-0.5",
+            "odds": "-115"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "-135"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "+0.5",
+            "odds": "-110"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "+110"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "-110"
+           },
+           "close": {
+            "odds": "-135"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "+310"
+           },
+           "close": {
+            "odds": "+370"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+260"
+           },
+           "close": {
+            "odds": "+270"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "+100"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "-135"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-125"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "+110"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 660,
+         "displayClock": "90'+11'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "464",
+          "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+          "uid": "s:600~t:464",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWLWW",
+          "displayName": "Norway",
+          "name": "Norway",
+          "abbreviation": "NOR",
+          "location": "Norway",
+          "color": "C8102E",
+          "alternateColor": "C8102E",
+          "score": "2",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "f50000",
+           "alternateColor": "1d2c60"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/464/norway",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/464/norway",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:464&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/464/norway",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:464&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/464/norway",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:464&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:464&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/464/norway",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:464&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/nor.png",
+          "goalieSummary": [
+           {
+            "displayValue": "1 GA, 4 SV",
+            "athlete": {
+             "id": "193610",
+             "displayName": "Ørjan Nyland",
+             "shortName": "Ø. Nyland",
+             "fullName": "Ørjan Nyland",
+             "lastName": "Nyland",
+             "jersey": "1",
+             "team": {
+              "id": "464"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "205",
+          "guid": "2a051c42-4444-8263-799a-6cdd866bd8f7",
+          "uid": "s:600~t:205",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWWWD",
+          "displayName": "Brazil",
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "location": "Brazil",
+          "color": "fee000",
+          "alternateColor": "193375",
+          "score": "1",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "fff700",
+           "alternateColor": "0063bd"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/205/brazil",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/205/brazil",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:205&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/205/brazil",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:205&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/205/brazil",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:205&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:205&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/205/brazil",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:205&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/bra.png",
+          "goalieSummary": [
+           {
+            "displayValue": "2 GA, 3 SV",
+            "athlete": {
+             "id": "196876",
+             "displayName": "Alisson Becker",
+             "shortName": "A. Becker",
+             "fullName": "Alisson Becker",
+             "lastName": "Becker",
+             "jersey": "1",
+             "team": {
+              "id": "205"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832647",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760504",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760505",
+        "uid": "s:600~l:606~e:760505~c:760505",
+        "guid": "3cc96bff-8b04-3ca9-9ae0-4db4e425ec47",
+        "date": "2026-07-06T01:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-07T09:29Z",
+          "text": "England advances.",
+          "headline": "England advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760505/england-mexico",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760505",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760505",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760505",
+        "location": "Estadio Banorte",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760505/england-mexico",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+12'",
+        "addedClock": 720,
+        "matchNumber": 92,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "ENG +155",
+         "overUnder": 2.5,
+         "spread": 0.5,
+         "overOdds": 145,
+         "underOdds": -185,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 205
+         },
+         "away": {
+          "moneyLine": 155
+         },
+         "draw": {
+          "moneyLine": 200
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": 155,
+          "spreadOdds": 145,
+          "team": {
+           "id": "448",
+           "abbreviation": "ENG",
+           "displayName": "England",
+           "name": "England"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 205,
+          "spreadOdds": -180,
+          "team": {
+           "id": "203",
+           "abbreviation": "MEX",
+           "displayName": "Mexico",
+           "name": "Mexico"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 200
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34345776",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+0.5",
+            "odds": "-150"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "-180"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-0.5",
+            "odds": "+120"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "+145"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+245"
+           },
+           "close": {
+            "odds": "+205"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "+125"
+           },
+           "close": {
+            "odds": "+155"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+220"
+           },
+           "close": {
+            "odds": "+200"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "+145"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "+145"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-180"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "-185"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 720,
+         "displayClock": "90'+12'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "448",
+          "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+          "uid": "s:600~t:448",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWWDW",
+          "displayName": "England",
+          "name": "England",
+          "abbreviation": "ENG",
+          "location": "England",
+          "color": "EA1F29",
+          "alternateColor": "FFFFFF",
+          "score": "3",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "ffffff"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/448/england",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/448/england",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:448&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/448/england",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:448&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/448/england",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:448&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:448&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/448/england",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:448&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/eng.png",
+          "goalieSummary": [
+           {
+            "displayValue": "2 GA, 3 SV",
+            "athlete": {
+             "id": "159443",
+             "displayName": "Jordan Pickford",
+             "shortName": "J. Pickford",
+             "fullName": "Jordan Pickford",
+             "lastName": "Pickford",
+             "jersey": "1",
+             "team": {
+              "id": "448"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "203",
+          "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f",
+          "uid": "s:600~t:203",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWWWW",
+          "displayName": "Mexico",
+          "name": "Mexico",
+          "abbreviation": "MEX",
+          "location": "Mexico",
+          "color": "006847",
+          "alternateColor": "000000",
+          "score": "2",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "076948",
+           "alternateColor": "ffffff"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/203/mexico",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/203/mexico",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:203&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/203/mexico",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:203&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/203/mexico",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:203&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:203&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/203/mexico",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:203&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/mex.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/mex.png",
+          "goalieSummary": [
+           {
+            "displayValue": "3 GA, 2 SV",
+            "athlete": {
+             "id": "290899",
+             "displayName": "Raúl Rangel",
+             "shortName": "R. Rangel",
+             "fullName": "Raúl Rangel",
+             "lastName": "Rangel",
+             "jersey": "1",
+             "team": {
+              "id": "203"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832648",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760505",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760506",
+        "uid": "s:600~l:606~e:760506~c:760506",
+        "guid": "fa68a8ff-f6b1-33d6-bb03-7ee6c4f152f2",
+        "date": "2026-07-06T19:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-07T07:01Z",
+          "text": "Spain advances.",
+          "headline": "Spain advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760506/spain-portugal",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760506",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760506",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760506",
+        "location": "AT&T Stadium",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760506/spain-portugal",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+9'",
+        "addedClock": 540,
+        "matchNumber": 93,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "ESP -105",
+         "overUnder": 2.5,
+         "spread": 0.5,
+         "overOdds": -130,
+         "underOdds": 105,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 290
+         },
+         "away": {
+          "moneyLine": -105
+         },
+         "draw": {
+          "moneyLine": 255
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": -105,
+          "spreadOdds": -105,
+          "team": {
+           "id": "164",
+           "abbreviation": "ESP",
+           "displayName": "Spain",
+           "name": "Spain"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 290,
+          "spreadOdds": -120,
+          "team": {
+           "id": "482",
+           "abbreviation": "POR",
+           "displayName": "Portugal",
+           "name": "Portugal"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 255
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34349998",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+0.5",
+            "odds": "-110"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "-120"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-0.5",
+            "odds": "-115"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "-105"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+310"
+           },
+           "close": {
+            "odds": "+290"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "-110"
+           },
+           "close": {
+            "odds": "-105"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+260"
+           },
+           "close": {
+            "odds": "+255"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "-105"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "-130"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-120"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "+105"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 540,
+         "displayClock": "90'+9'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "164",
+          "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+          "uid": "s:600~t:164",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWWWD",
+          "displayName": "Spain",
+          "name": "Spain",
+          "abbreviation": "ESP",
+          "location": "Spain",
+          "color": "c60b1e",
+          "alternateColor": "800000",
+          "score": "1",
+          "isNational": true,
+          "uniform": {
+           "type": "away",
+           "color": "ffffff"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/164/spain",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/164/spain",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:164&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/164/spain",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:164&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/164/spain",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:164&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:164&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/164/spain",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:164&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/esp.png",
+          "goalieSummary": [
+           {
+            "displayValue": "0 GA, 2 SV",
+            "athlete": {
+             "id": "222375",
+             "displayName": "Unai Simón",
+             "shortName": "U. Simón",
+             "fullName": "Unai Simón",
+             "lastName": "Simón",
+             "jersey": "23",
+             "team": {
+              "id": "164"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "482",
+          "guid": "12433baf-649d-7f4f-7233-6db63a5f62f4",
+          "uid": "s:600~t:482",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWDWD",
+          "displayName": "Portugal",
+          "name": "Portugal",
+          "abbreviation": "POR",
+          "location": "Portugal",
+          "color": "da291c",
+          "alternateColor": "0D6938",
+          "score": "0",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "9c3230"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/482/portugal",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/482/portugal",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:482&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/482/portugal",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:482&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/482/portugal",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:482&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:482&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/482/portugal",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:482&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/por.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/por.png",
+          "goalieSummary": [
+           {
+            "displayValue": "1 GA, 5 SV",
+            "athlete": {
+             "id": "238903",
+             "displayName": "Diogo Costa",
+             "shortName": "D. Costa",
+             "fullName": "Diogo Costa",
+             "lastName": "Costa",
+             "jersey": "1",
+             "team": {
+              "id": "482"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832649",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760506",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760507",
+        "uid": "s:600~l:606~e:760507~c:760507",
+        "guid": "43405c45-63a2-3e88-8063-7ced09d7a36c",
+        "date": "2026-07-07T00:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-07T11:41Z",
+          "text": "Belgium advances.",
+          "headline": "Belgium advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760507/belgium-united-states",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760507",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760507",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760507",
+        "location": "Lumen Field",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760507/belgium-united-states",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+4'",
+        "addedClock": 240,
+        "matchNumber": 94,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "USA +155",
+         "overUnder": 2.5,
+         "spread": -0.5,
+         "overOdds": -125,
+         "underOdds": 105,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 155
+         },
+         "away": {
+          "moneyLine": 185
+         },
+         "draw": {
+          "moneyLine": 225
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": true,
+          "underdog": true,
+          "moneyLine": 185,
+          "spreadOdds": -185,
+          "team": {
+           "id": "459",
+           "abbreviation": "BEL",
+           "displayName": "Belgium",
+           "name": "Belgium"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": false,
+          "underdog": false,
+          "moneyLine": 155,
+          "spreadOdds": 145,
+          "team": {
+           "id": "660",
+           "abbreviation": "USA",
+           "displayName": "United States",
+           "name": "USA"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 225
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34346430",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+0.5",
+            "odds": "-200"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "+145"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-0.5",
+            "odds": "+155"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "-185"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+160"
+           },
+           "close": {
+            "odds": "+155"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "+175"
+           },
+           "close": {
+            "odds": "+185"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+235"
+           },
+           "close": {
+            "odds": "+225"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "-130"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "-125"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "+105"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "+105"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 240,
+         "displayClock": "90'+4'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "459",
+          "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+          "uid": "s:600~t:459",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": true,
+          "advance": true,
+          "form": "WWWDD",
+          "displayName": "Belgium",
+          "name": "Belgium",
+          "abbreviation": "BEL",
+          "location": "Belgium",
+          "color": "E30613",
+          "alternateColor": "6ECFF6",
+          "score": "4",
+          "isNational": true,
+          "uniform": {
+           "type": "away",
+           "color": "a5d5e1",
+           "alternateColor": "f4bac1"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/459/belgium",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/459/belgium",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:459&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/459/belgium",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:459&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/459/belgium",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:459&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:459&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/459/belgium",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:459&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/bel.png",
+          "goalieSummary": [
+           {
+            "displayValue": "1 GA, 1 SV",
+            "athlete": {
+             "id": "134283",
+             "displayName": "Thibaut Courtois",
+             "shortName": "T. Courtois",
+             "fullName": "Thibaut Courtois",
+             "lastName": "Courtois",
+             "jersey": "1",
+             "team": {
+              "id": "459"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "660",
+          "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
+          "uid": "s:600~t:660",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": false,
+          "advance": false,
+          "form": "LWLWW",
+          "displayName": "United States",
+          "name": "USA",
+          "abbreviation": "USA",
+          "location": "United States",
+          "color": "213065",
+          "alternateColor": "d42339",
+          "score": "1",
+          "isNational": true,
+          "uniform": {
+           "type": "away",
+           "color": "081421"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/660/united-states",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/660/united-states",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:660&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/660/united-states",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:660&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/660/united-states",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:660&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:660&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/660/united-states",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:660&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/usa.png",
+          "goalieSummary": [
+           {
+            "displayValue": "4 GA, 3 SV",
+            "athlete": {
+             "id": "252974",
+             "displayName": "Matt Freese",
+             "shortName": "M. Freese",
+             "fullName": "Matt Freese",
+             "lastName": "Freese",
+             "jersey": "24",
+             "team": {
+              "id": "660"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832650",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760507",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760509",
+        "uid": "s:600~l:606~e:760509~c:760509",
+        "guid": "9ce647ae-b373-3de4-99fc-223bd351fd4f",
+        "date": "2026-07-07T16:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "source": "38",
+          "date": "2026-07-09T09:36Z",
+          "text": "Argentina advances.",
+          "headline": "Argentina advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760509/egypt-argentina",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760509",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760509",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760509",
+        "location": "Mercedes-Benz Stadium",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760509/egypt-argentina",
+        "status": "post",
+        "summary": "FT",
+        "period": 2,
+        "clock": "90'+11'",
+        "addedClock": 660,
+        "matchNumber": 95,
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "ARG -310",
+         "overUnder": 2.5,
+         "spread": -1.5,
+         "overOdds": 100,
+         "underOdds": -125,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": -310
+         },
+         "away": {
+          "moneyLine": 1000
+         },
+         "draw": {
+          "moneyLine": 390
+         },
+         "awayTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 1000,
+          "spreadOdds": -125,
+          "team": {
+           "id": "2620",
+           "abbreviation": "EGY",
+           "displayName": "Egypt",
+           "name": "Egypt"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": -310,
+          "spreadOdds": 100,
+          "team": {
+           "id": "202",
+           "abbreviation": "ARG",
+           "displayName": "Argentina",
+           "name": "Argentina"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 390
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34353902",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "-1.5",
+            "odds": "+110"
+           },
+           "close": {
+            "line": "-1.5",
+            "odds": "+100"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "+1.5",
+            "odds": "-140"
+           },
+           "close": {
+            "line": "+1.5",
+            "odds": "-125"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "-300"
+           },
+           "close": {
+            "odds": "-310"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "+1000"
+           },
+           "close": {
+            "odds": "+1000"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+360"
+           },
+           "close": {
+            "odds": "+390"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "-105"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "+100"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-120"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "-125"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 5400,
+         "addedClock": 660,
+         "displayClock": "90'+11'",
+         "period": 2,
+         "displayPeriod": "2nd",
+         "type": {
+          "id": "28",
+          "name": "STATUS_FULL_TIME",
+          "state": "post",
+          "completed": true,
+          "description": "Full Time",
+          "detail": "FT",
+          "shortDetail": "FT"
+         }
+        },
+        "competitors": [
+         {
+          "id": "2620",
+          "guid": "1326a2f9-1a26-1d6d-67b2-bb34d1c726ce",
+          "uid": "s:600~t:2620",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "advance": false,
+          "form": "LWDWD",
+          "displayName": "Egypt",
+          "name": "Egypt",
+          "abbreviation": "EGY",
+          "location": "Egypt",
+          "color": "D20300",
+          "alternateColor": "FFFFFF",
+          "score": "2",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "ff0000",
+           "alternateColor": "000000"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/2620/egypt",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/2620/egypt",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2620&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/2620/egypt",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2620&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/2620/egypt",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2620&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2620&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/2620/egypt",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:2620&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/egy.png",
+          "goalieSummary": [
+           {
+            "displayValue": "3 GA, 4 SV",
+            "athlete": {
+             "id": "308915",
+             "displayName": "Mostafa Shoubir",
+             "shortName": "M. Shoubir",
+             "fullName": "Mostafa Shoubir",
+             "lastName": "Shoubir",
+             "jersey": "23",
+             "team": {
+              "id": "2620"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "202",
+          "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256",
+          "uid": "s:600~t:202",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": true,
+          "advance": true,
+          "form": "WWWWW",
+          "displayName": "Argentina",
+          "name": "Argentina",
+          "abbreviation": "ARG",
+          "location": "Argentina",
+          "color": "74acdf",
+          "alternateColor": "173E69",
+          "score": "3",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "ffffff",
+           "alternateColor": "afd9fb"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/202/argentina",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/202/argentina",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:202&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/202/argentina",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:202&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/202/argentina",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:202&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:202&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/202/argentina",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:202&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/arg.png",
+          "goalieSummary": [
+           {
+            "displayValue": "2 GA, 0 SV",
+            "athlete": {
+             "id": "158626",
+             "displayName": "Emiliano Martínez",
+             "shortName": "E. Martínez",
+             "fullName": "Emiliano Martínez",
+             "lastName": "Martínez",
+             "jersey": "23",
+             "team": {
+              "id": "202"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832652",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760509",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       },
+       {
+        "id": "760508",
+        "uid": "s:600~l:606~e:760508~c:760508",
+        "guid": "1533108b-fbda-38f8-8713-4c983e8eb49a",
+        "date": "2026-07-07T20:00:00Z",
+        "timeValid": true,
+        "recent": false,
+        "name": "2026 FIFA World Cup",
+        "shortName": "2026 FIFA World Cup",
+        "notes": [
+         {
+          "text": "Switzerland advance 4-3 on penalties",
+          "headline": "Switzerland advance 4-3 on penalties",
+          "type": "event"
+         },
+         {
+          "text": "Switzerland advance 4-3 on penalties",
+          "headline": "Switzerland advance 4-3 on penalties",
+          "type": "event-long"
+         },
+         {
+          "source": "38",
+          "date": "2026-07-09T09:36Z",
+          "text": "Switzerland advances.",
+          "headline": "Switzerland advances.",
+          "type": "event-ingest-note"
+         }
+        ],
+        "links": [
+         {
+          "rel": [
+           "summary",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/match/_/gameId/760508/colombia-switzerland",
+          "text": "Summary"
+         },
+         {
+          "rel": [
+           "recap",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/report/_/gameId/760508",
+          "text": "Report"
+         },
+         {
+          "rel": [
+           "stats",
+           "desktop",
+           "event"
+          ],
+          "href": "https://www.espn.com/soccer/matchstats/_/gameId/760508",
+          "text": "Statistics"
+         }
+        ],
+        "gamecastAvailable": true,
+        "playByPlayAvailable": true,
+        "commentaryAvailable": true,
+        "wallclockAvailable": true,
+        "fauxcastAvailable": false,
+        "onWatch": false,
+        "competitionId": "760508",
+        "location": "BC Place",
+        "season": 2026,
+        "seasonStartDate": "2026-06-11T04:00:00Z",
+        "seasonEndDate": "2026-07-09T03:59:00Z",
+        "seasonType": "3",
+        "playoff": true,
+        "seasonTypeHasGroups": false,
+        "group": {
+         "groupId": "3",
+         "name": "Round of 16",
+         "abbreviation": "Round of 16",
+         "shortName": "Round of 16"
+        },
+        "altGameNote": "FIFA World Cup, Round of 16",
+        "link": "https://www.espn.com/soccer/match/_/gameId/760508/colombia-switzerland",
+        "status": "post",
+        "summary": "FT-Pens",
+        "period": 5,
+        "clock": "120'",
+        "addedClock": 0,
+        "matchNumber": 96,
+        "note": "Switzerland advance 4-3 on penalties",
+        "broadcasts": [
+         {
+          "typeId": 1,
+          "priority": 1,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 148,
+          "broadcastId": 148,
+          "name": "FOX",
+          "shortName": "FOX",
+          "callLetters": "FOX",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 1,
+          "priority": 2,
+          "type": "TV",
+          "isNational": true,
+          "broadcasterId": 488,
+          "broadcastId": 488,
+          "name": "Telemundo",
+          "shortName": "Tele",
+          "callLetters": "Tele",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         },
+         {
+          "typeId": 4,
+          "priority": 3,
+          "type": "STREAMING",
+          "isNational": true,
+          "broadcasterId": 1286,
+          "broadcastId": 1286,
+          "name": "FOX One",
+          "shortName": "FOX One",
+          "callLetters": "FOX One",
+          "lang": "en",
+          "region": "us",
+          "slug": ""
+         }
+        ],
+        "broadcast": "FOX/Tele/FOX One",
+        "odds": {
+         "details": "COL +140",
+         "overUnder": 2.5,
+         "spread": 0.5,
+         "overOdds": 135,
+         "underOdds": -170,
+         "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+            "rel": [
+             "light"
+            ]
+           },
+           {
+            "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+            "rel": [
+             "dark"
+            ]
+           }
+          ]
+         },
+         "home": {
+          "moneyLine": 250
+         },
+         "away": {
+          "moneyLine": 140
+         },
+         "draw": {
+          "moneyLine": 185
+         },
+         "awayTeamOdds": {
+          "favorite": true,
+          "favoriteAtOpen": true,
+          "underdog": false,
+          "moneyLine": 140,
+          "spreadOdds": 130,
+          "team": {
+           "id": "208",
+           "abbreviation": "COL",
+           "displayName": "Colombia",
+           "name": "Colombia"
+          }
+         },
+         "homeTeamOdds": {
+          "favorite": false,
+          "favoriteAtOpen": false,
+          "underdog": true,
+          "moneyLine": 250,
+          "spreadOdds": -165,
+          "team": {
+           "id": "475",
+           "abbreviation": "SUI",
+           "displayName": "Switzerland",
+           "name": "Switzerland"
+          }
+         },
+         "drawOdds": {
+          "moneyLine": 185
+         },
+         "links": [
+          {
+           "language": "en-US",
+           "rel": [
+            "game",
+            "desktop",
+            "bets"
+           ],
+           "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34354013",
+           "text": "Game",
+           "shortText": "Game",
+           "isExternal": true,
+           "isPremium": false
+          }
+         ],
+         "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+           "open": {
+            "line": "+0.5",
+            "odds": "-150"
+           },
+           "close": {
+            "line": "+0.5",
+            "odds": "-165"
+           }
+          },
+          "away": {
+           "open": {
+            "line": "-0.5",
+            "odds": "+120"
+           },
+           "close": {
+            "line": "-0.5",
+            "odds": "+130"
+           }
+          }
+         },
+         "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+           "open": {
+            "odds": "+235"
+           },
+           "close": {
+            "odds": "+250"
+           }
+          },
+          "away": {
+           "open": {
+            "odds": "+125"
+           },
+           "close": {
+            "odds": "+140"
+           }
+          },
+          "draw": {
+           "open": {
+            "odds": "+225"
+           },
+           "close": {
+            "odds": "+185"
+           }
+          }
+         },
+         "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+           "open": {
+            "line": "o2.5",
+            "odds": "+130"
+           },
+           "close": {
+            "line": "o2.5",
+            "odds": "+135"
+           }
+          },
+          "under": {
+           "open": {
+            "line": "u2.5",
+            "odds": "-160"
+           },
+           "close": {
+            "line": "u2.5",
+            "odds": "-170"
+           }
+          }
+         },
+         "header": {
+          "logo": {
+           "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+           "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+           "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+           "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+          },
+          "text": "Game Odds"
+         }
+        },
+        "fullStatus": {
+         "clock": 7200,
+         "addedClock": 0,
+         "displayClock": "120'",
+         "period": 5,
+         "displayPeriod": "3rd OT",
+         "type": {
+          "id": "47",
+          "name": "STATUS_FINAL_PEN",
+          "state": "post",
+          "completed": true,
+          "description": "Final Score - After Penalties",
+          "detail": "FT-Pens",
+          "shortDetail": "FT-Pens"
+         }
+        },
+        "competitors": [
+         {
+          "id": "208",
+          "guid": "7f32673e-0a85-dbdd-3380-19cfe5d6c009",
+          "uid": "s:600~t:208",
+          "type": "team",
+          "order": 1,
+          "homeAway": "away",
+          "winner": false,
+          "advance": false,
+          "form": "LWDWW",
+          "displayName": "Colombia",
+          "name": "Colombia",
+          "abbreviation": "COL",
+          "location": "Colombia",
+          "color": "fbd632",
+          "alternateColor": "21418c",
+          "score": "0",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "e9d655",
+           "alternateColor": "067ad3"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/208/colombia",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/208/colombia",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:208&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/208/colombia",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:208&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/208/colombia",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:208&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:208&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/208/colombia",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:208&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "shootoutScore": 3,
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/col.png",
+          "goalieSummary": [
+           {
+            "displayValue": "0 GA, 2 SV",
+            "athlete": {
+             "id": "185147",
+             "displayName": "Camilo Vargas",
+             "shortName": "C. Vargas",
+             "fullName": "Camilo Vargas",
+             "lastName": "Vargas",
+             "jersey": "12",
+             "team": {
+              "id": "208"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         },
+         {
+          "id": "475",
+          "guid": "fe8cdad6-2fb3-84d7-e08a-0178e4112534",
+          "uid": "s:600~t:475",
+          "type": "team",
+          "order": 0,
+          "homeAway": "home",
+          "winner": true,
+          "advance": true,
+          "form": "WWWWD",
+          "displayName": "Switzerland",
+          "name": "Switzerland",
+          "abbreviation": "SUI",
+          "location": "Switzerland",
+          "color": "FF0000",
+          "alternateColor": "BCECAC",
+          "score": "0",
+          "isNational": true,
+          "uniform": {
+           "type": "home",
+           "color": "ff0000"
+          },
+          "links": [
+           {
+            "language": "en-US",
+            "rel": [
+             "clubhouse",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/_/id/475/switzerland",
+            "text": "Clubhouse",
+            "shortText": "Clubhouse",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/stats/_/id/475/switzerland",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "stats",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:475&section=stats",
+            "text": "Stats",
+            "shortText": "Stats",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/fixtures/_/id/475/switzerland",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "schedule",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:475&section=scores",
+            "text": "Fixtures",
+            "shortText": "Fixtures",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/results/_/id/475/switzerland",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "results",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:475&section=scores",
+            "text": "Results",
+            "shortText": "Results",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/standings/_/league/fifa.world",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "standings",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:475&section=standings",
+            "text": "Standings",
+            "shortText": "Standings",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "desktop",
+             "team"
+            ],
+            "href": "https://www.espn.com/soccer/team/squad/_/id/475/switzerland",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           },
+           {
+            "language": "en-US",
+            "rel": [
+             "squad",
+             "sportscenter",
+             "app",
+             "team"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~t:475&section=squad",
+            "text": "Squad",
+            "shortText": "Squad",
+            "isExternal": false,
+            "isPremium": false,
+            "isHidden": false
+           }
+          ],
+          "record": "0-0",
+          "records": [],
+          "shootoutScore": 4,
+          "recordStats": {
+           "wins": {
+            "value": 0
+           },
+           "losses": {
+            "value": 0
+           }
+          },
+          "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
+          "logoDark": "https://a.espncdn.com/i/teamlogos/countries/500-dark/sui.png",
+          "goalieSummary": [
+           {
+            "displayValue": "0 GA, 3 SV",
+            "athlete": {
+             "id": "238544",
+             "displayName": "Gregor Kobel",
+             "shortName": "G. Kobel",
+             "fullName": "Gregor Kobel",
+             "lastName": "Kobel",
+             "jersey": "1",
+             "team": {
+              "id": "475"
+             },
+             "position": "G"
+            }
+           }
+          ]
+         }
+        ],
+        "neutralSite": false,
+        "conferenceCompetition": false,
+        "pccEventId": "401832651",
+        "onDisneyNetwork": false,
+        "appLinks": [
+         {
+          "rel": [
+           "summary",
+           "sportscenter",
+           "app",
+           "event"
+          ],
+          "href": "sportscenter://x-callback-url/showGame?sportName=soccer&leagueAbbrev=fifa.world&gameId=760508",
+          "text": "Summary",
+          "shortText": "Summary"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "frames": [
+  {
+   "mid": 65266,
+   "op": "H"
+  }
+ ]
+}

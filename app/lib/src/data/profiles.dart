@@ -52,6 +52,11 @@ class Registry {
   /// Test hook: inject a registry as the cached instance.
   static set instance(Registry r) => _cached = r;
 
+  /// Whether [load] has completed — for the rare synchronous caller that must
+  /// degrade gracefully instead of throwing (e.g. capability gates evaluated
+  /// from widget tests that never load the registry).
+  static bool get loaded => _cached != null;
+
   /// Find a node by key across leagues -> profiles -> families (in that order).
   Map<String, dynamic>? findNode(String key) {
     final n = leagues[key] ?? profiles[key] ?? families[key];

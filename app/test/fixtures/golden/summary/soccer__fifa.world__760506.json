@@ -12964,67 +12964,78 @@
             "id": "238903",
             "name": "D. Costa",
             "pos": "G",
-            "jersey": "1"
+            "jersey": "1",
+            "formationPlace": "1"
           },
           {
             "id": "337011",
             "name": "R. Veiga",
             "pos": "CD-L",
-            "jersey": "13"
+            "jersey": "13",
+            "formationPlace": "6"
           },
           {
             "id": "234878",
             "name": "R. Dias",
             "pos": "CD-R",
-            "jersey": "3"
+            "jersey": "3",
+            "formationPlace": "5"
           },
           {
             "id": "290591",
             "name": "N. Mendes",
             "pos": "LB",
-            "jersey": "25"
+            "jersey": "25",
+            "formationPlace": "3"
           },
           {
             "id": "176399",
             "name": "J. Cancelo",
             "pos": "RB",
-            "jersey": "20"
+            "jersey": "20",
+            "formationPlace": "2"
           },
           {
             "id": "124091",
             "name": "B. Fernandes",
             "pos": "AM",
-            "jersey": "8"
+            "jersey": "8",
+            "formationPlace": "10"
           },
           {
             "id": "355061",
             "name": "J. Neves",
             "pos": "LM",
-            "jersey": "15"
+            "jersey": "15",
+            "formationPlace": "4"
           },
           {
             "id": "288897",
             "name": "Vitinha",
             "pos": "RM",
-            "jersey": "23"
+            "jersey": "23",
+            "formationPlace": "8"
           },
           {
             "id": "22774",
             "name": "C. Ronaldo",
             "pos": "F",
-            "jersey": "7"
+            "jersey": "7",
+            "formationPlace": "9"
           },
           {
             "id": "276350",
             "name": "J. Félix",
             "pos": "AM-L",
-            "jersey": "11"
+            "jersey": "11",
+            "formationPlace": "11"
           },
           {
             "id": "256115",
             "name": "P. Neto",
             "pos": "AM-R",
-            "jersey": "18"
+            "jersey": "18",
+            "formationPlace": "7"
           }
         ],
         "bench": [
@@ -13129,67 +13140,78 @@
             "id": "222375",
             "name": "U. Simón",
             "pos": "G",
-            "jersey": "23"
+            "jersey": "23",
+            "formationPlace": "1"
           },
           {
             "id": "159317",
             "name": "A. Laporte",
             "pos": "CD-L",
-            "jersey": "14"
+            "jersey": "14",
+            "formationPlace": "6"
           },
           {
             "id": "368992",
             "name": "P. Cubarsí",
             "pos": "CD-R",
-            "jersey": "22"
+            "jersey": "22",
+            "formationPlace": "5"
           },
           {
             "id": "259910",
             "name": "M. Cucurella",
             "pos": "LB",
-            "jersey": "24"
+            "jersey": "24",
+            "formationPlace": "3"
           },
           {
             "id": "268533",
             "name": "P. Porro",
             "pos": "RB",
-            "jersey": "12"
+            "jersey": "12",
+            "formationPlace": "2"
           },
           {
             "id": "227765",
             "name": "D. Olmo",
             "pos": "AM",
-            "jersey": "10"
+            "jersey": "10",
+            "formationPlace": "10"
           },
           {
             "id": "250465",
             "name": "Pedri",
             "pos": "LM",
-            "jersey": "20"
+            "jersey": "20",
+            "formationPlace": "4"
           },
           {
             "id": "231828",
             "name": "Rodri",
             "pos": "RM",
-            "jersey": "16"
+            "jersey": "16",
+            "formationPlace": "8"
           },
           {
             "id": "229018",
             "name": "M. Oyarzabal",
             "pos": "F",
-            "jersey": "21"
+            "jersey": "21",
+            "formationPlace": "9"
           },
           {
             "id": "297373",
             "name": "Á. Baena",
             "pos": "AM-L",
-            "jersey": "15"
+            "jersey": "15",
+            "formationPlace": "11"
           },
           {
             "id": "362150",
             "name": "L. Yamal",
             "pos": "AM-R",
-            "jersey": "19"
+            "jersey": "19",
+            "formationPlace": "7"
           }
         ],
         "bench": [
@@ -13319,6 +13341,527 @@
         "side": "away",
         "abbr": "ESP",
         "form": "WDWWW"
+      }
+    ],
+    "commentary": [
+      {
+        "text": "Lineups are announced and players are warming up.",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "text": "First Half begins.",
+        "type": "Kickoff",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "2'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "João Neves (Portugal) wins a free kick on the left wing.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "2'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Lamine Yamal (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "3'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt saved. Mikel Oyarzabal (Spain) left footed shot from outside the box is saved in the centre of the goal by Diogo Costa (Portugal).",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "7'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Attempt missed. João Cancelo (Portugal) right footed shot from the right side of the box is too high. Assisted by Nuno Mendes.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "8'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt missed. Mikel Oyarzabal (Spain) left footed shot from the centre of the box is close, but misses to the right. Assisted by Dani Olmo with a through ball following a fast break.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "9'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Corner, Portugal. Conceded by Pedri.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "10'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Attempt blocked. Pedro Neto (Portugal) left footed shot from outside the box is blocked.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "11'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Foul by João Félix (Portugal).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "11'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Pedro Porro (Spain) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "12'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Attempt saved. Cristiano Ronaldo (Portugal) right footed shot from the right side of the box is saved in the centre of the goal by Unai Simón (Spain). Assisted by Bruno Fernandes.",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "12'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Corner, Portugal. Conceded by Unai Simón.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "14'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt missed. Álex Baena (Spain) right footed shot from outside the box is high and wide to the right.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "16'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt saved. Lamine Yamal (Spain) left footed shot from the right side of the box is saved in the bottom left corner by Diogo Costa (Portugal). Assisted by Rodri.",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "16'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt saved. Álex Baena (Spain) right footed shot from the left side of the box is saved in the bottom right corner by Diogo Costa (Portugal).",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "16'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Corner, Spain. Conceded by Diogo Costa.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "19'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Pedro Neto (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "19'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Álex Baena (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "21'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Offside, Portugal. Bruno Fernandes is caught offside.",
+        "type": "Offside",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "22'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Foul by João Cancelo (Portugal).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "22'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Álex Baena (Spain) wins a free kick on the left wing.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "23'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt missed. Pedro Porro (Spain) right footed shot from outside the box misses to the left following a set piece situation.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "23'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Delay in match for a drinks break.",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "26'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "29'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Handball by Pedro Neto (Portugal).",
+        "type": "Handball",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "30'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Corner, Spain. Conceded by Nuno Mendes.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "31'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt missed. Dani Olmo (Spain) header from the centre of the box misses to the left following a corner.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "31'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Cristiano Ronaldo (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "31'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Aymeric Laporte (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "35'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "João Félix (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "35'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Lamine Yamal (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "37'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Attempt saved. Cristiano Ronaldo (Portugal) right footed shot from the left side of the six yard box is saved in the centre of the goal by Unai Simón (Spain).",
+        "type": "Shot On Target",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "37'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Delay in match because of an injury João Félix (Portugal).",
+        "type": "Start Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "38'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Delay over. They are ready to continue.",
+        "type": "End Delay",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "40'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "João Félix (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "40'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Pedro Porro (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "40'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Corner, Portugal. Conceded by Álex Baena.",
+        "type": "Corner Awarded",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "41'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Attempt blocked. Nuno Mendes (Portugal) left footed shot from outside the box is blocked. Assisted by João Félix.",
+        "type": "Shot Blocked",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Attempt missed. Rodri (Spain) right footed shot from outside the box is too high. Assisted by Mikel Oyarzabal.",
+        "type": "Shot Off Target",
+        "scoring": false
+      },
+      {
+        "clock": "45'+1'",
+        "text": "Fourth official has announced 6 minutes of added time.",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+2'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Offside, Spain. Lamine Yamal is caught offside.",
+        "type": "Offside",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+2'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Foul by Rúben Dias (Portugal).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+2'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Dani Olmo (Spain) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+3'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "João Félix (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+3'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Pau Cubarsí (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+6'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Foul by João Félix (Portugal).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+6'",
+        "side": "home",
+        "teamAbbr": "POR",
+        "text": "Pedro Porro (Spain) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 1,
+        "periodLabel": "1st Half",
+        "clock": "45'+7'",
+        "text": "First Half ends, Portugal 0, Spain 0.",
+        "type": "Halftime",
+        "scoring": false
+      },
+      {
+        "clock": "45'",
+        "text": "Second Half begins Portugal 0, Spain 0.",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "48'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Cristiano Ronaldo (Portugal) wins a free kick in the attacking half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "48'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Dani Olmo (Spain).",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "50'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Nuno Mendes (Portugal) wins a free kick in the defensive half.",
+        "type": "Foul",
+        "scoring": false
+      },
+      {
+        "period": 2,
+        "periodLabel": "2nd Half",
+        "clock": "50'",
+        "side": "away",
+        "teamAbbr": "ESP",
+        "text": "Foul by Lamine Yamal (Spain).",
+        "type": "Foul",
+        "scoring": false
       }
     ],
     "plays": [

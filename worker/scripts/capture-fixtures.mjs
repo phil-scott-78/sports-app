@@ -184,9 +184,20 @@ function trimSummary(raw) {
     })),
   };
   const slimPlay = (p) => {
-    const o = pick(p, ['text', 'shortText', 'awayScore', 'homeScore', 'scoringPlay',
+    // `id` is the winprobability[].playId join key — the win-prob scrub's
+    // period/clock/score context dies silently without it.
+    const o = pick(p, ['id', 'text', 'shortText', 'awayScore', 'homeScore', 'scoringPlay',
       // baseball detail: pitch rows (§3e) + outs for the half-inning stat strip (§3c).
-      'atBatId', 'summaryType', 'pitchVelocity', 'pitchCount', 'resultCount', 'outs']);
+      'atBatId', 'summaryType', 'pitchVelocity', 'pitchCount', 'resultCount', 'outs',
+      // baseball strike-zone plot (§3e turn 8): summary.js buildAtBats reads
+      // pitchCoordinate {x,y} off every 'P' row — live captures only, but the
+      // trimmer must keep it or a recapture silently drops the plot.
+      'pitchCoordinate',
+      // baseball batted-ball location + trajectory ('F'/'G'/...) — spray chart
+      // raw material (not yet normalizer-read; kept so live fixtures retain it).
+      'hitCoordinate', 'trajectory',
+      // soccer: team-relative pitch coords on commentary plays (shot-map fallback).
+      'fieldPositionX', 'fieldPositionY']);
     // period.type = 'Top'|'Bottom' drives the §3c half-inning grouping (canonical play.half).
     if (p.period?.number != null) o.period = { number: p.period.number, displayValue: p.period.displayValue, ...(p.period.type ? { type: p.period.type } : {}) };
     if (p.clock?.displayValue) o.clock = { displayValue: p.clock.displayValue };
@@ -219,6 +230,25 @@ function trimSummary(raw) {
     });
   }
   if (Array.isArray(raw.rosters)) out.rosters = raw.rosters;
+  // soccer match leaders (shots/passes/interventions/saves) → GameSummary.matchLeaders.
+  // Slimmed to what buildMatchLeaders reads: team join, category names, the top
+  // entry's athlete identity + the one statistics row matching the category key.
+  if (Array.isArray(raw.leaders)) {
+    out.leaders = raw.leaders.map((b) => ({
+      team: pick(b.team || {}, ['id', 'abbreviation']),
+      leaders: (b.leaders || []).map((c) => ({
+        ...pick(c, ['name', 'displayName']),
+        leaders: (c.leaders || []).slice(0, 1).map((en) => ({
+          ...pick(en, ['displayValue']),
+          athlete: {
+            ...pick(en.athlete || {}, ['id', 'shortName', 'displayName', 'fullName', 'jersey']),
+            position: pick(en.athlete?.position || {}, ['abbreviation', 'name']),
+          },
+          statistics: (en.statistics || []).filter((s) => s.name === c.name).map((s) => pick(s, ['name', 'value', 'displayValue'])),
+        })),
+      })),
+    }));
+  }
   // gridiron drives: keep the row fields buildDrives reads + slimmed nested plays
   // (they become the flattened `plays` feed — see summary.js buildPlays).
   if (Array.isArray(raw.drives?.previous)) {
@@ -258,7 +288,10 @@ function trimSummary(raw) {
     }));
   }
   if (Array.isArray(raw.winprobability) && raw.winprobability.length) {
-    out.winprobability = [raw.winprobability[raw.winprobability.length - 1]]; // last point only
+    // FULL arc (the scrubbable win-prob chart), each point slimmed to the three
+    // fields buildWinProbability reads.
+    out.winprobability = raw.winprobability.map((e) =>
+      pick(e, ['playId', 'homeWinPercentage', 'tiePercentage']));
   }
   return out;
 }

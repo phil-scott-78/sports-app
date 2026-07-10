@@ -1,0 +1,353 @@
+<!-- @dsCard group="Screens" name="Team page" subtitle="Identity header · next game · form · leaders · stat tiles" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ——— card-local ——— */
+body { padding: 24px; }
+.frame {
+  max-width: 428px; margin: 0 auto;
+  border: 1px solid var(--divider); border-radius: 24px; overflow: hidden;
+  background: var(--bg);
+}
+.screen-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px var(--page-margin) 0;
+}
+.screen-head .chev { font-size: 22px; color: var(--text-dim); line-height: 1; width: 22px; }
+.screen-head .ttl { font: 600 12px var(--font-copy); letter-spacing: .04em; color: var(--text-dim); }
+.screen-head .sp { width: 22px; }
+
+/* identity header */
+.identity { padding: 18px var(--page-margin) 10px; display: flex; align-items: center; gap: 16px; }
+.identity .ava {
+  width: 80px; height: 80px; border-radius: 50%; flex: none;
+  background: rgba(85,37,131,.22);
+  display: flex; align-items: center; justify-content: center;
+  font: 700 26px var(--font-score); color: #B18BE8; letter-spacing: .02em;
+}
+.identity .nm { font: 700 34px/0.95 var(--font-score); letter-spacing: .01em; }
+.identity .cap { margin-top: 7px; display: flex; align-items: center; gap: 8px; font: 400 12.5px var(--font-copy); color: var(--text-dim); }
+.identity .cap .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.identity .cap .rec { font-weight: 600; color: var(--text); }
+.identity .star { margin-left: auto; font-size: 24px; color: var(--gold); flex: none; }
+
+.chip-nav { display: flex; gap: var(--chip-gap); padding: 8px var(--page-margin) 4px; overflow: hidden; }
+
+.mcard { margin: var(--gap-card) var(--page-margin) 0; }
+
+/* next game */
+.ng { padding: 16px; }
+.ng .matchup { display: flex; align-items: center; justify-content: space-between; }
+.ng .side { display: flex; align-items: center; gap: 10px; }
+.ng .abbr { font: 700 22px/1 var(--font-score); }
+.ng .abbr--trail { color: var(--text-dim); }
+.ng .vs { font: 400 12px var(--font-copy); color: var(--text-faint); }
+.ng .chips { margin-top: 12px; display: flex; gap: 10px; font: 400 11.5px var(--font-copy); color: var(--text-dim); }
+.ng .chips span { background: var(--sheet); border-radius: 8px; padding: 6px 10px; }
+
+/* form */
+.form-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.form-head .sum { font: 600 11.5px var(--font-copy); color: var(--green); }
+.form-pills { display: flex; gap: 8px; }
+.fpill {
+  flex: 1; text-align: center; padding: 8px 0; border-radius: 9px;
+  font: 700 13px var(--font-score);
+}
+.fpill--w { background: rgba(63,169,107,.16); color: var(--green); }
+.fpill--l { background: rgba(229,72,77,.16); color: var(--live); }
+
+/* leaders */
+.ldr-row { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--divider); }
+.ldr-row .ava {
+  width: 38px; height: 38px; border-radius: 50%; flex: none;
+  background: rgba(85,37,131,.25);
+  display: flex; align-items: center; justify-content: center;
+  font: 700 13px var(--font-score); color: #B18BE8;
+}
+.ldr-row .who { flex: 1; min-width: 0; }
+.ldr-row .who .n { font: 600 14px var(--font-copy); }
+.ldr-row .who .c { font: 400 11px var(--font-copy); color: var(--text-faint); margin-top: 1px; }
+.ldr-row .val { text-align: right; }
+.ldr-row .val .v { font: 700 22px var(--font-score); font-variant-numeric: tabular-nums; }
+.ldr-row .val .k { font: 400 10px var(--font-copy); color: var(--text-faint); letter-spacing: .06em; }
+.ldr-row .chev { font-size: 16px; color: var(--text-faint); flex: none; }
+
+/* stat tiles */
+.tiles-label { margin: 18px var(--page-margin) 0; }
+.tiles { margin: 10px var(--page-margin) 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tile { background: var(--track); border-radius: 14px; padding: 14px 12px; position: relative; }
+.tile .v { font: 700 24px var(--font-score); font-variant-numeric: tabular-nums; }
+.tile .k { font: 400 11px var(--font-copy); color: var(--text-dim); margin-top: 3px; }
+.rank {
+  position: absolute; top: 10px; right: 12px;
+  font: 700 10px var(--font-copy); letter-spacing: .05em;
+  border-radius: var(--r-pill); padding: 1px 7px;
+}
+.rank--good { background: var(--rank-good-bg); color: var(--rank-good-fg); }
+.rank--mid { background: var(--rank-mid-bg); color: var(--rank-mid-fg); }
+.rank--bad { background: var(--rank-bad-bg); color: var(--rank-bad-fg); }
+.scroll-pad { height: var(--scroll-bottom); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="screen-head">
+    <span class="chev">‹</span>
+    <span class="ttl">TEAM</span>
+    <span class="sp"></span>
+  </div>
+
+  <!-- identity header -->
+  <div class="identity">
+    <span class="ava">LAL</span>
+    <div style="min-width:0">
+      <div class="nm">LOS ANGELES<br>LAKERS</div>
+      <div class="cap">
+        <span class="dot" style="background:#552583"></span>
+        <span class="rec tab">41–24</span><span>·</span><span>3rd West</span>
+      </div>
+    </div>
+    <span class="star">★</span>
+  </div>
+
+  <!-- chip nav -->
+  <div class="chip-nav">
+    <span class="chip chip--active">Overview</span>
+    <span class="chip">Games</span>
+    <span class="chip">Stats</span>
+    <span class="chip">Roster</span>
+  </div>
+
+  <!-- NEXT GAME -->
+  <div class="card ng mcard">
+    <div class="card-label-faint" style="margin-bottom:12px">NEXT GAME · SAT 7:30 PM</div>
+    <div class="matchup">
+      <div class="side">
+        <span class="team-bar team-bar--hero" style="background:#552583"></span>
+        <span class="abbr">LAL</span>
+      </div>
+      <span class="vs">vs</span>
+      <div class="side">
+        <span class="abbr abbr--trail">GSW</span>
+        <span class="team-bar team-bar--hero" style="background:#1D428A"></span>
+      </div>
+    </div>
+    <div class="chips">
+      <span>Crypto.com Arena</span>
+      <span class="tab">Line LAL −4.5</span>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="card mcard" style="padding:16px">
+    <div class="form-head">
+      <span class="card-label-faint">LAST 5</span>
+      <span class="sum">Won 4 of 5</span>
+    </div>
+    <div class="form-pills">
+      <span class="fpill fpill--w">W</span>
+      <span class="fpill fpill--w">W</span>
+      <span class="fpill fpill--l">L</span>
+      <span class="fpill fpill--w">W</span>
+      <span class="fpill fpill--w">W</span>
+    </div>
+  </div>
+
+  <!-- TEAM LEADERS -->
+  <div class="card mcard" style="padding:16px 16px 6px">
+    <div class="card-label-faint" style="padding-bottom:6px">TEAM LEADERS</div>
+    <div class="ldr-row">
+      <span class="ava">LD</span>
+      <div class="who">
+        <div class="n">L. Dončić</div>
+        <div class="c">LAL · G</div>
+      </div>
+      <div class="val"><span class="v">28.9</span><div class="k">PPG</div></div>
+      <span class="chev">›</span>
+    </div>
+    <div class="ldr-row">
+      <span class="ava">DR</span>
+      <div class="who">
+        <div class="n">D. Reaves</div>
+        <div class="c">LAL · G</div>
+      </div>
+      <div class="val"><span class="v">7.8</span><div class="k">APG</div></div>
+      <span class="chev">›</span>
+    </div>
+    <div class="ldr-row">
+      <span class="ava">JH</span>
+      <div class="who">
+        <div class="n">J. Hayes</div>
+        <div class="c">LAL · C</div>
+      </div>
+      <div class="val"><span class="v">10.4</span><div class="k">RPG</div></div>
+      <span class="chev">›</span>
+    </div>
+  </div>
+
+  <!-- stat tiles -->
+  <div class="card-label-faint tiles-label">SEASON</div>
+  <div class="tiles">
+    <div class="tile">
+      <span class="rank rank--good">4TH</span>
+      <div class="v">118.2</div>
+      <div class="k">Points per game</div>
+    </div>
+    <div class="tile">
+      <span class="rank rank--mid">15TH</span>
+      <div class="v">113.4</div>
+      <div class="k">Opp points per game</div>
+    </div>
+    <div class="tile">
+      <span class="rank rank--good">6TH</span>
+      <div class="v">46.1</div>
+      <div class="k">Rebounds per game</div>
+    </div>
+    <div class="tile">
+      <span class="rank rank--bad">24TH</span>
+      <div class="v">15.3</div>
+      <div class="k">Turnovers per game</div>
+    </div>
+  </div>
+
+  <div class="scroll-pad"></div>
+</div>
+</body>
+</html>

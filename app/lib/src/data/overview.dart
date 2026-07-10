@@ -83,3 +83,37 @@ Map<String, dynamic> classifyLeague(dynamic raw, DateTime now) {
   if (dPrev != null) return {'state': 'recent', 'detail': 'Last ${_mdOf(prev!)}', 'live': false};
   return {'state': 'offseason', 'detail': 'Off-season', 'live': false};
 }
+
+final _uidLeagueId = RegExp(r'(?:^|~)l:(\d+)(?:~|$)');
+
+/// Port of worker/src/overview.js classifyMergedSlate: a merged `<sport>/all`
+/// scoreboard (capability `hasAllScoreboard`) → per-ESPN-league-id pulse
+/// entries, POSITIVE states only (live | today). The merged feed carries no
+/// per-league season/calendar, so leagues without a game in the slate stay
+/// silent — the per-league classifyLeague fan-out supplies their captions.
+/// League ids come from each event's uid (`s:600~l:700~e:…`).
+Map<String, dynamic> classifyMergedSlate(dynamic raw, DateTime now) {
+  final today = easternDayMs(now);
+  final events = field(raw, 'events') is List ? field(raw, 'events') as List : const [];
+  final acc = <String, List<bool>>{}; // id → [anyLive, anyToday], first-seen order
+  for (final e in events) {
+    final uid = field(e, 'uid');
+    final m = _uidLeagueId.firstMatch(uid is String ? uid : '');
+    if (m == null) continue;
+    final cur = acc.putIfAbsent(m.group(1)!, () => [false, false]);
+    // An in-progress event is live NOW regardless of its listed date (golf/MMA
+    // date to their start day); a dated-today event marks the day's slate.
+    final st = field(field(field(first(field(e, 'competitions')), 'status'), 'type'), 'state');
+    if (st == 'in') cur[0] = true;
+    if (easternDayMs(field(e, 'date')) == today) cur[1] = true;
+  }
+  final out = <String, dynamic>{};
+  acc.forEach((id, s) {
+    if (s[0]) {
+      out[id] = {'state': 'live', 'detail': 'Live now', 'live': true};
+    } else if (s[1]) {
+      out[id] = {'state': 'today', 'detail': 'Games today', 'live': false};
+    }
+  });
+  return out;
+}

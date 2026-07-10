@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../inning_recap.dart';
+import '../lead_story.dart';
 import '../models.dart';
 import '../theme.dart';
 import '../util.dart';
@@ -7,16 +9,36 @@ import 'widgets.dart';
 /// Sport-specific "situation" cards — the one card on the live detail screen
 /// that changes shape per sport. Selection is data-driven (which optional
 /// canonical fields are present), never by sport name:
-///   situation.hasBaseball  → count + diamond + outs
+///   situation.hasBaseball  → the batter-vs-pitcher duel (turn 8)
 ///   situation.hasGridiron  → down & distance + field position bar
 ///   competition.events     → match timeline (soccer/rugby cheap feed)
 ///   periodScores(cricket)  → the chase equation
 /// Returns null when nothing applies (the detail page just omits the card).
-Widget? situationCardFor(Competition comp) {
+/// [liveAtBat] (baseball, rich tier) upgrades the duel card with the pitcher's
+/// game pitch count; everything else on the card is cheap-tier.
+/// [recap]/[aiRecap] (baseball, between innings) feed the Due Up card's
+/// last-half-inning footer — [aiRecap] (the optional AI sentence) supersedes
+/// the deterministic [recap.line] when it has arrived.
+/// [leadPlays] (basketball, rich tier) — the summary's scoring plays with
+/// running scores — feeds the clock-&-run card's run/tidbit slot.
+Widget? situationCardFor(Competition comp,
+    {AtBat? liveAtBat,
+    InningRecap? recap,
+    String? aiRecap,
+    List<SummaryPlay> leadPlays = const []}) {
   final sit = comp.situation;
-  if (sit != null && sit.hasBaseball) return BaseballSituationCard(comp);
+  // Between innings (batter gone, dueUp present) the duel has no subjects —
+  // the Due Up card takes the situation slot until the next at-bat starts.
+  if (sit != null && sit.isDueUp) {
+    return DueUpCard(comp, recap: recap, aiRecap: aiRecap);
+  }
+  if (sit != null && sit.hasBaseball) {
+    return BaseballSituationCard(comp, liveAtBat: liveAtBat);
+  }
   if (sit != null && sit.hasGridiron) return GridironSituationCard(comp);
-  if (sit != null && sit.hasBonus) return BasketballSituationCard(comp);
+  if (sit != null && sit.hasBonus) {
+    return BasketballSituationCard(comp, plays: leadPlays);
+  }
   if (sit != null && sit.hasPowerPlay) return PowerPlaySituationCard(comp);
   if (comp.status.live && _cricketChase(comp) != null) {
     return CricketChaseCard(comp);
@@ -27,72 +49,450 @@ Widget? situationCardFor(Competition comp) {
 
 // ═══════════════════════════ baseball ═══════════════════════════
 
+/// Turn 8 (LiveGame.dc.html #8a): the situation card is a DUEL — pitcher and
+/// batter face off with their live day-lines, the count as dot groups
+/// underneath, and a quiet footer (pitch count · on deck) when the data exists.
+/// The diamond moved to [BaseballZoneCard]; everything here is cheap-tier
+/// except the pitch count (the rich live at-bat).
 class BaseballSituationCard extends StatelessWidget {
   final Competition comp;
-  const BaseballSituationCard(this.comp, {super.key});
+  final AtBat? liveAtBat;
+  const BaseballSituationCard(this.comp, {this.liveAtBat, super.key});
 
   @override
   Widget build(BuildContext context) {
     final s = comp.situation!;
-    final count = (s.balls != null && s.strikes != null)
-        ? '${s.balls}–${s.strikes} COUNT'
-        : (s.outsText ?? '').toUpperCase();
-    final context2 = <String>[
-      if (s.batter != null) '${s.batter} up',
-      if (s.batterLine != null) s.batterLine!,
-      if (s.pitcher != null) '${s.pitcher} pitching',
-      if (s.pitcherLine != null) s.pitcherLine!,
-    ];
+    final pitchCount = liveAtBat?.pitchCount;
+    final hasDuel = s.pitcher != null || s.batter != null;
+    final hasFooter = pitchCount != null || s.onDeck != null;
     return V2Card(
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BaseballDiamond(
-            onFirst: s.onFirst ?? false,
-            onSecond: s.onSecond ?? false,
-            onThird: s.onThird ?? false,
-            width: 110,
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
+          if (hasDuel)
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (count.isNotEmpty)
-                  Text(count, style: T.situationHead.copyWith(fontSize: 22)),
-                if (context2.isNotEmpty) ...[
-                  const SizedBox(height: 8),
-                  Text(context2.take(2).join(' · '),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 13, height: 1.4, color: T.textDim)),
-                ],
-                // B/S/O dot rows (§8): balls green, strikes live, outs white.
-                if (s.balls != null) _countRow('BALLS', s.balls!, 3, T.green),
-                if (s.strikes != null)
-                  _countRow('STRIKES', s.strikes!, 2, T.live),
-                if (s.outs != null) _countRow('OUTS', s.outs!, 3, T.text),
+                Expanded(
+                    child: _dueler('PITCHING', s.pitcher, s.pitcherLine,
+                        CrossAxisAlignment.start)),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text('VS',
+                      style: T.statLineStrong.copyWith(color: T.textFaint)),
+                ),
+                Expanded(
+                    child: _dueler('AT BAT', s.batter, s.batterLine,
+                        CrossAxisAlignment.end)),
               ],
             ),
-          ),
+          // B/S/O dot groups (§8): balls green, strikes/outs live-red.
+          if (s.balls != null || s.strikes != null || s.outs != null)
+            Container(
+              margin: EdgeInsets.only(top: hasDuel ? 14 : 0),
+              padding: EdgeInsets.only(top: hasDuel ? 14 : 0),
+              decoration: hasDuel
+                  ? const BoxDecoration(
+                      border: Border(top: BorderSide(color: T.divider)))
+                  : null,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (s.balls != null)
+                    _countGroup('BALLS', s.balls!, 3, T.green),
+                  if (s.strikes != null)
+                    _countGroup('STRIKES', s.strikes!, 2, T.live),
+                  if (s.outs != null) _countGroup('OUTS', s.outs!, 3, T.live),
+                ],
+              ),
+            ),
+          if (hasFooter)
+            Container(
+              margin: const EdgeInsets.only(top: 14),
+              padding: const EdgeInsets.only(top: 12),
+              decoration: const BoxDecoration(
+                  border: Border(top: BorderSide(color: T.divider))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (pitchCount != null)
+                    Row(children: [
+                      const Text('Pitch count ', style: T.caption),
+                      Text('$pitchCount', style: T.statLine),
+                    ]),
+                  if (s.onDeck != null)
+                    Flexible(
+                      child: Row(mainAxisSize: MainAxisSize.min, children: [
+                        const Text('On deck · ', style: T.caption),
+                        Flexible(
+                          child: Text(s.onDeck!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: T.rowText.copyWith(fontSize: 13)),
+                        ),
+                      ]),
+                    ),
+                ],
+              ),
+            ),
         ],
       ),
     );
   }
 
-  /// One §8 count row: a label + [filled]-of-[total] 9px dots in [color].
-  Widget _countRow(String label, int filled, int total, Color color) => Padding(
-        padding: const EdgeInsets.only(top: 8),
-        child: Row(children: [
-          DotRow(
-              filled: filled.clamp(0, total),
-              total: total,
-              color: color,
-              size: 9),
-          const SizedBox(width: 8),
-          Text(label, style: T.captionFaint),
+  /// One side of the duel: faint role label, name, day-line.
+  Widget _dueler(
+          String role, String? name, String? line, CrossAxisAlignment align) =>
+      Column(crossAxisAlignment: align, children: [
+        Text(role, style: T.cardLabelFaint),
+        const SizedBox(height: 4),
+        Text(name ?? '—',
+            maxLines: 1, overflow: TextOverflow.ellipsis, style: T.rowText),
+        if (line != null) ...[
+          const SizedBox(height: 4),
+          Text(line,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: T.statLine.copyWith(color: T.textDim, fontSize: 13)),
+        ],
+      ]);
+
+  /// One count group: label + [filled]-of-[total] 10px dots in [color].
+  Widget _countGroup(String label, int filled, int total, Color color) =>
+      Row(children: [
+        Text(label, style: T.captionFaint),
+        const SizedBox(width: 8),
+        DotRow(
+            filled: filled.clamp(0, total),
+            total: total,
+            color: color,
+            size: 10),
+      ]);
+}
+
+/// Between innings: the DUE UP card — the next half-inning's batters (cheap
+/// `situation.dueUp`, names + day lines), and below a hairline the previous
+/// half's story: the optional AI-written sentence when it has arrived, else
+/// the deterministic line ('three up, three down' / 'two runs on three hits'). Every element
+/// data-gated: no recap → batters only; ESPN ships 1-3 due-up entries.
+class DueUpCard extends StatelessWidget {
+  final Competition comp;
+  final InningRecap? recap;
+  final String? aiRecap;
+  const DueUpCard(this.comp, {this.recap, this.aiRecap, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final due = comp.situation!.dueUp;
+    final recapText = aiRecap ?? recap?.line;
+    return V2Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            const CardLabel('Due up'),
+            // the between-innings beat ('Mid 5th' / 'End 5th'), straight off
+            // the cheap status — absent, the label stands alone.
+            if (comp.status.shortDetail != null)
+              Text(comp.status.shortDetail!, style: T.captionFaint),
+          ]),
+          const SizedBox(height: 12),
+          for (final (i, b) in due.take(3).indexed)
+            Padding(
+              padding: EdgeInsets.only(top: i == 0 ? 0 : 8),
+              child: Row(children: [
+                SizedBox(
+                    width: 18,
+                    child: Text('${i + 1}', style: T.captionFaint)),
+                Expanded(
+                  child: Text(b.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.rowText),
+                ),
+                if (b.line != null)
+                  Text(b.line!,
+                      style: T.statLine.copyWith(
+                          color: T.textDim, fontSize: 13)),
+              ]),
+            ),
+          if (recapText != null && recap != null)
+            Container(
+              margin: const EdgeInsets.only(top: 14),
+              padding: const EdgeInsets.only(top: 12),
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  border: Border(top: BorderSide(color: T.divider))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                      [
+                        recap!.label.toUpperCase(),
+                        if (recap!.teamAbbr != null) recap!.teamAbbr!,
+                      ].join(' · '),
+                      style: T.captionFaint),
+                  const SizedBox(height: 4),
+                  Text(recapText,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.rowText.copyWith(fontSize: 13)),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Turn 8: the strike zone + bases card. The zone plot renders ONLY when the
+/// live at-bat's pitches carry ESPN's plot coords (live captures only — the
+/// design's degrade rule: plain outline + numbered markers, no heat; hide the
+/// zone entirely without locations). The diamond + runner names render for any
+/// live baseball situation, so the card never loses the cheap-tier baserunners.
+class BaseballZoneCard extends StatelessWidget {
+  final Competition comp;
+  final AtBat? liveAtBat;
+  const BaseballZoneCard(this.comp, {this.liveAtBat, super.key});
+
+  /// The plotted subset of the live at-bat's pitches (coords present).
+  List<Pitch> get _plotted => [
+        for (final p in liveAtBat?.pitches ?? const <Pitch>[])
+          if (p.x != null && p.y != null) p
+      ];
+
+  @override
+  Widget build(BuildContext context) {
+    final s = comp.situation!;
+    final plotted = _plotted;
+    final zone = plotted.isNotEmpty;
+    final runners = <(String, String?, bool)>[
+      ('1B', liveAtBat?.first, s.onFirst ?? false),
+      ('2B', liveAtBat?.second, s.onSecond ?? false),
+      ('3B', liveAtBat?.third, s.onThird ?? false),
+    ];
+    return V2Card(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          CardLabel(zone ? 'Strike zone' : 'On base'),
+          if (zone) const Text("catcher's view", style: T.captionFaint),
         ]),
-      );
+        const SizedBox(height: 14),
+        Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          if (zone) ...[
+            _ZonePlot(pitches: liveAtBat!.pitches, plotted: plotted),
+            const SizedBox(width: 18),
+          ],
+          Expanded(
+            child: Column(children: [
+              BaseballDiamond(
+                onFirst: s.onFirst ?? false,
+                onSecond: s.onSecond ?? false,
+                onThird: s.onThird ?? false,
+                width: 84,
+              ),
+              const SizedBox(height: 12),
+              for (final (base, name, occupied) in runners)
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(base, style: T.captionFaint),
+                      Flexible(
+                        child: Text(
+                          name ?? (occupied ? 'on base' : 'empty'),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: occupied
+                              ? T.rowText.copyWith(fontSize: 13)
+                              : T.caption,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ]),
+          ),
+        ]),
+      ]),
+    );
+  }
+}
+
+/// Marker/badge color for a pitch result: ball green, strike live-red, foul
+/// faint, in-play gold — the §2 muted-glyph vocabulary.
+Color pitchColor(String r) => switch (r) {
+      'ball' => T.green,
+      'strike' => T.live,
+      'inplay' => T.gold,
+      _ => T.textFaint,
+    };
+
+/// The glyph a marker's number reads against (dark on the bright fills).
+Color _pitchGlyph(String r) =>
+    (r == 'ball' || r == 'inplay') ? T.bg : Colors.white;
+
+/// The zone plot: a dark panel, the rulebook zone outline, and one numbered
+/// marker per located pitch. ESPN's plot space (catcher's view: x grows RIGHT,
+/// y grows DOWN) is NOT isotropic — the zone rect below was fitted empirically
+/// from 108 called strikes across the live 2026-07-09 slate (strikes x 84-148 /
+/// y 144-193 at the 1%-99% band; balls fan out to x 25-191, y 108-236) and
+/// cross-checked pitch-by-pitch against ESPN's own gamecast plot. The data
+/// zone maps onto the drawn outline per axis; anything beyond clamps inside
+/// the panel so a ball in the dirt still reads as "below the zone".
+class _ZonePlot extends StatelessWidget {
+  final List<Pitch> pitches; // full sequence (numbering)
+  final List<Pitch> plotted; // the located subset
+  const _ZonePlot({required this.pitches, required this.plotted});
+
+  static const _w = 150.0, _h = 170.0;
+
+  // the strike zone in ESPN coordinate units (empirical, see class doc)
+  static const _zx0 = 84.0, _zx1 = 148.0, _zy0 = 144.0, _zy1 = 193.0;
+  // where the outline is drawn in the panel (fractional insets below)
+  static const _pxL = _w * .16, _pxR = _w * (1 - .16);
+  static const _pyT = _h * .14, _pyB = _h * (1 - .14);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: _w,
+      height: _h,
+      child: Stack(clipBehavior: Clip.none, children: [
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+                color: T.track, borderRadius: BorderRadius.circular(8)),
+          ),
+        ),
+        // the zone outline — the empirical data zone maps exactly onto it
+        Positioned(
+          left: _w * .16,
+          right: _w * .16,
+          top: _h * .14,
+          bottom: _h * .14,
+          child: Container(
+            decoration: BoxDecoration(
+              border:
+                  Border.all(color: T.text.withValues(alpha: .55), width: 1.5),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+        ),
+        for (final p in plotted) _marker(p),
+      ]),
+    );
+  }
+
+  Widget _marker(Pitch p) {
+    final n = pitches.indexOf(p) + 1;
+    // data zone rect → drawn outline rect, per axis; clamp keeps wild pitches
+    // visible just inside the panel edge (marker radius 11).
+    final fx = (_pxL + (p.x! - _zx0) / (_zx1 - _zx0) * (_pxR - _pxL))
+        .clamp(11.0, _w - 11.0);
+    final fy = (_pyT + (p.y! - _zy0) / (_zy1 - _zy0) * (_pyB - _pyT))
+        .clamp(11.0, _h - 11.0);
+    return Positioned(
+      left: fx - 11,
+      top: fy - 11,
+      child: Container(
+        width: 22,
+        height: 22,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: pitchColor(p.r),
+          shape: BoxShape.circle,
+          border: Border.all(color: T.surface, width: 2),
+        ),
+        child: Text('$n',
+            style: TextStyle(
+                fontFamily: 'BarlowCondensed',
+                fontWeight: FontWeight.w700,
+                fontSize: 11,
+                height: 1,
+                color: _pitchGlyph(p.r))),
+      ),
+    );
+  }
+}
+
+/// Turn 8: the horizontally scrollable pitch strip — the live at-bat's pitch
+/// sequence, latest first, each chip numbered to match the zone markers.
+class PitchStripCard extends StatelessWidget {
+  final AtBat atBat;
+  const PitchStripCard(this.atBat, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final n = atBat.pitches.length;
+    // A challenged call (rare: ABS gives each side two) earns one extra caption
+    // line on its chip; the strip grows only when the at-bat carries one.
+    final hasChallenge = atBat.pitches.any((p) => p.challenge != null);
+    return SizedBox(
+      height: hasChallenge ? 126 : 112,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: n,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (context, i) {
+          final p = atBat.pitches[n - 1 - i]; // latest first
+          return Container(
+            width: 96,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                color: T.surface, borderRadius: BorderRadius.circular(16)),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 22,
+                    height: 22,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: pitchColor(p.r), shape: BoxShape.circle),
+                    child: Text('${n - i}',
+                        style: TextStyle(
+                            fontFamily: 'BarlowCondensed',
+                            fontWeight: FontWeight.w700,
+                            fontSize: 11,
+                            height: 1,
+                            color: _pitchGlyph(p.r))),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(p.text,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: T.rowText.copyWith(fontSize: 12)),
+                  const SizedBox(height: 4),
+                  // one line each, ellipsized — a long pitch name
+                  // ('Four-seam FB') must never push the mph off the chip.
+                  if (p.type != null)
+                    Text(p.type!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: T.captionFaint),
+                  if (p.velo != null)
+                    Text('${p.velo} mph',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: T.captionFaint),
+                  // ABS challenge marker: the flipped call gets the caution
+                  // pale (§2 muted-pair glyph text); an upheld one stays faint.
+                  if (p.challenge != null)
+                    Text(p.challenge!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: p.challenge == 'overturned'
+                            ? T.captionFaint.copyWith(color: T.mutedNeutralGlyph)
+                            : T.captionFaint),
+                ]),
+          );
+        },
+      ),
+    );
+  }
 }
 
 // ═══════════════════════════ gridiron ═══════════════════════════
@@ -318,75 +718,131 @@ class _RedZoneChip extends StatelessWidget {
       );
 }
 
-// ═══════════════════════════ basketball bonus & timeouts ═════════════════════
+// ═══════════════════════════ basketball clock & run ══════════════════════════
 
-/// The §8 basketball footer as its own card — the bonus/timeout state ESPN keeps
-/// on the CORE situation (never the scoreboard), surfaced on detail open. Per side:
-/// the team, a `gold` BONUS / DOUBLE BONUS flag when in the bonus, and the
-/// remaining-timeout dots. Data-driven: rendered only when `situation.hasBonus`.
+/// The §8 basketball "clock & run" situation card: big countdown clock +
+/// quarter label left; the derived story slot right — a `gold` run callout
+/// (`OKC 9–2 RUN` / "last 2:40") when someone's on a run, else a quiet
+/// back-and-forth tidbit (`14 LEAD CHANGES` / `TIED 6 TIMES`), else the clock
+/// stands alone (lead_story.dart, off the summary's running scores). Footer:
+/// the core bonus flag + remaining-timeout dots per side. The design's
+/// possession/shot-clock slot is unsourced (ESPN's basketball core situation
+/// carries neither — VERIFIED core-situation.md) and omitted. Data-driven:
+/// rendered only when `situation.hasBonus`; the loud last play is the detail
+/// page's InvertedCard, not duplicated here.
 class BasketballSituationCard extends StatelessWidget {
   final Competition comp;
-  const BasketballSituationCard(this.comp, {super.key});
-
-  static String? _bonusLabel(String? state) {
-    if (state == null) return null;
-    final s = state.toUpperCase();
-    if (s == 'NONE') return null;
-    if (s == 'DOUBLE') return 'DOUBLE BONUS';
-    return 'BONUS';
-  }
+  final List<SummaryPlay> plays; // scoring plays w/ running scores; may be []
+  const BasketballSituationCard(this.comp,
+      {this.plays = const [], super.key});
 
   @override
   Widget build(BuildContext context) {
     final sit = comp.situation!;
+    final slot = leadSlotFor(comp, plays);
+    final clock = comp.status.clock;
+    final hasClock = clock != null && clock.isNotEmpty;
+    final hasTimeouts = sit.homeTimeouts != null || sit.awayTimeouts != null;
+    final bonus = _bonusText(sit);
     return V2Card(
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const CardLabel('Bonus & timeouts'),
-        const SizedBox(height: 12),
-        _sideRow(comp.away, _bonusLabel(sit.awayBonus), sit.awayTimeouts),
-        const SizedBox(height: 10),
-        _sideRow(comp.home, _bonusLabel(sit.homeBonus), sit.homeTimeouts),
-        if (sit.lastPlay != null) ...[
-          const SizedBox(height: 12),
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Expanded(
+            child: hasClock
+                ? Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(clock,
+                        style: T.situationHead.copyWith(fontSize: 34)),
+                    if (comp.status.periodLabel.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(comp.status.periodLabel.toUpperCase(),
+                          style: T.cardLabelFaint),
+                    ],
+                  ])
+                : const CardLabel('Bonus & timeouts'),
+          ),
+          if (slot != null)
+            Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+              Text(slot.text,
+                  style: T.statCallout.copyWith(
+                      fontSize: 20, color: slot.loud ? T.gold : T.text)),
+              if (slot.caption != null) ...[
+                const SizedBox(height: 4),
+                Text(slot.caption!, style: T.captionFaint),
+              ],
+            ]),
+        ]),
+        if (bonus != null || hasTimeouts) ...[
+          const SizedBox(height: 14),
           Container(
             padding: const EdgeInsets.only(top: 12),
             decoration: const BoxDecoration(
                 border: Border(top: BorderSide(color: T.divider))),
-            child: Text(sit.lastPlay!,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                    fontSize: 13, height: 1.4, color: T.textDim)),
+            child: Row(children: [
+              if (bonus != null)
+                Expanded(
+                  child:
+                      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    const Text('BONUS', style: T.captionFaint),
+                    const SizedBox(height: 5),
+                    Text(bonus.text,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: T.rowText.copyWith(
+                            fontSize: 13,
+                            color: bonus.inBonus ? T.gold : T.textFaint)),
+                  ]),
+                )
+              else
+                const Spacer(),
+              if (hasTimeouts)
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                  const Text('TIMEOUTS', style: T.captionFaint),
+                  const SizedBox(height: 7),
+                  Row(children: [
+                    _timeouts(comp.away, sit.awayTimeouts),
+                    const SizedBox(width: 14),
+                    _timeouts(comp.home, sit.homeTimeouts),
+                  ]),
+                ]),
+            ]),
           ),
         ],
       ]),
     );
   }
 
-  Widget _sideRow(Competitor? c, String? bonus, int? timeouts) => Row(children: [
-        ColorBar(teamColor(c), width: 4, height: 20, radius: 2),
-        const SizedBox(width: 10),
-        Text(c?.label ?? '',
-            style: T.statLine.copyWith(fontSize: 14, color: T.text)),
-        if (bonus != null) ...[
-          const SizedBox(width: 10),
-          Text(bonus,
-              style: T.captionFaint
-                  .copyWith(color: T.gold, fontWeight: FontWeight.w700)),
-        ],
-        const Spacer(),
-        if (timeouts != null) ...[
-          // Only the REMAINING count is observed (core has no used total), so
-          // render that many team-color dots — never fabricate the used seats.
-          DotRow(
-              filled: timeouts.clamp(0, 7),
-              total: timeouts.clamp(0, 7),
-              color: teamColor(c),
-              size: 7),
-          const SizedBox(width: 8),
-          Text('${timeouts.clamp(0, 9)} TO', style: T.captionFaint),
-        ],
-      ]);
+  /// The footer's bonus read: who's in the bonus (double called out), a faint
+  /// 'None' while the core keys are present but nobody's there yet.
+  ({String text, bool inBonus})? _bonusText(Situation sit) {
+    if (!sit.hasBonus) return null;
+    String one(Competitor? c, String? state) {
+      final abbr = c?.label ?? '';
+      final isDouble = state?.toUpperCase() == 'DOUBLE';
+      if (abbr.isEmpty) return isDouble ? 'Double bonus' : 'In bonus';
+      return isDouble ? '$abbr double bonus' : '$abbr in bonus';
+    }
+    final h = sit.homeInBonus, a = sit.awayInBonus;
+    if (h && a) return (text: 'Both in bonus', inBonus: true);
+    if (h) return (text: one(comp.home, sit.homeBonus), inBonus: true);
+    if (a) return (text: one(comp.away, sit.awayBonus), inBonus: true);
+    return (text: 'None', inBonus: false);
+  }
+
+  Widget _timeouts(Competitor? c, int? n) {
+    // Only the REMAINING count is observed (core has no used total), so render
+    // that many team-color dots — never fabricate the used seats.
+    if (n == null) return const SizedBox.shrink();
+    return Row(children: [
+      if (c != null)
+        Padding(
+          padding: const EdgeInsets.only(right: 6),
+          child: Text(c.label,
+              style: T.statLine.copyWith(fontSize: 13, color: T.textDim)),
+        ),
+      DotRow(
+          filled: n.clamp(0, 7), total: n.clamp(0, 7), color: teamColor(c), size: 7),
+    ]);
+  }
 }
 
 // ═══════════════════════════ hockey power play ═══════════════════════════════

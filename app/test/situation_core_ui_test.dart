@@ -11,17 +11,24 @@ import 'package:scores/src/ui/situations.dart';
 Competition _comp({
   required String scoreKind,
   Situation? situation,
+  String? clock,
 }) =>
     Competition.fromJson({
       'id': '1',
       'layout': 'headToHead',
       'scoreKind': scoreKind,
       'competitorKind': 'team',
-      'status': {'phase': 'live', 'live': true, 'period': 3, 'periodLabel': '3rd'},
+      'status': {
+        'phase': 'live',
+        'live': true,
+        'period': 3,
+        'periodLabel': '3rd',
+        if (clock != null) 'clock': clock,
+      },
       'periods': {'unit': 'quarter', 'regulation': 4},
       'competitors': [
-        {'id': 'h', 'homeAway': 'home', 'team': {'abbreviation': 'LAL', 'color': '552583'}},
-        {'id': 'a', 'homeAway': 'away', 'team': {'abbreviation': 'BOS', 'color': '007A33'}},
+        {'id': 'h', 'homeAway': 'home', 'abbreviation': 'LAL', 'color': '552583'},
+        {'id': 'a', 'homeAway': 'away', 'abbreviation': 'BOS', 'color': '007A33'},
       ],
       if (situation != null) 'situation': situation.toJsonForTest(),
     });
@@ -48,24 +55,49 @@ Future<void> _pump(WidgetTester tester, Widget? card) async {
 }
 
 void main() {
-  testWidgets('basketball bonus card renders bonus flag + timeouts', (tester) async {
+  testWidgets('basketball card renders bonus flag + timeouts', (tester) async {
     final sit = Situation(homeBonus: 'DOUBLE', awayBonus: 'NONE', homeTimeouts: 2, awayTimeouts: 4);
     final comp = _comp(scoreKind: 'numeric', situation: sit);
     final card = situationCardFor(comp);
     expect(card, isA<BasketballSituationCard>());
     await _pump(tester, card);
+    // no clock in the fixture → the header falls back to the plain label
     expect(find.text('BONUS & TIMEOUTS'), findsOneWidget); // CardLabel uppercases
-    expect(find.text('DOUBLE BONUS'), findsOneWidget); // home in double bonus
-    expect(find.textContaining('TO'), findsWidgets); // timeout labels
+    expect(find.text('LAL double bonus'), findsOneWidget); // home in double bonus
+    expect(find.text('TIMEOUTS'), findsOneWidget); // footer column
+    expect(find.text('LAL'), findsOneWidget); // timeout side labels
+    expect(find.text('BOS'), findsOneWidget);
   });
 
-  testWidgets('NONE bonus for both sides shows no bonus flag', (tester) async {
+  testWidgets('NONE bonus for both sides shows the quiet None read', (tester) async {
     final sit = Situation(homeBonus: 'NONE', awayBonus: 'NONE', homeTimeouts: 5, awayTimeouts: 6);
     final card = situationCardFor(_comp(scoreKind: 'numeric', situation: sit));
     expect(card, isA<BasketballSituationCard>()); // still has timeouts to show
     await _pump(tester, card);
-    expect(find.text('BONUS'), findsNothing);
-    expect(find.text('DOUBLE BONUS'), findsNothing);
+    expect(find.text('None'), findsOneWidget); // faint, nobody in the bonus
+    expect(find.textContaining('double bonus'), findsNothing);
+    expect(find.textContaining('in bonus'), findsNothing);
+  });
+
+  testWidgets('clock & run: big clock + quarter left, gold run callout right',
+      (tester) async {
+    final sit = Situation(homeBonus: 'NONE', awayBonus: 'NONE', homeTimeouts: 2, awayTimeouts: 2);
+    final comp = _comp(scoreKind: 'numeric', situation: sit, clock: '4:12');
+    SummaryPlay p(String side, num away, num home) =>
+        SummaryPlay.fromJson({'side': side, 'away': away, 'home': home});
+    final card = situationCardFor(comp, leadPlays: [
+      p('away', 2, 0),
+      p('home', 2, 2),
+      p('away', 4, 2),
+      p('away', 6, 2),
+      p('home', 6, 5),
+      p('home', 6, 8), // LAL on a 6–0 run
+    ]);
+    await _pump(tester, card);
+    expect(find.text('4:12'), findsOneWidget);
+    expect(find.text('3RD'), findsOneWidget); // periodLabel, uppercased
+    expect(find.text('LAL 6–0 RUN'), findsOneWidget);
+    expect(find.text('BONUS & TIMEOUTS'), findsNothing); // clock header instead
   });
 
   testWidgets('gridiron card shows RED ZONE flag when core isRedZone', (tester) async {

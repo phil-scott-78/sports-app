@@ -8154,6 +8154,288 @@
         "total": "14"
       }
     },
+    "teamDetails": [
+      {
+        "side": "away",
+        "abbr": "ALA",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "HR",
+                "value": "J. Lemm (10, 4th inning off R. Riojas 0 on, 1 Out)"
+              },
+              {
+                "label": "RBI",
+                "value": "L. Vaughn (32), J. Lemm (34)"
+              },
+              {
+                "label": "2Out RBI",
+                "value": "L. Vaughn"
+              },
+              {
+                "label": "GIDP",
+                "value": "B. Neal"
+              },
+              {
+                "label": "Team LOB",
+                "value": "7"
+              },
+              {
+                "label": "Team RISP",
+                "value": "1-7 (B. Holt 0-1, J. Torres 0-1, L. Vaughn 1-2, P. Steele 0-1, E. Hines 0-1, J. Lemm 0-1)"
+              },
+              {
+                "label": "RISP 2-out",
+                "value": "J. Torres 1; P. Steele 1; E. Hines 1"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "WP",
+                "value": "Z. Adams"
+              },
+              {
+                "label": "HBP",
+                "value": "A. Robbins (by M. Heiberger)"
+              },
+              {
+                "label": "FPS-BF",
+                "value": "H. Banks 3/4; Z. Adams 7/15; M. Heiberger 8/16; M. Upchurch 4/8"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "H. Banks-4-5-3-2; Z. Adams-6-5-17-10; M. Heiberger-12-1-9-12; M. Upchurch-7-3-5-6"
+              },
+              {
+                "label": "GB-FB",
+                "value": "H. Banks 1-0; Z. Adams 2-1; M. Heiberger 10-1; M. Upchurch 3-0"
+              }
+            ]
+          },
+          {
+            "title": "Fielding",
+            "rows": [
+              {
+                "label": "E",
+                "value": "J. Lebron (19, fielding)"
+              }
+            ]
+          },
+          {
+            "title": "Baserunning",
+            "rows": [
+              {
+                "label": "SB",
+                "value": "J. Lebron (42, 2nd base off R. Riojas/C. Tinney)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "side": "home",
+        "abbr": "TEX",
+        "groups": [
+          {
+            "title": "Batting",
+            "rows": [
+              {
+                "label": "2B",
+                "value": "E. Mendoza (14, Z. Adams); A. Rodriguez 2 (18, Z. Adams, M. Upchurch); A. Robbins (10, Z. Adams); 3B: A. Rodriguez (3, Z. Adams)"
+              },
+              {
+                "label": "HR",
+                "value": "A. Rodriguez (5, 6th inning off H. Banks 1 on, 2 Out); A. Pack Jr. (12, 6th inning off M. Heiberger 1 on, 2 Out)"
+              },
+              {
+                "label": "RBI",
+                "value": "E. Mendoza 2 (51), B. Peterson (1), A. Rodriguez 7 (47), A. Pack Jr. 4 (56)"
+              },
+              {
+                "label": "2Out RBI",
+                "value": "A. Rodriguez 4"
+              },
+              {
+                "label": "SH",
+                "value": "D. Pendergrass"
+              },
+              {
+                "label": "GIDP",
+                "value": "C. Borba; A. Pack Jr."
+              },
+              {
+                "label": "Team LOB",
+                "value": "5"
+              },
+              {
+                "label": "Team RISP",
+                "value": "8-17 (T. Becerra 0-2, A. Larson 0-3, E. Mendoza 2-2, C. Borba 0-1, B. Peterson 0-1, A. Rodriguez 4-4, A. Pack Jr. 2-3, A. Robbins 0-1)"
+              },
+              {
+                "label": "RISP 2-out",
+                "value": "A. Larson 4"
+              }
+            ]
+          },
+          {
+            "title": "Pitching",
+            "rows": [
+              {
+                "label": "HBP",
+                "value": "J. Lebron (by B. Walls)"
+              },
+              {
+                "label": "FPS-BF",
+                "value": "C. Howard 1/2; R. Riojas 12/24; E. Walker 1/1; B. Walls 5/9"
+              },
+              {
+                "label": "CS-SS-FB-IPS",
+                "value": "C. Howard-1-2-0-1; R. Riojas-13-13-24-15; E. Walker-1-1-1-0; B. Walls-7-5-5-5"
+              },
+              {
+                "label": "GB-FB",
+                "value": "C. Howard 1-0; R. Riojas 7-3; B. Walls 1-3"
+              }
+            ]
+          },
+          {
+            "title": "Fielding",
+            "rows": [
+              {
+                "label": "E",
+                "value": "A. Rodriguez (6, throw)"
+              }
+            ]
+          },
+          {
+            "title": "Baserunning",
+            "rows": [
+              {
+                "label": "SB",
+                "value": "T. Becerra (13, 2nd base off M. Heiberger/B. Neal); C. Early (1, 2nd base off H. Banks/B. Neal)"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "teamGameStats": [
+      {
+        "title": "Batting",
+        "rows": [
+          {
+            "label": "AB",
+            "away": "32",
+            "home": "35"
+          },
+          {
+            "label": "R",
+            "away": "2",
+            "home": "14"
+          },
+          {
+            "label": "H",
+            "away": "6",
+            "home": "13"
+          },
+          {
+            "label": "2B",
+            "away": "0",
+            "home": "4"
+          },
+          {
+            "label": "3B",
+            "away": "0",
+            "home": "0"
+          },
+          {
+            "label": "HR",
+            "away": "1",
+            "home": "2"
+          },
+          {
+            "label": "RBI",
+            "away": "2",
+            "home": "14"
+          },
+          {
+            "label": "TB",
+            "away": "9",
+            "home": "23"
+          },
+          {
+            "label": "BB",
+            "away": "3",
+            "home": "6"
+          },
+          {
+            "label": "K",
+            "away": "11",
+            "home": "6"
+          },
+          {
+            "label": "SB",
+            "away": "1",
+            "home": "2"
+          },
+          {
+            "label": "LOB",
+            "away": "0",
+            "home": "0"
+          }
+        ]
+      },
+      {
+        "title": "Pitching",
+        "rows": [
+          {
+            "label": "K",
+            "away": "6",
+            "home": "11"
+          },
+          {
+            "label": "BB",
+            "away": "6",
+            "home": "3"
+          },
+          {
+            "label": "H",
+            "away": "13",
+            "home": "6"
+          },
+          {
+            "label": "R",
+            "away": "14",
+            "home": "2"
+          },
+          {
+            "label": "ER",
+            "away": "13",
+            "home": "2"
+          },
+          {
+            "label": "HR",
+            "away": "2",
+            "home": "1"
+          },
+          {
+            "label": "P",
+            "away": "175",
+            "home": "155"
+          },
+          {
+            "label": "S",
+            "away": "107",
+            "home": "94"
+          }
+        ]
+      }
+    ],
     "plays": [
       {
         "period": 1,

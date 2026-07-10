@@ -194,11 +194,55 @@ function makeFinal(comp, profile, eventId, startMs, srcPhase) {
 function injectSituation(comp, profile, eventId) {
   if (profile.espnSport === 'baseball') {
     const r = mulberry(hashStr(eventId + ':sit'));
+    // Fabricated people: ESPN nests { athlete: { shortName } } plus a `summary`
+    // day line ('1-3, K') on batter/pitcher/dueUp entries — match the raw shape
+    // so buildSituation surfaces the duel, onDeck, and canonical dueUp.
+    const short = (tag) => {
+      const s = `${eventId}:${tag}`;
+      return `${FIRST[hashStr(s + ':f') % FIRST.length][0]}. ${LAST[hashStr(s + ':l') % LAST.length]}`;
+    };
+    const athlete = (tag) => ({ id: `${eventId}-${tag}`, shortName: short(tag) });
+    const DAY = ['0-1', '1-3, K', '2-4, HR, 2 RBI', '1-2, BB', '0-3, 2 K', '1-1, 2B, R'];
+    const day = (tag) => DAY[hashStr(`${eventId}:${tag}:day`) % DAY.length];
+    const P = comp.status?.period || 5;
+    // ~1 in 3 live games sit BETWEEN innings: ESPN drops batter/pitcher, dueUp
+    // lists the NEXT half's batters, and the status reads the Middle/End beat —
+    // the app's Due Up card state (situation.isDueUp), walkable offline.
+    // (Salt ':break' chosen so the fabricated megaweek slate's live games
+    // deterministically carry BOTH states — mock.test 2b guards that.)
+    if (hashStr(eventId + ':break') % 3 === 0) {
+      const mid = hashStr(eventId + ':midend') % 2 === 0;
+      comp.situation = {
+        balls: 0, strikes: 0, outs: 0,
+        onFirst: false, onSecond: false, onThird: false,
+        dueUp: [0, 1, 2].map((i) => ({ athlete: athlete(`du${i}`), summary: day(`du${i}`), batOrder: i + 1 })),
+        // the end-inning bookend ESPN leaves as the lastPlay between innings
+        lastPlay: { text: `End of the ${ordinal(P)} inning`, type: { type: 'end-inning', text: 'End Inning' } },
+      };
+      comp.outsText = '0 Outs';
+      comp.status.type.detail = `${mid ? 'Middle' : 'End'} ${ordinal(P)}`;
+      comp.status.type.shortDetail = `${mid ? 'Mid' : 'End'} ${ordinal(P)}`;
+      return;
+    }
     const outs = Math.floor(r() * 3);
     const plays = ['Ball', 'Strike looking', 'Foul', 'Single to left', 'Groundout to short', 'Walk'];
+    const bat = athlete('bat');
+    // the small name pools collide ('J. Jones' twice) — and a dueUp entry that
+    // matches the batter's name is SKIPPED by the normalizer's onDeck pick, so
+    // the on-deck man must be verifiably someone else.
+    let deck = athlete('deck');
+    for (let i = 2; deck.shortName === bat.shortName && i < 6; i++) deck = athlete(`deck${i}`);
     comp.situation = {
       balls: Math.floor(r() * 4), strikes: Math.floor(r() * 3), outs,
       onFirst: r() > 0.5, onSecond: r() > 0.6, onThird: r() > 0.8,
+      pitcher: { athlete: athlete('pit'), summary: `${4 + (hashStr(eventId + ':ip') % 4)}.1 IP, ${hashStr(eventId + ':er') % 4} ER, ${3 + (hashStr(eventId + ':k') % 6)} K` },
+      batter: { athlete: bat, summary: day('bat') },
+      // QUIRK matched: mid at-bat ESPN's dueUp[] LEADS with the current batter,
+      // so onDeck (the normalizer's first-not-at-the-plate pick) is entry 2.
+      dueUp: [
+        { athlete: bat, summary: day('bat') },
+        { athlete: deck, summary: day('deck') },
+      ],
       // ESPN ships lastPlay as an OBJECT (buildSituation reads lp.type?.text / lp.text),
       // NOT a bare string — match the raw shape so the real normalizer surfaces it.
       lastPlay: { text: plays[Math.floor(r() * plays.length)] },

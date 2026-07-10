@@ -119,3 +119,43 @@ export function classifyLeague(raw, now = new Date()) {
   if (dPrev != null) return { state: 'recent', detail: `Last ${md(prev)}`, live: false };
   return { state: 'offseason', detail: 'Off-season', live: false };
 }
+
+/**
+ * Classify a MERGED `<sport>/all` scoreboard — one slate spanning every league
+ * of a sport (exists for soccer/rugby/rugby-league/tennis/golf/mma, verified
+ * live 2026-07; the registry capability `hasAllScoreboard` gates callers) —
+ * into per-league pulse entries keyed by the numeric ESPN league id parsed
+ * from each event's uid (`s:600~l:700~e:…`).
+ *
+ * The merged feed carries NO per-league season/calendar, so this can only
+ * assert the POSITIVE states — live | today — and stays silent about every
+ * league without a game in the slate (the per-league classifyLeague fan-out
+ * supplies upcoming/recent/offseason captions behind it). Explore's hybrid
+ * pulse runs this first, one fetch per sport, so LIVE NOW / ON TODAY fill in
+ * a single round-trip instead of fetch-completion order.
+ *
+ * @param {object} raw  the merged ESPN scoreboard JSON
+ * @param {Date}   now  reference instant (injected for testability)
+ * @returns {Record<string, {state:string, detail:string, live:boolean}>}
+ */
+export function classifyMergedSlate(raw, now = new Date()) {
+  const today = easternDayMs(now);
+  // First-seen order per league id, matching the slate's own event order.
+  const acc = new Map();
+  for (const e of (raw && raw.events) || []) {
+    const m = /(?:^|~)l:(\d+)(?:~|$)/.exec((e && e.uid) || '');
+    if (!m) continue;
+    const cur = acc.get(m[1]) || { live: false, today: false };
+    // An in-progress event is live NOW regardless of its listed date (golf/MMA
+    // date to their start day); a dated-today event marks the day's slate.
+    if (e?.competitions?.[0]?.status?.type?.state === 'in') cur.live = true;
+    if (easternDayMs(e.date) === today) cur.today = true;
+    acc.set(m[1], cur);
+  }
+  const out = {};
+  for (const [id, s] of acc) {
+    if (s.live) out[id] = { state: 'live', detail: 'Live now', live: true };
+    else if (s.today) out[id] = { state: 'today', detail: 'Games today', live: false };
+  }
+  return out;
+}

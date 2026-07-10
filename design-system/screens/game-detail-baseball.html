@@ -1,0 +1,405 @@
+<!-- @dsCard group="Screens" name="Game detail — baseball (live)" subtitle="Duel · zone+bases · pitch strip · LAST PITCH · scoring" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game detail — baseball (live)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ——— card-local ——— */
+body { padding: 24px; }
+.frame {
+  max-width: 428px; margin: 0 auto;
+  border: 1px solid var(--divider); border-radius: 24px; overflow: hidden;
+  background: var(--bg);
+}
+.screen-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px var(--page-margin) 0;
+}
+.screen-head .chev { font-size: 22px; color: var(--text-dim); line-height: 1; width: 22px; }
+.screen-head .ttl { font: 600 12px var(--font-copy); letter-spacing: .04em; color: var(--text-dim); }
+.screen-head .sp { width: 22px; }
+
+.status-row { display: flex; align-items: center; justify-content: space-between; padding: 12px var(--page-margin) 0; }
+.status-row .live-dot { width: 6px; height: 6px; }
+
+.score-block { padding: 6px var(--page-margin) 0; }
+.score-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px solid var(--border); }
+.score-row .side { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.score-row .name { font: 700 40px/1 var(--font-score); letter-spacing: .01em; }
+.score-row .num { font: 700 52px/1 var(--font-score); font-variant-numeric: tabular-nums; }
+.score-row.trail .name, .score-row.trail .num { color: var(--text-dim); }
+
+.chip-nav { display: flex; gap: var(--chip-gap); padding: 16px var(--page-margin) 4px; overflow: hidden; }
+
+.mcard { margin: var(--gap-card) var(--page-margin) 0; }
+.mcard--first { margin-top: var(--gap-first-card); }
+
+/* duel */
+.duel { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 8px; }
+.duel .col { display: flex; flex-direction: column; gap: 8px; }
+.duel .col--right { align-items: flex-end; text-align: right; }
+.duel .ava { width: 44px; height: 44px; border-radius: 50%; background: var(--border); }
+.duel .role { font: 600 11px var(--font-copy); letter-spacing: .06em; color: var(--text-faint); }
+.duel .nm { font: 600 14.5px var(--font-copy); margin-top: 3px; }
+.duel .nm .pos { font: 400 11px var(--font-copy); color: var(--text-faint); }
+.duel .line { font: 600 13px var(--font-score); color: var(--text-dim); font-variant-numeric: tabular-nums; }
+.duel .vs { font: 700 16px var(--font-score); color: var(--outline); padding-top: 14px; }
+.count-row { display: flex; justify-content: space-between; border-top: 1px solid var(--divider); margin-top: 14px; padding-top: 14px; }
+.count-grp { display: flex; align-items: center; gap: 8px; }
+.count-grp .lbl { font: 600 11px var(--font-copy); letter-spacing: .06em; color: var(--text-faint); }
+.count-grp .dots { display: flex; gap: 4px; }
+.cdot { width: 10px; height: 10px; border-radius: 50%; background: var(--track); }
+.cdot--ball { background: var(--green); }
+.cdot--strike, .cdot--out { background: var(--live); }
+.duel-foot { display: flex; justify-content: space-between; border-top: 1px solid var(--divider); margin-top: 14px; padding-top: 12px; font: 400 12px var(--font-copy); color: var(--text-dim); }
+.duel-foot b { font: 600 14px var(--font-score); color: var(--text); font-variant-numeric: tabular-nums; }
+.duel-foot .deck b { font: 600 12px var(--font-copy); }
+
+/* zone + bases */
+.zone-head { display: flex; justify-content: space-between; margin-bottom: 14px; }
+.zone-head .view { font: 400 11px var(--font-copy); color: var(--text-faint); }
+.zone-wrap { display: flex; gap: 18px; align-items: center; }
+.zone { position: relative; width: 150px; height: 170px; flex: none; background: var(--track); border-radius: 8px; }
+.zone .box { position: absolute; left: 16%; right: 16%; top: 14%; bottom: 14%; border: 1.5px solid rgba(238,241,244,.55); border-radius: 2px; }
+.pmark {
+  position: absolute; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font: 700 11px var(--font-score); color: #fff;
+  border: 2px solid var(--surface); transform: translate(-50%, -50%);
+}
+.pmark--ball { background: var(--green); color: var(--inverted-text); }
+.pmark--strike { background: var(--live); }
+.pmark--foul { background: var(--text-faint); }
+.bases-col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+.base-rows { display: flex; flex-direction: column; gap: 5px; font: 400 12px var(--font-copy); color: var(--text-dim); }
+.base-rows .r { display: flex; justify-content: space-between; }
+.base-rows .k { color: var(--text-faint); }
+.base-rows .on { color: var(--text); font-weight: 600; }
+
+/* pitch strip */
+.strip { margin-top: var(--gap-card); padding: 0 var(--page-margin) 4px; display: flex; gap: 8px; overflow-x: auto; }
+.pchip { flex: none; width: 96px; background: var(--surface); border-radius: var(--r-list); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.pchip .dot { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font: 700 11px var(--font-score); color: #fff; }
+.pchip .dot--ball { background: var(--green); color: var(--inverted-text); }
+.pchip .dot--strike { background: var(--live); }
+.pchip .dot--foul { background: var(--text-faint); }
+.pchip .res { font: 600 12px var(--font-copy); }
+.pchip .meta { font: 400 11px var(--font-copy); color: var(--text-dim); }
+
+/* win prob */
+.wp-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.wp-head .callout { font: 700 24px var(--font-score); font-variant-numeric: tabular-nums; }
+.wp-bar { height: 12px; display: flex; gap: 2px; }
+.wp-bar span { border-radius: 6px; }
+
+/* scoring summary — archetype B half-inning container */
+.epi-head { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.epi-row { display: flex; align-items: flex-start; gap: 10px; padding-top: 12px; }
+.epi-row .spine { width: 5px; align-self: stretch; border-radius: 2px; flex: none; }
+.epi-row .body { flex: 1; min-width: 0; }
+.epi-row .t { font: 700 14px var(--font-copy); }
+.epi-row .d { font: 400 12px var(--font-copy); color: var(--text-dim); margin-top: 2px; }
+.epi-row .stats { display: flex; gap: 14px; font: 400 11px var(--font-copy); color: var(--text-faint); font-variant-numeric: tabular-nums; margin-top: 6px; }
+.epi-row .run { font: 700 18px var(--font-score); font-variant-numeric: tabular-nums; flex: none; }
+.scroll-pad { height: var(--scroll-bottom); }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <div class="screen-head">
+    <span class="chev">‹</span>
+    <span class="ttl">MLB</span>
+    <span class="sp"></span>
+  </div>
+
+  <!-- 1 · status pill row -->
+  <div class="status-row">
+    <span class="pill"><span class="live-dot"></span>BOT 7 · 2 OUT</span>
+    <span class="caption">Wrigley Field · Chicago</span>
+  </div>
+
+  <!-- 2 · giant score block -->
+  <div class="score-block">
+    <div class="score-row trail">
+      <div class="side">
+        <span class="team-bar team-bar--block" style="background:#C41E3A"></span>
+        <span class="name">ST. LOUIS</span>
+      </div>
+      <span class="num">4</span>
+    </div>
+    <div class="score-row">
+      <div class="side">
+        <span class="team-bar team-bar--block" style="background:#0E3386"></span>
+        <span class="name">CHICAGO</span>
+        <svg width="10" height="12" viewBox="0 0 8 10"><path d="M8 5L0 0v10z" fill="#EEF1F4"/></svg>
+      </div>
+      <span class="num">5</span>
+    </div>
+  </div>
+
+  <!-- 3 · chip nav -->
+  <div class="chip-nav">
+    <span class="chip chip--active">Now</span>
+    <span class="chip">Box</span>
+    <span class="chip">Plays</span>
+  </div>
+
+  <!-- 4 · the duel -->
+  <div class="card mcard mcard--first">
+    <div class="duel">
+      <div class="col">
+        <span class="ava"></span>
+        <div>
+          <div class="role">PITCHING</div>
+          <div class="nm">A. Pallante <span class="pos">RHP</span></div>
+        </div>
+        <div class="line">6.2 IP · 7 H · 4 ER · 5 K</div>
+      </div>
+      <span class="vs">VS</span>
+      <div class="col col--right">
+        <span class="ava"></span>
+        <div>
+          <div class="role">AT BAT</div>
+          <div class="nm">S. Suzuki <span class="pos">RF</span></div>
+        </div>
+        <div class="line">2-3 today · .284 AVG</div>
+      </div>
+    </div>
+    <div class="count-row">
+      <div class="count-grp"><span class="lbl">BALLS</span><span class="dots"><span class="cdot cdot--ball"></span><span class="cdot"></span><span class="cdot"></span></span></div>
+      <div class="count-grp"><span class="lbl">STRIKES</span><span class="dots"><span class="cdot cdot--strike"></span><span class="cdot cdot--strike"></span></span></div>
+      <div class="count-grp"><span class="lbl">OUTS</span><span class="dots"><span class="cdot cdot--out"></span><span class="cdot cdot--out"></span></span></div>
+    </div>
+    <div class="duel-foot">
+      <span>Pitch count <b class="tab">96</b></span>
+      <span class="deck">On deck · <b>I. Happ</b></span>
+    </div>
+  </div>
+
+  <!-- 5 · strike zone + bases -->
+  <div class="card mcard">
+    <div class="zone-head">
+      <span class="card-label">STRIKE ZONE</span>
+      <span class="view">catcher's view</span>
+    </div>
+    <div class="zone-wrap">
+      <div class="zone">
+        <div class="box"></div>
+        <span class="pmark pmark--foul" style="left:60%;top:22%">4</span>
+        <span class="pmark pmark--foul" style="left:38%;top:52%">3</span>
+        <span class="pmark pmark--ball" style="left:12%;top:78%">2</span>
+        <span class="pmark pmark--strike" style="left:70%;top:44%">1</span>
+      </div>
+      <div class="bases-col">
+        <!-- diamond: 2B occupied gold -->
+        <svg width="128" height="112" viewBox="0 0 128 112" style="margin:0 auto;display:block">
+          <path d="M64 12 L112 56 L64 100 L16 56 Z" fill="none" stroke="#333A44" stroke-width="3"/>
+          <!-- 2B occupied -->
+          <rect x="55" y="3" width="18" height="18" rx="3" transform="rotate(45 64 12)" fill="#FFC52F"/>
+          <!-- 1B empty -->
+          <rect x="103" y="47" width="18" height="18" rx="3" transform="rotate(45 112 56)" fill="#22272F" stroke="#414A55" stroke-width="2.5"/>
+          <!-- 3B empty -->
+          <rect x="7" y="47" width="18" height="18" rx="3" transform="rotate(45 16 56)" fill="#22272F" stroke="#414A55" stroke-width="2.5"/>
+        </svg>
+        <div class="base-rows">
+          <div class="r"><span class="k">1B</span><span>empty</span></div>
+          <div class="r"><span class="k">2B</span><span class="on">N. Hoerner</span></div>
+          <div class="r"><span class="k">3B</span><span>empty</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 · pitch strip (latest first) -->
+  <div class="strip">
+    <div class="pchip">
+      <span class="dot dot--foul">4</span>
+      <span class="res">Strike 2 Foul</span>
+      <span class="meta">Cutter<br>89 mph</span>
+    </div>
+    <div class="pchip">
+      <span class="dot dot--foul">3</span>
+      <span class="res">Foul ball</span>
+      <span class="meta">Slider<br>85 mph</span>
+    </div>
+    <div class="pchip">
+      <span class="dot dot--ball">2</span>
+      <span class="res">Ball</span>
+      <span class="meta">Sinker<br>93 mph</span>
+    </div>
+  </div>
+
+  <!-- 7 · inverted LAST PITCH (the loud moment — one per screen) -->
+  <div class="inverted mcard">
+    <div class="card-label" style="margin-bottom:8px">LAST PITCH</div>
+    <div class="inverted-prose">Strike 2 Foul — Cutter, 89 mph.</div>
+  </div>
+
+  <!-- 8 · win probability -->
+  <div class="card mcard">
+    <div class="wp-head">
+      <span class="card-label">WIN PROBABILITY</span>
+      <span class="callout tab">CHC 68%</span>
+    </div>
+    <div class="wp-bar">
+      <span style="width:32%;background:#C41E3A"></span>
+      <span style="flex:1;background:#0E3386"></span>
+    </div>
+  </div>
+
+  <!-- 9 · scoring summary — one half-inning container (archetype B) -->
+  <div class="card mcard" style="padding:16px 18px">
+    <div class="epi-head">
+      <span class="card-label-faint">BOTTOM 6 · CUBS</span>
+      <span class="card-label-faint tab">STL 4 · CHC 5</span>
+    </div>
+    <div class="epi-row">
+      <span class="spine" style="background:#0E3386"></span>
+      <div class="body">
+        <div class="t">Suzuki homers (18)</div>
+        <div class="d">Line drive to left, Hoerner scores</div>
+        <div class="stats"><span>405 FT</span><span>103.8 MPH</span><span>1 OUT</span></div>
+      </div>
+      <span class="run tab">5–4</span>
+    </div>
+  </div>
+
+  <div class="scroll-pad"></div>
+</div>
+</body>
+</html>

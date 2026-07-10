@@ -109,9 +109,9 @@ empty chip. Every flag below was verified against observed presence in
 | Flag | True for (families; + league overrides) | Gates | Evidence (espn-guide) |
 |---|---|---|---|
 | `hasSummaryTier` | all except golf / mma / racing / tennis | Box / Plays / Stats chips; the whole rich detail | summary endpoint `—` (404) for exactly those four sports |
-| `hasSituation` | baseball, basketball | bases/count/outs, bonus — the cheap live glance | scoreboard `competitions[].situation` observed only for those two |
+| `hasSituation` | baseball, basketball | bases/count/outs, bonus — the cheap live glance | scoreboard `competitions[].situation` observed only for those two. QUIRK (VERIFIED live 2026-07-09, WNBA): basketball's cheap situation carries ONLY `lastPlay` (+ its `probability`) — bonus/fouls/timeouts live on the CORE situation (`hasCoreSituation`), not here |
 | `hasCoreSituation` | football, basketball, hockey | the detail-open CORE `situation` fetch (gridiron down/distance/yardLine/isRedZone, basketball `homeFouls.bonusState`+timeouts, hockey `powerPlay`/`emptyNet`) — merged over the scoreboard situation | core `events/{id}/competitions/{id}/situation` (`schema/espn-guide/core-situation.md`). QUIRK: football carries NO `downDistanceText`/`possession` here (scoreboard-only) → the down&distance chip renders, not the field bar |
-| `hasWinProb` | baseball, basketball, football | the win-probability bar; ALSO the detail-open CORE `predictor` fallback when `/summary` has no `winprobability[]` (reads each side's `gameProjection`) | summary `winprobability[]`; core `predictor` (`schema/espn-guide/core-predictor.md`) |
+| `hasWinProb` | baseball, basketball, football | the win-probability bar; ALSO the detail-open CORE `predictor` fallback when `/summary` has no `winprobability[]` (reads each side's `gameProjection`, falling back to `teamPredWinpct` — VERIFIED live 2026-07-09: the WNBA in-game predictor carries ONLY `teamPredWinpct`, and it's a STATIC pregame model, not a live timeline) | summary `winprobability[]`; core `predictor` (`schema/espn-guide/core-predictor.md`) |
 | `hasScoringPlaysArray` | football | the `scoringPlays[]` feed shape (others derive from `plays[]`/`keyEvents[]`) | summary `scoringPlays[]` football-only |
 | `hasPlaysFeed` | australian-football, baseball, basketball, hockey | dense play-by-play tab | summary `plays[]` |
 | `hasCommentary` | soccer, cricket | soccer narrative / cricket ball-by-ball | soccer: summary `commentary[]`; cricket: summary `header.competitions[].commentaries.{key}` (different path, same gate) |
@@ -119,6 +119,9 @@ empty chip. Every flag below was verified against observed presence in
 | `hasPowerPlay` | hockey | PP badge/clock | summary `plays[].strength` (`power-play`/`short-handed`) |
 | `hasSeeds` | tennis; + `basketball/{mens,womens}-college-basketball` | bracket seed badges | core `competitors[].tournamentMatchup.seed` (NCAA tournament); tennis groupings `curatedRank` |
 | `hasWeather` | baseball, australian-football | weather chip (~1% of events: outdoor + game-day) | scoreboard `events[].weather` |
+| `hasMatchFeed` | soccer | the CORE touch-by-touch plays feed (`events/{id}/competitions/{id}/plays`) → canonical `MatchFeed`: every pass/tackle/restart with TEAM-RELATIVE pitch coords (x 0 = own goal line, 100 = opponent goal line; y 0..100 across), passes/shots also carrying end coords (`fieldPosition2X/Y`). Participants are `$ref`s (no names) — athleteId parses out of the ref and joins the summary lineups; `shortText` is the self-contained fallback label. Paginated ~25/page (`?limit` honored to ≥300) and APPEND-ONLY → the client caches full pages and re-polls only the tail. Powers the live-pitch view, the shot map (start→end trajectories) and the derived momentum chart — NOT the narrative feed (that stays summary `commentary[]`) | verified live 2026-07-09 (fifa.world FRA–MAR QF): 452 plays by 29'; both teams' goal kicks at x≈2–5 → coords are team-relative; pass start→end coords present |
+| `hasAllScoreboard` | soccer, rugby (rugby-league inherits), tennis, golf, mma | a merged `<sport>/all/scoreboard` pseudo-league exists — ONE fetch spans every league of the sport. Events identify their league only via uid `l:<id>` (match against `espnLeagueId`) and `leagues[0]` carries NO season/calendar, so it yields live/today ONLY — Explore's fast first-pass pulse (`classifyMergedSlate`), never a caption source | probed live 2026-07-08: those six 200; basketball/baseball/hockey/football 400, cricket 404, racing 500 |
+| `fastcast` | soccer, football, basketball, baseball, hockey, golf, tennis, mma, racing, cricket — NOT rugby / rugby-league | the sport is served by ESPN's FastCast push layer (`event-{sport}-{league}` slate topics + `gp-*` gamepackage topics; see `fastcast-plan.md`). Flag means the FAMILY is served — individual topics exist only while a league is in season/active (subscribe ack `rc:404` otherwise), so consumers must still fall back to polling on 404/absence | probed live 2026-07-08 via `worker/scripts/capture-fastcast.mjs --probe`: ≥1 in-season league per listed family answered with an `op:"H"` checkpoint; `event-rugby-league-3` 404'd with NRL mid-season |
 
 Two capability-shaped keys **predate** this object and stay top-level (do NOT
 duplicate them into `capabilities{}`): **`hasLineScores`** (the per-period grid)
@@ -129,6 +132,35 @@ stands — re-probe before flipping those.
 
 Consumers: JS resolves via `schema/tools/resolve.mjs`; the Dart port exposes
 `hasCapability(profile, flag)` in `app/lib/src/data/profiles.dart`.
+
+### 2b. Coordinate feeds across sports — the plays-feed probe (2026-07-09)
+
+The core `events/{id}/competitions/{id}/plays` feed exists for MOST sports;
+whether its plays carry **coordinates** — the raw material for shot charts /
+pitch views / spray charts — varies per sport. Probed against completed events
+2026-07-09 (plays persist after finals, so any recent event answers). Re-probe
+with `node schema/tools/probe-plays-coords.mjs [sport/league] [YYYYMMDD]` —
+offseason slates read INCONCLUSIVE, so probe in season:
+
+| Sport | Plays feed | Coordinates | Notes |
+|---|---|---|---|
+| soccer | ✓ (~1500/match) | `fieldPositionX/Y` + `fieldPosition2X/2Y` (start→end), TEAM-RELATIVE 0–100 | shipped: `hasMatchFeed` → canonical `MatchFeed` |
+| basketball (NBA / WNBA / college) | ✓ (~500/game) | `coordinate{x,y}` — x 0..~50, y 0..~50 (feet); **sentinel `-214748340` = absent** (filter `|x|<200`); ~⅔ of plays carry valid coords (shots, rebounds, fouls); `shootingPlay:true` flags attempts, `scoreValue` marks makes | **shot chart viable** — the MatchFeed pattern (page-cached, tail-polled) transfers directly |
+| baseball (MLB) | ✓ (~680/game) | `pitchCoordinate{x,y}` (shipped — the strike zone) + **`hitCoordinate{x,y}` (UNTAPPED — spray chart)** | hit coords ride the same plays we already fetch via summary |
+| australian-football (AFL) | ✓ (~1600/game) | `coordinate{x,y}` SIGNED (centre-origin — needs calibration before use) | untapped |
+| football (NFL / college) | ✓ (~200/game) | **NONE** — no x/y keys; spatial story stays `statYardage` + situation yardLine | drive field remains situation-based |
+| rugby | ✓ (~40/match) | NONE | timeline-depth only |
+| hockey (NHL) | unprobeable offseason (July scoreboards carry no completed events with plays) | **unknown — re-probe in season (October)** | shot coords would unlock the same chart |
+| lacrosse, rugby-league | feed exists, `count: 0` on probed events | — | re-probe in season |
+| cricket, volleyball, field-hockey | scoreboard/plays 400 | — | no core plays surface found |
+
+**Calibration rule (learned live, fifa.world 2026-07-09):** never assume a
+coordinate system's orientation — verify it empirically from events with KNOWN
+locations. Soccer: goal kicks read x≈2–5 for BOTH teams → team-relative; the
+penalty spot reads x≈88.5 → ~12 yds checks out. Baseball's zone was fitted the
+same way (called strikes). Equivalents elsewhere: the centre jump / free-throw
+line (basketball), face-off dots (hockey), the centre bounce (AFL). Do the
+calibration BEFORE building a renderer on the feed, and record it here.
 
 ---
 
@@ -393,11 +425,11 @@ against the live API. Outstanding before relying on them:
   only — no live-shape golden yet; see `rework-plan.md`'s Deferred ledger for
   the app-side detail): NBA/NHL full-plays fixture re-capture (offseason
   now — re-run `capture-extra.mjs` in-season, Oct 2026); `situationCore` /
-  `winprob` core-fetch goldens (0 today — capture during a live MLB/WNBA game,
-  any evening this week; gridiron/basketball/hockey wait for their own
-  season); the basketball cheap win-prob field (`situation.homeWinPercentage`)
-  needs a live close NBA/WNBA game to verify byte-for-byte, not just
-  unit-shape; March Madness structured seeds/regions (`capabilities.hasSeeds`
+  `winprob` core-fetch goldens — **MLB + WNBA CAPTURED** (WNBA live 2026-07-09,
+  SEA@ATL 401857051, via `capture:live` → injected; gridiron/hockey wait for
+  their own season); the basketball cheap win-prob field — **VERIFIED live
+  2026-07-09** (see §10f: committed live scoreboard fixture + golden now carry
+  it); March Madness structured seeds/regions (`capabilities.hasSeeds`
   resolves via core `tournamentMatchup.seed` for NCAAM/NCAAW, but no captured
   shape has real seeds/regions populated — capture March 2027).
 
@@ -421,10 +453,12 @@ shapes + inline QUIRKs.
   derives precise in-window days from a range fetch.
 - **`GameSummary` enrichments** (ride the one `/summary` fetch — zero extra cost):
   `seasonSeries` (H2H), `recentForm` (last-5, newest last), `injuries` (structured;
-  comments dropped), `winProbability` (single current/final %, **NBA/NFL/MLB only** —
-  NHL/soccer omit it; an ESPN analytic, not a betting line), and `plays` (the FULL
-  play-by-play; the detail page shows the condensed `scoringPlays` and expands into
-  this).
+  comments dropped), `winProbability` (current/final % PLUS `points[]` — the whole
+  per-play arc, each point's home-% joined by `winprobability[].playId` to the play
+  feed for period/half/clock/running-score scrub context; **NBA/NFL/MLB only** —
+  NHL/soccer omit it; an ESPN analytic, not a betting line. The core-predictor
+  fallback stays a single number, no arc), and `plays` (the FULL play-by-play; the
+  detail page shows the condensed `scoringPlays` and expands into this).
 - **`RankingsResponse`** — new `GET /v1/rankings/{sport}/{league}` (college AP/Coaches/
   CFP). Lazy, 1h TTL, never in the overview fan-out. Distinct from the per-team
   `curatedRank` already on the scoreboard.
@@ -664,11 +698,11 @@ Two additive fields, both surfaced purely by DATA PRESENCE (no sport-name branch
   **VERIFIED basketball-only (~14%, `schema/espn-guide/scoreboard.md`)** — absent for
   every other sport, so the hero-card footer's two-colour win-prob micro-bar renders on
   presence alone. Distinct from the rich `summary.winprobability[]` timeline and the
-  CORE `predictor` fallback (both detail-open). No LIVE basketball game was capturable
-  at build time (NBA offseason / no live WNBA slate 2026-07), so the normalizer is
-  pinned by guide-shaped unit tests (`worker/test/units.test.mjs` + `app/test/
-  win_prob_test.dart`), not a fixture golden — no committed scoreboard fixture carries
-  the field, so every existing golden is unchanged.
+  CORE `predictor` fallback (both detail-open). **VERIFIED live 2026-07-09** (WNBA
+  SEA@ATL 401857051, `capture:live`): the committed WNBA fixture now carries a mid-Q4
+  LIVE event with `situation.lastPlay.probability.homeWinPercentage` (0.985), so the
+  field is fixture-golden-covered (`scores/basketball__wnba.json`) on top of the
+  guide-shaped unit tests (`worker/test/units.test.mjs` + `app/test/win_prob_test.dart`).
 - **`StandingsRow.note` `{color?, description?}`** (`standings.js`/`.dart`) — the
   qualification BAND: an ESPN hex `color` cut-line swatch + a `description` tag
   ('Champions League' / 'Relegation' / 'Advance to Round of 32' / 'Eliminated').
@@ -729,6 +763,74 @@ below `title` is optional-by-default; the UI renders what is present.
 `api.dart tournament(league, {window, grouping, eventId})` is a **pushed-page
 fetch, never the poll**: one cached range scoreboard (window from the hint or the
 override) + best-effort standings, fed to the normalizer.
+
+---
+
+## 10h. Baseball live tier (turn 8 — duel · strike zone · pitch strip · last play)
+
+All additive; oracle `worker/src/normalize.js`/`summary.js`, ports
+`normalize.dart`/`summary.dart`, no new fetch (everything rides the scoreboard
+poll + the detail-open `/summary`).
+
+- **`Situation.lastPlay` reads `lastPlay.text` FIRST** (was `type.alternativeText`
+  first). **QUIRK (VERIFIED live + `espn-guide/scoreboard.md`):** baseball's raw
+  `situation.lastPlay` is PITCH-granular, and `type.alternativeText` is a coarse
+  at-bat label ESPN stamps on only ~36% of play types — `"Now at bat"` on
+  start-batter rows, a previous at-bat's `"Strikeout"` lingering while the real
+  action moves on. `text` always describes the actual play object (`"Pitch 4 :
+  Strike 2 Foul"`, `"End of the 3rd inning"`). Other sports ship a descriptive
+  `text` and no `alternativeText`, so only baseball copy changes.
+- **`Situation.onDeck`** — the first `situation.dueUp[]` batter who isn't the
+  current batter (ESPN's dueUp leads with the CURRENT batter mid at-bat). The
+  FastCast event doc's situation never carries dueUp, so the Dart overlay merge
+  carries the polled `onDeck` across pushes (same rule as `status.altDetail`).
+- **`Situation.dueUp: [{name, line?}]`** — the full dueUp list in ESPN order
+  (`line` = the batter's day summary, `'1-3, K'`). Between innings ESPN drops
+  `batter`/`pitcher` and dueUp is the NEXT half-inning's upcoming batters — the
+  app's "Due Up" card gates on exactly that (`dueUp` present + `batter` absent),
+  never a sport-name check. Emitted only when non-empty; baseball-only by
+  observation (`espn-guide/scoreboard.md`). Rides the same FastCast carry-over
+  rule as `onDeck`.
+- **`summary.lastPlay: BaseballLastPlay`** — the derived **"what really was the
+  last play"**. ESPN appends a `start-batterpitcher` bookend the instant an
+  at-bat resolves, so the feed's naive tail reads "X pitches to Y" while the
+  double that just happened scrolls away. The builder walks back past the
+  bookends to the freshest narrative row: `{kind:'pitch', text, type?, velo?}`
+  (prefix-stripped) or `{kind:'play', text}` (an at-bat result / inning bookend).
+  Built only alongside `atBats` (baseball by construction).
+- **`AtBat` live-only extras** — `pitchCount` (the pitcher's GAME pitch count:
+  every `'P'` row is tagged with its pitcher participant) and `first`/`second`/
+  `third` (runner names off the latest pitch row's `onFirst/..` athlete ids,
+  resolved through the boxscore).
+- **`Pitch.type` / `Pitch.x,y`** — the pitch name (`'Slider'`) and ESPN's raw
+  catcher's-view strike-zone plot coords. **VERIFIED on a live 2026-07 gp
+  capture:** x ~0-250 left→right, y grows DOWNWARD and exceeds 250 for balls in
+  the dirt; final-game summaries ship `pitchType` but NO coordinates — the zone
+  card therefore gates on coord presence (design turn 8's degrade rule).
+- **`summary.decisions: Decision[]`** — the pitcher-decision line for a final
+  (`W: Skubal (5-4)` / `L:` / `SV:`). Source:
+  `header.competitions[0].status.featuredAthletes[]` (roles `winningPitcher` /
+  `losingPitcher` / `savePitcher`, VERIFIED 2026-07 MLB) → `{role:'win'|'loss'|
+  'save', id?, name, record?, saves?, side?, abbr?}`. Data-presence gated —
+  sports without those roles never emit it.
+- **`summary.teamDetails: TeamDetails[]`** — the newspaper agate block under a
+  printed box score. Source: `boxscore.teams[].details[]` (groups Batting /
+  Pitching / Fielding / Baserunning; rows like `2B: Vierling (12, Lopez)`,
+  `Team LOB: 7`, `Team RISP: 3-10 (…)`). Kept verbatim per team:
+  `{side?, abbr?, groups:[{title, rows:[{label, value}]}]}`.
+- **`summary.teamGameStats: SummaryStatGroup[]`** — baseball's grouped
+  this-game team comparison. QUIRK: MLB's `boxscore.teams[].statistics` NEST
+  (groups with `stats[]`, no top-level `displayValue`), so the flat `teamStats`
+  is `[]` for baseball; this distills the `batting` + `pitching` groups into
+  curated away/home rows (whitelisted game keys — AB/R/H/2B/3B/HR/RBI/TB/BB/K/
+  SB/LOB and K/BB/H/R/ER/HR/P/S — the season-rate tail like OPS/WHIP stays
+  behind). Same row shape as `teamStats`.
+- **Goldens:** the gp FastCast checkpoint (`gp-baseball-mlb-401816076`) is
+  summary-shaped and live-captured — `gen-goldens.mjs` now ALSO pins
+  `normalizeSummary` on it (`summary/baseball__mlb__401816076.json`), the only
+  committed feed with pitch coordinates. Live at-bat extras + the lastPlay
+  derivation are pinned by lock-step guide-shaped unit tests
+  (`worker/test/units.test.mjs` + `app/test/baseball_lastplay_test.dart`).
 
 ---
 

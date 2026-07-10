@@ -50,12 +50,18 @@ class LeagueEventRow extends StatelessWidget {
   final SportEvent event;
   final bool divider;
   final String? date;
+
+  /// Optional faint uppercase label above the row body — the BIG GAMES card
+  /// uses it to say which league/stakes a cross-league row belongs to
+  /// ('NBA · WEST FINALS'). Null (the home-feed sections) renders nothing.
+  final String? tagLine;
   const LeagueEventRow({
     super.key,
     required this.league,
     required this.event,
     required this.divider,
     this.date,
+    this.tagLine,
   });
 
   @override
@@ -85,7 +91,19 @@ class LeagueEventRow extends StatelessWidget {
         child: Column(children: [
           Padding(
             padding: T.padDenseRow,
-            child: body,
+            child: tagLine == null
+                ? body
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(tagLine!.toUpperCase(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: T.cardLabelFaint),
+                      const SizedBox(height: 6),
+                      body,
+                    ],
+                  ),
           ),
           if (series != null && series.isPlayoff)
             _SeriesStrip(comp: comp, series: series),

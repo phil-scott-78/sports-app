@@ -32,7 +32,9 @@ android {
         applicationId = "dev.philscott.scores"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
+        // ML Kit GenAI (the on-device inning recap) requires API 26; older
+        // devices were never going to carry Gemini Nano anyway.
+        minSdk = maxOf(flutter.minSdkVersion, 26)
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -71,4 +73,11 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // On-device AI inning recap: Gemini Nano via the ML Kit GenAI Prompt API
+    // (MainActivity's `scores/recap` channel). Suspend-based API → coroutines.
+    implementation("com.google.mlkit:genai-prompt:1.0.0-beta2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }

@@ -1,0 +1,41 @@
+{
+  "endpoint": "situationCore",
+  "args": {
+    "key": "basketball/wnba",
+    "eventId": "401857051",
+    "raw": {
+      "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/events/401857051/competitions/401857051/situation?lang=en&region=us",
+      "lastPlay": {
+        "$ref": "http://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/events/401857051/competitions/401857051/plays/401857051465?lang=en&region=us"
+      },
+      "homeTimeouts": {
+        "timeoutsCurrent": 0,
+        "timeoutsRemainingCurrent": 5
+      },
+      "awayTimeouts": {
+        "timeoutsCurrent": 1,
+        "timeoutsRemainingCurrent": 2
+      },
+      "homeFouls": {
+        "teamFouls": 14,
+        "teamFoulsCurrent": 6,
+        "foulsToGive": 0,
+        "bonusState": "DOUBLE"
+      },
+      "awayFouls": {
+        "teamFouls": 15,
+        "teamFoulsCurrent": 7,
+        "foulsToGive": 0,
+        "bonusState": "DOUBLE"
+      }
+    },
+    "lastPlayText": "End of the 3rd Quarter"
+  },
+  "output": {
+    "homeTimeouts": 5,
+    "awayTimeouts": 2,
+    "homeBonus": "DOUBLE",
+    "awayBonus": "DOUBLE",
+    "lastPlay": "End of the 3rd Quarter"
+  }
+}

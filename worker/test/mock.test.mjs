@@ -68,6 +68,38 @@ const mlbFixture = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug:
   ok(JSON.stringify(a) === JSON.stringify(b), 'same (fixture, now) → identical output');
 }
 
+// ---- 2b. live baseball: mid at-bat duel vs between-innings due-up ------------
+// (~1 in 3 live games sit between innings — ESPN drops batter/pitcher, dueUp
+// lists the NEXT half's batters, status reads Middle/End — the app's Due Up
+// card state; the rest carry the fabricated duel with dueUp LEADING with the
+// current batter, ESPN's quirk, so onDeck resolves.)
+{
+  const teams = { sports: [{ leagues: [{ teams: Array.from({ length: 24 }, (_, i) => ({ team: { id: String(i + 1), displayName: `Team ${i + 1}`, abbreviation: `T${i + 1}` } })) }] }] };
+  const fx = { key: 'baseball/mlb', league: { id: '10', name: 'MLB', slug: 'mlb' }, events: [], teams, standings: null, summaries: {} };
+  // megaweek: everything lights up live, so BOTH live states appear in one slate
+  const sb = synthScoreboard(registry, 'baseball/mlb', fx, { now: NOW, scenario: getScenario('megaweek') });
+  const live = sb.events.map((e) => e.competitions[0]).filter((c) => c.status.type.state === 'in');
+  // megaweek keeps ≥1 final + ≥1 scheduled out of the day pool → 4 of 6 live
+  ok(live.length >= 4, `2b: live games in the fabricated megaweek slate (${live.length})`);
+  for (const c of live) {
+    const sit = c.situation;
+    if (sit.batter) {
+      ok(sit.dueUp?.[0]?.athlete?.shortName === sit.batter.athlete.shortName, '2b: mid at-bat — dueUp leads with the current batter');
+      ok(sit.dueUp.length >= 2 && sit.pitcher?.athlete?.shortName, '2b: mid at-bat — on-deck entry + pitcher present');
+    } else {
+      ok(Array.isArray(sit.dueUp) && sit.dueUp.length === 3, '2b: between innings — three due-up batters');
+      ok(/^(Middle|End) /.test(c.status.type.detail), `2b: between innings — Middle/End beat (${c.status.type.detail})`);
+      ok(sit.balls === 0 && sit.strikes === 0 && sit.outs === 0, '2b: between innings — count cleared');
+    }
+  }
+  // Through the REAL normalizer: both states survive to canonical — the duel
+  // (batter + onDeck) and the Due Up gate (dueUp present, batter absent).
+  const nlive = normalizeScoreboard(registry, 'baseball/mlb', sb)
+    .events.map((e) => e.competitions[0]).filter((c) => c.status.phase === 'live');
+  ok(nlive.some((c) => c.situation?.batter && c.situation?.onDeck), '2b: normalized slate carries a mid at-bat duel with onDeck');
+  ok(nlive.some((c) => c.situation?.dueUp?.length === 3 && !c.situation.batter), '2b: normalized slate carries a between-innings due-up state');
+}
+
 // ---- 3. dates land in the right window ---------------------------------------
 {
   const sb = synthScoreboard(registry, 'baseball/mlb', mlbFixture, { now: NOW });

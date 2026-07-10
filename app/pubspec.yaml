@@ -21,8 +21,25 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^4.0.0
+  # Fans the generated icon art (assets/icon/, drawn by tool/gen_app_icon.dart
+  # from the design tokens) out to the Android mipmaps/adaptive icon + web icons:
+  # `dart run flutter_launcher_icons`.
+  flutter_launcher_icons: ^0.14.1
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: true
+  image_path: assets/icon/icon.png
+  adaptive_icon_background: "#111318"
+  adaptive_icon_foreground: assets/icon/icon_foreground.png
+  # Android 13+ themed icon: alpha of the foreground mark.
+  adaptive_icon_monochrome: assets/icon/icon_foreground.png
+  web:
+    generate: true
+    image_path: assets/icon/icon.png
+    background_color: "#111318"
+    theme_color: "#111318"
 
 flutter:
   uses-material-design: true

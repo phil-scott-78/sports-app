@@ -1,0 +1,306 @@
+<!-- @dsCard group="Situation cards" name="Soccer" subtitle="Match timeline · momentum · possession split · shot map inset" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soccer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Broadcast Dark — design tokens (mirror of app/lib/src/theme.dart, class T).
+   Source of truth: app/DESIGN.md. Inline this block into every preview card. */
+
+:root {
+  /* Surfaces */
+  --bg: #111318;
+  --surface: #1A1E25;
+  --sheet: #1D222A;
+  --nav-bg: #15181E;
+  --track: #22272F;
+  --drag-surface: #242B36;
+
+  /* Strokes */
+  --divider: #262C35;
+  --border: #2A303A;
+  --outline: #414A55;
+  --field-line: #232933;
+  --field-line-on-track: #2C333D;
+  --diamond-line: #333A44;
+
+  /* Text ramp */
+  --text: #EEF1F4;
+  --text-dim: #9AA3AD;
+  --text-faint: #6C7480;
+  --text-body: #C8CFD6;
+  --ghost: #3D434D;
+
+  /* Accents */
+  --live: #E5484D;
+  --gold: #FFC52F;
+  --green: #3FA96B;
+  --under-par: #F26D6D;
+  --silver: #B9BFC7;
+  --bronze: #B07A4A;
+  --tennis-ball: #C9E04A; /* sport-local: serve dot, SET/BREAK POINT only */
+  --pitch-green: #15231B; /* sport-local: soccer pitch surfaces only */
+
+  /* Muted glyph pairs (high-frequency classification dots) */
+  --muted-pos-bg: #2F6B3F;   --muted-pos-fg: #C9E5CF;   /* ball / safe */
+  --muted-neg-bg: #7A3038;   --muted-neg-fg: #F0CDD1;   /* strike / out */
+  --muted-neutral-bg: #6B5B2A; --muted-neutral-fg: #EADFB8; /* foul / caution */
+
+  /* Semantic rank-chip pairs */
+  --rank-good-bg: #1C3A2A;  --rank-good-fg: #8FD6AE;
+  --rank-mid-bg: #2A303A;   --rank-mid-fg: #9AA3AD;
+  --rank-bad-bg: #3D2024;   --rank-bad-fg: #E8A0A6;
+
+  /* Inverted card (the loud moment) */
+  --inverted-bg: #EEF1F4;
+  --inverted-text: #111318;
+  --inverted-label: #6C7480;
+
+  /* Type */
+  --font-score: "Barlow Condensed", sans-serif; /* 600/700, ALWAYS tabular figures */
+  --font-copy: "Archivo", sans-serif;           /* 400–700, app-wide default */
+
+  /* Shape */
+  --r-card: 20px;   /* detail cards */
+  --r-list: 16px;   /* dense feed/list cards, following rows */
+  --r-sheet: 24px;  /* bottom sheet top corners */
+  --r-pill: 999px;
+
+  /* Spacing */
+  --page-margin: 20px;
+  --gap-card: 12px;
+  --gap-first-card: 14px;
+  --scroll-bottom: 28px;
+  --chip-gap: 8px;
+  --row-vpad: 9px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-copy);
+  -webkit-font-smoothing: antialiased;
+}
+.tab { font-variant-numeric: tabular-nums; }
+
+/* The card — atomic layout unit. Flat fill, no shadow, no border (hero/photo cards may add 1px var(--divider)). */
+.card { background: var(--surface); border-radius: var(--r-card); padding: 18px; }
+.card--list { border-radius: var(--r-list); padding: 14px 12px; } /* padDenseRow 12×14 = 12 h / 14 v */
+.card--table { padding: 16px 14px; } /* padTable 14×16: tables need width */
+
+/* Label tier */
+.card-label { font: 600 12px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-dim); }
+.card-label-faint { font: 600 11px var(--font-copy); letter-spacing: .06em; text-transform: uppercase; color: var(--text-faint); }
+.section-title { font: 700 16px var(--font-score); letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-variant-numeric: tabular-nums; }
+.caption { font: 400 12px var(--font-copy); color: var(--text-dim); }
+.caption-faint { font: 400 11px var(--font-copy); color: var(--text-faint); }
+
+/* Scoreboard voice */
+.score { font-family: var(--font-score); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Team color bar (the stand-in for logos; team identity is shapes ONLY) */
+.team-bar { border-radius: 2px; flex: none; }
+.team-bar--block { width: 12px; height: 44px; border-radius: 3px; }
+.team-bar--hero  { width: 8px;  height: 26px; }
+.team-bar--bug   { width: 8px;  height: 26px; }
+.team-bar--row   { width: 5px;  height: 16px; }
+.team-bar--follow{ width: 6px;  height: 22px; }
+
+/* Live dot — the signal is the dot, not the word */
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--live); flex: none; }
+
+/* Chips: active = inverted, inactive = outline + dim. Never colored. */
+.chip { display: inline-flex; align-items: center; border-radius: var(--r-pill); padding: 8px 16px; font: 400 13px var(--font-copy); color: var(--text-dim); border: 1.5px solid var(--border); }
+.chip--active { background: var(--inverted-bg); color: var(--inverted-text); border-color: var(--inverted-bg); font-weight: 600; }
+
+/* Status pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; background: var(--surface); border-radius: var(--r-pill); padding: 7px 13px; font: 600 11px var(--font-copy); letter-spacing: .04em; text-transform: uppercase; color: var(--text); }
+
+/* Hairlines */
+.hr { height: 1px; background: var(--divider); border: 0; margin: 0; }
+.hr--track { background: var(--track); }
+
+/* Dashed = not yet (pending/empty/upcoming) */
+.dashed { border: 1.5px dashed var(--outline); }
+
+/* Inverted card — one per screen, or none */
+.inverted { background: var(--inverted-bg); color: var(--inverted-text); border-radius: var(--r-card); padding: 18px; }
+.inverted .card-label { color: var(--inverted-label); }
+.inverted-prose { font: 600 17px/1.35 var(--font-copy); }
+
+/* Team-color wash for "you are here" (apply via inline style with the team rgba at .07–.08) */
+.wash { margin: 0 -18px; padding: 0 18px; }
+
+/* ── Card-local ─────────────────────────────────────────────── */
+body { padding: 24px; }
+.col { max-width: 428px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.anno { font: 400 11px var(--font-copy); color: var(--text-faint); margin-bottom: 10px; }
+.row { display: flex; align-items: center; }
+.between { justify-content: space-between; }
+
+/* stat number rows */
+.stat-row { display: flex; justify-content: space-between; font-size: 13px; font-variant-numeric: tabular-nums; }
+.stat-row .v { font-weight: 600; width: 40px; }
+.stat-row .v--away { color: var(--text-dim); text-align: right; }
+.stat-row .lbl { color: var(--text-faint); font-size: 11px; letter-spacing: .06em; }
+
+/* feed glyph vocabulary */
+.g-goal { width: 16px; height: 16px; border-radius: 50%; }
+.g-card { width: 11px; height: 15px; border-radius: 2px; }
+.g-sub  { width: 14px; height: 14px; border-radius: 50%; background: var(--track); }
+.g-var  { width: 14px; height: 14px; border: 1.5px solid var(--text-dim); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="col">
+
+  <!-- (a) MATCH TIMELINE -->
+  <div>
+    <div class="anno">SITUATION — MATCH TIMELINE · dispatches on competition.events present, never sport name · rail 4px track, elapsed #3A4250 · goals 18px team dots + 2px bg ring · cards 10×14 r2 · now-marker 2.5px white</div>
+    <div class="card">
+      <div class="row between" style="margin-bottom:14px">
+        <span class="card-label">MATCH TIMELINE</span>
+        <span class="card-label" style="color:var(--text)">73&prime;</span>
+      </div>
+      <div style="position:relative;height:34px">
+        <div style="position:absolute;left:0;right:0;top:15px;height:4px;border-radius:2px;background:var(--track)"></div>
+        <div style="position:absolute;left:0;top:15px;width:81%;height:4px;border-radius:2px;background:#3A4250"></div>
+        <!-- HT tick at 50% -->
+        <div style="position:absolute;left:50%;top:9px;bottom:9px;width:1.5px;background:var(--outline)"></div>
+        <!-- goals: 18px team-color dots with 2px bg ring -->
+        <span style="position:absolute;left:13%;top:8px;width:18px;height:18px;border-radius:50%;background:#C8102E;transform:translateX(-50%);border:2px solid var(--bg)"></span>
+        <span style="position:absolute;left:34%;top:8px;width:18px;height:18px;border-radius:50%;background:#F36C21;transform:translateX(-50%);border:2px solid var(--bg)"></span>
+        <!-- red card: 10×14 r2 rect -->
+        <span style="position:absolute;left:63%;top:10px;width:10px;height:14px;border-radius:2px;background:var(--live);transform:translateX(-50%)"></span>
+        <span style="position:absolute;left:76%;top:8px;width:18px;height:18px;border-radius:50%;background:#C8102E;transform:translateX(-50%);border:2px solid var(--bg)"></span>
+        <!-- now-marker: 2.5px white -->
+        <span style="position:absolute;left:81%;top:5px;bottom:5px;width:2.5px;background:var(--text)"></span>
+      </div>
+      <div class="row between" style="font:400 10px var(--font-copy);color:var(--text-faint);margin-top:2px"><span>KO</span><span>HT</span><span>90&prime;</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--divider);margin-top:12px;padding-top:12px;font-size:12px;color:var(--text-dim)">
+        <div style="display:flex;gap:10px"><span class="score" style="font-weight:600;font-size:12px;color:var(--text-faint);width:26px">68&prime;</span><span style="width:8px;height:12px;border-radius:1.5px;background:var(--live);margin-top:2px;flex:none"></span><span>De Ligt &mdash; second yellow, Netherlands to 10</span></div>
+        <div style="display:flex;gap:10px"><span class="score" style="font-weight:600;font-size:12px;color:var(--text-faint);width:26px">31&prime;</span><span style="width:12px;height:12px;border-radius:50%;background:#F36C21;margin-top:1px;flex:none"></span><span>Gakpo &mdash; left-footed, top corner</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- (b) MOMENTUM -->
+  <div>
+    <div class="anno">MOMENTUM — per-minute pressure bars · dispatches on hasMatchFeed (the core plays feed), never sport name · home above a 2px outline midline, away below · HT tick · KO/HT/FT faint axis</div>
+    <div class="card">
+      <div class="row between" style="margin-bottom:14px">
+        <span class="card-label">MOMENTUM</span>
+        <span style="display:flex;gap:14px;font-size:11px;color:var(--text-dim)"><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#1D6EE0"></span>FRA</span><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#C8102E"></span>MAR</span></span>
+      </div>
+      <div style="position:relative">
+        <div style="display:flex;gap:3px;align-items:flex-end;height:48px">
+          <span style="flex:1;height:4px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:44px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:38px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:30px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:12px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:8px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:6px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1"></span>
+          <span style="flex:1;height:5px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:26px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:32px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:20px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1;height:10px;background:#1D6EE0;border-radius:2px 2px 0 0"></span>
+          <span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span>
+        </div>
+        <div style="height:2px;background:var(--outline);border-radius:1px"></div>
+        <div style="display:flex;gap:3px;align-items:flex-start;height:22px">
+          <span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span>
+          <span style="flex:1;height:5px;background:#C8102E;border-radius:0 0 2px 2px"></span>
+          <span style="flex:1"></span>
+          <span style="flex:1;height:8px;background:#C8102E;border-radius:0 0 2px 2px"></span>
+          <span style="flex:1;height:14px;background:#C8102E;border-radius:0 0 2px 2px"></span>
+          <span style="flex:1;height:6px;background:#C8102E;border-radius:0 0 2px 2px"></span>
+          <span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span>
+          <span style="flex:1;height:4px;background:#C8102E;border-radius:0 0 2px 2px"></span>
+          <span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span><span style="flex:1"></span>
+        </div>
+        <!-- HT tick -->
+        <div style="position:absolute;top:-4px;bottom:16px;left:63.6%;width:1.5px;background:var(--border)"></div>
+      </div>
+      <div class="row between" style="font:400 10px var(--font-copy);color:var(--text-faint);margin-top:4px"><span>KO</span><span>HT</span><span>FT</span></div>
+    </div>
+  </div>
+
+  <!-- (c) STATS -->
+  <div>
+    <div class="anno">STATS — the bar rule: a bar only compares two sides of ONE whole (possession split, 2px gap) · independent per-team values are NUMBER ROWS (Barlow numbers flanking a centered faint label), never bars</div>
+    <div class="card" style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <div class="row between" style="font-size:11px;color:var(--text-dim);margin-bottom:6px"><span style="font-weight:600">58%</span><span style="letter-spacing:.06em">POSSESSION</span><span>42%</span></div>
+        <div style="height:8px;border-radius:4px;overflow:hidden;display:flex;gap:2px"><span style="width:58%;background:#C8102E;border-radius:4px"></span><span style="flex:1;background:#F36C21;border-radius:4px"></span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px" class="tab">
+        <div class="stat-row"><span class="v score" style="font-weight:600;font-size:13px">14</span><span class="lbl">SHOTS</span><span class="v v--away score" style="font-weight:600;font-size:13px">6</span></div>
+        <div class="stat-row"><span class="v score" style="font-weight:600;font-size:13px">1.8</span><span class="lbl">EXPECTED GOALS</span><span class="v v--away score" style="font-weight:600;font-size:13px">0.9</span></div>
+        <div class="stat-row"><span class="v score" style="font-weight:600;font-size:13px">7</span><span class="lbl">CORNERS</span><span class="v v--away score" style="font-weight:600;font-size:13px">2</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- (d) LIVE PITCH -->
+  <div>
+    <div class="anno">LIVE PITCH (compact) — live-only · pitch-green #15231B (the one sanctioned sport-local surface), lines rgba(238,241,244,.14) · fading 4-dot possession trail .3&rarr;.95 · coords are TEAM-RELATIVE (x 0 = own goal)</div>
+    <div class="card">
+      <div class="row between" style="margin-bottom:12px">
+        <span class="card-label">LIVE PITCH</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:var(--track);border-radius:var(--r-pill);padding:5px 12px;font-size:11px;font-weight:600"><span style="width:8px;height:8px;border-radius:50%;background:#1D6EE0"></span>FRA POSSESSION &middot; OPEN PLAY</span>
+      </div>
+      <div style="position:relative;height:170px;border-radius:12px;background:var(--pitch-green);overflow:hidden">
+        <div style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(238,241,244,.14)"></div>
+        <div style="position:absolute;top:50%;left:50%;width:60px;height:60px;border:1px solid rgba(238,241,244,.14);border-radius:50%;transform:translate(-50%,-50%)"></div>
+        <div style="position:absolute;top:24%;bottom:24%;right:0;width:44px;border:1px solid rgba(238,241,244,.14);border-right:none"></div>
+        <div style="position:absolute;top:24%;bottom:24%;left:0;width:44px;border:1px solid rgba(238,241,244,.14);border-left:none"></div>
+        <svg width="100%" height="100%" viewBox="0 0 340 170" preserveAspectRatio="none" style="position:absolute;inset:0">
+          <line x1="60" y1="128" x2="115" y2="80" stroke="#1D6EE0" stroke-width="2" opacity="0.3"></line>
+          <line x1="115" y1="80" x2="185" y2="46" stroke="#1D6EE0" stroke-width="2" opacity="0.5"></line>
+          <line x1="185" y1="46" x2="232" y2="88" stroke="#1D6EE0" stroke-width="2" opacity="0.7"></line>
+          <line x1="232" y1="88" x2="282" y2="70" stroke="#1D6EE0" stroke-width="2.5" opacity="0.95"></line>
+          <circle cx="60" cy="128" r="4" fill="#1D6EE0" opacity="0.3"></circle>
+          <circle cx="115" cy="80" r="4" fill="#1D6EE0" opacity="0.55"></circle>
+          <circle cx="185" cy="46" r="4" fill="#1D6EE0" opacity="0.75"></circle>
+          <circle cx="232" cy="88" r="4" fill="#1D6EE0" opacity="0.95"></circle>
+          <circle cx="282" cy="70" r="9" fill="none" stroke="#EEF1F4" stroke-width="1.5" opacity="0.7"></circle>
+          <circle cx="282" cy="70" r="5" fill="#EEF1F4"></circle>
+        </svg>
+        <span style="position:absolute;left:83%;top:30%;font-size:10.5px;font-weight:600;color:var(--text)">Mbapp&eacute;</span>
+        <span style="position:absolute;left:12px;bottom:10px;font-size:10px;color:var(--text-faint)">FRA attacking &rarr;</span>
+      </div>
+      <div class="row between" style="margin-top:10px;font-size:12px;color:var(--text-dim)"><span><span style="color:var(--text);font-weight:600">4 passes</span> this sequence</span><span>ball in MAR half &middot; 22 yds out</span></div>
+    </div>
+  </div>
+
+  <!-- (e) FEED GLYPHS + GLANCE -->
+  <div>
+    <div class="anno">FEED GLYPH ROW — the time-rail vocabulary: goal filled team dot · yellow/red card 11×15 r2 rects · sub track circle + 2px team ring · VAR outlined square · all shapes, never logos</div>
+    <div class="card" style="display:flex;gap:26px;align-items:center">
+      <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span class="g-goal" style="background:#C8102E"></span><span class="caption-faint">goal</span></span>
+      <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span class="g-card" style="background:var(--gold)"></span><span class="caption-faint">yellow</span></span>
+      <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span class="g-card" style="background:var(--live)"></span><span class="caption-faint">red</span></span>
+      <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span class="g-sub" style="border:2px solid #F36C21"></span><span class="caption-faint">sub</span></span>
+      <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><span class="g-var"></span><span class="caption-faint">VAR</span></span>
+    </div>
+    <div class="anno" style="margin-top:16px">GLANCE LINE — the dense-row status stack: prime minute, red-card rect, terse middot fragment</div>
+    <div class="card card--list" style="display:flex;align-items:center;gap:8px">
+      <span class="score" style="font-size:12px;font-weight:600;color:var(--text-dim)">73&prime;</span>
+      <span style="width:8px;height:12px;border-radius:1.5px;background:var(--live);flex:none"></span>
+      <span class="caption-faint">NED down to 10</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
